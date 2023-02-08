@@ -27,7 +27,7 @@ Take a look the the [Drive Reference]() on how to use it.
 ## Developing with Base and Drive
 
 During development, you can share data between your local environment and your [project](/docs/en/basics/projects) in Space.
-https://deta.space/docs/en/basics/projects
+
 To do so, you need to manually connect your development environment to a project's Bases and Drives by using a "project key".
 
 A project key gives access to Bases and Drives within a project, and can be generated from the "Develop" tab inside your Builder project.
