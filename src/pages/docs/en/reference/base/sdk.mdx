@@ -58,20 +58,20 @@ Deta Bases are created for you automatically when you start using them.
     const { Deta } = require('deta'); // import Deta
 
     // Initialize with a Project Key
-    const deta = Deta('project key'); 
+    const deta = Deta('project key');
 
     // This how to connect to or create a database.
-    const db = deta.Base('simple_db'); 
+    const db = deta.Base('simple_db');
 
     // You can create as many as you want without additional charges.
-    const books = deta.Base('books'); 
+    const books = deta.Base('books');
     ```
 
     > If you are using Deta Base within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), the **Deta SDK** comes pre-installed and a valid project key is pre-set in the Micro's environment. There is no need to install the SDK or pass a key in the initialization step.
     > ```js
     > const { Deta } = require('deta');
     >
-    > const deta = Deta(); 
+    > const deta = Deta();
     > ```
 
     > If you are using the `deta` npm package of `0.0.6` or below, `Deta` is the single default export and should be imported as such.
@@ -98,7 +98,7 @@ Deta Bases are created for you automatically when you start using them.
     > If you are using Deta Base within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), the **Deta SDK** comes pre-installed and a valid project key is pre-set in the Micro's environment. There is no need to install the SDK or pass a key in the the initialization step.
     > ```py
     > from deta import Deta
-    > 
+    >
     > deta = Deta()
     > ```
   </Fragment>
@@ -182,7 +182,7 @@ Deta's **`Base`** class offers the following methods to interact with your Deta 
 
 [**`get`**](#get) – Retrieves an item from the database by its key.
 
-[**`fetch`**](#fetch) – Retrieves multiple items from the database based on the provided (optional) filters. 
+[**`fetch`**](#fetch) – Retrieves multiple items from the database based on the provided (optional) filters.
 
 [**`delete`**](#delete) – Deletes an item from the database.
 
@@ -236,25 +236,25 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
     const db = deta.Base("simple_db");
 
     // store objects
-    // a key will be automatically generated 
-    await db.put({name: "alex", age: 77}) 
+    // a key will be automatically generated
+    await db.put({name: "alex", age: 77})
     // we will use "one" as a key
-    await db.put({name: "alex", age: 77}, "one")  
+    await db.put({name: "alex", age: 77}, "one")
     // the key could also be included in the object itself
-    await db.put({name: "alex", age: 77, key:"one"})  
+    await db.put({name: "alex", age: 77, key:"one"})
 
     // store simple types
     await db.put("hello, worlds")
     await db.put(7)
-    // "success" is the value and "smart_work" is the key. 
+    // "success" is the value and "smart_work" is the key.
     await db.put("success", "smart_work")
     await db.put(["a", "b", "c"], "my_abc")
 
     // put expiring items
     // expire item in 300 seconds
-    await db.put({"name": "alex", age: 21}, "alex21", {expireIn: 300}) 
+    await db.put({"name": "alex", age: 21}, "alex21", {expireIn: 300})
     // expire item at expire date
-    await db.put({"name": "max", age:28}, "max28", {expireAt: new Date('2023-01-01T00:00:00')}) 
+    await db.put({"name": "max", age:28}, "max28", {expireAt: new Date('2023-01-01T00:00:00')})
     ```
 
     ##### Returns
@@ -265,7 +265,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
   <Fragment slot="py">
     ```py
     put(
-      data: typing.Union[dict, list, str, int, float, bool], 
+      data: typing.Union[dict, list, str, int, float, bool],
       key: str = None,
       *,
       expire_in: int = None,
@@ -279,7 +279,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
         - Description: The data to be stored.
     - **key** (optional) – Accepts: `str` and `None`
         - Description:  the key (aka ID) to store the data under. Will be auto generated if not provided.
-    - **expire_in** (optional) - Accepts: `int` and `None` 
+    - **expire_in** (optional) - Accepts: `int` and `None`
         - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
     - **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
         - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
@@ -288,22 +288,22 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
     ##### Code Example
     ```py
     from deta import Deta
-    deta = Deta("project key")  
+    deta = Deta("project key")
     db = deta.Base("simple_db")
 
     # store objects
     # a key will be automatically generated
-    db.put({"name": "alex", "age": 77})  
+    db.put({"name": "alex", "age": 77})
     # we will use "one" as a key
-    db.put({"name": "alex", "age": 77}, "one")  
-    # the key could also be included in the object itself  
+    db.put({"name": "alex", "age": 77}, "one")
+    # the key could also be included in the object itself
     db.put({"name": "alex", "age": 77, "key": "one"})
 
     # simple types
     db.put("hello, worlds")
     db.put(7)
     # "success" is the value and "smart_work" is the key.
-    db.put("success", "smart_work")  
+    db.put("success", "smart_work")
     db.put(["a", "b", "c"], "my_abc")
 
     # expiring items
@@ -344,7 +344,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
 
         type User struct {
           // json struct tag 'key' used to denote the key
-          Key      string   `json:"key"` 
+          Key      string   `json:"key"`
           Username string   `json:"username"`
           Active   bool     `json:"active"`
           Age      int      `json:"age"`
@@ -433,14 +433,14 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
         // User represents a user
         type User struct{
             // json struct tag 'key' used to denote the key
-            Key      string `json:"key"` 
+            Key      string `json:"key"`
             Username string `json:"username"`
             Active   bool `json:"active"`
             Age      int `json:"age"`
             Likes    []string `json:"likes"`
-            // json struct tag '__expires' for expiration timestamp, 
+            // json struct tag '__expires' for expiration timestamp,
             // tag has 'omitempty' for ommission of default 0 values
-            Expires  int64 `json:"__expires,omitempty"` 
+            Expires  int64 `json:"__expires,omitempty"`
         }
 
         func main(){
@@ -481,7 +481,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
 
             // expiring items
             u = &User {
-              Key: "will_be_deleted",  
+              Key: "will_be_deleted",
               Username: "test_user",
               Expires: time.Date(2023, 1, 1, 0, 0, 0, 0, time.UTC).Unix(),
             }
@@ -495,7 +495,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
             um = map[string]interface{}{
               "key": "will_be_deleted",
               "test": true,
-              "__expires": time.Date(2023, 1, 1, 0, 0, 0, 0, time.UTC).Unix(), 
+              "__expires": time.Date(2023, 1, 1, 0, 0, 0, 0, time.UTC).Unix(),
             }
 
             key, err = db.Put(um)
@@ -506,7 +506,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
         }
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
 
     ##### Returns
@@ -514,7 +514,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
     Returns the `key` of the item stored and an `error`. Possible error values:
 
     - `ErrBadItem` : bad item, item is of unexpected type
-    - `ErrBadRequest`: item caused a bad request response from the server 
+    - `ErrBadRequest`: item caused a bad request response from the server
     - `ErrUnauthorized`: unuathorized
     - `ErrInternalServerError`: internal server error
   </Fragment>
@@ -576,7 +576,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
     ```py
     {
       "name": "alex", "age": 77, "key": "one"
-    } 
+    }
     ```
 
     If not found, the function will return `None`.
@@ -590,7 +590,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
 
         ##### Parameters
         - **key**: the key of the item to be retrieved
-        - **dest**: the result will be stored into the value pointed by `dest` 
+        - **dest**: the result will be stored into the value pointed by `dest`
 
         ##### Code Example
 
@@ -640,7 +640,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
 
         ##### Parameters
         - **key**: the key of the item to be retrieved
-        - **dest**: the result will be stored into the value pointed by `dest` 
+        - **dest**: the result will be stored into the value pointed by `dest`
 
         ##### Code Example
 
@@ -664,9 +664,9 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
             d, _ := deta.New("project key")
             db, _ := d.NewBase("users")
 
-            // a variable to store the result 
-            var u User 
-    
+            // a variable to store the result
+            var u User
+
             // get item
             // returns ErrNotFound if no item was found
             err := db.Get("kasdlj1", &u)
@@ -676,7 +676,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
         }
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
 
     ##### Returns
@@ -685,7 +685,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
 
     - `ErrNotFound`: no item with such key was found
     - `ErrBadDestination`: bad destination, result could not be stored onto `dest`
-    - `ErrUnauthorized`: unauthorized 
+    - `ErrUnauthorized`: unauthorized
     - `ErrInternalServerError`: internal server error
   </Fragment>
 
@@ -768,7 +768,7 @@ In the case you do not provide us with a key, we will auto generate a 12 char lo
 ### Insert
 The `insert` method inserts a single item into a **Base**, but is unique from [`put`](#put) in that it will raise an error of the `key` already exists in the database.
 
-> ℹ️ `insert` is roughly 2x slower than [`put`](#put). 
+> ℹ️ `insert` is roughly 2x slower than [`put`](#put).
 
 <br />
 <LangTabs>
@@ -820,11 +820,11 @@ The `insert` method inserts a single item into a **Base**, but is unique from [`
   <Fragment slot="py">
     ```py
     insert(
-      data: typing.Union[dict, list, str, int, float, bool], 
+      data: typing.Union[dict, list, str, int, float, bool],
       key: str = None,
       *,
       expire_in: int = None,
-      expire_at: typing.Union[int, float, datetime.datetime] = None 
+      expire_at: typing.Union[int, float, datetime.datetime] = None
     )
     ```
 
@@ -834,7 +834,7 @@ The `insert` method inserts a single item into a **Base**, but is unique from [`
         - Description: The data to be stored.
     - **key** (optional) – Accepts: `str` and `None`
         - Description:  the key (aka ID) to store the data under. Will be auto generated if not provided.
-    - **expire_in** (optional) - Accepts: `int` and `None` 
+    - **expire_in** (optional) - Accepts: `int` and `None`
         - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
     - **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
         - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
@@ -971,7 +971,7 @@ The `insert` method inserts a single item into a **Base**, but is unique from [`
         }
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
 
     ##### Returns
@@ -993,7 +993,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
 
 <br />
 <LangTabs>
-    
+
   <Fragment slot="js">
     **`async putMany(items, options)`**
 
@@ -1017,8 +1017,8 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
 
     await db.putMany([
       {"name": "Beverly", "hometown": "Copernicus City", "key": "one"}, // key provided
-      "dude", // key auto-generated 
-      ["Namaskāra", "marhabaan", "hello", "yeoboseyo"] // key auto-generated 
+      "dude", // key auto-generated
+      ["Namaskāra", "marhabaan", "hello", "yeoboseyo"] // key auto-generated
     ]);
 
     // putMany with expire in 300 seconds
@@ -1087,19 +1087,19 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
 
     - **items** (required) – Accepts: `list` of items, where each "item" can be an `dict` (JSON serializable), `str`, [`int`](#storing-numbers), `bool`, [`float`](#storing-numbers) or `list`.
         - Description: The list of items to be stored.
-    - **expire_in** (optional) - Accepts: `int` and `None` 
+    - **expire_in** (optional) - Accepts: `int` and `None`
         - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
     - **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
         - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
 
 
-      
+
     ##### Code Example
     ```py
     db.put_many([
       {"name": "Beverly", "hometown": "Copernicus City", "key": "one"}, // key provided
-      "dude", // key auto-generated 
-      ["Namaskāra", "marhabaan", "hello", "yeoboseyo"] // key auto-generated 
+      "dude", // key auto-generated
+      ["Namaskāra", "marhabaan", "hello", "yeoboseyo"] // key auto-generated
     ])
 
     # put many to expire in 300 seconds
@@ -1269,19 +1269,19 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
         }
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
-    
+
     ##### Returns
     Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
 
     - `ErrTooManyItems`: if there are more than 25 items
     - `ErrBadItem`: bad item/items, one or more item of unexpected type
-    - `ErrBadRequest`: one or more item caused a bad request response from the server 
+    - `ErrBadRequest`: one or more item caused a bad request response from the server
     - `ErrUnauthorized`: unauthorized
     - `ErrInternalServerError`: internal server error
   </Fragment>
-  
+
 </LangTabs>
 
 
@@ -1291,17 +1291,17 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
 
 <br />
 <LangTabs>
-    
+
   <Fragment slot="js">
     **`async update(updates, key, options)`**
 
     ##### Parameters
 
     - **updates** (required) - Accepts: `object` (JSON serializable)
-        - Description: a json object describing the updates on the item 
+        - Description: a json object describing the updates on the item
     - **key** (required) – Accepts: `string`
         - Description: the key of the item to be updated.
-    - **options** (optional) - Accepts: `object` 
+    - **options** (optional) - Accepts: `object`
       ```json
       {
         expireIn: number,
@@ -1312,7 +1312,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
           - **expireIn** : item will expire in `expireIn` seconds after a successfull update operation, see also [expiring items](./expiring_items).
           - **expireAt** : item will expire at `expireAt` date, see also [expiring items](./expiring_items).
 
-    [Note for storing numbers](#storing-numbers) 
+    [Note for storing numbers](#storing-numbers)
 
     ###### Update operations
     - **Set** : `Set` is practiced through normal key-value pairs. The operation changes the values of the attributes provided in the `set` object if the attribute already exists. If not, it adds the attribute to the item with the corresponding value.
@@ -1336,7 +1336,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
       "profile": {
         "age": 32,
         "active": false,
-        "hometown": "pittsburgh" 
+        "hometown": "pittsburgh"
       },
       "on_mobile": true,
       "likes": ["anime"],
@@ -1354,7 +1354,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
       "profile.hometown": users.util.trim(), // remove 'profile.hometown'
       "on_mobile": users.util.trim(), // remove 'on_mobile'
       "purchases": users.util.increment(2), // increment 'purchases' by 2, default value is 1
-      "likes": users.util.append("ramen") // append 'ramen' to 'likes', also accepts an array 
+      "likes": users.util.append("ramen") // append 'ramen' to 'likes', also accepts an array
     }
 
     const res = await db.update(updates, "user-a");
@@ -1384,10 +1384,10 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
   <Fragment slot="py">
     ```py
     update(
-      updates: dict, 
-      key: str, 
-      *, 
-      expire_in: int = None, 
+      updates: dict,
+      key: str,
+      *,
+      expire_in: int = None,
       expire_at: typing.Union [int, float, datetime.datetime] = None
     )
     ```
@@ -1395,15 +1395,15 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
     ##### Parameters
 
     - **updates** (required) - Accepts: `dict` (JSON serializable)
-        - Description: a dict describing the updates on the item 
+        - Description: a dict describing the updates on the item
     - **key** (required) – Accepts: `string`
         - Description: the key of the item to be updated.
-    - **expire_in** (optional) - Accepts: `int` and `None` 
+    - **expire_in** (optional) - Accepts: `int` and `None`
         - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
     - **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
         - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
 
-    [Note for storing numbers](#storing-numbers) 
+    [Note for storing numbers](#storing-numbers)
 
     ###### Update operations
     - **Set** : `Set` is practiced through normal key-value pairs. The operation changes the values of the attributes provided in the `set` dict if the attribute already exists. If not, it adds the attribute to the item with the corresponding value.
@@ -1427,11 +1427,11 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
       "profile": {
         "age": 32,
         "active": false,
-        "hometown": "pittsburgh" 
+        "hometown": "pittsburgh"
       },
       "on_mobile": true,
       "likes": ["anime"],
-      "purchases": 1 
+      "purchases": 1
     }
     ```
 
@@ -1445,7 +1445,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
       "profile.hometown": users.util.trim(), # remove 'profile.hometown'
       "on_mobile": users.util.trim(), # remove 'on_mobile'
       "purchases": users.util.increment(2), # increment by 2, default value is 1
-      "likes": users.util.append("ramen") # append 'ramen' to 'likes', also accepts a list 
+      "likes": users.util.append("ramen") # append 'ramen' to 'likes', also accepts a list
     }
 
     db.update(updates, "user-a")
@@ -1507,7 +1507,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
           "profile": {
             "age": 32,
             "active": false,
-            "hometown": "pittsburgh" 
+            "hometown": "pittsburgh"
           },
           "likes": ["anime"],
           "purchases": 1
@@ -1555,8 +1555,8 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
             "profile.age": 33, // set profile.age to 33
             "profile.active": true, // set profile.active to true
             "profile.hometown": db.Util.Trim(), // remove 'profile.hometown'
-            "purchases": db.Util.Increment(2), // increment 'purchases' by 2 
-            "likes": db.Util.Append("ramen"), // append 'ramen' to 'likes', also accepts a slice 
+            "purchases": db.Util.Increment(2), // increment 'purchases' by 2
+            "likes": db.Util.Append("ramen"), // append 'ramen' to 'likes', also accepts a slice
           }
           // update
           err = db.Update("user-a", updates)
@@ -1591,7 +1591,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
         - **key**: the key of the item to update
         - **updates** : updates applied to the item, is of type `deta.Updates` which is a `map[string]interface{}`
 
-        [Note for storing numbers](#storing-numbers) 
+        [Note for storing numbers](#storing-numbers)
 
         ###### Update operations
         - **Set** : `Set` is practiced through normal key-value pairs. The operation changes the values of the attributes provided if the attribute already exists. If not, it adds the attribute to the item with the corresponding value.
@@ -1615,7 +1615,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
           "profile": {
             "age": 32,
             "active": false,
-            "hometown": "pittsburgh" 
+            "hometown": "pittsburgh"
           },
           "on_mobile": true,
           "likes": ["anime"],
@@ -1633,8 +1633,8 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
           "profile.email": "jimmy@deta.sh", // create a new attribute 'profile.email'
           "profile.hometown": users.Util.Trim(), // remove 'profile.hometown'
           "on_mobile": users.Util.Trim(), // remove 'on_mobile'
-          "purchases": users.Util.Increment(2), // increment 'purchases' by 2 
-          "likes": users.Util.Append("ramen") // append 'ramen' to 'likes', also accepts a slice 
+          "purchases": users.Util.Increment(2), // increment 'purchases' by 2
+          "likes": users.Util.Append("ramen") // append 'ramen' to 'likes', also accepts a slice
         }
 
         // update
@@ -1657,7 +1657,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
         }
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
 
     ##### Returns
@@ -1668,7 +1668,7 @@ The Put Many method puts up to 25 items into a Base at once on a single call.
     - `ErrUnauthorized`: unauthorized
     - `ErrInternalServerError`: internal server error
   </Fragment>
-  
+
 </LangTabs>
 
 
@@ -1681,7 +1681,7 @@ In the case of a list, the indvidual queries are OR'ed.
 
 <br />
 <LangTabs>
-    
+
   <Fragment slot="js">
     <LangVariantsTabs>
 
@@ -1695,8 +1695,8 @@ In the case of a list, the indvidual queries are OR'ed.
           - `limit`: the limit of the number of items you want to retreive, min value `1` if used.
           - `last`: the last key seen in a previous paginated response, provide this in a subsequent call to fetch further items.
 
-        > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response. 
-        > 
+        > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response.
+        >
         > To apply the query through all the items in your base, you have to call fetch until `last` is empty.
 
         ##### Returns
@@ -1800,7 +1800,7 @@ In the case of a list, the indvidual queries are OR'ed.
 
         ##### Parameters
 
-        - **query**: is a single [query object](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1mb).
+        - **query**: is a single [query object](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1 MB).
         - **pages**: how many pages of items should be returned.
         - **buffer**: the number of items which will be returned for each iteration (aka "page") on the return iterable. This is useful when your query is returning more than 1mb of data, so you could buffer the results in smaller chunks.
 
@@ -1895,7 +1895,7 @@ In the case of a list, the indvidual queries are OR'ed.
         }
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
   </Fragment>
 
@@ -1911,8 +1911,8 @@ In the case of a list, the indvidual queries are OR'ed.
         - **limit**: the limit of the number of items you want to retreive, min value `1` if used
         - **last**: the last key seen in a previous paginated response
 
-        > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response. 
-        > 
+        > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response.
+        >
         > To apply the query through all the items in your base, you have to call fetch until `last` is empty.
 
         ##### Returns
@@ -2099,7 +2099,7 @@ In the case of a list, the indvidual queries are OR'ed.
             bar(sub_list)
         ```
       </Fragment>
-  
+
     </LangVariantsTabs>
   </Fragment>
 
@@ -2127,12 +2127,12 @@ In the case of a list, the indvidual queries are OR'ed.
             // the last key evaluated in a paginated response
             // leave empty if not a subsequent fetch request
             LastKey string
-          }  
+          }
           ```
           - `Q`: fetch query, is of type `deta.Query` which is a `[]map[string]interface{}`
           - `Dest`: the results will be stored into the value pointed by `Dest`
           - `Limit`: the maximum number of items to fetch, value of `0` or less applies no limit
-          - `LastKey`: the last key evaluated in a paginated response, leave empty if not a subsequent fetch request 
+          - `LastKey`: the last key evaluated in a paginated response, leave empty if not a subsequent fetch request
 
         ##### Code Example
 
@@ -2299,12 +2299,12 @@ In the case of a list, the indvidual queries are OR'ed.
             // the last key evaluated in a paginated response
             // leave empty if not a subsequent fetch request
             LastKey string
-          }  
+          }
           ```
           - `Q`: fetch query, is of type `deta.Query` which is a `[]map[string]interface{}`
           - `Dest`: the results will be stored into the value pointed by `Dest`
           - `Limit`: the maximum number of items to fetch, value of `0` or less applies no limit
-          - `LastKey`: the last key evaluated in a paginated response, leave empty if not a subsequent fetch request 
+          - `LastKey`: the last key evaluated in a paginated response, leave empty if not a subsequent fetch request
 
         ##### Code Example
 
@@ -2329,7 +2329,7 @@ In the case of a list, the indvidual queries are OR'ed.
             query := deta.Query{
               {"age?lt": 50},
             }
-    
+
             // variabe to store the results
             var results []*User
 
@@ -2339,7 +2339,7 @@ In the case of a list, the indvidual queries are OR'ed.
               Dest: &results,
             })
             if err != nil {
-                fmt.Println("failed to fetch items:", err) 
+                fmt.Println("failed to fetch items:", err)
             }
         }
         ```
@@ -2386,24 +2386,24 @@ In the case of a list, the indvidual queries are OR'ed.
             query := deta.Query{
               {"age?lt": 50},
             }
-    
+
             // variabe to store the results
             var results []*User
 
             // variable to store the page
             var page []*User
 
-            // fetch input 
+            // fetch input
             i := &deta.FetchInput{
-              Q: query,      
+              Q: query,
               Dest: &page,
               Limit: 1, // limit provided so each page will only have one item
-            } 
-    
+            }
+
             // fetch items
             lastKey, err := db.Fetch(i)
             if err != nil {
-                fmt.Println("failed to fetch items:", err) 
+                fmt.Println("failed to fetch items:", err)
                 return
             }
 
@@ -2428,7 +2428,7 @@ In the case of a list, the indvidual queries are OR'ed.
         }
         ```
       </Fragment>
-  
+
       ##### Returns
 
       Returns an `error`. Possible error values:
@@ -2440,6 +2440,6 @@ In the case of a list, the indvidual queries are OR'ed.
 
     </LangVariantsTabs>
   </Fragment>
-  
+
 </LangTabs>
 

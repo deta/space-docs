@@ -16,9 +16,9 @@ After you have [pushed changes](/docs/en/basics/revisions) to Space, you can tur
 
 ### Releasing from the GUI
 
-You can create a release for your project using [Builder](/docs/en/basics/projects#projects-in-builder). 
+You can create a release for your project using [Builder](/docs/en/basics/projects#projects-in-builder).
 
-Simply go to the "Develop" tab and click the "Create Release" button. The next page will let you select the [revision](/docs/en/basics/revisions) you would like to release and offer a version tag (this will be auto-generated if you leave it blank). After clicking next, you will be able to choose if your release should be [listed](/docs/basics/releases#discovery--app-pages) on [Discovery](/discovery) or not and can optionally provide some [notes](#release-notes) for the release.
+Simply go to the "Develop" tab and click the "Create Release" button. The next page will let you select the [revision](/docs/en/basics/revisions) you would like to release and offer a version tag (this will be auto-generated if you leave it blank). After clicking next, you will be able to choose if your release should be `listed` on [Discovery](/discovery) or not and can optionally provide some [notes](#release-notes) for the release.
 
 Once you are ready, click "Launch to Space". Then watch your app take off! Your app is now installable on Deta Space to anyone with the release url, which is provided on the following page.
 
@@ -34,7 +34,7 @@ Pass the `--listed` argument to enable listing on [Discovery](/docs/en/basics/re
 
 Pass the `--notes` argument to add notes about the release (changes, features, etc). [More info below](#release-notes).
 
-Then watch your app take off! Your app is now installable on Deta Space to anyone with the release url. 
+Then watch your app take off! Your app is now installable on Deta Space to anyone with the release url.
 
 > You can provide specific options to your release (which revision to use, version tags, listed/unlisted) using specific options. See the cli reference for [`space release`](/docs/en/reference/cli#deta-release).
 
@@ -50,7 +50,7 @@ There are two ways your app will be available on Discovery:
 
 - **Listed**: If your app is *listed*, it will be shown publicly on Discovery where other users can easily find and install it. To enable listing use the `--listed` argument in the CLI (`space release --listed`) or select "List on Discovery" when creating a release using Builder.
 
-In both cases, your app will be available on its own page on Discovery. 
+In both cases, your app will be available on its own page on Discovery.
 
 Not only does your app's Discovery page allow users to install your app, it also gives you the opportunity to explain what your app does, how it is unique, and its features.
 
@@ -86,4 +86,4 @@ space release --notes="Fixed bug xyz"
 
 ### Adding notes from the GUI
 
-During the publishing flow in Builder, you will be shown the option to add release notes as the second step. 
+During the publishing flow in Builder, you will be shown the option to add release notes as the second step.

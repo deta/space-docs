@@ -11,7 +11,7 @@ The `Spacefile` file contains the configuration of your app and is used by Deta 
 
 The Spacefile file must be named `Spacefile` and needs to be in the root directory of your project. It uses a syntax similar to YAML, if you're new to YAML and want to learn more, see "[Learn YAML in Y minutes.](https://learnxinyminutes.com/docs/yaml/)".
 
-You can use the [`space new`](/docs/en/reference/cli#deta-new) command to let the [Space CLI](/docs/en/reference/cli) automatically create the `Spacefile` for you.
+You can use the [`space new`](/docs/en/reference/cli#space-new) command to let the [Space CLI](/docs/en/reference/cli) automatically create the `Spacefile` for you.
 
 Here is an example `Spacefile`:
 
@@ -59,7 +59,7 @@ v: 0
 
 Use `icon` to specify a path to an image file to use as your app's icon. The icon will be used wherever your app is displayed (e.g. the Canvas).
 
-The path should be relative to your `Spacefile` and needs to point to a file inside your project's directory. 
+The path should be relative to your `Spacefile` and needs to point to a file inside your project's directory.
 
 The image needs to be a PNG or WebP file of 512x512 pixels.
 
@@ -73,7 +73,7 @@ icon: src/static/icon.png
 
 Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed (e.g. the Canvas).
 
-If it is not provided, `app_name` will fallback to your project's name. 
+If it is not provided, `app_name` will fallback to your project's name.
 
 The name can has a maximum of 12 characters. We recommend not exceeding 7 characters for optimal visibility across different screen sizes.
 
@@ -100,7 +100,7 @@ Each micro needs to have a unique `name` and **must follow the following rules:*
 micros:
   - name: api
 ```
-    
+
 #### `src`
 
 **Required**
@@ -131,7 +131,7 @@ Runtime for the Micro, supported values:
 - `python3.9`
 - `python3.8`
 - `nodejs16`
-- `custom` 
+- `custom`
 
 Example:
 
