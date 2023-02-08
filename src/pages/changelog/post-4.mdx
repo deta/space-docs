@@ -1,0 +1,42 @@
+---
+title: "App Updates and Release Notes"
+date: "22 Nov 2022"
+layout: "@changelogs"
+description: "You can now update your apps when new versions are released. As a developer you can provide release notes for your app, so users can see what's new in the latest version."
+---
+
+import DetaHeart from '@/components/DetaHeart.astro'
+import Image from '@/components/Image.astro'
+
+App updates are finally here! As a user, you can now update your apps when new versions are released. As a developer, you can provide release notes for updates to your app, so users can see what's new in the latest version.
+
+## Features
+
+### App Updates
+
+We are happy to announce that App Updates are finally here! This was a big piece missing from the core functionality of Space. You can now use Space apps for your personal needs, as you can keep an app's data while continuously staying up to date with the latest version.
+
+If an update for an installed app is available, you will see a small colored dot in the top right corner of your app instance on the Canvas. To update the app, click the dot or click "Update" in the app's context (`...`) menu. We also added a new Teletype action which lists all available updates in your Space.
+
+<Image src="/changelog_assets/instance-update-available.png" alt="Instance Update Screenshot" subtext="Instance update on the Canvas" width="400px" />
+
+> Note: only update your app if you trust the developer has made the app backwards compatible with the data. If an update is not compatible with your existing data, it might break your app. This feature is still new, in the future we will support data migrations to prevent apps from breaking between versions.
+
+### Release Notes
+
+As a developer, you can provide notes for each release of your app to inform users about changes to your app. These notes will be displayed to users when they update your app (and on your app's Discovery page). 
+
+<Image src="/changelog_assets/release-notes.png" alt="Release Notes Screenshot" subtext="Release notes in the update dialog" width="80%" />
+
+You can add release notes when creating a release with the Space CLI using the `--notes` argument or during the publish flow in Builder. Learn more in our [docs](/docs/en/basics/releases#release-notes).
+
+### Other changes
+
+- Project Keys will stay the same when pushing new changes to your Builder instance
+- Environment variables will stay the same when pushing new changes to your Builder instance
+
+## Fixes & improvements
+
+- Fix Base UI appearing blurry on some browsers
+
+Thanks for being a crucial part in the early stages of Space and for all the great feedback we have received <DetaHeart />

@@ -1,0 +1,18 @@
+---
+export interface Props {
+	src: string
+    alt?: string
+    subtext?: string
+    width?: string 
+    background?: boolean
+}
+const { src, alt, subtext, background = false, width = '500px' } = Astro.props as Props;
+---
+
+<div style={{ display: 'flex', flexDirection: 'column', width: '100%', alignItems: 'center', background: background ? 'var(--theme-bg-offset)' : '', paddingTop: background ? '2rem' : '', paddingBottom: background && !subtext ? '2rem' : '', borderRadius: background ? '10px' : '' }}>
+    <img src={src} alt={alt || subtext} width={width} style="border-radius: 10px;" />
+
+    {subtext &&
+        <div style="max-width: 100%; white-space: pre-wrap; word-break: break-word; caret-color: rgb(55, 53, 47); font-size: 14px; line-height: 1.4; color: var(--theme-text); padding-top: 7px; padding-bottom: 7px; padding-left: 2px;">{subtext}</div>
+    }
+</div>

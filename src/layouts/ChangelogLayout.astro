@@ -1,0 +1,205 @@
+---
+import type { MarkdownHeading } from 'astro';
+import type * as CONFIG from '../config';
+import { formatDate } from '@/utils/changelogs';
+
+import TeletypeContainer from '../components/Teletype/TeletypeContainer.astro';
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Header from '../components/Header/Header.astro';
+import RightSidebar from '../components/RightSidebar/RightSidebar.astro';
+import Footer from '../components/Footer/Footer.astro';
+
+type Props = { frontmatter: CONFIG.FrontmatterChangelog; headings: MarkdownHeading[]; };
+const { headings, frontmatter } = Astro.props as Props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
+---
+
+<html dir="ltr" lang="en-us" class="initial">
+    <head>
+        <HeadCommon />
+        <!-- TODO -->
+        <!-- <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} /> -->
+        <title>Space Changelogs | {formatDate(frontmatter.date)}</title>
+        <style>
+            :root {
+                --max-width: 55em !important;
+            }
+
+            body {
+                width: 100%;
+                overflow-y: overlay;
+				overflow-x: hidden;
+                display: grid;
+                grid-template-rows: var(--theme-navbar-height) 1fr;
+                --gutter: 0.5rem;
+                --doc-padding: 2rem;
+            }
+
+            .layout {
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, var(--max-width)) minmax(
+                        var(--gutter),
+                        1fr
+                    );
+                overflow-x: hidden;
+            }
+
+            .grid-sidebar {
+                height: 100vh;
+                position: sticky;
+                top: 0;
+                padding: 0;
+            }
+
+            .content > section {
+                margin-bottom: 4rem;
+            }
+
+            .heading {
+                margin-bottom: 0.2rem;
+            }
+
+            .date {
+                color: var(--theme-text-accent);
+                margin-bottom: 1rem;
+            }
+
+            .go-back {
+                all: unset;
+                width: 100%;
+                white-space: nowrap;
+                height: min-content;
+                cursor: pointer;
+                opacity: 0.5;
+                font-size: 1rem;
+                line-height: 2.5rem;
+                text-align: right;
+                text-decoration: none !important;
+                color: var(--theme-text);
+                transition: opacity 0.15s ease;
+            }
+
+            .go-back.mobile {
+                display: block;
+                text-align: left;
+                margin-bottom: 1em;
+            }
+
+            .go-back:hover {
+                opacity: 1;
+            }
+
+            .go-back .arrow {
+                transition: margin-right 0.15s ease;
+            }
+        
+            .go-back:hover .arrow {
+                margin-right: 0.2em;
+            }
+
+            #grid-left {
+                position: fixed;
+                z-index: 10;
+                display: none;
+                background-color: var(--theme-bg);
+                padding: var(--doc-padding) 0;
+            }
+
+            #grid-main {
+                padding: var(--doc-padding) var(--gutter);
+                grid-column: 2;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            #grid-right {
+                display: none;
+            }
+
+            @media (min-width: 50em) {
+
+                .layout {
+                    overflow: initial;
+                    grid-template-columns: 5rem minmax(0, var(--max-width)) 5rem;
+                    gap: 1em;
+                }
+            }
+
+            @media (min-width: 72em) {
+                .go-back.mobile {
+                    display: none;
+                }
+
+                .layout {
+                    grid-template-columns: 10rem minmax(0, var(--max-width)) 18rem;
+                    padding-left: 0;
+                    padding-right: 0;
+                    margin: 0 auto;
+                }
+
+                #grid-right {
+                    grid-column: 3;
+                    display: flex;
+                }
+
+                
+                #grid-left {
+                    display: flex;
+                    padding-left: 2rem;
+                    position: sticky;
+                    grid-column: 1;
+                }
+            }
+        </style>
+        <style is:global>
+            .layout > * {
+                width: 100%;
+                height: 100%;
+            }
+
+            .mobile-sidebar-toggle {
+                overflow: hidden;
+            }
+
+            .mobile-sidebar-toggle #grid-left {
+                display: block;
+                top: 2rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <Header layout="changelogs" currentPage={currentPage} />
+        <main class="layout">
+            <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
+                <a class="go-back" href="/changelog">
+                    <span class="arrow">←</span> 
+                    Go back
+                </a>
+            </aside>
+            <article id="grid-main" class="content">
+                <a class="go-back mobile" href="/changelog">
+                    <span class="arrow">←</span> 
+                    Go back
+                </a>
+                <section class="main-section">
+                    <h1 class="heading">{frontmatter.title}</h1>
+                    <p class="date">{formatDate(frontmatter?.date)}</p>
+                    <slot />
+                </section>
+            </article>
+            <aside id="grid-right" class="grid-sidebar" title="Table of Contents">
+                <RightSidebar headings={headings} githubEditUrl={''} />
+            </aside>
+        </main>
+        <Footer path={currentFile} />
+
+        <TeletypeContainer />
+    </body>
+</html>

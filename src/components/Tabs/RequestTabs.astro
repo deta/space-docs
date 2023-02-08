@@ -1,0 +1,16 @@
+---
+import Tabs from "@/components/Tabs/Tabs";
+---
+
+<Tabs
+  client:visible
+  sharedStore="tabReq"
+  defaultPanel="request"
+  tabs={[
+    { label: "Request", value: "request" },
+    { label: "Response", value: "response" },
+  ]}
+>
+  <Fragment slot="panel.request"><slot name="request" /></Fragment>
+  <Fragment slot="panel.response"><slot name="response" /></Fragment>
+</Tabs>

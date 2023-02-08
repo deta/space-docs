@@ -1,0 +1,17 @@
+name: deploy-docs
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  dispatch-sync-event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          repository: deta/satellite
+          token: ${{ secrets.SATELLITE_ACCESS_TOKEN }}
+          event-type: sync-space-docs       

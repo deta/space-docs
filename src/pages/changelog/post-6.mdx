@@ -1,0 +1,37 @@
+---
+title: "Data Keys"
+date: "07 Dec 2022"
+layout: "@changelogs"
+description: "In addition to the API keys we released last week you can now generate Data keys to access your Bases and Drives from outside of your app or project."
+---
+
+import DetaHeart from '@/components/DetaHeart.astro'
+import Image from '@/components/Image.astro'
+
+In addition to the API keys we released last week, you can now generate Data Keys to access your Bases and Drives from outside of your app or project.
+
+## Features
+
+### Data Keys
+
+With Data Keys you can now access your Bases and Drives from outside of an app or project. They allow you to read and manipulate your Space apps' data, and can be used to build custom integrations without explicit options (such as API Keys) from the app developer. 
+
+However, manipulating the data can result in breaking your app, so use the keys with caution.
+
+To generate Data Keys, go to the "Data Keys" tab in your "Settings" for your installed apps.
+
+To use a Data Key, you can provide the key when initializing your `Deta` instance if you are using our official Deta SDKs.
+
+To check out an example of an app using Data Keys, checkout Port: https://deta.space/discovery/@maxs1/spaceport
+
+### Teletype Action Panel
+
+We made some improvements to Teletype which includes a new action panel. The action panel shows up whenever a action in Teletype has more than one option. For example, when searching for an app you can now view its data or open the settings in addition to the default action of opening it.
+
+<Image src="/changelog_assets/action-panel.png" alt="Teletype Action Panel" subtext="Teletype Action Panel" width="90%" />
+
+### Unpin Builder Instancess
+
+You can now unpin your Builder instances from your canvas. Resources and configuration of Builder instances have moved to the redesigned develop page.
+
+Thanks for being a crucial part in the early stages of Space and for all the great feedback we have received <DetaHeart />

@@ -1,0 +1,180 @@
+---
+import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from '../../languages';
+import * as CONFIG from '../../config';
+import AstroLogo from './AstroLogo.astro';
+import SkipToContent from './SkipToContent.astro';
+import SidebarToggle from './SidebarToggle';
+import LanguageSelect from './LanguageSelect';
+import NavLinks from './NavLinks.svelte';
+import ThemeToggle from './ThemeToggle.svelte';
+// import Search from './Search';
+
+type Props = {
+	layout: 'changelogs' | 'documentation';
+	currentPage: string;
+};
+
+const { currentPage } = Astro.props as Props;
+const lang = getLanguageFromURL(currentPage);
+
+const isManual = currentPage.startsWith("/manual");
+const isMigration = currentPage.startsWith("/migration");
+const isDocs = currentPage.startsWith("/docs");
+const isChangelog = currentPage.startsWith("/changelog");
+
+let title = 'Space Docs';
+if (isManual) title = 'Space Manual';
+if (isMigration) title = 'Migration Hub';
+if (isChangelog) title = 'Space Changelog';
+
+let titleLink = '/docs/';
+if (isManual) titleLink = '/manual/';
+if (isMigration) titleLink = '/migration/';
+if (isChangelog) titleLink = '/changelog/';
+---
+
+<header>
+	<SkipToContent />
+	<nav class="nav-wrapper" title="Top Navigation">
+		<div class="menu-toggle">
+			<SidebarToggle client:idle />
+		</div>
+
+		<div class="logo flex">
+			<a href={titleLink}>
+				<AstroLogo size={35} />
+				<h1>{title}</h1>
+			</a>
+		</div>
+		
+
+		{KNOWN_LANGUAGE_CODES.length > 1 && <LanguageSelect lang={lang} client:idle />}
+		
+		<NavLinks client:only="svelte" isMigration={isMigration} isManual={isManual} isDocs={isDocs} isChangelog={isChangelog} />
+
+		<div class="theme-toggle">
+			<ThemeToggle client:visible />
+		</div>
+
+		<!-- <div class="search-item">
+			<Search client:idle />
+		</div> -->
+	</nav>
+</header>
+
+<style>
+	header {
+		z-index: 11;
+		height: var(--theme-navbar-height);
+		width: 100%;
+		background-color: var(--theme-navbar-bg);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		position: sticky;
+		top: 0;
+	}
+
+	.logo {
+		flex: 1;
+		display: flex;
+		width: 30px;
+		font-size: 2rem;
+		flex-shrink: 0;
+		font-weight: 600;
+		line-height: 1;
+		color: hsla(var(--color-base-white), 100%, 1);
+		gap: 0.25em;
+		z-index: -1;
+	}
+
+	.logo a {
+		display: flex;
+		padding: 0.5em 0.25em;
+		margin: -0.5em -0.25em;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	.logo a {
+		transition: color 100ms ease-out;
+		color: var(--theme-text);
+	}
+
+	.logo a:hover,
+	.logo a:focus {
+		color: var(--theme-text-accent);
+	}
+
+	.logo h1 {
+		display: none;
+		font: inherit;
+		color: inherit;
+		margin: 0;
+		font-size: 1.5rem;
+	}
+
+	.nav-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 1em;
+		width: 100%;
+		max-width: 82em;
+		padding: 0 1rem;
+	}
+
+	.theme-toggle {
+		margin-left: 1em;
+	}
+
+	@media (min-width: 50em) {
+		header {
+			position: static;
+			padding: 2rem 0rem;
+		}
+
+		.logo {
+			width: auto;
+			margin: 0;
+			z-index: 0;
+		}
+
+		.logo h1 {
+			display: initial;
+		}
+
+		.menu-toggle {
+			display: none;
+		}
+	}
+
+	/** Style Algolia */
+	:root {
+		--docsearch-primary-color: var(--theme-accent);
+		--docsearch-logo-color: var(--theme-text);
+	}
+
+	.search-item {
+		display: none;
+		position: relative;
+		z-index: 10;
+		flex-grow: 1;
+		padding-right: 0.7rem;
+		display: flex;
+		max-width: 200px;
+	}
+
+	@media (min-width: 50em) {
+		.search-item {
+			max-width: 300px;
+		}
+	}
+</style>
+
+<style is:global>
+	.search-item > * {
+		flex-grow: 1;
+	}
+</style>

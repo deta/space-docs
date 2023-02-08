@@ -1,0 +1,64 @@
+---
+title: "New Base UI, Bigger Release Card and CLI Improvements"
+date: "18 Nov 2022"
+layout: "@changelogs"
+description: "We completely rebuilt Base's UI, fixed varies issues with the Space CLI, improved the CLI output messages, and added the ability to exclude files from pushing using .spaceignore."
+---
+
+import DetaHeart from '@/components/DetaHeart.astro'
+import Image from '@/components/Image.astro'
+
+We have been working hard on squashing bugs and improving the Space developer experience. Here are the latest changes to Space Alpha:
+
+## Features
+
+### New Base UI
+
+We have completely re-engineered Base UI to make it ready for the future.
+
+The new Base UI features:
+- 💅  a beautiful new interface
+- 🔎  text search across all items
+- ✏️  full item-level editing for Bases in Builder Instancess
+
+Go to a Space App's tile, click the `...` and then click `View Data` to try it.
+
+<Image src="/changelog_assets/base-ui.png" alt="Base UI Screenshot" subtext="New Base UI editing mode" width="90%" />
+
+### Bigger release card
+
+We have increased the size of the release card in your projects overview tab to make more room for additional information. It now shows the number of total installs of your app and you can expect to see more stats about your app in the future! 
+
+<Image src="/changelog_assets/release-card.png" alt="Release Card Screenshot" subtext="Bigger release card" width="90%" />
+
+### New Discovery sections
+
+Apps on Deta Discovery are now grouped into 3 tabs:
+
+- Popular: The most popular apps on Space based on the number of installs
+- Recent: The most recently added or updated apps
+- Hot: Apps that have gotten the most installs in a short time
+
+### Space CLI v0.0.4
+
+We have also been hard at work improving the Space CLI. Here are the latest changes that come with `v0.0.4`:
+
+- Add `.space` to a project's `.gitignore`
+- Add support for a `.spaceignore` file to prevent files from being pushed
+- Add `--confirm` flag for `space release` to skip the prompts and directly release with the latest revision
+- Improve validation and output messages
+- Verify access tokens during login
+- Hide access token from output during login
+
+### Other changes
+
+- Redesigned icons for Builder and Docs app
+- Add Discovery app to the Canvas
+- Add link to release in app context menu
+
+## Fixes & improvements
+
+- Improve security of our infastructure
+- Improve Discovery pages layout on mobile devices
+
+Thanks for being a crucial part in the early stages of Space and for all the great feedback we have received <DetaHeart />

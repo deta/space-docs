@@ -1,0 +1,95 @@
+---
+title: Setting up the CLI
+section: Basics
+position: 0
+layout: "@docs"
+---
+
+import OSTabs from "@/components/Tabs/OSTabs.astro";
+
+## Installation
+
+<OSTabs>
+  <Fragment slot="mac">
+    To install the Space CLI on MacOS, open a Terminal session and enter:
+
+    ```bash
+    curl -fsSL https://get.deta.dev/space-cli.sh | sh
+    ```
+
+    This will download the binary which contains the CLI code. It will try to export the `space` command to your path. If it does not succeed, follow the directions output by the install script to export `space` to your path.
+  </Fragment>
+
+  <Fragment slot="win">
+    To install the Space CLI on Windows, open PowerShell and enter:
+
+    ```bash
+    iwr https://get.deta.dev/space-cli.ps1 -useb | iex
+    ```
+
+    This will download the binary which contains the CLI code. It will try to export the `space` command to your path. If it does not succeed, follow the directions output by the install script to export `space` to your path.
+  </Fragment>
+  
+  <Fragment slot="linux">
+    To install the Space CLI on Linux, open a Terminal and enter:
+
+    ```bash
+    curl -fsSL https://get.deta.dev/space-cli.sh | sh
+    ```
+
+    This will download the binary which contains the CLI code. It will try to export the `space` command to your path. If it does not succeed, follow the directions output by the install script to export `space` to your path.
+  </Fragment>
+
+</OSTabs>
+
+
+## Authentication
+
+Once you have successfully installed the Space CLI, you'll need to log in to Deta Space.
+
+The Space CLI authenticates itself with 'Access Tokens'. You can create an access token under Settings in your Space. Just type 'settings' in Teletype to open them.
+
+After you have generated a new key you can add it to the CLI using `space login`. It will prompt you for the key and then store it safely.
+
+From a terminal type: 
+
+```bash
+space login
+```
+
+This command will ask for an 'access token' to authenticate your CLI.
+
+```bash
+? Enter access token >
+```
+
+To get an access token, enter your [Space dashboard](https://deta.space/), open the Teletype (command bar) and click 'Settings':
+
+<div style="display: flex; width: 100%; justify-content: center;">
+<img src="/docs_assets/cli1.png" width="400px" />
+</div>
+
+This will open the Settings modal, where you can click 'Generate Token' to generate an access token:
+
+<div style="display: flex; width: 100%; justify-content: center;">
+<img src="/docs_assets/cli2.png" width="400px" />
+</div>
+
+Copy the resulting token: 
+
+<div style="display: flex; width: 100%; justify-content: center;">
+<img src="/docs_assets/cli3.png" width="400px" />
+</div>
+
+You can paste this back into your CLI prompt. After you hit enter, you should be greeted by a success message.
+
+```bash
+👍 Login Successful!
+```
+
+Upon a successful log-in, you are ready to start building Space apps.
+
+
+## CLI Commands
+
+Run `space help` to get a overview of the available commands or refer to the [Reference section](/docs/en/reference/cli) for a complete list of CLI commands and options.

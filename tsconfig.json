@@ -1,0 +1,14 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["src/*"],
+      "@docs": ["src/layouts/MainLayout.astro"],
+      "@changelogs": ["src/layouts/ChangelogLayout.astro"],
+    }
+  }
+}

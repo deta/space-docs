@@ -1,0 +1,18 @@
+---
+import Tabs from "@/components/Tabs/Tabs";
+---
+
+<Tabs
+  client:visible
+  sharedStore="tabOS"
+  defaultPanel="mac"
+  tabs={[
+    { label: "MacOS", value: "mac" },
+    { label: "Windows", value: "win" },
+    { label: "Linux", value: "linux" },
+  ]}
+>
+  <Fragment slot="panel.mac"><slot name="mac" /></Fragment>
+  <Fragment slot="panel.win"><slot name="win" /></Fragment>
+  <Fragment slot="panel.linux"><slot name="linux" /></Fragment>
+</Tabs>

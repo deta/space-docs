@@ -1,0 +1,34 @@
+---
+import '../styles/fonts.css';
+import '../styles/theme.css';
+import '../styles/index.css';
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+
+<link rel="icon" type="image/png" href="/other_assets/favicon.png" />
+<link rel="sitemap" href="/other_assets/sitemap.xml" />
+
+<!-- Preload fonts -->
+<link rel="preload" href="/other_assets/ArticulatCF-DemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/other_assets/ArticulatCF-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" /> 
+<link rel="preload" href="/other_assets/CartographCF-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+<!-- Scrollable a11y code helper -->
+<script src="/other_assets/make-scrollable-code-focusable.js" is:inline></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+<script is:inline>
+	const root = document.documentElement;
+	const theme = localStorage.getItem('theme');
+	if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+		root.classList.add('theme-dark');
+	} else {
+		root.classList.remove('theme-dark');
+	}
+</script>
+
+<script defer data-domain='deta.space' src='https://plausible.io/js/plausible.js'></script>
