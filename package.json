@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "type": "module",
   "private": true,
+  "license": "MIT",
+  "homepage": "https://deta.space",
   "scripts": {
     "dev": "PUBLIC_TELETYPE_INSTALLED=false astro dev",
     "dev:tty": "PUBLIC_TELETYPE_INSTALLED=true astro dev",
