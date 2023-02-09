@@ -44,7 +44,7 @@ docs
 
 Certain directories like the `node_modules` directory for node micros and the `__pycache__` directory for python micros are ignored by default and don't need to be specified in the `.spaceignore` file.
 
-You can use a optional prefix `!` to negate the pattern; any matching file excluded by a previous pattern will become included again.
+You can use an optional prefix `!` to negate the pattern; any matching file excluded by a previous pattern will become included again.
 
 For eg, a `.spaceignore` file with the following content `space push` will not ignore the `node_modules` directory.
 

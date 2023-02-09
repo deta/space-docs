@@ -60,7 +60,7 @@ You can customize an app's Discovery page using a `Discovery.md` file, which giv
 
 When you publish your app by creating a release, Deta creates an installable version of your app. If you update your app afterwards, you need to publish a new release. Anyone who has installed older versions of your app can update their instance to the latest release (they could also install a new instance). When updating an app, the data will be kept across the update.
 
-> ⚠️ Important note: updates only work when the data your app stores is compatible with the new app version. In the future we will have data migrations to help with this. If a new release is not compatible with old versions, you need to create a separate app for it to prevent breaking installed apps.
+> ⚠️ Important note: updates only work when the data your app stores are compatible with the new app version. In the future we will have data migrations to help with this. If a new release is not compatible with old versions, you need to create a separate app for it to prevent breaking installed apps.
 
 Users of your app will be shown an update notification if you publish a **listed** release newer than the one they have installed. **Unlisted** releases will not be made available as updates.
 

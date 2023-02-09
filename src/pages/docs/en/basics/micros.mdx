@@ -13,7 +13,7 @@ Deta Space can run almost any type of app. For example, Space supports:
 - full-stack frameworks like Next, Nuxt or SvelteKit
 - backend apps built with Node.js, Python and even Go, Rust or something more custom. 
 
-A Space app can also be built by combining these different technologies, for example a SvelteKit app with a Go API, really any combination of up to 5 different languages/frameworks.
+A Space app can also be built by combining these different technologies, for example, a SvelteKit app with a Go API, really any combination of up to 5 different languages/frameworks.
 
 We call these individual parts of an app **Micros**. A Micro is a lightweight compute service running inside your app which can be exposed to the outside using HTTP.
 
@@ -21,7 +21,7 @@ Micros are defined in your project's [Spacefile](/docs/en/reference/spacefile), 
 
 ## Adding your first Micro
 
-When you create a new project using the Space CLI, it will try to detect the type of app you want to deploy. This works for most frameworks like Next, Nuxt, SvelteKit and backend runtimes like Node.js and Python. 
+When you create a new project using the Space CLI, it will try to detect the type of app you want to deploy. This works for most frameworks like Next, Nuxt, SvelteKit, and backend runtimes like Node.js and Python. 
 
 If this detection works, it will show you what type of Micro is detected and its generated config. After you've confirmed the config is correct, the CLI will create the `Spacefile` in your local directory for you.
 
@@ -29,7 +29,7 @@ Even if this detection fails, Space supports almost any type of app via the `Spa
 
 ## Adding Micros via the Spacefile
 
-If you want to run something more custom or need to add more Micro's to an existing project, you can edit the project's `Spacefile` to add the required configuration. 
+If you want to run something more custom or need to add more Micros to an existing project, you can edit the project's `Spacefile` to add the required configuration. 
 
 Take a look at the [Spacefile reference](/docs/en/reference/spacefile) for a complete list of options.
 
@@ -81,7 +81,7 @@ micros:
     engine: python3.9
 ```
 
-> 🔑 It's recommended to put your first Micro in it's own sub-directory of your project. A single Micro will work running in the root directory of your project, but this approach doesn't scale. You'll have to migrate this Micro as soon as you want to add a second Micro to your project.
+> 🔑 It's recommended to put your first Micro in its own sub-directory of your project. A single Micro will work running in the root directory of your project, but this approach doesn't scale. You'll have to migrate this Micro as soon as you want to add a second Micro to your project.
 
 ## Micro Routing
 
@@ -102,7 +102,7 @@ micros:
     engine: nodejs16
     path: api
 ```
-In this example, the `api` Micro will be available at `/api` while all other paths including the root `/` will be received by the primary Micro, in this case the static Micro `client`.
+In this example, the `api` Micro will be available at `/api` while all other paths including the root `/` will be received by the primary Micro, in this case, the static Micro `client`.
 
 If the path is missing, the path will fall back to the `name` field.
 
@@ -137,7 +137,7 @@ micros:
     path: api
     engine: python3.9
     public_routes:
-    - "/public" # This Micro is served under `/api` so if we want to make `/api/public` available to the outside we only need to specifc `/public`
+    - "/public" # This Micro is served under `/api` so if we want to make `/api/public` available to the outside we only need to specify `/public`
 ```
 
 Requests made to your Micro matching any of the routes defined in `public_routes` will bypass Space's authentication entirely.
@@ -161,7 +161,7 @@ That's it. If Micros live in the same 'project', auth just works.
 
 ### Server side
 
-If you are trying to call another Micro from the backend you need to to get your app's assigned hostname to use as the origin, and use an api key to authenticate your request.
+If you are trying to call another Micro from the backend you need to get your app's assigned hostname to use as the origin, and use an api key to authenticate your request.
 
 Both of these items are provided in the environment of the Micro:
 - The primary hostname is under the `DETA_SPACE_APP_HOSTNAME` environment variable.
@@ -194,9 +194,9 @@ micros:
       api_keys: true
 ```
 
-If enabled, users of your app will be able generate API keys in their app instance settings and use them to authenticate requests made to otherwise private routes of a Micro.
+If enabled, users of your app will be able to generate API keys in their app instance settings and use them to authenticate requests made to otherwise private routes of a Micro.
 
-Generated keys need to be provided in the HTTP header `X-Space-App-Key` and only work with Micros that have the preset `api_keys` enabled. Public routes have higher preference than API keys, if there are public routes specified these will always be public.
+Generated keys need to be provided in the HTTP header `X-Space-App-Key` and only work with Micros that have the preset `api_keys` enabled. Public routes have a higher preference than API keys, if there are public routes specified these will always be public.
 
 > Note: If you enable API keys you should show clearly in the app that API keys can be used and ideally have clear documentation on which endpoints of your app work with API key auth.
 
@@ -213,7 +213,7 @@ The following environment variables will be set in all Micros,  accessible on th
 - `DETA_SPACE_APP_MICRO_NAME` - micro’s name
 - `DETA_SPACE_APP_MICRO_TYPE` - will be set to `"primary"` if primary otherwise `“normal”`
 
-Please let us know you need additional configuration.
+Please let us know if you need additional configuration.
 
 ### Custom Variables
 
@@ -317,8 +317,8 @@ Space currently supports two types of intervals for scheduled actions:
 - [Rates](/docs/en/reference/spacefile#rates) e.g. `2 hours`
 - [Cron Expressions](/docs/en/reference/spacefile#cron-expressions) e.g. `0 10 * * *`
 
-Checkout the [Spacefile Reference](/docs/en/reference/spacefile#actions) on the exact syntax.
+Check out the [Spacefile Reference](/docs/en/reference/spacefile#actions) on the exact syntax.
 
 Scheduled actions have to be purposely enabled, setup and need to have a default interval which they will be executed on. 
 
-After installing an app, its scheduled actions are automatically enabled and set to run on the default interval. The user can at any point change the interval or disable an action completely. Checkout the [User Manual](/manual/apps#schedules) on how scheduled actions are presented to app users.
+After installing an app, its scheduled actions are automatically enabled and set to run on the default interval. The user can at any point change the interval or disable an action completely. Check out the [User Manual](/manual/apps#schedules) on how scheduled actions are presented to app users.

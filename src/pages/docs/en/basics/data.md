@@ -8,7 +8,7 @@ layout: "@docs"
 
 ## How to store data
 
-In addition to the compute provided Micros, each Deta Space app has its own database and file store services. All the data stored with a Space app is 'sandboxed' within an application instance. By default, this storage not shared across users and it's also not shared between a single user's app instances (interoperability between apps is a planned).
+In addition to the compute provided Micros, each Deta Space app has its own database and file storage services. All the data stored with a Space app is 'sandboxed' within an application instance. By default, this storage is not shared across users and it's also not shared between a single user's app instances (interoperability between apps is planned).
 
 As a result, you can just code your app as if it was only for a single user, without thinking about authentication or data separation.
 
@@ -16,13 +16,13 @@ As a result, you can just code your app as if it was only for a single user, wit
 
 To store data, Space apps can use [Deta Base](),  a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. Base can be accessed using the [Deta Base SDK](/docs/en/reference/base/sdk) or the [Base HTTP API](/docs/en/reference/base/HTTP).
 
-Take a look the the [Base Reference]() on how to use it.
+Take a look at the [Base Reference]() on how to use it.
 
 ### Drive
 
 To store files, Space apps can use [Deta Drive](), a fully-managed, secure and scalable file storage service for Deta. Each app can create and use as many Drives as it needs. Drive can be accessed using the [Drive SDK](/docs/en/reference/drive/sdk) or the [Drive HTTP API](/docs/en/reference/drive/HTTP).
 
-Take a look the the [Drive Reference]() on how to use it.
+Take a look at the [Drive Reference]() on how to use it.
 
 ## Developing with Base and Drive
 

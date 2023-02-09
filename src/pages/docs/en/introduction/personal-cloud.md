@@ -41,7 +41,7 @@ We've discovered two routes in which we think the personal cloud model improves 
 
 
 1. When a developer has built an application, but wants nothing to do with building auth layer or managing any infrastructure. These applications are really cool demo apps, or even use something like local storage for data persistence, but they aren't reaching their full potential for end users. We think these apps find a happy channel to end users on a personal cloud.
-2. Where users really need to their own copy of an app for whatever reason. As it stands now, self hosting applications fills this niche, but it’s a niche: it requires a lot of time consuming expertise on the part of end users. With the personal cloud, we think many of the benefits of self-hosting are made accessible, which loops back to benefit app developers’ distribution possibilities.
+2. Where users really need to their own copy of an app for whatever reason. As it stands now, self hosting applications fill this niche, but it’s a niche: it requires a lot of time consuming expertise on the part of end users. With the personal cloud, we think many of the benefits of self-hosting are made accessible, which loops back to benefit app developers’ distribution possibilities.
 
 ## Turn-key payments (planned for Space)
 
@@ -51,10 +51,10 @@ Developers have told us two things about taking their app to the next level:
 2. Payments work — in and of itself — is fuss-y, infra like work. App devs would rather not do it.
 
 So we thought about it, and wondered:
-- Why should multiple app developers all have to implement a similar payments system into their app?
+- Why should multiple app developers all have to implement a similar payment system into their app?
 - Why should application users have to give billing information to every app they want to buy?
 
-We think we can solve these problems with Deta Space, removing the payments work, just like we do for the other infra work.  As a developer we'd like you to have 'turn key' payments. Ideally you turn on a pricing knob, select a pricing model, provide your payment information and Deta will send you money every month. 
+We think we can solve these problems with Deta Space, removing the payments work, just like we do for the other infra work. As a developer, we'd like you to have 'turn key' payments. Ideally you turn on a pricing knob, select a pricing model, provide your payment information and Deta will send you money every month. 
 
 ## Control & interoperability (planned for Space)
 

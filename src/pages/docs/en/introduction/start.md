@@ -9,7 +9,7 @@ At Deta, we are building a personal computer that lives in the cloud — a perso
 
 On Deta Space, each user of an app gets their own sandboxed copy of the app, which contains its own micro-servers, databases and file stores.
 
-Learn more about our vision on the [Why Deta Space](/docs/en/introduction/why-deta) page and checkout our [intro to the Personal Cloud](/docs/en/introduction/personal-cloud) for an overview the core concepts.
+Learn more about our vision on the [Why Deta Space](/docs/en/introduction/why-deta) page and check out our [intro to the Personal Cloud](/docs/en/introduction/personal-cloud) for an overview of the core concepts.
 
 With the personal cloud, we see a future where individuals are empowered with apps & data that:
 - are hackable & extensible
