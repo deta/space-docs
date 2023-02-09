@@ -9,7 +9,7 @@ layout: "@docs"
 
 If you don't have an existing SvelteKit app already you can create a new one by following the offical [SvelteKit instructions](https://kit.svelte.dev/docs/introduction#getting-started).
 
-For Space to be able to run SvelteKit it needs to use the node adapter. This ensures that the app is built to be served by a NodeJS server, refer to the [Svelte Docs](https://kit.svelte.dev/docs/adapters#supported-environments-node-js) for more information.
+For Space to be able to run SvelteKit it needs to use the node adapter. This ensures that the app is built to be served by a NodeJS server, refer to the [SvelteKit Docs](https://kit.svelte.dev/docs/adapters#supported-environments-node-js) for more information.
 
 Install the `@sveltejs/adapter-node` dependency, and modify `svelte.config.js` to the following:
 
@@ -28,7 +28,7 @@ const config = {
 	}
 };
 
-export default config; 
+export default config;
 ```
 
 Sample `package.json`

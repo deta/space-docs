@@ -5,7 +5,7 @@ position: 4
 layout: "@docs"
 ---
 
-Once you are satisfied with your app locally and want to see your changes in Space, use the [Space CLI]() command `space push`:
+Once you are satisfied with your app locally and want to see your changes in Space, use the [Space CLI](/docs/en/reference/cli) command `space push`:
 
 ```bash
 space push
@@ -17,9 +17,9 @@ Once the build pipeline completes, it will result in a **revision** being create
 
 ## What's a revision
 
-A revision is a complete package of your app at a single point in time. New revisions are created with each push. You can view this new revision by opening your project inside [Builder](). It will be shown on the **Develop** tab.
+A revision is a complete package of your app at a single point in time. New revisions are created with each push. You can view this new revision by opening your project inside [Builder](/docs/en/basics/projects#projects-in-builder). It will be shown on the **Develop** tab.
 
-A revision can now be used in your Space. It can also be used to [create a release](), which you can share with others to install a copy of your app into their own Space!
+A revision can now be used in your Space. It can also be used to [create a release](/docs/en/basics/releases), which you can share with others to install a copy of your app into their own Space!
 
 ## Testing changes
 
