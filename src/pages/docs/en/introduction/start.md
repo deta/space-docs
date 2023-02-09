@@ -19,8 +19,6 @@ With the personal cloud, we see a future where individuals are empowered with ap
 
 Most importantly, we plan to earn money *with developers* who want to monetize their creations.
 
-> Coming from Deta Cloud? Take a look at our dedicated [Migration Hub](/migration).
-
 ## ✨ Key features
 
 Deta Space is standing behind you, fully.
