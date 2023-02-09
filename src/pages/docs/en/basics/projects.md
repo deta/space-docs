@@ -15,7 +15,7 @@ Projects in Space live inside Builder, an app which can be found on your Canvas.
 
 Each Project in Builder consists of 3 main pages:
 
-- **Overview**: the overview page lets you see important information about your project like it's latest release and recent events
+- **Overview**: the overview page lets you see important information about your projects like its latest release and recent events
 
 - **Develop**: the develop page allows you to configure and develop your project. Here you have access to your project resources like the development data as well as information about your Builder instance.
 
@@ -33,7 +33,7 @@ space new
 
 The CLI allows you to choose from a variety of templates to bootstrap your project or it can automatically set up the right project configuration based on what you have locally.
 
-You will be prompted to enter a name for your project. Next, the CLI will try to detect any existing applications your local directories. If found, the CLI will show a generated config for those applications.
+You will be prompted to enter a name for your project. Next, the CLI will try to detect any existing applications in your local directories. If found, the CLI will show a generated config for those applications.
 
 Once you confirm the generated config, the CLI will create a new project in Builder and generate a [Spacefile](/docs/en/reference/spacefile) file in your local directory. The `Spacefile` contains the configuration of your app, used by Deta Space to understand what your app looks like and how to run it.
 
