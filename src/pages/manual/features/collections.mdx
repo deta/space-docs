@@ -1,0 +1,75 @@
+---
+title: "Collections"
+position: 0
+layout: "@docs"
+---
+import Image from '@/components/Image.astro'
+
+## What are Collections?
+
+[Deta Collections](/collections) is pre-installed on Space as a system app and can be used to store all kinds of data that can be managed and used together as part of a “collection” in your Space. You can connect a collection to other Space apps or even services outside of Space.
+
+There are two kinds of data you can store in a collection: structured data using Deta Base or files using Deta Drive. You can create any number of Bases and Drives in a collection and all of them are accessible through a single interface in Deta Collections.
+
+## Creating a Collection
+
+To create your first collection, open the “Collection” app on your Canvas and click “New Collection”. Give your collection a memorable name and create it. The newly created collection should automatically be opened and you’ll see the collection interface:
+
+<Image src="/docs_assets/collections/empty-collection.png" alt="Empty Collection" width="90%" background />
+
+The first row of items shows you your collection name and links to open the Collections documentation or Collection settings. Below that in a big grey box you’ll see two buttons:
+
+- New Base: Create a new Base to store structured table like data
+- New Drive: Create a new Drive to store files
+
+Depending on what kind of data you want to store you can create a Base or a Drive.
+
+## Opening a Resource
+
+If you are viewing a collection that has no resource open, you’ll see a screen that prompts you to open a Base or Drive in a new tab:
+
+<Image src="/docs_assets/collections/nothing-open.png" alt="Nothing Open" width="90%" background />
+
+Clicking “Open Resource” will present you with a list of all the Bases and Drives that belong to that collection. You can select one or more of them to open them in a new tab:
+
+<Image src="/docs_assets/collections/select-resource.png" alt="Select Resource" width="90%" background />
+
+Tabs are part of the Collections UI and allow you to quickly jump between resources:
+
+<Image src="/docs_assets/collections/tabs.png" alt="Tabs" width="90%" background />
+
+- To create a new tab, click the small “+” next to the open tabs.
+- To switch to a different tab, just click on the tab’s name.
+- To close a tab, click on the small “x” next to the active tab’s name.
+
+### Viewing a Base
+
+When you open a Base you’ll see Base UI, which you can use to add items to your Base and modify or delete existing items.
+
+<Image src="/docs_assets/collections/empty-base.png" alt="Empty Base" width="90%" background />
+
+You can use the search field to search for items in your Base. It also supports searching with more [advanced queries](/docs/en/reference/base/queries).
+
+Click “Add Item” to create a new Base item. You’ll see a draft of the new item which you can now edit using the small pencil icon or save using the “Save Item” button:
+
+<Image src="/docs_assets/collections/base-item-unsaved.png" alt="Unsaved Base Item" width="90%" background />
+
+### Viewing a Drive
+
+When you open a Drive you’ll see the Drive UI which you can use to upload and manage files:
+
+<Image src="/docs_assets/collections/empty-drive.png" alt="Empty Drive" width="90%" background />
+
+Just drag a file onto the grey box and it will be uploaded to your Drive.
+
+<Image src="/docs_assets/collections/uploaded-file.png" alt="Uploaded File" width="90%" background />
+
+## Connecting to your Collection
+
+To connect to a collection from another app or service to access its data, generate a new “data key” in the Collections settings:
+
+<Image src="/docs_assets/collections/data-keys.png" alt="Data Keys" width="90%" background />
+
+The key can then be used with the `Deta` SDK or HTTP API to view and manipulate Bases and Drives linked to that data key.
+
+More information on this can be found in the [developer documentation](/docs/en/basics/data#deta-collections).
