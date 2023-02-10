@@ -152,8 +152,8 @@ micros:
   - name: python-app
     src: .
     engine: python3.9
-		public_routes:
-			- "/*"
+    public_routes:
+      - "/*"
 ```
 
 The wildcard `*` after the root endpoint `/` in `public_routes` makes every route of the Micro publicly accessible. Space offers much more fine-grained control over which routes you can make public than Deta Cloud.
