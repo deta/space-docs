@@ -49,7 +49,7 @@ In short, at Deta we believe:
 1. individual software developers around the world are the key to getting cloud computing right
 2. the ‘public cloud’ is crippling their creativity with unnecessary complexity, costs, and limits
 
-We've run into these issues ourselves and got pretty frusturated. So we decided to build a cloud that's a lot more personal and friendly for the individual developer. We see it as two things, to start:
+We've run into these issues ourselves and got pretty frustrated. So we decided to build a cloud that's a lot more personal and friendly for the individual developer. We see it as two things, to start:
 
 - a personal launchpad for devs to bring their ideas into the world with ***0-ops*** 
 - a personal computer in the cloud for devs to host and use their own apps and data
