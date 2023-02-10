@@ -5,7 +5,7 @@ layout: "@docs"
 ---
 
 
-💡 This guide is designed specifically for those who have prior experience with Deta Cloud and provides instructions on how to transfer a Micro running on Deta Cloud to a Deta Space App. **It is not something you have to read from top to bottom before trying out Deta Space.** The recommended way to learn about Deta Space is by reading the [new documentation](https://deta.space/docs).
+> 💡 This guide is designed specifically for those who have prior experience with Deta Cloud and provides instructions on how to transfer a Micro running on Deta Cloud to a Deta Space App. **It is not something you have to read from top to bottom before trying out Deta Space.** The recommended way to learn about Deta Space is by reading the [new documentation](https://deta.space/docs).
 
 Deta Micros are lightweight runtimes connected to an HTTP endpoint with Python and Node.js support. Deta Space provides the ability to build apps with Micros, offering support for a wide range of languages and frameworks right out of the box.
 
