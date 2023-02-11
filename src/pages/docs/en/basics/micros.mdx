@@ -237,9 +237,22 @@ micros:
 
 The user of the app will be shown a UI in the App's Settings where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`.
 
+## Custom Domains
+
+If you already have your own domain you can assign it to any Builder or app instance with a few clicks. This “Custom Domain” works in addition to the default Space domain that gets assigned to an instance. The domain will be connected to the primary Micro of the app instance.
+
+Follow just a few steps to add a custom domain to your app:
+
+- To add a custom domain to a Builder instance, open the Builder project and head over to the "Develop" page and then to the "Configuration" tab. Click “Add Domain” and enter your domain name.
+- To add a custom domain to an app instance you installed, open the app settings by clicking the 3 dots (…) next to the app’s icon on the Canvas, click “Settings” and then switch to the “Domains” tab. Click “Add Domain” and enter your domain name.
+
+Before your domain is live, you need to setup a DNS record to point your domain to our servers. Follow the guide in our [User Manual](/manual/features/custom-domains) to learn how to do this.
+
 ## Scheduled Actions
 
 Scheduled actions allow an app to perform certain tasks on a specific interval. These tasks can be anything you build into your app, from a cleanup job to automated data aggregation or revalidation.
+
+### Adding a Scheduled Action
 
 Scheduled actions are defined in the [Spacefile](/docs/en/reference/spacefile) on the Micro level:
 
