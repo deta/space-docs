@@ -23,7 +23,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
         <HeadCommon />
         <!-- TODO -->
         <!-- <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} /> -->
-        <title>Space Changelogs | {formatDate(frontmatter.date)}</title>
+        <title>{frontmatter.title ? `${frontmatter.title} - ${formatDate(frontmatter.date)} - Space Changelog` : 'Space Changelog'}</title>
         <style>
             :root {
                 --max-width: 55em !important;

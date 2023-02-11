@@ -14,15 +14,15 @@ As a result, you can just code your app as if it was only for a single user, wit
 
 ### Deta Base
 
-To store data, Space apps can use [Deta Base](),  a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. Base can be accessed using the [Deta Base SDK](/docs/en/reference/base/sdk) or the [Base HTTP API](/docs/en/reference/base/HTTP).
+To store data, Space apps can use [Deta Base](/docs/en/reference/base/about),  a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. Base can be accessed using the [Deta Base SDK](/docs/en/reference/base/sdk) or the [Base HTTP API](/docs/en/reference/base/HTTP).
 
-Take a look at the [Base Reference]() on how to use it.
+Take a look the the [Base Reference](/docs/en/reference/base/about) on how to use it.
 
-### Drive
+### Deta Drive
 
-To store files, Space apps can use [Deta Drive](), a fully-managed, secure and scalable file storage service for Deta. Each app can create and use as many Drives as it needs. Drive can be accessed using the [Drive SDK](/docs/en/reference/drive/sdk) or the [Drive HTTP API](/docs/en/reference/drive/HTTP).
+To store files, Space apps can use [Deta Drive](/docs/en/reference/drive/about), a fully-managed, secure and scalable file storage service for Deta. Each app can create and use as many Drives as it needs. Drive can be accessed using the [Drive SDK](/docs/en/reference/drive/sdk) or the [Drive HTTP API](/docs/en/reference/base/HTTP).
 
-Take a look at the [Drive Reference]() on how to use it.
+Take a look the the [Drive Reference](/docs/en/reference/drive/about) on how to use it.
 
 ## Developing with Base and Drive
 
