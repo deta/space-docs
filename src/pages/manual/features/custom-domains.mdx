@@ -1,0 +1,33 @@
+---
+title: Custom Domains
+position: 1
+layout: "@docs"
+---
+import Image from '@/components/Image.astro'
+
+Every Space app you install gets its own unique subdomain on `deta.app`. The subdomain is based on the alias of the app and a random suffix `<alias>-<suffix>.deta.app`, for example `method-draw-h78bhas.deta.app`. This domain cannot be changed at the moment and will remain active as long as you have the app instance installed.
+
+If you already have your own domain though you can assign it to a specific app instance. This “Custom Domain” works in addition to the default Space App Domain.
+
+## Adding a Custom Domain
+
+To add a custom domain to a installed app instance, open the app settings by clicking the 3 dots (…) next to the app’s icon on the Canvas, click “Settings” and then switch to the “Domains” tab. Click “Add Domain” and enter your domain name.
+
+Before your domain is live, you need to setup a DNS record to point your domain to our servers. The UI will show a IP Address which you need to add as the target for a “A Record” in your DNS provider’s dashboard. We will periodically check if your domain has the right record pointing to the right IP address.
+
+<Image src="/docs_assets/custom-domain-pending.png" subtext="Pending Custom Domain" background width="90%" />
+
+Once we detect that it is setup, we will generate a SSL certificate for your domain and start serving your app instance from it. The time taken for the DNS record changes to take effect depends on your DNS settings and provider. It may take up to 24 hours for your domain to go live.
+
+Custom domains should work with every DNS provider and even with Cloudflare's Caching or CDN features out of the box.
+
+## Troubleshooting
+
+Check the following if you are experiencing issues in setting up a custom domain:
+
+- Check if your top level domain is supported ([here is a list of supported TLDs](https://help.zerossl.com/hc/en-us/articles/360060119833-Restricted-Countries)).
+- Make sure you have added an A record in your DNS settings with our IP address. You can use tools like `nslookup` or other online tools to check what IP address your domain is currently being resolved to.
+- Check if there is a CAA record set up for your domain. If yes, make sure you have set up the necessary CAA record.
+- If you have a CAA record set up for your domain (check your DNS settings or use a tool to check your CAA records), add the following record so that we can issue certificates for your domain: `example.com. 3600 IN CAA 0 issue "sectigo.com"`. This record allows us to issue certificates for example.com and all subdomains of example.com. For your domain, replace example.com with your domain.
+
+If you run into other issues or if your domain is still not active after more than 24 hours, please reach out to us via [Discord](https://go.deta.dev/discord) or email us at [team@deta.sh](mailto:team@deta.sh).
