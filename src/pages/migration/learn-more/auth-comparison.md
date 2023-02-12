@@ -1,6 +1,6 @@
 ---
-title: Cloud vs Space Auth
-position: 3
+title: How Auth is Different
+position: 4
 layout: "@docs"
 ---
 

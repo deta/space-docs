@@ -25,17 +25,32 @@ We strongly encourage you to move your data into Collections, as Deta Cloud Proj
 
 Sound good? Let's migrate a Cloud Project into a Collection.
 
-## Import a Cloud Project into Collections in 3 Steps
+## Import a Cloud Project into Collections in 4 Steps
 
-1. Click on the Deta Collections app from your Canvas
+#### 1. Click on the Deta Collections app from your Canvas
 
-2. Create your First Collection
+![Canvas](/migration_assets/migrate_to_collections/collections-0.webp)
 
-You'll need to give it a name, but don't give it a name you want to use for an imported Cloud Project. Then click "Go Back". This will launch the Collections home page.
+#### 2. Create your first Collection
 
-3. Click the Import Cloud Project Button and Select a Project
 
-That's it - your Collection is imported from Cloud and you can start using it. 
+![Create First Collection](/migration_assets/migrate_to_collections/collections-1.webp)
+
+This is a necessary step to getting started with Collections, but the Collection you create isn't related to the Collection you'll be importing from a Project in Cloud. You'll need to give your Collection a name. Then click "Go Back". This will launch the Collections home page.
+
+> ⚠️ **Don't give your first Collection the name of a Cloud Project you're planning to import. If you do, you'll be forced to change the name of your Cloud Project when you import it.**
+
+
+#### 3. Click the import Cloud Project button
+
+![Import](/migration_assets/migrate_to_collections/collections-2.webp)
+
+#### 4. Select the project to import
+
+![Selector](/migration_assets/migrate_to_collections/collections-3.webp)
+
+
+That's it - after you hit the "Import Project" button, your Collection is imported from Cloud and you can start using it. 
 
 Read about [Collections in the Manual](https://deta.space/manual/features/collections) for more on opening and using your Bases and Drives.
 
@@ -45,4 +60,4 @@ After you import a Collection into Space from a Cloud Project, your Micros will 
 
 You can continute to view them through the [Cloud Legacy App](), and update them through the [Deta CLI](https://docs.deta.sh/docs/cli/commands).
 
-Nonetheless, we encourage you to [migrate your Micros]() into Space well before May 1 to ensure they keep operating.
+Nonetheless, we encourage you to [migrate your Micros](/migration/guides/migrate-a-micro) into Space well before May 1 to ensure they keep operating.
