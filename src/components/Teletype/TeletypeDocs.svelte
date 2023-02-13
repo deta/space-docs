@@ -1,5 +1,6 @@
 <script lang="ts">
     import { useTeletype } from "@deta/teletype/src/index"
+    import { get } from "svelte/store"
     import { MeiliSearch } from "meilisearch"
 
     import type { Action, } from "@deta/teletype/src/index"
@@ -38,6 +39,7 @@
                     id: `${page}-${heading}`,
                     // Show the heading title and fallback to the page title if it doesn't exist
                     name: heading || page,
+                    section: section,
                     icon: Page,
                     nestedSearch: false,
                     // If we don't have a heading title or it matches the page title we show the section title instead
@@ -52,8 +54,22 @@
         return actions
     }
 
+    const findLocalActions = (search: string, actions: Action[]) => {
+        return actions.filter(action => {
+            return action.name.toLowerCase().includes(search.toLowerCase()) && action.id !== 'search_docs'
+        })
+    }
+
     const handleSearch = async (searchTerm: any) => {
         try {
+            const current = get(teletype.currentAction)
+            if (current) {
+                teletype.setActions(actions)
+                teletype.options!.localSearch = true
+                teletype.currentAction.set(current)
+                return
+            }
+
             if (searchTerm != "" ) {
                 // Disable built-in searching and use external search engine
                 teletype.options!.localSearch = false
@@ -61,8 +77,11 @@
                 const search = await docsIndex.search(searchTerm, {
                     limit: 1000,
                 })
-                const actions = convertSearchToActions(search)
-                teletype.setActions(actions)
+
+                const remoteActions = convertSearchToActions(search)
+                const localActions = findLocalActions(searchTerm, actions)
+
+                teletype.actions.set([...localActions, ...remoteActions])
             } else {
                 // Use the static actions and built-in searching
                 teletype.options!.localSearch = true

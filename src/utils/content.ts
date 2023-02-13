@@ -1,3 +1,4 @@
+import { docsSectionsOrder, manualSectionsOrder, migrationSectionsOrder } from '@/config'
 import type { MarkdownInstance, MarkdownHeading } from 'astro'
 import { pascalCase } from 'scule'
 
@@ -44,8 +45,6 @@ export type SearchHit = {
     objectID: string,
     url: string,
 }
-
-export const sectionOrder = ['Introduction', 'Basics', 'Reference', 'Quickstart Guides', 'Other']
 
 export const extractKeywords = (str: string) =>
   str
@@ -102,6 +101,9 @@ export const parsePages = (files: AstroPage[]) => {
 
 export const parseSections = (pages: Page[]) => {
   let result: SectionItem[] = []
+
+  const isMigration = pages[0].path.startsWith('/migration')
+  const isManual = pages[1].path.startsWith('/manual')
 
   pages.forEach(page => {
     const keywords = new Set<string>()
@@ -195,10 +197,20 @@ export const parseSections = (pages: Page[]) => {
     }
   })
 
-  // Sort result
-  result = result.sort((a: any, b: any) => {
-    return sectionOrder.indexOf(a.title) - sectionOrder.indexOf(b.title)
-  })
+  // Sort sections
+  if (isMigration) {
+    result = result.sort((a: any, b: any) => {
+      return migrationSectionsOrder.indexOf(a.title) - migrationSectionsOrder.indexOf(b.title)
+    })
+  } else if (isManual) {
+    result = result.sort((a: any, b: any) => {
+      return manualSectionsOrder.indexOf(a.title) - manualSectionsOrder.indexOf(b.title)
+    })
+  } else {
+    result = result.sort((a: any, b: any) => {
+      return docsSectionsOrder.indexOf(a.title) - docsSectionsOrder.indexOf(b.title)
+    })
+  }
 
   // Sort pages by position
   result.forEach(section => {
