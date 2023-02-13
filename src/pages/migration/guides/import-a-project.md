@@ -29,7 +29,8 @@ What this means concretely:
 - Your Micros will remain usable through the [Cloud Legacy App]() until May 1
 - Your data will not be deleted when Cloud is sunset on May 1
 
-We strongly encourage you to move your data into Collections, as Deta Cloud Projects will not be supported after May 1, 2023 (unmigrated Project resources will get removed).
+> ⚠️ **Deta Cloud support will end on May 1, 2023. We strongly encourage migrating data to Collections before then, as Deta Cloud Projects will not be supported after this date and their resources will be removed.
+
 
 Sound good? Let's migrate a Deta Cloud Project into a Collection.
 
