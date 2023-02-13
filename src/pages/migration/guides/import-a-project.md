@@ -38,11 +38,11 @@ Sound good? Let's migrate a Deta Cloud Project into a Collection.
 
 #### 1. Click on the Deta Collections app from your Space Canvas
 
-![Canvas](/migration_assets/migrate_to_collections/collections-0.webp)
+![Canvas](/docs_assets/migration_assets/migrate_to_collections/collections-0.webp)
 
 #### 2. Create your first Collection
 
-![Create First Collection](/migration_assets/migrate_to_collections/collections-1.webp)
+![Create First Collection](/docs_assets/migration_assets/migrate_to_collections/collections-1.webp)
 
 This is a necessary step to getting started with Collections, but the Collection you create isn't related to the Collection you'll be importing from a Project in Deta Cloud. You'll need to give your Collection a name. Then click **"Go Back"** in the top left corner. 
 
@@ -53,11 +53,11 @@ This will launch the Collections home page, where you can import a Project from 
 
 #### 3. Click the import Cloud Project button
 
-![Import](/migration_assets/migrate_to_collections/collections-2.webp)
+![Import](/docs_assets/migration_assets/migrate_to_collections/collections-2.webp)
 
 #### 4. Select the project to import
 
-![Selector](/migration_assets/migrate_to_collections/collections-3.webp)
+![Selector](/docs_assets/migration_assets/migrate_to_collections/collections-3.webp)
 
 
 That's it - after you hit the "Import Project" button, your Collection will be imported from Cloud and you can start using it. 

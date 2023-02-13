@@ -1,5 +1,5 @@
 ---
-title: Cloud Deprecation and Legacy Mode
+title: Cloud Legacy Mode
 position: 2
 layout: "@docs"
 ---
@@ -27,11 +27,11 @@ To access your Deta Cloud resources, [log in to Deta Space](https://deta.space/l
 
 You should see a **Legacy Cloud** app on your Canvas (the icon is the old Cloud UI):
 
-![Legacy Tile](/migration_assets/legacy_mode/legacy-on-canvas.webp)
+![Legacy Tile](/docs_assets/migration_assets/legacy_mode/legacy-on-canvas.webp)
 
 If you open this app, you'll enter a familiar Deta Cloud Dashboard with some new window dressing:
 
-![Legacy App](/migration_assets/legacy_mode/legacy-dashboard.webp)
+![Legacy App](/docs_assets/migration_assets/legacy_mode/legacy-dashboard.webp)
 
 In the Legacy Cloud app, you will continue to be able to manage your Deta Projects, including all Micros, Bases, and Drives.
 
