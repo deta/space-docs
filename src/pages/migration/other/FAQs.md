@@ -2,7 +2,7 @@
 title: FAQs
 position: 5
 layout: "@docs"
-section
+section: Other
 ---
 
 ### Will my Micros, Bases, Drives Continue to wok?
