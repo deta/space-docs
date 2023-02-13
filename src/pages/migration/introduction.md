@@ -14,7 +14,7 @@ This hub is designed to answer all questions you have about moving your app into
 
 Below are a few guides for getting going with Space and resources for learning more.
 
-### ⬆️ Migrate a Base, Drive, or Micro 
+### 🚀 Migrate a Base, Drive, or Micro 
 - [Migrate Bases & Drives from Deta Cloud](/migration/guides/import-a-project)
 - [Migrate a Micro from Deta Cloud](/migration/guides/migrate-a-micro)
 
@@ -22,11 +22,11 @@ Below are a few guides for getting going with Space and resources for learning m
 - [How Space Compares to Cloud](/migration/learn-more/space-vs-cloud)
 - [Auth in Cloud vs. Space](/migration/learn-more/auth-comparison)
 
-### More Resources
+### ℹ️ More Resources
 - [The Migration timeline and Cloud Sunset Plan](https://deta.space/blog/moving-to-space#our-plan-for-the-merge)
 - [Why Deta Exists](https://deta.space/motivation/)
 
-### ❓ Help, I'm stuck  
+## ❓ Help, I'm stuck  
 - [FAQs](/migration/faqs)
 
 Please check the FAQs for any questions related to migrations and if you can't find an answer there, shoot us a note on [Discord](https://go.deta.dev/discord).

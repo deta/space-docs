@@ -2,6 +2,7 @@
 title: FAQs
 position: 5
 layout: "@docs"
+section
 ---
 
 ### Will my Micros, Bases, Drives Continue to wok?
@@ -20,6 +21,11 @@ We recommend moving [Bases and Drives to Collections](/migration/migration-guide
 
 Yes, you can run up multiple [Scheduled Actions](https://deta.space/manual/features/scheduled-actions) in a single Space App.
 
+
 ### Will VISOR come to Space?
 
 No plans to bring VISOR to Space, but we plan to continuously improve Logs in Deta Space.
+
+### Is Space free like Deta Cloud was? What are the limits?
+
+Like Deta Cloud, Deta Space is free for developers building apps. For usage, free tier limits and a premium "Deta Adventurer" plan will be announced soon.

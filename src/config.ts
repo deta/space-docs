@@ -6,7 +6,7 @@ export const SITE = {
 
 export const docsSectionsOrder = ['Overview', 'Basics', 'Reference', 'Quickstart Guides', 'Other']
 export const manualSectionsOrder = ['Overview', 'Features']
-export const migrationSectionsOrder = ['Overview']
+export const migrationSectionsOrder = ['Overview', 'Guides', 'Learn More', 'Other']
 
 export const OPEN_GRAPH = {
   image: {
