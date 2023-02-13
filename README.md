@@ -36,7 +36,7 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                           |
 | :--------------------- | :----------------------------------------------- |
-| `yarn install`         | Installs dependencies                            |
+| `yarn install --ignore-optional`         | Installs dependencies                            |
 | `yarn run dev`         | Starts local dev server at `localhost:3000`      |
 | `yarn run build`       | Builds the site to `./dist/`                     |
 | `yarn run preview`     | Previews the site locally                        |

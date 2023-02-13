@@ -12,7 +12,7 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
-        external: ['@deta/teletype'],
+        external: process.env.PUBLIC_TELETYPE_INSTALLED === 'true' ? [] : ['@deta/teletype/src/index'],
         output: {
           assetFileNames: (assetInfo) => {
             let extType = assetInfo.name.split('.').at(1);
@@ -23,6 +23,6 @@ export default defineConfig({
           entryFileNames: 'docs_assets/js/[name]-[hash].js',
         },
       },
-    },
+    }
   }
 });
