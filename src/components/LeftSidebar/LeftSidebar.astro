@@ -29,7 +29,7 @@ const posts = await cacheOnFirstRun(`${postsKey}-posts`, async () => {
   if (isManual) {
     postsMdx = await Astro.glob("../../pages/manual/**/*.mdx");
   } else if (isMigration) {
-    postsMdx = [] // await Astro.glob("../../pages/migration/**/*.mdx");
+    postsMdx = await Astro.glob("../../pages/migration/**/*.mdx");
   } else if (isDocs) {
     postsMdx = await Astro.glob("../../pages/docs/**/*.mdx");
   }

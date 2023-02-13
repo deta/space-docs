@@ -4,12 +4,11 @@ position: 4
 layout: "@docs"
 ---
 
-Deta Space offers a more comprehensive authentication system compared to Deta Cloud, granting developers more control.
+Deta Space offers a more comprehensive authentication system compared to Deta Cloud, granting developers more control, and powering the experience behind **build for yourself and see it run for millions**.
 
-In this guide, we will explore the differences between the authentication systems of Deta Space and Deta Cloud. We will also walk you through how to configure Space authentication to meet the specific needs of your app. Whether you’re making the transition from Deta Cloud or seeking to configure the authentication for your Space app, this guide will provide you with all the information you need.
+In this guide, we will explore the differences between the auth systems of Deta Space and Deta Cloud. 
 
-> ⚠️ **Deta Cloud support will end on May 1, 2023.**
->
+We will also walk you through how to configure Space auth to meet the specific needs of your app.
 
 ## Authentication in Deta Cloud
 
@@ -19,15 +18,15 @@ To secure your app, you have to manually activate authentication with the comman
 
 ## Space - Authentication by Default
 
-Deta Space takes a different approach by securing all apps with authentication by default. If an attempt is made to access these applications from outside the Space account, the user will be redirected to the login page, indicating that authentication is required to access the endpoints.
+Deta Space takes a different approach by securing all apps with authentication by default. Only the user who owns an app instance can access the app,when they are authenticated on Space. If an attempt is made to access these applications from outside this context, the requestor will be redirected to the login page.
 
-This feature comes included with Space and there is no need to write any additional code for authentication. The default authentication enhances the security of the apps deployed on Space by restricting access to only authorized users and protecting against unauthorized access and potential security threats. However, as a developer, you have the option to enable fine-grained access control using `public_routes` or `api_keys` in [Spacefile](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile). This approach ensures that the app remains secure while allowing for controlled access.
+When building a Space app, auth comes for free: you don't need to write any additional code. All you need to do is assume you're **building for yourself, as the only user**. Nonetheless, as a developer, you have the option to enable fine-grained access control using `public_routes` or `api_keys` in [Spacefile](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile). This approach ensures that the app remains secure while allowing for controlled access.
 
-Let’s go through an example.
+> ℹ️ The [Spacefile](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile) is a file that tells Deta Space how to run your app. it includes configuratios for things like auth.
 
-## Auth on Deta Space
+Let’s go through an example of a Space Developer, let's call her Daniela, building a Space App called **Ping Pong**.
 
-The following code represents a simple Node.js Express server running on Data Space:
+The below code represents **Ping Pong** as a simple Node.js Express server.
 
 ```jsx
 import express from 'express';
@@ -47,7 +46,7 @@ app.listen(port, () => {
 })
 ```
 
-The Spacefile for this app is given below:
+The Spacefile for **Ping Pong** is given below:
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -57,25 +56,23 @@ micros:
   - name: express
     src: ./src/express
     engine: nodejs16
-    run: node index.js
+    run: node index.js 
     primary: true
 ```
 
-After deploying this to Space using the `space push` command, you can access the endpoints while being logged into your Space account in the browser. If you try to access the endpoints from outside your Space account, you will be redirected to the login page, as Space’s authentication system is protecting this app.
+After deploying **Ping Pong** to Space using the `space push` command, Daniela could make it optionally available to other users on Space, so they can install their own copy.
 
+For each copy of **Ping Pong**, the `/` and `/ping` routes will only be accessible to the user who owns that specific copy. And they've got to be logged in to Deta Space. If they're not, they'll be directed to the login page. And if the wrong person logs in and tries to access a copy of **Ping Pong**, they will be given an `Unauthorized` response, as it isn't their app to access.
 
-To learn more about deploying your Apps and APIs to Space, you can refer to this [guide](/migration/deploy-app-or-api).
+Nonetheless, what if the **Ping Pong** developer wants to enable more fine-grained access to the public, or to non-browser clients? Let’s take a look at two methods: **Public Routes** and **API Keys**.
 
+### Public Routes
 
-What if we want to enable more fine-grained access to other clients or the public? Let’s take a look at two methods: **Public Routes** and **API Keys**.
+If Daniela wants to make parts of **Ping Pong** (or the entire app) publicly accessible, she could do so on Deta Space using **Public Routes**. This feature provides fine-grained control over what’s public while still maintaining the security of an app for things that should be kept private.
 
-## Public Routes
+Daniela can use the Spacefile to specify which routes within a Micro should be publicly accessible without the need for authentication. This way, Daniela can make specific routes public while still keeping sensitive routes secure. 
 
-If you want to make parts of your app or the entire app publicly accessible, you can do so on Deta Space using **Public Routes**. This feature provides fine-grained control over what’s public while still maintaining the security of your app for things that should be kept private.
-
-You can use the Spacefile to specify which routes within your micro should be publicly accessible without the need for authentication. This way, you can make specific routes public while still keeping sensitive routes secure. To do so, simply specify the desired routes in the `public_routes` option in the Spacefile for the relevant micro. This allows you to make specific routes publicly accessible while still maintaining the security of sensitive routes in your app.
-
-Here's the updated Spacefile from the previous example, now including the `public_routes` preset:
+Here's the updated Spacefile from the previous example, now including Daniela's `public_routes` preset:
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -91,19 +88,19 @@ micros:
       - "/ping"
 ```
 
-After deploying with the updated Spacefile using `space push`, the `/ping` route on the Express server will be publicly accessible, while the root endpoint `/` will remain private and protected by authentication.
+After deploying with the updated Spacefile using `space push`, the `/ping` route on the Express server will be publicly accessible, while the root endpoint `/` will remain private and protected by authentication. 
 
 > ⚠️ When `public_routes` are specified, they will always take precedence over enabled `api_keys` preset.
 
-To learn more about public routes, you can refer to the related information available [here](/docs/en/basics/micros#public-routes).
+To learn more about public routes (including the use of powerful options like wildcards `*`), you can refer to the related information available [here](/docs/en/basics/micros#public-routes).
 
-## API Keys
+### API Keys
 
-API keys allow you to give authorized users access to private routes within a Micro in your app. By generating unique API keys, users can include them as an `X-Space-App-Key` header in their requests, granting them access to the specified routes.
+API keys allow Daniela to give authorized users access to private routes within a Micro of **Ping Pong**. By generating unique API keys, users can include them as an `X-Space-App-Key` header in their requests, granting them access to the specified routes.
 
-To enable API keys, enable the `api_keys` preset in the Spacefile for the relevant Micros in your app. This way, you can control access to private routes within your app and ensure that only authorized users have access.
+To enable API keys, Daniela needs to enable the `api_keys` preset in the Spacefile for the relevant Micros.
 
-To see how the `api_keys` preset works, let's enable it for the Express micro in the previous example using the `presets` field:
+To see how the `api_keys` preset works, Dabiela will need to enable it for the Express Micro in the previous example using the `presets` field:
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -121,7 +118,7 @@ micros:
       api_keys: true
 ```
 
-After deploying the app with API keys enabled with `space push`, you can generate and use API keys with your Builder instance with a few simple steps:
+After deploying the app with API keys enabled with `space push`, Daniela could generate and use API keys in her Builder Instance with a few simple steps:
 
 1. Go to the Space canvas and click on the option (...) on the app instance
 2. Click on Configuration.
