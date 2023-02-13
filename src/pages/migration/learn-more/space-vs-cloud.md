@@ -1,17 +1,17 @@
 ---
 title: Space vs. Cloud 101
-position: 3
+position: 1å
 layout: "@docs"
 ---
 ## Deta Space, viewed from Deta Cloud
 
 Deta Space is a "personal cloud" which evolved out of Deta Cloud. It features a few big upgrades on top of Deta Cloud including more runtimes, a brand new ui, among other features. 
 
-But most importantly, it builds on top of Deta Cloud with whole a new model for distributing and using apps around "the personal cloud". 
+But most importantly, it builds on top of Deta Cloud with whole a new model for distributing and using apps around "the personal cloud". On the personal cloud, when you **build for yourself, your app can run anywhere, for anyone with an internet connection**. And you don't need to really do anything extra, it's all baked into the model.
 
 ## Build for yourself
 
-As a developer, you'll still get your own personal cloud environment, just like in Deta Cloud, to build and deploy your ideas. You can use the same friendly [Base SDK](https://deta.space/docs/en/reference/base/sdk) and [Drive SDK](https://deta.space/docs/en/reference/drive/sdk), while Micros have been completely refreshed to support many runtimes and frameworks.
+As a developer, you'll still get your own personal cloud environment, just like in Deta Cloud, to build and deploy your ideas. You can use the same friendly [Base SDK](https://deta.space/docs/en/reference/base/sdk) and [Drive SDK](https://deta.space/docs/en/reference/drive/sdk), while Micros have been completely refreshed to support many runtimes and frameworks. The UI has also been completely redesigned and reengineered from scratch.
 
 ### Micros, re-engineered to support more runtimes
 

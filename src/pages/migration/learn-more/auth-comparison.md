@@ -1,10 +1,10 @@
 ---
-title: How Auth is Different
-position: 4
+title: Comparing Auth
+position: 3
 layout: "@docs"
 ---
 
-Deta Space offers a more comprehensive authentication system compared to Deta Cloud, granting developers more control, and powering the experience behind **build for yourself and see it run for millions**.
+Deta Space offers a more comprehensive authentication system compared to Deta Cloud, granting developers more control, and powering the experience behind **build for yourself and see it run anywhere**.
 
 In this guide, we will explore the differences between the auth systems of Deta Space and Deta Cloud. 
 
