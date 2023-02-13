@@ -12,6 +12,7 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
+        external: ['@deta/teletype'],
         output: {
           assetFileNames: (assetInfo) => {
             let extType = assetInfo.name.split('.').at(1);
