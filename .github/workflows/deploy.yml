@@ -25,6 +25,7 @@ jobs:
         run: yarn build
 
   dispatch-sync-event:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
