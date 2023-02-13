@@ -18,15 +18,15 @@ jobs:
         with:
           node-version: v16.x
 
-    - name: Install Dependencies
-      env:
-        GITHUB_REGISTRY_TOKEN: ${{ secrets.SATELLITE_ACCESS_TOKEN }}
-      run: yarn install --frozen-lockfile
+      - name: Install Dependencies
+        env:
+          GITHUB_REGISTRY_TOKEN: ${{ secrets.SATELLITE_ACCESS_TOKEN }}
+        run: yarn install --frozen-lockfile
 
-    - name: Build Astro App
-      env:
-        GITHUB_REGISTRY_TOKEN: ${{ secrets.SATELLITE_ACCESS_TOKEN }}
-      run: yarn build:tty
+      - name: Build Astro App
+        env:
+          GITHUB_REGISTRY_TOKEN: ${{ secrets.SATELLITE_ACCESS_TOKEN }}
+        run: yarn build:tty
 
   dispatch-sync-event:
     runs-on: ubuntu-latest
@@ -36,4 +36,5 @@ jobs:
         with:
           repository: deta/satellite
           token: ${{ secrets.SATELLITE_ACCESS_TOKEN }}
-          event-type: sync-space-docs       
+          event-type: sync-space-docs
+          
