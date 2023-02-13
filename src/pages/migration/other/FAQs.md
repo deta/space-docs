@@ -5,7 +5,7 @@ layout: "@docs"
 section: Other
 ---
 
-### Will my Micros, Bases, Drives Continue to wok?
+### Will my Micros, Bases, Drives Continue to work?
 
 Yes, they will continue to work until May 1, 2023. After that they will be sunset. 
 
