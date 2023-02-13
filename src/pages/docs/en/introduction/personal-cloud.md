@@ -33,17 +33,22 @@ In this case, the users control the infrastructure which runs the app.  We think
 
 ## 0 Infrastructure, ∞ Scale
 
-Due to the personal cloud architecture, each user owns their own infra. What this means for you as a developer, *is that you have effectively 0 infrastructure burden, no matter how many users your app scales to.* No servers or DBs to manage, secure, or maintain. All you need to do is build your application logic. 
+Due to the personal cloud architecture, each user owns their own infra. 
+
+What this means for you as a developer, *is that you have effectively 0 infrastructure burden, no matter how many users your app gets.* No servers or DBs to manage, secure, or maintain. All you need to do is build your application logic. 
 
 ## Distribution
 
-We've discovered two routes in which we think the personal cloud model improves application distribution today:
+We also think the personal cloud helps distribution. One, because you a lot more devs who don't want to manage servers can release their apps. And two, because a lot of users may want their own copy of an app, for a number of reasons.
+
+## Control & interoperability 
+
+On the personal cloud, we think control of the app and data is the biggest draw for end-users. This helps ensure that apps keep working if an app's developer decides to call it quits, while also providing privacy advantages. 
+
+For *users who are also developers*, we think control is a huge win. This is because developers are fundamentally hackers and tinkerers who turn ideas into software, and personal computing fundamentally empowers them to do this. With personal control over apps and data, developers can hack and tinker their apps and data into more apps and data. We think this will allow developers to discover new frontiers in their own computational lives, paving the way for everyone else.
 
 
-1. When a developer has built an application, but wants nothing to do with building auth layer or managing any infrastructure. These applications are really cool demo apps, or even use something like local storage for data persistence, but they aren't reaching their full potential for end users. We think these apps find a happy channel to end users on a personal cloud.
-2. Where users really need to their own copy of an app for whatever reason. As it stands now, self hosting applications fill this niche, but it’s a niche: it requires a lot of time consuming expertise on the part of end users. With the personal cloud, we think many of the benefits of self-hosting are made accessible, which loops back to benefit app developers’ distribution possibilities.
-
-## Turn-key payments (planned for Space)
+## Turn-key payments (planned)
 
 Developers have told us two things about taking their app to the next level:
 
@@ -56,10 +61,6 @@ So we thought about it, and wondered:
 
 We think we can solve these problems with Deta Space, removing the payments work, just like we do for the other infra work. As a developer, we'd like you to have 'turn key' payments. Ideally you turn on a pricing knob, select a pricing model, provide your payment information and Deta will send you money every month. 
 
-## Control & interoperability (planned for Space)
-
-On the personal cloud, we think control of the app and data is the biggest draw for end-users. This helps ensure that apps keep working if an app's developer decides to call it quits, while also providing privacy advantages. 
-
-For *users who are also developers*, we think control is a huge win, for an additional reason. This is because developers are fundamentally hackers and tinkerers who turn ideas into software, and personal computing fundamentally empowers them to do this. With personal control over apps and data, developers can hack and tinker their apps and data into more apps and data. We think this will allow developers to discover new frontiers in their own computational lives, paving the way for everyone else.
-
 Build your first app on the personal cloud with Deta Space [here](/docs/en/introduction/first-app).
+
+

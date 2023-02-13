@@ -7,17 +7,13 @@ layout: "@docs"
 
 At Deta, we are building a personal computer that lives in the cloud — a personal cloud — for individual software developers. We call it Deta Space.
 
-On Deta Space, each user of an app gets their own sandboxed copy of the app, which contains its own micro-servers, databases and file stores.
+## Build it for yourself, and see it run anywhere
 
-Learn more about our vision on the [Why Deta Space](/docs/en/introduction/why-deta) page and check out our [intro to the Personal Cloud](/docs/en/introduction/personal-cloud) for an overview of the core concepts.
+Developing for Space is simple. Use familiar programming languages and friendly tools to **build your idea for yourself**. Once you've done that, you can **see your idea run anywhere, for anyone with an internet connection**. It doesn't require any extra effort at all - this is baked in to the idea of "the personal cloud".
 
-With the personal cloud, we see a future where individuals are empowered with apps & data that:
-- are hackable & extensible
-- are seamlessly interoperable
-- are fully backed up, with rollbacks
-- support groups of people collaborating in real time
+With the personal cloud, we see a future where individuals are empowered with apps and data that they can unleash and extend, in their own personal clouds. A future where personal clouds can connect with each other and collaborate. And a future where developers can release their brilliant ideas to a whole world of clouds, with very little effort.
 
-Most importantly, we plan to earn money *with developers* who want to monetize their creations.
+Learn more about our vision on the [Why Deta Space](https://deta.space/motivation/) page and check out our [intro to the Personal Cloud](/docs/en/introduction/personal-cloud) for an overview of the core concepts.
 
 ## ✨ Key features
 
