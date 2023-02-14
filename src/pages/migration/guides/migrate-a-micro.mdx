@@ -7,7 +7,7 @@ import LangTabs from "@/components/Tabs/LangTabsSimple.astro";
 
 > 💡 This guide is designed specifically for those who have prior experience with Deta Cloud. It provides instructions on how to migrate a Micro into a Deta Space app. **If you're looking to simply learn about Deta Space, it's recommended to read the [new documentation](https://deta.space/docs).**
 
-Deta Micros are lightweight runtimes connected to an HTTP endpoint with Python and Node.js support. 
+Deta Micros are lightweight runtimes connected to an HTTP endpoint with Python and Node.js support.
 
 Deta Space provides the ability to build **Space Apps** using Micros, offering support for a wide range of languages and frameworks right out of the box.
 
@@ -28,7 +28,7 @@ You can do it by using the following command in the Deta Cloud CLI:
 ```bash
 deta clone --name <micro-name> --project <project-name>
 ```
-If you are uncertain about the `micro-name` or `project-name`, you can retrieve the command from the Deta Cloud dashboard, which is available in Deta Space. 
+If you are uncertain about the `micro-name` or `project-name`, you can retrieve the command from the Deta Cloud dashboard, which is available in Deta Space.
 
 To do this, log in to your Space Canvas, select the [**Legacy Cloud**](/migration/learn-more/legacy-mode) app, and use the project selector to choose your project. Then, click on the desired Micro in the left sidebar and go to `Settings`. Finally, copy and paste the command under `Clone Micro`.
 
@@ -40,7 +40,7 @@ After you have your Micro's code on your local machine, you may need to very sli
 
 <LangTabs>
   <Fragment slot="js">
-If your micro is running on a Node.js runtime, modifications to the code will be necessary. 
+If your micro is running on a Node.js runtime, modifications to the code will be necessary.
 <br/>
 In Deta Cloud, Micros running on Node.js runtime require the app instance of the framework, located in `index.js` to be exported. For example:
 <br />
@@ -59,7 +59,7 @@ const port = parseInt(process.env.PORT) || 8080;
 module.exports = app;
 ```
 <br />
-In Deta Space, instead of exporting the app instance, you need to make sure that your Micro listens on the port specified in the `PORT` environment variable. 
+In Deta Space, instead of exporting the app instance, you need to make sure that your Micro listens on the port specified in the `PORT` environment variable.
 <br />
 The following is an example of how the code mentioned earlier would be modified:
 <br />
@@ -82,7 +82,7 @@ app.listen(port, () => {
 Once the modification is complete, you are now ready to deploy to Space.
   </Fragment>
   <Fragment slot="py">
-If your Deta Cloud Micro is running on a Python runtime, no changes to your code are necessary. 
+If your Deta Cloud Micro is running on a Python runtime, no changes to your code are necessary.
 <br />
 Here's an example of a "Hello World" server running in Python with FastAPI:
 <br />
@@ -103,7 +103,7 @@ def root():
 
 ## Initialize a Space Project
 
-After modifying your source code, but before deploying to Space, it is necessary to create a Space project using the Space CLI. 
+After modifying your source code, but before deploying to Space, it is necessary to create a Space project using the Space CLI.
 
 To create a new Space project, execute the following command from the directory of your cloned Micro.
 
@@ -194,7 +194,7 @@ space push
 
 Once the push is successful, you have successfully migrated your Deta Cloud Micro to Deta Space!
 
-If your Deta Cloud Micro wasn't using API Keys or Custom Domains, you can now update all external references to its `<alias-random>.deta.dev` url to the new `<alias-random>.deta.app` url (after testing of course). 
+If your Deta Cloud Micro wasn't using API Keys or Custom Domains, you can now update all external references to its `<alias-random>.deta.dev` url to the new `<alias-random>.deta.app` url (after testing of course).
 
 If you are using API Keys on Deta Cloud, continue reading.
 
@@ -210,22 +210,22 @@ micros:
   - name: python-app
     src: .
     engine: python3.9
-		public_routes:
-			- "/*"
-		presets:
-		  api_keys: true
+    public_routes:
+      - "/*"
+    presets:
+      api_keys: true
 ```
 
 Next, run the command `space push` to apply changes to your Space app. This will enable API keys for your Deta Space Micro, just like they were with your Deta Cloud Micro. To generate an API Key, simply go to your Space Canvas, click on the ellipsis (‘…') on the tile of your app, and you'll be able to generate an API Key from there.
 
 <div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
-<img src="/migration_assets/migrate_a_micro/context-menu.png" alt="Context Menu" height="320px" />
+<img src="/docs_assets/migration_assets/migrate_a_micro/context-menu.png" alt="Context Menu" height="320px" />
 </div>
 
 Click "Configuration," and you should be brought to a Configuration menu for your app in Builder. From here, you can click "Create new API Key" to generate an API Key.
 
 <div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
-<img src="/migration_assets/migrate_a_micro/create-api-key.png" alt="Context Menu" height="320px" />
+<img src="/docs_assets/migration_assets/migrate_a_micro/create-api-key.png" alt="Context Menu" height="320px" />
 </div>
 
 With that, you have enabled API Keys for your Micro. You can now access protected routes by passing the API Key as an `X-Space-App-Key` header in your requests. For more information on API Keys in Space, visit the official documentation [here](https://deta.space/docs/en/basics/micros#api-keys).
@@ -236,7 +236,7 @@ We have covered the basic migration case, but there are some advanced cases.
 
 ### Migrating a Micro Tied to Bases and Drives in Deta Cloud
 
-You may have been using Micros with Bases and Drives in Deta Cloud, and want to continue using the data that lives in these Bases and Drives with your migrated Space App. 
+You may have been using Micros with Bases and Drives in Deta Cloud, and want to continue using the data that lives in these Bases and Drives with your migrated Space App.
 
 This is possible in a few steps.
 
@@ -272,10 +272,10 @@ micros:
   - name: python-app
     src: .
     engine: python3.9
-		env:
-        - name: MY_DATA_KEY
-          description: Integrate my new Space App with my new Collection. Yes!!
-          default: "please input your data key"
+    env:
+      - name: MY_DATA_KEY
+        description: Integrate my new Space App with my new Collection. Yes!!
+        default: "please input your data key"
 ```
 
 What we are doing here is creating an environment variable for our Micro, where we can securely store the Data Key for it to access.
@@ -286,9 +286,9 @@ Once we've updated the Spacefile, let's deploy our changes to our Builder Instan
 
 ##### Update the Environment Variable
 
-Click the '...' on your Builder Instance's tile on the Canvas, then click **Configuration**. 
+Click the '...' on your Builder Instance's tile on the Canvas, then click **Configuration**.
 
-There should now be a heading that says **Environment Variables**, with `MY_DATA_KEY` as the only listed environment variable. 
+There should now be a heading that says **Environment Variables**, with `MY_DATA_KEY` as the only listed environment variable.
 
 Let's input the **Data Key** we stored earlier into the input field and click **Save Changes**.
 
@@ -334,7 +334,7 @@ drive = deta.Drive("my_existing_drive")
   </Fragment>
 </LangTabs>
 
-If you're not using the Base or Drive SDKs, you can pass your **Data Key** as the `X-API-Key` header using the [Base](https://deta.space/docs/en/reference/base/HTTP#auth) or [Drive](https://deta.space/docs/en/reference/drive/HTTP) HTTP API. 
+If you're not using the Base or Drive SDKs, you can pass your **Data Key** as the `X-API-Key` header using the [Base](https://deta.space/docs/en/reference/base/HTTP#auth) or [Drive](https://deta.space/docs/en/reference/drive/HTTP) HTTP API.
 
 ### Migrating a Custom Domain
 
