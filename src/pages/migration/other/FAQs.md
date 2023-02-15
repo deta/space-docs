@@ -7,7 +7,7 @@ section: Other
 
 ### What exactly does "deta.sh is retiring" mean?
 
-This means the following:
+It means the following:
 - The ability to create new Projects and Micros on deta.sh aka Deta Cloud has been disabled since the merge day (Feb 14, 2023).
 - You can still access your existing Deta Cloud Projects and Micros on [Deta Space](https://deta.space) in [Legacy Cloud app](https://deta.space/migration/learn-more/legacy-mode#the-legacy-cloud-app), available through your Deta Space Canvas.
 - You can deploy code, make changes, and save data on your Micros, Bases, and Drives on Deta Cloud until May 1st, 2023.
