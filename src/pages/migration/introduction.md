@@ -4,7 +4,7 @@ position: 0
 layout: "@docs"
 ---
 
-Welcome! If you're coming from [Deta Cloud](https://www.deta.sh/) and you're looking for more information about what the move to [Deta Space](https://deta.space/) means for your Cloud Projects, you're in the right place. 
+Welcome! If you're coming from [Deta Cloud](https://www.deta.sh/) and you're looking for more information about what the move to [Deta Space](https://deta.space/) means for your Cloud Projects, you're in the right place.
 
 This hub has resources on how to migrate, alongside some information about the Deta Space in relation to Deta Cloud, and the Cloud Sunset plan.
 
@@ -18,17 +18,17 @@ On merge day (February 14, 2023), Deta Cloud will enter legacy status and Deta S
 4. Migration for Micros, Bases, and Drives will be strongly recommended and available until May 1, 2023.
 5. On May 1, 2023, Deta Cloud Projects will no longer be supported and unmigrated resources will be removed.
 
-How will all this work? 
+How will all this work?
 
 There is supported [Legacy Mode](/migration/learn-more/legacy-mode) for managing Deta Cloud Projects and resources until May 1.
 
 There are also Migration Paths available (and strongly recommended) until May 1.
 
-## 🗂️ Guides and Resources 
+## 🗂️ Guides and Resources
 
 Below are a few guides for getting going with migrating to Space and resources for learning more.
 
-### 🚀 Migrate a Base, Drive, or Micro 
+### 🚀 Migrate a Base, Drive, or Micro
 - [Migrate Bases & Drives from Deta Cloud](/migration/guides/import-a-project)
 - [Migrate a Micro from Deta Cloud](/migration/guides/migrate-a-micro)
 
@@ -40,7 +40,7 @@ Below are a few guides for getting going with migrating to Space and resources f
 ### ℹ️ More Resources
 - [Why Deta Exists](https://deta.space/motivation/)
 
-## ❓ Help, I'm stuck  
-- [FAQs](/migration/other/faqs)
+## ❓ Help, I'm stuck
+- [FAQs](/migration/other/FAQs)
 
 Please check the FAQs for any questions related to migrations and if you can't find an answer there, shoot us a note on [Discord](https://go.deta.dev/discord).
