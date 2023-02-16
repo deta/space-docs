@@ -28,4 +28,4 @@ Users have full access to their data and have the flexibility to interact with i
 
 Deta Space is currently still in its alpha phase. It is pretty stable right now but things could still break unexpectedly.
 
-If you have feedback or run into issues, let us know in the #space channel on [Discord](https://go.deta.dev/discord) or shoot us a note at [team@deta.sh](mailto:team@deta.sh).
+If you have feedback or run into issues, let us know in the #space channel on [Discord](https://go.deta.dev/discord) or shoot us a note at [team@deta.space](mailto:team@deta.space).

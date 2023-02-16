@@ -139,7 +139,7 @@
         section: "Help",
         icon: Support,
         handler: () => {
-          window.open("mailto:team@deta.sh?subject=Space Alpha", "_blank");
+          window.open("mailto:team@deta.space?subject=Space Alpha", "_blank");
         },
       },
       {
