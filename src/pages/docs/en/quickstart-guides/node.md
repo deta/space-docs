@@ -1,11 +1,13 @@
 ---
-title: Run a Node App
+title: Run a Node.js App
 section: Quickstart Guides
 position: 4
 layout: "@docs"
 ---
 
-To run Node.js on a Space Micro **it is recommended to use Node v16** since it works with Space out of the box. You only need to make sure that your Micro listens on the port specified in the environment variable `PORT`.
+To run a Node.js app on a Space Micro, **it is recommended to use Node.js v16** since it works with Space out of the box.
+
+> ⚠️ Make sure that your Micro is configured to listen on the port number specified in the environment variable `PORT`.
 
 Here's the Spacefile needed to get a basic Node.js app running on Space:
 
@@ -54,4 +56,4 @@ micros:
 - `include` specifies which directory to include in the final app package, everything else will be ignored. In our case we set it to the directory of our build output
 - `run` specifies the command to start your Micro. In our case running the `index.js` file in our `build` directory using `node`
 
-> Node v14 is not fully supported, please contact the team if you want to use Node v14 Micros.
+> ℹ️ Support for Node.js v18 is coming soon.
