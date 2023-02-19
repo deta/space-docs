@@ -272,10 +272,11 @@ micros:
   - name: python-app
     src: .
     engine: python3.9
-    env:
-      - name: MY_DATA_KEY
-        description: Integrate my new Space App with my new Collection. Yes!!
-        default: "please input your data key"
+    presets:
+      env:
+        - name: MY_DATA_KEY
+          description: Integrate my new Space App with my new Collection. Yes!!
+          default: "please input your data key"
 ```
 
 What we are doing here is creating an environment variable for our Micro, where we can securely store the Data Key for it to access.
