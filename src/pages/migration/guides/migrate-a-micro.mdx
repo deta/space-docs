@@ -339,9 +339,11 @@ If you're not using the Base or Drive SDKs, you can pass your **Data Key** as th
 
 ### Migrating a Custom Domain
 
-We'll have a recommended method to migrate a custom domain with no downtime soon.
+Migrating a custom domain from Deta Cloud to Deta Space is possible with a few simple steps without any downtime. To do this, just [add your custom domain to your Space app](https://deta.space/manual/features/custom-domains) and click "Assign Anyway" if you get a warning about the domain already being in use.
 
-If you aren't afraid of downtime, remove your custom domain in the [Deta Cloud Legacy App](/migration/learn-more/legacy-mode) and then [add a custom domain to your Space app](https://deta.space/manual/features/custom-domains).
+You might be asked to verify ownership of the domain by adding a `TXT` record to your DNS. Once you've done that and the system verifies it, the domain will be removed from your Deta Cloud Micro automatically and traffic will be routed to your Space app without downtime.
+
+If you aren't afraid of downtime, you can also remove your custom domain in the [Deta Cloud Legacy App](/migration/learn-more/legacy-mode) first and then [add it to your Space app](https://deta.space/manual/features/custom-domains).
 
 That's it! You have successfully migrated your Deta Cloud Micro to Space.
 
