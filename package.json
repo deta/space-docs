@@ -48,6 +48,6 @@
     "svelte-navigator": "^3.2.2"
   },
   "optionalDependencies": {
-    "@deta/teletype": "^0.0.1-rc.8"
+    "@deta/teletype": "^0.0.1"
   }
 }

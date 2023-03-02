@@ -74,6 +74,8 @@
                 // Disable built-in searching and use external search engine
                 teletype.options!.localSearch = false
 
+                teletype.setLoading(true)
+
                 const search = await docsIndex.search(searchTerm, {
                     limit: 1000,
                 })
@@ -82,6 +84,8 @@
                 const localActions = findLocalActions(searchTerm, actions)
 
                 teletype.actions.set([...localActions, ...remoteActions])
+
+                setTimeout(() => teletype.setLoading(false), 200)
             } else {
                 // Use the static actions and built-in searching
                 teletype.options!.localSearch = true
