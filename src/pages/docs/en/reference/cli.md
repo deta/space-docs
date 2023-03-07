@@ -39,17 +39,21 @@ space new
 
 ## `space push`
 
-You can use `space push` to push your changes to Space and create a new revision.
+You can use `space push` to push your changes to Space and create a new revision. Space will automatically update your Builder instance with the new revision.
 
 Optional args:
 
-- `-d, --dir` string: src of project to push (default "./")
-- `-i, --id` string: project id of project to push
-- `-t, --tag` string: tag to identify this push
+- `-d, --dir`   string: src of project to push (default "./")
+- `-i, --id`    string: project id of project to push
+- `-t, --tag`   string: tag to identify this push
+- `-o, --open`  boolean: open builder instance/project in browser after push
+- `--skip-logs` boolean: skip following logs after push
 
 ```bash
 space push
 ```
+
+If you don't want to follow the logs of the build and update, pass the `--skip-logs` argument which will exit the process as soon as the build is started instead of waiting for it to finish.
 
 Tip: you can use the [`.spaceignore` file](/docs/en/basics/revisions#ignoring-files-and-directories) to exclude certain files and directories from being uploaded during push.
 
@@ -83,6 +87,19 @@ Optional args:
 
 ```bash
 space link
+```
+
+## `space open`
+
+You can use `space open` to open your local project in the Builder UI on [deta.space](https://deta.space).
+
+Optional args:
+
+- `-d, --dir` string: directory of project to open (default "./")
+- `-i, --id` string: project id of project to open
+
+```bash
+space open
 ```
 
 ## `space validate`
