@@ -1,0 +1,50 @@
+---
+title: "Local Development Support"
+date: "20 Mar 2023"
+layout: "@changelogs"
+description: "Lots of new features and improvements to the Space CLI."
+---
+
+Since the introduction of Deta Space, we have receive a lot of requests for local development support.
+We are happy to announce that the new version of the Space CLI now supports this usecase.
+
+## The `space dev` command
+
+From the root of your project, just run the following command:
+
+```
+space dev
+```
+
+Et voila! You app is now running locally and you can access it at `http://localhost:4200`.
+Add the `--open` flag to open the app in your browser automatically.
+
+Behind the scenes, the Space CLI is:
+
+- Generate a project key to allow your app to access it's Deta Base and Deta Drive
+- Running each of your micro in a separate process
+- Exposing all of your micros through a single entrypoint.
+
+## Customizing the dev command
+
+Of course, each micros might have different requirements, and you might want to customize the `dev command` for each of them.
+
+You can do this specifying the command to run for each micro in your `Spacefile` using the `dev` field.
+
+More information can be found in the [Space CLI documentation](https://docs.deta.sh/docs/cli/space/dev).
+
+## Supporting Power Users
+
+Of course, we know that some of you are power users and want to have more control over your local development environment.
+
+Instead of running `space dev`, you can run each of your micros manually, and then start the reverse proxy yourself.
+
+More information can be found in the [Space CLI documentation](https://docs.deta.sh/docs/cli/space/dev).
+
+## Upgrading to the new version
+
+To upgrade to the new version of the Space CLI, just run the following command:
+
+```
+space version upgrade
+```

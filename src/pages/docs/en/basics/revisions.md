@@ -1,7 +1,7 @@
 ---
 title: Pushing changes
 section: Basics
-position: 4
+position: 5
 layout: "@docs"
 ---
 

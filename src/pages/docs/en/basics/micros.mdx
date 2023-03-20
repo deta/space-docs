@@ -11,7 +11,7 @@ import Tabs from "@/components/Tabs/Tabs"
 Deta Space can run almost any type of app. For example, Space supports:
 - frontend sites built with frameworks like React, Vue and Svelte
 - full-stack frameworks like Next, Nuxt or SvelteKit
-- backend apps built with Node.js, Python and even Go, Rust or something more custom. 
+- backend apps built with Node.js, Python and even Go, Rust or something more custom.
 
 A Space app can also be built by combining these different technologies, for example, a SvelteKit app with a Go API, really any combination of up to 5 different languages/frameworks.
 
@@ -21,15 +21,15 @@ Micros are defined in your project's [Spacefile](/docs/en/reference/spacefile), 
 
 ## Adding your first Micro
 
-When you create a new project using the Space CLI, it will try to detect the type of app you want to deploy. This works for most frameworks like Next, Nuxt, SvelteKit, and backend runtimes like Node.js and Python. 
+When you create a new project using the Space CLI, it will try to detect the type of app you want to deploy. This works for most frameworks like Next, Nuxt, SvelteKit, and backend runtimes like Node.js and Python.
 
 If this detection works, it will show you what type of Micro is detected and its generated config. After you've confirmed the config is correct, the CLI will create the `Spacefile` in your local directory for you.
 
-Even if this detection fails, Space supports almost any type of app via the `Spacefile`. 
+Even if this detection fails, Space supports almost any type of app via the `Spacefile`.
 
 ## Adding Micros via the Spacefile
 
-If you want to run something more custom or need to add more Micros to an existing project, you can edit the project's `Spacefile` to add the required configuration. 
+If you want to run something more custom or need to add more Micros to an existing project, you can edit the project's `Spacefile` to add the required configuration.
 
 Take a look at the [Spacefile reference](/docs/en/reference/spacefile) for a complete list of options.
 
@@ -50,7 +50,7 @@ If your project contains more than one Micro, the `primary` field can be used to
 
 ## Directory structure
 
-A Micro can be thought of as its own independent service. As a result, they need to be self-contained in their own directory in your project and your project root should not contain any Micro specific files. 
+A Micro can be thought of as its own independent service. As a result, they need to be self-contained in their own directory in your project and your project root should not contain any Micro specific files.
 
 Here's an example of the file & folder structure of an app with a Python backend and a Vue frontend:
 
@@ -332,6 +332,6 @@ Space currently supports two types of intervals for scheduled actions:
 
 Check out the [Spacefile Reference](/docs/en/reference/spacefile#actions) on the exact syntax.
 
-Scheduled actions have to be purposely enabled, setup and need to have a default interval which they will be executed on. 
+Scheduled actions have to be purposely enabled, setup and need to have a default interval which they will be executed on.
 
 After installing an app, its scheduled actions are automatically enabled and set to run on the default interval. The user can at any point change the interval or disable an action completely. Check out the [User Manual](/manual/apps#schedules) on how scheduled actions are presented to app users.

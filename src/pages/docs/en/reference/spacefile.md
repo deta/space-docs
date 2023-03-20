@@ -249,6 +249,19 @@ micros:
     run: ./main
 ```
 
+#### `dev`
+
+Use `run` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `deta dev`.
+
+```yaml
+micros:
+  - name: api
+    src: ./api/
+    engine: custom
+    run: ./main
+    dev: go run main.go
+```
+
 #### `presets`
 
 *Optional*

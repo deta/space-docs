@@ -1,7 +1,7 @@
 ---
 title: Dealing with data
 section: Basics
-position: 3
+position: 4
 layout: "@docs"
 ---
 
@@ -28,9 +28,13 @@ Take a look the the [Drive Reference](/docs/en/reference/drive/about) on how to 
 
 During development, you can share data between your local environment and your [project](/docs/en/basics/projects) in Space.
 
-To do so, you need to manually connect your development environment to a project's Bases and Drives by using a "project key".
+There is two ways to inject a project key into your development environment:
 
-A project key gives access to Bases and Drives within a project, and can be generated from the "Develop" tab inside your Builder project.
+### Using the `space dev` commands
+
+The `space dev` and `space dev run` commands will automatically injects the proper credentials into your development environment.
+
+### Using the DETA_PROJECT_KEY environment variable
 
 If you are using an official Deta SDK, add this as an environment variable inside your dev environment:
 
