@@ -27,9 +27,21 @@ Behind the scenes, the Space CLI is:
 
 ## Customizing the dev command
 
-Of course, each micros might have different requirements, and you might want to customize the `dev command` for each of them.
+By default we automatically try to choose the right command to start your Micro in development mode based on the Micro's engine. This currently only works for static engines like `svelte`, `vue` and `react` as well as fullstack frameworks like `next`, `nuxt` and `sveltekit`. 
 
-You can do this specifying the command to run for each micro in your `Spacefile` using the `dev` field.
+If your Micro has different requirements or needs more setup, like a `node`, `python` or `custom` Micro, use the `dev` option in the `Spacefile` to specify a Micro's development command yourself:
+
+```yaml
+v: 0
+micros:
+  - name: app
+    src: ./app
+    engine: nodejs16
+    primary: true
+    run: "node index.js"
+    dev: "nodemon index.js"
+```
+
 
 More information can be found in the [Space CLI documentation](https://docs.deta.sh/docs/cli/space/dev).
 

@@ -7,14 +7,15 @@ layout: "@docs"
 
 ## Starting a Development Server
 
-Once you've created a project, you can start developing your app locally.
-You can use the `space dev` command to start a local development server for your project.
+Once you've created a Space project, you can start developing your app locally using the Space CLI's `space dev` command. The `space dev` command allows you to use Deta Base and Deta Drive with no extra configuration and emulates the [routing of Deta Space](/docs/en/basics/micros#micro-routing), specified in your Spacefile.
 
 ```bash
 space dev --open # start a local development server and open the app in your browser
 ```
 
-You can control what command is run for each micro by editing the `dev` field in your `Spacefile`.
+When running `space dev` the CLI will start its own web server on port `4200` that emulates the Deta Space runtime locally. It will start each Micro by running the `dev` command that is either set by the engine automatically or specified in the `Spacefile`. It automatically handles the routing between Micros and logs from every Micro are combined and sent to the console.
+
+You can control what command is run for each Micro by editing the `dev` field in your `Spacefile`.
 
 ```yaml
 v: 0
@@ -30,6 +31,10 @@ micros:
     dev: node index.js
     path: api
 ```
+
+The specified `dev` commands need to start a web server that listens on the port specified with the `PORT` environment variable. This way the CLI can properly forward requests to the Micro.
+
+To develop and test your app open a browser and navigate to `http://localhost:4200`.
 
 ## Running micros individually
 

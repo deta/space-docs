@@ -30,11 +30,28 @@ During development, you can share data between your local environment and your [
 
 There is two ways to inject a project key into your development environment:
 
-### Using the `space dev` commands
+### Automatic setup
 
-The `space dev` and `space dev run` commands will automatically injects the proper credentials into your development environment.
+The Space CLI can automatically connect your local development environment with your Space project using the `space dev` command. It will generate a data key on the fly, start your Micro using a command you specify in the `Spacefile` and inject the data key into the process the Micro:
 
-### Using the DETA_PROJECT_KEY environment variable
+```yaml
+v: 0
+	micros:
+	  - name: app
+	    src: ./app
+	    engine: nodejs16
+	    primary: true
+	    run: "node index.js"
+	    dev: "nodemon index.js"
+```
+
+The specified command should start your program or server in development mode. Follow the instructions of the framework you are using. Learn more about developing a Space app locally in the [Micro basics](/docs/en/basics/micros#local-development).
+
+If your program is started using the `space dev` command, the Base & Drive SDKs should work out of the box without further setup.
+
+### Manual setup
+
+If the automatic set up does not work for your use-case, you can manually set up your local development environment by generating a data key from the "Data" tab on the "Develop" page, inside your Builder project.
 
 If you are using an official Deta SDK, add this as an environment variable inside your dev environment:
 
