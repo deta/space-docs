@@ -2,6 +2,7 @@
 title: Running locally
 section: Basics
 position: 3
+hidden: true
 layout: "@docs"
 ---
 
