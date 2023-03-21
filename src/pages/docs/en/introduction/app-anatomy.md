@@ -25,7 +25,7 @@ As a Space app developer, you'll code your app slightly differently than you wou
 
 A single app can consist of up to five Micros and an unlimited number of Bases and Drives. All these resources do not have to be created. Micros can be defined in your [Spacefile](/docs/en/reference/spacefile), while Bases and Drives can be created by your app during runtime.
 
-On the public cloud, as a developer, you would pay and take responsibility for the resources 3rd party users consume through an app you wrote. On the personal cloud, this is completely different: the resources live with the users, so you need to worry about either.
+On the public cloud, as a developer, you would pay and take responsibility for the resources 3rd party users consume through an app you wrote. On the personal cloud, this is completely different: the resources live with the users, so you do not need to worry about either.
 
 ## Developing and releasing your app
 
