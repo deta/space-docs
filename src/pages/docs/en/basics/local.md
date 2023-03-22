@@ -74,7 +74,7 @@ The `space dev` command is just a shortcut for the combination of `space dev up`
 
 ## Running scheduled actions manually
 
-You can trigger scheduled actions from your local development server by using the `space dev trigger` command.
+You can trigger [scheduled actions](/docs/en/basics/micros#scheduled-actions) from your local development server by using the `space dev trigger` command.
 
 First make sure you have defined a scheduled action in your Spacefile and set up the right handler in your Micro:
 
