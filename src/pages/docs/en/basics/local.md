@@ -41,7 +41,7 @@ micros:
 
 The specified `dev` commands need to start a web server that listens on the port specified with the `PORT` environment variable. This way the CLI can properly forward requests to the micro.
 
-You can find guide specific to each micro engine in the Quickstart Guides.
+You can find instructions on how to setup the right `dev` command for each engine in the "Quickstart Guides".
 
 ## Advanced Usage
 
