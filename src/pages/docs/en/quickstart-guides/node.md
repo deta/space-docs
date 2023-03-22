@@ -38,6 +38,8 @@ app.listen(port, () => {
 })
 ```
 
+> ℹ️ We use [`nodemon`](https://www.npmjs.com/package/nodemon) to watch for changes in our code and restart the server automatically. You can use any other tool you like.
+
 If your Node Micro has a build step (e.g. because you are using TypeScript) use a config similar to the following:
 
 ```yaml

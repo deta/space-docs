@@ -11,7 +11,7 @@ layout: "@docs"
 Once you've created a Space project, you can start developing your app locally using the Space CLI's `space dev` command.
 
 ```bash
-space dev # start a local development server and open the app in your browser
+space dev
 ```
 
 Behind the scenes, the Space CLI is:
@@ -48,7 +48,7 @@ You can find instructions on how to setup the right `dev` command for each engin
 If you want to have more control over the development process, you can also split the `dev` command into two parts:
 
 - First, start micros individually using the `space dev up` command
-- Then, start the entrypoint server using the `space dev proxy`
+- Then, start the reverse proxy using the `space dev proxy`
 
 For our example above, this would look like this:
 
@@ -57,7 +57,7 @@ For our example above, this would look like this:
 space dev up client
 space dev up api
 
-# Start the entrypoint server
+# Start the reverse proxy
 space dev proxy
 ```
 
