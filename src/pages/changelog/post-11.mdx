@@ -29,8 +29,9 @@ For more information, make sure to check out the [docs](/docs/en/basics/local).
 
 ## Triggering Scheduled Action from the CLI
 
-Scheduled actions allow an app to perform certain tasks on a specific interval.
-These tasks can be anything you build into your app, from a cleanup job to automated data aggregation or revalidation.
+If your Spacefile contains a scheduled action, you can now trigger it locally.
+
+For example, if you have the following Spacefile:
 
 ```yaml
 micros:
@@ -46,7 +47,7 @@ micros:
         default_interval: "0/15 * * * *"
 ```
 
-The new version of the Space CLI allows you to test your scheduled actions locally.
+You can trigger the `cleanup` action by running the following command:
 
 ```bash
 space dev trigger cleanup
@@ -55,6 +56,21 @@ space dev trigger cleanup
 Behind the scenes, the Space CLI will:
     - Send the action event your micro using the same event format as the Space platform
     - Print the returned response to your console (if any)
+
+## Running commands against your Deta Base & Drive
+
+The `space exec` commands allows you to give a command access to your Deta Base and Drive data.
+
+```
+space exec --project <project-id> -- node init-database.js
+```
+
+Some use cases include:
+
+- testing Base & Drive locally
+- pre-filling your projects Bases & Drives with data
+- programmatically interacting with Base & Drive
+- …anything you can think of!
 
 ## Upgrading to the new version
 
