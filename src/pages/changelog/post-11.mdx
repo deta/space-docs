@@ -1,35 +1,36 @@
 ---
-title: "Local Development Support"
+title: "Local Development for Space"
 date: "20 Mar 2023"
 layout: "@changelogs"
-description: "Lots of new features and improvements to the Space CLI."
+description: "Emulate Space locally with the CLI & More."
 ---
 
-Since the introduction of Deta Space, we have receive a lot of requests for local development support.
-We are happy to announce that the new version of the Space CLI now supports this usecase.
+Since the introduction of Deta Space, developers have been asking for a better experience when building locally for Space. Whether it is managing keys or coordinating between two separate [Micros](https://deta.space/docs/en/basics/micros#whats-a-micro), local development requires unnecessary work.
 
-## A new way to run your app locally
+We are happy to announce that the newest Space CLI can now do a lot of the heavy lifting, with a single command: `space dev`.
 
-From the root of your project, just run the following command:
+## `space dev`: run your Space app locally
+
+If you've got a Space project you want to run locally, just run the following command, from the root of your project:
 
 ```
 space dev
 ```
 
-Et voila! You app is now running locally and you can access it at `http://localhost:4200`.
-Add the `--open` flag to open the app in your browser automatically.
+Et voila! Your app is now running locally and you can access it at `http://localhost:4200` (the Space CLI will tell you this).
+You can also add the `--open` flag to open the app in your browser automatically.
 
 Behind the scenes, the Space CLI is:
 
-- Generating a data key to allow your app to access the Bases and Drives of your project
-- Running each of your micro in a separate process
-- Exposing all of your micros through a single entrypoint.
+- Generating and injecting a [Data Key](https://deta.space/changelog/post-6) to allow your app to write data to your project
+- Running each of your Micros in a separate process
+- Exposing all of your Micros through a single entrypoint (following the routing in your Spacefile)
 
 For more information, make sure to check out the [docs](/docs/en/basics/local).
 
-## Triggering Scheduled Action from the CLI
+## Triggering Scheduled Actions from the CLI
 
-If your Spacefile contains a scheduled action, you can now trigger it locally.
+If your Spacefile contains a [Scheduled Action](https://deta.space/docs/en/basics/micros#scheduled-actions), you can also now trigger it locally for testing.
 
 For example, if you have the following Spacefile:
 
@@ -47,19 +48,19 @@ micros:
         default_interval: "0/15 * * * *"
 ```
 
-You can trigger the `cleanup` action by running the following command:
+You can now trigger the `cleanup` action by running the following command:
 
 ```bash
 space dev trigger cleanup
 ```
 
 Behind the scenes, the Space CLI will:
-    - Send the action event your micro using the same event format as the Space platform
+    - Send the action event to your Micro locally
     - Print the returned response to your console (if any)
 
-## Running commands against your Deta Base & Drive
+## Running local scripts against your project's Bases & Drives
 
-The `space exec` commands allows you to give a command access to your Deta Base and Drive data.
+The `space exec` commands allows you to give a local command or script access to your project's Deta Base and Drive data. It does so by creating and injecting a [Data Key](https://deta.space/changelog/post-6) as `DETA_PROJECT_KEY` into your local environment.
 
 ```
 space exec --project <project-id> -- node init-database.js
@@ -70,12 +71,13 @@ Some use cases include:
 - testing Base & Drive locally
 - pre-filling your projects Bases & Drives with data
 - programmatically interacting with Base & Drive
-- …anything you can think of!
+- … anything else you can think of!
 
-## Upgrading to the new version
+## Upgrading to the new CLI
 
-To upgrade to the new version of the Space CLI, just run the following command:
+To use all the new commands, make sure to upgrade to the latest version of the Space CLI, with the following command:
 
 ```
 space version upgrade
-```
+
+That's all for now. Thank you for all the feedback — please continue to share! 
