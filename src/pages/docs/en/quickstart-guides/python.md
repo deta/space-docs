@@ -20,3 +20,25 @@ micros:
     src: ./src/python
     engine: python3.9
 ```
+
+## Setting up local development
+
+We recommend using virtual environment for local development. If you have listed your app dependencies in a `requirements.txt` file, you can install them to your virtual environment with:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# If you are using FastAPI, you will also need to install uvicorn
+pip install uvicorn[standard]
+```
+
+Then you will need to setup the dev command inside your Spacefile. Just reference the executable file from your virtual environment:
+
+```yaml
+  - name: python-app
+    src: ./src/python
+    engine: python3.9
+    dev: .venv/bin/uvicorn main:app --reload
+```
