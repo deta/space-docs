@@ -20,11 +20,7 @@ Behind the scenes, the Space CLI is:
 - Running each of your micro in a separate process
 - Exposing all of your micros through a single entrypoint, on `localhost:4200` by default.
 
-If you want to open the app in your browser, you can use add `--open` flag:
-
-```bash
-space dev --open # start a local development server and open the app in your browser
-```
+If you want to open the app in your browser automatically after starting your Micros, use the `--open` flag.
 
 You can customize the development command for each micro in your `Spacefile` using the `dev` key.
 
