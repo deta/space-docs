@@ -48,6 +48,11 @@ v: 0
 The specified command should start your program or server in development mode. Follow the instructions of the framework you are using. Learn more about developing a Space app locally in our [guide](/docs/en/basics/local).
 
 If your program is started using the `space dev` command, the Base & Drive SDKs should work out of the box without further setup.
+If you want to want to run a single command against your Base or Drive, you can wrap it inside a `space exec` call:
+
+```bash
+space exec --project <project-id> -- node feed-database.js
+```
 
 ### Manual setup
 
