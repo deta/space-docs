@@ -72,15 +72,6 @@ Optional args:
 - `-p, --port` string: port to run dev server on (default “3000”)
 - `-o, --open` bool: open dev server in browser after starting
 
-## `space dev run`
-
-You can use `space run` to run a command in the context of your project. The project key will be automatically injected into the environment.
-
-Optional args:
-
-- `-d, --dir`  string: src of project to dev (default “./”)
-- `-i, --id`   string: id of the project
-
 ## `space dev trigger`
 
 You can use `space trigger` to manually trigger action. Make sure that the corresponding micro is running before triggering the action.
@@ -141,6 +132,14 @@ Optional args:
 ```bash
 space link
 ```
+
+## `space exec`
+
+You can use `space exec` to run a command in the context of your project. The project key will be automatically injected into the environment.
+
+Required args:
+
+- `-p, --project`   string: id of the project
 
 ## `space open`
 
