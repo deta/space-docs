@@ -6,29 +6,25 @@
 
 # Deta Space Docs
 
-Deta Space is a personal cloud computing platform that enables individuals to turn their ideas into reality using their own personal cloud computer.
+Deta Space enables developers to turn their ideas into reality using their own personal cloud computer. [Why we are building Space](https://deta.space/motivation).
 
 [🔮 Homepage](https://deta.space) - [💻 Developer Docs](https://deta.space/docs) - [📚 User Manual](https://deta.space/manual)
-
-Learn more on [why we are building Space](https://deta.space/motivation).
-
 </div>
 
-## Getting Help
-
-We have answered some [FAQs](https://deta.space/manual/faq) in our [docs](https://deta.space/manual), but we are here to help and would love to hear what you think!
-- Code Questions: [GitHub Discussions](https://github.com/orgs/deta/discussions)
-- Chat: [Discord](https://go.deta.dev/discord)
-- Shenanigans: [Twitter](https://twitter.com/detahq)
-- Emails (no support): `team@deta.space`
-
-## About This Repository
-
-This repository contains a [Astro](https://astro.build) application that handles the Deta Space [Docs](https://deta.space/docs), [Manual](https://deta.space/manual) and [Changelog](https://deta.space/changelog).
+---
+This repository contains a [Astro](https://astro.build) application that handles the Deta Space [Developer Docs](https://deta.space/docs), [User Manual](https://deta.space/manual) and [Changelog](https://deta.space/changelog).
 
 The actual content for the different pages can be found in `./src/pages/` in the respective folders.
 
-> If you are looking for the legacy documentation for Deta Cloud head over to [deta/legacy-docs](https://github.com/deta/legacy-docs). Read more about how Cloud is moving to Space in our [blog](https://deta.space/blog/moving-to-space).
+## Contributing
+We love contributions! To get started, clone the repository and run the following to install the dependencies (`--ignore-optional` is required) :
+```sh
+yarn install --ignore-optional
+```
+then to start the local dev server:
+```sh
+yarn run dev
+```
 
 ## Available Commands
 
