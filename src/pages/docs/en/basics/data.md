@@ -45,7 +45,7 @@ v: 0
 	    dev: "nodemon index.js"
 ```
 
-The specified command should start your program or server in development mode. Follow the instructions of the framework you are using. Learn more about developing a Space app locally in the [Micro basics](/docs/en/basics/micros#local-development).
+The specified command should start your program or server in development mode. Follow the instructions of the framework you are using. Learn more about developing a Space app locally in our [guide](/docs/en/basics/local).
 
 If your program is started using the `space dev` command, the Base & Drive SDKs should work out of the box without further setup.
 
