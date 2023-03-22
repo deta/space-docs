@@ -97,7 +97,7 @@ space dev trigger cleanup
 
 This will call your local action handler with a mock payload and print the returned response to your console.
 
-## Running commands against your project
+## Running commands in the context of your project
 
 If you don’t want to specify a dev command in your Spacefile or you want to run a one-off script while still benefitting from the automatic Base & Drive SDK setup you can wrap your command a `space exec` call:
 

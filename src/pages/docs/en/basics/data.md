@@ -32,27 +32,10 @@ There is two ways to setup the Deta SDK to access the Bases & Drives of your pro
 
 ### Automatic setup
 
-The Space CLI can automatically connect your local development environment with your Space project using the `space dev` command. It will generate a data key on the fly, start your Micro using a command you specify in the `Spacefile` and inject the data key into the process the Micro:
+The Space CLI can automatically connect your local development environment with your Space Base & Drive using the `space dev` command.
 
-```yaml
-v: 0
-	micros:
-	  - name: app
-	    src: ./app
-	    engine: nodejs16
-	    primary: true
-	    run: "node index.js"
-	    dev: "nodemon index.js"
-```
+More information on how to use the `space dev` command can be found in the in the [Developing Locally](/docs/en/basics/local) section.
 
-The specified command should start your program or server in development mode. Follow the instructions of the framework you are using. Learn more about developing a Space app locally in our [guide](/docs/en/basics/local).
-
-If your program is started using the `space dev` command, the Base & Drive SDKs should work out of the box without further setup.
-If you want to want to run a one-off script or command that interacts with Base or Drive, you can wrap it inside a `space exec` call:
-
-```bash
-space exec --project <project-id> -- node feed-database.js
-```
 
 ### Manual setup
 
