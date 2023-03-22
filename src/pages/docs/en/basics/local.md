@@ -11,7 +11,7 @@ layout: "@docs"
 Once you've created a Space project, you can start developing your app locally using the Space CLI's `space dev` command.
 
 ```bash
-space dev --open # start a local development server and open the app in your browser
+space dev # start a local development server and open the app in your browser
 ```
 
 Behind the scenes, the Space CLI is:
@@ -19,6 +19,12 @@ Behind the scenes, the Space CLI is:
 - Generating a data key to allow your app to access the Bases and Drives of your project
 - Running each of your micro in a separate process
 - Exposing all of your micros through a single entrypoint, on `localhost:4200` by default.
+
+If you want to open the app in your browser, you can use add `--open` flag:
+
+```bash
+space dev --open # start a local development server and open the app in your browser
+```
 
 You can customize the development command for each micro in your `Spacefile` using the `dev` key.
 
@@ -38,6 +44,8 @@ micros:
 ```
 
 The specified `dev` commands need to start a web server that listens on the port specified with the `PORT` environment variable. This way the CLI can properly forward requests to the micro.
+
+You can find guide specific to each micro engine in the Quickstart Guides.
 
 ## Advanced Usage
 
