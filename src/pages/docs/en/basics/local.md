@@ -8,7 +8,7 @@ layout: "@docs"
 
 ## Starting a Development Server
 
-Once you've created a Space project, you can start developing your app locally using the Space CLI's `space dev` command.
+Once you've created a Space project, you can start developing your app locally using the [Space CLI's](https://deta.space/docs/en/reference/cli) `space dev` command.
 
 ```bash
 space dev
