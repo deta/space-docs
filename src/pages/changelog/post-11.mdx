@@ -8,7 +8,7 @@ description: "Lots of new features and improvements to the Space CLI."
 Since the introduction of Deta Space, we have receive a lot of requests for local development support.
 We are happy to announce that the new version of the Space CLI now supports this usecase.
 
-## The `space dev` command
+## A new way to run your app locally
 
 From the root of your project, just run the following command:
 
@@ -21,37 +21,40 @@ Add the `--open` flag to open the app in your browser automatically.
 
 Behind the scenes, the Space CLI is:
 
-- Generate a data key to allow your app to access the Bases and Drives of your project
+- Generating a data key to allow your app to access the Bases and Drives of your project
 - Running each of your micro in a separate process
 - Exposing all of your micros through a single entrypoint.
 
-## Customizing the dev command
+For more information, make sure to check out the [docs](/docs/en/basics/local).
 
-By default we automatically try to choose the right command to start your Micro in development mode based on the Micro's engine. This currently only works for static engines like `svelte`, `vue` and `react` as well as fullstack frameworks like `next`, `nuxt` and `sveltekit`. 
+## Triggering Scheduled Action from the CLI
 
-If your Micro has different requirements or needs more setup, like a `node`, `python` or `custom` Micro, use the `dev` option in the `Spacefile` to specify a Micro's development command yourself:
+Scheduled actions allow an app to perform certain tasks on a specific interval.
+These tasks can be anything you build into your app, from a cleanup job to automated data aggregation or revalidation.
 
 ```yaml
-v: 0
 micros:
-  - name: app
-    src: ./app
+  - name: backend
+    src: backend
     engine: nodejs16
-    primary: true
     run: "node index.js"
-    dev: "nodemon index.js"
+    actions:
+      - id: "cleanup"
+        name: "Clean Up"
+        description: "Cleans up unused data"
+        trigger: "schedule"
+        default_interval: "0/15 * * * *"
 ```
 
+The new version of the Space CLI allows you to test your scheduled actions locally.
 
-More information can be found in the [Space CLI documentation](https://docs.deta.sh/docs/cli/space/dev).
+```bash
+space dev trigger cleanup
+```
 
-## Supporting Power Users
-
-Of course, we know that some of you are power users and want to have more control over your local development environment.
-
-Instead of running `space dev`, you can run each of your micros manually, and then start the reverse proxy yourself.
-
-More information can be found in the [Space CLI documentation](https://docs.deta.sh/docs/cli/space/dev).
+Behind the scenes, the Space CLI will:
+    - Send the action event your micro using the same event format as the Space platform
+    - Print the returned response to your console (if any)
 
 ## Upgrading to the new version
 

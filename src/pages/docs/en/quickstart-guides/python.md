@@ -23,11 +23,14 @@ micros:
 
 ## Setting up local development
 
-We recommend using virtual environment for local development. If you have listed your app dependencies in a `requirements.txt` file, you can install them to your virtual environment with:
+We recommend using virtual environment for local development. If you have listed your app dependencies in a `requirements.txt` file, you can install them to your virtual environment with the following commands:
 
 ```bash
+# Create a virtual environment in the current directory
 python -m venv .venv
+# Activate the virtual environment
 source .venv/bin/activate
+# Install dependencies
 pip install -r requirements.txt
 
 # If you are using FastAPI, you will also need to install uvicorn
