@@ -28,7 +28,7 @@ Take a look the the [Drive Reference](/docs/en/reference/drive/about) on how to 
 
 During development, you can share data between your local environment and your [project](/docs/en/basics/projects) in Space.
 
-There is two ways to inject a project key into your development environment:
+There is two ways to setup the Deta SDK to access the Bases & Drives of your project:
 
 ### Automatic setup
 
