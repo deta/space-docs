@@ -26,6 +26,8 @@ then to start the local dev server:
 yarn run dev
 ```
 
+> Note: you might get some error messages mentioning `ALGOLIA` and the `ThemeToggle.svelte` components. You can safely ignore these errors and the setup should still work.
+
 ## Available Commands
 
 All commands are run from the root of the project, from a terminal:
