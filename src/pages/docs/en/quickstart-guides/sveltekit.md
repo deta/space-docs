@@ -29,7 +29,7 @@ import adapter from '@sveltejs/adapter-node';
 
 Your project is now configured to run on Space. Let's run it!
 
-## Run on Space
+## Run it on Space
 After making sure you've installed the [Space CLI](/docs/en/basics/cli), run the following command in your project directory:
 
 ```sh
