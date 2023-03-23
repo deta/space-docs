@@ -75,5 +75,5 @@ Great job! You've just deployed your Python app on Space. You can now access you
 - Space only supports Python 3.8 and 3.9
 - Space only supports ASGI and WSGI apps (HTTP servers). So raw scripts won't work.
 - Only `/tmp` is writable
-- SQLite, MySQL, and PostgreSQL are supported (we recommend using [Deta Base](/docs/en/reference/base/sdk), which is built into every Space app by default)
+- SQLite, MySQL, and PostgreSQL are not supported (we recommend using [Deta Base](/docs/en/reference/base/sdk), which is built into every Space app by default)
 - Total size of deployed app is limited to 250MB (including dependencies, source code, etc.). So many large dependencies like `numpy` or `streamlit` might not work. As well as large models.
