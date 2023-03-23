@@ -21,7 +21,7 @@ from starlette.responses import PlainTextResponse
 
 async def app(scope, receive, send):
     assert scope['type'] == 'http'
-    response = PlainTextResponse('Hello, world!')
+    response = PlainTextResponse('Hello, Space!')
     await response(scope, receive, send)
 ```
 
@@ -30,8 +30,6 @@ Here is an example of a simple FastAPI app:
 
 `main.py`
 ```python
-from typing import Union
-
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -39,7 +37,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "Space!"}
 ```
 
 ### Flask
@@ -53,7 +51,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "Hello, World!"
+    return "Hello, Space!"
 ```
 
 
