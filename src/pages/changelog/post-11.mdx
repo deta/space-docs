@@ -1,6 +1,6 @@
 ---
 title: "Local Development for Space"
-date: "20 Mar 2023"
+date: "23 Mar 2023"
 layout: "@changelogs"
 description: "Emulate Space locally with the CLI & More."
 ---
@@ -23,10 +23,10 @@ You can also add the `--open` flag to open the app in your browser automatically
 Behind the scenes, the Space CLI is:
 
 - Generating and injecting a [Data Key](https://deta.space/changelog/post-6) to allow your app to write data to your project
-- Running each of your Micros in a separate process
+- Running each of your Micros in a separate process (using a new `dev` command from your Spacefile)
 - Exposing all of your Micros through a single entrypoint (following the routing in your Spacefile)
 
-For more information, make sure to check out the [docs](/docs/en/basics/local).
+For more information on how setup and use the command, make sure to check out the [docs](/docs/en/basics/local).
 
 ## Triggering Scheduled Actions from the CLI
 
@@ -40,6 +40,7 @@ micros:
     src: backend
     engine: nodejs16
     run: "node index.js"
+    dev: "nodemon index.js"
     actions:
       - id: "cleanup"
         name: "Clean Up"
@@ -48,7 +49,7 @@ micros:
         default_interval: "0/15 * * * *"
 ```
 
-You can now trigger the `cleanup` action by running the following command:
+After starting the app locally with `space dev`, you can now trigger the `cleanup` action by running the following command:
 
 ```bash
 space dev trigger cleanup
@@ -79,5 +80,6 @@ To use all the new commands, make sure to upgrade to the latest version of the S
 
 ```
 space version upgrade
+```
 
 That's all for now. Thank you for all the feedback — please continue to share! 
