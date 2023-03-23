@@ -19,7 +19,7 @@ First, install the `@sveltejs/adapter-node` dependency:
 npm install @sveltejs/adapter-node
 ```
 
-then, in your `svelte.config.js` file, replace the current adapter with the node adapter:
+Then, in your `svelte.config.js` file, replace the current adapter with the node adapter:
 
 ```js
 import adapter from '@sveltejs/adapter-node';
