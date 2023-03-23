@@ -18,7 +18,7 @@ space new
 
 ## Step 2: Configure your Spacefile
 
-First, replace the contents of the `Spacefile` with the following:
+Configuring your project for Rust requires two steps. First, replace the contents of the `Spacefile` with the following:
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
