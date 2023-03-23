@@ -62,7 +62,9 @@ Make sure you have the Space CLI installed & authenticated, then run the followi
 space new
 ```
 This will create a new Space project in the current directory. You can then run the following command to push your code to Space:
-> __Recommended__: before `space push`, we recommend creating a `.spaceignore` file to ignore files that you don't want to be deployed to Space. For example, you can ignore `.git` and `.venv` folders.
+> __Important__: before `space push`, we recommend creating a [`.spaceignore`](/docs/en/basics/revisions#ignoring-files-and-directories) file to ignore files that you don't want to be deployed to Space. For example, you should ignore `.git` and `.venv` folders.
+
+
 ```bash
 space push
 ```
