@@ -11,6 +11,7 @@ export type Page = {
   filename: string
   locale: string
   isDraft: boolean
+  isHidden: boolean
   sections: string[]
   headings: MarkdownHeading[]
   frontmatter: AstroPage['frontmatter']
@@ -79,6 +80,7 @@ export const parsePages = (files: AstroPage[]) => {
       ? post.frontmatter.title
       : generateTitle(filename.replace(`.${extension}`, ''))
     const isDraft = post.frontmatter.draft === true
+    const isHidden = post.frontmatter.hidden === true
 
     const sections = parts.map(part => generateTitle(part))
 
@@ -87,6 +89,7 @@ export const parsePages = (files: AstroPage[]) => {
       path: removeTrailingSlash(post.url || ''),
       fileUrl: post.file,
       isDraft,
+      isHidden,
       title,
       headings,
       filename,
@@ -95,7 +98,7 @@ export const parsePages = (files: AstroPage[]) => {
     }
   })
 
-  const filtered = pages.filter(page => !page.isDraft)
+  const filtered = pages.filter(page => !page.isDraft && !page.isHidden)
   return filtered
 }
 

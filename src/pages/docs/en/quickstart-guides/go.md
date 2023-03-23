@@ -10,6 +10,7 @@ Space supports Go Micros, but it requires a bit more configuration.
 - `engine` needs to be set to `custom`
 - `commands` needs to include commands that build a binary
 - `include` should be set to the binary file that is built as a result of running `commands`
+- `dev` should be the command to start the program in development mode
 - `run` should be the command to run the binary
 
 Here is an example:
@@ -20,6 +21,7 @@ micros:
   - name: go-app
     src: ./src/go-app
     engine: custom
+    dev: go run main.go
     commands:
       - go get
       - go build main.go

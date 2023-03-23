@@ -27,6 +27,7 @@ micros:
   - name: main
     src: .
     engine: custom
+    dev: cargo run
     commands:
       - cargo build --release
     run: ./nameofyourbinary
@@ -42,8 +43,7 @@ Make sure to replace `nameofyourbinary` with the name of your binary. Feel free 
 > - We are running the binary that was created in the previous step
 > - We are including the binary in the final image (using `include`)
 > - We are setting `src: .` as the current directory is the root of the Rust project
-
-
+> - We are specifying a command to run during development using `dev`
 
 Second,  create a `.spaceignore` file in the root of your project and add the following:
 

@@ -23,7 +23,7 @@ The following frameworks are supported configuration-free using `engine`:
 - `svelte`
 - `vue`
 
-For other frameworks the configuration is minimal. 
+For other frameworks the configuration is minimal.
 
 Set the engine to `static` and specify the directory to serve with `serve`. If your framework has a build step, include your build command with the `commands` field:
 
@@ -33,6 +33,7 @@ micros:
   - name: frontend
     src: src/frontend-app
     engine: static
+    dev: npm run dev
     commands:
       - npm run build
     serve: dist

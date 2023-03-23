@@ -17,6 +17,7 @@ micros:
   - name: node-micro
     src: src/node
     engine: nodejs16
+    dev: nodemon index.js
     run: "node index.js"
 ```
 
@@ -37,6 +38,8 @@ app.listen(port, () => {
 })
 ```
 
+> ℹ️ We use [`nodemon`](https://www.npmjs.com/package/nodemon) to watch for changes in our code and restart the server automatically. You can use any other tool you like.
+
 If your Node Micro has a build step (e.g. because you are using TypeScript) use a config similar to the following:
 
 ```yaml
@@ -45,6 +48,7 @@ micros:
   - name: node-micro
     src: src/node
     engine: nodejs16
+    dev: "npm run dev"
     commands:
       - npm run build
     include:
@@ -54,6 +58,7 @@ micros:
 
 - `commands` specifies which commands to run during build, in our case our NPM script `build`
 - `include` specifies which directory to include in the final app package, everything else will be ignored. In our case we set it to the directory of our build output
+- `dev` specifies the command to start your Micro in development mode. In our case running the `dev` script in our `package.json`
 - `run` specifies the command to start your Micro. In our case running the `index.js` file in our `build` directory using `node`
 
 > ℹ️ Support for Node.js v18 is coming soon.

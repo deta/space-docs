@@ -17,7 +17,7 @@ Shows the help page
 
 ## `space login`
 
-You can use `space login` to login to Space. The CLI will prompt you for an access token which it will use for future executions. Refer to the [Setting up the CLI](/docs/en/basics/cli#authentication) section for more details. 
+You can use `space login` to login to Space. The CLI will prompt you for an access token which it will use for future executions. Refer to the [Setting up the CLI](/docs/en/basics/cli#authentication) section for more details.
 
 ```bash
 space login
@@ -36,6 +36,50 @@ Optional args:
 ```bash
 space new
 ```
+
+## `space dev`
+
+You can use `space dev` to start a local development server for your project. The cli will start one process for each of your micros, then expose a single enpoints for your space app.
+
+Optional args:
+
+- `-d, --dir`  string: src of project to dev (default “./”)
+- `-i, --id`   string: id of the project
+- `-H, --host` string: host to run dev server on (default “localhost”)
+- `-p, --port` string: port to run dev server on (default “3000”)
+- `-o, --open` bool: open dev server in browser after starting
+
+## `space dev up`
+
+You can use `space dev up` to start a single micro for local development.
+
+Optional args:
+
+- `-d, --dir`  string: src of project to dev (default “./”)
+- `-i, --id`   string: id of the project
+- `-p, --port` string: port to run dev server on (default “3000”)
+- `-o, --open` bool: open dev server in browser after starting
+
+## `space dev proxy`
+
+You can use `space proxy` to start a reverse proxy for your micros. The micros will be automatically discovered and proxied to.
+
+Optional args:
+
+- `-d, --dir`  string: src of project to dev (default “./”)
+- `-i, --id`   string: id of the project
+- `-H, --host` string: host to run dev server on (default “localhost”)
+- `-p, --port` string: port to run dev server on (default “3000”)
+- `-o, --open` bool: open dev server in browser after starting
+
+## `space dev trigger`
+
+You can use `space trigger` to manually trigger action. Make sure that the corresponding micro is running before triggering the action.
+
+Optional args:
+
+- `-d, --dir`  string: src of project to dev (default “./”)
+- `-i, --id`   string: id of the project
 
 ## `space push`
 
@@ -88,6 +132,14 @@ Optional args:
 ```bash
 space link
 ```
+
+## `space exec`
+
+You can use `space exec` to run a command in the context of your project. The project key will be automatically injected into the environment.
+
+Required args:
+
+- `-p, --project`   string: id of the project
 
 ## `space open`
 

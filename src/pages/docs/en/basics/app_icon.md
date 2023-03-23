@@ -1,7 +1,7 @@
 ---
 title: Creating an App Icon
 section: Basics
-position: 5
+position: 6
 layout: "@docs"
 ---
 ![Preview](/docs_assets/app_icon/icon.png)

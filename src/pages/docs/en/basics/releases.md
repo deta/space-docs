@@ -1,7 +1,7 @@
 ---
 title: Launching your app
 section: Basics
-position: 6
+position: 7
 layout: "@docs"
 ---
 

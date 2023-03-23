@@ -11,7 +11,7 @@ When building apps for Space, the first thing you will start with is a Space 'pr
 
 ## Projects in Builder
 
-Projects in Space live inside Builder, an app which can be found on your Canvas. Builder is your toolbox for building an app on Deta Space. It allows you to create new projects and manage them over time. 
+Projects in Space live inside Builder, an app which can be found on your Canvas. Builder is your toolbox for building an app on Deta Space. It allows you to create new projects and manage them over time.
 
 Each Project in Builder consists of 3 main pages:
 
@@ -23,9 +23,9 @@ Each Project in Builder consists of 3 main pages:
 
 ## Creating a Project
 
-You can create new projects using the [Deta Space CLI](/docs/en/basics/cli), which will guide you through the process. 
+You can create new projects using the [Deta Space CLI](/docs/en/basics/cli), which will guide you through the process.
 
-Use the `space new` command to create a new project with the Space CLI: 
+Use the `space new` command to create a new project with the Space CLI:
 
 ```sh
 space new

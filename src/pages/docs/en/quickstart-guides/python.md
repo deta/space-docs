@@ -14,6 +14,14 @@ For Space to run your Python app, you need to have a file called `main.py` that 
 ### Starlette
 Here is an example of a simple Starlette app:
 
+```yaml
+v: 0
+micros:
+  - name: python-app
+    src: ./src/python
+    engine: python3.9
+```
+
 `main.py`
 ```python
 from starlette.responses import PlainTextResponse
@@ -77,3 +85,28 @@ Great job! You've just deployed your Python app on Space. You can now access you
 - Only `/tmp` is writable
 - SQLite, MySQL, and PostgreSQL are not supported (we recommend using [Deta Base](/docs/en/reference/base/sdk), which is built into every Space app by default)
 - Total size of deployed app is limited to 250MB (including dependencies, source code, etc). So many large dependencies like `numpy` or `streamlit` might not work, as well as larger models.
+
+## Setting up local development
+
+We recommend using virtual environment for local development. If you have listed your app dependencies in a `requirements.txt` file, you can install them to your virtual environment with the following commands:
+
+```bash
+# Create a virtual environment in the current directory
+python -m venv .venv
+# Activate the virtual environment
+source .venv/bin/activate
+# Install dependencies
+pip install -r requirements.txt
+
+# If you are using FastAPI, you will also need to install uvicorn
+pip install uvicorn[standard]
+```
+
+Then you will need to setup the dev command inside your Spacefile. Just reference the executable file from your virtual environment:
+
+```yaml
+  - name: python-app
+    src: ./src/python
+    engine: python3.9
+    dev: .venv/bin/uvicorn main:app --reload
+```
