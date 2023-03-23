@@ -5,73 +5,40 @@ position: 3
 layout: "@docs"
 ---
 
-> If this is your first Space app take a look at the [getting started guide](/docs/en/introduction/first-app).
 
-If you don't have an existing SvelteKit app already you can create a new one by following the offical [SvelteKit instructions](https://kit.svelte.dev/docs/introduction#getting-started).
+> This guide assumes that you have a SvelteKit app that you want to run on Space. If you don't have a SvelteKit app, follow the instructions on the [SvelteKit docs](https://kit.svelte.dev/docs/creating-a-project) to create one.
 
-For Space to be able to run SvelteKit it needs to use the node adapter. This ensures that the app is built to be served by a NodeJS server, refer to the [SvelteKit Docs](https://kit.svelte.dev/docs/adapters#supported-environments-node-js) for more information.
 
-Install the `@sveltejs/adapter-node` dependency, and modify `svelte.config.js` to the following:
+## Configure your SvelteKit app
+To run a SvelteKit app on Space, you'll need to use the SvelteKit node adapter: [`@sveltejs/adapter-node`](https://kit.svelte.dev/docs/adapter-node). If you already use the Node adapter, skip to the [next section](#run-it-on-space).
 
-```jsx
+
+First, install the `@sveltejs/adapter-node` dependency:
+
+```sh
+npm install @sveltejs/adapter-node
+```
+
+Then, in your `svelte.config.js` file, replace the current adapter with the node adapter:
+
+```js
 import adapter from '@sveltejs/adapter-node';
-import preprocess from 'svelte-preprocess';
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	preprocess: preprocess(),
-
-	kit: {
-		adapter: adapter()
-	}
-};
-
-export default config;
+// rest of the file
 ```
 
-Sample `package.json`
 
-```json
-{
-	"name": "my-app",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
-		"@types/cookie": "^0.5.1",
-		"svelte": "^3.46.0",
-		"svelte-check": "^2.7.1",
-		"svelte-preprocess": "^4.10.6",
-		"tslib": "^2.3.1",
-		"typescript": "^4.7.4",
-		"vite": "^3.1.0"
-	},
-	"type": "module",
-	"dependencies": {
-		"@fontsource/fira-mono": "^4.5.0",
-		"@sveltejs/adapter-node": "^1.0.0-next.92",
-		"yarn": "^1.22.19"
-	}
-}
+Your project is now configured to run on Space. Let's run it!
+
+## Run it on Space
+After making sure you've installed the [Space CLI](/docs/en/basics/cli), run the following command in your project's directory:
+
+```sh
+space new
+```
+Follow the prompts to give your app a name. Once that's done, let's push your app to Space:
+
+```sh
+space push
 ```
 
-Once you've got the node adapter set up locally and paired your SvelteKit app with a [Space Project](/docs/en/basics/projects/), just modify your [Space Spacefile](/docs/en/reference/spacefile/) file before [pushing changes](/docs/en/basics/revisions/) to Space.
-
-Space Spacefile configuration for SvelteKit:
-
-```yaml
-v: 0
-micros:
-  - name: svelte-kit-app
-    src: ./src/fullstack/my-app
-    engine: svelte-kit
-```
+Great job! You've just deployed your first SvelteKit app on Space. You can now access your app at the URL provided by the CLI.
