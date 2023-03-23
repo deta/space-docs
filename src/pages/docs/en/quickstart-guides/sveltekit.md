@@ -10,7 +10,7 @@ layout: "@docs"
 
 
 ## Configure your SvelteKit app
-To run a SvelteKit app on Space, you'll need to use the [`@sveltejs/adapter-node`](https://kit.svelte.dev/docs/adapter-node) adapter. If you already use the Node adapter, skip to the [next step](#run-on-space) section.
+To run a SvelteKit app on Space, you'll need to use the SvelteKit node adapter: [`@sveltejs/adapter-node`](https://kit.svelte.dev/docs/adapter-node). If you already use the Node adapter, skip to the [next section](#run-it-on-space).
 
 
 First, install the `@sveltejs/adapter-node` dependency
