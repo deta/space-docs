@@ -1,7 +1,7 @@
 ---
 title: Anatomy of a Space app
 section: Introduction
-position: 4
+position: 5
 layout: "@docs"
 ---
 
