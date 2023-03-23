@@ -63,6 +63,6 @@ space push
 This will build your Rust app and push it to Space. You can now access your app at the URL provided by the CLI.
 The build process will take a few minutes, as it has to build the Rust app from scratch.
 
-`space push` is the same command you would use to update your app.
+`space push` is the same command you would also use to update your app.
 
 Done! ✨
