@@ -5,7 +5,7 @@ position: 7
 layout: "@docs"
 ---
 
-Space supports Rust Micros using using `engine: custom` in your Spacefile. You can use any Rust framework, like Axum. It's important to note that your app has to run on port `8080` or feel free to use the `PORT` environment variable to automatically set the port.
+Space supports Rust Micros using using `engine: custom` in your Spacefile. You can use any Rust framework, like Axum. It's important to note that your app has to run on port `8080`. Feel free to use the `PORT` environment variable to automatically set the port.
 
 A repository with a working example can be found [here](https://github.com/abdelhai/rusti)
 
