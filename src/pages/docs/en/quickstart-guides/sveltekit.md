@@ -35,7 +35,7 @@ After making sure you've installed the [Space CLI](/docs/en/basics/cli), run the
 ```sh
 space new
 ```
-Follow the prompts to give your app a name, once that's done, let's push your app to Space.
+Follow the prompts to give your app a name. Once that's done, let's push your app to Space:
 
 ```sh
 space push
