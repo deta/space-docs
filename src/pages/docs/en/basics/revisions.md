@@ -29,7 +29,7 @@ The Builder instance is automatically added to your Canvas and can be used like 
 
 If your Builder instance runs into a runtime error when handling a request, the error logs will be returned in the request's response. All runtime logs, including the error logs, are stored for 14 days and can be viewed in the **Develop** tab of your Builder project under **"Runtime Logs"**. The logs are sorted by time and can be filtered by a specific Micro using the dropdown. Runtime logs can help with debugging Space related errors and mis-configurations of your app.
 
-The Builder instance shares data with your whole Builder project, which you can [develop against](/data#developing-with-base-and-drive). You can also [view and update this data](/docs/en/basics/data#viewing-data) as you use your app.
+The Builder instance shares its data with your whole Builder project, which you can [develop against](/data#developing-with-base-and-drive). You can also [view and update this data](/docs/en/basics/data#viewing-data) as you use your app. If you are also [developing your app locally](/docs/en/basics/local) using `space dev` the data will be shared between your local environment and the Builder instance.
 
 ## Ignoring files and directories
 

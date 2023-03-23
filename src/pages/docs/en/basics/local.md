@@ -16,13 +16,15 @@ space dev
 
 Behind the scenes, the Space CLI is:
 
-- Generating a data key to allow your app to access the Bases and Drives of your project
-- Running each of your micro in a separate process
-- Exposing all of your micros through a single entrypoint, on `localhost:4200` by default.
+- Generating and injecting a [Data Key](https://deta.space/changelog/post-6) so you can use the [Deta SDK](https://deta.space/docs/en/basics/data)
+- Running each of your Micros in a separate process
+- Exposing all of your Micros through a single entrypoint (following the routing in your Spacefile)
 
 If you want to open the app in your browser automatically after starting your Micros, use the `--open` flag.
 
-You can customize the development command for each micro in your `Spacefile` using the `dev` key.
+> Any data you save to Base or Drive using the Deta SDK will be stored in your Builder project. You can view and edit the data using the UI in the "Data" tab of the "Develop" page in your Builder project.
+
+You can customize the development command for each Micro in your `Spacefile` using the `dev` key.
 
 ```yaml
 v: 0
@@ -39,7 +41,7 @@ micros:
     path: api
 ```
 
-The specified `dev` commands need to start a web server that listens on the port specified with the `PORT` environment variable. This way the CLI can properly forward requests to the micro.
+The specified `dev` commands need to start a web server that listens on the port specified with the `PORT` environment variable. This way the CLI can properly forward requests to the Micro.
 
 You can find instructions on how to setup the right `dev` command for each engine in the "Quickstart Guides".
 
@@ -47,13 +49,13 @@ You can find instructions on how to setup the right `dev` command for each engin
 
 If you want to have more control over the development process, you can also split the `dev` command into two parts:
 
-- First, start micros individually using the `space dev up` command
+- First, start Micros individually using the `space dev up` command
 - Then, start the reverse proxy using the `space dev proxy`
 
 For our example above, this would look like this:
 
 ```bash
-# Start the micros individually
+# Start the Micros individually
 space dev up client
 space dev up api
 
@@ -63,8 +65,8 @@ space dev proxy
 
 Some use cases for this approach include:
 
-- Running each micro in a separate terminal window
-- integrating micros with other development tools (ex: vscode tasks)
+- Running each Micro in a separate terminal window
+- Integrating Micros with other development tools (ex: vscode tasks)
 
 The `space dev` command is just a shortcut for the combination of `space dev up` and `space dev proxy`.
 
