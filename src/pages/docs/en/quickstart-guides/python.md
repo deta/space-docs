@@ -5,7 +5,7 @@ position: 5
 layout: "@docs"
 ---
 
-> For now, Space only supports __Python 3.8__ and __3.9__. Also your app has to follow the __ASGI__ spec (e.g. Starlette, FastAPI, Quart, etc.) or the __WSGI__ spec (e.g. Flask, etc.). Full frameworks like Django might require more configuration which we will not cover here.
+> For now, Space only supports __Python 3.8__ and __3.9__. Your app also needs to follow the __ASGI__ spec (e.g. Starlette, FastAPI, Quart, etc.) or the __WSGI__ spec (e.g. Flask, etc.). Full frameworks like Django might require more configuration which we will not cover here.
 
 ## Step 1: Code configuration
 
