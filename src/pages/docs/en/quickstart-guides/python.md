@@ -9,7 +9,7 @@ layout: "@docs"
 
 ## Step 1: Code configuration
 
-For Space to run your Python app, you need to have a file called `main.py` that contains the the main instance of your app, which __must__ be called `app`. You can structure your app however you want, but the `main.py` file must be in the root of your project. Make sure  you have a `requirements.txt` file that contains the dependencies of your app.
+For Space to run your Python app, you need to have a file called `main.py` that contains the the main instance of your app, which __must__ be called `app`. You can structure your app however you want, but the `main.py` file must be in the root of your project. Make sure you also have a `requirements.txt` file that contains the dependencies of your app.
 
 ### Starlette
 Here is an example of a simple Starlette app:
