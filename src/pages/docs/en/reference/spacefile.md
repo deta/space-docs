@@ -329,6 +329,7 @@ micros:
 ```
 
 More information on public routes can be found in the [Micro Basics](/docs/en/basics/micros#public-routes).
+
 #### `public`
 
 *Optional*
