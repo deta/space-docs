@@ -1,13 +1,11 @@
 ---
 import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from '../../languages';
-import * as CONFIG from '../../config';
-import AstroLogo from './AstroLogo.astro';
 import SkipToContent from './SkipToContent.astro';
 import SidebarToggle from './SidebarToggle';
 import LanguageSelect from './LanguageSelect';
 import NavLinks from './NavLinks.svelte';
 import ThemeToggle from './ThemeToggle.svelte';
-// import Search from './Search';
+
 
 type Props = {
 	layout: 'changelogs' | 'documentation';
@@ -42,7 +40,6 @@ if (isChangelog) titleLink = '/changelog/';
 
 		<div class="logo flex">
 			<a href={titleLink}>
-				<AstroLogo size={35} />
 				<h1>{title}</h1>
 			</a>
 		</div>
