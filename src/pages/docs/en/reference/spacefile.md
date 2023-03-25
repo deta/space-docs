@@ -330,6 +330,23 @@ micros:
 
 More information on public routes can be found in the [Micro Basics](/docs/en/basics/micros#public-routes).
 
+#### `public`
+
+*Optional*
+
+Use `public` to specify whether a Micro should be available to the public. If `public` is set to `false`, the Micro will not be available to the public and will only be accessible to the app's owner.
+
+> __Note:__ `public: true` is just a shorthand for `public_routes: ["/*"]`. We recommend using [`public_routes`](#public_routes) instead if you need more customization.
+
+```yaml
+micros:
+  - name: frontend
+    src: .
+    engine: svelte
+    primary: true
+    public: true
+```
+
 #### `actions`
 
 *Optional*
