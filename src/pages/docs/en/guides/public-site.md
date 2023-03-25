@@ -22,7 +22,7 @@ micros:
     public: true
 ```
 
-Only the Micro with the `primary` flag set to `true` will be served on the root domain. The other Micros will be served on their respective paths under the root domain. For example if a Micro is named `api` (or has the `path` property set to `api`), it will be served on `https://app-name.deta.app/api`.
+Only the Micro with the `primary` flag set to `true` will be served on the root domain. The other Micros will be served on their respective paths under the root domain. For example, if a Micro is named `api` (or has the `path` property set to `api`), it will be served on `https://app-name.deta.app/api`.
 
 
 > __Note:__ `public: true` is just a shorthand for `public_routes: ["/*"]`. We recommend using [`public_routes`](/docs/en/reference/spacefile#public_routes) instead if you need more customization.
