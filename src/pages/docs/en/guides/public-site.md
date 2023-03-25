@@ -29,7 +29,7 @@ Only the Micro with the `primary` flag set to `true` will be served on the root 
 
 ## Connecting a custom domain
 
-You are able set up a custom domain by clicking on the three dots (__…__) at the bottom right of your app's icon and selecting **Settings** to open your app's settings. Then, switch to the **Domains** tab and click **Add Custom Domain** and follow the instructions.
+You are able set up a custom domain by clicking on the three dots (__…__) at the bottom right of your app's icon and selecting **Settings**. Then, switch to the **Domains** tab and click **Add Custom Domain** and follow the instructions.
 
 Note that for now you can only set one domain per app and the root of that domain will be connected to the primary Micro. The other micros will resolve to their respective paths under the root domain.
 
