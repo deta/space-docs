@@ -31,6 +31,6 @@ Only the Micro with the `primary` flag set to `true` will be served on the root 
 
 You are able set up a custom domain by clicking on the three dots (__…__) at the bottom right of your app's icon and selecting **Settings**. Then, switch to the **Domains** tab and click **Add Custom Domain** and follow the instructions.
 
-Note that for now you can only set one domain per app and the root of that domain will be connected to the primary Micro. The other micros will resolve to their respective paths under the root domain.
+For now you can only set one domain per app, and the root of that domain will be connected to the primary Micro. The other Micros will resolve to their respective paths under the root domain, as defined in the `Spacefile`.
 
 > We're working on greatly improving the custom domain experience in the future. We will also allow the customization of subdomains (e.g. `customtext.deta.dev`). Stay tuned!
