@@ -1,7 +1,7 @@
 ---
 title: What is the personal cloud?
-section: Introduction
-position: 2
+section: Learn
+position: 1
 layout: "@docs"
 ---
 

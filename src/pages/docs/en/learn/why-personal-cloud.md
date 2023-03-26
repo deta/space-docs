@@ -1,11 +1,11 @@
 ---
 title: Why the personal cloud?
-section: Introduction
-position: 3
+section: Learn
+position: 2
 layout: "@docs"
 ---
 
-> Deta's motivation for Space is [here](https://deta.space/motivation/). Below is a bit more about why the personal cloud makes sense for developers and users alike.
+> Deta's motivation for Space is [here](https://deta.space/motivation/). Below is a bit more about why the personal cloud may make sense for developers and users alike.
 
 For developers, the personal cloud makes building and globally distributing web applications simple. 
 
@@ -17,7 +17,7 @@ Together, we think these things form a new frontier of possibilities.
 
 Under the [public cloud](/en/introduction/personal-cloud#the-public-cloud) model, web developers with an idea need to do a lot to bring it to the world.
 
-They have to code their idea, but they also have to create, pay for, and operate the infrastructure to run it for others. This is a lot of work. For apps to span the globe, this barrier usually requires teams of operational experts fighting [a large number of cloud tools](https://landscape.cncf.io/).
+They have to code their idea, but they also have to create, pay for, and operate the infrastructure to run it. This is a lot of work. For apps to serve users around the globe, this barrier usually requires teams of operational experts fighting [a large number of cloud tools](https://landscape.cncf.io/).
 
 Using the [personal cloud](/en/introduction/personal-cloud#the-personal-cloud), things are different. Individuals just write the code for their app, assuming that they're the only user. Then, they can deploy their app to their own cloud and use it privately for themselves.
 
@@ -31,11 +31,17 @@ In the public cloud model, the company who provides an application holds a lot o
 
 If the company decides it's not worth it to keep the app running and shuts down the infrastructure, users lose access. They also can't easily interact with, extend, or delete their own application data. Or add a custom domain, or more RAM to a sluggish service.
 
+They can install and uninstall apps on a whim, with full access to everything (except the code). They can inspect, modify, extend, and export all their data. They can even run their own code, to plug into everything that's already there.
+
+They can just write code for an app, and then publish it to the world. 
+
 On the personal cloud, this all changes. 
 
 Everything belonging to a user is right their in front of them, under their fine-grained control. They can view, edit, extend and export all their data, as well as store new stuff. They can spin up new scripts and services. Since it's all in one place, it can integrate directly. And lastly, for users who are also developers, the control is extremely powerful: everything is raw material to build and explore with.
 
 In this way, a personal cloud is like a personal computer.
+
+## New possibilities
 
 ## A personal space, and a portal to the world
 
