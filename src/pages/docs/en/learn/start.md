@@ -5,17 +5,24 @@ position: 0
 layout: "@docs"
 ---
 
-Deta is building personal computers on the internet - "personal clouds" - with a product called Deta Space. If you're a user, Space wants to bring the freedom of personal computing to your life on the internet. If you're a software developer, Space wants to make it dramatically easier to build and share web applications with the world.
+Deta is building a new personal computer on the internet, or a "personal cloud", called Deta Space. 
+
+If you're a software developer, Space wants to make it dramatically easier to build and share web applications with the world.
+
+If you're a user, Space wants to bring the freedom of personal computing to your life on the internet. 
+
 
 ## What's a personal cloud and why should I care?
 
-As mentioned, a personal cloud is a computer on the internet. Like a personal computer, you can install and use applications and store data in a space that's yours. But unlike a personal computer, all the data and apps tie into the power of the web. Everything on a personal cloud is accessible across your devices, and it can interact with the rest of the world.
+You probably already use web applications that harness the power of the internet, like Google Docs, Figma, or ChatGPT. These apps reach your device via "cloud computers" controlled by the providers of these apps. The personal cloud also supports web applications, but they are fundamentally different. On a personal cloud, when you use an app or store data, the "internet computer" that makes it happen is controlled by you. 
 
-The apps on a personal cloud [operate differently](/en/introduction/personal-cloud#the-personal-cloud) than most web applications that you probably already use on a ["public cloud"](/en/introduction/personal-cloud#the-public-cloud). The difference is that the "cloud-computer" that runs the apps and stores data lives with the end-user, not the parties that build the apps. 
+Beyond end-user control, this difference has a few consequences:
+- If you're a developer, you won't touch cloud infrastructure as you publish what you build to the world.
+- The personal cloud can do things that are impossible with traditional computers.
 
-This difference has a few big consequences. First, it means that the user has a lot more control. Second, it removes the need for software developers to worry about running big, complicated, and expensive cloud servers to bring their ideas to the world. And lastly, it unlocks a new horizon of possibilities for computers, one that traditional apps on both personal computers and the public cloud can't reach.
-
-If you're curious, you can read more in [What's a personal cloud?](/en/introduction/personal-cloud) and [Why the personal cloud?](/en/learn/why-personal-cloud).
+If you're curious, you can read in more detail:
+- [What's a personal cloud?](/en/introduction/personal-cloud)
+- [Why the personal cloud?](/en/learn/why-personal-cloud)
 
 ## What can you do with Deta Space?
 
