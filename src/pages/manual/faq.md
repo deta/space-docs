@@ -18,7 +18,7 @@ If your question is not listed here, checkout our [help page](/manual/help) on h
 
 ## Can I host a bot on Space?
 
-Yes, you can, but there are some limitation. Bots that require persistent connections with services or APIs would be unable to function properly on Deta Space micros due to the timeout limit of 20 seconds, which would terminate any process running on the micro after 20 seconds.
+Yes! Webhook-based bots that respond to HTTP requests can be easily deployed on Space. However, bots that require persistent connections with services or APIs would be unable to function properly on Deta Space micros due to the timeout limit of 20 seconds, which would terminate any process running on the micro after 20 seconds.
 
 #### Recommended Libraries
 - [Discohook](https://github.com/jnsougata/discohook)
