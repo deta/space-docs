@@ -1,8 +1,8 @@
 ---
-title: "CLI, Teletype and Rust Improvements"
+title: "Rust Enters Alpha, Bug Fixes and Quality of Life Improvements"
 date: "30 Mar 2023"
 layout: "@changelogs"
-description: "Improved .spaceignore, CLI bug fixes, more Teletype actions and better Rust support."
+description: "Rust enters alpha, improved .spaceignore, CLI updates, bug fixes and more Teletype actions"
 ---
 
 import DetaHeart from '@/components/DetaHeart.astro'
@@ -10,21 +10,17 @@ import Image from '@/components/Image.astro'
 
 <Image src="/changelog_assets/teletype-new-actions.png" alt="New Teletype Actions" width="90%" background />
 
-This week we have been working on improving the CLI by expanding the default the `.spaceignore` file, improved the validation of the `Spacefile` using JSON Schema, added more Teletype actions like searching for collections, viewing the builds and releases of a project and even searching through Discovery and added better Rust support.
+This week we have added Rust support with Cargo, expanded the default the `.spaceignore` file and added JSON Schema validation for the `Spacefile` in our CLI, and added more Teletype actions like searching for collections, viewing the builds and releases of a project and even searching through Discovery. 
 
-## Rust support
+## Rust enters alpha with Cargo support
 
-You can now deploy Rust apps to Space! We have added support for Rust apps in the Space runtime. Rust support is still in alpha and requires a bit of setup to get it working:
+You can now use Cargo and deploy your Rust apps to Space! Rust support is still in alpha.
 
-```bash
-
-```
-
-You can find the full instructions in our [docs](http://localhost:3001/docs/en/quickstart-guides/rust).
+Check out the [quickstart guide](/en/quickstart-guides/rust) to get started.
 
 ## New default `.spaceignore` patterns
 
-Up until now the Space CLI only ignore a few directories (`node_modules` and `__pycache`) by default when uploading your app's source code during `space push`. For most apps you'd have to create your own `.spaceignore` file if you wanted common hidden files, cache directories or build outputs to be ignored. This led to a lot of confusion and frustration when trying to deploy apps that had a lot of files that were not needed for the app to run.
+Up until now the Space CLI only ignored a few directories (`node_modules` and `__pycache`) by default when uploading your app's source code during `space push`. For most apps you'd have to create your own `.spaceignore` file if you wanted common hidden files, cache directories or build outputs to be ignored. This led to a lot of confusion and frustration when trying to deploy apps that had a lot of files that were not needed for the app to run.
 
 We have now added a few more patterns to the default `.spaceignore` file which matches files and directories we think should be ignored by default (expand for full list).
 
