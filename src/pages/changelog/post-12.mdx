@@ -10,7 +10,7 @@ import Image from '@/components/Image.astro'
 
 <Image src="/changelog_assets/teletype-new-actions.png" alt="New Teletype Actions" width="90%" background />
 
-This week we have added Rust support with Cargo, expanded the default the `.spaceignore` file and added JSON Schema validation for the `Spacefile` in our CLI, and added more Teletype actions like searching for collections, viewing the builds and releases of a project and even searching through Discovery. 
+This week we have added Rust support with Cargo, expanded the default the `.spaceignore` file and added JSON Schema validation for the `Spacefile` in our CLI, and added more Teletype actions like searching for collections, viewing the builds and releases of a project and even searching through Discovery.
 
 ## Rust enters alpha with Cargo support
 
@@ -127,17 +127,29 @@ We are now using JSON Schema to validate the `Spacefile` which means you'll get 
 ❗ Detected some issues with your Spacefile. Please fix them before pushing your code.
 
 Spacefile
-L missing properties: 'v'                 
+L missing properties: 'v'
 L micro "python-app"
   L missing property: 'engine'
   L missing property: 'src'
 ```
 
-You can also use the JSON schema in your IDE to get better autocompletion and validation:
+You can also use the JSON schema in your IDE to get better autocompletion and validation.
+For example, in VS Code you can add the following to your `settings.json` file to enable JSON Schema validation for the `Spacefile`:
 
-```bash
-https://schema.deta.space/spacefile.v0.schema.json
+```json
+{
+  "files.associations": {
+      "Spacefile": "yaml"
+  },
+  "yaml.schemas": {
+      "https://raw.githubusercontent.com/deta/space-cli/main/internal/spacefile/schemas/spacefile.v0.schema.json": ["Spacefile"]
+  }
+}
 ```
+
+You will need to have the [YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) installed for this to work.
+
+Thanks to [@lemonyte](https://github.com/lemonyte) for bootstrapping the `Spacefile` JSON Schema !
 
 ## New Teletype Actions
 
