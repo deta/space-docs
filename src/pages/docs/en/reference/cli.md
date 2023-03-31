@@ -5,163 +5,358 @@ position: 0
 layout: "@docs"
 ---
 
-The CLI is a critical tool when building apps for Space. You can use it to create new projects, push changes, create releases and much more.
+## space
 
-Take a look at the [Setting up the CLI](/docs/en/basics/cli) guide on how to install and setup the Space CLI.
+Deta Space CLI
 
-Below is a reference of commands the Space CLI offers.
+### Synopsis
 
-## `space help`
+Deta Space command line interface for managing Deta Space projects.
 
-Shows the help page
+Complete documentation available at https://deta.space/docs
 
-## `space login`
-
-You can use `space login` to login to Space. The CLI will prompt you for an access token which it will use for future executions. Refer to the [Setting up the CLI](/docs/en/basics/cli#authentication) section for more details.
-
-```bash
-space login
+```
+space [flags]
 ```
 
-## `space new`
+### Options
 
-You can use `space new` to create new projects.
-
-Optional args:
-
-- `-n, --name` string: name of the project
-- `-d, --dir` string: where is the project (default “./”)
-- `-b, -—blank` bool: use this flag to create a blank project and ignore all the prompts
-
-```bash
-space new
+```
+  -h, --help   help for space
 ```
 
-## `space dev`
+## space dev
 
-You can use `space dev` to start a local development server for your project. The cli will start one process for each of your micros, then expose a single enpoints for your space app.
+Spin up a local development environment for your Space project
 
-Optional args:
+### Synopsis
 
-- `-d, --dir`  string: src of project to dev (default “./”)
-- `-i, --id`   string: id of the project
-- `-H, --host` string: host to run dev server on (default “localhost”)
-- `-p, --port` string: port to run dev server on (default “3000”)
-- `-o, --open` bool: open dev server in browser after starting
+Spin up a local development environment for your Space project.
 
-## `space dev up`
+The cli will start one process for each of your micros, then expose a single enpoint for your Space app.
 
-You can use `space dev up` to start a single micro for local development.
-
-Optional args:
-
-- `-d, --dir`  string: src of project to dev (default “./”)
-- `-i, --id`   string: id of the project
-- `-p, --port` string: port to run dev server on (default “3000”)
-- `-o, --open` bool: open dev server in browser after starting
-
-## `space dev proxy`
-
-You can use `space proxy` to start a reverse proxy for your micros. The micros will be automatically discovered and proxied to.
-
-Optional args:
-
-- `-d, --dir`  string: src of project to dev (default “./”)
-- `-i, --id`   string: id of the project
-- `-H, --host` string: host to run dev server on (default “localhost”)
-- `-p, --port` string: port to run dev server on (default “3000”)
-- `-o, --open` bool: open dev server in browser after starting
-
-## `space dev trigger`
-
-You can use `space trigger` to manually trigger action. Make sure that the corresponding micro is running before triggering the action.
-
-Optional args:
-
-- `-d, --dir`  string: src of project to dev (default “./”)
-- `-i, --id`   string: id of the project
-
-## `space push`
-
-You can use `space push` to push your changes to Space and create a new revision. Space will automatically update your Builder instance with the new revision.
-
-Optional args:
-
-- `-d, --dir`   string: src of project to push (default "./")
-- `-i, --id`    string: project id of project to push
-- `-t, --tag`   string: tag to identify this push
-- `-o, --open`  boolean: open builder instance/project in browser after push
-- `--skip-logs` boolean: skip following logs after push
-
-```bash
-space push
+```
+space dev [flags]
 ```
 
-If you don't want to follow the logs of the build and update, pass the `--skip-logs` argument which will exit the process as soon as the build is started instead of waiting for it to finish.
+### Options
 
-Tip: you can use the [`.spaceignore` file](/docs/en/basics/revisions#ignoring-files-and-directories) to exclude certain files and directories from being uploaded during push.
-
-## `space release`
-
-You can use `space release` to create new releases out of revisions.
-
-Optional args:
-
-- `-d, --dir` string: src of project to release (default "./")
-- `-c, --confirm` boolean: confirm all prompts and release latest revision
-- `-i, --id` string: project id of an existing project
-- `-r, --rid` string: revision id for release
-- `-l, --listed` boolean: enable listing on Discovery
-- `-n, --notes` provide release notes via interactive prompt
-- `--notes="<RELEASE_NOTES>"`: provide release notes directly
-- `-v, --version` string: version for the release
-
-```bash
-space release
+```
+  -d, --dir string    directory of the project (default ".")
+  -h, --help          help for dev
+  -H, --host string   host to run the proxy on (default "localhost")
+  -i, --id string     project id
+      --open          open the app in the browser
+  -p, --port int      port to run the proxy on (default 4200)
 ```
 
-## `space link`
+## space dev help
 
-You can use `space link` to link a directory with a existing project.
+Help about any command
 
-Optional args:
+### Synopsis
 
-- `-d, --dir` string: src of project to link (default "./")
-- `-i, --id` string: project id of project to link
+Help provides help for any command in the application.
+Simply type dev help [path to command] for full details.
 
-```bash
-space link
+```
+space dev help [command] [flags]
 ```
 
-## `space exec`
+### Options
 
-You can use `space exec` to run a command in the context of your project. The project key will be automatically injected into the environment.
-
-Required args:
-
-- `-p, --project`   string: id of the project
-
-## `space open`
-
-You can use `space open` to open your local project in the Builder UI on [deta.space](https://deta.space).
-
-Optional args:
-
-- `-d, --dir` string: directory of project to open (default "./")
-- `-i, --id` string: project id of project to open
-
-```bash
-space open
+```
+  -h, --help   help for help
 ```
 
-## `space validate`
+## space dev proxy
 
-You can use `space validate` to validate your [Spacefile](/docs/en/reference/spacefile/) and check for errors.
+Start a reverse proxy for your micros
 
-Optional args:
+### Synopsis
 
-- `-d, --dir` string: src of project to validate (default "./")
+Start a reverse proxy for your micros
 
-```bash
-space validate
+The micros will be automatically discovered and proxied to.
+
 ```
+space dev proxy [flags]
+```
+
+### Options
+
+```
+  -d, --dir string    directory of the project (default ".")
+  -h, --help          help for proxy
+  -H, --host string   host to run the proxy on (default "localhost")
+      --open          open the app in the browser
+  -p, --port int      port to run the proxy on (default 4200)
+```
+
+## space dev trigger
+
+Trigger a micro action
+
+### Synopsis
+
+Manually trigger an action.
+Make sure that the corresponding micro is running before triggering the action.
+
+```
+space dev trigger <action> [flags]
+```
+
+### Options
+
+```
+  -d, --dir string   project directory (default ".")
+  -h, --help         help for trigger
+```
+
+## space dev up
+
+Start a single micro for local development
+
+```
+space dev up <micro> [flags]
+```
+
+### Options
+
+```
+  -d, --dir string   directory of the project (default ".")
+  -h, --help         help for up
+  -i, --id string    project id
+      --open         open the app in the browser
+  -p, --port int     port to run the micro on
+```
+
+## space exec
+
+Run a command in the context of your project
+
+### Synopsis
+
+Run a command in the context of your project.
+
+The data key will be automatically injected into the command's environment.
+
+```
+space exec [flags]
+```
+
+### Options
+
+```
+  -h, --help             help for exec
+      --project string   id of project to exec the command in
+```
+
+## space help
+
+Help about any command
+
+### Synopsis
+
+Help provides help for any command in the application.
+Simply type space help [path to command] for full details.
+
+```
+space help [command] [flags]
+```
+
+### Options
+
+```
+  -h, --help   help for help
+```
+
+## space link
+
+Link a local directory with an existing project
+
+```
+space link [flags]
+```
+
+### Options
+
+```
+  -d, --dir string   src of project to link (default "./")
+  -h, --help         help for link
+  -i, --id string    project id of project to link
+```
+
+## space login
+
+Login to space
+
+```
+space login [flags]
+```
+
+### Options
+
+```
+  -h, --help         help for login
+  -t, --with-token   Read token from standard input
+```
+
+## space new
+
+Create new project
+
+```
+space new [flags]
+```
+
+### Options
+
+```
+  -b, --blank         create blank project
+  -d, --dir string    src of project to release (default "./")
+  -h, --help          help for new
+  -n, --name string   project name
+```
+
+## space open
+
+Open your local project in the Builder UI
+
+```
+space open [flags]
+```
+
+### Options
+
+```
+  -d, --dir string   src of project to open (default "./")
+  -h, --help         help for open
+  -i, --id string    project id of project to open
+```
+
+## space push
+
+Push your changes to Space and create a new revision.
+
+### Synopsis
+
+Push your changes to Space and create a new revision.
+
+Space will automatically update your Builder instance with the new revision.
+
+If you don't want to follow the logs of the build and update, pass the --skip-logs argument which will exit the process as soon as the build is started instead of waiting for it to finish.
+
+Tip: Use the .spaceignore file to exclude certain files and directories from being uploaded during push.
+
+
+```
+space push [flags]
+```
+
+### Options
+
+```
+  -d, --dir string   src of project to push (default "./")
+  -h, --help         help for push
+  -i, --id string    project id of project to push
+      --open         open builder instance/project in browser after push
+      --skip-logs    skip following logs after push
+  -t, --tag string   tag to identify this push
+```
+
+## space release
+
+Create a new release from a revision
+
+```
+space release [flags]
+```
+
+### Options
+
+```
+  -d, --dir string       src of project to release (default "./")
+  -h, --help             help for release
+  -i, --id string        project id of an existing project
+      --latest           release latest revision
+      --listed           listed on discovery
+  -n, --notes string     release notes
+      --rid string       revision id for release
+  -v, --version string   version for the release
+```
+
+## space validate
+
+Validate your Spacefile and check for errors
+
+```
+space validate [flags]
+```
+
+### Options
+
+```
+  -d, --dir string   src of project to validate (default "./")
+  -h, --help         help for validate
+```
+
+## space version
+
+Space CLI version
+
+```
+space version [flags]
+```
+
+### Options
+
+```
+  -h, --help   help for version
+```
+
+## space version help
+
+Help about any command
+
+### Synopsis
+
+Help provides help for any command in the application.
+Simply type version help [path to command] for full details.
+
+```
+space version help [command] [flags]
+```
+
+### Options
+
+```
+  -h, --help   help for help
+```
+
+## space version upgrade
+
+Upgrade Space CLI version
+
+```
+space version upgrade [flags]
+```
+
+### Examples
+
+```
+
+1. space version upgrade
+Upgrade Space CLI to latest version.
+2. space version upgrade --version v0.0.2
+Upgrade Space CLI to version 'v0.0.2'.
+```
+
+### Options
+
+```
+  -h, --help             help for upgrade
+  -v, --version string   version number
+```
+
+
