@@ -5,6 +5,14 @@ position: 0
 layout: "@docs"
 ---
 
+The CLI is a critical tool when building apps for Space. You can use it to create new projects, push changes, create releases and much more.
+
+Take a look at the [Setting up the CLI](/docs/en/basics/cli) guide on how to install and setup the Space CLI.
+
+Below is a reference of commands the Space CLI offers.
+
+<!-- everything below is auto-generated, do not manually edit it -->
+
 ## space
 
 Deta Space CLI
