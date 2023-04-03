@@ -56,7 +56,6 @@ v: 0
 
 *Optional*
 
-
 Use `icon` to specify a path to an image file to use as your app's icon. The icon will be used wherever your app is displayed (e.g. the Canvas).
 
 The path should be relative to your `Spacefile` and needs to point to a file inside your project's directory.
@@ -105,7 +104,7 @@ micros:
 
 **Required**
 
-Relative path to the root directory of the micro.
+Use `src` to specify the relative path to the root directory of the micro.
 
 Each micro should be in its own directory which needs to contain all files required for the Micro to run.
 
@@ -119,7 +118,7 @@ micros:
 
 **Required**
 
-Runtime for the Micro, supported values:
+Use `engine` to specify the runtime for the Micro, supported values:
 
 - `static`
 - `react`
@@ -185,11 +184,11 @@ micros:
 
 #### `serve`
 
-*Required for static Micros*
+**Required for static Micros**
 
 Use `serve` to specify which directory should be served for your static Micro. All the files and directories inside the specified directory will be served relative to your Micro's path.
 
-This option can only be used for Micro's with the `static` engine or engines based on it like `vue`, `react` and `svelte`.
+This option can only be used for Micros with the `static` engine or engines based on it like `vue`, `react` and `svelte`.
 
 ```yaml
 micros:
@@ -251,7 +250,9 @@ micros:
 
 #### `dev`
 
-Use `run` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `deta dev`.
+*Optional*
+
+Use `dev` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `deta dev`.
 
 ```yaml
 micros:
@@ -272,7 +273,7 @@ Specify different presets to use with your Micro.
 
 *Optional*
 
-Use the `env` preset to specify environment variables that the user can set for a Micro.
+Use the `env` preset to define environment variables that the user can set for a Micro.
 
 - `name` : environment variable name or key
 - `description` : human friendly description
@@ -351,7 +352,7 @@ micros:
 
 *Optional*
 
-Specify actions that perform certain tasks inside your app on a specific trigger like a schedule.
+Use `actions` to specify actions that perform certain tasks inside your app on a specific trigger like a schedule.
 
 ```yaml
 micros:
