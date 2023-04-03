@@ -1,7 +1,7 @@
 ---
 title: Dealing with data
 section: Basics
-position: 3
+position: 4
 layout: "@docs"
 ---
 
@@ -14,23 +14,32 @@ As a result, you can just code your app as if it was only for a single user, wit
 
 ### Deta Base
 
-To store data, Space apps can use [Deta Base](),  a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. Base can be accessed using the [Deta Base SDK](/docs/en/reference/base/sdk) or the [Base HTTP API](/docs/en/reference/base/HTTP).
+To store data, Space apps can use [Deta Base](/docs/en/reference/base/about),  a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. Base can be accessed using the [Deta Base SDK](/docs/en/reference/base/sdk) or the [Base HTTP API](/docs/en/reference/base/HTTP).
 
-Take a look at the [Base Reference]() on how to use it.
+Take a look the the [Base Reference](/docs/en/reference/base/about) on how to use it.
 
-### Drive
+### Deta Drive
 
-To store files, Space apps can use [Deta Drive](), a fully-managed, secure and scalable file storage service for Deta. Each app can create and use as many Drives as it needs. Drive can be accessed using the [Drive SDK](/docs/en/reference/drive/sdk) or the [Drive HTTP API](/docs/en/reference/drive/HTTP).
+To store files, Space apps can use [Deta Drive](/docs/en/reference/drive/about), a fully-managed, secure and scalable file storage service for Deta. Each app can create and use as many Drives as it needs. Drive can be accessed using the [Drive SDK](/docs/en/reference/drive/sdk) or the [Drive HTTP API](/docs/en/reference/base/HTTP).
 
-Take a look at the [Drive Reference]() on how to use it.
+Take a look the the [Drive Reference](/docs/en/reference/drive/about) on how to use it.
 
 ## Developing with Base and Drive
 
 During development, you can share data between your local environment and your [project](/docs/en/basics/projects) in Space.
 
-To do so, you need to manually connect your development environment to a project's Bases and Drives by using a "project key".
+There is two ways to setup the Deta SDK to access the Bases & Drives of your project:
 
-A project key gives access to Bases and Drives within a project, and can be generated from the "Develop" tab inside your Builder project.
+### Automatic setup
+
+The Space CLI can automatically connect your local development environment with your Space Base & Drive using the `space dev` command.
+
+More information on how to use the `space dev` command can be found in the in the [Developing Locally](/docs/en/basics/local) section.
+
+
+### Manual setup
+
+If the automatic set up does not work for your use-case, you can manually set up your local development environment by generating a data key from the "Data" tab on the "Develop" page, inside your Builder project.
 
 If you are using an official Deta SDK, add this as an environment variable inside your dev environment:
 

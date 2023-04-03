@@ -13,6 +13,7 @@
   import { getMetadata } from "@/utils/metadata";
   import { onMount } from "svelte";
   import { useSearchAction } from "./search";
+  import TeletypeDocs from "./TeletypeDocs.svelte";
 
   const searchAction = useSearchAction();
   let actions: Action[] = [];
@@ -20,12 +21,15 @@
   let initialized = false;
   let isDevMode = false;
   let isAuthenticated = false;
+  let allowDocsSearching = false
 
   onMount(async () => {
     const data = await getMetadata();
 
     isDevMode = data.isDevMode;
     isAuthenticated = data.isAuthenticated;
+
+    allowDocsSearching = window.location.pathname.startsWith('/docs') || window.location.pathname.startsWith('/migration')
 
     createActions();
     initialized = true;
@@ -135,7 +139,7 @@
         section: "Help",
         icon: Support,
         handler: () => {
-          window.open("mailto:team@deta.sh?subject=Space Alpha", "_blank");
+          window.open("mailto:team@deta.space?subject=Space Alpha", "_blank");
         },
       },
       {
@@ -152,7 +156,7 @@
     // General section
     actions.push({
       id: "theme",
-      name: "Change theme ",
+      name: "Change theme",
       section: "General",
       icon: ColorSwatch,
       nestedSearch: true,
@@ -254,6 +258,10 @@
 {#if initialized}
   <TeletypeProvider {actions} options={{ placeholder: "Type a command or search", localSearch: true }}>
     <Teletype />
+
+    {#if allowDocsSearching}
+      <TeletypeDocs actions={actions} />
+    {/if}
   </TeletypeProvider>
 {/if}
 

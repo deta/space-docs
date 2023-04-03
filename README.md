@@ -20,7 +20,7 @@ We have answered some [FAQs](https://deta.space/manual/faq) in our [docs](https:
 - Code Questions: [GitHub Discussions](https://github.com/orgs/deta/discussions)
 - Chat: [Discord](https://go.deta.dev/discord)
 - Shenanigans: [Twitter](https://twitter.com/detahq)
-- Emails (no support): `team@deta.sh`
+- Emails (no support): `team@deta.space`
 
 ## About This Repository
 
@@ -36,7 +36,7 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                | Action                                           |
 | :--------------------- | :----------------------------------------------- |
-| `yarn install`         | Installs dependencies                            |
+| `yarn install --ignore-optional`         | Installs dependencies                            |
 | `yarn run dev`         | Starts local dev server at `localhost:3000`      |
 | `yarn run build`       | Builds the site to `./dist/`                     |
 | `yarn run preview`     | Previews the site locally                        |

@@ -4,6 +4,10 @@ export const SITE = {
   defaultLanguage: 'en_US',
 }
 
+export const docsSectionsOrder = ['Overview', 'Basics', 'Reference', 'Quickstart Guides', 'Guides', 'Other']
+export const manualSectionsOrder = ['Overview', 'Features']
+export const migrationSectionsOrder = ['Overview', 'Guides', 'Learn More', 'Other']
+
 export const OPEN_GRAPH = {
   image: {
     src: '',
@@ -39,10 +43,3 @@ export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES)
 export const GITHUB_EDIT_URL = `https://github.com/deta/space-docs/tree/main/src/pages/en`
 
 export const COMMUNITY_INVITE_URL = `https://go.deta.dev/discord`
-
-// See "Algolia" section of the README for more information.
-export const ALGOLIA = {
-  indexName: 'XXXXXXXXXX',
-  appId: 'XXXXXXXXXX',
-  apiKey: 'XXXXXXXXXX',
-}

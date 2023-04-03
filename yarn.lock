@@ -491,10 +491,10 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@deta/teletype@^0.0.1-rc.8":
-  version "0.0.1-rc.8"
-  resolved "https://npm.pkg.github.com/download/@deta/teletype/0.0.1-rc.8/b4785302065b39b31cb77b79e065b12f769c6879"
-  integrity sha512-cY9eDLSPR149HyLwocdBTXsI7E+NBpGYBE77goa5aZIFJiqZ/1ewjjNTZ6iIfF146VStDZVKvPJIbLmWB2q/sg==
+"@deta/teletype@^0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@deta/teletype/0.0.1/1ff69d94bcd95ca9ad0874027251c06cf0670972#1ff69d94bcd95ca9ad0874027251c06cf0670972"
+  integrity sha512-Uhl4Byj6UnL8GQ1zN6+rhfvsPk5bbGCL0eMD1jPV2kBIAxN8SqbWT6+G6Zx9X07I5jxPpWHMcS31oqP1L21vig==
 
 "@docsearch/css@3.3.2", "@docsearch/css@^3.1.0":
   version "3.3.2"

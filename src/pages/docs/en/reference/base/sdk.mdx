@@ -7,7 +7,7 @@ layout: "@docs"
 import LangTabs from "@/components/Tabs/LangTabs.astro";
 import LangVariantsTabs from "@/components/Tabs/LangVariantsTabs.astro";
 
-The Deta library is the easiest way to store and retrieve data from your Deta Base. Currently, we support JavaScript (Node + Browser), Python 3 and Go. [Drop us a line](#contact) if you want us to support your favorite language.
+The Deta library is the easiest way to store and retrieve data from your Deta Base. Currently, we support JavaScript (Node + Browser), Python 3 and Go. [Drop us a line on Discord](https://go.deta.dev/discord) if you want us to support your favorite language.
 
 > A "Deta Base" instance is a collection of data, not unlike a Key-Value store, a MongoDB collection or a PostgreSQL/MySQL table. It will grow with your app's needs.
 
@@ -58,7 +58,8 @@ Deta Bases are created for you automatically when you start using them.
     const { Deta } = require('deta'); // import Deta
 
     // Initialize with a Project Key
-    const deta = Deta('project key');
+    // locally, set the project key in an env var called DETA_PROJECT_KEY
+    const deta = Deta();
 
     // This how to connect to or create a database.
     const db = deta.Base('simple_db');
@@ -67,12 +68,6 @@ Deta Bases are created for you automatically when you start using them.
     const books = deta.Base('books');
     ```
 
-    > If you are using Deta Base within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), the **Deta SDK** comes pre-installed and a valid project key is pre-set in the Micro's environment. There is no need to install the SDK or pass a key in the initialization step.
-    > ```js
-    > const { Deta } = require('deta');
-    >
-    > const deta = Deta();
-    > ```
 
     > If you are using the `deta` npm package of `0.0.6` or below, `Deta` is the single default export and should be imported as such.
     > ```js
@@ -85,7 +80,8 @@ Deta Bases are created for you automatically when you start using them.
     from deta import Deta  # Import Deta
 
     # Initialize with a Project Key
-    deta = Deta("project key")
+    # locally, set the project key in an env var called DETA_PROJECT_KEY
+    deta = Deta()
 
     # This how to connect to or create a database.
     db = deta.Base("simple_db")
@@ -95,12 +91,6 @@ Deta Bases are created for you automatically when you start using them.
 
     ```
 
-    > If you are using Deta Base within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), the **Deta SDK** comes pre-installed and a valid project key is pre-set in the Micro's environment. There is no need to install the SDK or pass a key in the the initialization step.
-    > ```py
-    > from deta import Deta
-    >
-    > deta = Deta()
-    > ```
   </Fragment>
 
   <Fragment slot="go">
@@ -119,7 +109,8 @@ Deta Bases are created for you automatically when you start using them.
 
           // initialize with project key
           // returns ErrBadProjectKey if project key is invalid
-          d, err := deta.New(deta.WithProjectKey("project_key"))
+          // locally, set the project key in an env var called DETA_PROJECT_KEY
+          d, err := deta.New()
           if err != nil {
             fmt.Println("failed to init new Deta instance:", err)
             return
@@ -146,7 +137,8 @@ Deta Bases are created for you automatically when you start using them.
         func main(){
           // initialize with project key
           // returns ErrBadProjectKey if project key is invalid
-          d, err := deta.New("project_key")
+          // locally, set the project key in an env var called DETA_PROJECT_KEY
+          d, err := deta.New()
           if err != nil {
             fmt.Println("failed to init new Deta instance:", err)
             return

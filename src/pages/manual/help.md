@@ -11,7 +11,7 @@ We have answered some General [FAQs](/manual/faq) in these docs, but we are he
 If you have any questions or feedback, you can reach us:
 
 - Chat: [Discord](https://go.deta.dev/discord)
-- Email: [team@deta.sh](mailto:team@deta.sh)
+- Email: [team@deta.space](mailto:team@deta.space)
 
 ## Reporting Abuse
 

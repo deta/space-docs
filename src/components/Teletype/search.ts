@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Hits, MeiliSearch } from "meilisearch";
-import type { Action } from "@deta/teletype";
+import type { Action, TeletypeCore } from "@deta/teletype";
 import Page from "@/components/Teletype/Icons/Page.svelte";
 import DocSearch from "@/components/Teletype/Icons/DocSearch.svelte";
 
@@ -83,15 +83,23 @@ export const useSearchAction = () => {
     placeholder: "Start typing to search the docs",
     section: "Help",
     icon: DocSearch,
-    inputHandler: async (inputValue: string) => {
+    inputHandler: async (inputValue: string, _: Action, teletype: TeletypeCore) => {
+      teletype.setLoading(true)
+
       const search = await docsIndex.search(inputValue, {
         limit: 1000,
       });
-      if (inputValue === "") {
-        return convertRootSearchToActions(search.hits);
+
+      let actions
+      if (inputValue === '') {
+        actions = convertRootSearchToActions(search.hits)
+      } else {
+        actions = convertSearchToActions(search.hits)
       }
 
-      return convertSearchToActions(search.hits);
+      setTimeout(() => teletype.setLoading(false), 200)
+
+      return actions
     },
   } as Action;
 };
