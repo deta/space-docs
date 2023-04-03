@@ -19,7 +19,7 @@ Once you've added your domain to Cloudflare, follow these steps:
 
 ![Cloudflare Proxy](/docs_assets/guides/accessing-client-ip-address/cloudflare-proxy.png)
 
-> Make sure to change your SSL/TLS encryption mode to **Full** in the [Cloudflare Dashboard](https://dash.cloudflare.com/) before doing this to avoid any unexpected issues
+> Make sure to change your SSL/TLS encryption mode to **Full** in the [Cloudflare Dashboard](https://dash.cloudflare.com/) before doing this to avoid any unexpected issues.
 
 4. Verify that your domain has been added. Now, you can use the `CF-Connecting-IP` header to determine your client's IP address when your app is accessed via the custom domain.
 
@@ -32,4 +32,4 @@ app.get("/endpoint", (req, res) => {
 })
 ```
 
-It's important to be note that the `CF-Connecting-IP` header can be spoofed, so you should always use additional security measures in conjunction with it.
+It's important to note that the `CF-Connecting-IP` header can be spoofed, so you should always use additional security measures in conjunction with it.

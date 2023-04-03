@@ -16,11 +16,11 @@ This week we have added Rust support with Cargo, expanded the default the `.spac
 
 You can now use Cargo and deploy your Rust apps to Space! Rust support is still experimental, let us know if you hit any bugs.
 
-Check out the [quickstart guide](/en/quickstart-guides/rust) to get started.
+Check out the [quickstart guide](/docs/en/quickstart-guides/rust) to get started.
 
 ## New default `.spaceignore` patterns
 
-Up until now the Space CLI only ignored a few directories (`node_modules` and `__pycache`) by default when uploading your app's source code during `space push`. For most apps you'd have to create your own `.spaceignore` file if you wanted common hidden files, cache directories or build outputs to be ignored. This led to a lot of confusion and frustration when trying to deploy apps that had a lot of files that were not needed for the app to run.
+Up until now the Space CLI only ignored a few directories (`node_modules` and `__pycache`) by default when uploading your app's source code during `space push`. For most apps, you'd have to create your own `.spaceignore` file if you wanted common hidden files, cache directories or build outputs to be ignored. This led to a lot of confusion and frustration when trying to deploy apps that had a lot of files that were not needed for the app to run.
 
 We have now added a few more patterns to the default `.spaceignore` file which matches files and directories we think should be ignored by default (expand for full list).
 
@@ -108,14 +108,14 @@ space version upgrade
 
 If you haven't installed the CLI yet, you can do so by following [the instructions in our docs](https://deta.space/docs/en/basics/cli#installation).
 
-If you want to ignore more files or directories, you can do so by creating a `.spaceignore` file in the root of your project and adding them to it. If you want to *include* a file or directory that is ignored by default, add them to the `.spaceignore` file negated with an exclamation mark (`!`) in front of the file or directory name:
+If you want to ignore more files or directories, you can do so by creating a `.spaceignore` file at the root of your project and adding them to it. If you want to *include* a file or directory that is ignored by default, add them to the `.spaceignore` file negated with an exclamation mark (`!`) in front of the file or directory name:
 
 ```bash
 # include .env file
 !.env
 ```
 
-Learn more about the `.spaceignore` file and the default ignore list in the [docs](http://localhost:3001/docs/en/basics/revisions#ignoring-files-and-directories).
+Learn more about the `.spaceignore` file and the default ignore list in the [docs](https://deta.space/docs/en/basics/revisions#ignoring-files-and-directories).
 
 If you have any suggestions for other patterns to add to the default `.spaceignore` file, please let us know on [Discord](https://go.deta.dev/discord).
 
@@ -149,7 +149,7 @@ For example, in VS Code you can add the following to your `settings.json` file t
 
 You will need to have the [YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) installed for this to work.
 
-Thanks to [@lemonyte](https://github.com/lemonyte) for bootstrapping the `Spacefile` JSON Schema !
+Thanks to [@lemonyte](https://github.com/lemonyte) for bootstrapping the `Spacefile` JSON Schema!
 
 ## New Teletype Actions
 
