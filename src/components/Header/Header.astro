@@ -1,13 +1,11 @@
 ---
 import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from '../../languages';
-import * as CONFIG from '../../config';
 import AstroLogo from './AstroLogo.astro';
 import SkipToContent from './SkipToContent.astro';
 import SidebarToggle from './SidebarToggle';
 import LanguageSelect from './LanguageSelect';
 import NavLinks from './NavLinks.svelte';
 import ThemeToggle from './ThemeToggle.svelte';
-// import Search from './Search';
 
 type Props = {
 	layout: 'changelogs' | 'documentation';
@@ -46,19 +44,15 @@ if (isChangelog) titleLink = '/changelog/';
 				<h1>{title}</h1>
 			</a>
 		</div>
-		
+
 
 		{KNOWN_LANGUAGE_CODES.length > 1 && <LanguageSelect lang={lang} client:idle />}
-		
+
 		<NavLinks client:only="svelte" isMigration={isMigration} isManual={isManual} isDocs={isDocs} isChangelog={isChangelog} />
 
 		<div class="theme-toggle">
 			<ThemeToggle client:visible />
 		</div>
-
-		<!-- <div class="search-item">
-			<Search client:idle />
-		</div> -->
 	</nav>
 </header>
 
@@ -148,33 +142,5 @@ if (isChangelog) titleLink = '/changelog/';
 		.menu-toggle {
 			display: none;
 		}
-	}
-
-	/** Style Algolia */
-	:root {
-		--docsearch-primary-color: var(--theme-accent);
-		--docsearch-logo-color: var(--theme-text);
-	}
-
-	.search-item {
-		display: none;
-		position: relative;
-		z-index: 10;
-		flex-grow: 1;
-		padding-right: 0.7rem;
-		display: flex;
-		max-width: 200px;
-	}
-
-	@media (min-width: 50em) {
-		.search-item {
-			max-width: 300px;
-		}
-	}
-</style>
-
-<style is:global>
-	.search-item > * {
-		flex-grow: 1;
 	}
 </style>
