@@ -1,4 +1,4 @@
-<script type="ts" context="module">
+<script lang="ts" context="module">
   export type Theme = 'dark' | 'light'
 
   /**
@@ -23,7 +23,7 @@
   }
 </script>
 
-<script type="ts">
+<script lang="ts">
   import { onMount } from 'svelte'
   import Sun from '@/components/Teletype/Icons/Sun.svelte'
   import Moon from '@/components/Teletype/Icons/Moon.svelte'
