@@ -135,6 +135,6 @@ To learn more about API keys, you can refer to the related information available
 
 That’s it! You now know how Deta Space authentication works and how to configure it using the Spacefile.
 
-Share with us what you have built, connect with the Deta team, seek answers to your questions, and hang out on our [community Discord](https://discord.com/invite/deta-827546555200438332) with fellow **Detonians!** We would love to have you.
+Share with us what you have built, connect with the Deta team, seek answers to your questions, and hang out on our [community Discord](https://go.deta.dev/discord) with fellow **Detonians!** We would love to have you.
 
 Happy hacking!
