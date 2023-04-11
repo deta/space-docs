@@ -252,7 +252,7 @@ micros:
 
 *Optional*
 
-Use `dev` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `deta dev`.
+Use `dev` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `space dev`.
 
 ```yaml
 micros:
