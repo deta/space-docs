@@ -50,6 +50,15 @@ Here's an example of how to run a Python Micro using the [FastAPI](https://fasta
 
 ## Bug Fixes and Improvements
 
-- 
+### Space CLI
+
+- `space dev` improvements
+    - add support for static micros
+    - automatically set the uvicorn port
+    - add a log when a micro can not start due to an invalid dev command
+- version check are now disabled in some commands (e.g. `space completions`)
+- multiple improvements to the `Spacefile` JSON Schema (thx [@lemonyte](https://github.com/lemonyte))
+
+You can get an exhaustive list of the changes in the [Space CLI changelog]().
 
 Thank you for all the valuable feedback — please continue to share your thoughts as we work to build and improve Space. <DetaHeart/>
