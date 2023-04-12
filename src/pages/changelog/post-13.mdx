@@ -1,0 +1,55 @@
+---
+title: "Improved Publishing Flow and Unified Python Micros"
+date: "12 Apr 2023"
+layout: "@changelogs"
+description: "You can now customize your app's Discovery page through with the Builder UI and we unified how to run Python Micros with other Micro engines."
+---
+
+import DetaHeart from '@/components/DetaHeart.astro'
+import Image from '@/components/Image.astro'
+
+## Improved Publishing Flow
+
+We've improved the process of publishing releases of your app to make it more clear on how publishing works, when to publish and how to publish as well as customizing your app's Discovery page.
+
+The Space CLI will now ask for confirmation before creating your first release and it will prompt you to give your app a name and description if the `Discovery.md` file is missing. This will help improve the quality of app listings on Discovery and should encourage devs to include some basic information on what their app does:
+
+```bash
+> space release --listed
+
+Creating a listed release makes your app available on Deta Discovery for anyone to install and use.
+If you only want to use this app yourself, use your Builder instance instead.
+
+? Are you sure you want to release this app publicly on Discovery? (y/n) y
+
+Please give your app a friendly name and add a short description so others know what this app does.
+
+? App Name (max 12 chars): My App
+? App Description (max 69 chars): This is my app
+```
+
+> **⚠️ Important Note:**
+>
+> For this to work we had to move the `app_name` from the `Spacefile` into the `Discovery.md` file. This means that you'll need to add the `app_name` to your `Discovery.md` file if you want to customize your app's name, otherwise it will default to the name of your project. For now we still support the `app_name` in the `Spacefile` for backwards compatibility but we'll be removing it in the future.
+
+We've also added the ability to add the Discovery data of a release through the Builder UI when creating a new release. You can now specify/edit all the fields from the `Discovery.md` file as well as write and preview the app's Markdown description. This will help you make sure your app's listing is ready to go before publishing.
+
+<Image src="/changelog_assets/builder-new-release.png" alt="Publish Release Through Builder" width="90%" background />
+
+This change was made possible because we moved the Discovery data from the revisions into the releases, meaning your `Discovery.md` file will now be uploaded during `space release` and not `space push`. This means that you can now run `space release` without having to having to wait for the build to finish if you want to modify the Discovery data of your app. In the future we also want to add the ability to edit the Discovery data of an existing release through the Builder UI - stay tuned!
+
+## Unify How to Run Python Micros
+
+We've also made a change to how Python Micros are run. Previously, Python Micros were run using an internal library that wrapped your Python app. This meant that we only supported a few Python frameworks and that we had to maintain our own library. We've now changed this so that Python Micros are run using the same mechanism as the other Micros, meaning that you can now run your Python Micro by simply specifying a `run` command that starts a HTTP server on the port specified by the `PORT` environment variable. This means that you can now use any Python framework you want.
+
+Here's an example of how to run a Python Micro using the [FastAPI](https://fastapi.tiangolo.com/) framework:
+
+```python
+
+```
+
+## Bug Fixes and Improvements
+
+- 
+
+Thank you for all the valuable feedback — please continue to share your thoughts as we work to build and improve Space. <DetaHeart/>
