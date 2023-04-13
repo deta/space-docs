@@ -56,7 +56,8 @@ Previously, Python Micros were run using an internal library that wrapped your P
 This meant that we only supported a few Python frameworks and that we had to maintain our own library.
 
 We've now changed this so that Python Micros are run using the same mechanism as the other Micros. Consequently, you should be able to run any Python HTTP server with your own run command and you'll also face a lot less bugs.
-You simply specify a `run` command that starts a HTTP server on the port specified by the `PORT` environment variable.
+
+Going forward with Python Micros, you simply need to specify a `run` command that starts an HTTP server on the port specified by the `PORT` environment variable in your `Spacefile`. Here's an example using the [FastAPI](https://fastapi.tiangolo.com/) framework:
 
 Here's an example Spacefile for a Python Micro using the [FastAPI](https://fastapi.tiangolo.com/) framework:
 
