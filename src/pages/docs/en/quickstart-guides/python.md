@@ -5,24 +5,16 @@ position: 5
 layout: "@docs"
 ---
 
-> For now, Space only supports __Python 3.8__ and __3.9__. Your app also needs to follow the __ASGI__ spec (e.g. Starlette, FastAPI, Quart, etc.) or the __WSGI__ spec (e.g. Flask, etc.). Full frameworks like Django might require more configuration which we will not cover here.
-
 ## Step 1: Code configuration
 
-For Space to run your Python app, you will need to have a file called `main.py` that contains the main instance of your app, which __must__ be called `app`. You can structure your app however you want, but the `main.py` file must be at the root of your project. Make sure you also have a `requirements.txt` file that contains the dependencies of your app.
+You can use any project stucture you like, but you must have a file named `requirements.txt` at the root of your project that list the dependencies of your app.
 
 ### Starlette
+
 Here is an example of a simple Starlette app:
 
-```yaml
-v: 0
-micros:
-  - name: python-app
-    src: ./src/python
-    engine: python3.9
-```
-
 `main.py`
+
 ```python
 from starlette.responses import PlainTextResponse
 
@@ -34,9 +26,11 @@ async def app(scope, receive, send):
 ```
 
 ### FastAPI
+
 Here is an example of a simple FastAPI app:
 
 `main.py`
+
 ```python
 from fastapi import FastAPI
 
@@ -49,9 +43,11 @@ def read_root():
 ```
 
 ### Flask
+
 Here is an example of a simple Flask app:
 
 `main.py`
+
 ```python
 from flask import Flask
 
@@ -62,16 +58,30 @@ def hello_world():
     return "Hello, Space!"
 ```
 
-
 ## Step 2: Run it on Space
+
 Make sure you have the Space CLI installed & authenticated, then run the following command:
 
 ```bash
 space new
 ```
-This will create a new Space project in the current directory. You can then run the following command to push your code to Space:
-> __Important__: before `space push`, we recommend creating a [`.spaceignore`](/docs/en/basics/revisions#ignoring-files-and-directories) file to ignore files that you don't want to be deployed to Space. For example, you should ignore `.git` and `.venv` folders.
 
+This will create a new Space project in the current directory.
+
+Edit the generated `Spacefile` to add a `run` command for your app:
+
+```yaml
+v: 0
+micros:
+  - name: python-app
+    src: .
+    engine: python3.9
+    run: uvicorn main:app
+```
+
+> ⚠️ Make sure that your Micro is configured to listen on the port number specified in the environment variable `PORT`.
+
+You can then run the following command to push your code to Space:
 
 ```bash
 space push
@@ -80,6 +90,7 @@ space push
 Great job! You've just deployed your Python app on Space. You can now access your app at the URL provided by the CLI.
 
 ## Limitations
+
 - Space only supports Python 3.8 and 3.9
 - Space only supports ASGI and WSGI apps (HTTP servers). So raw scripts won't work.
 - Only `/tmp` is writable
@@ -108,5 +119,6 @@ Then you will need to setup the dev command inside your Spacefile. Just referenc
   - name: python-app
     src: ./src/python
     engine: python3.9
+    run: uvicorn main:app
     dev: .venv/bin/uvicorn main:app --reload
 ```
