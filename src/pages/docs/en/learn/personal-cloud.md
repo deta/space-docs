@@ -20,6 +20,8 @@ This model is visible in the relationships between users, applications, and infr
 
 In a public cloud application, end users of an app by-and-large share 'computing' resources: servers, databases, file stores, and more. These resources are managed by the application provider. End users of the application log in and interact with them through the application provider, who gives them selective access. 
 
+On top of this, every individual user interacts with many different applications
+
 ### The personal cloud
 
 The "personal cloud" is a return to the personal computer model, but in the cloud. A personal cloud provider largely serves individuals, who get their own personal cloud. 
