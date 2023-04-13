@@ -17,6 +17,7 @@ Here is an example `Discovery.md` file:
 
 ```md
 ---
+app_name: "My App"
 title: "Space: The Personal Cloud"
 tagline: "Your own personal computer in the cloud: private, secure & always online."
 theme_color: "#f26daa"
@@ -36,17 +37,29 @@ Space comes with:
 
 You can see that the metadata is separate from the Markdown content by two lines of 3 dashes (`---`). What's between the sets of dashes (`---`) is the Frontmatter section.
 
-> The `Discovery.md` file is different from the [Spacefile](/docs/en/reference/spacefile). The `Discovery.md` file _only_ affects how your app appears on Deta Discovery. It is meant for marketing purposes, whereas the `Spacefile` is used for technical purposes: it tells Space how to run your app and what it looks like once it's installed.
+> The `Discovery.md` file is different from the [Spacefile](/docs/en/reference/spacefile). The `Discovery.md` file _only_ affects how your app appears on Deta Discovery. It is meant for marketing purposes, whereas the `Spacefile` is used for technical purposes: it tells Space how to run your app.
 
-The `Discovery.md` file is uploaded during `space push` and is part of a [revision](/docs/en/basics/revisions#whats-a-revision). When you create a release out of a revision the revision's `Discovery.md` file will be used.
+The `Discovery.md` file is uploaded during `space release` and is part of a [release](/docs/en/basics/releases). You can also specify the options found in the `Discovery.md` file with the Builder UI when creating a new release.
 
 ## Options
 
-There are no required options in the `Discovery.md` section, you can pick and choose what to use. We recommend that your app has at least a title and a short Markdown description explaining what it does.
+There are no required options in the `Discovery.md` section, you can pick and choose what to use. We recommend that your app has at least a app name and a short Markdown description explaining what it does.
 
 **Note:** To change your app's name or icon you need to modify its [Spacefile](/docs/en/reference/spacefile) since these are used by Space for technical purposes, not just its marketing on Discovery.
 
 Here are all the options supported by `Discovery.md`:
+
+### `app_name`
+
+Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed e.g. the Canvas, Teletype and Discovery.
+
+If it is not provided, `app_name` will fallback to your project's name.
+
+The name can has a maximum of 12 characters. We recommend not exceeding 7 characters for optimal visibility across different screen sizes.
+
+```yaml
+app_name: My App
+```
 
 ### `title`
 
