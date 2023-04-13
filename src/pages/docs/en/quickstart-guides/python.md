@@ -79,7 +79,7 @@ micros:
     run: uvicorn main:app
 ```
 
-> ⚠️ Make sure that your Micro is configured to listen on the port number specified in the environment variable `PORT`.
+The `run` command should start your Python app's HTTP server and listen on the port specified by the `PORT` environment variable. If you are using `uvicorn` the right port will be chosen automatically.
 
 You can then run the following command to push your code to Space:
 
