@@ -7,7 +7,9 @@ description: "You can now customize your app's Discovery page through with the B
 
 import DetaHeart from '@/components/DetaHeart.astro'
 import Image from '@/components/Image.astro'
+
 > **⚠️ Note:** To use the changes to both Publishing and Python Micros, you'll first need to update to the latest Space CLI via `space version upgrade`.
+
 ## Improved Publishing Flow
 
 A lot of developers have been slightly confused with the concept of publishing an app on Deta Discovery. As a result, Discovery has been filled with apps that are not quite ready for public use. To fix this, we've reworked the publishing process to make it more clear what publishing an app means and to make it easier to customize your app's listing on Discovery.
@@ -31,8 +33,6 @@ Please give your app a friendly name and add a short description so others know 
 ? App Name (max 12 chars): My App
 ? App Description (max 69 chars): This is my app
 ```
-
-
 
 ### New Builder UI Flow
 
@@ -58,7 +58,6 @@ This meant that we only supported a few Python frameworks and that we had to mai
 We've now changed this so that Python Micros are run using the same mechanism as the other Micros. Consequently, you should be able to run any Python HTTP server with your own run command and you'll also face a lot less bugs.
 
 Going forward with Python Micros, you simply need to specify a `run` command that starts an HTTP server on the port specified by the `PORT` environment variable in your `Spacefile`. Here's an example using the [FastAPI](https://fastapi.tiangolo.com/) framework:
-
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
