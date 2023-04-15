@@ -1,0 +1,600 @@
+---
+title: Python
+position: 2
+layout: "@docs"
+---
+
+import LangVariantsTabs from "@/components/Tabs/LangVariantsTabs.astro";
+
+> A "Deta Base" instance is a collection of data, not unlike a Key-Value store, a MongoDB collection or a PostgreSQL/MySQL table. It will grow with your app's needs.
+
+## Installing
+
+```shell
+pip install deta
+```
+
+> If you are using the Deta SDK within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your dependencies file (`package.json` or `requirements.txt`) to install the latest sdk version.
+
+## Instantiating
+
+To start working with your Base, you need to import the `Deta` class and initialize it with a **Project Key**. Then instantiate a subclass called `Base` with a database name of your choosing.
+
+Deta Bases are created for you automatically when you start using them.
+
+```py
+from deta import Deta  # Import Deta
+
+# Initialize with a Project Key
+# locally, set the project key in an env var called DETA_PROJECT_KEY
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.Base("simple_db")
+
+# You can create as many as you want without additional charges.
+books = deta.Base("books")
+```
+
+> ⚠️ Your project key is confidential and meant to be used by you. Anyone who has your project key can access your database. Please, do not share it or commit it in your code.
+
+## Using
+
+Deta's **`Base`** class offers the following methods to interact with your Deta Base:
+
+- [**`put`**](#put) - Stores an item in the database. It will update an item if the key already exists.
+- [**`insert`**](#insert) - Stores an item in the database but raises an error if the key already exists. (2x slower than `put`).
+- [**`get`**](#get) - Retrieves an item from the database by its key.
+- [**`fetch`**](#fetch) - Retrieves multiple items from the database based on the provided (optional) filters.
+- [**`delete`**](#delete) - Deletes an item from the database.
+- [**`update`**](#update) - Updates an item in the database.
+
+#### Storing Numbers
+
+> ⚠️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
+
+### Put
+
+```py
+put(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime.datetime | None = None,
+)
+```
+
+`put` is the fastest way to store an item in the database.
+If an item already exists under a given key, put will replace this item.
+In the case you do not provide us with a key, we will auto generate a 12 char long string as a key.
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| **data** | `dict`, `str`, [`int`](#storing-numbers), [`float`](#storing-numbers), `bool` or `list` | The data to be stored. |
+| **key** | `str` or `None` | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| **expire_in** | `int` or `None` | Seconds after which the item will expire in, see also [expiring items](./expiring_items). |
+| **expire_at** | `int`, `float`, `datetime.datetime` or `None` | Time at which the item will expire in, can provide the timestamp directly (`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items). |
+
+#### Code Example
+
+```py
+from deta import Deta
+deta = Deta("project key")
+db = deta.Base("simple_db")
+
+# store objects
+# a key will be automatically generated
+db.put({"name": "alex", "age": 77})
+# we will use "one" as a key
+db.put({"name": "alex", "age": 77}, "one")
+# the key could also be included in the object itself
+db.put({"name": "alex", "age": 77, "key": "one"})
+
+# simple types
+db.put("hello, worlds")
+db.put(7)
+# "success" is the value and "smart_work" is the key.
+db.put("success", "smart_work")
+db.put(["a", "b", "c"], "my_abc")
+
+# expiring items
+# expire item in 300 seconds
+db.put({"name": "alex", "age": 23}, "alex23", expire_in=300)
+# expire item at date
+expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
+db.put({"name": "max", "age": 28}, "max28", expire_at=expire_at)
+```
+
+#### Returns
+
+`put` returns the item on a successful put, otherwise it raises an error.
+
+### Get
+
+`get` retrieves an item from the database by it's `key`.
+
+```py
+get(key: str)
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| **key** | `str` | The key of the item to retrieve. |
+
+#### Code Example
+
+```py
+item = db.get("one") # retrieving item with key "one"
+```
+
+#### Returns
+
+If the record is found:
+
+```py
+{
+    "name": "alex",
+    "age": 77,
+    "key": "one",
+}
+```
+
+If not found, the function will return `None`.
+
+### Delete
+
+`delete` deletes an item from the database that matches the key provided.
+
+```py
+delete(key: str)
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| **key** | `str` | The key of the item to delete. |
+
+#### Code Example
+
+```py
+res = db.delete("one")
+```
+
+#### Returns
+
+Always returns `None`, even if the key does not exist.
+
+### Insert
+
+The `insert` method inserts a single item into a **Base**, but is unique from [`put`](#put) in that it will raise an error of the `key` already exists in the database.
+
+> ℹ️ `insert` is roughly 2x slower than [`put`](#put).
+
+```py
+insert(
+    data: dict | list | str | int | float | bool,
+    key: str = None,
+    *,
+    expire_in: int = None,
+    expire_at: typing.Union[int, float, datetime.datetime] = None
+)
+```
+
+##### Parameters
+
+- **data** (required) – Accepts: `dict`, `str`, [`int`](#storing-numbers), [`float`](#storing-numbers), `bool` and `list`.
+    - Description: The data to be stored.
+- **key** (optional) – Accepts: `str` and `None`
+    - Description:  the key (aka ID) to store the data under. Will be auto generated if not provided.
+- **expire_in** (optional) - Accepts: `int` and `None`
+    - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
+- **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
+    - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
+
+##### Code Example
+```py
+# will succeed, a key will be auto-generated
+db.insert("hello, world")
+
+# will succeed.
+db.insert({"message": "hello, world"}, "greeting1")
+
+# will raise an error as key "greeting1" already existed.
+db.insert({"message": "hello, there"}, "greeting1")
+
+# expiring items
+# expire in 300 seconds
+db.insert({"message": "will be deleted"}, "temp_greeting", expire_in=300)
+
+# expire at date
+expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
+db.insert({"message": "will_be_deleted"}, "temp_greeting2", expire_at=expire_at)
+```
+
+##### Returns
+
+Returns the item on a successful insert, and throws an error if the key already exists.
+
+### Put Many
+
+The Put Many method puts up to 25 items into a Base at once on a single call.
+
+```py
+put_many(
+    items: list,
+    *,
+    expire_in: int = None,
+    expire_at: typing.Union[int, float, datetime.datetime] = None,
+)
+```
+
+##### Parameters
+
+- **items** (required) – Accepts: `list` of items, where each "item" can be an `dict` (JSON serializable), `str`, [`int`](#storing-numbers), `bool`, [`float`](#storing-numbers) or `list`.
+    - Description: The list of items to be stored.
+- **expire_in** (optional) - Accepts: `int` and `None`
+    - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
+- **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
+    - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
+
+
+
+##### Code Example
+```py
+db.put_many([
+    {"name": "Beverly", "hometown": "Copernicus City", "key": "one"}, // key provided
+    "dude", // key auto-generated
+    ["Namaskāra", "marhabaan", "hello", "yeoboseyo"] // key auto-generated
+])
+
+# put many to expire in 300 seconds
+db.put_many(
+    [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
+    expire_in=300,
+)
+
+# put many with expire at
+expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
+db.put_many(
+    [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
+    expire_at=expire_at,
+)
+```
+
+##### Returns
+
+Returns a dict with `processed` and `failed`(if any) items .
+
+```json
+{
+    "processed": {
+        "items": [
+            {
+                "hometown": "Copernicus City",
+                "key": "one",
+                "name": "Beverly"
+            },
+            {
+                "key": "jyesxxlrezo0",
+                "value": "dude"
+            },
+            {
+                "key": "5feqybn7lb05",
+                "value": [
+                    "Namaskāra",
+                    "hello",
+                    "marhabaan",
+                    "yeoboseyo"
+                ]
+            }
+        ]
+    }
+}
+```
+
+### Update
+
+`update` updates an existing item from the database.
+
+```py
+update(
+    updates: dict,
+    key: str,
+    *,
+    expire_in: int = None,
+    expire_at: typing.Union [int, float, datetime.datetime] = None
+)
+```
+
+##### Parameters
+
+- **updates** (required) - Accepts: `dict` (JSON serializable)
+    - Description: a dict describing the updates on the item
+- **key** (required) – Accepts: `string`
+    - Description: the key of the item to be updated.
+- **expire_in** (optional) - Accepts: `int` and `None`
+    - Description: seconds after which the item will expire in, see also [expiring items](./expiring_items)
+- **expire_at** (optional) - Accepts: `int`, `float`, `datetime.datetime` and `None`
+    - Description: time at which the item will expire in, can provide the timestamp directly(`int` or `float`) or a [datetime.datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items)
+
+[Note for storing numbers](#storing-numbers)
+
+###### Update operations
+- **Set** : `Set` is practiced through normal key-value pairs. The operation changes the values of the attributes provided in the `set` dict if the attribute already exists. If not, it adds the attribute to the item with the corresponding value.
+
+- **Increment**: `Increment` increments the value of an attribute. The attribute's value *must be a number*. The util `base.util.increment(value)` should be used to increment the value. The *default value is 1* if not provided and it can also be negative.
+
+- **Append**: `Append` appends to a list. The util `base.util.append(value)` should be used to append the value. The value can be a `primitive type` or a `list`.
+
+- **Prepend**: `Prepend` prepends to a list. The util `base.util.prepend(value)` should be used to prepend the value. The value can be a `primitive type` or a `list`.
+
+- **Trim**: `Trim` removes an attribute from the item, the util `base.util.trim()` should be used as the value of an attribute.
+
+##### Code Example
+
+Consider we have the following item in a base `users = deta.Base('users')`:
+
+```json
+{
+    "key": "user-a",
+    "username": "jimmy",
+    "profile": {
+    "age": 32,
+    "active": false,
+    "hometown": "pittsburgh"
+    },
+    "on_mobile": true,
+    "likes": ["anime"],
+    "purchases": 1
+}
+```
+
+Then the following update operation:
+
+```py
+updates = {
+    "profile.age": 33,  # set profile.age to 33
+    "profile.active": True, # set profile.active to true
+    "profile.email": "jimmy@deta.sh", # create a new attribute 'profile.email'
+    "profile.hometown": users.util.trim(), # remove 'profile.hometown'
+    "on_mobile": users.util.trim(), # remove 'on_mobile'
+    "purchases": users.util.increment(2), # increment by 2, default value is 1
+    "likes": users.util.append("ramen") # append 'ramen' to 'likes', also accepts a list
+}
+
+db.update(updates, "user-a")
+```
+
+Results in the following item in the base:
+
+```json
+{
+    "key": "user-a",
+    "username": "jimmy",
+    "profile": {
+    "age": 33,
+    "active": true,
+    "email": "jimmy@deta.sh"
+    },
+    "likes":["anime", "ramen"],
+    "purchases": 3
+}
+```
+
+##### Returns
+
+If the item is updated, returns `None`. Otherwise, an exception is raised.
+
+### Fetch
+
+Fetch retrieves a list of items matching a query. It will retrieve everything if no query is provided.
+
+A query is composed of a single [query](/docs/en/reference/base/queries) object or a list of [queries](/docs/en/reference/base/queries).
+In the case of a list, the indvidual queries are OR'ed.
+    <LangVariantsTabs>
+
+      <Fragment slot="current">
+        **`fetch(query=None, limit=1000, last=None):`**
+
+        ##### Parameters
+
+        - **query**: is a single [query object (`dict`)](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1mb or max 1000 items).
+        - **limit**: the limit of the number of items you want to retreive, min value `1` if used
+        - **last**: the last key seen in a previous paginated response
+
+        > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response.
+        >
+        > To apply the query through all the items in your base, you have to call fetch until `last` is empty.
+
+        ##### Returns
+
+        Returns an instance of a `FetchResponse` class which has the following properties.
+
+        - `count` : The number of items in the response.
+
+        - `last`: The last key seen in the fetch response. If `last` is not `None` further items are to be retreived
+
+        - `items`: The list of items retreived.
+
+        ##### Code Example
+
+        For the examples, let's assume we have a **Base** with the following data:
+
+        ```json
+
+        [
+          {
+            "key": "key-1",
+            "name": "Wesley",
+            "age": 27,
+            "hometown": "San Francisco",
+          },
+          {
+            "key": "key-2",
+            "name": "Beverly",
+            "age": 51,
+            "hometown": "Copernicus City",
+          },
+          {
+            "key": "key-3",
+            "name": "Kevin Garnett",
+            "age": 43,
+            "hometown": "Greenville",
+          }
+        ]
+
+        ```
+
+        ```py
+        first_fetch_res = db.fetch({"age?lt": 30})
+        second_fetch_res = db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
+        ```
+
+        ... will come back with following data:
+
+        ###### `first_fetch_res.items`:
+        ```json
+        [
+          {
+            "key": "key-1",
+            "name": "Wesley",
+            "age": 27,
+            "hometown": "San Francisco",
+          }
+        ]
+        ```
+
+        ###### `second_fetch_res.items`:
+        ```json
+        [
+          {
+            "key": "key-2",
+            "name": "Beverly",
+            "age": 51,
+            "hometown": "Copernicus City",
+          },
+          {
+            "key": "key-3",
+            "name": "Kevin Garnett",
+            "age": 43,
+            "hometown": "Greenville",
+          },
+        ]
+        ```
+
+
+        ##### Fetch All Items
+
+        ```py
+        res = db.fetch()
+        all_items = res.items
+
+        # fetch until last is 'None'
+        while res.last:
+          res = db.fetch(last=res.last)
+          all_items += res.items
+        ```
+      </Fragment>
+
+      <Fragment slot="legacy">
+        **`fetch(query=None, buffer=None, pages=10):`**
+
+        ##### Parameters
+
+        - **query**: is a single [query object (`dict`)](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1mb).
+        - **pages**: how many pages of items should be returned.
+        - **buffer**: the number of items which will be returned for each iteration (aka "page") on the return iterable. This is useful when your query is returning more 1mb of data, so you could buffer the results in smaller chunks.
+
+        ##### Code Example
+
+        For the examples, let's assume we have a **Base** with the following data:
+
+        ```json
+
+        [
+          {
+            "key": "key-1",
+            "name": "Wesley",
+            "age": 27,
+            "hometown": "San Francisco",
+          },
+          {
+            "key": "key-2",
+            "name": "Beverly",
+            "age": 51,
+            "hometown": "Copernicus City",
+          },
+          {
+            "key": "key-3",
+            "name": "Kevin Garnett",
+            "age": 43,
+            "hometown": "Greenville",
+          }
+        ]
+
+        ```
+
+        ```py
+        my_first_set = next(db.fetch({"age?lt": 30}))
+        my_second_set = next(db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}]))
+        ```
+
+        ... will come back with following data:
+
+        ###### `my_first_set`:
+        ```json
+        [
+          {
+            "key": "key-1",
+            "name": "Wesley",
+            "age": 27,
+            "hometown": "San Francisco",
+          }
+        ]
+        ```
+
+        ###### `my_second_set`:
+        ```json
+        [
+          {
+            "key": "key-2",
+            "name": "Beverly",
+            "age": 51,
+            "hometown": "Copernicus City",
+          },
+          {
+            "key": "key-3",
+            "name": "Kevin Garnett",
+            "age": 43,
+            "hometown": "Greenville",
+          },
+        ]
+        ```
+
+        ##### Returns
+
+        A generator of objects that meet the `query` criteria.
+
+        The total number of items will not exceed the defined using `buffer` and `pages. Max. number of items
+
+        Iterating through the generator yields lists containing objects, each list of max length `buffer`.
+
+
+        ##### Example using buffer, pages
+
+        ```py
+        def foo(my_query, bar):
+          items = db.fetch(my_query, pages=10, buffer=20) # items is up to the limit length (10*20)
+
+          for sub_list in items: # each sub_list is up to the buffer length, 10
+            bar(sub_list)
+        ```
+      </Fragment>
+
+    </LangVariantsTabs>
