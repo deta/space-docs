@@ -126,7 +126,7 @@ Puts up to 25 items at once with a single call.
 | `expire_in` | `int` \| `None`                          | Seconds after which the item will expire in, see [expiring items][2]. |
 | `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
 
-Returns a dict with `processed` and `failed` (if any) items.
+Returns a `dict` with `"processed"` and `"failed"` keys containing processed and failed items.
 
 ### Update
 
@@ -149,7 +149,8 @@ Updates an existing item.
 | `expire_in` | `int` \| `None`                          | Seconds after which the item will expire in, see [expiring items][2]. |
 | `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
 
-If the item is updated, returns `None`. Otherwise, an exception is raised.
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
 
 #### Update operations
 
