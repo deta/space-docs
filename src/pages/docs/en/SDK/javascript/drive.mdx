@@ -4,7 +4,20 @@ position: 1
 layout: "@docs"
 ---
 
-## Put
+## Drive
+
+```js
+function Drive(driveName: string, host?: string): DriveClass;
+```
+
+The `Drive` class provides methods to interact with a Deta Drive.
+
+| Parameter   | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `driveName` | `string` | The name of the Drive. |
+| `host?`     | `string` | The host of the Drive. |
+
+### Put
 
 ```js
 async function put(
@@ -26,10 +39,10 @@ Uploads and stores a file with a given name. It will overwrite the file if the n
 
 `path` is a `string` of the path to the file on the local filesystem.
 
-If successful, returns a promise which resolves to a [`PutResponse`](./types#putresponse-1) containing the name of the item.
-If unsuccessful, raises an `Error`.
+Returns a promise which resolves to a [`PutResponse`](./types#putresponse-1) containing the name of the item.
+If the operation did not complete successfully, raises an `Error`.
 
-## Get
+### Get
 
 ```js
 async function get(name: string): Promise<GetResponse>;
@@ -41,10 +54,10 @@ Retrieves a file by its name.
 | --------- | -------- | ---------------------------- |
 | `name`    | `string` | The name of the file to get. |
 
-If successful, returns a promise that resolves to a [`GetResponse`](./types#getresponse-1) containing a `Blob` of the data if found, otherwise `null`.
-If unsuccessful, raises an `Error`.
+Returns a promise that resolves to a [`GetResponse`](./types#getresponse-1) containing a `Blob` of the data if found, otherwise `null`.
+If the operation did not complete successfully, raises an `Error`.
 
-## Delete
+### Delete
 
 ```js
 async function delete(name: string): Promise<DeleteResponse>;
@@ -56,12 +69,12 @@ Deletes a file by its name.
 | --------- | -------- | ------------------------------- |
 | `name`    | `string` | The name of the file to delete. |
 
-If successful, returns a promise that resolves to a [`DeleteResponse`](./types#deleteresponse-1) containing the `name` of the deleted file.
-If unsuccessful, raises an `Error`.
+Returns a promise that resolves to a [`DeleteResponse`](./types#deleteresponse-1) containing the `name` of the deleted file.
+If the operation did not complete successfully, raises an `Error`.
 
 > ℹ️ If the file did not exist, the file is still returned as if it were deleted.
 
-## Delete Many
+### Delete Many
 
 ```js
 async function deleteMany(names: string[]): Promise<DeleteManyResponse>;
@@ -77,7 +90,7 @@ Returns a promise which resolves to a [`DeleteManyResponse`](./types#deletemanyr
 
 > ℹ️ If the file did not exist, the file is still returned as if it were deleted.
 
-## List
+### List
 
 ```js
 async function list(options?: ListOptions): Promise<ListResponse>;
