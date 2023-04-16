@@ -20,11 +20,11 @@ async function put(
 If an item already exists under the given key, it will be replaced.
 In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `data` | [`DetaType`](./types#detatype) | The data to be stored. |
-| `key?` | `string` | The key to store the data under. Will be auto generated if not provided. |
-| `options?` | [`PutOptions`](./types#putoptions) | Optional parameters. |
+| Parameter  | Type                               | Description                                                              |
+| ---------- | ---------------------------------- | ------------------------------------------------------------------------ |
+| `data`     | [`DetaType`](./types#detatype)     | The data to be stored.                                                   |
+| `key?`     | `string`                           | The key to store the data under. Will be auto generated if not provided. |
+| `options?` | [`PutOptions`](./types#putoptions) | Optional parameters.                                                     |
 
 If successful, returns a promise which resolves to a [`PutResponse`](./types#putresponse) containing the item.
 If unsuccessful, throws an `Error`.
@@ -39,9 +39,9 @@ async function get(key: string): Promise<GetResponse>;
 
 Retrieves an item by its key.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `key` | `string` | The key of the item to retrieve. |
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| `key`     | `string` | The key of the item to retrieve. |
 
 Returns a promise which resolves to a [`GetResponse`](./types#getresponse).
 If the item is found, the response will contain the item.
@@ -55,9 +55,9 @@ async function delete(key: string): Promise<DeleteResponse>;
 
 Deletes an item by its key.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `key` | `string` | The key of the item to delete. |
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `key`     | `string` | The key of the item to delete. |
 
 Returns a promise which resolves to a [`DeleteResponse`](./types#deleteresponse).
 The response will always be `null`, even if the key does not exist.
@@ -76,11 +76,11 @@ Inserts a single item, but is different from [`put`](#put) in that it will throw
 
 > ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `data` | `DetaType` | The data to be stored. |
-| `key?` | `string` | The key to store the data under. Will be auto generated if not provided. |
-| `options?` | [`InsertOptions`](./types#insertoptions) | Optional parameters. |
+| Parameter  | Type                                     | Description                                                              |
+| ---------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| `data`     | `DetaType`                               | The data to be stored.                                                   |
+| `key?`     | `string`                                 | The key to store the data under. Will be auto generated if not provided. |
+| `options?` | [`InsertOptions`](./types#insertoptions) | Optional parameters.                                                     |
 
 If successful, returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
 If unsuccessful or the key already exists, throws an `Error`.
@@ -96,10 +96,10 @@ async function putMany(
 
 Puts up to 25 items at once with a single call.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `items` | [`DetaType[]`](./types#detatype) | The list of items to be stored. |
-| `options?` | [`PutManyOptions`](./types#putmanyoptions) | Optional parameters. |
+| Parameter  | Type                                       | Description                     |
+| ---------- | ------------------------------------------ | ------------------------------- |
+| `items`    | [`DetaType[]`](./types#detatype)           | The list of items to be stored. |
+| `options?` | [`PutManyOptions`](./types#putmanyoptions) | Optional parameters.            |
 
 If successful, returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
 If unsuccessful or `items` contains more than 25 items, throws an `Error`.
@@ -116,11 +116,11 @@ async function update(
 
 Updates an existing item.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `updates` | [`ObjectType`](./types#objecttype) | An object describing the updates on the item. |
-| `key` | `string` | The key of the item to be updated. |
-| `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters. |
+| Parameter  | Type                                     | Description                                   |
+| ---------- | ---------------------------------------- | --------------------------------------------- |
+| `updates`  | [`ObjectType`](./types#objecttype)       | An object describing the updates on the item. |
+| `key`      | `string`                                 | The key of the item to be updated.            |
+| `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters.                          |
 
 ### Update operations
 
@@ -166,9 +166,9 @@ In the case of a list, the indvidual queries are OR'ed.
 > Thus, in some cases you might get an empty list of items and a `last` key in the response.
 > To apply the query through all the items in your Base, you have to call `fetch` until `last` is empty.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `query?` | [`CompositeType`](./types#compositetype) | The query to filter the items by. |
-| `options?` | [`FetchOptions`](./types#fetchoptions) | Optional parameters. |
+| Parameter  | Type                                     | Description                       |
+| ---------- | ---------------------------------------- | --------------------------------- |
+| `query?`   | [`CompositeType`](./types#compositetype) | The query to filter the items by. |
+| `options?` | [`FetchOptions`](./types#fetchoptions)   | Optional parameters.              |
 
 Returns promise which resolves a [`FetchResponse`](./types#fetchresponse).
