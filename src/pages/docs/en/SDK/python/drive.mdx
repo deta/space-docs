@@ -7,46 +7,42 @@ layout: "@docs"
 ### Put
 
 ```py
-put(
+def put(
     name: str,
-    data: str | bytes| io.TextIOBase | io.BufferedIOBase | io.RawIOBase,
+    data: str | bytes | io.TextIOBase | io.BufferedIOBase | io.RawIOBase,
     *,
     content_type: str | None = None,
-)
+) -> str:
 ```
 
 ```py
-put(
+def put(
     name: str,
     *,
     path: str,
     content_type: str | None = None,
-)
+) -> str:
 ```
 
-`Put` uploads and stores a file in a drive with a given `name`. It will overwrite the file if the file name already exists.
+Uploads and stores a file with a given name. It will overwrite the file if the name already exists.
 
-**`put(name, data, *, path, content_type)`**
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | `str` | The name of the file. |
+| `data` | `str` \| `bytes` \| `io.TextIOBase` \| `io.BufferedIOBase` \| `io.RawIOBase` | The data content of the file. |
+| `path` | `str` | The local path of the file to be uploaded to drive. |
+| `content_type` | `str` \| `None` | The content type of the file to be uploaded to drive. If the content type is not provided, Drive tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be determined. |
 
-#### Parameters
+You must pass either `data` or `path`, but not both.
 
-- **name** (required) - `string`
-  - Description: The name of the file.
-- **data** - `string | bytes | io.TextIOBase | io.BufferedIOBase | io.RawIOBase`
-  - Description: The data content of the file.
-- **path** - `string`
-  - Description: The local path of the file to be uploaded to drive.
-- **content_type** - `string`
-
-  - Description: The content type of the file to be uploaded to drive. If the content type is not provided, `drive` tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be figured out from the file name.
-
-  At least and at most one of two args `data` or `path` must be provided. `path` and `content_type` must be provided with the key words.
-
-#### Returns
-
-Returns the name of the file on a successful `put`, otherwise, raises an `Exception` on error.
+If successful, returns an `str` containing the file's name
+If unsuccessful, raises an `Exception`.
 
 ### Get
+
+```py
+def get(self, name: str) -> Optional[DriveStreamingBody]:
+```
 
 `Get` retrieves a file from a drive by its name.
 
