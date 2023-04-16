@@ -85,8 +85,8 @@ interface PutOptions {
 }
 ```
 
-| Property   | Type               | Description                                                                                                            |
-| ---------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Property    | Type               | Description                                                                                                            |
+| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
 | `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
 
@@ -99,8 +99,8 @@ interface InsertOptions {
 }
 ```
 
-| Property   | Type               | Description                                                                                                            |
-| ---------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Property    | Type               | Description                                                                                                            |
+| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
 | `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
 
@@ -113,8 +113,8 @@ interface PutManyOptions {
 }
 ```
 
-| Property   | Type               | Description                                                                                                            |
-| ---------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Property    | Type               | Description                                                                                                            |
+| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
 | `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
 
@@ -127,8 +127,8 @@ interface UpdateOptions {
 }
 ```
 
-| Property   | Type               | Description                                                                                                            |
-| ---------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Property    | Type               | Description                                                                                                            |
+| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
 | `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
 
@@ -143,8 +143,8 @@ interface FetchOptions {
 
 | Property | Type     | Description                                                                                                   |
 | -------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| `limit?`  | `number` | The limit of the number of items you want to retreive, minimum value `1`.                                     |
-| `last?`   | `string` | The last key seen in a previous paginated response, provide this in a subsequent call to fetch further items. |
+| `limit?` | `number` | The limit of the number of items you want to retreive, minimum value `1`.                                     |
+| `last?`  | `string` | The last key seen in a previous paginated response, provide this in a subsequent call to fetch further items. |
 
 ### `PutResponse`
 
@@ -196,11 +196,11 @@ interface FetchResponse {
 }
 ```
 
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| `items`  | [`ObjectType[]`](#objecttype) | List of items retreived. |
-| `count`  | `number` | Number of items in the response. |
-| `last?`   | `string` | Last key seen in the fetch response. If `last` is not `undefined`, further items are to be retreived. |
+| Property | Type                          | Description                                                                                           |
+| -------- | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `items`  | [`ObjectType[]`](#objecttype) | List of items retreived.                                                                              |
+| `count`  | `number`                      | Number of items in the response.                                                                      |
+| `last?`  | `string`                      | Last key seen in the fetch response. If `last` is not `undefined`, further items are to be retreived. |
 
 ## Drive types
 
@@ -214,8 +214,8 @@ interface PutOptions {
 }
 ```
 
-| Property      | Type                                 | Description                                                                                                                                                                                                                                      |
-| ------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Property       | Type                                 | Description                                                                                                                                                                                                                                      |
+| -------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `data?`        | `string` \| `Uint8Array` \| `Buffer` | Either the data string or a buffer.                                                                                                                                                                                                              |
 | `path?`        | `string`                             | Path of the file to be uploaded to drive.                                                                                                                                                                                                        |
 | `contentType?` | `string`                             | Content type of the file to be uploaded to drive. If the content type is not provided, Drive tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be determined. |
@@ -231,8 +231,8 @@ interface ListOptions {
 }
 ```
 
-| Property    | Type      | Description                                                       |
-| ----------- | --------- | ----------------------------------------------------------------- |
+| Property     | Type      | Description                                                       |
+| ------------ | --------- | ----------------------------------------------------------------- |
 | `recursive?` | `boolean` | If `true`, the list operation will be performed recursively.      |
 | `prefix?`    | `string`  | A prefix that file names must start with to be returned.          |
 | `limit?`     | `number`  | Maximum number of files names to be returned, defaults to `1000`. |
