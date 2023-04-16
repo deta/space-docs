@@ -1,0 +1,88 @@
+---
+title: Drive
+position: 1
+layout: "@docs"
+---
+
+## Put
+
+```js
+async function put(
+    name: string,
+    options: PutOptions,
+): Promise<PutResponse>;
+```
+
+Uploads and stores a file in a Drive with a given `name`. It will overwrite the file if the file name already exists.
+
+| Parameter | Type                                 | Description                               |
+| --------- | ------------------------------------ | ----------------------------------------- |
+| `name`    | `string`                             | The name of the file.                     |
+| `options` | [`PutOptions`](./types#putoptions-1) | An object with three optional parameters. |
+
+`options` must have exactly one of two properties `data` or `path` defined.
+
+If successful, returns a promise which resolves to a [`PutResponse`](./types#putresponse-1) containing the name of the item.
+If unsuccessful, raises an `Error`.
+
+## Get
+
+```js
+async function get(name: string): Promise<GetResponse>;
+```
+
+Retrieves a file from a Drive by its name.
+
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `name`    | `string` | The name of the file to get. |
+
+If successful, returns a promise that resolves to a [`GetResponse`](./types#getresponse-1), which contains a `Blob` of the data if found, otherwise `null`.
+If unsuccessful, raises an `Error`.
+
+## Delete
+
+```js
+async function delete(name: string): Promise<DeleteResponse>;
+```
+
+Deletes a file from a Drive.
+
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `name`    | `string` | The name of the file to delete. |
+
+If successful, returns a promise that resolves to a [`DeleteResponse`](./types#deleteresponse-1) containing the `name` of the deleted file.
+If unsuccessful, raises an `Error`.
+
+> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
+
+## Delete Many
+
+```js
+async function deleteMany(names: string[]): Promise<DeleteManyResponse>;
+```
+
+Deletes multiple files from a Drive, up to a limit of 1000.
+
+| Parameter | Type       | Description                       |
+| --------- | ---------- | --------------------------------- |
+| `names`   | `string[]` | The names of the files to delete. |
+
+Returns a promise which resolves to a [`DeleteManyResponse`](./types#deletemanyresponse).
+
+> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
+
+## List
+
+```js
+async function list(options?: ListOptions): Promise<ListResponse>;
+```
+
+Lists files in a Drive.
+
+| Parameter | Type                                   | Description                               |
+| --------- | -------------------------------------- | ----------------------------------------- |
+| `options` | [`ListOptions`](./types#listoptions-1) | An object with three optional parameters. |
+
+Returns a promise which resolves to a [`ListRepsonse`](./types#listresponse).

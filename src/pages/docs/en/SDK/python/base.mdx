@@ -1,0 +1,485 @@
+---
+title: Base
+position: 0
+layout: "@docs"
+---
+
+import LangVariantsTabs from "@/components/Tabs/LangVariantsTabs.astro";
+
+## Installing
+
+```shell
+pip install deta
+```
+
+> ℹ️ If you are using the Deta SDK within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your `requirements.txt` file to install the latest SDK version.
+
+## Instantiating
+
+To start working with the SDK, you need to either use the `space dev` command or provide a data key in an environment variable called `DETA_PROJECT_KEY`.
+See [Developing with Base and Drive](/docs/en/basics/data#developing-with-base-and-drive) for detailed information.
+
+> ⚠️ Your data key is confidential and meant to be used by you. Anyone who has your data key can access your database. Please, do not share it or commit it in your code.
+
+## Base
+
+Deta's **`Base`** class offers the following methods to interact with your Deta Base:
+
+- [**`put`**](#put) - Stores an item in the database. It will update an item if the key already exists.
+- [**`insert`**](#insert) - Stores an item in the database but raises an error if the key already exists. (2x slower than `put`).
+- [**`get`**](#get) - Retrieves an item from the database by its key.
+- [**`fetch`**](#fetch) - Retrieves multiple items from the database based on the provided (optional) filters.
+- [**`delete`**](#delete) - Deletes an item from the database.
+- [**`update`**](#update) - Updates an item in the database.
+
+Deta Bases are created for you automatically when you start using them.
+
+```py
+from deta import Deta  # Import Deta
+
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.Base("simple_db")
+
+# You can create as many as you want without additional charges.
+books = deta.Base("books")
+```
+
+```py
+from deta import Deta  # Import Deta
+
+# Initialize with a Project Key
+deta = Deta("project key")
+
+# This how to connect to or create a database.
+drive = deta.Drive("simple_drive")
+
+# You can create as many as you want
+photos = deta.Drive("photos")
+docs = deta.Drive("docs")
+
+```
+
+If you are using Deta Drive within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your `requirements.txt` file to install the latest sdk version.
+
+A valid project key is pre-set in the Micro's environment. There is no need to pass a key in the the initialization step.
+
+```py
+from deta import Drive
+
+drive = Drive("simple_drive")
+```
+
+#### Storing Numbers
+
+> ⚠️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
+
+### Put
+
+```py
+def put(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+)
+```
+
+`put` is the fastest way to store an item in the database.
+If an item already exists under a given key, put will replace this item.
+In the case you do not provide us with a key, we will auto generate a 12 char long string as a key.
+
+| Name          | Type                                                                                    | Description                                                                                                                                                                                                        |
+| ------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **data**      | `dict`, `str`, [`int`](#storing-numbers), [`float`](#storing-numbers), `bool` or `list` | The data to be stored.                                                                                                                                                                                             |
+| **key**       | `str` or `None`                                                                         | The key (aka ID) to store the data under. Will be auto generated if not provided.                                                                                                                                  |
+| **expire_in** | `int` or `None`                                                                         | Seconds after which the item will expire in, see also [expiring items](./expiring_items).                                                                                                                          |
+| **expire_at** | `int`, `float`, `datetime` or `None`                                                    | Time at which the item will expire in, can provide the timestamp directly (`int` or `float`) or a [datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items). |
+
+`put` returns the item on a successful put, otherwise it raises an error.
+
+### Get
+
+```py
+def get(key: str)
+```
+
+`get` retrieves an item from the database by it's `key`.
+
+#### Parameters
+
+| Name    | Type  | Description                      |
+| ------- | ----- | -------------------------------- |
+| **key** | `str` | The key of the item to retrieve. |
+
+#### Returns
+
+If the record is found:
+
+```py
+{
+    "name": "alex",
+    "age": 77,
+    "key": "one",
+}
+```
+
+If not found, the function will return `None`.
+
+### Delete
+
+`delete` deletes an item from the database that matches the key provided.
+
+```py
+delete(key: str)
+```
+
+#### Parameters
+
+| Name    | Type  | Description                    |
+| ------- | ----- | ------------------------------ |
+| **key** | `str` | The key of the item to delete. |
+
+#### Returns
+
+Always returns `None`, even if the key does not exist.
+
+### Insert
+
+```py
+insert(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+)
+```
+
+The `insert` method inserts a single item into a **Base**, but is unique from [`put`](#put) in that it will raise an error of the `key` already exists in the database.
+
+> ℹ️ `insert` is roughly 2x slower than [`put`](#put).
+
+#### Parameters
+
+| Name          | Type                                                                                    | Description                                                                                                                                                                                                        |
+| ------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **data**      | `dict`, `str`, [`int`](#storing-numbers), [`float`](#storing-numbers), `bool` or `list` | The data to be stored.                                                                                                                                                                                             |
+| **key**       | `str` or `None`                                                                         | The key (aka ID) to store the data under. Will be auto generated if not provided.                                                                                                                                  |
+| **expire_in** | `int` or `None`                                                                         | Seconds after which the item will expire in, see also [expiring items](./expiring_items).                                                                                                                          |
+| **expire_at** | `int`, `float`, `datetime` or `None`                                                    | Time at which the item will expire in, can provide the timestamp directly (`int` or `float`) or a [datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items). |
+
+#### Returns
+
+Returns the item on a successful insert, and throws an error if the key already exists.
+
+### Put Many
+
+```py
+put_many(
+    items: list,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+)
+```
+
+The Put Many method puts up to 25 items into a Base at once on a single call.
+
+#### Parameters
+
+| Name          | Type                                 | Description                                                                                                                                                                                                        |
+| ------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **items**     | `list`                               | The list of items to be stored.                                                                                                                                                                                    |
+| **expire_in** | `int` or `None`                      | Seconds after which the item will expire in, see also [expiring items](./expiring_items).                                                                                                                          |
+| **expire_at** | `int`, `float`, `datetime` or `None` | Time at which the item will expire in, can provide the timestamp directly (`int` or `float`) or a [datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items). |
+
+#### Returns
+
+Returns a dict with `processed` and `failed` (if any) items.
+
+```json
+{
+  "processed": {
+    "items": [
+      {
+        "hometown": "Copernicus City",
+        "key": "one",
+        "name": "Beverly"
+      },
+      {
+        "key": "jyesxxlrezo0",
+        "value": "dude"
+      },
+      {
+        "key": "5feqybn7lb05",
+        "value": ["Namaskāra", "hello", "marhabaan", "yeoboseyo"]
+      }
+    ]
+  }
+}
+```
+
+### Update
+
+```py
+update(
+    updates: dict,
+    key: str,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None
+)
+```
+
+`update` updates an existing item from the database.
+
+#### Parameters
+
+| Name          | Type                                 | Description                                                                                                                                                                                                        |
+| ------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **updates**   | `dict`                               | A dictionary describing the updates on the item.                                                                                                                                                                   |
+| **key**       | `str`                                | The key of the item to be updated.                                                                                                                                                                                 |
+| **expire_in** | `int` or `None`                      | Seconds after which the item will expire in, see also [expiring items](./expiring_items).                                                                                                                          |
+| **expire_at** | `int`, `float`, `datetime` or `None` | Time at which the item will expire in, can provide the timestamp directly (`int` or `float`) or a [datetime](https://docs.python.org/3/library/datetime.html) object, see also [expiring items](./expiring_items). |
+
+#### Update operations
+
+##### Set
+
+`Set` is practiced through normal key-value pairs.
+The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+If not, it adds the attribute to the item with the corresponding value.
+
+##### Increment
+
+`<base instance>.util.increment(value)` increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is **1**.
+
+##### Append
+
+`<base instance>.util.append(value)` appends to a list.
+The value can be a primitive type or a `list`.
+
+##### Prepend
+
+`<base instance>.util.prepend(value)` prepends to a list.
+The value can be a primitive type or a `list`.
+
+##### Trim
+
+`<base instance>.util.trim()` removes an attribute from the item.
+
+#### Returns
+
+If the item is updated, returns `None`. Otherwise, an exception is raised.
+
+### Fetch
+
+Fetch retrieves a list of items matching a query. It will retrieve everything if no query is provided.
+
+A query is composed of a single [query](/docs/en/reference/base/queries) object or a list of [queries](/docs/en/reference/base/queries).
+In the case of a list, the indvidual queries are OR'ed.
+
+<LangVariantsTabs>
+
+    <Fragment slot="current">
+    **`fetch(query=None, limit=1000, last=None):`**
+
+    ##### Parameters
+
+    - **query**: is a single [query object (`dict`)](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1mb or max 1000 items).
+    - **limit**: the limit of the number of items you want to retreive, min value `1` if used
+    - **last**: the last key seen in a previous paginated response
+
+    > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response.
+    >
+    > To apply the query through all the items in your base, you have to call fetch until `last` is empty.
+
+    ##### Returns
+
+    Returns an instance of a `FetchResponse` class which has the following properties.
+
+    - `count` : The number of items in the response.
+    - `last`: The last key seen in the fetch response. If `last` is not `None` further items are to be retreived
+    - `items`: The list of items retreived.
+
+    </Fragment>
+
+    <Fragment slot="legacy">
+    **`fetch(query=None, buffer=None, pages=10):`**
+
+    ##### Parameters
+
+    - **query**: is a single [query object (`dict`)](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1mb).
+    - **pages**: how many pages of items should be returned.
+    - **buffer**: the number of items which will be returned for each iteration (aka "page") on the return iterable. This is useful when your query is returning more 1mb of data, so you could buffer the results in smaller chunks.
+
+    ##### Returns
+
+    A generator of objects that meet the `query` criteria.
+
+    The total number of items will not exceed the defined using `buffer` and `pages. Max. number of items
+
+    Iterating through the generator yields lists containing objects, each list of max length `buffer`.
+
+    </Fragment>
+
+</LangVariantsTabs>
+
+## Drive
+
+Deta's **`Drive`** offers the following methods to interact with your Deta Drive:
+
+- [**`put`**](#put) - Stores a file to drive. It will overwrite the file if the file already exists.
+- [**`get`**](#get) - Retrieves a file from drive by the file name.
+- [**`delete`**](#delete) - Deletes a file from drive.
+- [**`list`**](#list) - Lists the file names in a drive.
+
+### Put
+
+```py
+put(
+    name: str,
+    data: str | bytes| io.TextIOBase | io.BufferedIOBase | io.RawIOBase,
+    *,
+    content_type: str | None = None,
+)
+```
+
+```py
+put(
+    name: str,
+    *,
+    path: str,
+    content_type: str | None = None,
+)
+```
+
+`Put` uploads and stores a file in a drive with a given `name`. It will overwrite the file if the file name already exists.
+
+**`put(name, data, *, path, content_type)`**
+
+#### Parameters
+
+- **name** (required) - `string`
+  - Description: The name of the file.
+- **data** - `string | bytes | io.TextIOBase | io.BufferedIOBase | io.RawIOBase`
+  - Description: The data content of the file.
+- **path** - `string`
+  - Description: The local path of the file to be uploaded to drive.
+- **content_type** - `string`
+
+  - Description: The content type of the file to be uploaded to drive. If the content type is not provided, `drive` tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be figured out from the file name.
+
+  At least and at most one of two args `data` or `path` must be provided. `path` and `content_type` must be provided with the key words.
+
+#### Returns
+
+Returns the name of the file on a successful `put`, otherwise, raises an `Exception` on error.
+
+### Get
+
+`Get` retrieves a file from a drive by its name.
+
+**`get(name)`**
+
+#### Parameters
+
+- **name** (required) - `string`
+  - Description: The `name` of the file to get.
+
+#### Returns
+
+Returns a instance of a `DriveStreamingBody` class which has the following methods/properties.
+
+- `read(size=None)` : Reads all or up to the next `size` bytes. Calling `read` after all the content has been read will return empty bytes.
+
+- `iter_chunks(chunk_size:int=1024)` : Returns an iterator that yields chunks of bytes of `chunk_size` at a time.
+
+- `iter_lines(chunk_size:int=1024)` : Returns an iterator that yields lines from the stream. Bytes of `chunk_size` at a time is read from the raw stream and lines are yielded from there. The line delimiter is always `b'\n'`.
+
+- `close()` : Closes the stream.
+
+- `closed` : Returns `True` if the stream has been closed.
+
+### Delete
+
+`Delete` deletes a file from drive.
+
+**`delete(name)`**
+
+#### Parameters
+
+- **name** (required) - `string`
+  - Description: The name of the file to delete
+
+#### Returns
+
+Returns the `name` of the deleted file on successful deletions, otherwise raises an `Exception`
+
+> If the file did not exist, the file is still returned as deleted.
+
+### Delete Many
+
+Deletes multiple files (up to 1000) from a drive.
+
+**`delete_many(names)`**
+
+#### Parameters
+
+- **names** (required): `string`
+  - Description: The names of the files to be deleted.
+
+#### Returns
+
+Returns a `dict` with `deleted` and `failed` keys indicating deleted and failed file names.
+
+```py
+{
+  "deleted" : ["file1.txt", "file2.txt", ...],
+  "failed": {
+    "file_3.txt": "reason for failure"
+  }
+}
+```
+
+> If a file did not exist, the file is still returned as deleted.
+
+### List
+
+`List` files in your drive.
+
+**`list(limit, prefix, last)`**
+
+#### Parameters
+
+- **limit**: `int`
+  - Description: The maximum number of files names to be returned, defaults to `1000`
+- **prefix**: `string`
+  - Description: The prefix that file names must have.
+- **last**: `string`
+  - Description: The `last` name seen in a previous paginated result. Provide `last` from previous response to fetch further pages.
+
+#### Returns
+
+Returns a `dict` with `paging` and `names` keys.
+
+```py
+{
+  "names": ["file1.txt", "file2.txt", ...],
+  "paging": {
+    "size": 2,
+    "last": "file_2.txt"
+  }
+}
+```
+
+- `names`: The names of the files
+- `paging`: Contains paging information.
+  - `size` : The number of files returned.
+  - `last` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.

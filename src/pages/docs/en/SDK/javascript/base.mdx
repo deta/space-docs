@@ -1,0 +1,271 @@
+---
+title: Base
+position: 0
+layout: "@docs"
+---
+
+import LangVariantsTabs from "@/components/Tabs/LangVariantsTabs.astro";
+
+```js
+const { Deta } = require("deta"); // import Deta
+
+// Initialize with a Project Key
+// locally, set the project key in an env var called DETA_PROJECT_KEY
+const deta = Deta();
+
+// This how to connect to or create a database.
+const db = deta.Base("simple_db");
+
+// You can create as many as you want without additional charges.
+const books = deta.Base("books");
+```
+
+> ℹ️ If you are using the `deta` npm package of `0.0.6` or below, `Deta` is the single default export and should be imported as such.
+>
+> ```js
+> const Deta = require("deta");
+> ```
+
+```js
+const { Deta } = require("deta"); // import Deta
+
+// this also works
+import { Deta } from "deta";
+
+// Initialize with a Project Key
+const deta = Deta("project key");
+
+// You can create as many as you want
+const photos = deta.Drive("photos");
+const docs = deta.Drive("docs");
+```
+
+If you are using Deta Drive within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your `package.json` file to install the latest sdk version.
+
+A valid project key is pre-set in the Micro's environment. There is no need to pass a key in the initialization step.
+
+```js
+const { Drive } = require("deta");
+const drive = Drive("simple_drive");
+```
+
+> ℹ️ Deta Bases are created for you automatically when you start using them.
+
+## Put
+
+```js
+async function put(
+    data: DetaType,
+    key?: string,
+    options?: PutOptions,
+): Promise<PutResponse>;
+```
+
+`put` is the fastest way to store an item in the database.
+If an item already exists under a given key, put will replace this item.
+In the case you do not provide us with a key, we will auto generate a 12 char long string as a key.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `data`    | `object` (serializable), `string`, [`number`](#storing-numbers), `boolean` or `array` | The data to be stored. |
+| `key`     | `string`, `null` or `undefined` | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| `options` | [`PutOptions`](#putoptions), `null` or `undefined` | Optional parameters. |
+
+`put` returns a promise which resolves to the item on a successful put, otherwise it throws an Error.
+
+## Get
+```js
+async function get(key: string): Promise<GetResponse>;
+```
+
+`get` retrieves an item from the database by its `key`.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The key of the item to retrieve. |
+
+If the record is found, the promise resolves to:
+
+```js
+{
+    name: 'alex', age: 77, key: 'one'
+}
+```
+
+If not found, the promise will resolve to `null`.
+
+## Delete
+
+```js
+async function delete(key: string): Promise<DeleteResponse>;
+```
+
+`delete` deletes an item from the database that matches the key provided.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | The key of the item to delete. |
+
+Always returns a promise which resolves to `null`, even if the key does not exist.
+
+## Insert
+
+```js
+async function insert(
+    data: DetaType,
+    key?: string,
+    options?: InsertOptions,
+): Promise<InsertResponse>;
+```
+
+The `insert` method inserts a single item into a Base, but is unique from [`put`](#put) in that it will raise an error of the `key` already exists in the database.
+
+> ℹ️ `insert` is roughly 2x slower than [`put`](#put).
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `data` | `DetaType` | The data to be stored. |
+| `key?` | `string` | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| `options?` | [`InsertOptions`](#insertoptions) | Optional parameters. |
+
+Returns a promise which resolves to the item on a successful insert, and throws an error if the key already exists.
+
+## Put Many
+
+```js
+async function putMany(
+    items: DetaType[],
+    options?: PutManyOptions,
+): Promise<PutManyResponse>;
+```
+
+The `putMany` method puts up to 25 items into a Base at once with a single call.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `items` | [`DetaType[]`](#detatype) | The list of items to be stored. |
+| `options?` | [`PutManyOptions`](#putmanyoptions) | Optional parameters. |
+
+Returns a promise which resolves to the put items on a successful insert, and throws an error if you attempt to put more than 25 items.
+
+```json
+{
+  "processed": {
+    "items": [
+      {
+        "hometown": "Copernicus City",
+        "key": "one",
+        "name": "Beverly"
+      },
+      {
+        "key": "jyesxxlrezo0",
+        "value": "dude"
+      },
+      {
+        "key": "5feqybn7lb05",
+        "value": ["Namaskāra", "hello", "marhabaan", "yeoboseyo"]
+      }
+    ]
+  }
+}
+```
+
+## Update
+
+```js
+async function update(
+    updates: ObjectType,
+    key: string,
+    options?: UpdateOptions,
+): Promise<UpdateResponse>;
+```
+
+`update` updates an existing item from the database.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `updates` | [`ObjectType`](#objecttype) | An object describing the updates on the item. |
+| `key` | `string` | The key of the item to be updated. |
+| `options?` | [`UpdateOptions`](#updateoptions) | Optional parameters. |
+
+### Update operations
+
+#### Set
+
+`Set` is practiced through normal key-value pairs.
+The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+If not, it adds the attribute to the item with the corresponding value.
+
+#### Increment
+
+`<base instance>.util.increment(value)` increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is **1**.
+
+#### Append
+
+`<base instance>.util.append(value)` appends to a list.
+The value can be a primitive type or a `list`.
+
+#### Prepend
+
+`<base instance>.util.prepend(value)` prepends to a list.
+The value can be a primitive type or a `list`.
+
+#### Trim
+
+`<base instance>.util.trim()` removes an attribute from the item.
+
+## Fetch
+
+Fetch retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
+
+A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
+In the case of a list, the indvidual queries are OR'ed.
+
+> Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response.
+>
+> To apply the query through all the items in your base, you have to call fetch until `last` is empty.
+
+<LangVariantsTabs>
+    <Fragment slot="current">
+
+    ```js
+    async function fetch(query?: CompositeType, options?: FetchOptions): Promise<FetchResponse>;
+    ```
+
+    | Parameter | Type | Description |
+    | --- | --- | --- |
+    | `query?` | [`CompositeType`](#compositetype) | The query to filter the items by. |
+    | `options?` | [`FetchOptions`](#fetchoptions) | Optional parameters. |
+
+    ##### Returns
+
+    A promise which resolves to an object with the following attributes:
+
+    - `count` : The number of items in the response.
+    - `last`: The last key seen in the fetch response. If `last` is not `undefined` further items are to be retreived.
+    - `items`: The list of items retreived.
+
+    </Fragment>
+    <Fragment slot="legacy">
+    **`async fetch(query, pages=10, buffer=null)`**
+
+    ##### Parameters
+
+    - **query**: is a single [query object](/docs/en/reference/base/queries) or list of queries. If omitted, you will get all the items in the database (up to 1 MB).
+    - **pages**: how many pages of items should be returned.
+    - **buffer**: the number of items which will be returned for each iteration (aka "page") on the return iterable. This is useful when your query is returning more than 1mb of data, so you could buffer the results in smaller chunks.
+
+    ##### Returns
+
+    A promise which resolves to a generator of objects that meet the `query` criteria.
+
+    The total number of items will not exceed the defined using `buffer` and `pages. Max. number of items
+
+    Iterating through the generator yields arrays containing objects, each array of max length `buffer`.
+
+    </Fragment>
+
+</LangVariantsTabs>
