@@ -4,6 +4,19 @@ position: 1
 layout: "@docs"
 ---
 
+## Drive
+
+```py
+def Drive(name: str, host: str | None = None):
+```
+
+The `Drive` class provides methods to interact with a Deta Drive.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | `str` | The name of the Drive. |
+| `host` | `str` \| `None` | The host of the Drive. |
+
 ### Put
 
 ```py
@@ -35,88 +48,123 @@ Uploads and stores a file with a given name. It will overwrite the file if the n
 
 You must pass either `data` or `path`, but not both.
 
-If successful, returns an `str` containing the file's name
-If unsuccessful, raises an `Exception`.
+If `name` is not a non-empty string, raises a `ValueError`.
+If neither or both `data` and `path` are passed, raises a `ValueError`.
+Returns an `str` containing the name of the file.
+If the operation did not complete successfully, raises an `Exception`.
 
 ### Get
 
 ```py
-def get(self, name: str) -> Optional[DriveStreamingBody]:
+def get(name: str) -> DriveStreamingBody | None:
 ```
 
-`Get` retrieves a file from a drive by its name.
+Retrieves a file by its name.
 
-**`get(name)`**
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | `str` | The name of the file to get. |
 
-#### Parameters
-
-- **name** (required) - `string`
-  - Description: The `name` of the file to get.
-
-#### Returns
-
-Returns a instance of a `DriveStreamingBody` class which has the following methods/properties.
-
-- `read(size=None)` : Reads all or up to the next `size` bytes. Calling `read` after all the content has been read will return empty bytes.
-- `iter_chunks(chunk_size:int=1024)` : Returns an iterator that yields chunks of bytes of `chunk_size` at a time.
-- `iter_lines(chunk_size:int=1024)` : Returns an iterator that yields lines from the stream. Bytes of `chunk_size` at a time is read from the raw stream and lines are yielded from there. The line delimiter is always `b'\n'`.
-- `close()` : Closes the stream.
-- `closed` : Returns `True` if the stream has been closed.
+Returns an instance of [`DriveStreamingBody`](#drivestreamingbody).
+If `name` is not a non-empty string, raises a `ValueError`.
 
 ### Delete
 
-`Delete` deletes a file from drive.
+```py
+def delete(name: str) -> str:
+```
 
-**`delete(name)`**
+Deletes a file by its name.
 
-#### Parameters
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | `str` | The name of the file to delete. |
 
-- **name** (required) - `string`
-  - Description: The name of the file to delete
+Returns an `str` containing the name of the deleted file.
+If `name` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
 
-#### Returns
-
-Returns the `name` of the deleted file on successful deletions, otherwise raises an `Exception`
-
-> If the file did not exist, the file is still returned as deleted.
+> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
 
 ### Delete Many
 
-Deletes multiple files (up to 1000) from a drive.
+```py
+def delete_many(names: Sequence[str]) -> dict:
+```
 
-**`delete_many(names)`**
+Deletes multiple files, up to a limit of 1000.
 
-#### Parameters
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `names` | `Sequence[str]` | The names of the files to delete. |
 
-- **names** (required): `string`
-  - Description: The names of the files to be deleted.
+Returns a `dict` with `"deleted"` and `"failed"` keys indicating deleted and failed file names.
 
-#### Returns
-
-Returns a `dict` with `deleted` and `failed` keys indicating deleted and failed file names.
-
-> If a file did not exist, the file is still returned as deleted.
+> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
 
 ### List
 
-`List` files in your drive.
+```py
+def list(
+    limit: int = 1000,
+    prefix: str | None = None,
+    last: str | None = None,
+) -> dict[str, Any]:
+```
 
-**`list(limit, prefix, last)`**
+Lists file names.
 
-#### Parameters
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `limit` | `int` | The maximum number of file names to be returned, defaults to `1000`. |
+| `prefix` | `str` \| `None` | A prefix that file names must start with to be returned. |
+| `last` | `str` \| `None` | The last name seen in a previous paginated result. |
 
-- **limit**: `int`
-  - Description: The maximum number of files names to be returned, defaults to `1000`
-- **prefix**: `string`
-  - Description: The prefix that file names must have.
-- **last**: `string`
-  - Description: The `last` name seen in a previous paginated result. Provide `last` from previous response to fetch further pages.
+Returns a `dict` with `"paging"` and `"names"` keys.
 
-#### Returns
+- `"names"`: The names of the files.
+- `"paging"`: Contains paging information.
+    - `"size"` : The number of files returned.
+    - `"last"` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.
 
-Returns a `dict` with `paging` and `names` keys.
+## DriveStreamingBody
 
-- `names`: The names of the files
-- `paging`: Contains paging information.
-  - `size` : The number of files returned.
-  - `last` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.
+The `DriveStreamingBody` class provides methods to read the content of a file from a Drive.
+
+### Read
+
+```py
+def read(size: int | None = None) -> bytes:
+```
+Reads all or up to the next `size` bytes. Calling `read` after all the content has been read will return empty bytes.
+
+### Iterate Chunks
+
+```py
+def iter_chunks(chunk_size: int = 1024) -> Iterator[bytes]:
+```
+Returns an iterator that yields chunks of bytes of `chunk_size` at a time.
+
+### Iterate Lines
+
+```py
+def iter_lines(chunk_size: int = 1024) -> Iterator[bytes]:
+```
+
+Returns an iterator that yields lines from the stream. Bytes of `chunk_size` at a time is read from the raw stream and lines are yielded from there. The line delimiter is always `b'\n'`.
+
+### Close
+
+```py
+def close():
+```
+Closes the stream.
+
+### Closed
+
+```py
+@property
+def closed():
+```
+
+Returns `True` if the stream has been closed.
