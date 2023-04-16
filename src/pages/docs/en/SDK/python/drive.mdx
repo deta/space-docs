@@ -12,10 +12,10 @@ def Drive(name: str, host: str | None = None):
 
 The `Drive` class provides methods to interact with a Deta Drive.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `name` | `str` | The name of the Drive. |
-| `host` | `str` \| `None` | The host of the Drive. |
+| Parameter | Type            | Description            |
+| --------- | --------------- | ---------------------- |
+| `name`    | `str`           | The name of the Drive. |
+| `host`    | `str` \| `None` | The host of the Drive. |
 
 ### Put
 
@@ -39,12 +39,12 @@ def put(
 
 Uploads and stores a file with a given name. It will overwrite the file if the name already exists.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `name` | `str` | The name of the file. |
-| `data` | `str` \| `bytes` \| `io.TextIOBase` \| `io.BufferedIOBase` \| `io.RawIOBase` | The data content of the file. |
-| `path` | `str` | The local path of the file to be uploaded to drive. |
-| `content_type` | `str` \| `None` | The content type of the file to be uploaded to drive. If the content type is not provided, Drive tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be determined. |
+| Parameter      | Type                                                                         | Description                                                                                                                                                                                                                                          |
+| -------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`         | `str`                                                                        | The name of the file.                                                                                                                                                                                                                                |
+| `data`         | `str` \| `bytes` \| `io.TextIOBase` \| `io.BufferedIOBase` \| `io.RawIOBase` | The data content of the file.                                                                                                                                                                                                                        |
+| `path`         | `str`                                                                        | The local path of the file to be uploaded to drive.                                                                                                                                                                                                  |
+| `content_type` | `str` \| `None`                                                              | The content type of the file to be uploaded to drive. If the content type is not provided, Drive tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be determined. |
 
 You must pass either `data` or `path`, but not both.
 
@@ -61,9 +61,9 @@ def get(name: str) -> DriveStreamingBody | None:
 
 Retrieves a file by its name.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `name` | `str` | The name of the file to get. |
+| Parameter | Type  | Description                  |
+| --------- | ----- | ---------------------------- |
+| `name`    | `str` | The name of the file to get. |
 
 Returns an instance of [`DriveStreamingBody`](#drivestreamingbody).
 If `name` is not a non-empty string, raises a `ValueError`.
@@ -76,9 +76,9 @@ def delete(name: str) -> str:
 
 Deletes a file by its name.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `name` | `str` | The name of the file to delete. |
+| Parameter | Type  | Description                     |
+| --------- | ----- | ------------------------------- |
+| `name`    | `str` | The name of the file to delete. |
 
 Returns an `str` containing the name of the deleted file.
 If `name` is not a non-empty string, raises a `ValueError`.
@@ -94,9 +94,9 @@ def delete_many(names: Sequence[str]) -> dict:
 
 Deletes multiple files, up to a limit of 1000.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `names` | `Sequence[str]` | The names of the files to delete. |
+| Parameter | Type            | Description                       |
+| --------- | --------------- | --------------------------------- |
+| `names`   | `Sequence[str]` | The names of the files to delete. |
 
 Returns a `dict` with `"deleted"` and `"failed"` keys indicating deleted and failed file names.
 
@@ -114,18 +114,18 @@ def list(
 
 Lists file names.
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| `limit` | `int` | The maximum number of file names to be returned, defaults to `1000`. |
-| `prefix` | `str` \| `None` | A prefix that file names must start with to be returned. |
-| `last` | `str` \| `None` | The last name seen in a previous paginated result. |
+| Parameter | Type            | Description                                                          |
+| --------- | --------------- | -------------------------------------------------------------------- |
+| `limit`   | `int`           | The maximum number of file names to be returned, defaults to `1000`. |
+| `prefix`  | `str` \| `None` | A prefix that file names must start with to be returned.             |
+| `last`    | `str` \| `None` | The last name seen in a previous paginated result.                   |
 
 Returns a `dict` with `"paging"` and `"names"` keys.
 
 - `"names"`: The names of the files.
 - `"paging"`: Contains paging information.
-    - `"size"` : The number of files returned.
-    - `"last"` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.
+  - `"size"` : The number of files returned.
+  - `"last"` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.
 
 ## DriveStreamingBody
 
@@ -136,6 +136,7 @@ The `DriveStreamingBody` class provides methods to read the content of a file fr
 ```py
 def read(size: int | None = None) -> bytes:
 ```
+
 Reads all or up to the next `size` bytes. Calling `read` after all the content has been read will return empty bytes.
 
 ### Iterate Chunks
@@ -143,6 +144,7 @@ Reads all or up to the next `size` bytes. Calling `read` after all the content h
 ```py
 def iter_chunks(chunk_size: int = 1024) -> Iterator[bytes]:
 ```
+
 Returns an iterator that yields chunks of bytes of `chunk_size` at a time.
 
 ### Iterate Lines
@@ -158,13 +160,14 @@ Returns an iterator that yields lines from the stream. Bytes of `chunk_size` at 
 ```py
 def close():
 ```
+
 Closes the stream.
 
 ### Closed
 
 ```py
 @property
-def closed():
+def closed() -> bool:
 ```
 
 Returns `True` if the stream has been closed.
