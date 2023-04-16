@@ -4,51 +4,6 @@ position: 0
 layout: "@docs"
 ---
 
-import LangVariantsTabs from "@/components/Tabs/LangVariantsTabs.astro";
-
-```js
-const { Deta } = require("deta"); // import Deta
-
-// Initialize with a Project Key
-// locally, set the project key in an env var called DETA_PROJECT_KEY
-const deta = Deta();
-
-// This how to connect to or create a Base.
-const db = deta.Base("simple_db");
-
-// You can create as many as you want without additional charges.
-const books = deta.Base("books");
-```
-
-> ℹ️ If you are using the `deta` npm package of `0.0.6` or below, `Deta` is the single default export and should be imported as such.
->
-> ```js
-> const Deta = require("deta");
-> ```
-
-```js
-const { Deta } = require("deta"); // import Deta
-
-// this also works
-import { Deta } from "deta";
-
-// Initialize with a Project Key
-const deta = Deta("project key");
-
-// You can create as many as you want
-const photos = deta.Drive("photos");
-const docs = deta.Drive("docs");
-```
-
-If you are using Deta Drive within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your `package.json` file to install the latest sdk version.
-
-A valid project key is pre-set in the Micro's environment. There is no need to pass a key in the initialization step.
-
-```js
-const { Drive } = require("deta");
-const drive = Drive("simple_drive");
-```
-
 > ℹ️ Deta Bases are created for you automatically when you start using them.
 
 ## Put
