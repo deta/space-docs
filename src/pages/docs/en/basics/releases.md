@@ -18,9 +18,11 @@ After you have [pushed changes](/docs/en/basics/revisions) to Space, you can tur
 
 You can create a release for your project using [Builder](/docs/en/basics/projects#projects-in-builder).
 
-Simply go to the "Develop" tab and click the "Create Release" button. The next page will let you select the [revision](/docs/en/basics/revisions) you would like to release and offer a version tag (this will be auto-generated if you leave it blank). After clicking next, you will be able to choose if your release should be `listed` on [Discovery](/discovery) or not and can optionally provide some [notes](#release-notes) for the release.
+Simply go to the "Develop" tab and click the "Create Release" button. The next page will let you select the [revision](/docs/en/basics/revisions) you would like to release and lets you enter a version tag (this will be auto-generated if you leave it blank). You can also choose if your release should be `listed` on [Discovery](/discovery) or not and can add some basic information about your app like a name and short description as well as write a full Markdown description for your app:
 
-Once you are ready, click "Launch to Space". Then watch your app take off! Your app is now installable on Deta Space to anyone with the release url, which is provided on the following page.
+![Publish Release Through Builder](/changelog_assets/builder-new-release.png)
+
+Once you are ready, click "Create Release". Then watch your app take off! Your app is now installable on Deta Space to anyone with the release url, which is provided on the following page.
 
 ### Releasing from the CLI
 
@@ -56,6 +58,8 @@ Not only does your app's Discovery page allow users to install your app, it also
 
 You can customize an app's Discovery page using a `Discovery.md` file, which gives you  a full Markdown description and options to specify things like an app title & tagline and links to a Git repository & homepage. More info on how to use the `Discovery.md` file to customize your app's Discovery page can be found in the [Discovery.md Reference](/docs/en/reference/discovery).
 
+You can also customize your app's Discovery page with a UI when creating a release through Builder.
+
 ## App Updates
 
 When you publish your app by creating a release, Deta creates an installable version of your app. If you update your app afterwards, you need to publish a new release. Anyone who has installed older versions of your app can update their instance to the latest release (they could also install a new instance). When updating an app, the data will be kept across the update.
@@ -86,4 +90,4 @@ space release --notes="Fixed bug xyz"
 
 ### Adding notes from the GUI
 
-During the publishing flow in Builder, you will be shown the option to add release notes as the second step.
+During the publishing flow in Builder, you will be shown the option to add release notes.

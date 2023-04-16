@@ -18,7 +18,6 @@ Here is an example `Spacefile`:
 ```yaml
 v: 0
 icon: ./icon.png
-app_name: "My App"
 micros:
   - name: python-app
     src: ./src/python
@@ -64,20 +63,6 @@ The image needs to be a PNG or WebP file of 512x512 pixels.
 
 ```yaml
 icon: src/static/icon.png
-```
-
-### `app_name`
-
-*Optional*
-
-Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed (e.g. the Canvas).
-
-If it is not provided, `app_name` will fallback to your project's name.
-
-The name can has a maximum of 12 characters. We recommend not exceeding 7 characters for optimal visibility across different screen sizes.
-
-```yaml
-app_name: My App
 ```
 
 ### `micros`
@@ -252,7 +237,7 @@ micros:
 
 *Optional*
 
-Use `dev` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `deta dev`.
+Use `dev` to specify a command which starts your Micro in **development** mode. This command will be used to start your micro when you run `space dev`.
 
 ```yaml
 micros:
