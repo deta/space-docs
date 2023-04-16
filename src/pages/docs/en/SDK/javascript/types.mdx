@@ -85,10 +85,10 @@ interface PutOptions {
 }
 ```
 
-| Property    | Type               | Description                                                                                                            |
-| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
-| `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
 ### `InsertOptions`
 
@@ -99,10 +99,10 @@ interface InsertOptions {
 }
 ```
 
-| Property    | Type               | Description                                                                                                            |
-| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
-| `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
 ### `PutManyOptions`
 
@@ -113,10 +113,10 @@ interface PutManyOptions {
 }
 ```
 
-| Property    | Type               | Description                                                                                                            |
-| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
-| `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
 ### `UpdateOptions`
 
@@ -127,10 +127,10 @@ interface UpdateOptions {
 }
 ```
 
-| Property    | Type               | Description                                                                                                            |
-| ----------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `expireIn?` | `number`           | item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items](./expiring_items). |
-| `expireAt?` | `Date` \| `number` | item will expire at `expireAt` date, see also [expiring items](./expiring_items).                                      |
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
 ### `FetchOptions`
 
@@ -141,10 +141,10 @@ interface FetchOptions {
 }
 ```
 
-| Property | Type     | Description                                                                                                   |
-| -------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| `limit?` | `number` | The limit of the number of items you want to retreive, minimum value `1`.                                     |
-| `last?`  | `string` | The last key seen in a previous paginated response, provide this in a subsequent call to fetch further items. |
+| Property | Type     | Description                                                      |
+| -------- | -------- | ---------------------------------------------------------------- |
+| `limit?` | `number` | Maximum number of items you want to retreive, minimum value `1`. |
+| `last?`  | `string` | Last key seen in a previous paginated response.                  |
 
 ### `PutResponse`
 
@@ -236,7 +236,7 @@ interface ListOptions {
 | `recursive?` | `boolean` | If `true`, the list operation will be performed recursively.     |
 | `prefix?`    | `string`  | A prefix that file names must start with to be returned.         |
 | `limit?`     | `number`  | Maximum number of file names to be returned, defaults to `1000`. |
-| `last?`      | `string`  | Last name seen in a previous paginated result.                   |
+| `last?`      | `string`  | Last name seen in a previous paginated response.                 |
 
 ### `PutResponse`
 
@@ -296,3 +296,5 @@ interface ListResponse {
 | `paging`      | `object`   | Contains paging information.                                                                        |
 | `paging.size` | `number`   | Number of files returned.                                                                           |
 | `paging.last` | `string`   | Last name seen in the paginated response. For the last page, `last` is not present in the response. |
+
+[1]: /docs/en/reference/base/expiring_items "Expiring items"
