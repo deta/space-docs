@@ -56,11 +56,11 @@ type DetaType = ArrayType | ObjectType | BasicType;
 
 ```js
 enum ActionTypes {
-    Set = "set",
-    Trim = "trim",
-    Increment = "increment",
-    Append = "append",
-    Prepend = "prepend",
+  Set = "set",
+  Trim = "trim",
+  Increment = "increment",
+  Append = "append",
+  Prepend = "prepend",
 }
 ```
 
@@ -68,9 +68,9 @@ enum ActionTypes {
 
 ```js
 class Action {
-    readonly operation: ActionTypes;
-    readonly value: any;
-    constructor(action: ActionTypes, value?: any);
+  readonly operation: ActionTypes;
+  readonly value: any;
+  constructor(action: ActionTypes, value?: any);
 }
 ```
 
@@ -231,12 +231,12 @@ interface ListOptions {
 }
 ```
 
-| Property     | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `recursive?` | `boolean` | If `true`, the list operation will be performed recursively.      |
-| `prefix?`    | `string`  | A prefix that file names must start with to be returned.          |
-| `limit?`     | `number`  | Maximum number of files names to be returned, defaults to `1000`. |
-| `last?`      | `string`  | Last name seen in a previous paginated result.                    |
+| Property     | Type      | Description                                                      |
+| ------------ | --------- | ---------------------------------------------------------------- |
+| `recursive?` | `boolean` | If `true`, the list operation will be performed recursively.     |
+| `prefix?`    | `string`  | A prefix that file names must start with to be returned.         |
+| `limit?`     | `number`  | Maximum number of file names to be returned, defaults to `1000`. |
+| `last?`      | `string`  | Last name seen in a previous paginated result.                   |
 
 ### `PutResponse`
 
