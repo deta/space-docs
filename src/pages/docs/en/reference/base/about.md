@@ -12,10 +12,10 @@ Deta Base is great for projects where configuring and maintaining a database is 
 
 Examples:
 
-- Serverless Applications
-- Internal Tools
-- Stateful Integrations
-- Hackathons and Side Projects
+- Serverless applications
+- Internal tools
+- Stateful integrations
+- Hackathons and side projects
 - Prototyping
 
 ## Getting started
@@ -24,3 +24,7 @@ Examples:
 - [Base UI](/docs/en/reference/base/base_ui)
 - [Base SDK](/docs/en/reference/base/sdk)
 - [Base HTTP API](/docs/en/reference/base/HTTP)
+
+## Storing Numbers
+
+> ⚠️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
