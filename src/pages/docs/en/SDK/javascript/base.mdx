@@ -146,7 +146,10 @@ Other operations are implemented through methods in the [`BaseUtils`](#baseutils
 ### Fetch
 
 ```js
-async function fetch(query?: CompositeType, options?: FetchOptions): Promise<FetchResponse>;
+async function fetch(
+    query?: CompositeType,
+    options?: FetchOptions,
+): Promise<FetchResponse>;
 ```
 
 Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
