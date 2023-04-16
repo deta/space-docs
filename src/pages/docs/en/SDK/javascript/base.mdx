@@ -4,9 +4,22 @@ position: 0
 layout: "@docs"
 ---
 
-> ℹ️ Deta Bases are created for you automatically when you start using them.
+## Base
 
-## Put
+```js
+function Base(baseName: string, host?: string);
+```
+
+The `Base` class provides methods to interact with a Deta Base.
+
+| Parameter  | Type     | Description           |
+| ---------- | -------- | --------------------- |
+| `baseName` | `string` | The name of the Base. |
+| `host?`    | `string` | The host of the Base. |
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+
+### Put
 
 ```js
 async function put(
@@ -26,12 +39,12 @@ In the case you do not provide a key, Base will automatically generate a 12-char
 | `key?`     | `string`                           | The key to store the data under. Will be auto generated if not provided. |
 | `options?` | [`PutOptions`](./types#putoptions) | Optional parameters.                                                     |
 
-If successful, returns a promise which resolves to a [`PutResponse`](./types#putresponse) containing the item.
-If unsuccessful, throws an `Error`.
+Returns a promise which resolves to a [`PutResponse`](./types#putresponse) containing the item.
+If the operation did not complete successfully, throws an `Error`.
 
 > ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
 
-## Get
+### Get
 
 ```js
 async function get(key: string): Promise<GetResponse>;
@@ -47,7 +60,7 @@ Returns a promise which resolves to a [`GetResponse`](./types#getresponse).
 If the item is found, the response will contain the item.
 If not found, the response will be `null`.
 
-## Delete
+### Delete
 
 ```js
 async function delete(key: string): Promise<DeleteResponse>;
@@ -62,7 +75,7 @@ Deletes an item by its key.
 Returns a promise which resolves to a [`DeleteResponse`](./types#deleteresponse).
 The response will always be `null`, even if the key does not exist.
 
-## Insert
+### Insert
 
 ```js
 async function insert(
@@ -82,10 +95,10 @@ Inserts a single item, but is different from [`put`](#put) in that it will throw
 | `key?`     | `string`                                 | The key to store the data under. Will be auto generated if not provided. |
 | `options?` | [`InsertOptions`](./types#insertoptions) | Optional parameters.                                                     |
 
-If successful, returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
-If unsuccessful or the key already exists, throws an `Error`.
+Returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
+If the operation did not complete successfully, or the key already exists, throws an `Error`.
 
-## Put Many
+### Put Many
 
 ```js
 async function putMany(
@@ -101,10 +114,10 @@ Puts up to 25 items at once with a single call.
 | `items`    | [`DetaType[]`](./types#detatype)           | The list of items to be stored. |
 | `options?` | [`PutManyOptions`](./types#putmanyoptions) | Optional parameters.            |
 
-If successful, returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
-If unsuccessful or `items` contains more than 25 items, throws an `Error`.
+Returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
+If the operation did not complete successfully, or `items` contains more than 25 items, throws an `Error`.
 
-## Update
+### Update
 
 ```js
 async function update(
@@ -122,36 +135,15 @@ Updates an existing item.
 | `key`      | `string`                                 | The key of the item to be updated.            |
 | `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters.                          |
 
-### Update operations
-
-#### Set
+#### Update operations
 
 Setting values is practiced through normal key-value pairs.
 The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
 If not, it adds the attribute to the item with the corresponding value.
 
-#### Increment
+Other operations are implemented through methods in the [`BaseUtils`](#baseutils) class, accessible through the `util` attribute of a Base instance.
 
-`<Base instance>.util.increment(value)` increments the value of an attribute.
-The provided value can be any positive or negative integer.
-The attribute's value _must be a number_.
-The default value is `1`.
-
-#### Append
-
-`<Base instance>.util.append(value)` appends to a list.
-The value can be a primitive type or a `list`.
-
-#### Prepend
-
-`<Base instance>.util.prepend(value)` prepends to a list.
-The value can be a primitive type or a `list`.
-
-#### Trim
-
-`<Base instance>.util.trim()` removes an attribute from the item.
-
-## Fetch
+### Fetch
 
 ```js
 async function fetch(query?: CompositeType, options?: FetchOptions): Promise<FetchResponse>;
@@ -172,3 +164,45 @@ In the case of a list, the indvidual queries are OR'ed.
 | `options?` | [`FetchOptions`](./types#fetchoptions)   | Optional parameters.              |
 
 Returns promise which resolves a [`FetchResponse`](./types#fetchresponse).
+
+## BaseUtils
+
+The `util` attribute of a Base instance is an instance of the `BaseUtils` class.
+It provides utility methods for use in [update operations](#update-operations).
+
+### Increment
+
+```js
+function increment(value?: number);
+```
+
+Increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is `1`.
+
+### Append
+
+```js
+function append(value: BasicType | ArrayType);
+```
+
+Appends to a list.
+The value can be a primitive type or an array.
+
+### Prepend
+
+```js
+function prepend(value: BasicType | ArrayType);
+```
+
+Prepends to a list.
+The value can be a primitive type or an array.
+
+### Trim
+
+```js
+function trim();
+```
+
+Removes an attribute from the item.
