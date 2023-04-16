@@ -40,7 +40,7 @@ Uploads and stores a file with a given name. It will overwrite the file if the n
 `path` is a `string` of the path to the file on the local filesystem.
 
 Returns a promise which resolves to a [`PutResponse`](./types#putresponse-1) containing the name of the item.
-If the operation did not complete successfully, raises an `Error`.
+If the operation did not complete successfully, throws an `Error`.
 
 ### Get
 
@@ -55,7 +55,7 @@ Retrieves a file by its name.
 | `name`    | `string` | The name of the file to get. |
 
 Returns a promise that resolves to a [`GetResponse`](./types#getresponse-1) containing a `Blob` of the data if found, otherwise `null`.
-If the operation did not complete successfully, raises an `Error`.
+If the operation did not complete successfully, throws an `Error`.
 
 ### Delete
 
@@ -70,7 +70,7 @@ Deletes a file by its name.
 | `name`    | `string` | The name of the file to delete. |
 
 Returns a promise that resolves to a [`DeleteResponse`](./types#deleteresponse-1) containing the `name` of the deleted file.
-If the operation did not complete successfully, raises an `Error`.
+If the operation did not complete successfully, throws an `Error`.
 
 > ℹ️ If the file did not exist, the file is still returned as if it were deleted.
 
@@ -100,6 +100,6 @@ Lists file names.
 
 | Parameter | Type                                   | Description                               |
 | --------- | -------------------------------------- | ----------------------------------------- |
-| `options` | [`ListOptions`](./types#listoptions-1) | An object with three optional parameters. |
+| `options` | [`ListOptions`](./types#listoptions) | An object with three optional parameters. |
 
 Returns a promise which resolves to a [`ListRepsonse`](./types#listresponse).
