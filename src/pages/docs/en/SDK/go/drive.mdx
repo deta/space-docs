@@ -1,0 +1,409 @@
+---
+title: Drive
+position: 1
+layout: "@docs"
+draft: true
+---
+
+import LangTabs from "@/components/Tabs/LangTabs.astro";
+
+The Deta library is the easiest way to store and retrieve files from your Deta Drive. Currently, we support JavaScript, Typescript and Python 3. [Drop us a line on Discord](https://go.deta.dev/discord) if you want us to support your favorite language.
+
+## Installing
+
+```shell
+go get github.com/deta/deta-go
+```
+
+## Instantiating
+
+To start working with your Drive, you need to import the `Deta` class and initialize it with a **Project Key**. Then instantiate a subclass called `Drive` with a database name of your choosing.
+
+````go
+    import (
+        "fmt"
+
+     "github.com/deta/deta-go/deta"
+     "github.com/deta/deta-go/service/drive"
+ )
+
+ func main() {
+
+     // initialize with project key
+     // returns ErrBadProjectKey if project key is invalid
+     d, err := deta.New(deta.WithProjectKey("project_key"))
+     if err != nil {
+         fmt.Println("failed to init new Deta instance:", err)
+         return
+     }
+
+     // initialize with drive name
+     // returns ErrBadDriveName if base name is invalid
+     drive, err := drive.New(d, "drive_name")
+     if err != nil {
+         fmt.Println("failed to init new Drive instance:", err)
+         return
+     }
+ }
+ ```
+
+
+> ⚠️ Your project key is confidential and meant to be used by you. Anyone who has your project key can access your database. Please, do not share it or commit it in your code.
+
+## Using
+
+Deta's **`Drive`** offers the following methods to interact with your Deta Drive:
+
+[**`put`**](#put) - Stores a file to drive. It will overwrite the file if the file already exists.
+
+[**`get`**](#get) - Retrieves a file from drive by the file name.
+
+[**`delete`**](#delete) - Deletes a file from drive.
+
+[**`list`**](#list) - Lists the file names in a drive.
+
+### Put
+
+`Put` uploads and stores a file in a drive with a given `name`. It will overwrite the file if the file name already exists.
+
+**`Put(i *PutInput) (string, error)`**
+
+##### Parameters
+
+- **i** (required) - pointer to a `PutInput`
+- ```go
+ // PutInput input to Put operation
+ type PutInput struct {
+   // Name of the file
+   Name string
+   // io.Reader with contents of the file
+   Body io.Reader
+   // ContentType of the file to be uploaded to drive.
+   ContentType string
+ }
+ ```
+- `Name` (required) - `string`
+ - Description: Name of the file to be uploaded.
+- `Body` (required) - `io.Reader`
+ - Description: File content to be uploaded.
+- `ContentType` - `string`
+ - Description: If the content type is not provided, drive tries to figure out the content type from Name provided. It defaults to application/octet-stream if the content type can not be figured out from the file name.
+
+##### Returns
+
+Returns the `name` of the file on a successful put (otherwise empty name), and an `error`.
+
+##### Example
+
+```go
+import (
+    "bufio"
+    "fmt"
+    "os"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/drive"
+)
+
+func main() {
+
+    // initialize with project key
+    // returns ErrBadProjectKey if project key is invalid
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+        fmt.Println("failed to init new Deta instance:", err)
+        return
+    }
+
+    // initialize with drive name
+    // returns ErrBadDriveName if drive name is invalid
+    drawings, err := drive.New(d, "drawings")
+    if err != nil {
+        fmt.Println("failed to init new Drive instance:", err)
+        return
+    }
+    // PUT
+    // reading from a local file
+    file, err := os.Open("./art.svg")
+    defer file.Close()
+
+    name, err := drawings.Put(&drive.PutInput{
+        Name:        "art.svg",
+        Body:        bufio.NewReader(file),
+        ContentType: "image/svg+xml",
+    })
+    if err != nil {
+        fmt.Println("failed to put file:", err)
+        return
+    }
+    fmt.Println("Successfully put file with name:", name)
+}
+````
+
+### Get
+
+`Get` retrieves a file from a drive by its name.
+
+**`Get(name string) (io.ReadCloser, error)`**
+
+##### Parameters
+
+- **name** (required) - `string`
+  - Description: The `name` of the file to get.
+
+##### Returns
+
+Returns a `io.ReadCloser` for the file.
+
+##### Example
+
+```go
+import (
+    "fmt"
+    "io/ioutil"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/drive"
+)
+
+func main() {
+
+    // initialize with project key
+    // returns ErrBadProjectKey if project key is invalid
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+        fmt.Println("failed to init new Deta instance:", err)
+        return
+    }
+
+    // initialize with drive name
+    // returns ErrBadDriveName if drive name is invalid
+    drawings, err := drive.New(d, "drawings")
+    if err != nil {
+        fmt.Println("failed to init new Drive instance:", err)
+        return
+    }
+
+    // GET
+    name := "art.svg"
+    f, err := drawings.Get(name)
+    if err != nil {
+        fmt.Println("failed to get file with name:", name)
+        return
+    }
+    defer f.Close()
+
+    c, err := ioutil.ReadAll(f)
+    if err != nil {
+        fmt.Println("failed read file content with err:", err)
+        return
+    }
+    fmt.Println("file content:", string(c))
+}
+```
+
+### Delete
+
+`Delete` deletes a file from drive.
+
+**`Delete(name string) (string, error)`**
+
+##### Parameters
+
+- **name** (required) - `string`
+  - Description: The name of the file to delete
+
+##### Returns
+
+Returns the `name` of the deleted file on successful deletions, and an `error`.
+
+> If the file did not exist, the name is still returned.
+
+##### Example
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/drive"
+)
+
+func main() {
+
+    // initialize with project key
+    // returns ErrBadProjectKey if project key is invalid
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+        fmt.Println("failed to init new Deta instance:", err)
+        return
+    }
+
+    // initialize with drive name
+    // returns ErrBadDriveName if drive name is invalid
+    drawings, err := drive.New(d, "drawings")
+    if err != nil {
+        fmt.Println("failed to init new Drive instance:", err)
+        return
+    }
+
+    // DELETE
+    name, err := drawings.Delete("art.svg")
+    if err != nil {
+        fmt.Println("failed to delete file with name:", name)
+        return
+    }
+    fmt.Println("Successfully deleted file with name:", name)
+}
+```
+
+### Delete Many
+
+Deletes multiple files (up to 1000) from a drive.
+
+    **`DeleteMany(names []string) (*DeleteManyOutput, error)`**
+
+    ##### Parameters
+
+    - **names** (required): `[]string`
+    - Description: The names of the files to be deleted.
+
+    ##### Returns
+
+    Returns a pointer to a `DeleteManyOutput` and an `error`.
+
+    ```go
+    // DeleteManyOutput output to DeleteMany operation
+    type DeleteManyOutput struct {
+        Deleted []string          `json:"deleted"`
+        Failed  map[string]string `json:"failed"`
+    }
+    ```
+
+    - `Deleted` - string slice indicating deleted file names.
+    - `Failled` - map indicating the names of failed file names along with an error message.
+
+    ##### Example
+
+    ```go
+    import (
+        "fmt"
+
+        "github.com/deta/deta-go/deta"
+        "github.com/deta/deta-go/service/drive"
+    )
+
+    func main() {
+        // initialize with project key
+        // returns ErrBadProjectKey if project key is invalid
+        d, err := deta.New(deta.WithProjectKey("project_key"))
+        if err != nil {
+            fmt.Println("failed to init new Deta instance:", err)
+            return
+        }
+
+        // initialize with drive name
+        // returns ErrBadDriveName if drive name is invalid
+        drawings, err := drive.New(d, "drawings")
+        if err != nil {
+            fmt.Println("failed to init new Drive instance:", err)
+            return
+        }
+
+        names := []string{"a", "b", "c"}
+        dr, err := drawings.DeleteMany(names)
+
+        if err != nil {
+            fmt.Println("failed to delete files")
+            return
+        }
+        fmt.Println("deleted:", dr.Deleted)
+        fmt.Println("failed:", dr.Failed)
+    }
+    ```
+
+### List
+
+`List` files in your drive.
+
+**`List(limit int, prefix, last string) (*ListOutput, error)`**
+
+##### Parameters
+
+- **limit** (required) - `int`
+  - Description: Maximum number of file names to be returned.
+- **prefix** (required) - `string`
+  - Description: The prefix that file names must have.
+- **last** (required) - `string`
+  - Description: The `last` name seen in a previous paginated result. Provide `last` from previous response to fetch further pages.
+
+##### Returns
+
+Returns a pointer to a `ListOutput`
+
+```go
+type ListOutput struct {
+    Paging *paging  `json:"paging"`
+    Names  []string `json:"names"`
+}
+
+type paging struct {
+    Size int     `json:"size"`
+    Last *string `json:"last"`
+}
+```
+
+- `Paging` - indicates the size and last name of the current page. `nil` if there are no further pages.
+- `Names` - names of the files.
+
+##### Example
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/drive"
+)
+
+func main() {
+
+    // initialize with project key
+    // returns ErrBadProjectKey if project key is invalid
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+        fmt.Println("failed to init new Deta instance:", err)
+        return
+    }
+
+    // initialize with drive name
+    // returns ErrBadDriveName if drive name is invalid
+    drawings, err := drive.New(d, "drawings")
+    if err != nil {
+        fmt.Println("failed to init new Drive instance:", err)
+        return
+    }
+
+    lr, err := drawings.List(1000, "", "")
+    if err != nil {
+        fmt.Println("failed to list names from drive with err:", err)
+    }
+    // ["a", "b", "c/d"]
+    fmt.Println("names:", lr.Names)
+
+    lr, err = drawings.List(1, "", "")
+    if err != nil {
+        fmt.Println("failed to list names from drive with err:", err)
+    }
+    // ["a"]
+    fmt.Println("names:", lr.Names)
+
+
+    lr, err = drawings.List(2, "", "")
+    if err != nil {
+        fmt.Println("failed to list names from drive with err:", err)
+    }
+    // "b"
+    fmt.Println("last:", *lr.Paging.Last)
+}
+```
