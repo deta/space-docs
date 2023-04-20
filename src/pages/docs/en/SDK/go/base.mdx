@@ -3,3 +3,709 @@ title: Base
 position: 0
 layout: "@docs"
 ---
+
+The Deta library is the easiest way to store and retrieve data from your Deta Base. Currently, we support JavaScript (Node + Browser), Python 3 and Go. [Drop us a line on Discord](https://go.deta.dev/discord) if you want us to support your favorite language.
+
+> A "Deta Base" instance is a collection of data, not unlike a Key-Value store, a MongoDB collection or a PostgreSQL/MySQL table. It will grow with your app's needs.
+
+## Installing
+
+```shell
+go get github.com/deta/deta-go
+```
+
+> If you are using the Deta SDK within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your dependencies file (`package.json` or `requirements.txt`) to install the latest sdk version.
+
+## Instantiating
+
+To start working with your Base, you need to import the `Deta` class and initialize it with a **Project Key**. Then instantiate a subclass called `Base` with a database name of your choosing.
+
+Deta Bases are created for you automatically when you start using them.
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+func main() {
+
+    // initialize with project key
+    // returns ErrBadProjectKey if project key is invalid
+    // locally, set the project key in an env var called DETA_PROJECT_KEY
+    d, err := deta.New()
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    // initialize with base name
+    // returns ErrBadBaseName if base name is invalid
+    db, err := base.New(d, "base_name")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    return
+    }
+}
+```
+
+> ⚠️ Your project key is confidential and meant to be used by you. Anyone who has your project key can access your database. Please, do not share it or commit it in your code.
+
+## Using
+
+Deta's **`Base`** class offers the following methods to interact with your Deta Base:
+
+[**`put`**](#put) – Stores an item in the database. It will update an item if the key already exists.
+
+[**`insert`**](#insert) – Stores an item in the database but raises an error if the key already exists. (2x slower than `put`).
+
+[**`get`**](#get) – Retrieves an item from the database by its key.
+
+[**`fetch`**](#fetch) – Retrieves multiple items from the database based on the provided (optional) filters.
+
+[**`delete`**](#delete) – Deletes an item from the database.
+
+[**`update`**](#update) – Updates an item in the database.
+
+##### Storing Numbers
+
+> ⚠️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
+
+### Put
+
+`put` is the fastest way to store an item in the database.
+
+If an item already exists under a given key, put will replace this item.
+
+In the case you do not provide us with a key, we will auto generate a 12 char long string as a key.
+
+**`Put(item interface{}) (string, error)`**
+
+##### Parameters
+
+- **item** : The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with json struct tags. The key of the item must have a json struct tag of `key`. For storing expiring items, the field name `__expires` should be used with a [Unix Time](https://pkg.go.dev/time#Time.Unix) value, see also [expiring items](./expiring_items).
+
+[Note for storing numbers](#storing-numbers)
+
+##### Code Example
+```go
+
+import (
+    "log"
+    "time"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type User struct {
+    // json struct tag 'key' used to denote the key
+    Key      string   `json:"key"`
+    Username string   `json:"username"`
+    Active   bool     `json:"active"`
+    Age      int      `json:"age"`
+    Likes    []string `json:"likes"`
+    // json struct tag '__expires' for expiration timestamp
+    // 'omitempty' for omission of default 0 value
+    Expires  int64 `json:"__expires,omitempty"`
+}
+
+func main() {
+    // errors ignored for brevity
+    d, _ := deta.New(deta.WithProjectKey("project_key"))
+    db, _ := base.New(d, "users")
+
+    u := &User{
+    Key:      "kasdlj1",
+    Username: "jimmy",
+    Active:   true,
+    Age:      20,
+    Likes:    []string{"ramen"},
+    }
+    key, err := db.Put(u)
+    if err != nil {
+    log.Fatal("failed to put item:", err)
+    }
+    log.Println("successfully put item with key", key)
+
+    // can also use a map
+    um := map[string]interface{}{
+    "key":      "kasdlj1",
+    "username": "jimmy",
+    "active":   true,
+    "age":      20,
+    "likes":    []string{"ramen"},
+    }
+    key, err = db.Put(um)
+    if err != nil {
+    log.Fatal("failed to put item:", err)
+    }
+    log.Println("Successfully put item with key:", key)
+
+    // put with expires
+    u := &User{
+    Key: "will_be_deleted",
+    Username: "test_user",
+    Expires: time.Date(2023, 1, 1, 0, 0, 0, 0, 0, time.UTC).Unix(),
+    }
+    key, err = db.Put(u)
+    if err != nil {
+    log.Fatal("failed to put item:", err)
+    }
+    log.Println("put item with key:", key)
+
+    // put map with expires
+    um = map[string]interface{}{
+    "key": "will_be_deleted",
+    "test": true,
+    "__expires": time.Data(2023, 1, 1, 0, 0, 0, 0, time.UTC).Unix(),
+    }
+    key, err = db.Put(um)
+    if err != nil {
+    log.Fatal("failed to put item:", err)
+    }
+    log.Println("put item with key:", key)
+}
+```
+
+##### Returns
+
+Returns the `key` of the item stored and an `error`. Possible error values:
+
+- `ErrBadItem` : bad item, item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unuathorized
+- `ErrInternalServerError`: internal server error
+
+### Get
+
+`get` retrieves an item from the database by it's `key`.
+
+**`Get(key string, dest interface{}) error`**
+
+##### Parameters
+- **key**: the key of the item to be retrieved
+- **dest**: the result will be stored into the value pointed by `dest`
+
+##### Code Example
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type User struct {
+    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Username string   `json:"username"`
+    Active   bool     `json:"active"`
+    Age      int      `json:"age"`
+    Likes    []string `json:"likes"`
+}
+
+func main() {
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    db, err := base.New(d, "users")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    }
+
+    // a variable to store the result
+    var u User
+
+    // get item
+    // returns ErrNotFound if no item was found
+    err = db.Get("kasdlj1", &u)
+    if err != nil {
+    fmt.Println("failed to get item:", err)
+    }
+}
+```
+
+##### Returns
+
+Returns an `error`. Possible error values:
+
+- `ErrNotFound`: no item with such key was found
+- `ErrBadDestination`: bad destination, result could not be stored onto `dest`
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+### Delete
+
+`delete` deletes an item from the database that matches the key provided.
+
+**`Delete(key string) error`**
+
+##### Parameters
+- **key**: the key of the item to be deleted
+##### Code Example
+```go
+// delete item
+// returns a nil error if item was not found
+err := db.Delete("dakjkfa")
+if err != nil {
+    fmt.Println("failed to delete item:", err)
+}
+```
+##### Returns
+
+Returns an `error`. A `nil` error is returned if no item was found with provided `key`. Possible error values:
+
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+### Insert
+
+The `insert` method inserts a single item into a **Base**, but is unique from [`put`](#put) in that it will raise an error of the `key` already exists in the database.
+
+> ℹ️ `insert` is roughly 2x slower than [`put`](#put).
+
+**`Insert(item interface{}) (string, error)`**
+
+##### Parameters
+- **item** : similar to `item` parameter to [`Put`](#put)
+
+##### Code Example
+
+```go
+
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type User struct {
+    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Username string   `json:"username"`
+    Active   bool     `json:"active"`
+    Age      int      `json:"age"`
+    Likes    []string `json:"likes"`
+}
+
+func main() {
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    db, err := base.New(d, "users")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    }
+
+    u := &User{
+    Key:      "kasdlj1",
+    Username: "jimmy",
+    Active:   true,
+    Age:      20,
+    Likes:    []string{"ramen"},
+    }
+
+    // insert item in the database
+    key, err := db.Insert(u)
+    if err != nil {
+    fmt.Println("failed to insert item:", err)
+    return
+    }
+    fmt.Println("Successfully inserted item with key:", key)
+}
+```
+
+##### Returns
+Returns the `key` of the item inserted and an `error`. Possible error values:
+
+- `ErrConflict` : if item with provided `key` already exists
+- `ErrBadItem`: bad item, if item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+### Put Many
+
+The Put Many method puts up to 25 items into a Base at once on a single call.
+
+**`PutMany(items interface{}) ([]string, error)`**
+
+##### Parameters:
+- **items**: a slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put)
+
+##### Code Example:
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type User struct {
+    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Username string   `json:"username"`
+    Active   bool     `json:"active"`
+    Age      int      `json:"age"`
+    Likes    []string `json:"likes"`
+}
+
+func main() {
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    db, err := base.New(d, "users")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    }
+
+    // users
+    u1 := &User{
+    Key:      "kasdlj1",
+    Username: "jimmy",
+    Active:   true,
+    Age:      20,
+    Likes:    []string{"ramen"},
+    }
+    u2 := &User{
+    Key:      "askdjf",
+    Username: "joel",
+    Active:   true,
+    Age:      23,
+    Likes:    []string{"coffee"},
+    }
+    users := []*User{u1, u2}
+
+    // put items in the database
+    keys, err := db.PutMany(users)
+    if err != nil {
+    fmt.Println("failed to put items:", err)
+    return
+    }
+    fmt.Println("Successfully put item with keys:", keys)
+}
+```
+
+##### Returns
+Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
+
+- `ErrTooManyItems`: if there are more than 25 items
+- `ErrBadItem`: bad item/items, one or more item of unexpected type
+- `ErrBadRequest`: one or more item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+### Update
+
+`update` updates an existing item from the database.
+
+**`Update(key string, updates Updates) error`**
+
+##### Parameters
+
+- **key**: the key of the item to update
+- **updates** : updates applied to the item, is of type `base.Updates` which is a `map[string]interface{}`
+
+[Note for storing numbers](#storing-numbers)
+
+###### Update operations
+- **Set** : `Set` is practiced through normal key-value pairs. The operation changes the values of the attributes provided if the attribute already exists. If not, it adds the attribute to the item with the corresponding value.
+
+- **Increment**: `Increment` increments the value of an attribute. The attribute's value *must be a number*. The util `Base.Util.Increment(value interface{})` should be used to increment the value. The value can also be negative.
+
+- **Append**: `Append` appends to a list. The util `Base.Util.Append(value interface{})` should be used to append the value. The value can be a slice.
+
+- **Prepend**: `Prepend` prepends to a list. The util `Base.Util.Prepend(value interface{})` should be used to prepend the value. The value can be a slice.
+
+- **Trim**: `Trim` removes an attribute from the item, the util `Base.Util.Trim()` should be used as the value of an attribute.
+
+##### Code Example
+
+Consider we have the following item in a base `users`:
+
+```json
+{
+    "key": "user-a",
+    "username": "jimmy",
+    "profile": {
+    "age": 32,
+    "active": false,
+    "hometown": "pittsburgh"
+    },
+    "likes": ["anime"],
+    "purchases": 1
+}
+```
+
+Then the following update operation :
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type Profile struct {
+    Active   bool   `json:"active"`
+    Age      int    `json:"age"`
+    Hometown string `json:"hometown"`
+}
+
+type User struct {
+    Key       string   `json:"key"` // json struct tag 'key' used to denote the key
+    Username  string   `json:"username"`
+    Profile   *Profile `json:"profile"`
+    Purchases int      `json:"purchases"`
+    Likes     []string `json:"likes"`
+}
+
+func main() {
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    db, err := base.New(d, "users")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    }
+
+    // define the updates
+    updates := base.Updates{
+    "profile.age": 33, // set profile.age to 33
+    "profile.active": true, // set profile.active to true
+    "profile.hometown": db.Util.Trim(), // remove 'profile.hometown'
+    "purchases": db.Util.Increment(2), // increment 'purchases' by 2
+    "likes": db.Util.Append("ramen"), // append 'ramen' to 'likes', also accepts a slice
+    }
+    // update
+    err = db.Update("user-a", updates)
+    if err != nil {
+    fmt.Println("failed to update", err)
+    return
+    }
+}
+```
+
+Results in the following item in the base:
+
+```json
+{
+    "key": "user-a",
+    "username": "jimmy",
+    "profile": {
+    "age": 33,
+    "active": true,
+    },
+    "likes": ["anime", "ramen"],
+    "purchases": 3
+}
+```
+
+##### Returns
+
+Returns an `error`. Possible error values:
+
+- `ErrBadRequest`: the update operation caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+### Fetch
+
+Fetch retrieves a list of items matching a query. It will retrieve everything if no query is provided.
+
+A query is composed of a single [query](/docs/en/reference/base/queries) object or a list of [queries](/docs/en/reference/base/queries).
+In the case of a list, the indvidual queries are OR'ed.
+
+**`Fetch(i *FetchInput) error`**
+
+##### Parameters
+
+- **i**: is a pointer to a `FetchInput`
+
+```go
+// FetchInput input to Fetch operation
+type FetchInput struct {
+// filters to apply to items
+// A nil value applies no queries and fetches all items
+Q Query
+// the destination to store the results
+Dest interface{}
+// the maximum number of items to fetch
+// value of 0 or less applies no limit
+Limit int
+// the last key evaluated in a paginated response
+// leave empty if not a subsequent fetch request
+LastKey string
+}
+```
+- `Q`: fetch query, is of type `deta.Query` which is a `[]map[string]interface{}`
+- `Dest`: the results will be stored into the value pointed by `Dest`
+- `Limit`: the maximum number of items to fetch, value of `0` or less applies no limit
+- `LastKey`: the last key evaluated in a paginated response, leave empty if not a subsequent fetch request
+
+##### Code Example
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type User struct {
+    Key string `json:"key"`
+    Name string `json:"name"`
+    Age int `json:"age"`
+    Hometown string `json:"hometown"`
+}
+
+func main() {
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    db, err := base.New(d, "users")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    }
+
+    // query to get users with age less than 30
+    query := base.Query{
+    {"age?lt": 50},
+    }
+
+    // variabe to store the results
+    var results []*User
+
+    // fetch items
+    _, err = db.Fetch(&base.FetchInput{
+    Q:    query,
+    Dest: &results,
+    })
+    if err != nil {
+    fmt.Println("failed to fetch items:", err)
+    }
+}
+```
+
+... `results` will have the following data:
+
+```json
+[
+    {
+    "key": "key-1",
+    "name": "Wesley",
+    "age": 27,
+    "hometown": "San Francisco",
+    },
+    {
+    "key": "key-3",
+    "name": "Kevin Garnett",
+    "age": 43,
+    "hometown": "Greenville",
+    },
+]
+```
+
+##### Paginated example
+
+```go
+import (
+    "fmt"
+
+    "github.com/deta/deta-go/deta"
+    "github.com/deta/deta-go/service/base"
+)
+
+type User struct {
+    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Username string   `json:"username"`
+    Active   bool     `json:"active"`
+    Age      int      `json:"age"`
+    Likes    []string `json:"likes"`
+}
+
+func main() {
+    d, err := deta.New(deta.WithProjectKey("project_key"))
+    if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+    }
+
+    db, err := base.New(d, "users")
+    if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    }
+
+    // query to get users with age less than 30
+    query := base.Query{
+    {"age?lt": 50},
+    }
+
+    // variabe to store the results
+    var results []*User
+
+    // variable to store the page
+    var page []*User
+
+    // fetch input
+    i := &base.FetchInput{
+    Q:     query,
+    Dest:  &page,
+    Limit: 1, // limit provided so each page will only have one item
+    }
+
+    // fetch items
+    lastKey, err := db.Fetch(i)
+    if err != nil {
+    fmt.Println("failed to fetch items:", err)
+    return
+    }
+
+    // append page items to results
+    results = append(results, page...)
+
+    // get all pages
+    for lastKey != "" {
+    // provide the last key in the fetch input
+    i.LastKey = lastKey
+
+    // fetch
+    lastKey, err = db.Fetch(i)
+    if err != nil {
+        fmt.Println("failed to fetch items:", err)
+        return
+    }
+
+    // append page items to all results
+    results = append(results, page...)
+    }
+}
+```
+##### Returns
+
+Returns an `error`. Possible error values:
+
+- `ErrBadDestination`: bad destination, results could not be stored onto `dest`
+- `ErrBadRequest`: the fetch request caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
