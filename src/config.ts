@@ -4,7 +4,7 @@ export const SITE = {
   defaultLanguage: 'en_US',
 }
 
-export const docsSectionsOrder = ['Overview', 'Basics', 'Reference', 'SDK', 'Quickstart Guides', 'Guides', 'Other']
+export const docsSectionsOrder = ['Overview', 'Basics', 'Reference', 'SDK', 'HTTP API', 'Quickstart Guides', 'Guides', 'Other']
 export const manualSectionsOrder = ['Overview', 'Features']
 export const migrationSectionsOrder = ['Overview', 'Guides', 'Learn More', 'Other']
 
