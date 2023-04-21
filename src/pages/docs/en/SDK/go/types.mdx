@@ -61,3 +61,65 @@ type FetchInput struct {
 | `LastKey` | `string` | The last key evaluated in a paginated response. Leave empty if not a subsequent fetch request. |
 
 ## Drive types
+
+### `Drive`
+
+```go
+type Drive struct {}
+```
+
+### `PutInput`
+
+```go
+type PutInput struct {
+    Name string
+    Body io.Reader
+    ContentType string
+}
+```
+
+| Field | Type | Description |
+| ---- | --- | ----------- |
+| `Name` | `string` | Name of the file to be uploaded. |
+| `Body` | `io.Reader` | File content to be uploaded. |
+| `ContentType` | `string` | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
+
+### `DeleteManyOutput`
+
+
+```go
+type DeleteManyOutput struct {
+    Deleted []string          `json:"deleted"`
+    Failed  map[string]string `json:"failed"`
+}
+```
+
+| Field | Type | Description |
+| ---- | --- | ----------- |
+| `Deleted` | `[]string` | Names of the deleted files. |
+| `Failed` | `map[string]string` | Names of the files that failed to delete along with an error message. |
+
+### `ListOutput`
+
+```go
+type ListOutput struct {
+    Paging *paging  `json:"paging"`
+    Names  []string `json:"names"`
+}
+```
+
+| Field | Type | Description |
+| ---- | --- | ----------- |
+| `Paging` | [`*paging`](#paging) | A pointer to a [`paging`](#paging) struct, `nil` if there are no further pages. |
+| `Names` | `[]string` | Names of the files. |
+
+### `paging`
+
+```go
+type paging struct {
+    Size int     `json:"size"`
+    Last *string `json:"last"`
+}
+```
+
+Indicates the size and last name of the current page.
