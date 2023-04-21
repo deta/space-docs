@@ -7,14 +7,20 @@ layout: "@docs"
 ## Base
 
 ```go
-func New(d *deta.Deta, baseName string) (*Base, error)
+func New(d *Deta, baseName string) (*Base, error)
 ```
 
 The `Base` class provides methods to interact with a Deta Base.
 
 | Parameter  | Type     | Description           |
 | ---------- | -------- | --------------------- |
+| `d`        | [`*Deta`](./types#deta)  | A pointer to a Deta instance.      |
 | `baseName` | `string` | The name of the Base. |
+
+Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible error values:
+
+- `ErrEmptyDetaInstance`: the [`Deta`](./types#deta) pointer provided is empty
+- `ErrBadBaseName`: the name of the Base is invalid
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
 
@@ -24,7 +30,7 @@ The `Base` class provides methods to interact with a Deta Base.
 func (b *Base) Put(item interface{}) (string, error)
 ```
 
-`put` is the fastest way to store an item in a Base.
+`Put` is the fastest way to store an item in a Base.
 If an item already exists under the given key, it will be replaced.
 In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
 
