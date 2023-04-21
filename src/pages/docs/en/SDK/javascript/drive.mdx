@@ -72,7 +72,7 @@ Deletes a file by its name.
 Returns a promise that resolves to a [`DeleteResponse`](./types#deleteresponse-1) containing the `name` of the deleted file.
 If the operation did not complete successfully, throws an `Error`.
 
-> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
 
 ### Delete Many
 
@@ -88,7 +88,7 @@ Deletes multiple files, up to a limit of 1000.
 
 Returns a promise which resolves to a [`DeleteManyResponse`](./types#deletemanyresponse).
 
-> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
 
 ### List
 

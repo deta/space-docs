@@ -84,7 +84,7 @@ Returns an `str` containing the name of the deleted file.
 If `name` is not a non-empty string, raises a `ValueError`.
 If the operation did not complete successfully, raises an `Exception`.
 
-> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
 
 ### Delete Many
 
@@ -100,7 +100,7 @@ Deletes multiple files, up to a limit of 1000.
 
 Returns a `dict` with `"deleted"` and `"failed"` keys indicating deleted and failed file names.
 
-> ℹ️ If the file did not exist, the file is still returned as if it were deleted.
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
 
 ### List
 
