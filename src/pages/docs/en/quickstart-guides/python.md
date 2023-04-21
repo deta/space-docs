@@ -5,120 +5,136 @@ position: 5
 layout: "@docs"
 ---
 
-## Step 1: Code configuration
+This quickstart assumes that you have:
 
-You can use any project stucture you like, but you must have a file named `requirements.txt` at the root of your project that list the dependencies of your app.
+- A [Deta Space account](https://deta.space/signup)
+- [Space CLI](https://deta.space/docs/en/basics/cli) installed on your machine and logged in
+- [Python](https://www.python.org/downloads/) installed on your machine
 
-### Starlette
+> 💡 Currently, Space supports Python 3.8 and Python 3.9, with plans to add support for Python 3.10 soon.
+> We recommend using a Python version manager like [pyenv](https://github.com/pyenv/pyenv) to install Python on your system. This will allow you to quickly install and use different versions of Python.
 
-Here is an example of a simple Starlette app:
+## Create a Python App
 
-`main.py`
+First, create a directory to contain the source code of your app and navigate to it.
 
-```python
-from starlette.responses import PlainTextResponse
-
-
-async def app(scope, receive, send):
-    assert scope['type'] == 'http'
-    response = PlainTextResponse('Hello, Space!')
-    await response(scope, receive, send)
+```bash
+mkdir python-app && cd python-app
 ```
 
-### FastAPI
+Next, create a virtual environment to manage the dependencies for your app and activate it with:
 
-Here is an example of a simple FastAPI app:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-`main.py`
+We’ll also install a web framework and a web server for production deployment. For this guide, we’ll use [FastAPI](https://fastapi.tiangolo.com/) and [Uvicorn](https://www.uvicorn.org/), but feel free to use another framework and server of your choice if you prefer.
+
+In your text editor, create a new file called `requirements.txt`, and add the following dependencies into it:
+
+```
+fastapi
+uvicorn
+```
+
+Then, install these dependencies with:
+
+```bash
+pip install -r requirements.txt
+```
+
+To get started with FastAPI, create a new file called `main.py`. Then, add the following code:
 
 ```python
+import os
+
+import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
 
-
 @app.get("/")
-def read_root():
-    return {"Hello": "Space!"}
+def root():
+    return "Hello from Space! 🚀"
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 ```
 
-### Flask
+This code sets up a basic web server that listens on the specified port by the `PORT` environment variable.
 
-Here is an example of a simple Flask app:
+> 💡 Make sure your app is configured to listen on the port defined by the `PORT` [environment variable](https://deta.space/docs/en/basics/micros#micro-environment-variables).
 
-`main.py`
+## Create a Space Project
 
-```python
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route("/")
-def hello_world():
-    return "Hello, Space!"
-```
-
-## Step 2: Run it on Space
-
-Make sure you have the Space CLI installed & authenticated, then run the following command:
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build and test apps with different Space features before releasing them to the public. To create a Space project, run the following command in the root directory containing your source code:
 
 ```bash
 space new
 ```
 
-This will create a new Space project in the current directory.
-
-Edit the generated `Spacefile` to add a `run` command for your app:
+You will be prompted to enter a name for your project. The CLI will then display a generated configuration for the app and prompt you to confirm the setup of the project with that configuration. Once confirmed, the project will be created along with a [Spacefile](https://deta.space/docs/en/reference/spacefile) that contains the configuration for the micro and a `.space` directory that stores project information and links it to your Builder project.
 
 ```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
   - name: python-app
     src: .
     engine: python3.9
-    run: uvicorn main:app
+    primary: true
 ```
 
-The `run` command should start your Python app's HTTP server and listen on the port specified by the `PORT` environment variable. If you are using `uvicorn` the right port will be chosen automatically.
+> ⚠️ Currently, the Spacefile with the generated configuration is based on the old standard of running Python apps on Space, which requires a `main.py` file at the root directory of the micro's source code with the app instance named as `app`. This old standard will be deprecated in the future, so we recommend updating the configuration in the Spacefile to explicitly define the command to start your app with the `run` command.
 
-You can then run the following command to push your code to Space:
 
-```bash
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: python-app
+    src: .
+    engine: python3.9
+    primary: true
++   run: python main.py
+```
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to [this](https://deta.space/docs/en/reference/spacefile).
+
+
+## Developing Locally
+
+To develop your app on your local machine, you can define what command should be executed to start your app’s development server with the `dev` command in the Spacefile. With this the CLI will take care of generating and injecting the `Data Key` for easier access to app’s Base and Drive instances with SDKs, as well as testing scheduled actions, so you can focus on developing your app without worrying about configuring these all by yourself.
+
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: python-app
+    src: .
+    engine: python3.9
+    primary: true
+    run: python main.py
++   dev: .venv/bin/uvicorn main:app --reload
+```
+
+Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
+
+```
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
 space push
 ```
 
-Great job! You've just deployed your Python app on Space. You can now access your app at the URL provided by the CLI.
+This will validate your Spacefile, then package and upload your source code to Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, the builder instance will be updated and the CLI will return the link to the Builder instance. Open it in your browser and you got your app running on Space.
 
-## Limitations
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployement and update of the builder instance.
 
-- Space only supports Python 3.8 and 3.9
-- Space only supports ASGI and WSGI apps (HTTP servers). So raw scripts won't work.
-- Only `/tmp` is writable
-- SQLite, MySQL, and PostgreSQL are not supported (we recommend using [Deta Base](/docs/en/reference/base/sdk), which is built into every Space app by default)
-- Total size of deployed app is limited to 250MB (including dependencies, source code, etc). So many large dependencies like `numpy` or `streamlit` might not work, as well as larger models.
-
-## Setting up local development
-
-We recommend using virtual environment for local development. If you have listed your app dependencies in a `requirements.txt` file, you can install them to your virtual environment with the following commands:
-
-```bash
-# Create a virtual environment in the current directory
-python -m venv .venv
-# Activate the virtual environment
-source .venv/bin/activate
-# Install dependencies
-pip install -r requirements.txt
-
-# If you are using FastAPI, you will also need to install uvicorn
-pip install uvicorn[standard]
-```
-
-Then you will need to setup the dev command inside your Spacefile. Just reference the executable file from your virtual environment:
-
-```yaml
-  - name: python-app
-    src: ./src/python
-    engine: python3.9
-    run: uvicorn main:app
-    dev: .venv/bin/uvicorn main:app --reload
-```
+Congratulations! 🎉 You have successfully built, deployed and got your first Python app on Space. 🚀
