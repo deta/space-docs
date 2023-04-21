@@ -53,12 +53,12 @@ type FetchInput struct {
 }
 ```
 
-| Field | Type | Description |
-| ---- | --- | ----------- |
-| `Q` | [`Query`](#query) | Filters to apply to items. |
-| `Dest` | `interface{}` | The destination to store the results. |
-| `Limit` | `int` | The maximum number of items to fetch. A value of `0` or less applies no limit. |
-| `LastKey` | `string` | The last key evaluated in a paginated response. Leave empty if not a subsequent fetch request. |
+| Field     | Type              | Description                                                                                    |
+| --------- | ----------------- | ---------------------------------------------------------------------------------------------- |
+| `Q`       | [`Query`](#query) | Filters to apply to items.                                                                     |
+| `Dest`    | `interface{}`     | The destination to store the results.                                                          |
+| `Limit`   | `int`             | The maximum number of items to fetch. A value of `0` or less applies no limit.                 |
+| `LastKey` | `string`          | The last key evaluated in a paginated response. Leave empty if not a subsequent fetch request. |
 
 ## Drive types
 
@@ -78,14 +78,13 @@ type PutInput struct {
 }
 ```
 
-| Field | Type | Description |
-| ---- | --- | ----------- |
-| `Name` | `string` | Name of the file to be uploaded. |
-| `Body` | `io.Reader` | File content to be uploaded. |
-| `ContentType` | `string` | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
+| Field         | Type        | Description                                                                                                                                                                |
+| ------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Name`        | `string`    | Name of the file to be uploaded.                                                                                                                                           |
+| `Body`        | `io.Reader` | File content to be uploaded.                                                                                                                                               |
+| `ContentType` | `string`    | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
 
 ### `DeleteManyOutput`
-
 
 ```go
 type DeleteManyOutput struct {
@@ -94,10 +93,10 @@ type DeleteManyOutput struct {
 }
 ```
 
-| Field | Type | Description |
-| ---- | --- | ----------- |
-| `Deleted` | `[]string` | Names of the deleted files. |
-| `Failed` | `map[string]string` | Names of the files that failed to delete along with an error message. |
+| Field     | Type                | Description                                                           |
+| --------- | ------------------- | --------------------------------------------------------------------- |
+| `Deleted` | `[]string`          | Names of the deleted files.                                           |
+| `Failed`  | `map[string]string` | Names of the files that failed to delete along with an error message. |
 
 ### `ListOutput`
 
@@ -108,10 +107,10 @@ type ListOutput struct {
 }
 ```
 
-| Field | Type | Description |
-| ---- | --- | ----------- |
+| Field    | Type                 | Description                                                                     |
+| -------- | -------------------- | ------------------------------------------------------------------------------- |
 | `Paging` | [`*paging`](#paging) | A pointer to a [`paging`](#paging) struct, `nil` if there are no further pages. |
-| `Names` | `[]string` | Names of the files. |
+| `Names`  | `[]string`           | Names of the files.                                                             |
 
 ### `paging`
 

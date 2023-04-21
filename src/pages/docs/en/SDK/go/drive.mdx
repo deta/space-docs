@@ -12,10 +12,10 @@ func New(d *Deta, driveName string) (*Drive, error)
 
 The `Drive` class provides methods to interact with a Deta Drive.
 
-| Parameter  | Type     | Description           |
-| ---------- | -------- | --------------------- |
-| `d`        | [`*Deta`](./types#deta)  | A pointer to a Deta instance. |
-| `driveName` | `string` | The name of the Drive. |
+| Parameter   | Type                    | Description                   |
+| ----------- | ----------------------- | ----------------------------- |
+| `d`         | [`*Deta`](./types#deta) | A pointer to a Deta instance. |
+| `driveName` | `string`                | The name of the Drive.        |
 
 Returns a pointer to a [`Drive`](./types#drive) instance.
 
@@ -27,9 +27,9 @@ func (d *Drive) Put(i *PutInput) (string, error)
 
 Uploads and stores a file with a given name. It will overwrite the file if the name already exists.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `i` | [`*PutInput`](./types#putinput) | A pointer to a [`PutInput`](./types#putinput). |
+| Parameter | Type                            | Description                                    |
+| --------- | ------------------------------- | ---------------------------------------------- |
+| `i`       | [`*PutInput`](./types#putinput) | A pointer to a [`PutInput`](./types#putinput). |
 
 Returns the name of the file on a successful put (otherwise empty name), and an `error`.
 
@@ -41,9 +41,9 @@ func (d *Drive) Get(name string) (io.ReadCloser, error)
 
 Retrieves a file by its name.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `name` | `string` | The name of the file to get. |
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `name`    | `string` | The name of the file to get. |
 
 Returns an `io.ReadCloser` for the file, and an `error`.
 
@@ -55,9 +55,9 @@ func (d *Drive) Delete(name string) (string, error)
 
 Deletes a file by its name.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `name` | `string` | The name of the file to delete. |
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `name`    | `string` | The name of the file to delete. |
 
 Returns the name of the deleted file on successful deletions, and an `error`.
 
@@ -71,9 +71,9 @@ func (d *Drive) DeleteMany(names []string) (*DeleteManyOutput, error)
 
 Deletes multiple files, up to a limit of 1000.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `names` | `[]string` | The names of the files to delete. |
+| Parameter | Type       | Description                       |
+| --------- | ---------- | --------------------------------- |
+| `names`   | `[]string` | The names of the files to delete. |
 
 Returns a pointer to a [`DeleteManyOutput`](./types#deletemanyoutput), and an `error`.
 
@@ -87,10 +87,10 @@ func (d *Drive) List(limit int, prefix, last string) (*ListOutput, error)
 
 Lists file names.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `limit` | `int` | The maximum number of file names to be returned. |
-| `prefix` | `string` | A prefix that file names must start with to be returned. |
-| `last` | `string` | The last name seen in a previous paginated result. |
+| Parameter | Type     | Description                                              |
+| --------- | -------- | -------------------------------------------------------- |
+| `limit`   | `int`    | The maximum number of file names to be returned.         |
+| `prefix`  | `string` | A prefix that file names must start with to be returned. |
+| `last`    | `string` | The last name seen in a previous paginated result.       |
 
 Returns a pointer to a [`ListOutput`](./types#listoutput), and an `error`.

@@ -12,10 +12,10 @@ func New(d *Deta, baseName string) (*Base, error)
 
 The `Base` class provides methods to interact with a Deta Base.
 
-| Parameter  | Type     | Description           |
-| ---------- | -------- | --------------------- |
-| `d`        | [`*Deta`](./types#deta)  | A pointer to a Deta instance.      |
-| `baseName` | `string` | The name of the Base. |
+| Parameter  | Type                    | Description                   |
+| ---------- | ----------------------- | ----------------------------- |
+| `d`        | [`*Deta`](./types#deta) | A pointer to a Deta instance. |
+| `baseName` | `string`                | The name of the Base.         |
 
 Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible error values:
 
@@ -34,9 +34,9 @@ func (b *Base) Put(item interface{}) (string, error)
 If an item already exists under the given key, it will be replaced.
 In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `item` | `interface{}` | The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with JSON struct tags. The key of the item must have a JSON struct tag of `key`. |
+| Parameter | Type          | Description                                                                                                                                                                                            |
+| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with JSON struct tags. The key of the item must have a JSON struct tag of `key`. |
 
 Returns the key of the item stored and an `error`. Possible error values:
 
@@ -55,10 +55,10 @@ func (b *Base) Get(key string, dest interface{}) error
 
 Retrieves an item by its key.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `key` | `string` | The key of the item to retrieve. |
-| `dest` | `interface{}` | The result will be stored into the value pointed by `dest`. |
+| Parameter | Type          | Description                                                 |
+| --------- | ------------- | ----------------------------------------------------------- |
+| `key`     | `string`      | The key of the item to retrieve.                            |
+| `dest`    | `interface{}` | The result will be stored into the value pointed by `dest`. |
 
 Returns an `error`. Possible error values:
 
@@ -94,9 +94,9 @@ Inserts a single item, but is different from [`Put`](#put) in that it will throw
 
 > ℹ️ `Insert` is roughly 2 times slower than [`Put`](#put).
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `item` | `interface{}` | The item to be stored, similar to the `item` parameter in [`Put`](#put). |
+| Parameter | Type          | Description                                                              |
+| --------- | ------------- | ------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, similar to the `item` parameter in [`Put`](#put). |
 
 Returns the key of the item inserted and an `error`. Possible error values:
 
@@ -114,9 +114,9 @@ func (b *Base) PutMany(items interface{}) ([]string, error)
 
 Puts up to 25 items at once with a single call.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `items` | `interface{}` | A slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put). |
+| Parameter | Type          | Description                                                                                |
+| --------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `items`   | `interface{}` | A slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put). |
 
 Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
 
@@ -134,9 +134,9 @@ func (b *Base) Update(key string, updates Updates) error
 
 Updates an existing item.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `key` | `string` | The key of the item to update. |
+| Parameter | Type                         | Description                       |
+| --------- | ---------------------------- | --------------------------------- |
+| `key`     | `string`                     | The key of the item to update.    |
 | `updates` | [`Updates`](./types#updates) | The updates to apply to the item. |
 
 Returns an `error`. Possible error values:
@@ -168,9 +168,9 @@ In the case of a list, the indvidual queries are OR'ed.
 > Thus, in some cases you might get an empty list of items and a `last` key in the response.
 > To apply the query through all the items in your Base, you have to call `Fetch` until `last` is empty.
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `i` | [`*FetchInput`](./types#fetchinput) | A pointer to a [`FetchInput`](./types#fetchinput) |
+| Parameter | Type                                | Description                                       |
+| --------- | ----------------------------------- | ------------------------------------------------- |
+| `i`       | [`*FetchInput`](./types#fetchinput) | A pointer to a [`FetchInput`](./types#fetchinput) |
 
 Returns an `error`. Possible error values:
 
