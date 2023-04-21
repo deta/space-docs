@@ -5,31 +5,82 @@ position: 1
 layout: "@docs"
 ---
 
-> If this is your first Space app take a look at the [getting started guide](/docs/en/introduction/first-app).
+This quickstart assumes that you have:
 
-If you don't have an existing Next app already you can create a new one by following the offical [Next instructions](https://nextjs.org/docs#automatic-setup).
+- A [Deta Space account](https://deta.space/signup)
+- [Space CLI](https://deta.space/docs/en/basics/cli) installed on your machine and logged in
+- [Node.js](https://nodejs.org) installed on your machine
 
-For Space to be able to run Next it needs to be configured to ouput a standalone app. This ensures that the app is built to be served by a NodeJS server, refer to the [Next Docs](https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files) for more information.
+You can use your existing [Next.js](https://nextjs.org/) app or you can create one following the instructions [here](https://nextjs.org/docs/getting-started).
 
-Please modify `next.config.js` to set the output to `standalone`: 
+## Create a Space Project
 
-```jsx
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build and test apps with different Space features before releasing it to the public. To create a Space project, run the following command in the Next.js project directory:
+
+```bash
+space new
+```
+
+You will be prompted to enter a name for your project. The CLI will then display a generated configuration for the app and prompt you to confirm the setup of the project with that configuration. Once confirmed, the project will be created along with a [Spacefile](https://deta.space/docs/en/reference/spacefile) that contains the configuration for the micro and a `.space` directory that stores project information and links it to your Builder project.
+
+```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: nextjs-app
+    src: .
+    engine: next
+    primary: true
+```
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to [this](https://deta.space/docs/en/reference/spacefile).
+
+## Enable Standalone Feature
+
+Now, you need to enable the Next.js [Output File Tracing](https://nextjs.org/docs/advanced-features/output-file-tracing) feature for optimizing the app size and enhance performance. This creates a compressed version of the whole app with necessary dependencies built into the `.next/standalone` directory, which is meant to deploy on its own without additional `node_modules` dependencies.
+
+In order to enable the `standalone` feature, add the following to your `next.config.js`:
+
+```diff
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "standalone",
++   output: 'standalone',
 }
 
 module.exports = nextConfig
 ```
 
-Once you've edited your `next.config.js` file, just modify your [Spacefile](/docs/en/reference/spacefile/) file before [pushing changes](/docs/en/basics/revisions/) to Space.
+## Developing Locally
 
-Spacefile Configuration:
+To develop your app on your local machine, you can define what command should be executed to start your app’s development server with the `dev` command in the Spacefile. With this the CLI will take care of generating and injecting the `Data Key` for easier access to app’s Base and Drive instances with SDKs, as well as testing scheduled actions, so you can focus on developing your app without worrying about configuring these all by yourself.
 
-```yaml
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
-  - name: next-app
-    src: ./src/fullstack/next-app
+  - name: nextjs-app
+    src: .
     engine: next
+    primary: true
++   dev: npm run dev
 ```
+
+Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
+
+```
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
+space push
+```
+
+This will validate your Spacefile, then package and upload your source code to Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, the builder instance will be updated and the CLI will return the link to the Builder instance. Open it in your browser and you got your app running on Space.
+
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
+
+Congratulations! 🎉 You have successfully built, deployed and got your first Next.js app on Space. 🚀
