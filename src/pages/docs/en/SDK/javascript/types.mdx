@@ -214,11 +214,11 @@ interface PutOptions {
 }
 ```
 
-| Property       | Type                                 | Description                                                                                                                                                                                                                                      |
-| -------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `data?`        | `string` \| `Uint8Array` \| `Buffer` | Either the data string or a buffer.                                                                                                                                                                                                              |
-| `path?`        | `string`                             | Path of the file to be uploaded to drive.                                                                                                                                                                                                        |
-| `contentType?` | `string`                             | Content type of the file to be uploaded to drive. If the content type is not provided, Drive tries to figure out the content type from the `name` provided. It defaults to `application/octet-stream` if the content type can not be determined. |
+| Property       | Type                                 | Description                                                                                                                                                                |
+| -------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data?`        | `string` \| `Uint8Array` \| `Buffer` | Either the data string or a buffer.                                                                                                                                        |
+| `path?`        | `string`                             | Path of the file to be uploaded to drive.                                                                                                                                  |
+| `contentType?` | `string`                             | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
 
 ### `ListOptions`
 
