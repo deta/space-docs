@@ -4,6 +4,7 @@ position: 0
 layout: "@docs"
 ---
 
+import LangTabs from "@/components/Tabs/LangTabs.astro"
 import PackageManagerTabs from "@/components/Tabs/PackageManagerTabs.astro";
 
 The Deta library is the easiest way to store and retrieve data from your Deta Base. Currently, we support JavaScript (Node + Browser), Python 3 and Go. [Drop us a line on Discord](https://go.deta.dev/discord) if you want us to support your favorite language.
@@ -17,18 +18,32 @@ The SDKs are available for the following languages:
 
 ## Installing
 
-<PackageManagerTabs>
-    <Fragment slot="npm">
+<LangTabs>
+    <Fragment slot="js">
+        <PackageManagerTabs>
+            <Fragment slot="npm">
+                ```shell
+                npm install deta
+                ```
+            </Fragment>
+            <Fragment slot="yarn">
+                ```shell
+                yarn add deta
+                ```
+            </Fragment>
+        </PackageManagerTabs>
+    </Fragment>
+    <Fragment slot="py">
         ```shell
-        npm install deta
+        pip install deta
         ```
     </Fragment>
-    <Fragment slot="yarn">
+    <Fragment slot="go">
         ```shell
-        yarn add deta
+        go get github.com/deta/deta-go
         ```
     </Fragment>
-</PackageManagerTabs>
+</LangTabs>
 
 > ℹ️ If you are using the Deta SDK within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your `package.json` file to install the latest sdk version.
 
