@@ -12,3 +12,4 @@ Yes! Webhook-based bots that respond to HTTP requests can be easily deployed on 
 #### Recommended Libraries
 - [Discohook](https://github.com/jnsougata/discohook) (Discord)
 - [grammY](https://grammy.dev/) (Telegram)
+- [aiogram](https://github.com/aiogram/aiogram) (Telegram)
