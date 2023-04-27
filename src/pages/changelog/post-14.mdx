@@ -12,6 +12,40 @@ We have been working hard on a revamped build pipeline that is more reliable, ea
 ### Improved Logs
 
 We reworked the build logs to be easier to read and more informative.
+
+```
+$ space push
+
+📦  Pushing your code (7 files) & running build process...
+
+2023/04/27 15:37:05 Parsing Spacefile...
+2023/04/27 15:37:05 Building micro client...
+2023/04/27 15:37:05 [client] Installing dependencies with npm
+2023/04/27 15:37:09 [client] Zipping dependencies
+2023/04/27 15:37:09 [client] Zipping code
+2023/04/27 15:37:09
+2023/04/27 15:37:09 Building micro server...
+2023/04/27 15:37:09 [server] Installing dependencies with npm
+2023/04/27 15:37:11 [server] Running command: npm run build
+2023/04/27 15:37:11 [server] ...
+2023/04/27 15:37:11 [server] Zipping code
+2023/04/27 15:37:11
+2023/04/27 15:37:11 All micros built successfully
+2023/04/27 15:37:11 Total Size 4.62 MB
+2023/04/27 15:37:18 Created revision: dory-weyi
+
+💻  Updating your Builder instance with the new revision...
+
+2023/04/27 15:37:23 starting update...
+2023/04/27 15:37:23 fetching release configuration...
+2023/04/27 15:37:23 allocating resources..
+2023/04/27 15:37:23 configuring resource 1 out of 2...
+2023/04/27 15:37:43 configuring resource 2 out of 2...
+
+🎉  Successfully pushed your code and updated your Builder instance!
+Builder instance: https://example-v7468792.deta.app
+```
+
 You will also notice that the logs are now streamed in real-time, so you can see the progress of your build as it happens.
 
 ### Node apps now use the right package manager
