@@ -111,7 +111,7 @@ micros:
     include:
       - dist
     run: node dist/index.js
-+	  dev: npm run dev
++   dev: npm run dev
 ```
 
 Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
