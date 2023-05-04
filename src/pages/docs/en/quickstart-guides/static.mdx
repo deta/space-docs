@@ -16,19 +16,23 @@ This quickstart assumes that you have:
 > 💡 Currently, Space only supports Node.js 16, with plans to add support for Node.js 18 soon.
 We recommend using a Node version manager like [nvm](https://github.com/nvm-sh/nvm) to install Node.js and npm on your computer. This will allow you to quickly install and use different versions of Node.js.
 
-Space supports popular front-end frameworks like [React](https://react.dev/), [Svelte](https://svelte.dev/), and [Vue](https://vuejs.org/), making it easy to run your static apps on Space with these frameworks. However, if you're building static HTML apps without using a framework or static site generator, or if you're using a framework like [Astro](https://astro.build/), [Solid](https://www.solidjs.com/), or any other that's not yet supported out of the box, you can still run it on Space by configuring the [Spacefile](https://deta.space/docs/en/reference/spacefile).
+Space supports popular front-end frameworks like [React](https://react.dev/), [Svelte](https://svelte.dev/), and [Vue](https://vuejs.org/) out of the box. 
 
-You can use your existing static app or you can create one.
+However, if you're using a different framework like [Astro](https://astro.build/), [Solid](https://www.solidjs.com/) or are building static HTML apps without a framework or static site generator, you can still run it on Space by configuring the [Spacefile](https://deta.space/docs/en/reference/spacefile).
+
+On Space you can push a static app you already built or a new project you are working on.
 
 ## Create a Space project
 
-[Space projects](https://deta.space/docs/en/basics/projects) allow you to build and test apps with different Space features before releasing it to the public. To create a Space project, run the following command in the static app directory:
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
 
 ```bash
 space new
 ```
 
-You will be prompted to enter a name for your project. The CLI will then display a generated configuration for the app and prompt you to confirm the setup of the project with that configuration. Once confirmed, the project will be created along with a Spacefile that contains the configuration for the micro and a `.space` directory that stores project information and links it to your Builder project.
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your project.
 
 <EngineTabs>
   <Fragment slot="react">
@@ -66,9 +70,9 @@ You will be prompted to enter a name for your project. The CLI will then display
   </Fragment>
 </EngineTabs>
 
-> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to [this](https://deta.space/docs/en/reference/spacefile).
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](https://deta.space/docs/en/reference/spacefile) reference.
 
-If you're building a static HTML app without using a framework or static site generator, or if you're using a framework that's not yet supported out of the box, here is how to configure the Spacefile to work with your specific requirements.
+If you're using a framework that's not yet supported out of the box, or a static HTML app without using a framework or static site generator, here is how to configure the Spacefile to work with your specific requirements:
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -87,7 +91,7 @@ Here, the [`engine`](https://deta.space/docs/en/reference/spacefile#engine) para
 
 ## Developing Locally
 
-To develop your app on your local machine, you can define what command should be executed to start your app's development server with the `dev` command in the Spacefile. With this the CLI will take care of generating and injecting the `Data Key` for easier access to app's Base and Drive instances with SDKs, as well as testing scheduled actions, so you can focus on developing your app without worrying about configuring these all by yourself.
+You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
 
 <EngineTabs>
   <Fragment slot="react">
@@ -128,7 +132,7 @@ To develop your app on your local machine, you can define what command should be
   </Fragment>
 </EngineTabs>
 
-Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
 
 ```bash
 space dev
@@ -142,7 +146,7 @@ To deploy your app to Space, simply run:
 space push
 ```
 
-This will validate your Spacefile, then package and upload your source code to Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, the builder instance will be updated and the CLI will return the link to the Builder instance. Open it in your browser and you got your app running on Space.
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
 
 > 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
 

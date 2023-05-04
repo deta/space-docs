@@ -15,13 +15,15 @@ You can use your existing [SvelteKit](https://kit.svelte.dev/) app or you can cr
 
 ## Create a Space Project
 
-[Space projects](https://deta.space/docs/en/basics/projects) allow you to build and test apps with different Space features before releasing it to the public. To create a Space project, run the following command in the Next.js project directory:
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
 
 ```bash
 space new
 ```
 
-You will be prompted to enter a name for your project. The CLI will then display a generated configuration for the app and prompt you to confirm the setup of the project with that configuration. Once confirmed, the project will be created along with a [Spacefile](https://deta.space/docs/en/reference/spacefile) that contains the configuration for the micro and a `.space` directory that stores project information and links it to your Builder project.
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your project.
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -33,11 +35,11 @@ micros:
     primary: true
 ```
 
-> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to [this](https://deta.space/docs/en/reference/spacefile).
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](https://deta.space/docs/en/reference/spacefile) reference.
 
 ## Use SvelteKit adapter for Node servers
 
-SvelteKit app’s require their [Node server adapter](https://kit.svelte.dev/docs/adapter-node) to generate a standalone Node server for deployment on Space. Install the adapter with:
+SvelteKit apps require their [Node server adapter](https://kit.svelte.dev/docs/adapter-node) to generate a standalone Node server for deployment on Space. Install the adapter with:
 
 ```bash
 npm i -D @sveltejs/adapter-node
@@ -63,7 +65,7 @@ export default config;
 
 ## Developing Locally
 
-To develop your app on your local machine, you can define what command should be executed to start your app’s development server with the `dev` command in the Spacefile. With this the CLI will take care of generating and injecting the `Data Key` for easier access to app’s Base and Drive instances with SDKs, as well as testing scheduled actions, so you can focus on developing your app without worrying about configuring these all by yourself.
+You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your app’s development server using the `dev` command in the Spacefile.
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -76,7 +78,7 @@ micros:
 +	  dev: npm run dev
 ```
 
-Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
 
 ```
 space dev
@@ -90,7 +92,7 @@ To deploy your app to Space, simply run:
 space push
 ```
 
-This will validate your Spacefile, then package and upload your source code to Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, the builder instance will be updated and the CLI will return the link to the Builder instance. Open it in your browser and you got your app running on Space.
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
 
 > 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
 

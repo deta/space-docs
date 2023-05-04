@@ -111,7 +111,7 @@ micros:
 +   dev: go run .
 ```
 
-Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
 
 ```
 space dev
@@ -125,7 +125,7 @@ To deploy your app to Space, simply run:
 space push
 ```
 
-This will validate your Spacefile, then package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, the builder instance will be updated and the CLI will return the link to the Builder instance. Open it in your browser and you got your app running on Space.
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
 
 > 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
 
