@@ -1,0 +1,18 @@
+---
+import Tabs from "@/components/Tabs/Tabs";
+---
+
+<Tabs
+  client:visible
+  sharedStore="tabEngine"
+  defaultPanel="react"
+  tabs={[
+    { label: "React", value: "react" },
+    { label: "Svelte", value: "svelte" },
+    { label: "Vue", value: "vue" },
+  ]}
+>
+  <Fragment slot="panel.react"><slot name="react" /></Fragment>
+  <Fragment slot="panel.svelte"><slot name="svelte" /></Fragment>
+  <Fragment slot="panel.vue"><slot name="vue" /></Fragment>
+</Tabs>

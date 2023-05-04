@@ -5,40 +5,95 @@ position: 3
 layout: "@docs"
 ---
 
+This quickstart assumes that you have:
 
-> This guide assumes that you have a SvelteKit app that you want to run on Space. If you don't have a SvelteKit app, follow the instructions on the [SvelteKit docs](https://kit.svelte.dev/docs/creating-a-project) to create one.
+- A [Deta Space account](https://deta.space/signup)
+- [Space CLI](https://deta.space/docs/en/basics/cli) installed on your machine and logged in
+- [Node.js](https://nodejs.org) installed on your machine
 
+You can use your existing [SvelteKit](https://kit.svelte.dev/) app or you can create one following the instructions [here](https://kit.svelte.dev/docs/creating-a-project).
 
-## Configure your SvelteKit app
-To run a SvelteKit app on Space, you'll need to use the SvelteKit node adapter: [`@sveltejs/adapter-node`](https://kit.svelte.dev/docs/adapter-node). If you already use the Node adapter, skip to the [next section](#run-it-on-space).
+## Create a Space Project
 
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
 
-First, install the `@sveltejs/adapter-node` dependency:
-
-```sh
-npm install @sveltejs/adapter-node
-```
-
-Then, in your `svelte.config.js` file, replace the current adapter with the node adapter:
-
-```js
-import adapter from '@sveltejs/adapter-node';
-// rest of the file
-```
-
-
-Your project is now configured to run on Space. Let's run it!
-
-## Run it on Space
-After making sure you've installed the [Space CLI](/docs/en/basics/cli), run the following command in your project's directory:
-
-```sh
+```bash
 space new
 ```
-Follow the prompts to give your app a name. Once that's done, let's push your app to Space:
 
-```sh
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your project.
+
+```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: sveltekit-app
+    src: .
+    engine: svelte-kit
+    primary: true
+```
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](https://deta.space/docs/en/reference/spacefile) reference.
+
+## Use SvelteKit adapter for Node servers
+
+SvelteKit apps require their [Node server adapter](https://kit.svelte.dev/docs/adapter-node) to generate a standalone Node server for deployment on Space. Install the adapter with:
+
+```bash
+npm i -D @sveltejs/adapter-node
+```
+
+Now, you need to add the adapter to your `svelte.config.js`:
+
+```diff
+- import adapter from '@sveltejs/adapter-auto';
++ import adapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/kit/vite';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	preprocess: vitePreprocess(),
+	kit: {
+		adapter: adapter()
+	}
+};
+
+export default config;
+```
+
+## Developing Locally
+
+You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your app’s development server using the `dev` command in the Spacefile.
+
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: nextjs-app
+    src: .
+    engine: next
+    primary: true
++	  dev: npm run dev
+```
+
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
+
+```
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
 space push
 ```
 
-Great job! You've just deployed your first SvelteKit app on Space. You can now access your app at the URL provided by the CLI.
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
+
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
+
+Congratulations! 🎉 You have successfully built, deployed and got your first SvelteKit app on Space. 🚀
