@@ -47,12 +47,12 @@ micros:
     src: .
     engine: nuxt
     primary: true
-+	  dev: npm run dev -- -o
++   dev: npm run dev -- -o
 ```
 
 Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
 
-```
+```bash
 space dev
 ```
 
