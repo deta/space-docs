@@ -70,7 +70,9 @@ To create a Space project, run the following command in the directory containing
 space new
 ```
 
-You will be prompted to enter a name for your project. The CLI will then display a generated configuration for the app and prompt you to confirm the setup of the project with that configuration. Once confirmed, the project will be created along with a [Spacefile](https://deta.space/docs/en/reference/spacefile) that contains the configuration for the micro and a `.space` directory that stores project information and links it to your Builder project.
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your Builder project.
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
