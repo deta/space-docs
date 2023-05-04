@@ -5,6 +5,8 @@ position: 5
 layout: "@docs"
 ---
 
+import LangTabs from "@/components/Tabs/PythonFrameworkTabs.astro";
+
 This quickstart assumes that you have:
 
 - A [Deta Space account](https://deta.space/signup)
@@ -29,14 +31,27 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-We’ll also install a web framework and a web server for production deployment. For this guide, we’ll use [FastAPI](https://fastapi.tiangolo.com/) and [Uvicorn](https://www.uvicorn.org/), but feel free to use another framework and server of your choice if you prefer.
+> ℹ️ It is important to exclude the virtual environment directory from your source code base during deployment with `space push` in order to avoid conflicts and compatibility issues. The Space CLI automatically ignores the `venv` and `.venv` directories by default. However, if your virtual environment directory has a different name, you should add it to the `.spaceignore` file.
+
+We’ll also install a web framework and a web server for production deployment. For this guide, we’ll use [FastAPI](https://fastapi.tiangolo.com/) with [Uvicorn](https://www.uvicorn.org/) and [Flask](https://flask.palletsprojects.com/) with [Gunicorn](https://gunicorn.org/), but feel free to use other frameworks and web servers of your choice if you prefer.
 
 In your text editor, create a new file called `requirements.txt`, and add the following dependencies into it:
 
-```
-fastapi
-uvicorn
-```
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```
+  fastapi
+  uvicorn
+  ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```
+  Flask
+  gunicorn
+  ```
+  </Fragment>
+</LangTabs>
+
 
 Then, install these dependencies with:
 
@@ -44,23 +59,33 @@ Then, install these dependencies with:
 pip install -r requirements.txt
 ```
 
-To get started with FastAPI, create a new file called `main.py`. Then, add the following code:
+Create a new file called `main.py`. Then, add the following code:
 
-```python
-import os
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```python
+  from fastapi import FastAPI
 
-import uvicorn
-from fastapi import FastAPI
+  app = FastAPI()
 
-app = FastAPI()
-
-@app.get("/")
-def root():
-    return "Hello from Space! 🚀"
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+  @app.get("/")
+  def root():
+      return "Hello from Space! 🚀"
 ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```python
+  from flask import Flask
+
+  app = Flask(__name__)
+
+  @app.route("/")
+  def root():
+      return "Hello from Space! 🚀"
+```
+  </Fragment>
+</LangTabs>
+
 
 This code sets up a basic web server that listens on the specified port by the `PORT` environment variable.
 
@@ -89,16 +114,33 @@ micros:
 > ⚠️ Currently, the Spacefile with the generated configuration is based on the old standard of running Python apps on Space, which requires a `main.py` file at the root directory of the micro's source code with the app instance named as `app`. This old standard will be deprecated in the future, so we recommend updating the configuration in the Spacefile to explicitly define the command to start your app with the `run` command.
 
 
-```diff
-# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
-v: 0
-micros:
-  - name: python-app
-    src: .
-    engine: python3.9
-    primary: true
-+   run: python main.py
-```
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+  +   run: uvicorn main:app
+  ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+  +   run: gunicorn main:app
+  ```
+  </Fragment>
+</LangTabs>
+
 
 > ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to [this](https://deta.space/docs/en/reference/spacefile).
 
@@ -107,17 +149,34 @@ micros:
 
 To develop your app on your local machine, you can define what command should be executed to start your app’s development server with the `dev` command in the Spacefile. With this the CLI will take care of generating and injecting the `Data Key` for easier access to app’s Base and Drive instances with SDKs, as well as testing scheduled actions, so you can focus on developing your app without worrying about configuring these all by yourself.
 
-```diff
-# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
-v: 0
-micros:
-  - name: python-app
-    src: .
-    engine: python3.9
-    primary: true
-    run: python main.py
-+   dev: .venv/bin/uvicorn main:app --reload
-```
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+      run: uvicorn main:app
+  +   dev: .venv/bin/uvicorn main:app --reload
+  ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+      run: gunicorn main:app
+  +   dev: .venv/bin/flask --app main run
+  ```
+  </Fragment>
+</LangTabs>
 
 Once you define the `dev` command for the micro in the Spacefile, you can start the development server by running the following command:
 
