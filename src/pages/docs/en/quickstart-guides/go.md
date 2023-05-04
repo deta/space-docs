@@ -62,7 +62,7 @@ This code sets up a basic web server that listens on the port specified by the `
 
 ## Create a Space Project
 
-[Space projects](https://deta.space/docs/en/basics/projects) allow you to build and test apps with different Space features before releasing them to the public.
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
 
 To create a Space project, run the following command in the directory containing your source code:
 
