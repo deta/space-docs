@@ -56,7 +56,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-This code sets up a basic web server that listens on the specified port by the `PORT` environment variable.
+This code sets up a basic web server that listens on the port specified by the `PORT` environment variable.
 
 > 💡 Make sure your app is configured to listen on the port defined by the `PORT` [environment variable](https://deta.space/docs/en/basics/micros#micro-environment-variables).
 
