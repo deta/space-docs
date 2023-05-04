@@ -93,7 +93,7 @@ micros:
 
 # Developing Locally
 
-To develop your app on your local machine, you can define what command should be executed to start your app’s developement server with the `dev` command in the Spacefile. With this the CLI will take care of generating and injecting the `Data Key` for easier access to app’s Base and Drive instances with SDKs, as well as testing scheduled actions, so you can focus on developing your app without worrying about configuring these all by yourself.
+You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile. 
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
