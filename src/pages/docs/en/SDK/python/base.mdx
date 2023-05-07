@@ -51,7 +51,7 @@ If the operation did not complete successfully, raises an `Exception`.
 Example:
 
 ```py
-base.put({"value": "Hello world!"}, key="my-key")
+base.put({"value": "Hello world!"}, "my-key")
 ```
 
 ### Get
@@ -128,7 +128,7 @@ If the operation did not complete successfully, raises an `Exception`.
 Example:
 
 ```py
-base.insert({"value": "Hello world!"}, key="my-key")
+base.insert({"value": "Hello world!"}, "my-key")
 ```
 
 ### Put Many
@@ -187,7 +187,7 @@ Example:
 ```py
 base.update(
     {"value": "Hello updated world!"},
-    key="my-key",
+    "my-key",
 )
 ```
 
