@@ -5,20 +5,72 @@ position: 2
 layout: "@docs"
 ---
 
-> If this is your first Space app take a look at the [getting started guide](/docs/en/introduction/first-app).
+This quickstart assumes that you have:
 
-If you don't have an existing Nuxt app already you can create a new one by following the offical [Nuxt instructions](https://v3.nuxtjs.org/getting-started/installation#new-project). Only Nuxt 3 is supported out of the box.
+- A [Deta Space account](https://deta.space/signup)
+- [Space CLI](https://deta.space/docs/en/basics/cli) installed on your machine and logged in
+- [Node.js](https://nodejs.org) installed on your machine
 
-By default Nuxt will automatically output a standalone server which Space can run without additional configuration.
+You can use your existing [Nuxt](https://nuxt.com/) app or you can create one following the instructions [here](https://nuxt.com/docs/getting-started/installation#new-project).
 
-Once you've got a Nuxt 3 app locally paired with a [Space Project](/docs/en/basics/projects/), just modify your [Space Spacefile](/docs/en/reference/spacefile/) file before [pushing changes](/docs/en/basics/revisions/) to Space.
+## Create a Space Project
 
-Space Spacefile configuration for Nuxt 3:
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
+
+To create a Space project, run the following command in the Next.js project directory:
+
+
+```bash
+space new
+```
+
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your project.
 
 ```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
-  - name: nuxt
-    src: ./src/fullstack/nuxt
+  - name: nuxt-app
+    src: .
     engine: nuxt
+    primary: true
 ```
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](https://deta.space/docs/en/reference/spacefile) reference.
+
+## Developing Locally
+
+You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: nuxt-app
+    src: .
+    engine: nuxt
+    primary: true
++   dev: npm run dev -- -o
+```
+
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
+
+```bash
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
+space push
+```
+
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
+
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
+
+Congratulations! 🎉 You have successfully built, deployed and got your first Nuxt app on Space. 🚀

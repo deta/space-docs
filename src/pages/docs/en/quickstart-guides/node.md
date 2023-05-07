@@ -5,60 +5,133 @@ position: 4
 layout: "@docs"
 ---
 
-To run a Node.js app on a Space Micro, **it is recommended to use Node.js v16** since it works with Space out of the box.
+This quickstart assumes that you have:
 
-> ⚠️ Make sure that your Micro is configured to listen on the port number specified in the environment variable `PORT`.
+- A [Deta Space account](https://deta.space/signup)
+- [Space CLI](https://deta.space/docs/en/basics/cli) installed on your machine and logged in
+- [Node.js](https://nodejs.org) and [npm](https://docs.npmjs.com/cli/v9/configuring-npm/install) installed on your machine
 
-Here's the Spacefile needed to get a basic Node.js app running on Space:
+> 💡 Currently, Space only supports Node.js 16, with plans to add support for Node.js 18 soon.
+>
+> We recommend using a Node version manager like [nvm](https://github.com/nvm-sh/nvm) to install Node.js and npm on your computer. This will allow you to quickly install and use different versions of Node.js.
 
-```yaml
-v: 0
-micros:
-  - name: node-micro
-    src: src/node
-    engine: nodejs16
-    dev: nodemon index.js
-    run: "node index.js"
+## Create a Node.js App
+
+First, create a directory to contain the source code of your app, and navigate to it.
+
+```bash
+mkdir nodejs-app
+cd nodejs-app
 ```
 
-index.js
+Next, initialize a new Node.js app and generate a `package.json` file to manage the dependencies for your app. We’ll also install a web framework; for this guide, we’ll use [Express.js](https://expressjs.com), but feel free to use another framework of your choice if you prefer.
+
+```bash
+npm init -y
+npm i express
+```
+
+To get started with Express.js, create a new file called `index.js`. Then, add the following code:
 
 ```js
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 8080;
 
-const port = process.env.PORT
-
-app.get('/', (req, res) => {
-  res.send('Hello from Space!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello from Space! 🚀");
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`App listening on port ${port}!`);
+});
 ```
 
-> ℹ️ We use [`nodemon`](https://www.npmjs.com/package/nodemon) to watch for changes in our code and restart the server automatically. You can use any other tool you like.
+This code sets up a basic web server that listens on the port specified by the `PORT` environment variable.
 
-If your Node Micro has a build step (e.g. because you are using TypeScript) use a config similar to the following:
+> 💡 Make sure your app is configured to listen on the port defined by the `PORT` [environment variable](https://deta.space/docs/en/basics/micros#micro-environment-variables).
+
+## Create a Space Project
+
+[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
+
+To create a Space project, run the following command in the directory containing your source code:
+
+```bash
+space new
+```
+
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your project.
 
 ```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
-  - name: node-micro
-    src: src/node
+  - name: nodejs-app
+    src: .
     engine: nodejs16
-    dev: "npm run dev"
+    primary: true
+```
+
+> ⚠️ For now, the Spacefile with the generated configuration only works when there an `index.js` file at the root directory of the micro’s source code else you will have to explicitly define what command should be executed to start your app with the `run` command.
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](https://deta.space/docs/en/reference/spacefile) reference.
+
+The Spacefile can be further configured to depending on your project's specific requirements. So whether your project has a build step, or only a specific directory is required to be included in the final package of the Micro, you can configure these with the Spacefile and the build pipeline will handle them accordingly. [Read more here](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile).
+
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: nodejs-app
+    src: .
+    engine: nodejs16
+    primary: true
++   commands:
++     - npm run build
++   include:
++     - dist
++   run: node dist/index.js
+```
+
+## Developing Locally
+
+You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+
+```diff
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: nodejs-app
+    src: .
+    engine: nodejs16
+    primary: true
     commands:
       - npm run build
     include:
-      - build
-    run: "node build/index.js"
+      - dist
+    run: node dist/index.js
++   dev: npm run dev
 ```
 
-- `commands` specifies which commands to run during build, in our case our NPM script `build`
-- `include` specifies which directory to include in the final app package, everything else will be ignored. In our case we set it to the directory of our build output
-- `dev` specifies the command to start your Micro in development mode. In our case running the `dev` script in our `package.json`
-- `run` specifies the command to start your Micro. In our case running the `index.js` file in our `build` directory using `node`
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
 
-> ℹ️ Support for Node.js v18 is coming soon.
+```
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
+space push
+```
+
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
+
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployement and update of the builder instance.
+
+Congratulations! 🎉 You have successfully built, deployed and got your first Node.js app on Space. 🚀

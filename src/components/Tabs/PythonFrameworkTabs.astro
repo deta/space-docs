@@ -1,0 +1,16 @@
+---
+import Tabs from "@/components/Tabs/Tabs";
+---
+
+<Tabs
+  client:visible
+  sharedStore="tabLang"
+  defaultPanel="fastapi"
+  tabs={[
+    { label: "FastAPI", value: "fastapi" },
+    { label: "Flask", value: "flask" },
+  ]}
+>
+  <Fragment slot="panel.fastapi"><slot name="fastapi" /></Fragment>
+  <Fragment slot="panel.flask"><slot name="flask" /></Fragment>
+</Tabs>

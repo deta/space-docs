@@ -26,10 +26,10 @@ What this means concretely:
 - All of your data from your Deta Cloud Project will move into a Collection
 - Your data will remain continuously available
 - Your **Project Keys** from Deta Cloud will continue to work as **Data Keys**
-- Your Micros will remain usable through the [Cloud Legacy App](/migration/learn-more/legacy-mode) until May 1
-- Your data will not be deleted when Cloud is sunset on May 1
+- Your Micros will remain usable through the [Cloud Legacy App](/migration/learn-more/legacy-mode) until June 1
+- Your data will not be deleted when Cloud is sunset on June 1
 
-> ⚠️ Deta Cloud support will end on May 1, 2023. We strongly encourage migrating data to Collections before then, as Deta Cloud Projects will not be supported after this date and their resources will be removed.
+> ⚠️ Deta Cloud support will end on June 1, 2023. We strongly encourage migrating data to Collections before then, as Deta Cloud Projects will not be supported after this date and their resources will be removed.
 
 
 Sound good? Let's migrate a Deta Cloud Project into a Collection.
@@ -73,12 +73,12 @@ After you import a Collection into Space from a Cloud Project, your Micros will 
 
 You can continute to view them through the [Cloud Legacy App](/migration/learn-more/legacy-mode), and update them through the [Deta CLI](https://docs.deta.sh/docs/cli/commands).
 
-Nonetheless, we encourage you to [migrate your Micros](/migration/guides/migrate-a-micro) into Space well before May 1 to ensure they keep operating.
+Nonetheless, we encourage you to [migrate your Micros](/migration/guides/migrate-a-micro) into Space well before June 1 to ensure they keep operating.
 
 
 ### During the Migration Period
    
-> ⚠️ During the Migration Period (February 14, 2023 - May 1, 2023), a Collection imported from Deta Cloud will live as both a Collection on Deta Space and as a Project in the [Legacy Cloud](/migration/learn-more/legacy-mode) - even though they won't show up in the Legacy Cloud App's dashboard.
+> ⚠️ During the Migration Period (February 14, 2023 - June 1, 2023), a Collection imported from Deta Cloud will live as both a Collection on Deta Space and as a Project in the [Legacy Cloud](/migration/learn-more/legacy-mode) - even though they won't show up in the Legacy Cloud App's dashboard.
 
 This has a few consequences you should be aware of.
 
