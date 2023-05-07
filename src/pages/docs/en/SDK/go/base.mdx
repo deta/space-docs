@@ -47,6 +47,16 @@ Returns the key of the item stored and an `error`. Possible error values:
 
 > ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
 
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Put(item)
+```
+
 ### Get
 
 ```go
@@ -67,6 +77,13 @@ Returns an `error`. Possible error values:
 - `ErrUnauthorized`: unauthorized
 - `ErrInternalServerError`: internal server error
 
+Example:
+
+```go
+var item map[string]interface{}
+err := db.Get("my-key", &item)
+```
+
 ### Delete
 
 ```go
@@ -83,6 +100,12 @@ Returns an `error`. A `nil` error is returned if no item was found with the prov
 
 - `ErrUnauthorized`: unauthorized
 - `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+err := db.Delete("my-key")
+```
 
 ### Insert
 
@@ -106,6 +129,16 @@ Returns the key of the item inserted and an `error`. Possible error values:
 - `ErrUnauthorized`: unauthorized
 - `ErrInternalServerError`: internal server error
 
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Insert(item)
+```
+
 ### Put Many
 
 ```go
@@ -126,6 +159,19 @@ Returns the list of keys of the items stored and an `error`. In case of an error
 - `ErrUnauthorized`: unauthorized
 - `ErrInternalServerError`: internal server error
 
+Example:
+
+```go
+item1 := map[string]interface{}{
+    "value": "First item",
+}
+item2 := map[string]interface{}{
+    "value": "Second item",
+}
+items := []map[string]interface{}{item1, item2}
+keys, err := db.PutMany(items)
+```
+
 ### Update
 
 ```go
@@ -144,6 +190,15 @@ Returns an `error`. Possible error values:
 - `ErrBadRequest`: the update operation caused a bad request response from the server
 - `ErrUnauthorized`: unauthorized
 - `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+updates := base.Updates{
+    "value": "Hello updated world!",
+}
+err := db.Update("my-key", updates)
+```
 
 #### Update operations
 
@@ -178,6 +233,19 @@ Returns an `error`. Possible error values:
 - `ErrBadRequest`: the fetch request caused a bad request response from the server
 - `ErrUnauthorized`: unauthorized
 - `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+var results []map[string]interface{}
+query := base.Query{
+    {"value?contains": "world"},
+}
+_, err := db.Fetch(&base.FetchInput{
+    Q: query,
+    Dest: &results,
+})
+```
 
 ## Util
 
