@@ -44,6 +44,12 @@ If the operation did not complete successfully, throws an `Error`.
 
 > ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
 
+Example:
+
+```js
+await base.put({ value: "Hello world!" }, "my-key");
+```
+
 ### Get
 
 ```js
@@ -60,6 +66,12 @@ Returns a promise which resolves to a [`GetResponse`](./types#getresponse).
 If the item is found, the response will contain the item.
 If not found, the response will be `null`.
 
+Example:
+
+```js
+const item = await base.get("my-key");
+```
+
 ### Delete
 
 ```js
@@ -74,6 +86,12 @@ Deletes an item by its key.
 
 Returns a promise which resolves to a [`DeleteResponse`](./types#deleteresponse).
 The response will always be `null`, even if the key does not exist.
+
+Example:
+
+```js
+await base.delete("my-key");
+```
 
 ### Insert
 
@@ -98,6 +116,12 @@ Inserts a single item, but is different from [`put`](#put) in that it will throw
 Returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
 If the operation did not complete successfully, or the key already exists, throws an `Error`.
 
+Example:
+
+```js
+await base.insert({ value: "Hello world!" }, "my-key");
+```
+
 ### Put Many
 
 ```js
@@ -117,6 +141,12 @@ Puts up to 25 items at once with a single call.
 Returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
 If the operation did not complete successfully, or `items` contains more than 25 items, throws an `Error`.
 
+Example:
+
+```js
+await base.putMany(["First item", "Second item", "Third item"]);
+```
+
 ### Update
 
 ```js
@@ -134,6 +164,15 @@ Updates an existing item.
 | `updates`  | [`ObjectType`](./types#objecttype)       | An object describing the updates on the item. |
 | `key`      | `string`                                 | The key of the item to be updated.            |
 | `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters.                          |
+
+Example:
+
+```js
+await base.update(
+    { value: "Hello updated world!" },
+    "my-key",
+);
+```
 
 #### Update operations
 
@@ -167,6 +206,12 @@ In the case of a list, the indvidual queries are OR'ed.
 | `options?` | [`FetchOptions`](./types#fetchoptions)   | Optional parameters.              |
 
 Returns promise which resolves a [`FetchResponse`](./types#fetchresponse).
+
+Example:
+
+```js
+const response = await base.fetch({ "value?contains": "world" });
+```
 
 ## BaseUtils
 
