@@ -48,6 +48,12 @@ If the operation did not complete successfully, raises an `Exception`.
 
 > ℹ️ Numbers in Base have [some limits][1].
 
+Example:
+
+```py
+base.put({"value": "Hello world!"}, key="my-key")
+```
+
 ### Get
 
 ```py
@@ -64,6 +70,12 @@ If the item is found, returns a `dict` with the item's data.
 Otherwise, returns `None`.
 If `key` is not a non-empty string, raises a `ValueError`.
 
+Example:
+
+```py
+item = base.get("my-key")
+```
+
 ### Delete
 
 ```py
@@ -78,6 +90,12 @@ Deletes an item by its key.
 
 Always returns `None`, even if the key does not exist.
 If `key` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+base.delete("my-key")
+```
 
 ### Insert
 
@@ -107,6 +125,12 @@ If `key` already exists, raises an `Exception`.
 If `key` is not a non-empty string, raises a `ValueError`.
 If the operation did not complete successfully, raises an `Exception`.
 
+Example:
+
+```py
+base.insert({"value": "Hello world!"}, key="my-key")
+```
+
 ### Put Many
 
 ```py
@@ -127,6 +151,12 @@ Puts up to 25 items at once with a single call.
 | `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
 
 Returns a `dict` with `"processed"` and `"failed"` keys containing processed and failed items.
+
+Example:
+
+```py
+base.put_many(["First item", "Second item", "Third item"])
+```
 
 ### Update
 
@@ -151,6 +181,15 @@ Updates an existing item.
 
 If `key` is not a non-empty string, raises a `ValueError`.
 If the operation did not complete successfully, raises an `Exception`.
+
+Example:
+
+```py
+base.update(
+    {"value": "Hello updated world!"},
+    key="my-key",
+)
+```
 
 #### Update operations
 
@@ -188,6 +227,12 @@ In the case of a list, the indvidual queries are OR'ed.
 | `last`    | `str` \| `None`                  | The last key seen in a previous paginated response.                  |
 
 Returns an instance of [`FetchResponse`](#fetchresponse).
+
+Example:
+
+```py
+response = base.fetch({"value?contains": "world"})
+```
 
 ## FetchResponse
 
