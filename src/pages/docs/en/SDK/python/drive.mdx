@@ -53,6 +53,13 @@ If neither or both `data` and `path` are passed, raises a `ValueError`.
 Returns an `str` containing the name of the file.
 If the operation did not complete successfully, raises an `Exception`.
 
+Example:
+
+```py
+drive.put("hello.txt", data="Hello world!")
+drive.put("example.txt", path="path/to/example.txt")
+```
+
 ### Get
 
 ```py
@@ -67,6 +74,13 @@ Retrieves a file by its name.
 
 Returns an instance of [`DriveStreamingBody`](#drivestreamingbody).
 If `name` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+response = drive.get("hello.txt")
+content = response.read()
+```
 
 ### Delete
 
@@ -86,6 +100,12 @@ If the operation did not complete successfully, raises an `Exception`.
 
 > ℹ️ If the file did not exist, the name is still returned as if it were deleted.
 
+Example:
+
+```py
+drive.delete("hello.txt")
+```
+
 ### Delete Many
 
 ```py
@@ -101,6 +121,12 @@ Deletes multiple files, up to a limit of 1000.
 Returns a `dict` with `"deleted"` and `"failed"` keys indicating deleted and failed file names.
 
 > ℹ️ If the file did not exist, the name is still returned as if it were deleted.
+
+Example:
+
+```py
+drive.delete_many(["hello.txt", "example.txt"])
+```
 
 ### List
 
@@ -126,6 +152,13 @@ Returns a `dict` with `"paging"` and `"names"` keys.
 - `"paging"`: Contains paging information.
   - `"size"` : The number of files returned.
   - `"last"` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.
+
+Example:
+
+```py
+response = drive.list()
+names = response["names"]
+```
 
 ## DriveStreamingBody
 
