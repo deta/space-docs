@@ -1,7 +1,6 @@
 ---
-title: Running a Public Site
-section: Guides
-position: 2
+title: Create a Public Site
+position: 3
 layout: "@docs"
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Accessing Client IP Address
-section: Guides
-position: 0
+position: 2
 layout: "@docs"
 ---
 

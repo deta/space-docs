@@ -1,0 +1,829 @@
+---
+title: Base
+position: 1
+layout: "@docs"
+---
+## Base
+
+/* Python */
+
+```py
+def Base(name: str, host: str | None = None):
+```
+
+The `Base` class provides methods to interact with a Deta Base.
+
+| Parameter | Type            | Description           |
+| --------- | --------------- | --------------------- |
+| `name`    | `str`           | The name of the Base. |
+| `host`    | `str` \| `None` | The host of the Base. |
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+
+### Put
+
+```py
+def put(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+) -> dict:
+```
+
+`put` is the fastest way to store an item in a Base.
+If an item already exists under the given key, it will be replaced.
+In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
+
+| Parameter   | Type                                                              | Description                                                                       |
+| ----------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `data`      | `dict` \| `list` \| `str` \| [`int`][1] \| [`float`][1] \| `bool` | The data to be stored.                                                            |
+| `key`       | `str` \| `None`                                                   | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| `expire_in` | `int` \| `None`                                                   | Seconds after which the item will expire in, see [expiring items][2].             |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None`                          | Time at which the item will expire, see [expiring items][2].                      |
+
+Returns a `dict` with the item's data.
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+> ℹ️ Numbers in Base have [some limits][1].
+
+Example:
+
+```py
+base.put({"value": "Hello world!"}, "my-key")
+```
+
+### Get
+
+```py
+def get(key: str) -> dict | None:
+```
+
+Retrieves an item by its key.
+
+| Parameter | Type  | Description                      |
+| --------- | ----- | -------------------------------- |
+| `key`     | `str` | The key of the item to retrieve. |
+
+If the item is found, returns a `dict` with the item's data.
+Otherwise, returns `None`.
+If `key` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+item = base.get("my-key")
+```
+
+### Delete
+
+```py
+def delete(key: str):
+```
+
+Deletes an item by its key.
+
+| Parameter | Type  | Description                    |
+| --------- | ----- | ------------------------------ |
+| `key`     | `str` | The key of the item to delete. |
+
+Always returns `None`, even if the key does not exist.
+If `key` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+base.delete("my-key")
+```
+
+### Insert
+
+```py
+def insert(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+) -> dict:
+```
+
+Inserts a single item, but is different from [`put`](#put) in that it will throw an error of the key already exists in the Base.
+
+> ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
+
+| Parameter   | Type                                                              | Description                                                                       |
+| ----------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `data`      | `dict` \| `list` \| `str` \| [`int`][1] \| [`float`][1] \| `bool` | The data to be stored.                                                            |
+| `key`       | `str` \| `None`                                                   | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| `expire_in` | `int` \| `None`                                                   | Seconds after which the item will expire in, see [expiring items][2].             |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None`                          | Time at which the item will expire, see [expiring items][2].                      |
+
+Returns a `dict` with the item's data.
+If `key` already exists, raises an `Exception`.
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+Example:
+
+```py
+base.insert({"value": "Hello world!"}, "my-key")
+```
+
+### Put Many
+
+```py
+def put_many(
+    items: list,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+) -> dict:
+```
+
+Puts up to 25 items at once with a single call.
+
+| Parameter   | Type                                     | Description                                                           |
+| ----------- | ---------------------------------------- | --------------------------------------------------------------------- |
+| `items`     | `list`                                   | The list of items to be stored.                                       |
+| `expire_in` | `int` \| `None`                          | Seconds after which the item will expire in, see [expiring items][2]. |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
+
+Returns a `dict` with `"processed"` and `"failed"` keys containing processed and failed items.
+
+Example:
+
+```py
+base.put_many(["First item", "Second item", "Third item"])
+```
+
+### Update
+
+```py
+def update(
+    updates: dict,
+    key: str,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None
+)
+```
+
+Updates an existing item.
+
+| Parameter   | Type                                     | Description                                                           |
+| ----------- | ---------------------------------------- | --------------------------------------------------------------------- |
+| `updates`   | `dict`                                   | A dictionary describing the updates on the item.                      |
+| `key`       | `str`                                    | The key of the item to be updated.                                    |
+| `expire_in` | `int` \| `None`                          | Seconds after which the item will expire in, see [expiring items][2]. |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
+
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+Example:
+
+```py
+base.update(
+    {"value": "Hello updated world!"},
+    "my-key",
+)
+```
+
+#### Update operations
+
+Setting values is practiced through normal key-value pairs.
+The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+If not, it adds the attribute to the item with the corresponding value.
+
+Other operations are implemented through methods in the [`Util`](#util) class, accessible through the `util` attribute of a Base instance.
+
+### Fetch
+
+```py
+def fetch(
+    self,
+    query: Mapping | Sequence[Mapping] | None = None,
+    *,
+    limit: int = 1000,
+    last: str | None = None,
+) -> FetchResponse:
+```
+
+Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
+
+A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
+In the case of a list, the indvidual queries are OR'ed.
+
+> ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
+> Thus, in some cases you might get an empty list of items and a `last` key in the response.
+> To apply the query through all the items in your Base, you have to call `fetch` until `last` is empty.
+
+| Parameter | Type                             | Description                                                          |
+| --------- | -------------------------------- | -------------------------------------------------------------------- |
+| `query`   | `Mapping` \| `Sequence[Mapping]` | The query to filter the items by.                                    |
+| `limit`   | `int`                            | The maximum number of items you want to retreive, minimum value `1`. |
+| `last`    | `str` \| `None`                  | The last key seen in a previous paginated response.                  |
+
+Returns an instance of [`FetchResponse`](#fetchresponse).
+
+Example:
+
+```py
+response = base.fetch({"value?contains": "world"})
+```
+
+## FetchResponse
+
+The `FetchResponse` class describes the response of the [`fetch`](#fetch) method.
+
+| Attribute | Type            | Description                                                                                        |
+| --------- | --------------- | -------------------------------------------------------------------------------------------------- |
+| `count`   | `int`           | The number of items in the response.                                                               |
+| `last`    | `str` \| `None` | The last key seen in the fetch response. If `last` is not `None` further items are to be retreived |
+| `items`   | `list`          | The list of items retreived.                                                                       |
+
+## Util
+
+The `util` attribute of a Base instance is an instance of the `Util` class.
+It provides utility methods for use in [update operations](#update-operations).
+
+### Increment
+
+```py
+def increment(value: int | float = 1):
+```
+
+Increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is `1`.
+
+### Append
+
+```py
+def append(value: dict | list | str | int | float | bool):
+```
+
+Appends to a list.
+The value can be a primitive type or a `list`.
+
+### Prepend
+
+```py
+def prepend(value: dict | list | str | int | float | bool):
+```
+
+Prepends to a list.
+The value can be a primitive type or a `list`.
+
+### Trim
+
+```py
+def trim():
+```
+
+Removes an attribute from the item.
+
+[1]: /docs/en/reference/base/about#storing-numbers "Storing numbers"
+[2]: /docs/en/reference/base/expiring_items "Expiring items"
+
+
+/* JavaScript */
+
+```js
+function Base(baseName: string, host?: string);
+```
+
+The `Base` class provides methods to interact with a Deta Base.
+
+| Parameter  | Type     | Description           |
+| ---------- | -------- | --------------------- |
+| `baseName` | `string` | The name of the Base. |
+| `host?`    | `string` | The host of the Base. |
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+
+### Put
+
+```js
+async function put(
+    data: DetaType,
+    key?: string,
+    options?: PutOptions,
+): Promise<PutResponse>;
+```
+
+`put` is the fastest way to store an item in a Base.
+If an item already exists under the given key, it will be replaced.
+In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
+
+| Parameter  | Type                               | Description                                                              |
+| ---------- | ---------------------------------- | ------------------------------------------------------------------------ |
+| `data`     | [`DetaType`](./types#detatype)     | The data to be stored.                                                   |
+| `key?`     | `string`                           | The key to store the data under. Will be auto generated if not provided. |
+| `options?` | [`PutOptions`](./types#putoptions) | Optional parameters.                                                     |
+
+Returns a promise which resolves to a [`PutResponse`](./types#putresponse) containing the item.
+If the operation did not complete successfully, throws an `Error`.
+
+> ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
+
+Example:
+
+```js
+await base.put({ value: "Hello world!" }, "my-key");
+```
+
+### Get
+
+```js
+async function get(key: string): Promise<GetResponse>;
+```
+
+Retrieves an item by its key.
+
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| `key`     | `string` | The key of the item to retrieve. |
+
+Returns a promise which resolves to a [`GetResponse`](./types#getresponse).
+If the item is found, the response will contain the item.
+If not found, the response will be `null`.
+
+Example:
+
+```js
+const item = await base.get("my-key");
+```
+
+### Delete
+
+```js
+async function delete(key: string): Promise<DeleteResponse>;
+```
+
+Deletes an item by its key.
+
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `key`     | `string` | The key of the item to delete. |
+
+Returns a promise which resolves to a [`DeleteResponse`](./types#deleteresponse).
+The response will always be `null`, even if the key does not exist.
+
+Example:
+
+```js
+await base.delete("my-key");
+```
+
+### Insert
+
+```js
+async function insert(
+    data: DetaType,
+    key?: string,
+    options?: InsertOptions,
+): Promise<InsertResponse>;
+```
+
+Inserts a single item, but is different from [`put`](#put) in that it will throw an error of the key already exists in the Base.
+
+> ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
+
+| Parameter  | Type                                     | Description                                                              |
+| ---------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| `data`     | `DetaType`                               | The data to be stored.                                                   |
+| `key?`     | `string`                                 | The key to store the data under. Will be auto generated if not provided. |
+| `options?` | [`InsertOptions`](./types#insertoptions) | Optional parameters.                                                     |
+
+Returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
+If the operation did not complete successfully, or the key already exists, throws an `Error`.
+
+Example:
+
+```js
+await base.insert({ value: "Hello world!" }, "my-key");
+```
+
+### Put Many
+
+```js
+async function putMany(
+    items: DetaType[],
+    options?: PutManyOptions,
+): Promise<PutManyResponse>;
+```
+
+Puts up to 25 items at once with a single call.
+
+| Parameter  | Type                                       | Description                     |
+| ---------- | ------------------------------------------ | ------------------------------- |
+| `items`    | [`DetaType[]`](./types#detatype)           | The list of items to be stored. |
+| `options?` | [`PutManyOptions`](./types#putmanyoptions) | Optional parameters.            |
+
+Returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
+If the operation did not complete successfully, or `items` contains more than 25 items, throws an `Error`.
+
+Example:
+
+```js
+await base.putMany(["First item", "Second item", "Third item"]);
+```
+
+### Update
+
+```js
+async function update(
+    updates: ObjectType,
+    key: string,
+    options?: UpdateOptions,
+): Promise<UpdateResponse>;
+```
+
+Updates an existing item.
+
+| Parameter  | Type                                     | Description                                   |
+| ---------- | ---------------------------------------- | --------------------------------------------- |
+| `updates`  | [`ObjectType`](./types#objecttype)       | An object describing the updates on the item. |
+| `key`      | `string`                                 | The key of the item to be updated.            |
+| `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters.                          |
+
+Example:
+
+```js
+await base.update(
+    { value: "Hello updated world!" },
+    "my-key",
+);
+```
+
+#### Update operations
+
+Setting values is practiced through normal key-value pairs.
+The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+If not, it adds the attribute to the item with the corresponding value.
+
+Other operations are implemented through methods in the [`BaseUtils`](#baseutils) class, accessible through the `util` attribute of a Base instance.
+
+### Fetch
+
+```js
+async function fetch(
+    query?: CompositeType,
+    options?: FetchOptions,
+): Promise<FetchResponse>;
+```
+
+Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
+
+A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
+In the case of a list, the indvidual queries are OR'ed.
+
+> ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
+> Thus, in some cases you might get an empty list of items and a `last` key in the response.
+> To apply the query through all the items in your Base, you have to call `fetch` until `last` is empty.
+
+| Parameter  | Type                                     | Description                       |
+| ---------- | ---------------------------------------- | --------------------------------- |
+| `query?`   | [`CompositeType`](./types#compositetype) | The query to filter the items by. |
+| `options?` | [`FetchOptions`](./types#fetchoptions)   | Optional parameters.              |
+
+Returns promise which resolves a [`FetchResponse`](./types#fetchresponse).
+
+Example:
+
+```js
+const response = await base.fetch({ "value?contains": "world" });
+```
+
+## BaseUtils
+
+The `util` attribute of a Base instance is an instance of the `BaseUtils` class.
+It provides utility methods for use in [update operations](#update-operations).
+
+### Increment
+
+```js
+function increment(value?: number);
+```
+
+Increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is `1`.
+
+### Append
+
+```js
+function append(value: BasicType | ArrayType);
+```
+
+Appends to a list.
+The value can be a primitive type or an array.
+
+### Prepend
+
+```js
+function prepend(value: BasicType | ArrayType);
+```
+
+Prepends to a list.
+The value can be a primitive type or an array.
+
+### Trim
+
+```js
+function trim();
+```
+
+Removes an attribute from the item.
+
+/* Golang */
+
+
+```go
+func New(d *Deta, baseName string) (*Base, error)
+```
+
+The `Base` class provides methods to interact with a Deta Base.
+
+| Parameter  | Type                    | Description                   |
+| ---------- | ----------------------- | ----------------------------- |
+| `d`        | [`*Deta`](./types#deta) | A pointer to a Deta instance. |
+| `baseName` | `string`                | The name of the Base.         |
+
+Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible error values:
+
+- `ErrEmptyDetaInstance`: the [`Deta`](./types#deta) pointer provided is empty
+- `ErrBadBaseName`: the name of the Base is invalid
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+
+### Put
+
+```go
+func (b *Base) Put(item interface{}) (string, error)
+```
+
+`Put` is the fastest way to store an item in a Base.
+If an item already exists under the given key, it will be replaced.
+In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
+
+| Parameter | Type          | Description                                                                                                                                                                                            |
+| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with JSON struct tags. The key of the item must have a JSON struct tag of `key`. |
+
+Returns the key of the item stored and an `error`. Possible error values:
+
+- `ErrBadItem` : bad item, item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unuathorized
+- `ErrInternalServerError`: internal server error
+
+> ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
+
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Put(item)
+```
+
+### Get
+
+```go
+func (b *Base) Get(key string, dest interface{}) error
+```
+
+Retrieves an item by its key.
+
+| Parameter | Type          | Description                                                 |
+| --------- | ------------- | ----------------------------------------------------------- |
+| `key`     | `string`      | The key of the item to retrieve.                            |
+| `dest`    | `interface{}` | The result will be stored into the value pointed by `dest`. |
+
+Returns an `error`. Possible error values:
+
+- `ErrNotFound`: no item with such key was found
+- `ErrBadDestination`: bad destination, result could not be stored onto `dest`
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+var item map[string]interface{}
+err := db.Get("my-key", &item)
+```
+
+### Delete
+
+```go
+func (b *Base) Delete(key string) error
+```
+
+Deletes an item by its key.
+
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `key`     | `string` | The key of the item to delete. |
+
+Returns an `error`. A `nil` error is returned if no item was found with the provided key. Possible error values:
+
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+err := db.Delete("my-key")
+```
+
+### Insert
+
+```go
+func (b *Base) Insert(item interface{}) (string, error)
+```
+
+Inserts a single item, but is different from [`Put`](#put) in that it will throw an error of the key already exists in the Base.
+
+> ℹ️ `Insert` is roughly 2 times slower than [`Put`](#put).
+
+| Parameter | Type          | Description                                                              |
+| --------- | ------------- | ------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, similar to the `item` parameter in [`Put`](#put). |
+
+Returns the key of the item inserted and an `error`. Possible error values:
+
+- `ErrConflict` : if item with provided key already exists
+- `ErrBadItem`: bad item, if item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Insert(item)
+```
+
+### Put Many
+
+```go
+func (b *Base) PutMany(items interface{}) ([]string, error)
+```
+
+Puts up to 25 items at once with a single call.
+
+| Parameter | Type          | Description                                                                                |
+| --------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `items`   | `interface{}` | A slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put). |
+
+Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
+
+- `ErrTooManyItems`: if there are more than 25 items
+- `ErrBadItem`: bad item/items, one or more item of unexpected type
+- `ErrBadRequest`: one or more item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+item1 := map[string]interface{}{
+    "value": "First item",
+}
+item2 := map[string]interface{}{
+    "value": "Second item",
+}
+items := []map[string]interface{}{item1, item2}
+keys, err := db.PutMany(items)
+```
+
+### Update
+
+```go
+func (b *Base) Update(key string, updates Updates) error
+```
+
+Updates an existing item.
+
+| Parameter | Type                         | Description                       |
+| --------- | ---------------------------- | --------------------------------- |
+| `key`     | `string`                     | The key of the item to update.    |
+| `updates` | [`Updates`](./types#updates) | The updates to apply to the item. |
+
+Returns an `error`. Possible error values:
+
+- `ErrBadRequest`: the update operation caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+updates := base.Updates{
+    "value": "Hello updated world!",
+}
+err := db.Update("my-key", updates)
+```
+
+#### Update operations
+
+Setting values is practiced through normal key-value pairs.
+The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+If not, it adds the attribute to the item with the corresponding value.
+
+Other operations are implemented through methods accessible through the `Util` field of a Base instance.
+
+### Fetch
+
+```go
+func (b *Base) Fetch(i *FetchInput) (string, error)
+```
+
+Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
+
+A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
+In the case of a list, the indvidual queries are OR'ed.
+
+> ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
+> Thus, in some cases you might get an empty list of items and a `last` key in the response.
+> To apply the query through all the items in your Base, you have to call `Fetch` until `last` is empty.
+
+| Parameter | Type                                | Description                                       |
+| --------- | ----------------------------------- | ------------------------------------------------- |
+| `i`       | [`*FetchInput`](./types#fetchinput) | A pointer to a [`FetchInput`](./types#fetchinput) |
+
+Returns an `error`. Possible error values:
+
+- `ErrBadDestination`: bad destination, results could not be stored onto `dest`
+- `ErrBadRequest`: the fetch request caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+var results []map[string]interface{}
+query := base.Query{
+    {"value?contains": "world"},
+}
+_, err := db.Fetch(&base.FetchInput{
+    Q: query,
+    Dest: &results,
+})
+```
+
+## Util
+
+The `Util` field of a Base instance is pointer to the `util` struct.
+It provides utility methods for use in [update operations](#update-operations).
+
+### Increment
+
+```go
+func (u *util) Increment(value interface{})
+```
+
+Increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is `1`.
+
+### Append
+
+```go
+func (u *util) Append(value interface{})
+```
+
+Appends to a list.
+The value can be a primitive type or an array.
+
+### Prepend
+
+```go
+func (u *util) Prepend(value interface{})
+```
+
+Prepends to a list.
+The value can be a primitive type or an array.
+
+### Trim
+
+```go
+func (u *util) Trim()
+```
+
+Removes an attribute from the item.
