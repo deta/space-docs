@@ -38,7 +38,7 @@ Pass the `--notes` argument to add notes about the release (changes, features, e
 
 Then watch your app take off! Your app is now installable on Deta Space to anyone with the release url.
 
-> You can provide specific options to your release (which revision to use, version tags, listed/unlisted) using specific options. See the cli reference for [`space release`](/docs/en/reference/cli#deta-release).
+> You can provide specific options to your release (which revision to use, version tags, listed/unlisted) using specific options. See the cli reference for [`space release`](/docs/en/reference/cli#space-release).
 
 ## Discovery & App Pages
 
