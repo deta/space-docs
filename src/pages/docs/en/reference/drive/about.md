@@ -13,6 +13,6 @@ Deta Drive is great for projects where you need to store files or when you want 
 ## Getting started
 
 - [Dealing with data in a Space App](/docs/en/basics/data)
-- [Drive UI](/docs/en/reference/drive/base_ui)
+- [Drive UI](/docs/en/reference/drive/drive_ui)
 - [Drive SDK](/docs/en/reference/drive/sdk)
 - [Drive HTTP API](/docs/en/reference/drive/HTTP)

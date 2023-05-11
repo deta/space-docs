@@ -1,0 +1,290 @@
+---
+title: Base
+position: 0
+layout: "@docs"
+---
+
+## Base
+
+```go
+func New(d *Deta, baseName string) (*Base, error)
+```
+
+The `Base` class provides methods to interact with a Deta Base.
+
+| Parameter  | Type                    | Description                   |
+| ---------- | ----------------------- | ----------------------------- |
+| `d`        | [`*Deta`](./types#deta) | A pointer to a Deta instance. |
+| `baseName` | `string`                | The name of the Base.         |
+
+Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible error values:
+
+- `ErrEmptyDetaInstance`: the [`Deta`](./types#deta) pointer provided is empty
+- `ErrBadBaseName`: the name of the Base is invalid
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+
+### Put
+
+```go
+func (b *Base) Put(item interface{}) (string, error)
+```
+
+`Put` is the fastest way to store an item in a Base.
+If an item already exists under the given key, it will be replaced.
+In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
+
+| Parameter | Type          | Description                                                                                                                                                                                            |
+| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with JSON struct tags. The key of the item must have a JSON struct tag of `key`. |
+
+Returns the key of the item stored and an `error`. Possible error values:
+
+- `ErrBadItem` : bad item, item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unuathorized
+- `ErrInternalServerError`: internal server error
+
+> ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
+
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Put(item)
+```
+
+### Get
+
+```go
+func (b *Base) Get(key string, dest interface{}) error
+```
+
+Retrieves an item by its key.
+
+| Parameter | Type          | Description                                                 |
+| --------- | ------------- | ----------------------------------------------------------- |
+| `key`     | `string`      | The key of the item to retrieve.                            |
+| `dest`    | `interface{}` | The result will be stored into the value pointed by `dest`. |
+
+Returns an `error`. Possible error values:
+
+- `ErrNotFound`: no item with such key was found
+- `ErrBadDestination`: bad destination, result could not be stored onto `dest`
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+var item map[string]interface{}
+err := db.Get("my-key", &item)
+```
+
+### Delete
+
+```go
+func (b *Base) Delete(key string) error
+```
+
+Deletes an item by its key.
+
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `key`     | `string` | The key of the item to delete. |
+
+Returns an `error`. A `nil` error is returned if no item was found with the provided key. Possible error values:
+
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+err := db.Delete("my-key")
+```
+
+### Insert
+
+```go
+func (b *Base) Insert(item interface{}) (string, error)
+```
+
+Inserts a single item, but is different from [`Put`](#put) in that it will throw an error of the key already exists in the Base.
+
+> ℹ️ `Insert` is roughly 2 times slower than [`Put`](#put).
+
+| Parameter | Type          | Description                                                              |
+| --------- | ------------- | ------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, similar to the `item` parameter in [`Put`](#put). |
+
+Returns the key of the item inserted and an `error`. Possible error values:
+
+- `ErrConflict` : if item with provided key already exists
+- `ErrBadItem`: bad item, if item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Insert(item)
+```
+
+### Put Many
+
+```go
+func (b *Base) PutMany(items interface{}) ([]string, error)
+```
+
+Puts up to 25 items at once with a single call.
+
+| Parameter | Type          | Description                                                                                |
+| --------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `items`   | `interface{}` | A slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put). |
+
+Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
+
+- `ErrTooManyItems`: if there are more than 25 items
+- `ErrBadItem`: bad item/items, one or more item of unexpected type
+- `ErrBadRequest`: one or more item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+item1 := map[string]interface{}{
+    "value": "First item",
+}
+item2 := map[string]interface{}{
+    "value": "Second item",
+}
+items := []map[string]interface{}{item1, item2}
+keys, err := db.PutMany(items)
+```
+
+### Update
+
+```go
+func (b *Base) Update(key string, updates Updates) error
+```
+
+Updates an existing item.
+
+| Parameter | Type                         | Description                       |
+| --------- | ---------------------------- | --------------------------------- |
+| `key`     | `string`                     | The key of the item to update.    |
+| `updates` | [`Updates`](./types#updates) | The updates to apply to the item. |
+
+Returns an `error`. Possible error values:
+
+- `ErrBadRequest`: the update operation caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+updates := base.Updates{
+    "value": "Hello updated world!",
+}
+err := db.Update("my-key", updates)
+```
+
+#### Update operations
+
+Setting values is practiced through normal key-value pairs.
+The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+If not, it adds the attribute to the item with the corresponding value.
+
+Other operations are implemented through methods accessible through the `Util` field of a Base instance.
+
+### Fetch
+
+```go
+func (b *Base) Fetch(i *FetchInput) (string, error)
+```
+
+Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
+
+A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
+In the case of a list, the indvidual queries are OR'ed.
+
+> ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
+> Thus, in some cases you might get an empty list of items and a `last` key in the response.
+> To apply the query through all the items in your Base, you have to call `Fetch` until `last` is empty.
+
+| Parameter | Type                                | Description                                       |
+| --------- | ----------------------------------- | ------------------------------------------------- |
+| `i`       | [`*FetchInput`](./types#fetchinput) | A pointer to a [`FetchInput`](./types#fetchinput) |
+
+Returns an `error`. Possible error values:
+
+- `ErrBadDestination`: bad destination, results could not be stored onto `dest`
+- `ErrBadRequest`: the fetch request caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+var results []map[string]interface{}
+query := base.Query{
+    {"value?contains": "world"},
+}
+_, err := db.Fetch(&base.FetchInput{
+    Q: query,
+    Dest: &results,
+})
+```
+
+## Util
+
+The `Util` field of a Base instance is pointer to the `util` struct.
+It provides utility methods for use in [update operations](#update-operations).
+
+### Increment
+
+```go
+func (u *util) Increment(value interface{})
+```
+
+Increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is `1`.
+
+### Append
+
+```go
+func (u *util) Append(value interface{})
+```
+
+Appends to a list.
+The value can be a primitive type or an array.
+
+### Prepend
+
+```go
+func (u *util) Prepend(value interface{})
+```
+
+Prepends to a list.
+The value can be a primitive type or an array.
+
+### Trim
+
+```go
+func (u *util) Trim()
+```
+
+Removes an attribute from the item.

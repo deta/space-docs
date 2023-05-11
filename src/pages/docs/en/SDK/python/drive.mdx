@@ -1,0 +1,205 @@
+---
+title: Drive
+position: 1
+layout: "@docs"
+---
+
+## Drive
+
+```py
+def Drive(name: str, host: str | None = None):
+```
+
+The `Drive` class provides methods to interact with a Deta Drive.
+
+| Parameter | Type            | Description            |
+| --------- | --------------- | ---------------------- |
+| `name`    | `str`           | The name of the Drive. |
+| `host`    | `str` \| `None` | The host of the Drive. |
+
+### Put
+
+```py
+def put(
+    name: str,
+    data: str | bytes | io.TextIOBase | io.BufferedIOBase | io.RawIOBase,
+    *,
+    content_type: str | None = None,
+) -> str:
+```
+
+```py
+def put(
+    name: str,
+    *,
+    path: str,
+    content_type: str | None = None,
+) -> str:
+```
+
+Uploads and stores a file with a given name. It will overwrite the file if the name already exists.
+
+| Parameter      | Type                                                                         | Description                                                                                                                                                                |
+| -------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`         | `str`                                                                        | The name of the file.                                                                                                                                                      |
+| `data`         | `str` \| `bytes` \| `io.TextIOBase` \| `io.BufferedIOBase` \| `io.RawIOBase` | The data content of the file.                                                                                                                                              |
+| `path`         | `str`                                                                        | The local path of the file to be uploaded to drive.                                                                                                                        |
+| `content_type` | `str` \| `None`                                                              | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
+
+You must pass either `data` or `path`, but not both.
+
+If `name` is not a non-empty string, raises a `ValueError`.
+If neither or both `data` and `path` are passed, raises a `ValueError`.
+Returns an `str` containing the name of the file.
+If the operation did not complete successfully, raises an `Exception`.
+
+Example:
+
+```py
+drive.put("hello.txt", data="Hello world!")
+drive.put("example.txt", path="path/to/example.txt")
+```
+
+### Get
+
+```py
+def get(name: str) -> DriveStreamingBody | None:
+```
+
+Retrieves a file by its name.
+
+| Parameter | Type  | Description                  |
+| --------- | ----- | ---------------------------- |
+| `name`    | `str` | The name of the file to get. |
+
+Returns an instance of [`DriveStreamingBody`](#drivestreamingbody).
+If `name` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+response = drive.get("hello.txt")
+content = response.read()
+```
+
+### Delete
+
+```py
+def delete(name: str) -> str:
+```
+
+Deletes a file by its name.
+
+| Parameter | Type  | Description                     |
+| --------- | ----- | ------------------------------- |
+| `name`    | `str` | The name of the file to delete. |
+
+Returns an `str` containing the name of the deleted file.
+If `name` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
+
+Example:
+
+```py
+drive.delete("hello.txt")
+```
+
+### Delete Many
+
+```py
+def delete_many(names: Sequence[str]) -> dict:
+```
+
+Deletes multiple files, up to a limit of 1000.
+
+| Parameter | Type            | Description                       |
+| --------- | --------------- | --------------------------------- |
+| `names`   | `Sequence[str]` | The names of the files to delete. |
+
+Returns a `dict` with `"deleted"` and `"failed"` keys indicating deleted and failed file names.
+
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
+
+Example:
+
+```py
+drive.delete_many(["hello.txt", "example.txt"])
+```
+
+### List
+
+```py
+def list(
+    limit: int = 1000,
+    prefix: str | None = None,
+    last: str | None = None,
+) -> dict[str, Any]:
+```
+
+Lists file names.
+
+| Parameter | Type            | Description                                                          |
+| --------- | --------------- | -------------------------------------------------------------------- |
+| `limit`   | `int`           | The maximum number of file names to be returned, defaults to `1000`. |
+| `prefix`  | `str` \| `None` | A prefix that file names must start with to be returned.             |
+| `last`    | `str` \| `None` | The last name seen in a previous paginated result.                   |
+
+Returns a `dict` with `"paging"` and `"names"` keys.
+
+- `"names"`: The names of the files.
+- `"paging"`: Contains paging information.
+  - `"size"` : The number of files returned.
+  - `"last"` : The last name seen in the paginated response. Provide this value in subsequent api calls to fetch further pages. For the last page, `last` is not present in the response.
+
+Example:
+
+```py
+response = drive.list()["names"]
+```
+
+## DriveStreamingBody
+
+The `DriveStreamingBody` class provides methods to read the content of a file from a Drive.
+
+### Read
+
+```py
+def read(size: int | None = None) -> bytes:
+```
+
+Reads all or up to the next `size` bytes. Calling `read` after all the content has been read will return empty bytes.
+
+### Iterate Chunks
+
+```py
+def iter_chunks(chunk_size: int = 1024) -> Iterator[bytes]:
+```
+
+Returns an iterator that yields chunks of bytes of `chunk_size` at a time.
+
+### Iterate Lines
+
+```py
+def iter_lines(chunk_size: int = 1024) -> Iterator[bytes]:
+```
+
+Returns an iterator that yields lines from the stream. Bytes of `chunk_size` at a time is read from the raw stream and lines are yielded from there. The line delimiter is always `b'\n'`.
+
+### Close
+
+```py
+def close():
+```
+
+Closes the stream.
+
+### Closed
+
+```py
+@property
+def closed() -> bool:
+```
+
+Returns `True` if the stream has been closed.

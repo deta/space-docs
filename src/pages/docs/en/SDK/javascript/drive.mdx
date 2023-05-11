@@ -1,0 +1,136 @@
+---
+title: Drive
+position: 1
+layout: "@docs"
+---
+
+## Drive
+
+```js
+function Drive(driveName: string, host?: string);
+```
+
+The `Drive` class provides methods to interact with a Deta Drive.
+
+| Parameter   | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| `driveName` | `string` | The name of the Drive. |
+| `host?`     | `string` | The host of the Drive. |
+
+### Put
+
+```js
+async function put(
+    name: string,
+    options: PutOptions,
+): Promise<PutResponse>;
+```
+
+Uploads and stores a file with a given name. It will overwrite the file if the name already exists.
+
+| Parameter | Type                                 | Description                               |
+| --------- | ------------------------------------ | ----------------------------------------- |
+| `name`    | `string`                             | The name of the file.                     |
+| `options` | [`PutOptions`](./types#putoptions-1) | An object with three optional parameters. |
+
+`options` must have exactly one of two properties `data` or `path` defined.
+
+`data` is a `Blob` or `ArrayBuffer` of the file data.
+
+`path` is a `string` of the path to the file on the local filesystem.
+
+Returns a promise which resolves to a [`PutResponse`](./types#putresponse-1) containing the name of the item.
+If the operation did not complete successfully, throws an `Error`.
+
+Example:
+
+```js
+await drive.put("hello.txt", { data: "Hello world!" });
+await drive.put("example.txt", { path: "path/to/example.txt" });
+```
+
+### Get
+
+```js
+async function get(name: string): Promise<GetResponse>;
+```
+
+Retrieves a file by its name.
+
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `name`    | `string` | The name of the file to get. |
+
+Returns a promise that resolves to a [`GetResponse`](./types#getresponse-1) containing a `Blob` of the data if found, otherwise `null`.
+If the operation did not complete successfully, throws an `Error`.
+
+Example:
+
+```js
+const response = await drive.get("hello.txt");
+```
+
+### Delete
+
+```js
+async function delete(name: string): Promise<DeleteResponse>;
+```
+
+Deletes a file by its name.
+
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `name`    | `string` | The name of the file to delete. |
+
+Returns a promise that resolves to a [`DeleteResponse`](./types#deleteresponse-1) containing the `name` of the deleted file.
+If the operation did not complete successfully, throws an `Error`.
+
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
+
+Example:
+
+```js
+await drive.delete("hello.txt");
+```
+
+### Delete Many
+
+```js
+async function deleteMany(names: string[]): Promise<DeleteManyResponse>;
+```
+
+Deletes multiple files, up to a limit of 1000.
+
+| Parameter | Type       | Description                       |
+| --------- | ---------- | --------------------------------- |
+| `names`   | `string[]` | The names of the files to delete. |
+
+Returns a promise which resolves to a [`DeleteManyResponse`](./types#deletemanyresponse).
+
+> ℹ️ If the file did not exist, the name is still returned as if it were deleted.
+
+Example:
+
+```js
+await drive.deleteMany(["hello.txt", "example.txt"]);
+```
+
+### List
+
+```js
+async function list(options?: ListOptions): Promise<ListResponse>;
+```
+
+Lists file names.
+
+| Parameter | Type                                 | Description                               |
+| --------- | ------------------------------------ | ----------------------------------------- |
+| `options` | [`ListOptions`](./types#listoptions) | An object with three optional parameters. |
+
+Returns a promise which resolves to a [`ListRepsonse`](./types#listresponse).
+
+Example:
+
+```js
+const names = await drive.list().names;
+```

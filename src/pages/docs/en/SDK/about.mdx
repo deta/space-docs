@@ -1,0 +1,55 @@
+---
+title: About Deta SDK
+position: 0
+layout: "@docs"
+---
+
+import LangTabs from "@/components/Tabs/LangTabs.astro"
+import PackageManagerTabs from "@/components/Tabs/PackageManagerTabs.astro";
+
+The Deta library is the easiest way to store and retrieve data from your Deta Base. Currently, we support JavaScript (Node + Browser), Python 3 and Go. [Drop us a line on Discord](https://go.deta.dev/discord) if you want us to support your favorite language.
+
+Deta provides SDK packages to let you interact with [Base](../base/about) and [Drive](../drive/about) from your code.
+The SDKs are available for the following languages:
+
+- [Python](./python)
+- [JavaScript](./javascript)
+- [Go](./go)
+
+## Installing
+
+<LangTabs>
+    <Fragment slot="js">
+        <PackageManagerTabs>
+            <Fragment slot="npm">
+                ```shell
+                npm install deta
+                ```
+            </Fragment>
+            <Fragment slot="yarn">
+                ```shell
+                yarn add deta
+                ```
+            </Fragment>
+        </PackageManagerTabs>
+    </Fragment>
+    <Fragment slot="py">
+        ```shell
+        pip install deta
+        ```
+    </Fragment>
+    <Fragment slot="go">
+        ```shell
+        go get github.com/deta/deta-go
+        ```
+    </Fragment>
+</LangTabs>
+
+> ℹ️ If you are using the Deta SDK within a [Deta Micro](/docs/en/basics/micros#whats-a-micro), you must include `deta` in your `package.json` file to install the latest sdk version.
+
+## Instantiating
+
+To start working with the SDK, you need to either use the `space dev` command or provide a data key in an environment variable called `DETA_PROJECT_KEY`.
+See [Developing with Base and Drive](/docs/en/basics/data#developing-with-base-and-drive) for detailed information.
+
+> ⚠️ Your data key is confidential and meant to be used by you. Anyone who has your data key can access your database. Please, do not share it or commit it in your code.
