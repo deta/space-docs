@@ -75,7 +75,7 @@ micros:
     src: .
     engine: next
     primary: true
-+	  dev: npm run dev
++   dev: npm run dev
 ```
 
 Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
