@@ -1,3 +1,9 @@
+---
+title: Micros
+position: 3
+layout: "@docs"
+---
+
 # Configuration
 
 Environment variables allow apps to access custom configuration at the individual app level.  They are available in all non static Micros during runtime. You can create custom environment variables for your app that can be modified by the end user of the app.

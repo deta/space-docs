@@ -1,4 +1,8 @@
-# Authentication
+---
+title: Authentication
+position: 4
+layout: "@docs"
+---
 
 ## Private by Default
 

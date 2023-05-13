@@ -4,8 +4,6 @@ position: 1
 layout: "@docs"
 ---
 
-# Intro to Space Apps
-
 ## What are Space apps?
 
 IMAGE
@@ -18,7 +16,7 @@ Space apps are different. They still give you all the powers of the internet, bu
 
 IMAGE OF ARCHITECTURE (like below but for conceptual. Space app, with collection, domain, api keys, data keys etc)
 
-![Screen Shot 2023-04-28 at 15.40.06.png](Intro%20to%20Space%20Apps%209ac4481f8fab48c8986342f0981f8b36/Screen_Shot_2023-04-28_at_15.40.06.png)
+![intro-1](/public/docs-assets/use/intro-1.png)
 
 A Space app is a “package” of runnable code connected to a reservoir of data. The code runs and the data lives in your Space, isolated from all other users who may use the same Space app.
 

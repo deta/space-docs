@@ -4,8 +4,6 @@ position: 4
 layout: "@docs"
 ---
 
-# Pushing to Space
-
 If you have not setup or run your app locally yet checkout the New App Guide, Working with Projects, and Local Development pages.
 
 Once you are satisfied with your app’s code in your development environment, you can run it in on the internet by “pushing” it to Deta Space.
@@ -28,7 +26,7 @@ You can use `space push --open` if you would like to push and directly open your
 
 ## Viewing Builder Events
 
-You can get an overview of events in the your app’s pipeline — Builds, Revisions, and Releases — from your Project’s “**Overview**” tab in Builder in the ************Events************ console. Clicking a specific event type will filter for that event.
+You can get an overview of events in the your app’s pipeline — Builds, Revisions, and Releases — from your Project’s “**Overview**” tab in Builder in the **Events** console. Clicking a specific event type will filter for that event.
 
 Events are color coded:
 

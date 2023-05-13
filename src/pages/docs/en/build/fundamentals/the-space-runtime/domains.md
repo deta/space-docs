@@ -1,4 +1,8 @@
-# Domains
+---
+title: Domains
+position: 6
+layout: "@docs"
+---
 
 A domain name is the address of a website or service on the internet — it’s what you type into your browser to navigate the web. Every space app you install (or build) gets its own unique **Default Domain** name. You can also add **Custom Domains** that you own to every app.
 

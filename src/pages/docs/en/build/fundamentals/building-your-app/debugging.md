@@ -4,8 +4,6 @@ position: 6
 layout: "@docs"
 ---
 
-# Debugging
-
 Debugging is an essential part of the development process. You may hit errors when you push to Space or while using your app. Checking the logs will often point you in the right direction.
 
 ## Debugging during the push to Space

@@ -1,4 +1,8 @@
-# Actions
+---
+title: Actions
+position: 2
+layout: "@docs"
+---
 
 Another useful building block you can use in your Space apps are **Actions**. An Action allows an app to run certain tasks in response to different **Triggers**. Actions can do really anything you dream up in code, like sending automated emails or collecting and cleaning up data. Currently, Space supports **Scheduled Actions**, where a time-configurable schedule will trigger an Action. 
 

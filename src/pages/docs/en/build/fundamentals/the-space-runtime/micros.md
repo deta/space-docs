@@ -1,4 +1,8 @@
-# Micros
+---
+title: Micros
+position: 2
+layout: "@docs"
+---
 
 ## What's a Micro?
 

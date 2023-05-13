@@ -4,8 +4,6 @@ position: 5
 layout: "@docs"
 ---
 
-# Data Storage
-
 ## Collections
 
 In addition to running compute provided Micros, every Deta Space app is connected to a ********************Collection********************, which offers persistent data storage. 
@@ -17,7 +15,7 @@ Collections offer two services:
 
 All the data stored with a Collection is 'sandboxed' and belongs to the end user of the app. As mentioned in the Authentication section, you can just code your app and store data as if there were only a single user, without thinking about authentication or data separation.
 
-## Deta Base
+### Deta Base
 
 To store data, Space apps can use [Deta Base](https://www.notion.so/docs/en/reference/base/about), a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. 
 
@@ -43,7 +41,7 @@ const { items: myFirstSet } = await db.fetch({"age?gt": 30});
 
 Base can be accessed using the Deta Base SDK or the Base HTTP API.
 
-## Deta Drive
+### Deta Drive
 
 To store files, Space apps can use [Deta Drive](https://www.notion.so/docs/en/reference/drive/about), a fully-managed, secure and scalable file storage service. Each app can create and use as many Drives as it needs. 
 

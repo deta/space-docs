@@ -1,4 +1,8 @@
-# About the Space Runtime
+---
+title: About the Space Runtime
+position: 1
+layout: "@docs"
+---
 
 ## The Runtime
 
