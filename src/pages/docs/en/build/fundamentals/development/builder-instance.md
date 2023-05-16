@@ -19,7 +19,7 @@ Once you have pushed your local project to Builder using [`space push`](/docs/en
 
 ## Accessing a Builder Instance
 
-### On the Canvas
+### From the Canvas
 
 Your Builder Instance will automatically be added to your Canvas. Builder Instances are marked by a purple `DEV` indicator, and offer the all the Context Menu options of a normal Space app. They offer two additional options:
 
@@ -120,14 +120,12 @@ You can add a custom domain through the “Configuration” sub-tab of the “De
 
 You can add a custom domain through the Instance’s context menu on the Canvas, using the "Domains" tab.
 
-![builder-instance-10](/public/docs-assets/build/builder-instance-9.png)
+![builder-instance-10](/public/docs-assets/build/builder-instance-10.png)
 
 
 ## Scheduled Actions
 
 Your Builder Instance also runs Scheduled Actions, which you can configure via the `Spacefile`. You can modify and disable Scheduled Actions, just like with any other app, via your Builder Project or through the Instance’s context menu on the Canvas.
-
-/* tab */
 
 **From your Builder Project**
 

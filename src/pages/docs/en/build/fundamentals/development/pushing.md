@@ -20,9 +20,11 @@ The `space push` command validates that your `Spacefile` is correct, then pack
 
 The Space Build Pipeline is an isolated cloud environment that takes your source code and packages it into a runnable app for Deta Space. It runs on X Linux and you can pass specific commands for the Build Pipeline to run before packaging individual Micros, [via the `commands` parameter in your `Spacefile`](https://deta.space/docs/en/reference/spacefile#commands). Each build is allocated X GB of RAM.
 
-Once the build pipeline completes, it will result in a **Revision** being created. A Revision is an installable and runnable package of your app — it includes everything that is needed to run your app on Space. After your new Revision is created, it will be automatically installed on your Project’s Builder Instance.
+## Revisions
 
-You can use `space push --open` if you would like to push and directly open your Builder Instance in the browser after your new Revision has been installed to it.
+Once the build pipeline completes, it will result in a **Revision** being created. A Revision is an installable and runnable package of your app — it includes everything that is needed to run your app on Space. Revisions are immutable, and you can have multiple Revisions for a single Project. You can use Revisions to test and develop your app on Space, and to publish your app to the world.
+
+After your new Revision is created, it will be automatically installed on your Project’s Builder Instance. You can use `space push --open` if you would like to push and directly open your Builder Instance in the browser after your new Revision has been installed to it.
 
 ## Viewing Builder Events
 

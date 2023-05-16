@@ -81,9 +81,9 @@ micros:
 
 ## Micro Routing
 
-Since your app can contain multiple Micros, the Space Runtime needs to know what requests to route to which Micro.
+Since your app can contain up to five Micros, the Space Runtime needs to know what requests to route to which Micro (if you have multiple Micros).
 
-On Space, this is handled by having a single **Primary** **Micro** which receives all requests made to your app's root path `/`. The Primary Micro is defined by the `primary` field in your `Spacefile`. Each other Micro will be served on a specific path relative to your app's primary hostname, defined in the Micros’ `path` fields in your `Spacefile`:
+On Space, this is handled by having a single **Primary Micro** which receives all requests made to your app's root path `/`. The Primary Micro is defined by the `primary` field in your `Spacefile`. Each other Micro will be served on a specific path relative to your app's primary hostname, defined in the Micros’ `path` fields in your `Spacefile`:
 
 ```
 v: 0

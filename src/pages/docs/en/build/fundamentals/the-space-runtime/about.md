@@ -24,7 +24,7 @@ Learn more about building your first app in the “New Space App” guide.
 
 The `Spacefile` file contains the configuration of your app and is used by Deta Space to understand what your app looks like and how to run it. The `Spacefile` must be named exactly `Spacefile` (capitalized and without an extension) and needs to be in the root directory of your project. It uses a syntax similar to YAML, if you’re new to YAML and want to learn more, see ”[Learn YAML in Y minutes.](https://learnxinyminutes.com/docs/yaml/)“. 
 
-Here is an example `Spacefile` with a Python Micro and a Go Micro:
+Here is an example `Spacefile` for an app with a Python Micro and a Go Micro:
 
 ```yaml
 v: 0

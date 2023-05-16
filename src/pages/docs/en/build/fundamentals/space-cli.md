@@ -4,11 +4,9 @@ position: 1
 layout: "@docs"
 ---
 
-# The Space CLI
+The Space CLI is a command line interface you can use to build apps for Deta Space from a development environment. This page provides instructions for installing and configuring the Space CLI into your development environment.
 
-This page provides instructions for setting up the Space CLI, a command-line interface for building apps with Deta Space. 
-
-## **Installation**
+## Installation
 
 **MacOS** Windows Linux
 
@@ -20,7 +18,7 @@ curl -fsSL https://get.deta.dev/space-cli.sh | sh
 
 This will download the binary which contains the CLI code. It will try to export the `space` command to your path, making the `space` command globally usable on your machine. If it does not succeed, follow the directions output by the install script to export `space` to your path.
 
-## **Authentication**
+## Authentication
 
 Once you have successfully installed the Space CLI, you’ll need to log in to Deta Space.
 
@@ -56,6 +54,10 @@ You can paste this back into your CLI prompt. After you hit enter, you should be
 
 Upon a successful log-in, you are ready to start building Space apps.
 
-## **CLI Commands**
+## CLI Reference
 
 Run `space help` to get a overview of the available commands or refer to the [Reference section](https://deta.space/docs/en/reference/cli) for a complete list of CLI commands and options.
+
+## Local Development
+
+See the developing locally page for more information on how to develop your app locally with `space dev`.
