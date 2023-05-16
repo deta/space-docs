@@ -5,8 +5,8 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), mdx()], // preact(), react()
-  site: 'https://deta.space',
-  base: '/',
+  site: "https://deta.space/",
+  base: "/",
   vite: {
     build: {
       rollupOptions: {
