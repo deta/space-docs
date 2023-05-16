@@ -1,12 +1,10 @@
-import { defineConfig } from 'astro/config';
-import preact from '@astrojs/preact';
+import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
-import react from '@astrojs/react';
-import mdx from '@astrojs/mdx';
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [preact(), react(), mdx(), svelte()],
+  integrations: [svelte(), mdx()], // preact(), react()
   site: 'https://deta.space',
   base: '/',
   vite: {
