@@ -4,8 +4,6 @@ position: 2
 layout: "@docs"
 ---
 
-# The User Interface
-
 Your Space’s user interface uses two primary components that you’ll interact with the most: ************Canvas************ and ******************Teletype.******************
 
 # Canvas

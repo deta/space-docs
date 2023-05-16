@@ -4,8 +4,6 @@ position: 1
 layout: "@docs"
 ---
 
-# Introduction to Publishing
-
 After pushing your app to Space, you’ll get your own personal copy: the Builder Instance. You may have built it for yourself and keep it that way. But you’re also just one step away from sharing your app with the whole world. This is done via ********************Publishing******************** an app to **Deta Discovery**. 
 
 Deta Discovery is a global library of software that’s compatible with Space. It’s open to anyone to contribute to and use. Publishing an app to Discovery is powered by the personal cloud model, where others can install copies of apps on Discovery to their own Space.

@@ -28,7 +28,7 @@ After you log in, you should see a screen like this.
 
 ![new-app-2](/public/docs-assets/build/new-apps-2.png)
 
-This is your [Canvas](/docs/en/use/interface#canvas), which is a home for all your apps: what you create and 3rd party apps you install. The command bar at the bottom is called [Teletype](/docs/en/use/interface#teletype), which provides you with many context-specific actions to help you navigate Space (like Searching the Docs). If you ever aren’t sure what to do, you can open Teletype and see what’s there. The blue app is called [Builder](/docs/en/build/fundamentals/building-your-app/builder) and is your companion for building apps on Deta Space, along with the [Space CLI](/docs/en/build/fundamentals/space-cli).
+This is your [Canvas](/docs/en/use/interface#canvas), which is a home for all your apps: what you create and 3rd party apps you install. The command bar at the bottom is called [Teletype](/docs/en/use/interface#teletype), which provides you with many context-specific actions to help you navigate Space (like Searching the Docs). If you ever aren’t sure what to do, you can open Teletype and see what’s there. The blue app is called [Builder](/docs/en/build/fundamentals/development/builder) and is your companion for building apps on Deta Space, along with the [Space CLI](/docs/en/build/fundamentals/space-cli).
 
 [Read more about the Space User Interface](/docs/en/use/interface).
 
@@ -60,7 +60,7 @@ With Deta Space, you can build all sorts of web applications for yourself and ke
 
 ## Creating a Project with Builder
 
-You need a [Project](/docs/en/build/fundamentals/building-your-app/projects) to build an app. A Project is where you build, test, and release apps to the public. Projects live in a Space System App mentioned earlier, called [Builder](/docs/en/build/fundamentals/building-your-app/builder). You can create a Project with the Space CLI or in the Builder UI.
+You need a [Project](/docs/en/build/fundamentals/development/projects) to build an app. A Project is where you build, test, and release apps to the public. Projects live in a Space System App mentioned earlier, called [Builder](/docs/en/build/fundamentals/development/builder). You can create a Project with the Space CLI or in the Builder UI.
 
 **Space UI** | **Builder UI**
 
@@ -164,7 +164,7 @@ Collections offer two persistent storage services:
 - [Deta Base](/docs/en/build/fundamentals/data-storage#deta-base): a simple and powerful NoSQL database.
 - [Deta Drive](/docs/en/build/fundamentals/data-storage#deta-drive): simple file storage.
 
-To get started writing data or files to Base or Drive, you can use the [Deta SDKs](/docs/en/build/reference/sdk) or [Deta HTTP APIs](/docs/en/build/reference/http-apis). Authentication is fully managed by Space if you use the SDKs and the [`space dev` command for local development](/docs/en/build/fundamentals/building-your-app/local-development). 
+To get started writing data or files to Base or Drive, you can use the [Deta SDKs](/docs/en/build/reference/sdk) or [Deta HTTP APIs](/docs/en/build/reference/http-apis). Authentication is fully managed by Space if you use the SDKs and the [`space dev` command for local development](/docs/en/build/fundamentals/development/local-development). 
 
 - **Base SDK Code Snippet**
     
@@ -228,7 +228,7 @@ Read more about data on Space [as a developer](/docs/en/build/fundamentals/data-
 
 ## Running Your App Locally
 
-[The Space CLI offers support to run your app locally](/docs/en/build/fundamentals/building-your-app/local-development), emulating how your app runs in Space with the command `space dev`. This command starts up your Micros, imitates Space’s routing locally, and authenticates your local development environment with your Project’s Bases and Drives. 
+[The Space CLI offers support to run your app locally](/docs/en/build/fundamentals/development/local-development), emulating how your app runs in Space with the command `space dev`. This command starts up your Micros, imitates Space’s routing locally, and authenticates your local development environment with your Project’s Bases and Drives. 
 
 To use `space dev`, you will need to provide a `dev` parameter to every Micro in your `Spacefile`. The `dev` parameter is the command `space dev` uses to start a Micro’s development server. Make sure the command starts your web server on the port specified with the `PORT` environment variable, with port `XXXX` as a fallback.
 
@@ -274,11 +274,11 @@ Once you have your app working locally, you can push it to the internet on Deta 
 ~svelte-fastapi % space push
 ```
 
-This command will package all your code files and pass them to the [Space Build Pipeline](/docs/en/build/fundamentals/building-your-app/pushing#the-space-build-pipeline), streaming build logs back to your machine. If your build completes successfully, a **Revision** (an installable and runnable package of your app) will be created and installed to your Project’s [Builder Instance](/docs/en/build/fundamentals/building-your-app/builder-instance).
+This command will package all your code files and pass them to the [Space Build Pipeline](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline), streaming build logs back to your machine. If your build completes successfully, a **Revision** (an installable and runnable package of your app) will be created and installed to your Project’s [Builder Instance](/docs/en/build/fundamentals/development/builder-instance).
 
 ## Builder Instances
 
-[Builder Instances](/docs/en/build/fundamentals/building-your-app/builder-instance) are fully functional apps running in Space, tied to a [Project](/docs/en/build/fundamentals/building-your-app/projects). You can use them to test and debug your app on Space before releasing it to the world. Or you can use them as a flexible personal copy of an app you built for your own use. They offer all the features that normal Space apps offer, and are always based on a specific [Revision](/docs/en/build/fundamentals/building-your-app/pushing#the-space-build-pipeline) of a [Project](/docs/en/build/fundamentals/building-your-app/projects).
+[Builder Instances](/docs/en/build/fundamentals/development/builder-instance) are fully functional apps running in Space, tied to a [Project](/docs/en/build/fundamentals/development/projects). You can use them to test and debug your app on Space before releasing it to the world. Or you can use them as a flexible personal copy of an app you built for your own use. They offer all the features that normal Space apps offer, and are always based on a specific [Revision](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) of a [Project](/docs/en/build/fundamentals/development/projects).
 
 ![new-app-6](/public/docs-assets/build/new-apps-6.png)
 
@@ -286,23 +286,23 @@ When you push a Project’s code for the first time, a Builder Instance is autom
 
 ### Logs and Debugging
 
-As a real copy of your app running in Space, the Builder Instance is perfect for end to end tests in a real production environment. If something goes wrong at runtime, you can [inspect the logs](/docs/en/build/fundamentals/building-your-app/debugging#runtime-logs) to see what the issue may be. Logs are viewable from your Project in Builder, or from your app’s context menu on the Canvas, just like on any other app.  
+As a real copy of your app running in Space, the Builder Instance is perfect for end to end tests in a real production environment. If something goes wrong at runtime, you can [inspect the logs](/docs/en/build/fundamentals/development/debugging#runtime-logs) to see what the issue may be. Logs are viewable from your Project in Builder, or from your app’s context menu on the Canvas, just like on any other app.  
 
 **Logs in your Builder Project** | **Logs from the Canvas Context Menu**
 
 ![new-app-7](/public/docs-assets/build/new-apps-7.png)
 
-[Read more about debugging](/docs/en/build/fundamentals/building-your-app/debugging) with Space.
+[Read more about debugging](/docs/en/build/fundamentals/development/debugging) with Space.
 
 ### Using a Builder Instance
 
-You can [use your Builder Instance](/docs/en/build/fundamentals/building-your-app/builder-instance#using-a-builder-instance) as you would any other app.  Click on your Builder Instance, to open it in a new tab. If your app is an API, use the URL outside the browser.
+You can [use your Builder Instance](/docs/en/build/fundamentals/development/builder-instance#using-a-builder-instance) as you would any other app.  Click on your Builder Instance, to open it in a new tab. If your app is an API, use the URL outside the browser.
 
 You also have all the normal features of a Space App:
 
-- [Here’s how you set environment variables](/docs/en/build/fundamentals/building-your-app/builder-instance#environment-variables)
-- [Here’s how you view your data](/docs/en/build/fundamentals/building-your-app/builder-instance#storing-data)
-- [Here’s how you set a Custom Domain](/docs/en/build/fundamentals/building-your-app/builder-instance#custom-domains)
+- [Here’s how you set environment variables](/docs/en/build/fundamentals/development/builder-instance#environment-variables)
+- [Here’s how you view your data](/docs/en/build/fundamentals/development/builder-instance#storing-data)
+- [Here’s how you set a Custom Domain](/docs/en/build/fundamentals/development/builder-instance#custom-domains)
 
 ## Publishing Your App
 
