@@ -4,9 +4,7 @@ position: 0
 layout: "@docs"
 ---
 
-# The Space App Life Cycle
-
-As explained in the **Learn** section of the documentation, apps built for a personal cloud are different from traditional web applications. As such, the steps you take to build, launch, and distribute them are different. This document will explain the **Life Cycle** of an app on Deta Space.
+As explained in the [Learn](/en/docs/learn) section of the documentation, apps built for a personal cloud are different from traditional web applications. As such, the steps you take to build, launch, and distribute them are different. This document will explain the **Life Cycle** of an app on Deta Space.
 
 ## Traditional Web Application Life Cycle
 
@@ -53,31 +51,29 @@ When you publish an app from Space, you application can be used by just about an
 
 IMAGE OF LOCAL DEVELOPMENT
 
-In the first stage of the Space App lifecycle, local development, the key concept is a **Project**, where you will manage development and publishing of an app. Projects live within the Space app **Builder**, which is available on your Canvas in the User Interface.
+In the first stage of the Space App lifecycle, local development, the key concept is a [Project](/docs/en/build/buidling-your-app/projects), where you will manage development and publishing of an app. Projects live within the Space app [Builder](/docs/en/build/development/builder), which is available on your [Canvas](/docs/en/use/interface#canvas).
 
-Space works with your preferred development environment, supporting common languages and frameworks. The Space CLI manages Project specifics locally, like secure connections to Space storage services Deta Base and Deta Drive.
+Space works with your preferred development environment, supporting [common languages and frameworks](/docs/en/build/quick-starts). The [Space CLI](/docs/en/build/space-cli) manages Project specifics locally, like secure connections to [Space's data storage services: Deta Base and Deta Drive](/docs/en/build/data-storage).
 
-Lastly, you can assume you're the only user when developing; you won’t have to think about authentication or data separation. This is powered by Space's unique authentication model.
+Lastly, you can assume you're the only user when developing; you won’t have to think about authentication or data separation. This is powered by [Space's unique authentication model](/docs/en/build/the-space-runtime/authentication).
 
 **Revisions and the Builder Instance**
 
 IMAGE: BUILD FOR YOURSELF
 
-Once you're happy with your app in development, push your app to Deta Space using the CLI command `space push`. The Space Build Pipeline creates a Revision, which is a runnable package of your app compatible with the Space Runtime.
+Once you're happy with your app in development, push your app to Deta Space using the CLI command `space push`. The [Space Build Pipeline](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) creates a Revision, which is a runnable package of your app compatible with the Space Runtime.
 
-This Revision is installed on your Builder Instance, a live version of your app in Space connected to your Project and its data. Builder Instances are a fully featured Space app, supporting everything Space offers: Custom Domains, API Keys, public/private routes, Scheduled Actions and more.
+This Revision is installed on your [Builder Instance](/docs/en/build/fundamentals/development/builder-instance), a live version of your app in Space connected to your Project and its data. Builder Instances are a fully featured Space app, supporting everything Space offers: [Custom Domains](/docs/en/use/space-apps/domains#custom-domains), [API Keys](/docs/en/build/fundamentals/the-space-runtime/authentication#api-keys), [public/private routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-mircos-and-routes), [Scheduled Actions](/docs/en/build/fundamentals/actions) and more.
 
 The Builder Instance lets you test your app in Space before releasing it to a broader audience. If building for personal use, this may be your app's final stage. You can use your Builder Instance, continuously developing for and updating it in an iterative loop.
 
-To share your app globally, simply release it.
+To share your app globally, simply publish it.
 
 ### Publishing
 
-**Releasing**
-
 IMAGE: SHARE WITH THE WORLD
 
-If you’ve tested your app in your Builder Instance and want to share it with an external audience, you can create a **Release**.
+If you’ve tested your app in your Builder Instance and want to share it with an external audience, you can [create a **Release**](/docs/en/use/publish/intro).
 
 A Release is a Revision that anyone can install in their own personal cloud on Deta Space. What this means is that you can distribute your app to people around the world, but you don’t need to think about the infrastructure necessary to run it.
 
