@@ -28,16 +28,31 @@ const { headings, frontmatter } = Astro.props as Props;
         margin-block: var(--spacing-12);
         margin-inline: auto;
 
-        grid-column: 2 / -1;
+        grid-column: 2 / - 1;
+        @media screen and (min-width: 768px) {
+            grid-column: 2 / -1;
+        }
         grid-row: 2;
 
         display: flex;
 
         min-height: 100vh;
+        max-width: 100vw;
     }
 
     article {
-        max-width: 75ch;
-        padding-inline: var(--spacing-5);
+        max-width: 100%;
+        padding-inline: var(--spacing-16);
+
+        @media screen and (min-width: 768px) {
+            max-width: 75ch;
+        }
+    }
+    aside {
+        display: none;
+        @media screen and (min-width: 768px) {
+            display: block;
+            padding-left: var(--spacing-4);
+        }
     }
 </style>
