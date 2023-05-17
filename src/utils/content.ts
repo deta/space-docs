@@ -221,17 +221,56 @@ export const parseSections = (pages: Page[]) => {
       return (a as any).position - (b as any).position
     })
 
-        section.children.forEach(child => {
-            if ('children' in child) {
-                child.children = child.children.sort((a, b) => {
-                    return (a as any).position - (b as any).position
-                })
-            }
-        })
-    })
-
-    return result
+export function stripFileExtension(str: string) {
+  return str.split(".").slice(0, -1).join(".");
 }
 
-// Example: getting_started_1662902834
-export const generateActionId = (str: string) => `${str?.toLowerCase()?.replace(/ /g, '_')}_${Date.now() + Math.random()}`;
+export type NavigationItem = {
+  title: string;
+  path: string;
+  subItems: NavigationItem[];
+};
+
+export type ManifestSection = { [key: string]: Array<string | ManifestSection> };
+
+const pages = await getCollection("docs");
+const BASE_URL ="/docs/en"; // TODO!: REMOVE, only tmp
+export function parseManifestSection(
+  section: ManifestSection,
+  navItem: NavigationItem
+): NavigationItem {
+  if (!navItem) navItem = { title: "root", path: "", subItems: [] };
+
+  if (Array.isArray(section)) {
+    section.forEach((item) => {
+      if (typeof item === "string") {
+        // Page -> Find page file
+        const page = pages.find((e) => "/" + e.id === navItem.path + "/" + item);
+        /*pages.forEach(e => {
+                    console.log("PID : ", e.id);
+                    console.log("PHREF: ", navItem.href + "/" + item);
+                })*/
+        if (!page) throw new Error("Could not find page for manifest item @ " + navItem.path + "/" + item);
+
+        navItem.subItems.push({
+          // TODO: Fix types
+          title: page.data.title, //item,
+          path: BASE_URL + navItem.path + "/" + stripFileExtension(item),
+          //page,
+          subItems: []
+        });
+      } else parseManifestSection(item, navItem);
+    });
+  } else {
+    for (let item of Object.keys(section)) {
+      navItem.subItems.push(
+        parseManifestSection(section[item], { // TODO: Fix type error
+          title: pascalCase(item),
+          path: navItem.path + "/" + item,
+          subItems: []
+        })
+      );
+    }
+  }
+  return navItem;
+}
