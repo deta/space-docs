@@ -1,13 +1,14 @@
 <script lang="ts">
   import type { NavigationItem } from "@/utils/content";
   import NavSection from "./NavSection.svelte";
+  import { getContext } from "svelte";
 
     // PROPS
     export let  active = false,
                 depth = 1,
                 navItem: NavigationItem;
 
-    active = navItem.path === window.location.pathname;
+    active = navItem.path === getContext("currentPage");
 </script>
 
 <li class:folder={navItem.subItems} class:active style="--depth: calc({depth} * var(--spacing-4));">

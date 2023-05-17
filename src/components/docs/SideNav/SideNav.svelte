@@ -16,12 +16,15 @@
   import NavSection from "./NavSection.svelte";
   import IconBook2 from "@/components/core/Icon/IconBook2.svelte";
   import IconHammer from "@/components/core/Icon/IconHammer.svelte";
+  import { setContext } from "svelte";
 
   // PROPS
-  export let navTree: NavigationItem;
+  export let navTree: NavigationItem, currentPage: string;
 
   // STATE
   let isHoverPeekingNav = false; // Used to prevent peeking nav from closing when mouse leaves peek trigger but stays inside nav
+
+  setContext("currentPage", currentPage);
 
   // HANDLERS
   function onBeginPeek() {
