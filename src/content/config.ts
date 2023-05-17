@@ -3,7 +3,7 @@ import { z, defineCollection } from "astro:content";
 // 2. Define your collection(s)
 const docsCollection = defineCollection({
     schema: z.object({
-        title: z.string(),
+        title: z.string().optional(),
         excerpt: z.string().optional()
     })
 });

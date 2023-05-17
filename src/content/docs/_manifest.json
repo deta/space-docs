@@ -1,0 +1,52 @@
+{
+  "learn": ["first-steps.md", "personal-cloud-what.md", "personal-cloud-why.md"],
+  "build": [
+    "intro.md",
+    "new-apps.md",
+    {
+      "fundamentals": [
+        "space-cli.md",
+        "app-lifecycle.md",
+        "data-storage.md",
+        {
+          "the-space-runtime": [
+            "about.md",
+            "micros.md",
+            "domains.md",
+            {
+              "custom-domains": [
+                "custom-domain-cloudflare.md",
+                "custom-domain-namecheap.md",
+                "custom-domain-porkbun.md"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    { "guides": ["public-site.md", "build-a-todo-app.md", "accessing-client-ip-address.md"] },
+    {
+      "language-quickstarts": [
+        "python.md",
+        "node.md",
+        "nuxt.md",
+        "go.md",
+        "custom.md",
+        "static.md",
+        "sveltekit.md"
+      ]
+    },
+    {
+      "reference": [
+        "cli.md",
+        "base.md",
+        "drive.md",
+        "runtime.md",
+        "spacefile.md",
+        "discovery.md",
+        { "SDK": ["about.mdx", "base.mdx", "drive.mdx", "examples.mdx", "types.mdx"] },
+        { "HTTP-API": ["base.mdx", "drive.mdx"] }
+      ]
+    }
+  ]
+}

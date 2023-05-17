@@ -1,0 +1,421 @@
+---
+title: Types
+position: 4
+layout: "@layouts/DocsPageLayout.astro"
+---
+## Basic types
+
+/* JavaScript */
+
+### `BasicType`
+
+```js
+type BasicType = string | number | boolean;
+```
+
+### `NullType`
+
+```js
+type NullType = null;
+```
+
+### `UndefinedType`
+
+```js
+type UndefinedType = undefined;
+```
+
+### `ObjectType`
+
+```js
+type ObjectType = {
+  [key: string]: ObjectType | ArrayType | BasicType | NullType | UndefinedType | Action,
+};
+```
+
+### `ArrayType`
+
+```js
+type ArrayType = Array<ArrayType | ObjectType | BasicType | NullType | UndefinedType>;
+```
+
+### `CompositeType`
+
+```js
+type CompositeType = ArrayType | ObjectType;
+```
+
+### `DetaType`
+
+```js
+type DetaType = ArrayType | ObjectType | BasicType;
+```
+
+## Action types
+
+### `ActionTypes`
+
+```js
+enum ActionTypes {
+  Set = "set",
+  Trim = "trim",
+  Increment = "increment",
+  Append = "append",
+  Prepend = "prepend",
+}
+```
+
+### `Action`
+
+```js
+class Action {
+  readonly operation: ActionTypes;
+  readonly value: any;
+  constructor(action: ActionTypes, value?: any);
+}
+```
+
+## Base types
+
+### `PutOptions`
+
+```js
+interface PutOptions {
+  expireIn?: number;
+  expireAt?: Date | number;
+}
+```
+
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
+
+### `InsertOptions`
+
+```js
+interface InsertOptions {
+  expireIn?: number;
+  expireAt?: Date | number;
+}
+```
+
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
+
+### `PutManyOptions`
+
+```js
+interface PutManyOptions {
+  expireIn?: number;
+  expireAt?: Date | number;
+}
+```
+
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
+
+### `UpdateOptions`
+
+```js
+interface UpdateOptions {
+  expireIn?: number;
+  expireAt?: Date | number;
+}
+```
+
+| Property    | Type               | Description                                                                                             |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
+| `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
+
+### `FetchOptions`
+
+```js
+interface FetchOptions {
+  limit?: number;
+  last?: string;
+}
+```
+
+| Property | Type     | Description                                                      |
+| -------- | -------- | ---------------------------------------------------------------- |
+| `limit?` | `number` | Maximum number of items you want to retreive, minimum value `1`. |
+| `last?`  | `string` | Last key seen in a previous paginated response.                  |
+
+### `PutResponse`
+
+```js
+type PutResponse = ObjectType | NullType;
+```
+
+### `GetResponse`
+
+```js
+type GetResponse = ObjectType | NullType;
+```
+
+### `DeleteResponse`
+
+```js
+type DeleteResponse = NullType;
+```
+
+### `InsertResponse`
+
+```js
+type InsertResponse = ObjectType;
+```
+
+### `PutManyResponse`
+
+```js
+interface PutManyResponse {
+  processed: {
+    items: ArrayType,
+  };
+}
+```
+
+### `UpdateResponse`
+
+```js
+type UpdateResponse = NullType;
+```
+
+### `FetchResponse`
+
+```js
+interface FetchResponse {
+  items: ObjectType[];
+  count: number;
+  last?: string;
+}
+```
+
+| Property | Type                          | Description                                                                                           |
+| -------- | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `items`  | [`ObjectType[]`](#objecttype) | List of items retreived.                                                                              |
+| `count`  | `number`                      | Number of items in the response.                                                                      |
+| `last?`  | `string`                      | Last key seen in the fetch response. If `last` is not `undefined`, further items are to be retreived. |
+
+## Drive types
+
+### `PutOptions`
+
+```js
+interface PutOptions {
+  data?: string | Uint8Array | Buffer;
+  path?: string;
+  contentType?: string;
+}
+```
+
+| Property       | Type                                 | Description                                                                                                                                                                |
+| -------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data?`        | `string` \| `Uint8Array` \| `Buffer` | Either the data string or a buffer.                                                                                                                                        |
+| `path?`        | `string`                             | Path of the file to be uploaded to drive.                                                                                                                                  |
+| `contentType?` | `string`                             | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
+
+### `ListOptions`
+
+```js
+interface ListOptions {
+  recursive?: boolean;
+  prefix?: string;
+  limit?: number;
+  last?: string;
+}
+```
+
+| Property     | Type      | Description                                                      |
+| ------------ | --------- | ---------------------------------------------------------------- |
+| `recursive?` | `boolean` | If `true`, the list operation will be performed recursively.     |
+| `prefix?`    | `string`  | A prefix that file names must start with to be returned.         |
+| `limit?`     | `number`  | Maximum number of file names to be returned, defaults to `1000`. |
+| `last?`      | `string`  | Last name seen in a previous paginated response.                 |
+
+### `PutResponse`
+
+```js
+type PutResponse = string;
+```
+
+The name of a file that was uploaded.
+
+### `GetResponse`
+
+```js
+type GetResponse = Blob | NullType;
+```
+
+The content of a file if found, otherwise `null`.
+
+### `DeleteResponse`
+
+```js
+type DeleteResponse = string;
+```
+
+The name of a file that was deleted.
+
+### `DeleteManyResponse`
+
+```js
+interface DeleteManyResponse {
+  deleted: string[];
+  failed: {
+    [key: string]: string,
+  };
+}
+```
+
+| Property  | Type       | Description                               |
+| --------- | ---------- | ----------------------------------------- |
+| `deleted` | `string[]` | Names of files that were deleted.         |
+| `failed`  | `object`   | Names of files that failed to be deleted. |
+
+### `ListResponse`
+
+```js
+interface ListResponse {
+  names: string[];
+  paging: {
+    size: number,
+    last: string,
+  };
+}
+```
+
+| Property      | Type       | Description                                                                                         |
+| ------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| `names`       | `string[]` | Names of files.                                                                                     |
+| `paging`      | `object`   | Contains paging information.                                                                        |
+| `paging.size` | `number`   | Number of files returned.                                                                           |
+| `paging.last` | `string`   | Last name seen in the paginated response. For the last page, `last` is not present in the response. |
+
+[1]: /docs/en/reference/base/expiring_items "Expiring items"
+
+
+/* Golang */
+
+### `Deta`
+
+```go
+type Deta struct {
+    ProjectKey string
+}
+```
+
+### `ConfigOption`
+
+```go
+type ConfigOption func(*Deta)
+```
+
+## Base types
+
+### `Base`
+
+```go
+type Base struct {
+    Util *util
+}
+```
+
+### `Query`
+
+```go
+type Query []map[string]interface{}
+```
+
+### `Updates`
+
+```go
+type Updates map[string]interface{}
+```
+
+### `FetchInput`
+
+```go
+type FetchInput struct {
+    Q Query
+    Dest interface{}
+    Limit int
+    LastKey string
+}
+```
+
+| Field     | Type              | Description                                                                                    |
+| --------- | ----------------- | ---------------------------------------------------------------------------------------------- |
+| `Q`       | [`Query`](#query) | Filters to apply to items.                                                                     |
+| `Dest`    | `interface{}`     | The destination to store the results.                                                          |
+| `Limit`   | `int`             | The maximum number of items to fetch. A value of `0` or less applies no limit.                 |
+| `LastKey` | `string`          | The last key evaluated in a paginated response. Leave empty if not a subsequent fetch request. |
+
+## Drive types
+
+### `Drive`
+
+```go
+type Drive struct {}
+```
+
+### `PutInput`
+
+```go
+type PutInput struct {
+    Name string
+    Body io.Reader
+    ContentType string
+}
+```
+
+| Field         | Type        | Description                                                                                                                                                                |
+| ------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Name`        | `string`    | Name of the file to be uploaded.                                                                                                                                           |
+| `Body`        | `io.Reader` | File content to be uploaded.                                                                                                                                               |
+| `ContentType` | `string`    | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
+
+### `DeleteManyOutput`
+
+```go
+type DeleteManyOutput struct {
+    Deleted []string          `json:"deleted"`
+    Failed  map[string]string `json:"failed"`
+}
+```
+
+| Field     | Type                | Description                                                           |
+| --------- | ------------------- | --------------------------------------------------------------------- |
+| `Deleted` | `[]string`          | Names of the deleted files.                                           |
+| `Failed`  | `map[string]string` | Names of the files that failed to delete along with an error message. |
+
+### `ListOutput`
+
+```go
+type ListOutput struct {
+    Paging *paging  `json:"paging"`
+    Names  []string `json:"names"`
+}
+```
+
+| Field    | Type                 | Description                                                                     |
+| -------- | -------------------- | ------------------------------------------------------------------------------- |
+| `Paging` | [`*paging`](#paging) | A pointer to a [`paging`](#paging) struct, `nil` if there are no further pages. |
+| `Names`  | `[]string`           | Names of the files.                                                             |
+
+### `paging`
+
+```go
+type paging struct {
+    Size int     `json:"size"`
+    Last *string `json:"last"`
+}
+```
+
+Indicates the size and last name of the current page.
