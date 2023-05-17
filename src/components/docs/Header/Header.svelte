@@ -11,7 +11,7 @@
   let breadCrumbs = currentPage.split("/").flatMap((item, index) => { // TODO(@maxu): Move into component.?
     return { name: pascalCase(item), url: currentPage.split("/").slice(0, index + 1).join("/") };
   });
-  breadCrumbs = breadCrumbs.slice(3); // Remove root & language stuff for now TODO: Revisit
+  breadCrumbs = breadCrumbs.slice(3, -1); // Remove root & language stuff for now TODO: Revisit
   breadCrumbs = [{ name: "Home", url: "/docs/en" }, ...breadCrumbs];
   console.log(breadCrumbs)
 

@@ -37,7 +37,7 @@
 
     display: flex;
     align-items: center;
-    gap: var(--spacing-1);
+    //gap: var(--spacing-1);
     //font-size: 0.8rem;
 
     li a,
