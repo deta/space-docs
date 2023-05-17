@@ -15,6 +15,7 @@
   // STATE
   const activeFolder = getContext<Writable<any>>(`activeFolder_${depth}`);
 
+    open = getContext<string>("currentPage").includes(`${navItem.path}`);
   // HANDLERs
   /*$: {
         if ($activeFolder !== null && ($activeFolder === navItem.href)) open = true;
@@ -39,9 +40,10 @@
 <details
   bind:open
   class:nested={depth !== 0}
+  class:firstSub={depth === 1}
   class:animated
-  style="--depth: calc({depth} * var(--spacing-6)  * 0.9*0.9);"
-  on:click={onToggled}>
+  style="--depth: calc({depth -1} * var(--spacing-6)  * 0.9*0.9);"
+  on:click={onToggled}> <!-- TODO(@maxu): quick hack with class:firstSub, fix!-->
   <summary>
     <span>
       <span class="group-icon"
@@ -106,17 +108,20 @@
   details.nested > summary > span {
     border-left: 2px solid hsl(var(--color-gray-90));
   }
+  details.nested.firstSub > summary > span {
+    border-left: 2px solid transparent;
+  }
 
   // Icon state
   details > summary .group-icon {
     transform: translateX(-0.4rem) translateY(0rem);
   }
   details.animated > summary .group-icon {
-    transform: translateX(-0.25rem) translateY(-0.25rem) rotate(-90deg);
+    transform: translateX(-0.35rem) translateY(-0.25rem) rotate(-90deg);
     transition: all ease-out 100ms;
   }
   details[open].animated > summary .group-icon {
-    transform: translateX(-0.45rem) rotate(0deg);
+    transform: translateX(-0.65rem) rotate(0deg);
   }
 
   details > summary {

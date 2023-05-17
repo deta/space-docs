@@ -68,12 +68,12 @@
       </header>
       <div class="nav-tree">
         <ul>
-            <NavSection depth={0} navItem={navTree.subItems[0]} open={true} animated={false}>
+            <NavSection depth={0} navItem={navTree.subItems[0]} open={currentPage.includes("/learn/")} animated={false}>
                 <svelte:fragment slot="icon">
                     <IconBook2 size={28} strokeWidth={1.5} style="currentColor" color="hsl(var(--color-base-purple), 50%)" />
                 </svelte:fragment>
             </NavSection>
-            <NavSection depth={0} navItem={navTree.subItems[1]} animated={false}>
+            <NavSection depth={0} navItem={navTree.subItems[1]} open={currentPage.includes("/build/")} animated={false}>
                 <svelte:fragment slot="icon">
                     <IconHammer size={28} strokeWidth={1.5} style="currentColor" color="hsl(var(--color-base-blue-dark), 50%)" />
                 </svelte:fragment>
@@ -128,10 +128,12 @@
     &.open {
       // Sticky nav when open
       nav {
-        border-width: 0px 4px 0px 0px;
+        border-width: 4px 4px 0px 0px;
         border-style: solid;
         border-color: rgba(240, 238, 234, 0.7);
         box-shadow: 0px 0px 0px 4px rgba(240, 238, 234, 0.3);
+        height: 80vh;
+        padding-bottom: var(--spacing-14);
 
         @media screen and (min-width: 768px) {
           position: sticky;
@@ -160,7 +162,8 @@
 
       padding-inline: var(--spacing-4);
 
-      background: hsl(var(--color-gray-95));
+      //background: hsl(var(--color-gray-95));
+      background: var(--theme-sidenav);
       border-width: 4px 4px 4px 0px;
       border-style: solid;
       border-color: rgba(240, 238, 234, 0.7);
