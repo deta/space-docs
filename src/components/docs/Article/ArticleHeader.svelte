@@ -10,13 +10,17 @@
     {/if}
 </section>
 
-<style>
+<style lang="scss">
     section {
         margin-bottom: var(--spacing-12);
+
+        h1 {
+            margin-top: 0;
+        }
     }
 
     hr {
         margin-block: var(--spacing-6);
-        color: hsl(var(--color-gray-95));
+        color: hsl(var(--color-gray-95), 40%);
     }
 </style>
