@@ -29,7 +29,7 @@
 	--color-base-yellow: 41, 100%;
 
 	/*
-   * Color palettes are made using --color-base 
+   * Color palettes are made using --color-base
    * variables, along with a lightness value to
    * define different variants.
    *
@@ -54,6 +54,34 @@
 	--color-purple: var(--color-base-purple), 54%;
 	--color-red: var(--color-base-red), 54%;
 	--color-yellow: var(--color-base-yellow), 59%;
+
+    /* Spacing is incremented in 0.25rem steps TODO: Generate?*/
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-7: 1.75rem;
+    --spacing-8: 2rem;
+    --spacing-9: 2.25rem;
+    --spacing-10: 2.5rem;
+    --spacing-11: 2.75rem;
+    --spacing-12: 3rem;
+    --spacing-13: 3.25rem;
+    --spacing-14: 3.5rem;
+    --spacing-15: 3.75rem;
+    --spacing-16: 4rem;
+
+    /* ROUNDEDNESS TODO: Generate? */
+    --rounded-1: 0.25rem;
+    --rounded-2: 0.5rem;
+    --rounded-3: 0.75rem;
+    --rounded-4: 1rem;
+    --rounded-5: 1.25rem;
+    --rounded-6: 1.5rem;
+    --rounded-7: 1.75rem;
+    --rounded-8: 2rem;
 }
 
 :root {
