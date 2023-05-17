@@ -69,7 +69,7 @@ Drive can be accessed using the Drive SDK or the Drive HTTP API.
 
 ## Data Keys
 
-Authentication between any client writing to Base and Drive in a Collection happens via a **Data Key**. Data Keys can be generated for any Builder Project or any Collection — including Collections disconnected from any individual app or Project (”Headless Collections”). 
+Authentication between any client reading or writing data to Base and Drive in a Collection happens via a **Data Key**. Data Keys can be generated for any Builder Project or any Collection — including Collections disconnected from any individual app or Project (”Headless Collections”). 
 
 Space automatically manages keys for Space apps and for local development with `space dev`, so there is no need to manually generate them. But you can, if you want to interact with your data outside the context of a single Space app or are using a Headless Collection.
 

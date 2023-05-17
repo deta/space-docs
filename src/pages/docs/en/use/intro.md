@@ -8,7 +8,7 @@ layout: "@docs"
 
 Welcome to Deta Space. You’re on an exciting journey with a whole new personal computer. We’re glad to have you here.
 
-Unlike other personal computers you’ve used, your Space lives on the internet. So it’s great at communicating with the rest of the world: other information, computers, and people. And unlike other ways you already use the internet, Space puts you in the driver’s seat. We think you’ll love it.
+Unlike other personal computers you’ve used, your Space lives on the internet. So it’s great at communicating with the rest of the world - with other information, computers, and people. And unlike other ways you already use the internet, Space puts you in the driver’s seat. We think you’ll love it.
 
 This section is going to help you get started using your Space. You’ll learn how to:
 
