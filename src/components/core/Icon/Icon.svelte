@@ -2,7 +2,7 @@
     // PROPS
     export let size: number = 24,
         strokeWidth: number = 48 / size,
-        style: "light" | "dark" | "currentColor" = "dark",
+        style: "light" | "dark" | "currentColor" = "currentColor",
         color: string | undefined;
 </script>
 
