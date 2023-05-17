@@ -104,6 +104,8 @@
   }
   details:not(.nested) > summary > span {
     color: hsl(var(--color-gray-5));
+    font-size: 1.2rem;
+    font-weight: 600;
   }
   details.nested > summary > span {
     border-left: 2px solid hsl(var(--color-gray-90));
