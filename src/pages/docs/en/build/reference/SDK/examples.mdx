@@ -13,50 +13,44 @@ On this page you will find some more complex examples of using the Deta SDK.
 ### Put
 
 ```py
-from deta import Deta
-deta = Deta("project key")
-db = deta.Base("simple_db")
-
-# store objects
-# a key will be automatically generated
+# Store objects.
+# A key will be automatically generated.
 db.put({"name": "alex", "age": 77})
-# we will use "one" as a key
+# We will use "one" as a key.
 db.put({"name": "alex", "age": 77}, "one")
-# the key could also be included in the object itself
+# The key could also be included in the object itself.
 db.put({"name": "alex", "age": 77, "key": "one"})
 
-# simple types
+# Simple types.
 db.put("hello, worlds")
 db.put(7)
 # "success" is the value and "smart_work" is the key.
 db.put("success", "smart_work")
 db.put(["a", "b", "c"], "my_abc")
 
-# expiring items
-# expire item in 300 seconds
+# Expire in 300 seconds.
 db.put({"name": "alex", "age": 23}, "alex23", expire_in=300)
-# expire item at date
-expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
+# Expire at date.
+expire_at = datetime.fromisoformat("2023-01-01T00:00:00")
 db.put({"name": "max", "age": 28}, "max28", expire_at=expire_at)
 ```
 
 ### Insert
 
 ```py
-# will succeed, a key will be auto-generated
+# Will succeed, a key will be auto-generated.
 db.insert("hello, world")
 
-# will succeed.
+# Will succeed.
 db.insert({"message": "hello, world"}, "greeting1")
 
-# will raise an error as key "greeting1" already existed.
+# Will raise an error as key "greeting1" already exists.
 db.insert({"message": "hello, there"}, "greeting1")
 
-# expiring items
-# expire in 300 seconds
+# Expire in 300 seconds.
 db.insert({"message": "will be deleted"}, "temp_greeting", expire_in=300)
 
-# expire at date
+# Expire at date.
 expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
 db.insert({"message": "will_be_deleted"}, "temp_greeting2", expire_at=expire_at)
 ```
@@ -65,18 +59,18 @@ db.insert({"message": "will_be_deleted"}, "temp_greeting2", expire_at=expire_at)
 
 ```py
 db.put_many([
-    {"name": "Beverly", "hometown": "Copernicus City", "key": "one"}, // key provided
-    "dude", // key auto-generated
-    ["Namaskāra", "marhabaan", "hello", "yeoboseyo"] // key auto-generated
+    {"name": "Beverly", "hometown": "Copernicus City", "key": "one"},  # Key provided.
+    ["Namaskāra", "marhabaan", "hello", "yeoboseyo"],  # Key auto-generated.
+    "dude",  # Key auto-generated.
 ])
 
-# put many to expire in 300 seconds
+# Put many to expire in 300 seconds.
 db.put_many(
     [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
     expire_in=300,
 )
 
-# put many with expire at
+# Put many with expiry date.
 expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
 db.put_many(
     [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
@@ -96,12 +90,12 @@ Output example:
         "name": "Beverly"
       },
       {
-        "key": "jyesxxlrezo0",
-        "value": "dude"
-      },
-      {
         "key": "5feqybn7lb05",
         "value": ["Namaskāra", "hello", "marhabaan", "yeoboseyo"]
+      },
+      {
+        "key": "jyesxxlrezo0",
+        "value": "dude"
       }
     ]
   }
@@ -110,7 +104,7 @@ Output example:
 
 ### Update
 
-Consider we have the following item in a base:
+If we have the following item in a Base:
 
 ```json
 {
@@ -131,19 +125,19 @@ Then the following update operation:
 
 ```py
 updates = {
-    "profile.age": 33,  # set profile.age to 33
-    "profile.active": True, # set profile.active to true
-    "profile.email": "jimmy@deta.sh", # create a new attribute 'profile.email'
-    "profile.hometown": users.util.trim(), # remove 'profile.hometown'
-    "on_mobile": users.util.trim(), # remove 'on_mobile'
-    "purchases": users.util.increment(2), # increment by 2, default value is 1
-    "likes": users.util.append("ramen") # append 'ramen' to 'likes', also accepts a list
+    "profile.age": 33,  # Set "profile.age" to 33.
+    "profile.active": True,  # Set "profile.active" to true.
+    "profile.email": "jimmy@deta.sh",  # Create a new attribute "profile.email".
+    "profile.hometown": users.util.trim(),  # Remove "profile.hometown".
+    "on_mobile": users.util.trim(),  # Remove "on_mobile".
+    "purchases": users.util.increment(2),  # Increment by 2.
+    "likes": users.util.append("ramen"),  # Append "ramen" to "likes".
 }
 
 db.update(updates, "user-a")
 ```
 
-Results in the following item in the base:
+Results in the following item in the Base:
 
 ```json
 {
@@ -161,7 +155,7 @@ Results in the following item in the base:
 
 ### Fetch
 
-For the examples, let's assume we have a **Base** with the following data:
+If we have the following items in a Base:
 
 ```json
 [
@@ -186,14 +180,16 @@ For the examples, let's assume we have a **Base** with the following data:
 ]
 ```
 
+Then the following fetch calls:
+
 ```py
-first_fetch_res = db.fetch({"age?lt": 30})
-second_fetch_res = db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
+first_result = db.fetch({"age?lt": 30})
+second_result = db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
 ```
 
-... will come back with following data:
+Will return following data:
 
-`first_fetch_res.items`:
+`first_result.items`:
 
 ```json
 [
@@ -206,7 +202,7 @@ second_fetch_res = db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
 ]
 ```
 
-`second_fetch_res.items`:
+`second_result.items`:
 
 ```json
 [
@@ -227,11 +223,13 @@ second_fetch_res = db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
 
 #### Fetch All Items
 
+The following snippet will fetch all items from a Base:
+
 ```py
 res = db.fetch()
 all_items = res.items
 
-# fetch until last is 'None'
+# Continue fetching until "res.last" is None.
 while res.last:
     res = db.fetch(last=res.last)
     all_items += res.items
@@ -242,31 +240,34 @@ while res.last:
 ### Put
 
 ```py
-drive.put('hello.txt', 'Hello world')
-drive.put(b'hello.txt', 'Hello world')
-drive.put('hello.txt', content_type='text/plain')
+# Provide content directly.
+drive.put("hello.txt", "Hello world")
+drive.put(b"hello.txt", "Hello world")
+drive.put("hello.txt", content_type="text/plain")
 
 import io
-drive.put('hello.txt', io.StringIO('hello world'))
-drive.put('hello.txt', io.BytesIO(b'hello world'))
 
-f = open('./hello.txt', 'r')
-drive.put('hello.txt', f)
+# Provide a file-like object.
+drive.put("hello.txt", io.StringIO("hello world"))
+drive.put("hello.txt", io.BytesIO(b"hello world"))
+
+f = open("./hello.txt", "r")
+drive.put("hello.txt", f)
 f.close()
 
-drive.put('hello.txt', path='./hello.txt')
+# Provide a path to a file.
+drive.put("hello.txt", path="./hello.txt")
 ```
 
 ### Get
 
 ```py
-hello = drive.get('hello.txt')
+hello = drive.get("hello.txt")
 content = hello.read()
 hello.close()
 
-# larger files
-# iterate chunks of size 4096 and save to disk
-large_file = drive.get('large_file.txt')
+# For a larger file, iterate chunks of size 4096 and save to disk.
+large_file = drive.get("large_file.txt")
 with open("large_file.txt", "wb+") as f:
     for chunk in large_file.iter_chunks(4096):
         f.write(chunk)
@@ -276,7 +277,7 @@ with open("large_file.txt", "wb+") as f:
 ### Delete Many
 
 ```py
-result = drive.delete_many(["file1.txt", "file2.txt"])
+result = drive.delete_many(["file1.txt", "file2.txt", "file3.txt"])
 ```
 
 Example output:
@@ -292,22 +293,18 @@ Example output:
 
 ### List
 
+The following snippet will list all files in a Drive:
+
 ```py
-# get all files
 result = drive.list()
-
 all_files = result.get("names")
-paging = result.get("paging")
-last = paging.get("last") if paging else None
+last = result.get("paging", {}).get("last", None)
 
-while (last):
-    # provide last from previous call
+while last:
+    # Provide "last" from previous call.
     result = drive.list(last=last)
-
     all_files += result.get("names")
-    # update last
-    paging = result.get("paging")
-    last = paging.get("last") if paging else None
+    last = result.get("paging", {}).get("last", None)
 
 print("all files:", all_files)
 
@@ -335,49 +332,44 @@ Example output
 ### Put
 
 ```js
-const Deta = require("deta");
-
-const deta = Deta("project key");
-const db = deta.Base("simple_db");
-
-// store objects
-// a key will be automatically generated
+// Store objects.
+// A key will be automatically generated.
 await db.put({ name: "alex", age: 77 });
-// we will use "one" as a key
+// We will use "one" as a key.
 await db.put({ name: "alex", age: 77 }, "one");
-// the key could also be included in the object itself
+// The key could also be included in the object itself.
 await db.put({ name: "alex", age: 77, key: "one" });
 
-// store simple types
+// Store simple types.
 await db.put("hello, worlds");
 await db.put(7);
 // "success" is the value and "smart_work" is the key.
 await db.put("success", "smart_work");
 await db.put(["a", "b", "c"], "my_abc");
 
-// put expiring items
-// expire item in 300 seconds
+// Put expiring items.
+// Expire in 300 seconds.
 await db.put({ name: "alex", age: 21 }, "alex21", { expireIn: 300 });
-// expire item at expire date
+// Expire at date.
 await db.put({ name: "max", age: 28 }, "max28", { expireAt: new Date("2023-01-01T00:00:00") });
 ```
 
 ### Insert
 
 ```js
-// will succeed, a key will be auto-generated
+// Will succeed, a key will be auto-generated.
 const res1 = await db.insert("hello, world");
 
-// will succeed.
+// Will succeed.
 const res2 = await db.insert({ message: "hello, world" }, "greeting1");
 
-// will raise an error as key "greeting1" already existed.
+// Will raise an error as key "greeting1" already exists.
 const res3 = await db.insert({ message: "hello, there" }, "greeting1");
 
-// expire item in 300 seconds
+// Expire in 300 seconds.
 await db.insert({ message: "will be deleted" }, "temp_key", { expireIn: 300 });
 
-// expire at date
+// Expire at date.
 await db.insert({ message: "will be deleted" }, "temp_key_2", { expireAt: new Date("2023-01-01T00:00:00") });
 ```
 
@@ -385,12 +377,12 @@ await db.insert({ message: "will be deleted" }, "temp_key_2", { expireAt: new Da
 
 ```js
 await db.putMany([
-  { name: "Beverly", hometown: "Copernicus City", key: "one" }, // key provided
-  "dude", // key auto-generated
-  ["Namaskāra", "marhabaan", "hello", "yeoboseyo"], // key auto-generated
+  { name: "Beverly", hometown: "Copernicus City", key: "one" }, // Key provided.
+  ["Namaskāra", "marhabaan", "hello", "yeoboseyo"], // Key auto-generated.
+  "dude", // Key auto-generated.
 ]);
 
-// putMany with expire in 300 seconds
+// Put many to expire in 300 seconds.
 await db.putMany(
   [
     { key: "temp-1", name: "test-1" },
@@ -399,7 +391,7 @@ await db.putMany(
   { expireIn: 300 },
 );
 
-// putMany with expire at
+// Put many with expiry date.
 await db.putMany(
   [
     { key: "temp-1", name: "test-1" },
@@ -421,12 +413,12 @@ Example output:
         "name": "Beverly"
       },
       {
-        "key": "jyesxxlrezo0",
-        "value": "dude"
-      },
-      {
         "key": "5feqybn7lb05",
         "value": ["Namaskāra", "hello", "marhabaan", "yeoboseyo"]
+      },
+      {
+        "key": "jyesxxlrezo0",
+        "value": "dude"
       }
     ]
   }
@@ -435,7 +427,7 @@ Example output:
 
 ### Update
 
-Consider we have the following item in a base:
+If we have the following item in a Base:
 
 ```json
 {
@@ -452,23 +444,23 @@ Consider we have the following item in a base:
 }
 ```
 
-Then the following update operation :
+Then the following update operation:
 
 ```js
 const updates = {
-  "profile.age": 33, // set profile.age to 33
-  "profile.active": true, // set profile.active to true
-  "profile.email": "jimmy@deta.sh", // create a new attribute 'profile.email'
-  "profile.hometown": users.util.trim(), // remove 'profile.hometown'
-  on_mobile: users.util.trim(), // remove 'on_mobile'
-  purchases: users.util.increment(2), // increment 'purchases' by 2, default value is 1
-  likes: users.util.append("ramen"), // append 'ramen' to 'likes', also accepts an array
+  "profile.age": 33, // Set "profile.age" to 33.
+  "profile.active": true, // Set "profile.active" to true.
+  "profile.email": "jimmy@deta.sh", // Create a new attribute "profile.email".
+  "profile.hometown": users.util.trim(), // Remove "profile.hometown".
+  on_mobile: users.util.trim(), // Remove "on_mobile".
+  purchases: users.util.increment(2), // Increment "purchases" by 2.
+  likes: users.util.append("ramen"), // Append "ramen" to "likes".
 };
 
 const res = await db.update(updates, "user-a");
 ```
 
-Results in the following item in the base:
+Results in the following item in the Base:
 
 ```json
 {
@@ -486,7 +478,7 @@ Results in the following item in the base:
 
 ### Fetch
 
-For the examples, let's assume we have a **Base** with the following data:
+If we have the following items in a Base:
 
 ```json
 [
@@ -511,14 +503,16 @@ For the examples, let's assume we have a **Base** with the following data:
 ]
 ```
 
+Then the following fetch calls:
+
 ```js
-const { items: myFirstSet } = await db.fetch({ "age?lt": 30 });
-const { items: mySecondSet } = await db.fetch([{ "age?gt": 50 }, { hometown: "Greenville" }]);
+const { items: firstResult } = await db.fetch({ "age?lt": 30 });
+const { items: secondResult } = await db.fetch([{ "age?gt": 50 }, { hometown: "Greenville" }]);
 ```
 
-... will come back with following data:
+Will return the following data:
 
-`myFirstSet`:
+`firstResult`:
 
 ```json
 [
@@ -531,7 +525,7 @@ const { items: mySecondSet } = await db.fetch([{ "age?gt": 50 }, { hometown: "Gr
 ]
 ```
 
-`mySecondSet`:
+`secondResult`:
 
 ```json
 [
@@ -552,11 +546,13 @@ const { items: mySecondSet } = await db.fetch([{ "age?gt": 50 }, { hometown: "Gr
 
 #### Fetch All Items
 
+The following snippet will fetch all items from a Base:
+
 ```js
 let res = await db.fetch();
 let allItems = res.items;
 
-// continue fetching until last is not seen
+// Continue fetching until "res.last" is undefined.
 while (res.last) {
   res = await db.fetch({}, { last: res.last });
   allItems = allItems.concat(res.items);
@@ -568,18 +564,22 @@ while (res.last) {
 ### Put
 
 ```js
-drive.put('hello.txt', {data: "Hello world"});
-drive.put('hello.txt', {data: "Hello world", contentType: 'text/plain'});
+// Provide content directly.
+drive.put("hello.txt", {data: "Hello world"});
+drive.put("hello.txt", {data: "Hello world", contentType: "text/plain"});
 
-drive.put('hello.txt', {data: Buffer.from('Hello World'), contentType: 'text/plain'});
-drive.put('hello.txt', {path: './my/file/path/file.txt'});
-drive.put('hello.txt', {path: './my/file/path/file.txt', contentType: 'text/plain'}});
+// Provide a content buffer.
+drive.put("hello.txt", {data: Buffer.from("Hello World"), contentType: "text/plain"});
+
+// Provide a path to a file.
+drive.put("hello.txt", {path: "./my/file/path/file.txt"});
+drive.put("hello.txt", {path: "./my/file/path/file.txt", contentType: "text/plain"});
 ```
 
 ### Delete Many
 
 ```js
-const result = await drive.DeleteMany(["file1.txt", "file2.txt"]);
+const result = await drive.DeleteMany(["file1.txt", "file2.txt", "file3.txt"]);
 ```
 
 Example output:
@@ -595,26 +595,26 @@ Example output:
 
 ### List
 
+The following snippet will list all files in a Drive:
+
 ```js
-// get all files
 let result = await drive.list();
 let allFiles = result.names;
 let last = result.paging.last;
 
 while (last) {
-  // provide last from previous call
+  // Provide "last" from previous call.
   result = await drive.list({ last: result.paging.last });
-
   allFiles = allFiles.concat(result.names);
-
-  // update last
   last = result.paging.last;
 }
 console.log("all files:", allFiles);
+```
 
+```js
 const resultWithPrefix = await drive.list({ prefix: "blog/" });
 const resultWithLimit = await drive.list({ limit: 100 });
-const resultWIthLimitAndPrefix = await drive.list({
+const resultWithLimitAndPrefix = await drive.list({
   limit: 100,
   prefix: "blog/",
 });
@@ -647,21 +647,19 @@ import (
 )
 
 func main() {
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
-    // locally, set the project key in an env var called DETA_PROJECT_KEY
+    // Initialize with a project key.
+    // Locally, set the project key in an env var called "DETA_PROJECT_KEY".
     d, err := deta.New()
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
-    // initialize with base name
-    // returns ErrBadBaseName if base name is invalid
+    // Initialize a Base with a name.
     db, err := base.New(d, "base_name")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
-    return
+        fmt.Println("Failed to init new Base instance:", err)
+        return
     }
 }
 ```
@@ -679,72 +677,72 @@ import (
 )
 
 type User struct {
-    // json struct tag 'key' used to denote the key
+    // JSON struct tag "key" used to denote the key.
     Key      string   `json:"key"`
     Username string   `json:"username"`
     Active   bool     `json:"active"`
     Age      int      `json:"age"`
     Likes    []string `json:"likes"`
-    // json struct tag '__expires' for expiration timestamp
-    // 'omitempty' for omission of default 0 value
+    // JSON struct tag "__expires" for expiration timestamp.
+    // "omitempty" for omission of default 0 value.
     Expires  int64 `json:"__expires,omitempty"`
 }
 
 func main() {
-    // errors ignored for brevity
+    // Errors ignored for brevity.
     d, _ := deta.New(deta.WithProjectKey("project_key"))
     db, _ := base.New(d, "users")
 
     u := &User{
-    Key:      "kasdlj1",
-    Username: "jimmy",
-    Active:   true,
-    Age:      20,
-    Likes:    []string{"ramen"},
+        Key:      "kasdlj1",
+        Username: "jimmy",
+        Active:   true,
+        Age:      20,
+        Likes:    []string{"ramen"},
     }
     key, err := db.Put(u)
     if err != nil {
-    log.Fatal("failed to put item:", err)
+        log.Fatal("failed to put item:", err)
     }
-    log.Println("successfully put item with key", key)
+    log.Println("Successfully put item with key", key)
 
-    // can also use a map
+    // Can also use a map.
     um := map[string]interface{}{
-    "key":      "kasdlj1",
-    "username": "jimmy",
-    "active":   true,
-    "age":      20,
-    "likes":    []string{"ramen"},
+        "key":      "kasdlj1",
+        "username": "jimmy",
+        "active":   true,
+        "age":      20,
+        "likes":    []string{"ramen"},
     }
     key, err = db.Put(um)
     if err != nil {
-    log.Fatal("failed to put item:", err)
+        log.Fatal("Failed to put item:", err)
     }
     log.Println("Successfully put item with key:", key)
 
-    // put with expires
+    // Put with expiry date.
     u := &User{
-    Key: "will_be_deleted",
-    Username: "test_user",
-    Expires: time.Date(2023, 1, 1, 0, 0, 0, 0, 0, time.UTC).Unix(),
+        Key: "will_be_deleted",
+        Username: "test_user",
+        Expires: time.Date(2023, 1, 1, 0, 0, 0, 0, 0, time.UTC).Unix(),
     }
     key, err = db.Put(u)
     if err != nil {
-    log.Fatal("failed to put item:", err)
+        log.Fatal("failed to put item:", err)
     }
-    log.Println("put item with key:", key)
+    log.Println("Successfully put item with key:", key)
 
-    // put map with expires
+    // Put map with expiry date.
     um = map[string]interface{}{
-    "key": "will_be_deleted",
-    "test": true,
-    "__expires": time.Data(2023, 1, 1, 0, 0, 0, 0, time.UTC).Unix(),
+        "key": "will_be_deleted",
+        "test": true,
+        "__expires": time.Data(2023, 1, 1, 0, 0, 0, 0, time.UTC).Unix(),
     }
     key, err = db.Put(um)
     if err != nil {
-    log.Fatal("failed to put item:", err)
+        log.Fatal("failed to put item:", err)
     }
-    log.Println("put item with key:", key)
+    log.Println("Successfully put item with key:", key)
 }
 ```
 
@@ -759,7 +757,7 @@ import (
 )
 
 type User struct {
-    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Key      string   `json:"key"`
     Username string   `json:"username"`
     Active   bool     `json:"active"`
     Age      int      `json:"age"`
@@ -769,23 +767,22 @@ type User struct {
 func main() {
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
     db, err := base.New(d, "users")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
+        fmt.Println("Failed to init new Base instance:", err)
     }
 
-    // a variable to store the result
+    // Declare a variable to store the result.
     var u User
 
-    // get item
-    // returns ErrNotFound if no item was found
+    // Get an item.
     err = db.Get("kasdlj1", &u)
     if err != nil {
-    fmt.Println("failed to get item:", err)
+        fmt.Println("Failed to get item:", err)
     }
 }
 ```
@@ -801,7 +798,7 @@ import (
 )
 
 type User struct {
-    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Key      string   `json:"key"`
     Username string   `json:"username"`
     Active   bool     `json:"active"`
     Age      int      `json:"age"`
@@ -811,28 +808,28 @@ type User struct {
 func main() {
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
     db, err := base.New(d, "users")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
+        fmt.Println("Failed to init new Base instance:", err)
     }
 
     u := &User{
-    Key:      "kasdlj1",
-    Username: "jimmy",
-    Active:   true,
-    Age:      20,
-    Likes:    []string{"ramen"},
+        Key:      "kasdlj1",
+        Username: "jimmy",
+        Active:   true,
+        Age:      20,
+        Likes:    []string{"ramen"},
     }
 
-    // insert item in the database
+    // Insert item into the Base.
     key, err := db.Insert(u)
     if err != nil {
-    fmt.Println("failed to insert item:", err)
-    return
+        fmt.Println("Failed to insert item:", err)
+        return
     }
     fmt.Println("Successfully inserted item with key:", key)
 }
@@ -849,7 +846,7 @@ import (
 )
 
 type User struct {
-    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Key      string   `json:"key"`
     Username string   `json:"username"`
     Active   bool     `json:"active"`
     Age      int      `json:"age"`
@@ -859,45 +856,45 @@ type User struct {
 func main() {
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
     db, err := base.New(d, "users")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
+        fmt.Println("Failed to init new Base instance:", err)
     }
 
-    // users
+    // Define two users.
     u1 := &User{
-    Key:      "kasdlj1",
-    Username: "jimmy",
-    Active:   true,
-    Age:      20,
-    Likes:    []string{"ramen"},
+        Key:      "kasdlj1",
+        Username: "jimmy",
+        Active:   true,
+        Age:      20,
+        Likes:    []string{"ramen"},
     }
     u2 := &User{
-    Key:      "askdjf",
-    Username: "joel",
-    Active:   true,
-    Age:      23,
-    Likes:    []string{"coffee"},
+        Key:      "askdjf",
+        Username: "joel",
+        Active:   true,
+        Age:      23,
+        Likes:    []string{"coffee"},
     }
     users := []*User{u1, u2}
 
-    // put items in the database
+    // Put items into the Base.
     keys, err := db.PutMany(users)
     if err != nil {
-    fmt.Println("failed to put items:", err)
-    return
+        fmt.Println("Failed to put items:", err)
+        return
     }
-    fmt.Println("Successfully put item with keys:", keys)
+    fmt.Println("Successfully put items with keys:", keys)
 }
 ```
 
 ### Update
 
-Consider we have the following item in a base `users`:
+If we have the following item in a Base:
 
 ```json
 {
@@ -913,7 +910,7 @@ Consider we have the following item in a base `users`:
 }
 ```
 
-Then the following update operation :
+Then the following update operation:
 
 ```go
 import (
@@ -930,7 +927,7 @@ type Profile struct {
 }
 
 type User struct {
-    Key       string   `json:"key"` // json struct tag 'key' used to denote the key
+    Key       string   `json:"key"`
     Username  string   `json:"username"`
     Profile   *Profile `json:"profile"`
     Purchases int      `json:"purchases"`
@@ -940,33 +937,33 @@ type User struct {
 func main() {
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
     db, err := base.New(d, "users")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
+        fmt.Println("Failed to init new Base instance:", err)
     }
 
-    // define the updates
+    // Define the updates.
     updates := base.Updates{
-    "profile.age": 33, // set profile.age to 33
-    "profile.active": true, // set profile.active to true
-    "profile.hometown": db.Util.Trim(), // remove 'profile.hometown'
-    "purchases": db.Util.Increment(2), // increment 'purchases' by 2
-    "likes": db.Util.Append("ramen"), // append 'ramen' to 'likes', also accepts a slice
+        "profile.age": 33, // Set "profile.age" to 33.
+        "profile.active": true, // Set "profile.active" to true.
+        "profile.hometown": db.Util.Trim(), // Remove "profile.hometown".
+        "purchases": db.Util.Increment(2), // Increment "purchases" by 2.
+        "likes": db.Util.Append("ramen"), // Append "ramen" to "likes".
     }
-    // update
+    // Update an item.
     err = db.Update("user-a", updates)
     if err != nil {
-    fmt.Println("failed to update", err)
-    return
+        fmt.Println("Failed to update item:", err)
+        return
     }
 }
 ```
 
-Results in the following item in the base:
+Results in the following item in the Base:
 
 ```json
 {
@@ -1001,35 +998,35 @@ type User struct {
 func main() {
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
     db, err := base.New(d, "users")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
+        fmt.Println("Failed to init new Base instance:", err)
     }
 
-    // query to get users with age less than 30
+    // Query to get users with age less than 30.
     query := base.Query{
-    {"age?lt": 50},
+        {"age?lt": 50},
     }
 
-    // variabe to store the results
+    // Declare a variable to store the results.
     var results []*User
 
-    // fetch items
+    // Fetch items.
     _, err = db.Fetch(&base.FetchInput{
-    Q:    query,
-    Dest: &results,
+        Q:    query,
+        Dest: &results,
     })
     if err != nil {
-    fmt.Println("failed to fetch items:", err)
+        fmt.Println("Failed to fetch items:", err)
     }
 }
 ```
 
-... `results` will have the following data:
+`results` will have the following data:
 
 ```json
 [
@@ -1059,7 +1056,7 @@ import (
 )
 
 type User struct {
-    Key      string   `json:"key"` // json struct tag 'key' used to denote the key
+    Key      string   `json:"key"`
     Username string   `json:"username"`
     Active   bool     `json:"active"`
     Age      int      `json:"age"`
@@ -1069,57 +1066,57 @@ type User struct {
 func main() {
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-    fmt.Println("failed to init new Deta instance:", err)
-    return
+        fmt.Println("Failed to init new Deta instance:", err)
+        return
     }
 
     db, err := base.New(d, "users")
     if err != nil {
-    fmt.Println("failed to init new Base instance:", err)
+        fmt.Println("Failed to init new Base instance:", err)
     }
 
-    // query to get users with age less than 30
+    // Query to get users with age less than 30.
     query := base.Query{
-    {"age?lt": 50},
+        {"age?lt": 50},
     }
 
-    // variabe to store the results
+    // Declare a variable to store the results.
     var results []*User
 
-    // variable to store the page
+    // Declare a variable to store the page.
     var page []*User
 
-    // fetch input
+    // Define fetch input.
     i := &base.FetchInput{
-    Q:     query,
-    Dest:  &page,
-    Limit: 1, // limit provided so each page will only have one item
+        Q:     query,
+        Dest:  &page,
+        Limit: 1, // Limit provided so each page will only have one item.
     }
 
-    // fetch items
+    // Fetch items.
     lastKey, err := db.Fetch(i)
     if err != nil {
-    fmt.Println("failed to fetch items:", err)
-    return
-    }
-
-    // append page items to results
-    results = append(results, page...)
-
-    // get all pages
-    for lastKey != "" {
-    // provide the last key in the fetch input
-    i.LastKey = lastKey
-
-    // fetch
-    lastKey, err = db.Fetch(i)
-    if err != nil {
-        fmt.Println("failed to fetch items:", err)
+        fmt.Println("Failed to fetch items:", err)
         return
     }
 
-    // append page items to all results
+    // Append the page items to the results.
     results = append(results, page...)
+
+    // Get all pages.
+    for lastKey != "" {
+        // Provide the last key in the fetch input.
+        i.LastKey = lastKey
+
+        // Fetch items.
+        lastKey, err = db.Fetch(i)
+        if err != nil {
+            fmt.Println("Failed to fetch items:", err)
+            return
+        }
+
+        // Append the page items to the results.
+        results = append(results, page...)
     }
 }
 ```
@@ -1137,20 +1134,18 @@ import (
 )
 
 func main() {
-
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
+    // Initialize with a project key.
+    // Locally, set the project key in an env var called "DETA_PROJECT_KEY".
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-        fmt.Println("failed to init new Deta instance:", err)
+        fmt.Println("Failed to init new Deta instance:", err)
         return
     }
 
-    // initialize with drive name
-    // returns ErrBadDriveName if base name is invalid
+    // Initialize a Drive with a name.
     drive, err := drive.New(d, "drive_name")
     if err != nil {
-        fmt.Println("failed to init new Drive instance:", err)
+        fmt.Println("Failed to init new Drive instance:", err)
         return
     }
 }
@@ -1169,23 +1164,19 @@ import (
 )
 
 func main() {
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-        fmt.Println("failed to init new Deta instance:", err)
+        fmt.Println("Failed to init new Deta instance:", err)
         return
     }
 
-    // initialize with drive name
-    // returns ErrBadDriveName if drive name is invalid
     drawings, err := drive.New(d, "drawings")
     if err != nil {
-        fmt.Println("failed to init new Drive instance:", err)
+        fmt.Println("Failed to init new Drive instance:", err)
         return
     }
-    // PUT
-    // reading from a local file
+
+    // Put a file from a local path.
     file, err := os.Open("./art.svg")
     defer file.Close()
 
@@ -1195,7 +1186,7 @@ func main() {
         ContentType: "image/svg+xml",
     })
     if err != nil {
-        fmt.Println("failed to put file:", err)
+        fmt.Println("Failed to put file:", err)
         return
     }
     fmt.Println("Successfully put file with name:", name)
@@ -1214,38 +1205,34 @@ import (
 )
 
 func main() {
-
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-        fmt.Println("failed to init new Deta instance:", err)
+        fmt.Println("Failed to init new Deta instance:", err)
         return
     }
 
-    // initialize with drive name
-    // returns ErrBadDriveName if drive name is invalid
     drawings, err := drive.New(d, "drawings")
     if err != nil {
-        fmt.Println("failed to init new Drive instance:", err)
+        fmt.Println("Failed to init new Drive instance:", err)
         return
     }
 
-    // GET
+    // Get a file with a name.
     name := "art.svg"
     f, err := drawings.Get(name)
     if err != nil {
-        fmt.Println("failed to get file with name:", name)
+        fmt.Println("Failed to get file with name:", name)
         return
     }
     defer f.Close()
 
+    // Read the file content.
     c, err := ioutil.ReadAll(f)
     if err != nil {
-        fmt.Println("failed read file content with err:", err)
+        fmt.Println("Failed read file content with err:", err)
         return
     }
-    fmt.Println("file content:", string(c))
+    fmt.Println("File content:", string(c))
 }
 ```
 
@@ -1260,27 +1247,22 @@ import (
 )
 
 func main() {
-
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-        fmt.Println("failed to init new Deta instance:", err)
+        fmt.Println("Failed to init new Deta instance:", err)
         return
     }
 
-    // initialize with drive name
-    // returns ErrBadDriveName if drive name is invalid
     drawings, err := drive.New(d, "drawings")
     if err != nil {
-        fmt.Println("failed to init new Drive instance:", err)
+        fmt.Println("Failed to init new Drive instance:", err)
         return
     }
 
-    // DELETE
+    // Delete a file with a name.
     name, err := drawings.Delete("art.svg")
     if err != nil {
-        fmt.Println("failed to delete file with name:", name)
+        fmt.Println("Failed to delete file with name:", name)
         return
     }
     fmt.Println("Successfully deleted file with name:", name)
@@ -1298,31 +1280,26 @@ import (
 )
 
 func main() {
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-        fmt.Println("failed to init new Deta instance:", err)
+        fmt.Println("Failed to init new Deta instance:", err)
         return
     }
 
-    // initialize with drive name
-    // returns ErrBadDriveName if drive name is invalid
     drawings, err := drive.New(d, "drawings")
     if err != nil {
-        fmt.Println("failed to init new Drive instance:", err)
+        fmt.Println("Failed to init new Drive instance:", err)
         return
     }
 
     names := []string{"a", "b", "c"}
     dr, err := drawings.DeleteMany(names)
-
     if err != nil {
-        fmt.Println("failed to delete files")
+        fmt.Println("Failed to delete files")
         return
     }
-    fmt.Println("deleted:", dr.Deleted)
-    fmt.Println("failed:", dr.Failed)
+    fmt.Println("Deleted:", dr.Deleted)
+    fmt.Println("Failed:", dr.Failed)
 }
 ```
 
@@ -1337,43 +1314,37 @@ import (
 )
 
 func main() {
-
-    // initialize with project key
-    // returns ErrBadProjectKey if project key is invalid
     d, err := deta.New(deta.WithProjectKey("project_key"))
     if err != nil {
-        fmt.Println("failed to init new Deta instance:", err)
+        fmt.Println("Failed to init new Deta instance:", err)
         return
     }
 
-    // initialize with drive name
-    // returns ErrBadDriveName if drive name is invalid
     drawings, err := drive.New(d, "drawings")
     if err != nil {
-        fmt.Println("failed to init new Drive instance:", err)
+        fmt.Println("Failed to init new Drive instance:", err)
         return
     }
 
     lr, err := drawings.List(1000, "", "")
     if err != nil {
-        fmt.Println("failed to list names from drive with err:", err)
+        fmt.Println("Failed to list names from drive with err:", err)
     }
+    fmt.Println("Names:", lr.Names)
     // ["a", "b", "c/d"]
-    fmt.Println("names:", lr.Names)
 
     lr, err = drawings.List(1, "", "")
     if err != nil {
-        fmt.Println("failed to list names from drive with err:", err)
+        fmt.Println("Failed to list names from drive with err:", err)
     }
+    fmt.Println("Names:", lr.Names)
     // ["a"]
-    fmt.Println("names:", lr.Names)
-
 
     lr, err = drawings.List(2, "", "")
     if err != nil {
-        fmt.Println("failed to list names from drive with err:", err)
+        fmt.Println("Failed to list names from drive with err:", err)
     }
+    fmt.Println("Last:", *lr.Paging.Last)
     // "b"
-    fmt.Println("last:", *lr.Paging.Last)
 }
 ```
