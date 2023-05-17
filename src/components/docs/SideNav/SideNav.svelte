@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import { writable } from "svelte/store";
 
-  export const sideNavOpen = writable<boolean>(true);
+  export const sideNavOpen = writable<boolean>(false);
   export const sideNavPeek = writable<boolean>(false);
 
   export function toggleSideNav() {
@@ -17,6 +17,8 @@
   import IconBook2 from "@/components/core/Icon/IconBook2.svelte";
   import IconHammer from "@/components/core/Icon/IconHammer.svelte";
   import { setContext } from "svelte";
+  import { fly } from "svelte/transition";
+  import { quintOut } from "svelte/easing";
 
   // PROPS
   export let navTree: NavigationItem, currentPage: string;
@@ -59,7 +61,13 @@
   on:mouseleave={onEndPeek} />
 <aside class:open={$sideNavOpen}>
   {#if $sideNavOpen || $sideNavPeek}
-    <nav class:peek={!$sideNavOpen && $sideNavPeek} on:mouseleave={onEndNavHover}>
+    <nav class:peek={!$sideNavOpen && $sideNavPeek}
+        on:mouseleave={onEndNavHover}
+        transition:fly={{
+            duration: 400,
+            easing: quintOut,
+            x: -100
+        }}>
       <header>
         <a href="/docs">
           <AstroLogo size={28} />
