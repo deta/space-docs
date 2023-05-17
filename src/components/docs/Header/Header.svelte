@@ -3,6 +3,17 @@
   import ThemeToggle from "./ThemeToggle.svelte";
   import IconMenu2 from "@/components/core/Icon/IconMenu2.svelte";
   import { toggleSideNav } from "../SideNav/SideNav.svelte";
+  import Breadcrumbs from "./Breadcrumbs.svelte";
+  import { pascalCase } from "scule";
+
+  export let currentPage: string;
+
+  let breadCrumbs = currentPage.split("/").flatMap((item, index) => { // TODO(@maxu): Move into component.?
+    return { name: pascalCase(item), url: currentPage.split("/").slice(0, index + 1).join("/") };
+  });
+  breadCrumbs = breadCrumbs.slice(3); // Remove root & language stuff for now TODO: Revisit
+  breadCrumbs = [{ name: "Home", url: "/docs/en" }, ...breadCrumbs];
+  console.log(breadCrumbs)
 
   function onToggleNav() {
     toggleSideNav();
@@ -15,10 +26,11 @@
   <div>
     <ul>
       <li>
-        <IconButton on:click={onToggleNav}
-          ><IconMenu2 size={24} strokeWidth={2} /></IconButton>
+        <IconButton on:click={onToggleNav}><IconMenu2 size={24} strokeWidth={2} /></IconButton>
       </li>
-      <li class="only-tablet">breadcrumbs</li>
+      <li class="only-tablet">
+        <Breadcrumbs items={breadCrumbs}/>
+      </li>
     </ul>
   </div>
 
@@ -42,17 +54,17 @@
     left: 0;
     right: 0;
     @media screen and (min-width: 768px) {
-        grid-column: 1 / -1;
-        grid-row: 1;
-        position: sticky;
-        top: 0;
-        bottom: unset;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      position: sticky;
+      top: 0;
+      bottom: unset;
     }
 
     display: flex;
     justify-content: flex-end;
     @media screen and (min-width: 768px) {
-        justify-content: space-between;
+      justify-content: space-between;
     }
     align-items: center;
     padding-inline: var(--spacing-2);
@@ -65,7 +77,6 @@
       align-items: center;
       gap: var(--spacing-8);
     }
-
   }
   :global(body.sideNav-open header) {
     grid-column: 2 / -1 !important;
