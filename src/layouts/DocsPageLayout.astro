@@ -1,0 +1,70 @@
+---
+import type { MarkdownHeading } from 'astro';
+import * as CONFIG from '../config';
+import manifest from "@/content/docs/_manifest.json";
+
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Header from '@/components/docs/Header/Header.svelte';
+import Article from '@/components/docs/Article/Article.astro';
+import Footer from '@/components/docs/Footer/Footer.svelte';
+import SideNav from '@/components/docs/SideNav/SideNav.svelte';
+import { parseManifestSection } from '@/utils/content';
+import { getCollection } from 'astro:content';
+
+type Props = {
+	frontmatter: CONFIG.Frontmatter;
+	headings: MarkdownHeading[];
+};
+
+const { frontmatter, headings } = Astro.props as Props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
+const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
+
+const isManual = currentPage.startsWith("/manual");
+const isMigration = currentPage.startsWith("/migration");
+const isDocs = currentPage.startsWith("/docs");
+
+const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'Space Docs';
+
+// TODO: Remov old stuff?
+const NAV_TREE = parseManifestSection(manifest);
+//console.log("NAVTREE: ", JSON.stringify(NAV_TREE, null, 2))
+
+const ACTIVE_PAGE = (await getCollection("docs")).find(e => `/docs/en/${e.id.split(".")[0]}` === currentPage);
+console.log(ACTIVE_PAGE)
+
+---
+
+<html dir={frontmatter.dir ?? 'ltr'} lang={frontmatter.lang ?? 'en-us'} class="initial">
+	<head>
+		<HeadCommon />
+		<HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} />
+		<title>
+			{frontmatter.title ? `${frontmatter.title} - ${baseTitle}` : CONFIG.SITE.title}
+		</title>
+	</head>
+
+	<body>
+        <main>
+            <Header currentPage={currentPage} client:idle/>
+            <SideNav navTree={NAV_TREE} currentPage={currentPage} client:idle/>
+            <Article frontmatter={ACTIVE_PAGE.data} headings={headings}><slot/></Article>
+            <Footer />
+        </main>
+		<!--<TeletypeContainer />-->
+	</body>
+</html>
+
+<style lang="scss">
+    main {
+        min-height: 100%;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto auto;
+
+        isolation: isolate;
+    }
+</style>
