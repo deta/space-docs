@@ -44,7 +44,7 @@
     @media screen and (min-width: 768px) {
         grid-column: 1 / -1;
         grid-row: 1;
-        position: unset;
+        position: sticky;
         top: 0;
         bottom: unset;
     }
