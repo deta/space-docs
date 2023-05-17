@@ -3,12 +3,19 @@ import TableOfContents from "../SideNav/TableOfContents.svelte";
 import "./article.scss";
 
 import ArticleHeader from "./ArticleHeader.svelte";
+import type { MarkdownHeading } from "astro";
+
+type Props = {
+    headings: MarkdownHeading[];
+    frontmatter: any; // TODO: Type
+}
+const { headings, frontmatter } = Astro.props as Props;
 
 ---
 
 <div id="article-wrapper">
     <article>
-        <ArticleHeader title={"The Space CLI"} excerpt={"A Space app is different from a normal web app. Instead of one central app that serves many users, each user on Space will get their own personal copy of an app, in their own personal cloud. This is a simple but powerful difference that removes much of the complexity in building and distributing apps on the internet. It also pushes the boundaries of what a web app is, and what it can do."}/>
+        <ArticleHeader title={frontmatter.title} excerpt={frontmatter.excerpt}/>
         <slot/>
     </article>
     <aside class="toc-trigger">
