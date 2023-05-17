@@ -1,0 +1,35 @@
+---
+import "./article.scss";
+
+import ArticleHeader from "./ArticleHeader.svelte";
+
+---
+
+<div id="article-wrapper">
+    <article>
+        <ArticleHeader title={"The Space CLI"} excerpt={"A Space app is different from a normal web app. Instead of one central app that serves many users, each user on Space will get their own personal copy of an app, in their own personal cloud. This is a simple but powerful difference that removes much of the complexity in building and distributing apps on the internet. It also pushes the boundaries of what a web app is, and what it can do."}/>
+        <slot/>
+    </article>
+    <aside>
+        toc
+    </aside>
+</div>
+
+<style lang="scss">
+    #article-wrapper {
+        margin-block: var(--spacing-12);
+        margin-inline: auto;
+
+        grid-column: 2 / -1;
+        grid-row: 2;
+
+        display: flex;
+
+        min-height: 100vh;
+    }
+
+    article {
+        max-width: 75ch;
+        padding-inline: var(--spacing-5);
+    }
+</style>

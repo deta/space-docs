@@ -1,0 +1,93 @@
+article {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* HEADINGS */
+article {
+    // TODO!: Fix spacig between headings
+    h1,h2,h3,h4,h5,h6 {
+        // TOOD: Margins & line height
+        margin-top: var(--spacing-14);
+        margin-bottom: 0;
+        line-height: var(--spacing-6);
+    }
+
+    // TODO: Other style for < h3/h4
+    h1 {
+        font-weight: 600;
+        font-size: 2.252rem;
+    }
+    h2 {
+        font-weight: 600;
+        font-size: 1.875rem;
+    }
+    h3 {
+        font-size: 1.523rem;
+    }
+    h4 {
+        font-size: 1.223rem;
+    }
+    h5 {
+        font-size: 1.103rem;
+    }
+    h6 {
+        font-size: 1rem;
+    }
+
+    // Typo overrides
+    // TODO: NEED?
+    .lead { font-size: 1.214rem; } // Use for leading paragraph -> "excerpt"
+    .hug { margin-top: 0; }
+}
+
+/* LINKS */
+article a {
+    color: var(--theme-accent);
+    text-decoration: underline;
+    text-underline-offset: var(--spacing-1);
+    //font-weight: 400;
+
+    &:hover {
+        // TODO: Hover state
+    }
+
+    // TODO: Add glyph to indicate external links
+}
+
+/* LISTS */
+article {
+    // Spacing
+    ul, ol {
+        margin-block: var(--spacing-6);
+        ul, ol {
+            padding-left: var(--spacing-4);
+        }
+    }
+
+    ul li {
+        list-style-type: disc;
+        list-style-position: inside;
+
+        &::marker {
+            //color: var(--theme-accent);
+        }
+
+    }
+    ol, li {
+        list-style-type: decimal;
+        list-style-position: inside;
+
+        &::marker {
+            color: var(--theme-text);
+            font-weight: 600;
+        }
+    }
+}
+
+/* MEDIA */
+article p img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--rounded-3);
+}
