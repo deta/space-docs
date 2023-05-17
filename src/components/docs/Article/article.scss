@@ -91,3 +91,35 @@ article p img {
     height: auto;
     border-radius: var(--rounded-3);
 }
+
+/* CALLOUTS */
+article blockquote {
+    background: hsl(var(--color-base-blue-dark), 90%);
+    border: 2px solid hsl(var(--color-base-blue-dark), 60%);
+    line-height: 1.5rem;
+    margin: var(--spacing-4) 0;
+    border-radius: 7px;
+    padding-inline: var(--spacing-6);
+    padding-block: var(--spacing-4);
+    display: flex;
+    align-items: center;
+
+    p {margin:0;}
+    /*margin-top: 1.5rem;
+    margin-bottom: 1.5rem;*/
+}
+
+/* CODE */
+main pre {
+    padding-block: var(--spacing-4);
+    padding-inline: var(--spacing-5);
+    border-radius: 10px;
+}
+
+main p code {
+    padding-inline: var(--spacing-2);
+    padding-block: 0.15rem;
+    border-radius: 7px;
+    background: hsl(var(--color-gray-90));
+    color: hsl(var(--color-gray-10));
+}
