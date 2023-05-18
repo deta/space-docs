@@ -4,23 +4,21 @@ position: 5
 layout: "@docs"
 ---
 
-# Domains
+A domain name is the address of a website or service on the internet — it’s what you type into your browser to navigate the web. Every space app you install (or build) gets its own unique **Built In Domain** name. You can also add **Custom Domains** that you own to every app.
 
-A domain name is the address of a website or service on the internet — it’s what you type into your browser to navigate the web. Every space app you install (or build) gets its own unique **Default Domain** name. You can also add **Custom Domains** that you own to every app.
+## Built In Domains
 
-## Default Domains
-
-As soon as you install an app, Space will assign it a unique **Default Domain**. This domain is a *subdomain* under `[deta.app](http://deta.app)`. A *subdomain* is kind of like a number on a street, used to locate an address at a granular level. In our case, if `deta.app` is the street, the full address of your app will be `<subdomain>.deta.app`. 
+As soon as you install an app, Space will assign it a unique **Built In Domain**. This domain is a *subdomain* under `[deta.app](http://deta.app)`. A *subdomain* is kind of like a number on a street, used to locate an address at a granular level. In our case, if `deta.app` is the street, the full address of your app will be `<subdomain>.deta.app`. 
 
 The actual `subdomain` your app will get is based on an alias given to the app by its developer, plus a random suffix: `<alias>-<suffix>`. For instance, if the alias of the app you install is `parallel-futures`, your copy may be assigned something like: `parallel-futures-h78bhas.deta.app`. 
 
-To view an app’s Default Domain, click the menu (`...`) from the App’s Tile on your Canvas and open Settings. Then navigate to the Domains tab. You’ll see the Default Domain at the top, labeled with “Default Domain”.
+To view an app’s Built In Domain, click the menu (`...`) from the App’s Tile on your Canvas and open Settings. Then navigate to the Domains tab. You’ll see the Built In Domain at the top, labeled with “Built In Domain”.
 
 ![Screen Shot 2023-04-07 at 11.55.10.png](Domains%20d9deecfadb5648d19b30ff118c0dc8cf/Screen_Shot_2023-04-07_at_11.55.10.png)
 
 The Default Domain given to every app will remain as an active address on the internet from the point you install an app until the point you delete it. 
 
-## **Custom Domains**
+## Custom Domains
 
 You can also assign a **Custom Domain** name ****you own to any app you’ve installed. For example, if you own `deta.pizza` you can use it to address one of your apps. Custom Domains will work alongside the Default Domain assigned to your app; an app will have two valid addresses). If you don’t have your own domain, you can buy one from a domain name registrar such as [Cloudflare](https://www.cloudflare.com/products/registrar/), [Porkbun](https://porkbun.com/), or [Namecheap](https://www.namecheap.com/).
 
@@ -37,6 +35,8 @@ We will periodically check if your domain has the records setup. Once we detect 
 ![Screen Shot 2023-04-07 at 12.36.17.png](Domains%20d9deecfadb5648d19b30ff118c0dc8cf/Screen_Shot_2023-04-07_at_12.36.17.png)
 
 Custom domains should work with every DNS provider, as well as with Cloudflare’s Caching or CDN features out of the box.
+
+> Custom Domains support most domains ([here is a list of unsupported TLDs](https://help.zerossl.com/hc/en-us/articles/360060119833-Restricted-Countries)).
 
 ### **Troubleshooting**
 

@@ -8,7 +8,7 @@ layout: "@docs"
 
 Apps themselves, like Teletype, can have **************Actions**************. These Actions are specific functionalities an app provides. Actions can do really anything an app developer dreams up, like sending automated emails or collecting and cleaning up data. But the app developer has to purposely configure Actions for them to exist.
 
-Once configured, application Actions can be executed by different ****************Triggers****************. Currently, the only Trigger for Actions are ****************Schedules, which tell your app to perform Actions on a specific schedule. 
+Once configured, application Actions can be executed by different **Triggers**. Currently, the only Trigger for Actions are ****************Schedules, which tell your app to perform Actions on a specific schedule. 
 
 If a developer creates a Scheduled Action for an app, they can choose a default interval. This means when you install an app, its Scheduled Actions are automatically set to run on this  interval. 
 
