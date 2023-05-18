@@ -129,6 +129,10 @@ Your Builder Instance also runs Scheduled Actions, which you can configure via t
 
 **From your Builder Project**
 
+Open the "Develop" tab of your project in Builder, and there will be a "Scheduled Actions" heading, if you have defined any Scheduled Actions in your `Spacefile`. From there, you can modify and disable any Scheduled Actions.
+
+![builder-instance-11](/public/docs-assets/build/builder-instance-12.png)
+
 **From your Instance’s Context Menu**
 
 Open the "Settings" for your app and naviagte to the "Schedules" tab.

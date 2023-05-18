@@ -73,7 +73,7 @@ To share your app globally, simply publish it.
 
 IMAGE: SHARE WITH THE WORLD
 
-If you’ve tested your app in your Builder Instance and want to share it with an external audience, you can [create a **Release**](/docs/en/use/publish/intro).
+If you’ve tested your app in your Builder Instance and want to share it with an external audience, you can [create a Release](/docs/en/use/publish/intro).
 
 A Release is a Revision that anyone can install in their own personal cloud on Deta Space. What this means is that you can distribute your app to people around the world, but you don’t need to think about the infrastructure necessary to run it.
 

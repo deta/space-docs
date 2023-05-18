@@ -8,12 +8,33 @@ The Space CLI is a command line interface you can use to build apps for Deta Spa
 
 ## Installation
 
-**MacOS** Windows Linux
+
+/* tab */
+
+**MacOS** 
 
 To install the Space CLI on MacOS, open a Terminal session and enter:
 
-```
+```bash
 curl -fsSL https://get.deta.dev/space-cli.sh | sh
+```
+
+/* tab */
+
+**Windows**
+
+To install the Space CLI on Windows, open PowerShell and enter:
+
+```
+iwr https://deta.space/assets/space-cli.ps1 -useb | iex
+```
+
+**Linux**
+
+To install the Space CLI on Linux, open a Terminal and enter:
+
+```bash
+curl -fsSL https://deta.space/assets/space-cli.sh | sh
 ```
 
 This will download the binary which contains the CLI code. It will try to export the `space` command to your path, making the `space` command globally usable on your machine. If it does not succeed, follow the directions output by the install script to export `space` to your path.

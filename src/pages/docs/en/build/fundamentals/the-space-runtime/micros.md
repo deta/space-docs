@@ -6,15 +6,17 @@ layout: "@docs"
 
 ## What's a Micro?
 
-As mentioned in the Space Runtime page, a Micro is a lightweight serverless compute unit inside your app which can be exposed to the world over HTTP. You can combine up to 5 Micros in a single Space app. Individual Micros can run many kinds of things:
+As mentioned in the [Space Runtime page](/docs/en/build/fundamentals/the-space-runtime/about), a Micro is a lightweight serverless compute unit inside your app which can be exposed to the world over HTTP. You can combine up to 5 Micros in a single Space app. Individual Micros can run many kinds of things:
 
-- frontend sites built with frameworks like React, Vue and Svelte
-- full-stack frameworks like Next, Nuxt or SvelteKit
+- frontend sites built with frameworks like [React](https://react.dev/), [Vue](https://vuejs.org/), and [Svelte](https://svelte.dev/)
+- full-stack frameworks like [Next](https://nextjs.org/), [Nuxt](https://nuxtjs.org/), or [SvelteKit](https://kit.svelte.dev/)
 - backend apps built with Node.js, Python and even Go, Rust or something more custom.
 
-Micros are defined in your project's [Spacefile](https://www.notion.so/docs/en/reference/spacefile), which tells Deta Space what kinds of Micros live in your app and how to run them.
+Micros are defined in your project's [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile), which tells Deta Space what kinds of Micros live in your app and how to run them.
 
-## Adding a Micro on Project Creation
+## Adding a Micro 
+
+### On Project Creation
 
 You can add your first Micro while bootstrapping a new project using the Space CLI. The CLI tries to auto-detect the type of app you want to deploy based on your local code. This detection works for most frontend frameworks like Next, Nuxt, SvelteKit, and backend runtimes like Node.js and Python.
 
@@ -22,9 +24,9 @@ CODE EXAMPLE / SCREEN SHOT OF MICRO CREATION VIA THE CLI
 
 If the detection works and you confirm, the CLI will create the right `Spacefile` for you in your local directory. If the detection fails, Space supports running almost any programming language or framework on Micros using the `Spacefile`.
 
-## Adding Micros via the Spacefile
+### Via the Spacefile
 
-If you want to run something custom or need to add more Micros to an existing project, you can edit the project's `Spacefile` to add the required configuration. Take a look at the [Spacefile reference](https://www.notion.so/docs/en/reference/spacefile) for a complete list of options.
+If you want to run something custom or need to add more Micros to an existing project, you can edit the project's `Spacefile` to add the required configuration. Take a look at the [Spacefile reference](/docs/en/build/reference/spacefile) for a complete list of options.
 
 Here's the `Spacefile` for an app consisting of a single Node.js Micro:
 
@@ -38,13 +40,15 @@ micros:
 		dev: nodemon index.js
 ```
 
-The `name` field identifies your Micro inside your app and the `src` should point to the location of the Micro's source code relative to your Project's root. If your project contains more than one Micro, the `primary` field can be used to identify the entry point of your application (which Micro will be executed when the root path of your project is visited via HTTP).
+The `name` field identifies your Micro inside your app and the `src` should point to the location of the Micro's source code relative to your project's root. 
 
-Checkout the “Quick Starters” for instructions on adding specific Micros to your app.
+If your project contains more than one Micro, the `primary` field can be used to identify the [entry point of your application](/docs/en/build/fundamentals/the-space-runtime/micros#micro-routing) (which Micro will be executed when the root path of your app is invoked over HTTP).
+
+Checkout the [Quick Starts](/docs/en/build/fundamentals/quick-starts) for instructions on adding specific Micros to your app.
 
 ## Directory Structure
 
-A Micro can be thought of as its own independent service. As a result, Micros should be self-contained in their own directory inside your local project.  Let’s look at an example of a good structure.
+A Micro can be thought of as its own independent service. As a result, Micros should be self-contained in their own directory inside your code base.  Let’s look at an example of a good structure.
 
 Here's the file & folder structure of an app with a Python backend and a Vue frontend:
 
@@ -77,7 +81,6 @@ micros:
 ```
 
 > 🔑 It's recommended to put your first Micro in its own sub-directory of your project. A single Micro will work running in the root directory of your project, but this approach doesn't scale. You'll have to migrate this Micro as soon as you want to add a second Micro to your project.
-> 
 
 ## Micro Routing
 
@@ -100,13 +103,13 @@ micros:
 
 ```
 
-In this example, the `api` Micro will be available at `/api` while all other paths including the root `/` will be received by the primary Micro, in this case, the static Micro `client`. If the path is missing, the path will fall back to the `name` field.
+In the above example, the `api` Micro will be available at `/api` (and all sub-paths of `/api`, e.g. `/api/sub`) while all other paths including the root `/` will be received by the primary Micro, in this case, the static Micro `client`. If the path is missing, the path will fall back to the `name` field.
 
-You can emulate Space’s routing in local development with the `space dev` command.
+You can emulate Space’s routing in local development with the [`space dev` command](/docs/en/build/fundamentals/development/local-development#routing-emulation).
 
 ## Cross Micro Communication
 
-Micros within a Project are independent services, but can invoke one another to get what they need. How you can successfully invoke one Micro from another one depends on if the invoking Micro is sending the request *from* the browser or server side.
+Micros within a project are independent services, but can invoke one another to get what they need. How you can successfully invoke one Micro from another one depends on if the invoking Micro is sending the request from the browser or server side.
 
 ### From the browser
 
@@ -117,13 +120,13 @@ If you are trying to call a backend Micro from another Micro in the browser, you
 fetch('/api')
 ```
 
-Assuming you are already authenticated with Deta Space in the browser, that's it. Auth should “just work”.  One note is that this does not work for in unauthenticated contexts, like Micros have been made publicly accessible.
+Auth should “just work” on Space in this context. By default, a user is [already authenticated](/docs/en/build/fundamentals/the-space-runtime-authentication#the-developer-perspective) with Deta Space when logged in via the browser.  One note is that this does not work for in unauthenticated contexts, like Micros that have been made [publicly accessible](/docs/en/build/fundamentals/the-space-runtime-authentication#public-micros-and-routes).
 
-For more information, you can read about Authentication on Space
+Read more about Authentication on Space [here](/docs/en/build/fundamentals/the-space-runtime-authentication).
 
 ### Server side
 
-If you are trying to call a backend Micro from another backend Micro, you’ll need to do twi things in your code. First, you need to get your app's assigned hostname to use as the origin, and second, you need use an api key to authenticate your request.
+If you are trying to call a backend Micro from another backend Micro, you’ll need to do two things in your code. First, you need to get your app's address to make the request (via an assigned hostname), and second, you need use an api key to authenticate your request.
 
 Both of these items are provided in the environment of every backend Micro:
 
@@ -140,13 +143,13 @@ api_key = os.getenv("DETA_API_KEY")
 headers = {"x-api-key": api_key}
 
 res = requests.get("/second-micro", headers=headers)
-
 ```
 
 > ⚠️ Be careful with your API Key. If you expose it, you risk compromising your Space app.
-> 
 
-## Technical Specifications of Micros
+You can read more about the other environment variables available to your Micros [here](/docs/en/build/fundamentals/the-space-runtime/configuration#pre-set-variables).
+
+## Technical Specifications
 
 1. Every Micro you use gets its own sandboxed Linux VM.
 2. Each Micro has a key and secret keys set in the environment, these are specific to your Micro and not the Deta system. Make sure to not share them to keep your own data safe.

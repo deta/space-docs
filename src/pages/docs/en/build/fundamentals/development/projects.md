@@ -34,7 +34,7 @@ L engine: python3.9
 
 Confirm the generated configuration, if it's correct for your application. The CLI should create a new Project in Builder and generate a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) in your local directory. 
 
-This `Spacefile` contains the configuration of your app, used by Deta Space to understand what your app looks like and how to run it. If the bootstrapped configuration failed, you can create your own configuration and [add individual Micros](/docs/en/build/fundamentals/the-space-runtime/micros#adding-micros-via-the-spacefile) using the `Spacefile`.
+This `Spacefile` contains the configuration of your app, used by Deta Space to understand what your app looks like and how to run it. If the bootstrapped configuration failed, you can create your own configuration and [add individual Micros](/docs/en/build/fundamentals/the-space-runtime/micros#via-the-spacefile) using the `Spacefile`.
 
 Additionally, the CLI should create a hidden `.space` directory locally — this contains information about your Project, linking your local directory to Builder. This directory should not be included in your version control and was automatically added to your `.gitignore`.
 

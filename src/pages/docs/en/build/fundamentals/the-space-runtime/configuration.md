@@ -1,16 +1,14 @@
 ---
-title: Micros
+title: Configuration
 position: 3
 layout: "@docs"
 ---
 
-# Configuration
-
-Environment variables allow apps to access custom configuration at the individual app level.  They are available in all non static Micros during runtime. You can create custom environment variables for your app that can be modified by the end user of the app.
+**Environment Variables** allow apps to access custom configuration at the individual app level. They are available in all non static Micros during runtime. You can create custom environment variables for your app that can be modified by the end user of the app.
 
 ### Custom Variables
 
-Use the `env` preset in the `Spacefile` if you need to set custom environment variables for your Micros. This can be used to let users of your app specify things like external secrets, [API Keys](https://www.notion.so/docs/en/basics/extending_apps#api-keys), or [Data Keys](https://www.notion.so/docs/en/basics/extending_apps#data-keys) of different app instances.
+Use the `env` preset in the `Spacefile` if you need to set custom environment variables for your Micros. This can be used to let users of your app specify things like external secrets, [API Keys](/docs/en/build/guides/extending-apps#api-keys), or [Data Keys](/docs/en/build/guides/extending-apps#data-keys) of different app instances.
 
 ```yaml
 micros:
@@ -25,11 +23,11 @@ micros:
 
 ```
 
-- `name` : environment variable name or key
-- `description` : human friendly description (optional)
-- `default` : default value for the variable (optional)
+- `name`: environment variable name or key
+- `description`: human friendly description (optional)
+- `default`: default value for the variable (optional)
 
-The user of the app will be shown a UI in the App's Settings where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`.
+The user of the app will be shown a [UI in the App's Settings](/docs/en/use/settings#configuration-variables) where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`.
 
 ### Pre-set Variables
 

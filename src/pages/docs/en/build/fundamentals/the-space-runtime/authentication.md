@@ -10,11 +10,13 @@ IMAGE
 
 On Space, apps are private by default. This experience is powered by the personal cloud model.  Traditional internet applications have multiple users sharing cloud resources — like a  a server and a database — with authentication code mediating the two. On the personal cloud, each user gets their own independent instance of an app — including servers, databases and filestores. Read more about the personal cloud here.
 
-If you are building an app that needs some or all parts to be public, like a website, you can use “Public Routes” to make specific routes or entire Micros public. If you need to access a protected app outside of the browser you can use “API Keys” for authorization. If you want to let others use your entire app, you can publish it.
+If you are building an app that needs some or all parts to be public, like a website, you can use [Public Routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes) to make specific routes or entire Micros public. If you need to access a protected app outside of the browser you can use [API Keys](/docs/en/build/fundamentals/the-space-runtime/authentication#api-keys) for authorization. If you want to let others use your entire app, you can [publish it](/docs/en/publish/intro).
 
 ### The User Perspective
 
-As a user, you’re the only person who can access your apps, which are all available on unique, personal, urls. They all sit behind Deta Auth, meaning you need to be authenticated to use them. If you’re using them through a browser, that means logging in. Your apps may also store data to your personal cloud. This data is also meant for you — it’s not accessible to the application developer, nor is it shared with other users of the same app.
+As a user, you’re the only person who can access your apps, which are all available on [unique, personal, urls](/docs/en/use/space-apps/domains). They all sit behind Deta Auth, meaning you need to be authenticated to use them. If you’re using them through a browser, that means logging in. 
+
+Your apps may also store data to your personal cloud. This data is also meant for you — it’s not accessible to the application developer, nor is it shared with other users of the same app.
 
 ### The Developer Perspective
 
@@ -22,7 +24,7 @@ As a developer, authentication should “just work”. You don’t have to think
 
 ## Public Micros and Routes
 
-If you want to turn off Deta Auth for parts of your app, making these parts publicly available, you can either make an entire Micro public, or specify which routes of it should be public. This is how you would, for example, host a public website or a blog on Deta Space.
+If you want to turn off Deta Auth for parts of your app, making these parts publicly available, you can either make [an entire Micro](/docs/en/build/fundamentals/the-space-runtime/micros) public, or specify which routes of your app should be public. This is how you would, for example, host a public website or a blog on Deta Space.
 
 ### Public Micros
 
@@ -77,7 +79,7 @@ Requests made to your Micro matching any of the routes defined in `public_routes
 
 ## API Keys
 
-You can also access to Micros programmatically or through non-browser clients (e.g. using other servers, shell scripts, or REST clients) with ******API Keys.****** To enable ****************API Keys**************** as a valid form of authorization for any Micro, use the `api_keys` preset for your Micro in your app’s `Spacefile`:
+You can also access to Micros programmatically or through non-browser clients (e.g. using other servers, shell scripts, or REST clients) with **API Keys**. To enable **API Keys** as a valid form of authorization for any Micro, use the `api_keys` preset for your Micro in your app’s `Spacefile`:
 
 ```
 micros:
@@ -94,4 +96,4 @@ If enabled, users of your app can generate **API Keys** in their app’s Setting
 > Note: If you enable API keys you should show clearly in the app that API Keys can be used and ideally have clear documentation on which endpoints of your app work with API Key authorization.
 > 
 
-Read more about API Keys in the User Manual.
+Read more about [API Keys in the User Manual](/docs/en/use/space-apps/using-apps#api-keys).
