@@ -6,11 +6,11 @@ layout: "@docs"
 
 # Tutorial: Build a To Do App
 
-This guide will teach you how to build your first internet application on Deta Space. It assumes zero prior knowledge about Space itself, and is meant to teach through practice. If you want to read more in depth about the concepts behind Space, see [Intro to Space apps](https://www.notion.so/New-Docs-a1d09ca83ab142daa680afdd3c20f4c1) and  [Space Fundamentals](https://www.notion.so/New-Docs-a1d09ca83ab142daa680afdd3c20f4c1).
+This guide will teach you how to build your first internet application on Deta Space. It assumes zero prior knowledge about Space itself, and is meant to teach through practice. If you want to read more in depth about the concepts behind Space, see [Intro to Space apps](/docs/en/build/intro).
 
 The guide has 5 sections:
 
-- ************************Overview************************ is a quick overview of Space and what we’ll build
+- **Overview** is a quick overview of Space and what we’ll build
 - **Prerequisites** are what you need before you can start building
 - **Projects, Builder and the Space Runtime** will set you up and briefly touch on a few concepts
 - **Coding the app** will teach you how to code an app for Space
@@ -20,7 +20,7 @@ The guide has 5 sections:
 
 ### What is Deta Space?
 
-Deta Space is a personal computer that lives in the internet, or ‘personal cloud’. A personal cloud is a new approach to cloud computing, making it a lot simpler for developers to create and share software on the internet. It’s also a completely new way of using internet software that puts you, as a user, in the driver’s seat. If you’re curious, you can read more here (LINK).
+Deta Space is a personal computer that lives in the internet, or ‘personal cloud’. A personal cloud is a new approach to cloud computing, making it a lot simpler for developers to create and share software on the internet. It’s also a completely new way of using internet software that puts you, as a user, in the driver’s seat. If you’re curious, you can read more here.
 
 What’s important to realize about the personal cloud is that every user of an app gets their own copy, with their own resources to power it. As you build the app, you’ll see you don’t think about auth or other users — you assume there’s just you. But once you’ve written your app, you’ll be able to publish it to just about anyone, if you want.
 
@@ -45,7 +45,7 @@ Since we are building an app for Deta Space, you will need a Deta account. You c
 
 ### **Space CLI**
 
-An essential part of building a Space app is the Space command line interface (CLI). We will use the CLI in this guide. You’ll also need it in the future to build your own Space apps. Make sure you install and log in to the CLI before starting. Read more about that here:  [Setup the Space CLI guide](Tutorial%20Build%20a%20To%20Do%20App%20dad0749b2ee84e1b85b6748634738d01.md).
+An essential part of building a Space app is the Space command line interface (CLI). We will use the CLI in this guide. You’ll also need it in the future to build your own Space apps. Make sure you install and log in to the CLI before starting. Read more about that here:  [Setup the Space CLI guide](/docs/en/build/fundamentals/space-cli).
 
 ### **Node.js**
 
@@ -58,7 +58,7 @@ The full code for the app that we are building is on GitHub: https://github.com/
 
 ## Projects, Builder and the Space Runtime
 
-Any Space app starts as a ******************Project******************, which provides tools for you to build, manage, and debug a Space app. Projects are created in ****************Builder****************, which is a System application that comes pre-installed in your Space, if you’re a developer. With Builder, you can manage different projects that you’re working on.
+Any Space app starts as a [Project](/docs/en/build/fundamentals/development/projects), which provides tools for you to build, manage, and debug a Space app. Projects are created in [Builder](/docs/en/build/fundamentals/development/builder), which is a System application that comes pre-installed in your Space, if you’re a developer. With Builder, you can manage different projects that you’re working on.
 
 To get started with our to do app, lets open a terminal on your development machine, create a new directory for our app called `todo-app`, and then navigate into it:
 
@@ -66,7 +66,7 @@ To get started with our to do app, lets open a terminal on your development mach
 mkdir todo-app && cd todo-app
 ```
 
-Next we’ll create a new Project in Builder using the Space CLI. We can use the `space new` command for this:
+Next we’ll create a new project in Builder using the Space CLI. We can use the `space new` command for this:
 
 ```bash
 space new
@@ -78,9 +78,9 @@ The CLI will ask you for a Project name, we’ll call ours `todo-app`:
 ? What is your project's name? > todo-app
 ```
 
-The CLI will now create your Project and link your local directory to it. You may have noticed a `**Spacefile**` was created in the directory where we ran the `space new` command. Deta Space has its own runtime, the **Space Runtime**, which is the “environment” where your app runs. And the `**Spacefile**` is used to tell the Space Runtime how to run your app, but we’ll explore it more as we go. 
+The CLI will now create your Project and link your local directory to it. You may have noticed a `**Spacefile**` was created in the directory where we ran the `space new` command. Deta Space has its own runtime, the [Space Runtime](/docs/en/build/fundamentals/the-space-runtime/about), which is the “environment” where your app runs. And the [`**Spacefile**`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) is used to tell the Space Runtime how to run your app, but we’ll explore it more as we go. 
 
-The runable component within the Space Runtime is a **Micro**, a serverless compute unit that can be configured to serve static files, run a server or handle other types of events. Micros can be written in almost any programming language or framework.  Our Quick Starters have more information.
+The runable component within the Space Runtime is a [Micro](/docs/en/build/fundamentals/the-space-runtime/micros), a serverless compute unit that can be configured to serve static files, run a server or handle other types of events. Micros can be written in almost any programming language or framework.  Our Quick Starters have more information.
 
 Let’s get back to our app.
 
@@ -91,7 +91,7 @@ A Space app can combine up to five different Micros, but for this app we will ne
 - a static Micro for our frontend
 - a Node.js Micro for our backend
 
-Deta Space also offers two built-in data storage primitives: **Base**, a NoSQL database and **Drive**, for storing files. We’ll use Base in our app, which we’ll get to in a bit.
+Deta Space also offers two built-in data storage primitives: [Base](/docs/en/build/fundamentals/data-storage#deta-base), a NoSQL database and [Drive](/docs/en/build/fundamentals/data-storage#deta-drive), for storing files. We’ll use Base in our app, which we’ll get to in a bit.
 
 ### Frontend
 
@@ -444,7 +444,7 @@ For our simple API we’ll create a `index.mjs` file that will contain our API r
 
 There a few important things happening in this file, let’s go through each one:
 
-****************************Starting the server****************************
+**Starting the server**
 
 At the bottom of the file, you’ll see that we are starting the HTTP server using the `PORT` environment variable. The Space Runtime will route HTTP requests to our Micro on the port set in this variable. Since our app talks over HTTP, this is necessary.
 
@@ -455,7 +455,7 @@ app.listen(port, () => {
 });
 ```
 
-************************************Connecting to Deta Base************************************
+**Connecting to Deta Base**
 
 At the top of the file we are importing the `express` package and also the `deta` package. `express` will run our web server, while `deta` is an SDK which you can use to talk with Space’s built-in database, Base.
 
@@ -551,9 +551,9 @@ If you examine the four handler functions in `index.mjs`, you’ll see how `GET`
     ```
     
 
-If you’re curious about what else Deta Base has to offer, you can read more here (MORE). 
+If you’re curious about what else Deta Base has to offer, you can read more [here](/docs/en/build/reference/base). 
 
-One more point we’d like to mention. As we referenced earlier, the notion of multiple users is completely abstracted away in our code. There is no auth code or logic dealing with multiple users managing their own to dos. Nonetheless, Space will still let us release our app to many users around the world, with this simple setup, which we’ll get to later.
+One more point we’d like to mention. As we referenced earlier, the notion of multiple users is completely abstracted away in our code. With Deta Space's [authentication](/dosc/en/build/fundamentals/the-space-runtime/authentication), there is no auth code or logic dealing with multiple users managing their own to dos. Nonetheless, Space will still let us release our app to many users around the world, with this simple setup, which we’ll get to later.
 
 ### Configuring the app using the Spacefile
 
@@ -613,11 +613,13 @@ The fields for this Micro are as follows:
 - `run`: this tells the Space runtime what command to use to run the Micro. Since our  `index.mjs` file starts our server we’ll just run the file with `node`
 - `dev`: this tells the Space runtime what command to use for development. We use the same command as for `run` but with the `watch` flag enabled, which allows node to automatically reload our server when we change something
 
+Read more about the complete list of `Spacefile` options [here](/docs/en/build/reference/spacefile).
+
 ### Application Routing
 
 Now that we have our two Micros configured, you might be wondering how Space actually runs them, and how they are able to handle incoming requests across different routes. 
 
-Space requires you to choose a **************************Primary Micro**************************, as you need at least one Micro to handle all incoming requests. This Micro will serve as the fallback, if no other Micro is handling a request. Your Primary Micro will also be available on the root (`/`) of your app.
+Space requires you to choose a **Primary Micro**, as you need at least one Micro to handle all incoming requests. This Micro will serve as the fallback, if no other Micro is handling a request. Your Primary Micro will also be available on the root (`/`) of your app.
 
 To do this we can use the `primary` field of a Micro in the `Spacefile`. For our to do app we want our frontend to be the Primary Micro, so we’ll add the field to it:
 
@@ -652,7 +654,7 @@ Meanwhile, in our backend server in `index.mjs`, all the handlers will be relati
 
 ### Locally
 
-Once we have our app fully configured using the `Spacefile`, we can run it locally to test if everything works. For this we’ll use the `space dev` command. It will start both of our Micros and emulate the routing of our entire Space app.
+Once we have our app fully configured using the `Spacefile`, we can run it locally to test if everything works. For this we’ll use the [`space dev`](/docs/en/build/fundamentals/development/local-development) command. It will start both of our Micros and emulate the routing of our entire Space app.
 
 Let’s try it by running `space dev`:
 
@@ -671,7 +673,7 @@ L url: http://localhost:4200/api
 
 To access your app, open a browser window and visit `http://localhost:4200/`. You should see our fully functional to do app!
 
-![Untitled](Tutorial%20Build%20a%20To%20Do%20App%20dad0749b2ee84e1b85b6748634738d01/Untitled.png)
+![tut-1](/public/docs-assets/build/cli-3.png)
 
 Try adding to dos and marking existing todos as complete. Everything should work — even when you reload the page your to dos should remain the same.
 
@@ -683,7 +685,7 @@ space open
 
 Navigate to the “Develop” page and then the “Data” tab to view your Base:
 
-![Untitled](Tutorial%20Build%20a%20To%20Do%20App%20dad0749b2ee84e1b85b6748634738d01/Untitled%201.png)
+TUT 1 IMAGE
 
 You can use the Base UI to edit your data and the changes should show up in your local app after reloading the page.
 
@@ -695,7 +697,7 @@ Now it’s time to put our app live on the internet in Deta Space. To do this we
 space push
 ```
 
-`space push` will take all of the source code, the configuration from the `Spacefile`, and send it to the build pipeline to create a ****************Revision****************. This Revision reflects an executable copy of your app at a point in time.
+`space push` will take all of the source code, the configuration from the `Spacefile`, and send it to the build pipeline to create a [Revision](/docs/en/build/fundamentals/development/pushing#revisions). This revision reflects an executable copy of your app at a point in time.
 
 ```bash
 $ space push
@@ -718,7 +720,7 @@ Your Spacefile looks good, proceeding with your push!!
 created revision: lamprey-pqyy
 ```
 
-After the Revision is created, the CLI will also create a new “Builder Instance” than runs the Revision. This instance is a live version of your app on the internet. It has all the same features as any other Space app, the only difference is that it is connected to your Builder Project.
+After the revision is created, the CLI will also create a new [Builder Instance](/docs/en/build/fundamentals/development/builder-instance) than runs the revision. This instance is a live version of your app on the internet. It has all the same features as any other Space app, the only difference is that it is connected to your Builder Project.
 
 ```bash
 💻  Updating your Builder instance with the new revision...
@@ -738,16 +740,15 @@ The CLI will print a URL which you can use to access and use your Builder Instan
 
 **Congrats, you have just built your first Space app! 🎉**
 
-<aside>
-💡 You will notice that your instance already contains the to dos that you created through the local app. This is because your Builder instance shares its data with your Builder Project (including local dev).
 
-</aside>
+> 💡 You will notice that your instance already contains the to dos that you created through the local app. This is because your Builder instance shares its data with your Builder Project (including local dev).
+
 
 ## **Important Takeaway**
 
 One very important detail you’ll notice is that your instance is only accessible to you. It is protected behind Deta Auth: if you’re not logged in to your Deta account, or in incognito, you can’t access it. This is fundamental to how Space works — apps are for you, by default.
 
-If you are building an app that needs some or all parts to be public, like a website, you can use “public routes” to make specific routes or entire Micros public. Learn more about that in our “Authentication” guide.
+If you are building an app that needs some or all parts to be public, like a website, you can use [public routes to make specific routes or entire Micros public](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes). 
 
 ## Wrapping up
 
@@ -779,4 +780,4 @@ If you want to dive deeper into the concepts behind Space and all the features i
 
 Space is based on the personal cloud, where apps and data are personal. But once you’ve built something personal, the personal cloud also has a powerful publishing model where you can make your app available to almost anyone in the world with an internet connection.
 
-Read more about publishing on Space here.
+Read more about publishing on Space [here](/docs/en/publish/intro).

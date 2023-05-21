@@ -29,6 +29,8 @@ To install the Space CLI on Windows, open PowerShell and enter:
 iwr https://deta.space/assets/space-cli.ps1 -useb | iex
 ```
 
+/* tab */
+
 **Linux**
 
 To install the Space CLI on Linux, open a Terminal and enter:
@@ -57,15 +59,15 @@ This command will ask for an ‘access token’ to authenticate your CLI.
 
 To get an access token, enter your [Space dashboard](https://deta.space/), open the Teletype (command bar) and click ‘Settings’:
 
-![https://deta.space/docs_assets/cli1.png](https://deta.space/docs_assets/cli1.png)
+![cli-1](/public/docs-assets/build/cli-1.png)
 
 This will open the Settings modal, where you can click ‘Generate Token’ to generate an access token:
 
-![https://deta.space/docs_assets/cli2.png](https://deta.space/docs_assets/cli2.png)
+![cli-2](/public/docs-assets/build/cli-2.png)
 
 Copy the resulting token:
 
-![https://deta.space/docs_assets/cli3.png](https://deta.space/docs_assets/cli3.png)
+![cli-3](/public/docs-assets/build/cli-3.png)
 
 You can paste this back into your CLI prompt. After you hit enter, you should be greeted by a success message.
 
@@ -77,8 +79,8 @@ Upon a successful log-in, you are ready to start building Space apps.
 
 ## CLI Reference
 
-Run `space help` to get a overview of the available commands or refer to the [Reference section](https://deta.space/docs/en/reference/cli) for a complete list of CLI commands and options.
+Run `space help` to get a overview of the available commands or refer to the [Reference section](/docs/en/build/reference/cli) for a complete list of CLI commands and options.
 
 ## Local Development
 
-See the developing locally page for more information on how to develop your app locally with `space dev`.
+See the [developing locally](/docs/en/build/fundamentals/development/local-development) page for more information on how to develop your app locally with `space dev`.

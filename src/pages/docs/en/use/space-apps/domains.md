@@ -24,6 +24,8 @@ You can also assign a **Custom Domain** name ****you own to any app you’ve ins
 
 To add a Custom Domain to an app you’ve installed, click the `...` from the App’s Tile on your Canvas to open the Settings menu. Then switch to the “Domains” tab and click “Add Domain”.
 
+![domain-1]()
+
 Enter your domain name in the input field, for example `[deta.pizza](http://deta.pizza)`. You will be shown two DNS records to add to your Domain via your DNS provider (most likely the registrar you bought your domain from). The DNS records allow you to link your domain to your Space app.
 
 ![https://deta.space/docs_assets/custom_domains/custom-domain-pending.png](https://deta.space/docs_assets/custom_domains/custom-domain-pending.png)

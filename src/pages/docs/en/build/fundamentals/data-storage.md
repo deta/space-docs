@@ -6,7 +6,7 @@ layout: "@docs"
 
 ## Collections
 
-In addition to running compute provided Micros, every Deta Space app is connected to a ********************Collection********************, which offers persistent data storage. 
+In addition to running compute provided Micros, every Deta Space app is connected to a **Collection**, which offers persistent data storage. 
 
 Collections offer two services:
 
@@ -17,9 +17,11 @@ All the data stored with a Collection is 'sandboxed' and belongs to the end user
 
 ### Deta Base
 
-To store data, Space apps can use [Deta Base](https://www.notion.so/docs/en/reference/base/about), a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. 
+To store data, Space apps can use **Deta Base**, a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs. 
 
-**Node.js**  | Python
+/* tab */
+
+**Node.js**
 
 ```jsx
 import { Deta } from 'deta';
@@ -39,13 +41,21 @@ const item = await db.get("my-key"); // retrieving item with key "my-key"
 const { items: myFirstSet } = await db.fetch({"age?gt": 30});
 ```
 
-Base can be accessed using the Deta Base SDK or the Base HTTP API.
+/* tab */
+
+**Python**
+
+Base can be accessed using the [Deta Base SDK](/docs/en/build/reference/sdk/base) or the [Base HTTP API](/docs/en/build/reference/http-api/base).
+
+Read the full technical reference for Base [here](/docs/en/build/reference/base).
 
 ### Deta Drive
 
-To store files, Space apps can use [Deta Drive](https://www.notion.so/docs/en/reference/drive/about), a fully-managed, secure and scalable file storage service. Each app can create and use as many Drives as it needs. 
+To store files, Space apps can use **Deta Drive**, a fully-managed, secure and scalable file storage service. Each app can create and use as many Drives as it needs. 
 
-**Node.js**  | Python
+/* tab * /
+
+**Node.js**
 
 ```jsx
 // this also works
@@ -65,7 +75,9 @@ const buf = await drive.get("hello.txt");
 
 ```
 
-Drive can be accessed using the Drive SDK or the Drive HTTP API.
+Drive can be accessed using the [Drive SDK](/docs/en/build/reference/sdk/drive) or the [Drive HTTP API](/docs/en/build/reference/http-api/drive).
+
+Read the full technical reference for Deta Drive [here](/docs/en/build/reference/drive).
 
 ## Data Keys
 
@@ -73,82 +85,92 @@ Authentication between any client reading or writing data to Base and Drive in a
 
 Space automatically manages keys for Space apps and for local development with `space dev`, so there is no need to manually generate them. But you can, if you want to interact with your data outside the context of a single Space app or are using a Headless Collection.
 
-- **Generating a Data Key for a Builder Project**
+/* tab / caret */
+
+**Generating a Data Key for a Builder Project**
     
-    From your Builder Project, navigate to the **Develop** tab and the **********Data********** sub-tab. Click ********************************Manage Data Keys********************************, then **************************************Create New Data Key************************************** and finally enter a name for your Data Key. You will be shown your new Data Key.
+From your Builder Project, navigate to the **Develop** tab and the **Data** sub-tab. Click **Manage Data Keys***, then **Create New Data Key** and finally enter a name for your Data Key. You will be shown your new Data Key.
+  
+![data-1](/public/docs-assets/build/data-storage-1.png)
     
-    ![Screen Shot 2023-04-26 at 21.25.19.png](Data%20Storage%2069689dbcc4b74fd9a788c2b7c83c53ba/Screen_Shot_2023-04-26_at_21.25.19.png)
+/* tab / caret */
+
+**Generating a Data Key for an Installed App**
     
-- **Generating a Data Key for an Installed App**
+From your Canvas, click your app’s context menu, click **Settings**, and then navigate to the **Keys** tab. Click **Create New Data Key** and finally enter a name for your Data Key. You will be shown your new Data Key. If your app is a Builder Instance, this menu is just another view for all the keys in your Builder Project.
+
+![data-2](/public/docs-assets/build/data-storage-2.png)
     
-    From your Canvas, click your app’s context menu, click ****************Settings****************, and then navigate to the ********Keys******** tab. Click **************************************Create New Data Key************************************** and finally enter a name for your Data Key. You will be shown your new Data Key. If your app is a Builder Instance, this menu is just another view for all the keys in your Builder Project.
+/* tab / caret */
+
+**Generating a Data Key for a Headless Collection**
     
-    ![Screen Shot 2023-04-26 at 21.28.03.png](Data%20Storage%2069689dbcc4b74fd9a788c2b7c83c53ba/Screen_Shot_2023-04-26_at_21.28.03.png)
-    
-- **Generating a Data Key for a Headless Collection**
-    
-    Open the Collections app from the Canvas and open the individual Collection you want to generate a Data Key for. Click **Collection Settings** in the top right corner, then click **Create New Data Key**, and finally enter a name for your Data Key. You will be shown your new Data Key.
-    
-    ![Screen Shot 2023-04-26 at 21.32.48.png](Data%20Storage%2069689dbcc4b74fd9a788c2b7c83c53ba/Screen_Shot_2023-04-26_at_21.32.48.png)
-    
+Open the Collections app from the Canvas and open the individual Collection you want to generate a Data Key for. Click **Collection Settings** in the top right corner, then click **Create New Data Key**, and finally enter a name for your Data Key. You will be shown your new Data Key.
+
+![data-3](/public/docs-assets/build/data-storage-3.png)
+![data-4](/public/docs-assets/build/data-storage-4.png)
+ 
 
 ## Developing with Base and Drive
 
 During development, you can share data between your local environment and your Builder Project in Space. You can use the Deta SDK or HTTP API to talk with Base and Drive in your  Project.
 
-- **************************Using the SDK**************************
+/* tab / caret */
+
+**Using the SDK**
     
-    ```jsx
+```jsx
+
+const { Deta } = require('deta'); // import Deta
     
-     const { Deta } = require('deta'); // import Deta
-        
-    // Initialize with no key
-    const deta = Deta();
+// Initialize with no key
+const deta = Deta();
+
+// This how to connect to or create a database.
+const db = deta.Base('simple_db');
+
+// store objects
+await db.put({name: "alex", age: 77})
+```
     
-    // This how to connect to or create a database.
-    const db = deta.Base('simple_db');
+/* tab / caret */
+
+**Using the HTTP API**
     
-    // store objects
-    await db.put({name: "alex", age: 77})
-    ```
-    
-- **Using the HTTP API**
-    
-    ```jsx
-    const fetch = require('node-fetch');
-    
-    // pull the environment variable DETA_PROJECT_KEY for authentication
-    const dataKey = process.env.DETA_PROJECT_KEY;
-    
-    // Replace these placeholders with your own values
-    const projectId = dataKey.split('_')[0];
-    const baseName = 'your_base_name';
-    
-    const url = `https://database.deta.sh/v1/${projectId}/${baseName}/items`;
-    
-    const headers = {
-      'X-API-Key': dataKey,
-      'Content-Type': 'application/json',
-    };
-    
-    fetch(url, { headers })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
-      })
-    ```
+```jsx
+const fetch = require('node-fetch');
+
+// pull the environment variable DETA_PROJECT_KEY for authentication
+const dataKey = process.env.DETA_PROJECT_KEY;
+
+// Replace these placeholders with your own values
+const projectId = dataKey.split('_')[0];
+const baseName = 'your_base_name';
+
+const url = `https://database.deta.sh/v1/${projectId}/${baseName}/items`;
+
+const headers = {
+  'X-API-Key': dataKey,
+  'Content-Type': 'application/json',
+};
+
+fetch(url, { headers })
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+  })
+```
     
 
 Space offers a way to automatically manage **Data Keys** for you with `space dev`, while you can also do it yourself manually.
 
 ### Automatic key management
 
-The Space CLI can automatically connect your local development environment with your Space Base & Drive using the `space dev` command. `space dev` will automatically inject a Data Key into your environment, which the SDK will pick up. If you are using the HTTP API, you can pull this Data Key from the injected environment variable `DETA_PROJECT_KEY`.
+The Space CLI can automatically connect your local development environment with your Space Base & Drive using the [`space dev`](/docs/en/build/fundamentals/development/local-development) command. `space dev` will automatically inject a Data Key into your environment, which the SDK will pick up. If you are using the HTTP API, you can pull this Data Key from the injected environment variable `DETA_PROJECT_KEY`.
 
-More information on how to use the `space dev` command can be found in the in the Developing Locally section.
 
 ### Manual setup
 
@@ -156,7 +178,7 @@ If the automatic set up does not work for your use-case, you can manually set up
 
 Add this as an environment variable inside your dev environment:
 
-```
+```bash
 DETA_PROJECT_KEY=<put_your_data_key_here>
 ```
 
@@ -165,15 +187,15 @@ The Deta SDKs will detect this key to access your development Bases and Drives.
 > We call these keys “Data Keys”, but the SDKs still refer to them as “project keys” for backwards compatibility reasons. Both of them are the same keys.
 > 
 
-If you are not using a Deta SDK, pass this Data ey using the `X-API-Key` header with the [Base HTTP API](https://www.notion.so/docs/en/reference/base/HTTP#auth) or [Drive HTTP API](https://www.notion.so/docs/en/reference/drive/HTTP#auth).
+If you are not using a Deta SDK, pass this Data ey using the `X-API-Key` header with the [Base HTTP API](/docs/en/build/reference/http-api/base#auth) or [Drive HTTP API](/docs/en/build/reference/http-api/drive#auth).
 
 ## Headless Collections
 
-You can also use Base or Drive to store data in a Collection, without creating a Space app. This is referred to as a **************************************Headless Collection**************************************. You can programmatically interact with data in a Headless Collection via the Deta SDKs and HTTP APIs. This can be useful for all sorts of reasons, for example see this tutorial for storing data in a [Deta Base from Streamlit Cloud](https://docs.streamlit.io/knowledge-base/tutorials/databases/deta-base).
+You can also use Base or Drive to store data in a Collection, without creating a Space app. This is referred to as a **Headless Collection**. You can programmatically interact with data in a Headless Collection via the Deta SDKs and HTTP APIs. This can be useful for all sorts of reasons, for example see this tutorial for storing data in a [Deta Base from Streamlit Cloud](https://docs.streamlit.io/knowledge-base/tutorials/databases/deta-base).
 
-To create a Collection, open the Collections app from your Canvas and then click **********************************+ New Collection.********************************** Finally, give your Collection a name to create it.
+To create a Collection, open the Collections app from your Canvas and then click **+ New Collection.** Finally, give your Collection a name to create it.
 
-![Screen Shot 2023-04-26 at 22.08.46.png](Data%20Storage%2069689dbcc4b74fd9a788c2b7c83c53ba/Screen_Shot_2023-04-26_at_22.08.46.png)
+IMAGE
 
 In this case, you will have to generate a Data Key for authentication, which you can do from the Collection Settings.
 
@@ -181,6 +203,6 @@ In this case, you will have to generate a Data Key for authentication, which you
 
 Base and Drive both come with UIs where you can easily view and edit files and data. These UIs are available inside your Builder Project under the "Develop" tab and "Data" sub-tab. They are also accessible from your Canvas for every app (click the `...` and then `View Data`).
 
-![Untitled](Data%20Storage%2069689dbcc4b74fd9a788c2b7c83c53ba/Untitled.png)
+![data-4](/public/docs-assets/build/data-storage-5.png)
 
 For detailed guides on using these UIs, see the documentation for Base UI and Drive UI.
