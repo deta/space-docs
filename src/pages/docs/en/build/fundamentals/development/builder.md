@@ -22,9 +22,9 @@ Once your app is running locally, you can “push” it to Space which will crea
 
 IMAGE OF BUILDER INSTANCE IN BUILDER
 
-After you push your app to Space, it will automatically install your Revision to your Project’s [Builder Instance](/docs/en/build/fundamentals/development/builder-instance). A Builder Instance is a fully functional copy of your app running in your own Space. This instance is accessible from your [Builder Project](/docs/en/build/fundamentals/development/builder-instance#from-builder) and also on your [Canvas](/docs/en/build/fundamentals/development/builder-instance#from-the-canvas), with the rest of your apps.
+After you push your app to Space, it will automatically install your Revision to your Project’s [Builder Instance](/docs/en/build/fundamentals/development/local-development). A Builder Instance is a fully functional copy of your app running in your own Space. This instance is accessible from your [Builder Project](/docs/en/build/fundamentals/development/local-development#from-builder) and also on your [Canvas](/docs/en/build/fundamentals/development/local-development#from-the-canvas), with the rest of your apps.
 
-The Builder Instance is meant for you and is like any other Space app, feature-wise. But as a developer you can push code to it from any of your Revisions, and it shares data with your local development setup. You can use your Builder Instance for [development and testing](/docs/en/build/fundamentals/development/builder-instance#for-testing), or [in production](/docs/en/build/fundamentals/development/builder-instance#in-production) — it’s up to you.
+The Builder Instance is meant for you and is like any other Space app, feature-wise. But as a developer you can push code to it from any of your Revisions, and it shares data with your local development setup. You can use your Builder Instance for [development and testing](/docs/en/build/fundamentals/development/local-development#for-testing), or [in production](/docs/en/build/fundamentals/development/local-development#in-production) — it’s up to you.
 
 
 ## Publishing Your App

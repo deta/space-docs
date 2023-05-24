@@ -67,7 +67,7 @@ IMAGE
 
 You can use a few tools that work together to create Space apps. You build, test, and publish apps from a [Project](/docs/en/build/fundamentals/development/projects), which are created through a system application called [Builder](/docs/en/build/fundamentals/development/builder). [The Space CLI](/docs/en/build/fundamentals/space-cli) connects your development environment to your Project, while also offering tools to emulate Space locally. 
 
-Your Project also has a [Builder Instance](/docs/en/build/fundamentals/development/builder-instance): a live and functional copy of your app in Deta Space. This instance gets continuously updated with changes as soon as you push them with the CLI. You can use this Builder Instance to test and refine your app, but you could also use it for yourself in production.
+Your Project also has a [Builder Instance](/docs/en/build/fundamentals/development/local-development): a live and functional copy of your app in Deta Space. This instance gets continuously updated with changes as soon as you push them with the CLI. You can use this Builder Instance to test and refine your app, but you could also use it for yourself in production.
 
 ## Releasing Your App
 

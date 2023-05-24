@@ -20,9 +20,9 @@ To secure your app, you have to manually activate authentication with the comman
 
 Deta Space takes a different approach by securing all apps with authentication by default. Only the user who owns an app instance can access the app,when they are authenticated on Space. If an attempt is made to access these applications from outside this context, the requestor will be redirected to the login page.
 
-When building a Space app, auth comes for free: you don't need to write any additional code. All you need to do is assume you're **building for yourself, as the only user**. Nonetheless, as a developer, you have the option to enable fine-grained access control using `public_routes` or `api_keys` in [Spacefile](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile). This approach ensures that the app remains secure while allowing for controlled access.
+When building a Space app, auth comes for free: you don't need to write any additional code. All you need to do is assume you're **building for yourself, as the only user**. Nonetheless, as a developer, you have the option to enable fine-grained access control using `public_routes` or `api_keys` in [Spacefile](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#whats-the-spacefile). This approach ensures that the app remains secure while allowing for controlled access.
 
-> ℹ️ The [Spacefile](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile) is a file that tells Deta Space how to run your app. it includes configuratios for things like auth.
+> ℹ️ The [Spacefile](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#whats-the-spacefile) is a file that tells Deta Space how to run your app. it includes configuratios for things like auth.
 
 Let’s go through an example of a Space Developer, let's call her Daniela, building a Space App called **Ping Pong**.
 

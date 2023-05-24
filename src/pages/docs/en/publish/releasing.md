@@ -39,7 +39,7 @@ You can provide specific options when you release using the CLI (which Revision 
 
 ## **Releasing from the Builder UI**
 
-You can create a Release for your Project using [Builder](https://deta.space/docs/en/basics/projects#projects-in-builder). From your Builder Project, go to the “Publish” tab and click the “New Release” button. 
+You can create a Release for your Project using [Builder](/docs/en/build/fundamentals/development/projects#projects-in-builder). From your Builder Project, go to the “Publish” tab and click the “New Release” button. 
 
 ![Screen Shot 2023-04-27 at 14.27.54.png](Releasing%20Your%20App%2001ccf90c4e6241a29fa4c63fc2402c57/Screen_Shot_2023-04-27_at_14.27.54.png)
 

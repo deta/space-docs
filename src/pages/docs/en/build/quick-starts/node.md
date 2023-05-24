@@ -8,7 +8,7 @@ layout: "@docs"
 This quickstart assumes that you have:
 
 - A [Deta Space account](https://deta.space/signup)
-- [Space CLI](https://deta.space/docs/en/basics/cli) installed on your machine and logged in
+- [Space CLI](/docs/en/build/basics/space-cli) installed on your machine and logged in
 - [Node.js](https://nodejs.org) and [npm](https://docs.npmjs.com/cli/v9/configuring-npm/install) installed on your machine
 
 > 💡 Currently, Space only supports Node.js 16, with plans to add support for Node.js 18 soon.
@@ -49,11 +49,11 @@ app.listen(port, () => {
 
 This code sets up a basic web server that listens on the port specified by the `PORT` environment variable.
 
-> 💡 Make sure your app is configured to listen on the port defined by the `PORT` [environment variable](https://deta.space/docs/en/basics/micros#micro-environment-variables).
+> 💡 Make sure your app is configured to listen on the port defined by the `PORT` [environment variable](/docs/en/build/fundamentals/the-space-runtime/configuration#pre-set-variables).
 
 ## Create a Space Project
 
-[Space projects](https://deta.space/docs/en/basics/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
+[Space projects](/docs/en/build/fundamentals/development/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
 
 To create a Space project, run the following command in the directory containing your source code:
 
@@ -63,7 +63,7 @@ space new
 
 You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
 
-Once confirmed, the project will be created along with a [`Spacefile`](https://deta.space/docs/en/reference/spacefile). The `Spacefile` contains the configuration for your [Micro](https://deta.space/docs/en/basics/micros) and a `.space` directory that stores project information and links it to your project.
+Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile). The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your project.
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -77,9 +77,9 @@ micros:
 
 > ⚠️ For now, the Spacefile with the generated configuration only works when there an `index.js` file at the root directory of the micro’s source code else you will have to explicitly define what command should be executed to start your app with the `run` command.
 
-> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](https://deta.space/docs/en/reference/spacefile) reference.
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](/docs/en/build/reference/spacefile) reference.
 
-The Spacefile can be further configured to depending on your project's specific requirements. So whether your project has a build step, or only a specific directory is required to be included in the final package of the Micro, you can configure these with the Spacefile and the build pipeline will handle them accordingly. [Read more here](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile).
+The Spacefile can be further configured to depending on your project's specific requirements. So whether your project has a build step, or only a specific directory is required to be included in the final package of the Micro, you can configure these with the Spacefile and the build pipeline will handle them accordingly. [Read more here](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#whats-the-spacefile).
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -98,7 +98,7 @@ micros:
 
 ## Developing Locally
 
-You can run your app on your local machine, in a way that [emulates Space](https://deta.space/docs/en/basics/local) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -130,7 +130,7 @@ To deploy your app to Space, simply run:
 space push
 ```
 
-This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](https://deta.space/docs/en/basics/revisions#testing-changes). Open it in your browser to test and use a live copy of your app on the internet.
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](/docs/en/build/fundamentals/development/local-development). Open it in your browser to test and use a live copy of your app on the internet.
 
 > 💡 You can use `space push --open` to open the builder instance in your browser after successful deployement and update of the builder instance.
 

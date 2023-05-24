@@ -17,7 +17,7 @@ In this guide, we will walk through the process of migrating your Deta Cloud Mic
 
 ## Requirements and Prerequisites
 
-Before you begin, make sure that you have installed and logged in to the Space CLI on your system. Login instructions for the Space CLI can be found [here](https://deta.space/docs/en/basics/cli).
+Before you begin, make sure that you have installed and logged in to the Space CLI on your system. Login instructions for the Space CLI can be found [here](/docs/en/build/basics/space-cli).
 
 ## Cloning the Source Code of Your Deta Cloud Micro
 
@@ -129,9 +129,9 @@ L engine: python3.9
 ? Do you want to bootstrap the project with this configuration?
 ```
 
-Type `y` or simply press `Enter` to use the bootstrapped configuration. This will create a Project on Deta Space and autogenerate a [Spacefile](https://deta.space/docs/en/reference/spacefile#whats-the-spacefile) for your project. The Spacefile will how to run your app on Space. Additionally, the CLI will create a `.space` directory locally, which links your local directory to your Space and stores information about the project. It is important to note that this directory should not be included in your version control system and will automatically be added to the `.gitignore` file.
+Type `y` or simply press `Enter` to use the bootstrapped configuration. This will create a Project on Deta Space and autogenerate a [Spacefile](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#whats-the-spacefile) for your project. The Spacefile will how to run your app on Space. Additionally, the CLI will create a `.space` directory locally, which links your local directory to your Space and stores information about the project. It is important to note that this directory should not be included in your version control system and will automatically be added to the `.gitignore` file.
 
-If the CLI fails to detect the app and generate the configuration, it will generate a blank Spacefile, which you can configure manually. For more information on the Spacefile, please refer to the official documentation [here](https://deta.space/docs/en/reference/spacefile).
+If the CLI fails to detect the app and generate the configuration, it will generate a blank Spacefile, which you can configure manually. For more information on the Spacefile, please refer to the official documentation [here](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile).
 
 > When working on Python projects, it is a good practice to include the virtual environment directory in the [.spaceignore](https://deta.space/docs/en/basics/revisions#ignoring-files-and-directories) file because it contains packages and dependencies that are specific to a particular environment and are not required for deployment. For example:
 >
@@ -228,7 +228,7 @@ Click "Configuration," and you should be brought to a Configuration menu for you
 <img src="/docs_assets/migration_assets/migrate_a_micro/create-api-key.png" alt="Context Menu" height="320px" />
 </div>
 
-With that, you have enabled API Keys for your Micro. You can now access protected routes by passing the API Key as an `X-Space-App-Key` header in your requests. For more information on API Keys in Space, visit the official documentation [here](https://deta.space/docs/en/basics/micros#api-keys).
+With that, you have enabled API Keys for your Micro. You can now access protected routes by passing the API Key as an `X-Space-App-Key` header in your requests. For more information on API Keys in Space, visit the official documentation [here](/docs/en/build/fundamentals/the-space-runtime/micros#api-keys).
 
 ## Advanced migrations
 
@@ -265,7 +265,7 @@ Let's dive in.
 
 First, let's add a [Custom Environment Variable] to our Space App to store the **Data Key** securely.
 
-Let's update our [Spacefile](https://deta.space/docs/en/reference/spacefile) with an `env` preset. Here's an example:
+Let's update our [Spacefile](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) with an `env` preset. Here's an example:
 ```bash
 v: 0
 micros:

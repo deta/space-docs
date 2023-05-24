@@ -22,7 +22,7 @@ The Space Build Pipeline is an isolated cloud environment that takes your source
 
 ## Revisions
 
-Once the build pipeline completes, it will result in a **Revision** being created. A revision is an installable and runnable package of your app. Revisions are immutable, and you can have multiple revisions for a single project. After your new revision is created, it will be automatically installed to your project’s [Builder Instance](/docs/en/build/fundamentals/development/builder-instance). You can use revisions in the Builder Instance to test and use your app on Space. But revisions of your app can also be [published to the world](/docs/en/publish/intro).
+Once the build pipeline completes, it will result in a **Revision** being created. A revision is an installable and runnable package of your app. Revisions are immutable, and you can have multiple revisions for a single project. After your new revision is created, it will be automatically installed to your project’s [Builder Instance](/docs/en/build/fundamentals/development/local-development). You can use revisions in the Builder Instance to test and use your app on Space. But revisions of your app can also be [published to the world](/docs/en/publish/intro).
 
 > You can use `space push --open` if you would like to push and directly open your Builder Instance in the browser after your new revision has been installed to it.
 

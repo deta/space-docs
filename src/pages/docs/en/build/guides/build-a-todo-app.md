@@ -720,7 +720,7 @@ Your Spacefile looks good, proceeding with your push!!
 created revision: lamprey-pqyy
 ```
 
-After the revision is created, the CLI will also create a new [Builder Instance](/docs/en/build/fundamentals/development/builder-instance) than runs the revision. This instance is a live version of your app on the internet. It has all the same features as any other Space app, the only difference is that it is connected to your Builder Project.
+After the revision is created, the CLI will also create a new [Builder Instance](/docs/en/build/fundamentals/development/local-development) than runs the revision. This instance is a live version of your app on the internet. It has all the same features as any other Space app, the only difference is that it is connected to your Builder Project.
 
 ```bash
 💻  Updating your Builder instance with the new revision...

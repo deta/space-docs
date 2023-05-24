@@ -73,7 +73,7 @@ IMAGE OF OVERVIEW
 
 **Develop**: where you to manage your project’s development. 
 
-The “Overview” sub-tab is where you can access your [Builder Instance](/docs/en/build/fundamentals/development/builder-instance), and see it’s [Logs](/docs/en/build/fundamentals/debugging#runtime-logs). 
+The “Overview” sub-tab is where you can access your [Builder Instance](/docs/en/build/fundamentals/development/local-development), and see it’s [Logs](/docs/en/build/fundamentals/debugging#runtime-logs). 
 
 IMAGE OF OVERVIEW SUB TAB
 

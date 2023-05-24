@@ -274,11 +274,11 @@ Once you have your app working locally, you can push it to the internet on Deta 
 ~svelte-fastapi % space push
 ```
 
-This command will package all your code files and pass them to the [Space Build Pipeline](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline), streaming build logs back to your machine. If your build completes successfully, a **Revision** (an installable and runnable package of your app) will be created and installed to your Project’s [Builder Instance](/docs/en/build/fundamentals/development/builder-instance).
+This command will package all your code files and pass them to the [Space Build Pipeline](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline), streaming build logs back to your machine. If your build completes successfully, a **Revision** (an installable and runnable package of your app) will be created and installed to your Project’s [Builder Instance](/docs/en/build/fundamentals/development/local-development).
 
 ## Builder Instances
 
-[Builder Instances](/docs/en/build/fundamentals/development/builder-instance) are fully functional apps running in Space, tied to a [Project](/docs/en/build/fundamentals/development/projects). You can use them to test and debug your app on Space before releasing it to the world. Or you can use them as a flexible personal copy of an app you built for your own use. They offer all the features that normal Space apps offer, and are always based on a specific [Revision](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) of a [Project](/docs/en/build/fundamentals/development/projects).
+[Builder Instances](/docs/en/build/fundamentals/development/local-development) are fully functional apps running in Space, tied to a [Project](/docs/en/build/fundamentals/development/projects). You can use them to test and debug your app on Space before releasing it to the world. Or you can use them as a flexible personal copy of an app you built for your own use. They offer all the features that normal Space apps offer, and are always based on a specific [Revision](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) of a [Project](/docs/en/build/fundamentals/development/projects).
 
 ![new-app-6](/public/docs-assets/build/new-apps-6.png)
 
@@ -296,13 +296,13 @@ As a real copy of your app running in Space, the Builder Instance is perfect for
 
 ### Using a Builder Instance
 
-You can [use your Builder Instance](/docs/en/build/fundamentals/development/builder-instance#using-a-builder-instance) as you would any other app.  Click on your Builder Instance, to open it in a new tab. If your app is an API, use the URL outside the browser.
+You can [use your Builder Instance](/docs/en/build/fundamentals/development/local-development#using-a-builder-instance) as you would any other app.  Click on your Builder Instance, to open it in a new tab. If your app is an API, use the URL outside the browser.
 
 You also have all the normal features of a Space App:
 
-- [Here’s how you set environment variables](/docs/en/build/fundamentals/development/builder-instance#environment-variables)
-- [Here’s how you view your data](/docs/en/build/fundamentals/development/builder-instance#storing-data)
-- [Here’s how you set a Custom Domain](/docs/en/build/fundamentals/development/builder-instance#custom-domains)
+- [Here’s how you set environment variables](/docs/en/build/fundamentals/development/local-development#environment-variables)
+- [Here’s how you view your data](/docs/en/build/fundamentals/development/local-development#storing-data)
+- [Here’s how you set a Custom Domain](/docs/en/build/fundamentals/development/local-development#custom-domains)
 
 ## Publishing Your App
 
