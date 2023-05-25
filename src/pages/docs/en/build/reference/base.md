@@ -6,19 +6,19 @@ layout: "@docs"
 
 Deta Base is a fully-managed, fast, scalable and secure NoSQL database with a focus on end-user simplicity. It offers a UI through which you can easily see, query, update and delete records in the database.
 
-# Storing Numbers
+## Storing Numbers
 
 > ⚠️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
 
 Deta Base supports queries for fetching data that match certain conditions. Queries are regular objects/dicts/maps with conventions for different operators for specifying the conditions.
 
-# Queries
+## Queries
 
-## Operators
+### Operators
 
 Queries support the following operators:
 
-### Equal
+#### Equal
 
 ```json
 {"age": 22, "name": "Beverly"}
@@ -35,49 +35,49 @@ Queries support the following operators:
 {"time": {"day": "Tuesday", "hour": "08:00"}}
 ```
 
-### Not Equal
+#### Not Equal
 
 ```json
 {"user.profile.age?ne": 22}
 ```
 
-### Less Than
+#### Less Than
 
 ```json
 {"user.profile.age?lt": 22}
 ```
 
-### Greater Than
+#### Greater Than
 
 ```json
 {"user.profile.age?gt": 22}
 ```
 
-### Less Than or Equal
+#### Less Than or Equal
 
 ```json
 {"user.profile.age?lte": 22}
 ```
 
-### Greater Than or Equal
+#### Greater Than or Equal
 
 ```json
 {"user.profile.age?gte": 22}
 ```
 
-### Prefix
+#### Prefix
 
 ```json
 {"user.id?pfx": "afdk"}
 ```
 
-### Range
+#### Range
 
 ```json
 {"user.age?r": [22, 30]}
 ```
 
-### Contains
+#### Contains
 
 ```json
 {
@@ -93,7 +93,7 @@ Queries support the following operators:
 }
 ```
 
-### Not Contains
+#### Not Contains
 
 ```json
 {
@@ -111,9 +111,9 @@ Queries support the following operators:
 
 > `?contains` and `?not_contains` only works for a list of strings if checking for membership in a list; it does not apply to list of other data types. You can store your lists always as a list of strings if you want to check for membership.
 
-## Logical Operators
+### Logical Operators
 
-### AND
+#### AND
 
 The entries in a single query object are `AND` ed together. For e.g. the query:
 
@@ -133,7 +133,7 @@ SELECT * FROM base WHERE active=1 AND age>=22;
 ```
 
 
-### OR
+#### OR
 
 Multiple query objects in a list are `OR` ed together. For eg. the queries:
 
@@ -150,7 +150,7 @@ SELECT * FROM base WHERE age<=30 OR age>=40;
 ```
 
 
-## Hierarchy
+### Hierarchy
 
 You can use the period character `.` to query for hierarchical fields within the data. For instance if you have the following item in the base:
 
@@ -173,25 +173,27 @@ Then you can query for the `active` and `age` within `profile` directly:
 }
 ```
 
-## Querying Keys
+### Querying Keys
 
 You need to consider the following when querying on keys:
 
 - The keys must be strings hence the operation values **must** also be strings. 
 - The [contains](#contains) and [not-contains](#not-contains) operators **are not supported**.
 - The [`AND`](#and) and [`OR`](#or) operations for different query values **are not supported**.
-    For e.g. **the following queries are invalid**:
-    ```json
-    {
-        // different AND key queries (invalid query)
-        "key": "a",
-        "key?pfx": "b"
-    }
-    ```
+    
+For e.g. **the following queries are invalid**:
 
-    ```json
-    {
-        // different OR key queries (invalid query)
-        [{"key?pfx":"a"}, {"key?pfx": "b"}]
-    }
-    ```
+```json
+{
+    // different AND key queries (invalid query)
+    "key": "a",
+    "key?pfx": "b"
+}
+```
+
+```json
+{
+    // different OR key queries (invalid query)
+    [{"key?pfx":"a"}, {"key?pfx": "b"}]
+}
+```

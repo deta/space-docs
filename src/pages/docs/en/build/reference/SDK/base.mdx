@@ -3,7 +3,6 @@ title: Base
 position: 1
 layout: "@docs"
 ---
-## Base
 
 /* Python */
 
@@ -20,7 +19,7 @@ The `Base` class provides methods to interact with a Deta Base.
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
 
-### Put
+## Put
 
 ```py
 def put(
@@ -55,7 +54,7 @@ Example:
 base.put({"value": "Hello world!"}, "my-key")
 ```
 
-### Get
+## Get
 
 ```py
 def get(key: str) -> dict | None:
@@ -77,7 +76,7 @@ Example:
 item = base.get("my-key")
 ```
 
-### Delete
+## Delete
 
 ```py
 def delete(key: str):
@@ -98,7 +97,7 @@ Example:
 base.delete("my-key")
 ```
 
-### Insert
+## Insert
 
 ```py
 def insert(
@@ -132,7 +131,7 @@ Example:
 base.insert({"value": "Hello world!"}, "my-key")
 ```
 
-### Put Many
+## Put Many
 
 ```py
 def put_many(
@@ -159,7 +158,7 @@ Example:
 base.put_many(["First item", "Second item", "Third item"])
 ```
 
-### Update
+## Update
 
 ```py
 def update(
@@ -192,7 +191,7 @@ base.update(
 )
 ```
 
-#### Update operations
+### Update operations
 
 Setting values is practiced through normal key-value pairs.
 The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
@@ -200,7 +199,7 @@ If not, it adds the attribute to the item with the corresponding value.
 
 Other operations are implemented through methods in the [`Util`](#util) class, accessible through the `util` attribute of a Base instance.
 
-### Fetch
+## Fetch
 
 ```py
 def fetch(
@@ -214,7 +213,7 @@ def fetch(
 
 Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
 
-A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
+A query is composed of a single [query object](/docs/en/build/reference/base#queries) or a list of query objects.
 In the case of a list, the indvidual queries are OR'ed.
 
 > ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
@@ -250,7 +249,7 @@ The `FetchResponse` class describes the response of the [`fetch`](#fetch) method
 The `util` attribute of a Base instance is an instance of the `Util` class.
 It provides utility methods for use in [update operations](#update-operations).
 
-### Increment
+## Increment
 
 ```py
 def increment(value: int | float = 1):
@@ -261,7 +260,7 @@ The provided value can be any positive or negative integer.
 The attribute's value _must be a number_.
 The default value is `1`.
 
-### Append
+## Append
 
 ```py
 def append(value: dict | list | str | int | float | bool):
@@ -270,7 +269,7 @@ def append(value: dict | list | str | int | float | bool):
 Appends to a list.
 The value can be a primitive type or a `list`.
 
-### Prepend
+## Prepend
 
 ```py
 def prepend(value: dict | list | str | int | float | bool):
@@ -279,7 +278,7 @@ def prepend(value: dict | list | str | int | float | bool):
 Prepends to a list.
 The value can be a primitive type or a `list`.
 
-### Trim
+## Trim
 
 ```py
 def trim():
@@ -287,8 +286,8 @@ def trim():
 
 Removes an attribute from the item.
 
-[1]: /docs/en/reference/base/about#storing-numbers "Storing numbers"
-[2]: /docs/en/reference/base/expiring_items "Expiring items"
+[1]: /docs/en/build/reference/base#storing-numbers "Storing numbers"
+[2]: /docs/en/build/reference/expiring_items "Expiring items"
 
 
 /* JavaScript */
@@ -306,7 +305,7 @@ The `Base` class provides methods to interact with a Deta Base.
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
 
-### Put
+## Put
 
 ```js
 async function put(
@@ -337,7 +336,7 @@ Example:
 await base.put({ value: "Hello world!" }, "my-key");
 ```
 
-### Get
+## Get
 
 ```js
 async function get(key: string): Promise<GetResponse>;
@@ -359,7 +358,7 @@ Example:
 const item = await base.get("my-key");
 ```
 
-### Delete
+## Delete
 
 ```js
 async function delete(key: string): Promise<DeleteResponse>;
@@ -380,7 +379,7 @@ Example:
 await base.delete("my-key");
 ```
 
-### Insert
+## Insert
 
 ```js
 async function insert(
@@ -409,7 +408,7 @@ Example:
 await base.insert({ value: "Hello world!" }, "my-key");
 ```
 
-### Put Many
+## Put Many
 
 ```js
 async function putMany(
@@ -434,7 +433,7 @@ Example:
 await base.putMany(["First item", "Second item", "Third item"]);
 ```
 
-### Update
+## Update
 
 ```js
 async function update(
@@ -461,7 +460,7 @@ await base.update(
 );
 ```
 
-#### Update operations
+### Update operations
 
 Setting values is practiced through normal key-value pairs.
 The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
@@ -469,7 +468,7 @@ If not, it adds the attribute to the item with the corresponding value.
 
 Other operations are implemented through methods in the [`BaseUtils`](#baseutils) class, accessible through the `util` attribute of a Base instance.
 
-### Fetch
+## Fetch
 
 ```js
 async function fetch(
@@ -492,7 +491,7 @@ In the case of a list, the indvidual queries are OR'ed.
 | `query?`   | [`CompositeType`](./types#compositetype) | The query to filter the items by. |
 | `options?` | [`FetchOptions`](./types#fetchoptions)   | Optional parameters.              |
 
-Returns promise which resolves a [`FetchResponse`](./types#fetchresponse).
+Returns promise which resolves a [`FetchResponse`](#fetchresponse).
 
 Example:
 
@@ -505,7 +504,7 @@ const response = await base.fetch({ "value?contains": "world" });
 The `util` attribute of a Base instance is an instance of the `BaseUtils` class.
 It provides utility methods for use in [update operations](#update-operations).
 
-### Increment
+## Increment
 
 ```js
 function increment(value?: number);
@@ -516,7 +515,7 @@ The provided value can be any positive or negative integer.
 The attribute's value _must be a number_.
 The default value is `1`.
 
-### Append
+## Append
 
 ```js
 function append(value: BasicType | ArrayType);
@@ -525,7 +524,7 @@ function append(value: BasicType | ArrayType);
 Appends to a list.
 The value can be a primitive type or an array.
 
-### Prepend
+## Prepend
 
 ```js
 function prepend(value: BasicType | ArrayType);
@@ -534,7 +533,7 @@ function prepend(value: BasicType | ArrayType);
 Prepends to a list.
 The value can be a primitive type or an array.
 
-### Trim
+## Trim
 
 ```js
 function trim();
@@ -563,7 +562,7 @@ Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible 
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
 
-### Put
+## Put
 
 ```go
 func (b *Base) Put(item interface{}) (string, error)
@@ -584,7 +583,7 @@ Returns the key of the item stored and an `error`. Possible error values:
 - `ErrUnauthorized`: unuathorized
 - `ErrInternalServerError`: internal server error
 
-> ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
+> ℹ️ Numbers in Base have [some limits](/docs/en/build/reference/base#storing-numbers).
 
 Example:
 
@@ -596,7 +595,7 @@ item := map[string]interface{}{
 key, err := db.Put(item)
 ```
 
-### Get
+## Get
 
 ```go
 func (b *Base) Get(key string, dest interface{}) error
@@ -623,7 +622,7 @@ var item map[string]interface{}
 err := db.Get("my-key", &item)
 ```
 
-### Delete
+## Delete
 
 ```go
 func (b *Base) Delete(key string) error
@@ -646,7 +645,7 @@ Example:
 err := db.Delete("my-key")
 ```
 
-### Insert
+## Insert
 
 ```go
 func (b *Base) Insert(item interface{}) (string, error)
@@ -678,7 +677,7 @@ item := map[string]interface{}{
 key, err := db.Insert(item)
 ```
 
-### Put Many
+## Put Many
 
 ```go
 func (b *Base) PutMany(items interface{}) ([]string, error)
@@ -711,7 +710,7 @@ items := []map[string]interface{}{item1, item2}
 keys, err := db.PutMany(items)
 ```
 
-### Update
+## Update
 
 ```go
 func (b *Base) Update(key string, updates Updates) error
@@ -739,7 +738,7 @@ updates := base.Updates{
 err := db.Update("my-key", updates)
 ```
 
-#### Update operations
+### Update operations
 
 Setting values is practiced through normal key-value pairs.
 The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
@@ -747,7 +746,7 @@ If not, it adds the attribute to the item with the corresponding value.
 
 Other operations are implemented through methods accessible through the `Util` field of a Base instance.
 
-### Fetch
+## Fetch
 
 ```go
 func (b *Base) Fetch(i *FetchInput) (string, error)
@@ -791,7 +790,7 @@ _, err := db.Fetch(&base.FetchInput{
 The `Util` field of a Base instance is pointer to the `util` struct.
 It provides utility methods for use in [update operations](#update-operations).
 
-### Increment
+## Increment
 
 ```go
 func (u *util) Increment(value interface{})
@@ -802,7 +801,7 @@ The provided value can be any positive or negative integer.
 The attribute's value _must be a number_.
 The default value is `1`.
 
-### Append
+## Append
 
 ```go
 func (u *util) Append(value interface{})
@@ -811,7 +810,7 @@ func (u *util) Append(value interface{})
 Appends to a list.
 The value can be a primitive type or an array.
 
-### Prepend
+## Prepend
 
 ```go
 func (u *util) Prepend(value interface{})
@@ -820,7 +819,7 @@ func (u *util) Prepend(value interface{})
 Prepends to a list.
 The value can be a primitive type or an array.
 
-### Trim
+## Trim
 
 ```go
 func (u *util) Trim()

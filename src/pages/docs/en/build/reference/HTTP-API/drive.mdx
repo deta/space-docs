@@ -8,7 +8,7 @@ import RequestTabs from "@/components/Tabs/RequestTabs.astro";
 
 ## General
 
-> 💡 You can get your **Project Key** and your **Project ID** of your project in [Builder](https://deta.space/builder). You need these to talk with the Deta Drive API.
+> 💡 You can get your **Data Key** and your **Project ID** of your project in [Builder](/docs/en/build/fundamentals/development/builder). You need these to talk with the Deta Drive API.
 
 ### Root URL
 This URL is the base for all your HTTP requests:
@@ -18,9 +18,12 @@ This URL is the base for all your HTTP requests:
 > The `drive_name` is the name given to your drive. If you already have a **Drive**, then you can go ahead and provide it's name here. Additionally, you could provide any name here when doing any `PUT` or `POST` request and our backend will automatically create a new drive for you if it does not exist. There is no limit on how many "Drives" you can create.
 
 ### Auth
-A **Project Key** _must_ be provided in the request **headers** as a value for the `X-Api-Key` key for authentication and authorization.
 
-Example `X-Api-Key: a0kjsdfjda_thisIsYourSecretKey`
+A [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) _must_ to be provided in the request **headers** as a value for the `X-API-Key` key for authentication. This is how we authorize your requests.
+
+Example `'X-API-Key: a0abcyxz_aSecretValue'`.
+
+> Data Keys were called Project Keys in earlier versions of Deta.
 
 ### File Names And Directories
 Each file needs a unique `name` which identifies the file. Directorial hierarchies are represented logically by the `name` of the file itself with the use of backslash `/`. 
@@ -30,7 +33,9 @@ For example, if you want to store a file `world.txt` under the directory `hello`
 The file name **must not** end with a `/`. This also means that you can not create an empty directory.
 
 A directory ceases to exist if there are no more files in it.
+
 ## Endpoints
+
 ### Put File
 `POST /files?name={name}`
 

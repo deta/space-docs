@@ -6,7 +6,7 @@ layout: "@docs"
 
 The CLI is a critical tool when building apps for Space. You can use it to create new projects, push changes, create releases and much more.
 
-Take a look at the [Setting up the CLI](/docs/en/basics/cli) guide on how to install and setup the Space CLI.
+Take a look at the [Setting up the CLI](/docs/en/build/fundamentals/space-cli) guide on how to install and setup the Space CLI.
 
 Below is a reference of commands the Space CLI offers.
 
@@ -16,7 +16,7 @@ Shows the help page
 
 ## `space login`
 
-You can use `space login` to login to Space. The CLI will prompt you for an access token which it will use for future executions. Refer to the [Setting up the CLI](/docs/en/basics/cli#authentication) section for more details.
+You can use `space login` to login to Space. The CLI will prompt you for an access token which it will use for future executions. Refer to the [Setting up the CLI](/docs/en/build/fundamentals/space-cli#authentication) section for more details.
 
 ```bash
 space login

@@ -4,8 +4,6 @@ position: 2
 layout: "@docs"
 ---
 
-## Drive
-
 /* Python */
 
 ```py
@@ -19,7 +17,7 @@ The `Drive` class provides methods to interact with a Deta Drive.
 | `name`    | `str`           | The name of the Drive. |
 | `host`    | `str` \| `None` | The host of the Drive. |
 
-### Put
+## Put
 
 ```py
 def put(
@@ -62,7 +60,7 @@ drive.put("hello.txt", data="Hello world!")
 drive.put("example.txt", path="path/to/example.txt")
 ```
 
-### Get
+## Get
 
 ```py
 def get(name: str) -> DriveStreamingBody | None:
@@ -84,7 +82,7 @@ response = drive.get("hello.txt")
 content = response.read()
 ```
 
-### Delete
+## Delete
 
 ```py
 def delete(name: str) -> str:
@@ -108,7 +106,7 @@ Example:
 drive.delete("hello.txt")
 ```
 
-### Delete Many
+## Delete Many
 
 ```py
 def delete_many(names: Sequence[str]) -> dict:
@@ -130,7 +128,7 @@ Example:
 drive.delete_many(["hello.txt", "example.txt"])
 ```
 
-### List
+## List
 
 ```py
 def list(
@@ -165,7 +163,7 @@ response = drive.list()["names"]
 
 The `DriveStreamingBody` class provides methods to read the content of a file from a Drive.
 
-### Read
+## Read
 
 ```py
 def read(size: int | None = None) -> bytes:
@@ -173,7 +171,7 @@ def read(size: int | None = None) -> bytes:
 
 Reads all or up to the next `size` bytes. Calling `read` after all the content has been read will return empty bytes.
 
-### Iterate Chunks
+## Iterate Chunks
 
 ```py
 def iter_chunks(chunk_size: int = 1024) -> Iterator[bytes]:
@@ -181,7 +179,7 @@ def iter_chunks(chunk_size: int = 1024) -> Iterator[bytes]:
 
 Returns an iterator that yields chunks of bytes of `chunk_size` at a time.
 
-### Iterate Lines
+## Iterate Lines
 
 ```py
 def iter_lines(chunk_size: int = 1024) -> Iterator[bytes]:
@@ -189,7 +187,7 @@ def iter_lines(chunk_size: int = 1024) -> Iterator[bytes]:
 
 Returns an iterator that yields lines from the stream. Bytes of `chunk_size` at a time is read from the raw stream and lines are yielded from there. The line delimiter is always `b'\n'`.
 
-### Close
+## Close
 
 ```py
 def close():
@@ -197,7 +195,7 @@ def close():
 
 Closes the stream.
 
-### Closed
+## Closed
 
 ```py
 @property
@@ -219,7 +217,7 @@ The `Drive` class provides methods to interact with a Deta Drive.
 | `driveName` | `string` | The name of the Drive. |
 | `host?`     | `string` | The host of the Drive. |
 
-### Put
+## Put
 
 ```js
 async function put(
@@ -251,7 +249,7 @@ await drive.put("hello.txt", { data: "Hello world!" });
 await drive.put("example.txt", { path: "path/to/example.txt" });
 ```
 
-### Get
+## Get
 
 ```js
 async function get(name: string): Promise<GetResponse>;
@@ -272,7 +270,7 @@ Example:
 const response = await drive.get("hello.txt");
 ```
 
-### Delete
+## Delete
 
 ```js
 async function delete(name: string): Promise<DeleteResponse>;
@@ -295,7 +293,7 @@ Example:
 await drive.delete("hello.txt");
 ```
 
-### Delete Many
+## Delete Many
 
 ```js
 async function deleteMany(names: string[]): Promise<DeleteManyResponse>;
@@ -317,7 +315,7 @@ Example:
 await drive.deleteMany(["hello.txt", "example.txt"]);
 ```
 
-### List
+## List
 
 ```js
 async function list(options?: ListOptions): Promise<ListResponse>;
@@ -352,7 +350,7 @@ The `Drive` class provides methods to interact with a Deta Drive.
 
 Returns a pointer to a [`Drive`](./types#drive) instance.
 
-### Put
+## Put
 
 ```go
 func (d *Drive) Put(i *PutInput) (string, error)
@@ -376,7 +374,7 @@ name, err := drv.Put(&drive.PutInput{
 })
 ```
 
-### Get
+## Get
 
 ```go
 func (d *Drive) Get(name string) (io.ReadCloser, error)
@@ -396,7 +394,7 @@ Example:
 file, err := drv.Get("hello.txt")
 ```
 
-### Delete
+## Delete
 
 ```go
 func (d *Drive) Delete(name string) (string, error)
@@ -418,7 +416,7 @@ Example:
 name, err := drv.Delete("hello.txt")
 ```
 
-### Delete Many
+## Delete Many
 
 ```go
 func (d *Drive) DeleteMany(names []string) (*DeleteManyOutput, error)
@@ -441,7 +439,7 @@ names := []string{"hello.txt", "example.txt"}
 response, err := drv.DeleteMany(names)
 ```
 
-### List
+## List
 
 ```go
 func (d *Drive) List(limit int, prefix string, last string) (*ListOutput, error)
