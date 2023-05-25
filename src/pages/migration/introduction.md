@@ -25,8 +25,8 @@ There is supported [Legacy Mode](/migration/learn-more/legacy-mode) for managing
 There are also Migration Paths available (and strongly recommended) until June 1.
 
 On June 1:
-- Deta Micros hosted on Deta Cloud and their associated resources (api keys and `.deta.dev` & custom domains) will stop working
-- Data in Deta Cloud Projects (Deta Bases and Drives) and their associated resources (project keys) will stop working
+- Deta Micros hosted on Deta Cloud, and their associated resources (api keys and `.deta.dev` & custom domains), will stop working
+- Access to data in Deta Cloud Projects (Deta Bases and Drives), and their associated resources (project keys), will stop working
 
 You must complete any migrations by end of day, May 31 CEST, if you would like to continue using anything you hosted on Deta Cloud.
 
@@ -44,7 +44,7 @@ Below are a few guides for getting going with migrating to Space and resources f
 - [Auth in Cloud vs. Space](/migration/learn-more/auth-comparison)
 
 ### ℹ️ More Resources
-- [Help! I hit a bug migrating](/migration/guides/bugs)
+- [Help! I hit a bug migrating](/migration/other/bugs)
 - [Why Deta Exists](https://deta.space/motivation/)
 
 ## ❓ Help, I'm stuck

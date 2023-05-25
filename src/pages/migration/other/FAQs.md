@@ -18,7 +18,7 @@ If you encounter difficulties migrating your cloud Micros to Space Apps, you can
 
 ### Will my Micros, Bases, Drives Continue to work?
 
-Yes, they will continue to work until June 1, 2023 4:00 PM UTC+1. After that they will be sunset.
+Yes, they will continue to work until June 1, 2023 12:00 AM UTC+2. After that they will be sunset.
 
 You will continue to be able to update Micros as well as use your Bases and Drives until June 1, but you won't be able to create new Projects or Micros.
 
