@@ -1,6 +1,6 @@
 ---
 title: Cloud Legacy Mode
-position: 2
+position: 1
 layout: "@docs"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Comparing Auth
-position: 3
+position: 2
 layout: "@docs"
 ---
 
