@@ -1,6 +1,6 @@
 ---
 title: Space vs. Cloud 101
-position: 1å
+position: 3
 layout: "@docs"
 ---
 ## Deta Space, viewed from Deta Cloud
