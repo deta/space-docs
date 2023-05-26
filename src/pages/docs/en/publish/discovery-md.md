@@ -13,11 +13,11 @@ The `Discovery.md` file is a Markdown file that includes two sections:
 - Frontmatter: where you can specify metadata about your app
 - Markdown Content: where you explain what your app does and why it exists.
 
-![Screen Shot 2023-04-27 at 10.17.58.png](The%20Discovery%20md%20File%20439b777e047a47b18e4375041a8a4512/Screen_Shot_2023-04-27_at_10.17.58.png)
+![discovery-1](/public/docs-assets/publish/discovery-md-1.png)
 
 # File Structure
 
-The `Discovery.md` file is uploaded during `space release` as part of a **************Release**************. You can also specify the `Discovery.md` data via a UI when you create a Release from the Builder UI.
+The `Discovery.md` file is uploaded during `space release` as part of a **Release**. You can also specify the `Discovery.md` data via a UI when you create a Release from the Builder UI.
 
 Here is an example `Discovery.md` file:
 
@@ -53,7 +53,7 @@ app_name: "Deta Space"
 
 ### `title`
 
-Use `title` to give your app a friendly and descriptive name on Discovery. This is different from the app name used once the app is installed. You can change that using the `[app_name](https://www.notion.so/docs/en/reference/spacefile#app_name)` option in the [Spacefile](https://www.notion.so/docs/en/reference/spacefile). The `title` will only be used on Discovery.
+Use `title` to give your app a friendly and descriptive name on Discovery. This is different from the app name used once the app is installed. You can change that using the [`app_name`](docs/en/build/reference/spacefile#app_name) option in the `Spacefile`. The `title` will only be used on Discovery.
 
 Choose a simple and memorable title and try to stand out. Avoid names that use generic terms or are too similar to existing app names.
 

@@ -24,11 +24,11 @@ The Deta Community is a great resource to promote your Space app and give you fe
 
 The Deta Discord server is an active community of people building and using Space. 
 
-There is a [specific channel for apps](https://discord.com/channels/827546555200438332/1033125158673715242) built and published on Space. To share your app with the community on Discord, create a post in the Channel. You will need to provide a Title and Description. For your Title, we recommend following the format ****************Title: a short tagline****************. For example, ****************************************************************************************************Deta Space: your personal computer on the internet****************************************************************************************************.
+There is a [specific channel for apps](https://discord.com/channels/827546555200438332/1033125158673715242) built and published on Space. To share your app with the community on Discord, create a post in the Channel. You will need to provide a Title and Description. For your Title, we recommend following the format **Title: a short tagline**. For example, **Deta Space: your personal computer on the internet**.
 
 For the description, include a few points on what your app does and why it may be interesting. Make sure to include a link to the Discovery page, where others can install your app:
 
-![Screen Shot 2023-04-27 at 16.15.35.png](Growing%20Your%20App%209c368aa83f2d492a88886bb5ade07186/Screen_Shot_2023-04-27_at_16.15.35.png)
+![growing-1](/public/docs-assets/publish/growing-your-app-1.png)
 
 ### Community Calls
 
@@ -48,12 +48,12 @@ Product Hunt is a popular platform for discovering new products. By publishing y
 
 To present your app effectively on Product Hunt, you will need to do a few things:
 
-- **************Title:************** start with a captivating title that succinctly conveys your app's purpose.
-- ******************Tagline:****************** craft a tagline that intrigues potential users and highlights what’s unique about your app.
-- ************************Description:************************ write a concise and clear description, detailing the app's functionality, benefits, and target audience.
-- **************************************Thumbnail Gallery:************************************** prepare a visually appealing thumbnail and gallery, showcasing your app's interface and key features. The images should be high-resolution and well-designed to make a lasting impression.
-- ************Link:************ the call to action link can link to your Discovery page, but you can also link to your own marketing page (which should link to the Discovery page).
-- ******************************Maker Comment:****************************** write an initial comment including why you built your app and what it does, and post it immediately after your app goes live.
+- **Title:** start with a captivating title that succinctly conveys your app's purpose.
+- **Tagline:** craft a tagline that intrigues potential users and highlights what’s unique about your app.
+- Description: write a concise and clear description, detailing the app's functionality, benefits, and target audience.
+- **Thumbnail Gallery:** prepare a visually appealing thumbnail and gallery, showcasing your app's interface and key features. The images should be high-resolution and well-designed to make a lasting impression.
+- Link: the call to action link can link to your Discovery page, but you can also link to your own marketing page (which should link to the Discovery page).
+- **Maker Comment:** write an initial comment including why you built your app and what it does, and post it immediately after your app goes live.
 
 Make sure to engage with the Product Hunt community by responding to comments and questions promptly. Consider sharing your launch on social media to drive initial traction.
 
@@ -68,9 +68,9 @@ Here’s [Deta’s last Product Hunt launch](https://www.producthunt.com/product
 
 GitHub is the place where much of the worlds open source software lives. If your app is open source, GitHub offers your app unparalleled visibility and plenty of opportunities. 
 
-To present your app on GitHub effectively, make sure to create a well-structured [README.md](http://readme.md/) file with a clear title, brief description and instructions for using and contributing to your app. Screenshots and GIFs are also helpful. One tip: make sure to edit the **********About********** section of your repository, and include the `deta` and `deta-space` topics to maximize visibility (also include other technologies you use). 
+To present your app on GitHub effectively, make sure to create a well-structured [README.md](http://readme.md/) file with a clear title, brief description and instructions for using and contributing to your app. Screenshots and GIFs are also helpful. One tip: make sure to edit the **About** section of your repository, and include the `deta` and `deta-space` topics to maximize visibility (also include other technologies you use). 
 
-![Screen Shot 2023-04-27 at 16.36.16.png](Growing%20Your%20App%209c368aa83f2d492a88886bb5ade07186/Screen_Shot_2023-04-27_at_16.36.16.png)
+![growing-2](/public/docs-assets/publish/growing-your-app-2.png)
 
 [See WebCrate](https://github.com/WebCrateApp/webcrate) for an example of a well presented and complete GitHub repository.
 
