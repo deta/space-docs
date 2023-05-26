@@ -23,7 +23,7 @@ For e.g.
 
 The item above will be deleted automatically on `2023-01-01 00:00:00 GMT` (the equivalent date of the timestamp above).
 
-You can use the [Base SDK](./sdk/base) to [`put`](./sdk/bas#put), [`put_many`](./sdk/base#put_many) or [`insert`](./sdk/base#insert) items with an expiration timestamp (or the [HTTP API](./http-api/base) directly).
+You can use the [Base SDK](./sdk/base) to [`put`](./sdk/base#put), [`put_many`](./sdk/base#put_many) or [`insert`](./sdk/base#insert) items with an expiration timestamp (or the [HTTP API](./http-api/base) directly).
 
 > ⚠️ Storing an item with an already expired timestamp will not fail but the item will be immediately deleted.
 
@@ -168,7 +168,7 @@ You can update the expiration timestamp with a new timestamp by updating the val
 
 Updating other fields of the item **does not** update (or renew) the expiration timestamp. You **must** update the value of `__expires` field.
 
-You can use the [Base SDK](./sdk.md) to [`update`](./sdk#update) the expiration timestamp (or the [HTTP API](./HTTP.md) directly).
+You can use the [Base SDK](./sdk.md) to [`update`](./sdk#update) the expiration timestamp (or the [HTTP API](./http-api/about.md) directly).
 
 ### Examples
 

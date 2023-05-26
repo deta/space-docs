@@ -12,9 +12,9 @@ Unlike other personal computers you’ve used, your Space lives on the internet.
 
 This section is going to help you get started using your Space. You’ll learn how to:
 
-- navigate Space’s **user interface**
-- find, use, and manage **applications**
-- manage and interact with your **data**
+- navigate Space’s [user interface](/docs/en/use/interface)
+- find, use, and manage [applications](/docs/en/use/space-apps/intro)
+- manage and interact with your [data](/docs/en/your-data/collections)
 
 We’ll also crack the hood open a bit and explore a few powerful ways you can use your Space.
 

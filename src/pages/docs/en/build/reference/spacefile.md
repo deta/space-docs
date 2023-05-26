@@ -10,7 +10,7 @@ The `Spacefile` file contains the configuration of your app and is used by Deta 
 
 The Spacefile file must be named `Spacefile` and needs to be in the root directory of your project. It uses a syntax similar to YAML, if you're new to YAML and want to learn more, see "[Learn YAML in Y minutes.](https://learnxinyminutes.com/docs/yaml/)".
 
-You can use the [`space new`](/docs/en/reference/cli#space-new) command to let the [Space CLI](/docs/en/reference/cli) automatically create the `Spacefile` for you.
+You can use the [`space new`](/docs/en/build/reference/cli#space-new) command to let the [Space CLI](/docs/en/build/reference/cli) automatically create the `Spacefile` for you.
 
 Here is an example `Spacefile`:
 
@@ -34,7 +34,7 @@ micros:
       - main
 ```
 
-> To customize the appearence of your app on [Discovery](/discovery) you can add a  [`Discovery.md`](/docs/en/reference/discovery) file to your project.
+> To customize the appearence of your app on [Discovery](/discovery) you can add a  [`Discovery.md`](/docs/en/publish/discovery-md) file to your project.
 
 ## Options
 
@@ -294,7 +294,7 @@ micros:
       api_keys: true
 ```
 
-More information on API Keys can be found in the [Micro Basics](/docs/en/basics/micros#api-keys).
+More information on API Keys can be found in the [Micro Basics](/docs/en/build/fundamentals/the-space-runtime/authentication#api-keys).
 
 #### `public_routes`
 
@@ -313,7 +313,7 @@ micros:
       - "/api/*/docs" # wildcards can be placed anywhere
 ```
 
-More information on public routes can be found in the [Micro Basics](/docs/en/basics/micros#public-routes).
+More information on public routes can be found in [Authentication](/docs/en/build/fundamentals/authentication#public-routes).
 
 #### `public`
 
@@ -358,7 +358,7 @@ An action is compromised of the following fields:
 - `name` (required): a human readable name for the action (needs to be unique across the app)
 - `description` (optional): a human readable description for the action (max 142 chars)
 - `trigger` (required): what triggers the action. Needs to be set to `schedule`.
-- `default_interval` (required): interval with which the schedule will run at ([supported intervals](/docs/en/basics/micros#scheduled-actions))
+- `default_interval` (required): interval with which the schedule will run at (supports [rates](/docs/en/build/reference/spacefile#rates) and [cron expressions](/docs/en/build/reference/spacefile#cron-expressions))
 
 When an action runs, a `POST` request containing the following body will be sent to the path `/__space/v0/actions` on your Micro:
 
@@ -434,4 +434,4 @@ Cron expressions allow you more flexibility and precision when scheduling a task
 - `0/5 8-17 * * mon-fri` : Run every 5 minutes Monday through Friday between 8:00 am and 5:55 pm (UTC)
 
 
-More information on scheduled actions and how to use them in your app can be found in the [Micro Basics](/docs/en/basics/micros#scheduled-actions).
+More information on scheduled actions and how to use them in your app can be found [here](/docs/en/build/fundamentals/the-space-runtime/actions).
