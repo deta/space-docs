@@ -16,15 +16,15 @@ You will be able to migrate your custom subdomains until June 1, 2023.
 
 1. On the "Domains" tab in the app's settings, click on "Migrate Legacy Subdomain"
 
-![Screenshot 1](/public/docs_assets/migration_assets/subdomains/subdomain-1.png)
+![Screenshot 1](/docs_assets/migration_assets/subdomains/subdomain-1.png)
 
 2. Choose your domain from the list and click "Migrate" to confirm.
 
-![Screenshot 2](/public/docs_assets/migration_assets/subdomains/subdomain-2.png)
+![Screenshot 2](/docs_assets/migration_assets/subdomains/subdomain-2.png)
 
 
 3. You should see the `MIGRATED` label when the migration has been successful.
-![Screenshot 4](/public/docs_assets/migration_assets/subdomains/subdomain-3.png)
+![Screenshot 4](/docs_assets/migration_assets/subdomains/subdomain-3.png)
 
 Repeat these 3 steps for each subdomain you want to migrate to this app.
 
