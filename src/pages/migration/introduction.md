@@ -14,21 +14,21 @@ On merge day (February 14, 2023), Deta Cloud will enter legacy status and Deta S
 
 1. `deta.sh` and `web.deta.sh` will redirect to pages on `deta.space`.
 2. Creating new Projects or new Micros on Deta Cloud will stop working.
-3. Existing Projects on Deta Cloud will continue to run, uninterrupted with support until June 1, 2023.
-4. Migration for Micros, Bases, and Drives will be strongly recommended and available until June 1, 2023.
-5. On June 1, 2023, Deta Cloud Projects will no longer be supported and unmigrated resources will be removed.
+3. Existing Projects on Deta Cloud will continue to run, uninterrupted with support until EOD June 1, 2023 (UTC + 2).
+4. Migration for Micros, Bases, and Drives will be strongly recommended and available until EOD June 1, 2023 (UTC + 2).
+5. On June 2, 2023, Deta Cloud Projects will no longer be supported and unmigrated resources will be removed.
 
 How will all this work?
 
-There is supported [Legacy Mode](/migration/learn-more/legacy-mode) for managing Deta Cloud Projects and resources until June 1.
+There is supported [Legacy Mode](/migration/learn-more/legacy-mode) for managing Deta Cloud Projects and resources until EOD June 1 (UTC + 2).
 
-There are also Migration Paths available (and strongly recommended) until June 1.
+There are also Migration Paths available (and strongly recommended) until EOD June 1, 2023 (UTC + 2).
 
 On June 1:
 - Deta Micros hosted on Deta Cloud, and their associated resources (api keys and `.deta.dev` & custom domains), **will stop working and be deleted**.
 - Access to data in Deta Cloud Projects (Deta Bases and Drives), and their associated resources (project keys), **will stop working and be deleted**.
 
-You must complete any migrations by end of day, May 31 CEST, if you would like to continue using anything you hosted on Deta Cloud.
+You must complete any migrations by end of day, June 1 (UTC + 2), if you would like to continue using anything you hosted on Deta Cloud.
 
 ## 🗂️ Guides and Resources
 
