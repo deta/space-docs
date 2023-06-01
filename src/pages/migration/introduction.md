@@ -16,7 +16,7 @@ On merge day (February 14, 2023), Deta Cloud will enter legacy status and Deta S
 2. Creating new Projects or new Micros on Deta Cloud will stop working.
 3. Existing Projects on Deta Cloud will continue to run, uninterrupted with support until EOD June 1, 2023 (UTC + 2).
 4. Migration for Micros, Bases, and Drives will be strongly recommended and available until EOD June 1, 2023 (UTC + 2).
-5. On June 2, 2023, Deta Cloud Projects will no longer be supported and unmigrated resources will be removed.
+5. After June 1st, 2023 EOD, Deta Cloud Projects will no longer be supported and unmigrated resources will be removed.
 
 How will all this work?
 
