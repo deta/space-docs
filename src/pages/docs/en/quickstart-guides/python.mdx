@@ -31,6 +31,8 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
+> ℹ️ Virtual environment paths look different if you are developing on Windows. For example, `source .venv/bin/activate` becomes `.venv\Scripts\Activate.ps1` in a PowerShell terminal.
+
 > ℹ️ It is important to exclude the virtual environment directory from your source code during deployment (`space push`) in order to avoid conflicts and compatibility issues. The Space CLI automatically ignores the `venv` and `.venv` directories by default. However, if your virtual environment directory has a different name, you should add it to the `.spaceignore` file.
 
 We’ll also install a web framework and a web server. For this guide, we’ll use [FastAPI](https://fastapi.tiangolo.com/) with [Uvicorn](https://www.uvicorn.org/) and [Flask](https://flask.palletsprojects.com/) with [Gunicorn](https://gunicorn.org/), but feel free to use other frameworks and web servers of your choice if you prefer.
@@ -179,6 +181,8 @@ You can run your app on your local machine, in a way that [emulates Space](https
   ```
   </Fragment>
 </LangTabs>
+
+> ℹ️ On Windows, `.venv/bin/uvicorn` becomes `.venv/Scripts/uvicorn`. You may encounter a similar message  like `http: proxy error: dial tcp [::1]:4201: connectex: No connection could be made because the target machine actively refused it.` if you forget to change the dev path.
 
 Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
 
