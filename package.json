@@ -6,11 +6,11 @@
   "license": "MIT",
   "homepage": "https://deta.space",
   "scripts": {
-    "dev": "PUBLIC_TELETYPE_INSTALLED=false astro dev",
+    "dev": "astro dev",
     "dev:tty": "PUBLIC_TELETYPE_INSTALLED=true astro dev",
     "start": "astro dev",
     "check": "astro check && tsc",
-    "build": "PUBLIC_TELETYPE_INSTALLED=false astro build",
+    "build": "astro build",
     "build:tty": "PUBLIC_TELETYPE_INSTALLED=true astro build",
     "preview": "astro preview",
     "astro": "astro"
