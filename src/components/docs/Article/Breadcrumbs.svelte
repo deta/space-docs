@@ -42,7 +42,7 @@
 <style lang="scss">
   a {
     /* TODO: FIX*/
-    color: black;
+    color: #000;
     text-decoration: none;
   }
   ul {
@@ -80,4 +80,13 @@
   /*ul li:last-child {
     font-weight: 700;
   }*/
+  :global(html.theme-dark) a {
+    color: var(--theme-text);
+  }
+  :global(html.theme-dark) ul {
+    li a:hover {
+      background: hsl(var(--color-gray-20));
+      color: #fff;
+    }
+  }
 </style>

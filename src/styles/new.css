@@ -103,7 +103,7 @@ p {
 }
 
 p,
-.content ul, ol {
+.content ul, ol, li {
 	color: var(--theme-text-light);
 }
 

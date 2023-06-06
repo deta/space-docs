@@ -3,40 +3,35 @@ title: The Space CLI
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import OSTabs from "@/components/Tabs/OSTabs.astro";
+
 The Space CLI is a command line interface you can use to build apps for Deta Space from a development environment. This page provides instructions for installing and configuring the Space CLI into your development environment.
 
 ## Installation
 
+<OSTabs>
+    <Fragment slot="mac">
+    To install the Space CLI on MacOS, open a Terminal session and enter:
 
-/* tab */
+    ```bash
+    curl -fsSL https://get.deta.dev/space-cli.sh | sh
+    ```
+    </Fragment>
+    <Fragment slot="win">
+    To install the Space CLI on Windows, open PowerShell and enter:
 
-**MacOS**
+    ```
+    iwr https://deta.space/assets/space-cli.ps1 -useb | iex
+    ```
+    </Fragment>
+    <Fragment slot="linux">
+    To install the Space CLI on Linux, open a Terminal and enter:
 
-To install the Space CLI on MacOS, open a Terminal session and enter:
-
-```bash
-curl -fsSL https://get.deta.dev/space-cli.sh | sh
-```
-
-/* tab */
-
-**Windows**
-
-To install the Space CLI on Windows, open PowerShell and enter:
-
-```
-iwr https://deta.space/assets/space-cli.ps1 -useb | iex
-```
-
-/* tab */
-
-**Linux**
-
-To install the Space CLI on Linux, open a Terminal and enter:
-
-```bash
-curl -fsSL https://deta.space/assets/space-cli.sh | sh
-```
+    ```bash
+    curl -fsSL https://deta.space/assets/space-cli.sh | sh
+    ```
+    </Fragment>
+</OSTabs>
 
 This will download the binary which contains the CLI code. It will try to export the `space` command to your path, making the `space` command globally usable on your machine. If it does not succeed, follow the directions output by the install script to export `space` to your path.
 

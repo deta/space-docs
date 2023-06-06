@@ -3,6 +3,8 @@ title: Debugging
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import InterfaceTabs from "@/components/Tabs/InterfaceTabs.astro";
+
 Debugging is an essential part of the development process. You may hit errors when you [push to Space](/docs/en/build/fundamentals/development/pushing) or while [using your app](/docs/en/use). Checking the logs will often point you in the right direction.
 
 ## Debugging during the push to Space
@@ -37,19 +39,19 @@ Space tracks and stores runtime logs for every app for 14 days after any error o
 
 You can inspect the logs of your Builder Instance from your Project’s “**Develop**” tab or from your app’s context menu on the Canvas, just like on any other app.  The full error stack traces are expandable, by clicking on any individual log item. Note that there can be up to a ~2 minute delay between an error occurring and when it becomes viewable.
 
-/* tab */
-
-**Logs in your Builder Project**
-
+<InterfaceTabs
+>
+  <Fragment slot="builder-project">
+    <br/>
 ![debugging-1](/docs-assets/build/debugging-1.png)
-
-/* tab */
-
-**Logs from the Canvas Context Menu**
-
+</Fragment>
+  <Fragment slot="canvas">
+<br/>
 Users of your app may also encounter errors you have not anticipated, which they can view by clicking the “**View Logs**” option from the app’s context menu on their Canvas.
 
 ![debugging-2](/docs-assets/build/debugging-2.png)
+  </Fragment>
+</InterfaceTabs>
 
 ## Tips for avoiding errors
 

@@ -69,14 +69,8 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                 <!-- Cards -->
 
                 <CardList>
-                    <TextCard>
-                        <svelte:fragment slot="title">Get started using Space</svelte:fragment>
-                        <svelte:fragment slot="text">
-                            After starting out with Deta Space, there still is much to explore. Start your next app now!
-                        </svelte:fragment>
-                    </TextCard>
-                    <TextCard>
-                        <svelte:fragment slot="title">Ready to develop your next app?</svelte:fragment>
+                    <TextCard color={"yellow"}>
+                        <svelte:fragment slot="title">Get started</svelte:fragment>
                         <svelte:fragment slot="text">
                             After starting out with Deta Space, there still is much to explore. Start your next app now!
                         </svelte:fragment>
@@ -97,6 +91,33 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                                 }
                             </style>
                             <a href="/docs/en/learn" class="card-link">
+                                Learn more
+                                <span class="arrow" style="display: flex; align-items: center;"><IconArrowNarrowRight size={18} color="currentColor" /></span>
+                            </a>
+                        </svelte:fragment>
+                    </TextCard>
+                    <TextCard color={"blue"}>
+                        <svelte:fragment slot="title">Develop</svelte:fragment>
+                        <svelte:fragment slot="text">
+                            After starting out with Deta Space, there still is much to explore. Start your next app now!
+                        </svelte:fragment>
+                        <svelte:fragment slot="footer">
+                            <style>
+                                .card-link {
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                .card-link .arrow {
+                                    display: flex;
+                                    align-items: center;
+                                    margin-left: 0.3rem;
+                                    transition: margin 0.2s ease-in-out;
+                                }
+                                .card-link:hover .arrow {
+                                    margin-left: 0.5rem;
+                                }
+                            </style>
+                            <a href="/docs/en/build" class="card-link">
                                 Learn more
                                 <span class="arrow" style="display: flex; align-items: center;"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                             </a>

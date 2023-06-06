@@ -258,4 +258,12 @@
     flex-grow: 1;
     flex-basis: 1;
   }*/
+  :global(html.theme-dark) details {
+    summary > div {
+        .icn-box {
+            background: hsl(var(--color-gray-20));
+            border-color: hsl(var(--color-gray-30));
+        }
+    }
+  }
 </style>

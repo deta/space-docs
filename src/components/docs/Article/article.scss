@@ -214,10 +214,9 @@ main pre {
     padding-block: var(--spacing-4);
     padding-inline: var(--spacing-5);
     border-radius: 10px;
+    margin-bottom: var(--spacing-7);
     // TODO: FIX OVERFLOW
 }
-
-
 
 
 
@@ -241,6 +240,9 @@ main p code {
     background: var(--theme-code-inline-bg);
     color: var(--theme-code-inline-text);
     font-size: 1rem;
+}
+html.theme-dark main p code {
+    background: hsl(var(--color-base-blue), 5%);
 }
 
 main p a {

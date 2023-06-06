@@ -3,6 +3,8 @@ title: The Builder Instance
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import InterfaceTabs from "@/components/Tabs/InterfaceTabs.astro";
+
 ![builder-instance](/docs-assets/build/builder-instance-headline.png)
 
 ## What's the Builder Instance?
@@ -45,19 +47,23 @@ The primary use case for the Builder Instance is to test your app before publish
 
 #### Logs
 
-If your Builder Instance runs into a runtime error when handling a request, the error logs will be returned in the request’s response. All runtime logs, including the error logs, are stored for 14 days and can be viewed in the **Develop** tab of your Builder project under **“Runtime Logs”**.  They can also be accessed from your App’s context menu on the Canvas under **“View Logs”**.
+If your app runs into a runtime error while handling a request, the error logs will be returned in the request’s response. These are accessible from your Builder Project and via the app on Canvas. All runtime logs, including the error logs, are stored for 14 days. 
 
-/* tab */
-
-**From your Builder Project**
+<InterfaceTabs
+>
+  <Fragment slot="builder-project">
+    <br/>
+In your Builder Project, your logs can be viewed in the **Develop** tab of your Builder project under **“Runtime Logs”**
 
 ![builder-instance-3](/docs-assets/build/builder-instance-3.png)
-
-/* tab */
-
-**From the Canvas Context Menu**
+  </Fragment>
+  <Fragment slot="canvas">
+    <br/>
+ The Logs can also be accessed from your App’s context menu on the Canvas under **“View Logs”**.
 
 ![builder-instance-4](/docs-assets/build/builder-instance-4.png)
+  </Fragment>
+</InterfaceTabs>
 
 The logs are sorted by time and can be filtered by a specific Micro using the dropdown. They are expandable to the full error stack trace, by clicking on any individual log. Runtime logs can help with debugging Space related errors and mis-configurations of your app.
 
@@ -71,73 +77,78 @@ If you instead want to have a safer environment to run your app without sudden c
 
 ## Storing Data
 
-The Builder Instance shares its data with your whole Builder Project, which you can [develop against](/docs/en/build/fundamentals/data-storage#developing-with-base-and-drive). If you are [developing your app locally](/docs/en/build/fundamentals/development/local-development) using `space dev`, the data will be shared between your local environment and your Builder Instance. You can [view and update this data](/docs/en/use/your-data/guis) as you use your app from your Builder Project or the app’s context menu on the Canvas.
+The Builder Instance shares its data with your whole Builder Project, which you can [develop against](/docs/en/build/fundamentals/data-storage#developing-with-base-and-drive). If you are [developing your app locally](/docs/en/build/fundamentals/development/local-development) using `space dev`, the data will be shared between your local environment and your Builder Instance. 
+You can [view and update this data](/docs/en/use/your-data/guis) as you use your app from your Builder Project or the app’s context menu on the Canvas (**"View Data"**).
 
-/* tab */
-
-**From your Builder Project**
-
+<InterfaceTabs
+>
+  <Fragment slot="builder-project">
+    <br/>
 ![builder-instance-5](/docs-assets/build/builder-instance-5.png)
+</Fragment>
+  <Fragment slot="canvas">
+<br/>
+ ![builder-instance-6](/docs-assets/build/builder-instance-6.png)
+  </Fragment>
+</InterfaceTabs>
 
-/* tab */
-
-**From the Instance’s Context Menu**
-
-![builder-instance-6](/docs-assets/build/builder-instance-6.png)
 
 ## Environment Variables
 
 Your Builder Instance has access to preset and custom environment variables. You can create environment variables for your app via the [`Spacefile`](/docs/en/build/reference/spacefile#env).
 
-You can update your Builder Instance’s environment variables from your Builder Project or from the Instance’s context menu on the Canvas.
+You can update your Builder Instance’s environment variables from your Builder Project or from the App's context menu on the Canvas (**"Settings"**).
 
-/* tab */
-
-**From your Builder Project**
-
+<InterfaceTabs
+>
+  <Fragment slot="builder-project">
+    <br/>
 ![builder-instance-7](/docs-assets/build/builder-instance-7.png)
-
-/* tab */
-
-**From your Instance’s Context Menu**
-
-Navigate to your app on the Canvas, click "Settings" and then "Configuration". From there, you can update your environment variables.
-
+</Fragment>
+  <Fragment slot="canvas">
+<br/>
 ![builder-instance-8](/docs-assets/build/builder-instance-8.png)
+  </Fragment>
+</InterfaceTabs>
 
 ## Domains
 
-Builder Instances have the same [Domain features as any Space App](/docs/en/use/space-apps/domains). You can access your Built-In Space Domain by opening the app, or from the Instance’s context menu on the Canvas.
+Builder Instances have the same [Domain features as any Space App](/docs/en/use/space-apps/domains). You can access your Built-In Space Domain by opening the app, or from the Instance’s context menu on the Canvas (**"Settings"**).
 
-/* tab */
-
-**From your Builder Project**
-
-You can add a custom domain through the “Configuration” sub-tab of the “Develop” tab in your Builder Project.
+<InterfaceTabs
+>
+  <Fragment slot="builder-project">
+    <br/>
+    You can add a custom domain through the “Configuration” sub-tab of the “Develop” tab in your Builder Project.
 
 ![builder-instance-9](/docs-assets/build/builder-instance-9.png)
-
-/* tab */
-
-**From your Instance’s Context Menu**
-
+</Fragment>
+  <Fragment slot="canvas">
+<br/>
 You can add a custom domain through the Instance’s context menu on the Canvas, using the "Domains" tab.
 
 ![builder-instance-10](/docs-assets/build/builder-instance-10.png)
+  </Fragment>
+</InterfaceTabs>
 
 
 ## Scheduled Actions
 
-Your Builder Instance also runs Scheduled Actions, which you can configure via the `Spacefile`. You can modify and disable Scheduled Actions, just like with any other app, via your Builder Project or through the Instance’s context menu on the Canvas.
+Your Builder Instance also runs Scheduled Actions, which you can configure via the `Spacefile`. You can modify and disable Scheduled Actions, just like with any other app, via your Builder Project or through the Instance’s context menu on the Canvas (**"Settings"**).
 
-**From your Builder Project**
-
+<InterfaceTabs
+>
+  <Fragment slot="builder-project">
+    <br/>
 Open the "Develop" tab of your project in Builder, and there will be a "Scheduled Actions" heading, if you have defined any Scheduled Actions in your `Spacefile`. From there, you can modify and disable any Scheduled Actions.
 
-![builder-instance-11](/docs-assets/build/builder-instance-12.png)
-
-**From your Instance’s Context Menu**
-
-Open the "Settings" for your app and naviagte to the "Schedules" tab.
+![builder-instance-11](/docs-assets/build/builder-instance-11.png)
+</Fragment>
+  <Fragment slot="canvas">
+<br/>
+Navigate to the "Schedules" tab.
 
 ![builder-instance-12](/docs-assets/build/builder-instance-12.png)
+  </Fragment>
+</InterfaceTabs>
+
