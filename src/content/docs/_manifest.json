@@ -29,7 +29,7 @@
             "domains.md"
           ]
         },
-        "data-storage.md"
+        "data-storage.mdx"
       ]
     },
     { "guides": ["public-site.md", "build-a-todo-app.md", "accessing-client-ip-address.md"] },

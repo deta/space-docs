@@ -3,6 +3,8 @@ title: Data Storage
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import LangTabsSimple from "@/components/Tabs/LangTabsSimple.astro";
+
 ![data-headline](/docs-assets/use/collections-headline.png)
 
 ## Collections
@@ -20,12 +22,11 @@ All the data stored with a Collection is 'sandboxed' and belongs to the end user
 
 To store data, Space apps can use **Deta Base**, a fully-managed, fast, and secure NoSQL database. Each app can create and use as many Bases as it needs.
 
-/* tab */
-
-**Node.js**
-
-```jsx
-import { Deta } from 'deta';
+<LangTabsSimple
+>
+  <Fragment slot="js">
+  ```jsx
+  import { Deta } from 'deta';
 
 const deta = Deta();
 
@@ -40,26 +41,42 @@ const item = await db.get("my-key"); // retrieving item with key "my-key"
 
 // fetch objects with complex queries
 const { items: myFirstSet } = await db.fetch({"age?gt": 30});
+  ```
+</Fragment> 
+<Fragment slot="py">
+```python
+from deta import Deta  # Import Deta
+
+# Initialize
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.Base("simple_db")
+
+# This how to connect to or create a drive.
+db = deta.Drive("my_store")
+
+# You can create as many as you want without additional charges.
+books = deta.Base("books")
 ```
+</Fragment>
+</LangTabsSimple>
 
-/* tab */
 
-**Python**
 
 Base can be accessed using the [Deta Base SDK](/docs/en/build/reference/sdk/base) or the [Base HTTP API](/docs/en/build/reference/http-api/base).
 
-Read the full technical reference for Base [here](/docs/en/build/reference/base).
+Read more about Base [here](/docs/en/build/reference/base).
 
 ### Deta Drive
 
-To store files, Space apps can use **Deta Drive**, a fully-managed, secure and scalable file storage service. Each app can create and use as many Drives as it needs.
+To store files, Space apps can use **Deta Drive**, a fully-managed, secure and scalable file storage service. 
+Each app can create and use as many Drives as it needs.
 
-/* tab * /
-
-**Node.js**
-
-```jsx
-// this also works
+<LangTabsSimple
+>
+  <Fragment slot="js">
+  ```jsx
 import { Deta } from "deta";
 
 // Initialize with a Project Key
@@ -73,12 +90,28 @@ await drive.put('hello.txt', {data: "Hello world"});
 
 // get a file by name
 const buf = await drive.get("hello.txt");
+  ```
+</Fragment> 
+<Fragment slot="py">
+```python
+from deta import Deta  # Import Deta
 
+# Initialize
+deta = Deta()
+
+# This how to connect to or create a drive.
+drive = deta.Drive("simple_drive")
+
+# You can create as many as you want
+photos = deta.Drive("photos")
+docs = deta.Drive("docs")
 ```
+</Fragment>
+</LangTabsSimple>
 
 Drive can be accessed using the [Drive SDK](/docs/en/build/reference/sdk/drive) or the [Drive HTTP API](/docs/en/build/reference/http-api/drive).
 
-Read the full technical reference for Deta Drive [here](/docs/en/build/reference/drive).
+Read more about Deta Drive [here](/docs/en/build/reference/drive).
 
 ## Data Keys
 
