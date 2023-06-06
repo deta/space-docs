@@ -14,6 +14,7 @@
   export let frontmatter: z.infer<typeof docsSchema>;
   export let headings: MarkdownHeading[];
   export let currentPage: string;
+  import OpenCanvasButton from "./OpenCanvasButton.svelte";
 </script>
 
 <header>
@@ -39,11 +40,12 @@
     
     <div>
         <ul>
-            <li class="only-desktop">
-                <CodeLanguageSwitcher />
-            </li>
             <li class="only-desktop" style="margin-right: -0.5rem;">
                 <ThemeToggle />
+            </li>
+
+            <li class="only-desktop">
+                <OpenCanvasButton />
             </li>
 
             <li class="only-mobile">

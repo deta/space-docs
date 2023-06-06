@@ -61,4 +61,22 @@
             font-weight: 600;
         }
     }
+
+    :global(html.theme-dark) {
+        li {
+            a {
+                span {
+                    border-color: hsl(var(--color-gray-30));
+                }
+                &:hover {
+                    span {
+                        border-color: hsl(var(--color-gray-70));
+                    }
+                }
+            }
+            &.active a span {
+                border-color: var(--theme-accent);
+            }
+        }
+    }
 </style>

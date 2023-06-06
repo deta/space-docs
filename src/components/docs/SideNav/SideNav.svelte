@@ -353,4 +353,17 @@
       margin-top: calc(var(--spacing-4) + 0.5rem);
     }
   }
+
+  // DARK MODE
+  :global(html.theme-dark) {
+    aside {
+        nav {
+            background: hsl(var(--color-gray-10));
+            border-color: hsl(var(--color-gray-20));
+        }
+        .nav-toggle:hover {
+            color: hsl(var(--color-gray-95));
+        }
+    }
+  }
 </style>

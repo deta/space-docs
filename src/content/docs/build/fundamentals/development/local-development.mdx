@@ -3,6 +3,8 @@ title: Local Development
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import Collapsible from "@cmp/docs/Collapsible/Collapsible.svelte";
+
 ![local-headline](/docs-assets/build/local-development-headline.png)
 
 ## Overview
@@ -71,52 +73,50 @@ In Deta Space, authentication between an app and its Collection happens automati
 
 What this means is that you can use Bases and Drives, without managing any keys in your local environment. If you are using the SDK, just initialize the Deta Object.
 
-Expandable **Snippet**
+<Collapsible title="Base SDK Code Snippet" code client:load>
+```jsx
+const { Deta } = require('deta'); // import Deta
 
-  ```jsx
-  const { Deta } = require('deta'); // import Deta
+// Initialize
+const deta = Deta();
 
-  // Initialize
-  const deta = Deta();
+// This how to connect to or create a database.
+const db = deta.Base('simple_db');
 
-  // This how to connect to or create a database.
-  const db = deta.Base('simple_db');
-
-  // You can create as many as you want without additional charges.
-  const books = deta.Base('books');
-  ```
-
+// You can create as many as you want without additional charges.
+const books = deta.Base('books');
+```
+</Collapsible>
 
 If you’re using the HTTP API, pull the environment variable `DETA_PROJECT_KEY`.
 
-Expandable **Snippet**
+<Collapsible title="HTTP API Code Snippet" code client:load>
+```jsx
+const fetch = require('node-fetch');
 
-  ```jsx
-  const fetch = require('node-fetch');
+const dataKey = process.env.DETA_PROJECT_KEY;
 
-  const dataKey = process.env.DETA_PROJECT_KEY;
+// Replace these placeholders with your own values
+const projectId = 'your_project_id';
+const baseName = 'your_base_name';
 
-  // Replace these placeholders with your own values
-  const projectId = 'your_project_id';
-  const baseName = 'your_base_name';
+const url = `https://database.deta.sh/v1/${projectId}/${baseName}/items/${itemKey}`;
 
-  const url = `https://database.deta.sh/v1/${projectId}/${baseName}/items/${itemKey}`;
+const headers = {
+  'X-API-Key': dataKey,
+  'Content-Type': 'application/json',
+};
 
-  const headers = {
-    'X-API-Key': dataKey,
-    'Content-Type': 'application/json',
-  };
-
-  fetch(url, { headers })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
-    })
-  ```
-
+fetch(url, { headers })
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+  })
+```
+</Collapsible>
 
 The data your app stores in development will be viewable and editable via [Base UI](/docs/en/use/your-data/guis#base-ui) and [Drive UI](/docs/en/use/your-data/guis#drive-ui) under the **Data** sub tab of the [Develop](/docs/en/build/fundamentals/development/projects#develop) tab in your Builder Project.
 

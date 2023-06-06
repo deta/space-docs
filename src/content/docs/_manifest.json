@@ -3,20 +3,20 @@
   "build": [
     "test.mdx",
     "typo.md",
-    "new-apps.md",
+    "new-apps.mdx",
     "space-apps.md",
     {
       "fundamentals": [
-        "space-cli.md",
+        "space-cli.mdx",
         "app-lifecycle.md",
         {
           "development": [
             "builder.md",
             "projects.md",
-            "local-development.md",
+            "local-development.mdx",
             "pushing.md",
-            "builder-instance.md",
-            "debugging.md"
+            "builder-instance.mdx",
+            "debugging.mdx"
           ]
         },
         {
@@ -25,7 +25,7 @@
             "micros.md",
             "configuration.md",
             "authentication.md",
-            "actions.md",
+            "actions.mdx",
             "domains.md"
           ]
         },

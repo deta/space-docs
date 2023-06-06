@@ -29,7 +29,7 @@
             margin-bottom: 0.75rem;
             .title {
                 font-weight: 700;
-                font-size: 1.25em;
+                font-size: 1.5em;
             }
         }
         footer {
@@ -40,8 +40,23 @@
     .card.blue {
         //background: hsl(var(--color-base-blue-dark), 55%);
         //color: white;
+        background: #E0E3FF;
+        border: 4px solid #B9C8FF;
+        border-radius: 13px;
+        footer {
+            :global(a) {
+                color: #806BFF !important;
+            }
+        }
     }
     .card.yellow {
-        background: #FFE4AD;
+        background: #FFF3DB;
+        border: 4px solid #FFE4AD;
+        border-radius: 13px;
+        footer {
+            :global(a) {
+                color: #EC9352 !important;
+            }
+        }
     }
 </style>

@@ -3,6 +3,8 @@ title: Actions
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import LangTabsSimple from "@/components/Tabs/LangTabsSimple.astro";
+
 Another useful building block you can use in your Space apps are **Actions**. An Action allows an app to run certain tasks in response to different **Triggers**. Actions can do really anything you dream up in code, like sending automated emails or collecting and cleaning up data. 
 
 Currently, Space supports **Scheduled Actions**, where a time-configurable schedule will trigger an Action. 
@@ -57,9 +59,10 @@ For example, the `Spacefile` from the prior section would result in sending the 
 
 It is up to you to handle the request and run whatever logic you need to in your app. For example, you could call a function or interact with [Base](/docs/en/build/fundamentals/data-storage#deta-base) and [Drive](/docs/en/build/fundamentals/data-storage#deta-drive) through the [Deta SDK](/docs/en/build/reference/sdk/about):
 
-
-/* tab */
-
+<LangTabsSimple
+>
+  <Fragment slot="js">
+    <br/>
 ```jsx
 // using express
 app.post('/__space/v0/actions', (req, res) => {
@@ -72,9 +75,9 @@ app.post('/__space/v0/actions', (req, res) => {
   res.sendStatus(200)
 })
 ```
-
-/* tab */
-
+</Fragment>
+  <Fragment slot="py">
+<br/>
 ```python
 # using FastAPI and Pydantic
 @app.post('/__space/v0/actions')
@@ -84,6 +87,8 @@ def actions(action: Action):
     if event['id'] == 'cleanup':
         cleanup()
 ```
+  </Fragment>
+</LangTabsSimple>
 
 Read more about triggering [Scheduled Actions while developing locally](/docs/en/build/fundamentals/development/local-development#triggering-scheduled-actions).
 

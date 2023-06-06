@@ -231,4 +231,19 @@
     flex-grow: 1;
     flex-basis: 1;
   }
+
+  :global(html.theme-dark) details {
+    summary {
+        color: hsl(var(--color-gray-95));
+    }
+    &.nested > summary > span {
+        border-color: hsl(var(--color-gray-30));
+    }
+    &.nested > summary:hover > span {
+        border-color: hsl(var(--color-gray-70));
+    }
+    &.nested.firstSub > summary > span {
+        border-left: 2px solid transparent;
+    }
+  }
 </style>

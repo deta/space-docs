@@ -3,13 +3,13 @@ title: Why You Should Care
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-## Internet computing, designed for people
+## Cloud computing, designed for people
 
-Since the internet was added to personal computers, they have transformed into gateways to the web. Web applications give people a lot of power to communicate, collaborate, and interact with the world. Many of these web applications are designed for people. But applications aren't a computer. And the "computing" that happens on the web is not designed for people. 
+The internet turned personal computers into gateways for web applications, empowering people to communicate and interact with humans and machines around the globe. While many of these apps are designed for people, the entire experience of using a computer on the internet is not. People have lost the autonomy and abilities present in personal computing: they don't own their data and they navigate a multitude of incompatible apps that don't work in concert on behalf of the user.
 
-We believe there is a qualitatively better experience when you design the computer for people. The personal cloud is an attempt at this, in the age of the internet.
+We believe that designing the entire computer around people provides a better experience: the personal cloud aims to bring this intent computers on the internet. It prioritizes the individual user as opposed to an enterprise or application as the starting point.
 
-A personal cloud carries the intent of personal computers. Unlike traditional personal computers you know, a personal cloud lives in the web. So it's not just an autonomous and private home to [use](/docs/en/use) all your [apps](/docs/en/use/space-apps/intro) and [your data](/docs/en/use/your-data/collections). It's also a personal portal to and from the rest of the world. It's a place not only to author, but to share, receive, and engage. It's a launchpad for everything in it to interact with the rest of the world, human and machine. And it's a place to [discover](https://deta.space/discovery) and use incredible things that others are creating.
+A personal cloud differs from conventional personal computers in that it exists on the web. Not only does it serve as a private and autonomous space to [use](/docs/en/use) your [apps](/docs/en/use/space-apps/) and [data](/docs/en/use/your-data/collections), but it also functions as a personal portal to and from the world. Not only can you author content, but it facilitates sharing, receiving, and engaging with others directly, acting as a launchpad for interactions between your content and the wider world, both human and machine. This includes the [discovery](https://deta.space/discovery) of the creations of others that you can use in a personal context.
 
 ### For users
 

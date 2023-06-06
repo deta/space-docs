@@ -29,7 +29,7 @@
         border-radius: var(--rounded-3);
         background: var(--theme-bg-hover);
         width: 100%;
-        margin-bottom: var(--spacing-4);
+        margin-bottom: var(--spacing-7);
     }
 
     .content {
