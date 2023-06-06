@@ -1,0 +1,75 @@
+---
+title: Component Tests
+excerpt: Base is the fastest way to store an item in a Base. If an item already exists under the given key, it will be replaced. In the case you do not provide a key, Base will automatically generate a 12-character string as a key. Base can also be used to store any additional data.
+layout: "@layouts/DocsPageLayout.astro"
+---
+
+import LangTabs from "@cmp/Tabs/LangTabs.astro"
+import LangTabsSelector from "@cmp/Tabs/LangTabsSelector.astro"
+import TabsExample from "@cmp/docs/Article/Tabs/TabExample.svelte"
+import Collapsible from "@cmp/docs/Collapsible/Collapsible.svelte"
+
+<LangTabsSelector />
+
+## Test
+
+Occaecat et aliqua ad ad pariatur. Minim non pariatur cillum proident sint reprehenderit excepteur ipsum duis quis cillum. Officia sunt ea nisi ex tempor sit cupidatat aliqua incididunt officia duis nostrud nulla ullamco. Elit quis cillum dolore ex culpa laboris et consectetur.
+
+Fugiat enim sint anim officia reprehenderit ea nisi. Et culpa eiusmod exercitation nulla voluptate veniam. Enim irure irure anim consectetur ullamco. Culpa velit nulla aliquip aliquip reprehenderit anim sint pariatur fugiat. Do exercitation est aliquip amet Lorem elit elit nisi commodo sit quis commodo. Nostrud sunt ex culpa do consequat exercitation et culpa elit veniam consectetur et excepteur commodo.
+
+Test inline `code`
+
+## Tabs
+
+Here are some tabs:
+
+<LangTabs>
+<Fragment slot="js">
+    Hey there from JS
+</Fragment>
+
+<Fragment slot="py">
+    Hey there from Python
+</Fragment>
+
+<Fragment slot="go">
+    Hey there from Go
+</Fragment>
+</LangTabs>
+
+<LangTabs>
+<Fragment slot="js">
+    Hey there from JS
+</Fragment>
+
+<Fragment slot="py">
+    Hey there from Python
+</Fragment>
+
+<Fragment slot="go">
+    Hey there from Go
+</Fragment>
+</LangTabs>
+
+## Collapse
+
+<Collapsible title="index.js" code client:load>
+```js
+import Tabs from "@cmp/docs/Tabs/Tabs.astro"
+```
+</Collapsible>
+
+<Collapsible title="Foo" client:load>
+
+Hey there!
+
+> This is a quote
+
+Here's some code:
+
+```js
+import Tabs from "@cmp/docs/Tabs/Tabs.astro"
+```
+</Collapsible>
+
+

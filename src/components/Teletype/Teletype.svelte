@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Action, Teletype, TeletypeProvider, TeletypeSystem } from "@deta/teletype/src/index";
+  import { Teletype, TeletypeProvider } from "@deta/teletype/src/index";
+  import type { Action, TeletypeSystem } from "@deta/teletype/src/index";
   import { getSystemTheme, changeTheme } from "../Header/ThemeToggle.svelte";
   import ColorSwatch from "@/components/Teletype/Icons/ColorSwatch.svelte";
   import Sun from "@/components/Teletype/Icons/Sun.svelte";

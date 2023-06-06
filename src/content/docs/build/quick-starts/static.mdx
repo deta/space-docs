@@ -1,0 +1,151 @@
+---
+title: Run a Static App
+layout: "@layouts/DocsPageLayout.astro"
+---
+
+import EngineTabs from "@/components/Tabs/StaticEngineTabs.astro";
+
+This quickstart assumes that you have:
+
+- A [Deta Space account](https://deta.space/signup)
+- [The Space CLI](/docs/en/build/fundamentals/space-cli) installed and authenticated on your machine
+- [Node.js](https://nodejs.org) and [npm](https://docs.npmjs.com/cli/v9/configuring-npm/install) installed on your machine
+
+> 💡 Currently, Space only supports Node.js 16, with plans to add support for Node.js 18 soon.
+We recommend using a Node version manager like [nvm](https://github.com/nvm-sh/nvm) to install Node.js and npm on your computer. This will allow you to quickly install and use different versions of Node.js.
+
+Space supports popular front-end frameworks like [React](https://react.dev/), [Svelte](https://svelte.dev/), and [Vue](https://vuejs.org/) out of the box. 
+
+However, if you're using a different framework like [Astro](https://astro.build/), [Solid](https://www.solidjs.com/) or are building static HTML apps without a framework or static site generator, you can still run it on Space by configuring the [Spacefile](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile).
+
+On Space you can push a static app you already built or a new project you are working on.
+
+## Create a Space project
+
+[Space projects](/docs/en/build/fundamentals/development/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
+
+```bash
+space new
+```
+
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile). The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your project.
+
+<EngineTabs>
+  <Fragment slot="react">
+  ```yaml
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: react-app
+      src: ./
+      engine: react
+      primary: true
+  ```
+  </Fragment>
+  <Fragment slot="svelte">
+  ```yaml
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: svelte-app
+      src: ./
+      engine: svelte
+      primary: true
+  ```
+  </Fragment>
+  <Fragment slot="vue">
+  ```yaml
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: vue-app
+      src: ./
+      engine: vue
+      primary: true
+  ```
+  </Fragment>
+</EngineTabs>
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](/docs/en/build/reference/spacefile) reference.
+
+If you're using a framework that's not yet supported out of the box, or a static HTML app without using a framework or static site generator, here is how to configure the Spacefile to work with your specific requirements:
+
+```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: static-app
+    src: ./
+    engine: static
+    primary: true
+    commands:
+      - npm run build
+    serve: dist
+```
+
+Here, the [`engine`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#engine) parameter specifies the type of engine used for the app, which is `static` in this case. The [`commands`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#commands) parameter is a list of commands that will be executed to build the app. The [`serve`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#serve) parameter specifies the directory that will be served as the root directory for the app, and in this case, the `dist` directory is used.
+
+## Developing Locally
+
+You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+
+<EngineTabs>
+  <Fragment slot="react">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: react-app
+      src: ./
+      engine: react
+      primary: true
+  +   dev: npm run start
+  ```
+  </Fragment>
+  <Fragment slot="svelte">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: svelte-app
+      src: ./
+      engine: svelte
+      primary: true
+  +   dev: npm run dev
+  ```
+  </Fragment>
+  <Fragment slot="vue">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: vue-app
+      src: ./
+      engine: vue
+      primary: true
+  +   dev: npm run dev
+  ```
+  </Fragment>
+</EngineTabs>
+
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
+
+```bash
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
+space push
+```
+
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. Once the build process is complete, your [Builder Instance](/docs/en/build/fundamentals/development/local-development). Open it in your browser to test and use a live copy of your app on the internet.
+
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployment and update of the builder instance.
+
+Congratulations! 🎉 You have successfully built, deployed and got your first Static app on Space. 🚀

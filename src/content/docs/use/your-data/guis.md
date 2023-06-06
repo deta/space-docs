@@ -1,0 +1,127 @@
+---
+title: Data GUIs
+layout: "@layouts/DocsPageLayout.astro"
+---
+
+Both Deta Base and Deta Drive offer graphical user interfaces for you to view and manage your data. You can access Base and Drive UI for data in [App Collections](/docs/en/use/your-data/collections#app-collections), for [Headless Collections](/docs/en/use/your-data/collections#headless-collections) in the Collections app, and for data in your [Builder Project](/docs/en/build/fundamentals/development/projects).
+
+## Opening the Data GUIs
+
+How you open the data GUIs depends on if you are dealing with an App Collection, Headless Collection, of Builder Project.
+
+/* tab - app collection */
+
+For an App Collection, open the data GUIs by clicking an app's context menu from the Canvas and selcting **View Data**.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 40%; max-width: 200px;" src="/docs-assets/use/data-guis-1.png"/><img style="border-radius: 5px; width: 40%; max-width: 200px; padding-left: 12px;" src="/docs-assets/use/data-guis-2.png"/> </div>
+
+Base UI is the default view for an App Collection, to open Drive UI, click the **Drive** tab.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width: 400px;" src="/docs-assets/use/data-guis-11.png"/> </div>
+
+/* tab - headless collection */
+
+For a Headless Collection, open the Collections app from the Canvas. Choose a Collection to open, and then select or create a resource to open a Data GUI.
+
+![collections-1](/docs-assets/use/collections-1.png)
+
+/* tab - builder project */
+
+For a Builder Project, open your project from Builder, navigate to the **Develop** tab and the **Data** sub-tab. From here you can open a resource in a Data GUI.
+
+![project-guis](/docs-assets/build/projects-develop-data.png)
+
+## Base UI
+
+The Base User Interface provides a Graphical User Interface (GUI) for text data in Deta Base. You can use Base UI for inspecting, adding, modifying, and deleting records in a Base.
+
+![data-guis-3](/docs-assets/use/data-guis-3.png)
+
+### Search
+
+Filter data swiftly in Base UI using a search keyword. This will search your entire data set for items that contain exact matches to your keyword.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 80%; max-width: 400px;" src="/docs-assets/use/data-guis-4.png"/> </div>
+
+### Queries
+
+You can also use Queries from the Deta Base query language in Base UI. This lets you run fetch data that match certain conditions, like not equal, contains, greater than, less than, among many others. Just enter a valid query in the input field and click **Run Query** to query your data.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 80%; max-width: 400px;" src="/docs-assets/use/data-guis-5.png"/> </div>
+
+Read the complete documentation for Base Queries [here](/en/build/reference/base#queries).
+
+### Editing you data
+
+> ⚠️ Be careful editing your data for an App Collection, this can break your app. Be especially careful when changing the type of any individual field.
+
+
+You can edit your data for any Collection. If you are using an [App Collection](/docs/en/use/your-data/collections#app-collections), you need to activate **Edit Mode** by toggling the switch.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 10%; max-width: 80px;" src="/docs-assets/use/data-guis-6.png"/> </div>
+
+Edit individual cells by clicking on them and editing their values in-line.
+
+![data-guis-7](/docs-assets/use/data-guis-7.png)
+
+Hit **save** after making changes, or **undo** to cancel them.
+
+#### Advance Editing
+
+Click a cell containing Object or Array data, or the **expand icon** in a given cell, for more advanced editing options, including changing data *types.*
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 60%; max-width: 300px;" src="/docs-assets/use/data-guis-8.png"/> </div>
+
+You can also an entire row of Base data as a JSON object by clicking the **edit** icon (📝).
+
+#### Adding items
+
+Create new items by clicking **Add Item** and editing the new row. You can add and edit multiple rows at once.
+
+Click **Save X Items** to save in progress changes to your Base.
+
+![data-guis-9](/docs-assets/use/data-guis-9.png)
+
+#### Deleting items
+
+Select the checkbox(es) for the item(s) you want to delete and click the **Delete** button.
+
+![data-guis-10](/docs-assets/use/data-guis-10.png)
+
+#### Refresh
+
+Upon opening the Base UI, it displays the latest data. Click the **Refresh** button to update and fetch any new data changes.
+
+## Drive UI
+
+The Drive User Interface provides a Graphical User Interface (GUI) for files in Deta Drive. You can use Drive UI for viewing, adding, and deleting files from a Drive.
+
+#### Downloading Files
+
+To download a file, click the **download** icon, which is on the right side of the the table.
+
+#### Preview Files
+
+Click on a file's name to preview it. Files highlighted in blue can be previewed directly in your browser.
+
+![data-guis-12](/docs-assets/use/data-guis-12.png)
+
+There you can **download** the file by clicking on the icon in the top right corner.
+
+Your current location is highlighted in black in the navigation bar at the top of Drive UI.
+
+### Editing Files
+
+You can upload or delete files from a Drive via Drive UI by activating Edit Mode. Activate **Edit Mode** by toggling the switch.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 10%; max-width: 80px;" src="/docs-assets/use/data-guis-6.png"/> </div>
+
+#### Uploading
+
+Upload a file by clicking the **Upload button** or dragging it into the list of files and folders. The file will be uploaded to the current directory.
+
+#### Deleting Files
+
+To delete files, select the checkbox(es) for the desired file(s) and click the **trash** icon in the top right corner of the Drive UI panel.
+
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 80%; max-width: 500px;" src="/docs-assets/use/data-guis-13.png"/> </div>

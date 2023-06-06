@@ -63,7 +63,8 @@ export default function Tabs({ sharedStore, defaultPanel, tabs, ...slots }: Prop
 
 	useEffect(() => {
 		if (scrollToTabRef.current) {
-			scrollToTabRef.current.scrollIntoView({ behavior: 'smooth' });
+			const y = scrollToTabRef.current.getBoundingClientRect().top + window.scrollY - 100;
+			window.scrollTo({top: y, behavior: 'smooth'});
 			scrollToTabRef.current = null;
 		}
 	}, [curr]);

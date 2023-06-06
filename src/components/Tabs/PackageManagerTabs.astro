@@ -1,0 +1,16 @@
+---
+import Tabs from "@/components/Tabs/Tabs";
+---
+
+<Tabs
+  client:visible
+  sharedStore="tabPkgMgr"
+  defaultPanel="npm"
+  tabs={[
+    { label: "NPM", value: "npm" },
+    { label: "Yarn", value: "yarn" },
+  ]}
+>
+  <Fragment slot="panel.npm"><slot name="npm" /></Fragment>
+  <Fragment slot="panel.yarn"><slot name="yarn" /></Fragment>
+</Tabs>

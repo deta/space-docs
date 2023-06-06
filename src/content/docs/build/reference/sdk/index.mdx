@@ -1,0 +1,97 @@
+---
+title: The Deta SDK
+layout: "@layouts/DocsPageLayout.astro"
+---
+
+import LangTabs from "@/components/Tabs/LangTabs.astro"
+import PackageManagerTabs from "@/components/Tabs/PackageManagerTabs.astro";
+
+The Deta library is the easiest way to store and retrieve data from your Deta Base or Deta Drive in a Collection. 
+Currently, we support JavaScript (Node + Browser), Python 3 and Go. [Drop us a line on Discord](https://go.deta.dev/discord) if you want us to support your favorite language.
+
+Deta provides SDK packages for [Base](./base) and [Drive](./drive) from your code.
+The SDKs are available for the following languages:
+
+- Python
+- JavaScript
+- Go
+
+## Installing
+
+<LangTabs>
+    <Fragment slot="js">
+        <PackageManagerTabs>
+            <Fragment slot="npm">
+                ```shell
+                npm install deta
+                ```
+            </Fragment>
+            <Fragment slot="yarn">
+                ```shell
+                yarn add deta
+                ```
+            </Fragment>
+        </PackageManagerTabs>
+    </Fragment>
+    <Fragment slot="py">
+        ```shell
+        pip install deta
+        ```
+    </Fragment>
+    <Fragment slot="go">
+        ```shell
+        go get github.com/deta/deta-go
+        ```
+    </Fragment>
+</LangTabs>
+
+> ℹ️ If you are using the Deta SDK within a [Deta Micro](/docs/en/build/fundamentals/the-space-runtime/micros), you must include `deta` in your `package.json` file to install the latest sdk version.
+
+## Instantiating
+
+To start working with your Base, you need to import the Deta class and initialize it. 
+To authenticate with Space, you need to either use the [`space dev`](/docs/en/build/fundamentals/development/local-development) command or provide a [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) in an environment variable called `DETA_PROJECT_KEY`.
+See [here](/docs/en/build/fundamentals/data-storage) for detailed information.
+
+Once you're authenticated, you can instantiate a subclass called Base with a database name of your choosing or Drive with a drive name of your choosing.
+
+Deta Bases and Drives are created for you automatically when you start using them.
+
+/* code example - python */
+
+```python
+from deta import Deta  # Import Deta
+
+# Initialize
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.Base("simple_db")
+
+# This how to connect to or create a drive.
+db = deta.Drive("my_store")
+
+# You can create as many as you want without additional charges.
+books = deta.Base("books")
+```
+
+/* code example - node */
+
+```javascript
+const { Deta } = require('deta'); // import Deta
+
+// Initialize
+const deta = Deta(); 
+
+// This how to connect to or create a database.
+const db = deta.Base('simple_db'); 
+
+// This how to connect to or create a drive.
+const drive = deta.Drive('my_store'); 
+
+// You can create as many as you want.
+const books = deta.Base('books'); 
+```
+
+
+> ⚠️ Your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) is confidential and meant to be used by you. Anyone who has your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) can access your database. Please, do not share it or commit it in your code.

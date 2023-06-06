@@ -16,6 +16,7 @@
 	margin-bottom: -4px;
 	background-color: transparent;
 	text-decoration: none;
+	scroll-margin-top: 5rem;
 }
 .TabGroup .active,
 .TabGroup [aria-selected="true"] {

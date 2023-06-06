@@ -1,0 +1,200 @@
+---
+title: Run a Python App
+layout: "@layouts/DocsPageLayout.astro"
+---
+
+import LangTabs from "@/components/Tabs/PythonFrameworkTabs.astro";
+
+This quickstart assumes that you have:
+
+- A [Deta Space account](https://deta.space/signup)
+- [The Space CLI](/docs/en/build/fundamentals/space-cli) installed and authenticated on your machine
+- [Python](https://www.python.org/downloads/) installed on your machine
+
+> 💡 Currently, Space supports Python 3.8 and Python 3.9, with plans to add support for Python 3.10 soon.
+> We recommend using a Python version manager like [pyenv](https://github.com/pyenv/pyenv) to install Python on your system. This will allow you to quickly install and use different versions of Python.
+
+## Create a Python App
+
+First, create a directory to contain the source code of your app and navigate to it.
+
+```bash
+mkdir python-app && cd python-app
+```
+
+Next, create a virtual environment to manage the dependencies for your app and activate it with:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+> ℹ️ It is important to exclude the virtual environment directory from your source code during deployment (`space push`) in order to avoid conflicts and compatibility issues. The Space CLI automatically ignores the `venv` and `.venv` directories by default. However, if your virtual environment directory has a different name, you should add it to the `.spaceignore` file.
+
+We’ll also install a web framework and a web server. For this guide, we’ll use [FastAPI](https://fastapi.tiangolo.com/) with [Uvicorn](https://www.uvicorn.org/) and [Flask](https://flask.palletsprojects.com/) with [Gunicorn](https://gunicorn.org/), but feel free to use other frameworks and web servers of your choice if you prefer.
+
+In your text editor, create a new file called `requirements.txt`, and add the following dependencies into it:
+
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```
+  fastapi
+  uvicorn
+  ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```
+  Flask
+  gunicorn
+  ```
+  </Fragment>
+</LangTabs>
+
+
+Then, install these dependencies to your local virtual environment with:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a new file called `main.py`. Then, add the following code:
+
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```python
+  from fastapi import FastAPI
+
+  app = FastAPI()
+
+  @app.get("/")
+  def root():
+      return "Hello from Space! 🚀"
+```
+  </Fragment>
+  <Fragment slot="flask">
+  ```python
+  from flask import Flask
+
+  app = Flask(__name__)
+
+  @app.route("/")
+  def root():
+      return "Hello from Space! 🚀"
+```
+  </Fragment>
+</LangTabs>
+
+
+This code sets up a basic web server that listens on the port specified by the `PORT` environment variable.
+
+> 💡 Make sure your app is configured to listen on the port defined by the `PORT` [environment variable](/docs/en/build/fundamentals/the-space-runtime/micros#micro-environment-variables).
+
+## Create a Space Project
+
+[Space projects](/docs/en/build/fundamentals/development/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public.
+
+```bash
+space new
+```
+
+You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
+
+Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile). 
+The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your project.
+
+```yaml
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: python-app
+    src: .
+    engine: python3.9
+    primary: true
+```
+
+> ⚠️ Currently, the Spacefile with the generated configuration is based on the old standard of running Python apps on Space, which requires a `main.py` file at the root directory of the Micro's source code with the app instance named as `app`. We recommend updating the configuration in the Spacefile to explicitly define the command to start your app with the `run` command:
+
+
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+  +   run: uvicorn main:app
+  ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+  +   run: gunicorn main:app
+  ```
+  </Fragment>
+</LangTabs>
+
+
+> ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](/docs/en/build/reference/spacefile) reference.
+
+## Developing Locally
+
+You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+
+<LangTabs>
+  <Fragment slot="fastapi">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+      run: uvicorn main:app
+  +   dev: .venv/bin/uvicorn main:app --reload
+  ```
+  </Fragment>
+  <Fragment slot="flask">
+  ```diff
+  # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+  v: 0
+  micros:
+    - name: python-app
+      src: .
+      engine: python3.9
+      primary: true
+      run: gunicorn main:app
+  +   dev: .venv/bin/flask --app main run
+  ```
+  </Fragment>
+</LangTabs>
+
+Once you define the `dev` command for the Micro in the Spacefile, you can start the development server by running the following command:
+
+```
+space dev
+```
+
+## Run it on Space
+
+To deploy your app to Space, simply run:
+
+```diff
+space push
+```
+
+This will validate your Spacefile, package and upload your source code to the Space build pipeline, and stream logs of the whole process on your terminal. 
+Once the build process is complete, your [Builder Instance](/docs/en/build/fundamentals/development/local-development). Open it in your browser to test and use a live copy of your app on the internet.
+
+> 💡 You can use `space push --open` to open the builder instance in your browser after successful deployement and update of the builder instance.
+
+Congratulations! 🎉 You have successfully built, deployed and got your first Python app on Space. 🚀

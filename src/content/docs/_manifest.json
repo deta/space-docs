@@ -1,0 +1,81 @@
+{
+  "learn": ["pc-what.md", "pc-why.md"],
+  "build": [
+    "test.mdx",
+    "typo.md",
+    "new-apps.md",
+    "space-apps.md",
+    {
+      "fundamentals": [
+        "space-cli.md",
+        "app-lifecycle.md",
+        {
+          "development": [
+            "builder.md",
+            "projects.md",
+            "local-development.md",
+            "pushing.md",
+            "builder-instance.md",
+            "debugging.md"
+          ]
+        },
+        {
+          "the-space-runtime": [
+            "about.md",
+            "micros.md",
+            "configuration.md",
+            "authentication.md",
+            "actions.md",
+            "domains.md"
+          ]
+        },
+        "data-storage.md"
+      ]
+    },
+    { "guides": ["public-site.md", "build-a-todo-app.md", "accessing-client-ip-address.md"] },
+    {
+      "quick-starts": [
+        "python.mdx",
+        "node.md",
+        "static.mdx",
+        "nuxt.md",
+        "next.md",
+        "sveltekit.md",
+        "go.md",
+        "rust.md",
+        "custom.md"
+      ]
+    },
+    {
+      "reference": [
+        "cli.md",
+        "spacefile.md",
+        "runtime.md",
+        "base.md",
+        "drive.md",
+        { "sdk": ["base.mdx", "drive.mdx", "examples.mdx", "types.mdx"] },
+        { "http-api": ["about.md", "base.mdx", "drive.mdx"] },
+        "expiring-items.mdx"
+      ]
+    }
+  ],
+  "use": [
+    "interface.md",
+    { "space-apps": [
+      "intro.md",
+      "discovery.md",
+      "using-apps.md",
+      "actions.md",
+      "domains.md",
+      "logs.md",
+      "settings.md"
+    ]},
+    {  "your-data": ["collections.md", "guis.md"]}
+  ],
+  "publish": [
+    "releasing.md",
+    "discovery-md.md",
+    "app-icons.md",
+    "growing-your-app.md"
+  ]
+}

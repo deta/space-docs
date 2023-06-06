@@ -1,0 +1,15 @@
+---
+import TabsSelector from "@/components/Tabs/TabsSelector";
+---
+
+<TabsSelector
+  client:visible
+  sharedStore="tabLang"
+  defaultPanel="js"
+  placeholder="Select a language"
+  tabs={[
+    { label: "JavaScript", value: "js" },
+    { label: "Python", value: "py" },
+    { label: "Go", value: "go" },
+  ]}
+></TabsSelector>
