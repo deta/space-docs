@@ -40,12 +40,12 @@
     
     <div>
         <ul>
-            <li class="only-desktop" style="margin-right: -0.5rem;">
-                <ThemeToggle />
-            </li>
-
             <li class="only-desktop">
                 <OpenCanvasButton />
+            </li>
+
+            <li class="only-desktop" style="margin-right: -0.5rem;">
+                <ThemeToggle />
             </li>
 
             <li class="only-mobile">
