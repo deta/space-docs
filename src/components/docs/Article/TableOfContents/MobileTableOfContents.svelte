@@ -24,7 +24,7 @@
   let open = collapsable ? false : true;
 
   let iObserver: IntersectionObserver;
-  let activeHeadingSlug: string = headings[0].slug;
+  let activeHeadingSlug: string = headings && headings.length > 0 ? headings[0].slug : '';
 
   // HANDLERS
   function onObserverCallback(
