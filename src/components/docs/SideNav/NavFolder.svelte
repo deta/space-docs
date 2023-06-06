@@ -116,6 +116,10 @@
 </details>
 
 <style lang="scss">
+  summary::-webkit-details-marker {
+      display: none;
+  }
+  
   details {
     width: 100%;
 

@@ -101,6 +101,10 @@
 </details>-->
 
 <style lang="scss">
+
+  summary::-webkit-details-marker {
+        display: none;
+    }
   details {
     --indent-width: 1.4rem;
 
