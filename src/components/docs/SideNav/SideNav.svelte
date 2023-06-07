@@ -2,8 +2,7 @@
   import AstroLogo from "@/components/core/AstroLogo.svelte";
   import { writable, get } from "svelte/store";
 
-  //export const sideNavOpen = writable<boolean>(true);
-  export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
+  export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", false);
   export const sideNavPeeking = writable<boolean>(false);
 
   export function updateBodyClass() {
@@ -16,9 +15,7 @@
   }
 
   export const toggleSideNav = () => {
-    console.log("toggleSideNav")
-    //sideNavOpen.update((e) => !e);
-    sideNavOpen.set(!get(sideNavOpen));
+    sideNavOpen.update((e) => !e);
     updateBodyClass();
   };
 </script>
@@ -48,6 +45,9 @@
 
   setContext("currentPage", currentPage);
 
+  let op = false;
+  $: op = $sideNavOpen;
+
   // HANDLERS
   function onBeginPeek() {
     if ($sideNavOpen || innerWidth < 768) return;
@@ -64,7 +64,8 @@
     sideNavPeeking.set(false);
   }
   function onWindowResize() {
-    if (innerWidth > 1150) wasDesktopWidth = true;  // Auto hide on resize -> Keep TTY from getting cut of
+    if (innerWidth > 1150)
+      wasDesktopWidth = true; // Auto hide on resize -> Keep TTY from getting cut of
     else if (wasDesktopWidth) {
       wasDesktopWidth = false;
       sideNavOpen.set(false);
@@ -75,7 +76,13 @@
   // HOOKS
   onMount(() => {
     updateBodyClass();
-    if (innerWidth < 768) sideNavOpen.set(false); // TODO: FIX
+    //if (innerWidth < 768 && JSON.parse(localStorage.getItem("sideNavOpen") || false)) sideNavOpen.set(false); // TODO: FIX
+    if (document) {
+      console.log("doc");
+      //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
+      //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
+      updateBodyClass();
+    }
   });
 </script>
 
@@ -87,81 +94,79 @@
   on:mouseenter={onBeginPeek}
   on:mouseleave={onEndPeek} />
 <aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover}>
-  {#if $sideNavOpen || $sideNavPeeking}
-    <nav
-      transition:fly={{
-        duration: 400,
-        easing: quintOut,
-        x: innerWidth >= 768 ? -100 : 0,
-        y: innerWidth < 768 ? 100 : 0
-      }}>
-      <header class="only-desktop">
-        <a href="/docs" class="docs-logo">
-          <AstroLogo size={28} />
-          <span>Space Docs</span>
-        </a>
-      </header>
+  <nav
+    transition:fly={{
+      duration: 400,
+      easing: quintOut,
+      x: innerWidth >= 768 ? -100 : 0,
+      y: innerWidth < 768 ? 100 : 0
+    }}>
+    <header class="only-desktop">
+      <a href="/docs" class="docs-logo">
+        <AstroLogo size={28} />
+        <span>Space Docs</span>
+      </a>
+    </header>
 
-      <div class="nav-tree">
-        <ul>
-          <CollapsibleGroup>
-            <NavSection
-              depth={0}
-              navItem={navTree.subItems[0]}
-              open={currentPage.includes("/learn")}
-              animated={false}>
-              <svelte:fragment slot="icon">
-                <IconBook2
-                  size={24}
-                  strokeWidth={2}
-                  style="currentColor"
-                  color="hsl(var(--color-base-purple), 50%)" />
-              </svelte:fragment>
-            </NavSection>
-            <NavSection
-              depth={0}
-              navItem={navTree.subItems[1]}
-              open={currentPage.includes("/build")}
-              animated={false}>
-              <svelte:fragment slot="icon">
-                <IconHammer
-                  size={24}
-                  strokeWidth={2}
-                  style="currentColor"
-                  color="hsl(var(--color-base-blue-dark), 50%)" />
-              </svelte:fragment>
-            </NavSection>
-            <NavSection
-              depth={0}
-              navItem={navTree.subItems[2]}
-              open={currentPage.includes("/use")}
-              animated={false}>
-              <svelte:fragment slot="icon">
-                <IconBolt
-                  size={24}
-                  strokeWidth={2}
-                  style="currentColor"
-                  color="hsl(var(--color-base-yellow), 50%)" />
-              </svelte:fragment>
-            </NavSection>
-            <NavSection
-              depth={0}
-              navItem={navTree.subItems[3]}
-              open={currentPage.includes("/publish")}
-              animated={false}>
-              <svelte:fragment slot="icon">
-                <IconRocket
-                  size={24}
-                  strokeWidth={2}
-                  style="currentColor"
-                  color="hsl(var(--color-base-green), 40%)" />
-              </svelte:fragment>
-            </NavSection>
-          </CollapsibleGroup>
-        </ul>
-      </div>
-    </nav>
-  {/if}
+    <div class="nav-tree">
+      <ul>
+        <CollapsibleGroup>
+          <NavSection
+            depth={0}
+            navItem={navTree.subItems[0]}
+            open={currentPage.includes("/learn")}
+            animated={false}>
+            <svelte:fragment slot="icon">
+              <IconBook2
+                size={24}
+                strokeWidth={2}
+                style="currentColor"
+                color="hsl(var(--color-base-purple), 50%)" />
+            </svelte:fragment>
+          </NavSection>
+          <NavSection
+            depth={0}
+            navItem={navTree.subItems[1]}
+            open={currentPage.includes("/build")}
+            animated={false}>
+            <svelte:fragment slot="icon">
+              <IconHammer
+                size={24}
+                strokeWidth={2}
+                style="currentColor"
+                color="hsl(var(--color-base-blue-dark), 50%)" />
+            </svelte:fragment>
+          </NavSection>
+          <NavSection
+            depth={0}
+            navItem={navTree.subItems[2]}
+            open={currentPage.includes("/use")}
+            animated={false}>
+            <svelte:fragment slot="icon">
+              <IconBolt
+                size={24}
+                strokeWidth={2}
+                style="currentColor"
+                color="hsl(var(--color-base-yellow), 50%)" />
+            </svelte:fragment>
+          </NavSection>
+          <NavSection
+            depth={0}
+            navItem={navTree.subItems[3]}
+            open={currentPage.includes("/publish")}
+            animated={false}>
+            <svelte:fragment slot="icon">
+              <IconRocket
+                size={24}
+                strokeWidth={2}
+                style="currentColor"
+                color="hsl(var(--color-base-green), 40%)" />
+            </svelte:fragment>
+          </NavSection>
+        </CollapsibleGroup>
+      </ul>
+    </div>
+  </nav>
 
   <div class="nav-toggle only-desktop">
     <IconButton on:click={toggleSideNav}>
@@ -181,6 +186,45 @@
     }
     .only-desktop {
       display: inherit;
+    }
+  }
+
+  // ANIMATIONS
+  @keyframes slideInToRight {
+    from {
+      transform: translateX(-40px);
+      display: none;
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0px);
+      display: block;
+      opacity: 1;
+    }
+  }
+  @keyframes slideInToUp {
+    from {
+      transform: translateY(40px);
+      display: none;
+      opacity: 0;
+    }
+    to {
+      transform: translatey(0px);
+      display: block;
+      opacity: 1;
+    }
+  }
+  @keyframes slideOutToLeft {
+    // TODO: Does not work, figure out a way to make it work
+    from {
+      transform: translateX(0px);
+      display: flex;
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-40px);
+      display: none;
+      opacity: 0;
     }
   }
 
@@ -273,6 +317,11 @@
   aside.open {
     //top: 0;
   }
+  aside.open nav,
+  aside.peeking nav {
+    display: block;
+    animation: slideInToUp 200ms;
+  }
 
   @media screen and (min-width: 768px) {
     // DESKTOP
@@ -293,9 +342,14 @@
       background: transparent;
       //width: 35ch;
 
+      &.open nav,
+      &.peeking nav {
+        display: flex;
+        animation: slideInToRight 200ms;
+      }
       nav {
         //display: block;
-        display: flex;
+        display: none;
         box-sizing: border-box;
         position: fixed;
         top: 0px;
@@ -366,13 +420,13 @@
   // DARK MODE
   :global(html.theme-dark) {
     aside {
-        nav {
-            background: hsl(var(--color-gray-10));
-            border-color: hsl(var(--color-gray-20));
-        }
-        .nav-toggle:hover {
-            color: hsl(var(--color-gray-95));
-        }
+      nav {
+        background: hsl(var(--color-gray-10));
+        border-color: hsl(var(--color-gray-20));
+      }
+      .nav-toggle:hover {
+        color: hsl(var(--color-gray-95));
+      }
     }
   }
 
