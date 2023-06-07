@@ -3,13 +3,16 @@ title: Data GUIs
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Both Deta Base and Deta Drive offer graphical user interfaces for you to view and manage your data. You can access Base and Drive UI for data in [App Collections](/docs/en/use/your-data/collections#app-collections), for [Headless Collections](/docs/en/use/your-data/collections#headless-collections) in the Collections app, and for data in your [Builder Project](/docs/en/build/fundamentals/development/projects).
+import InterfaceTabsExtended from "@/components/Tabs/InterfaceTabsExtended.astro";
+
+Both Deta Base and Deta Drive offer graphical user interfaces for you to view and manage your data. You can access Base and Drive UI for data in an [App's Collection](/docs/en/use/your-data/collections#app-collections), for [Headless Collections](/docs/en/use/your-data/collections#headless-collections) in the Collections app, and for data in your [Builder Project](/docs/en/build/fundamentals/development/projects).
 
 ## Opening the Data GUIs
 
-How you open the data GUIs depends on if you are dealing with an App Collection, Headless Collection, of Builder Project.
+How you open the data GUIs depends on if you are dealing with an App's Collection, Headless Collection, of Builder Project.
 
-/* tab - app collection */
+<InterfaceTabsExtended>
+  <Fragment slot="canvas">
 
 For an App Collection, open the data GUIs by clicking an app's context menu from the Canvas and selcting **View Data**.
 
@@ -19,17 +22,22 @@ Base UI is the default view for an App Collection, to open Drive UI, click the *
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width: 400px;" src="/docs-assets/use/data-guis-11.png"/> </div>
 
-/* tab - headless collection */
+</Fragment>
+<Fragment slot="collections">
 
 For a Headless Collection, open the Collections app from the Canvas. Choose a Collection to open, and then select or create a resource to open a Data GUI.
 
 ![collections-1](/docs-assets/use/collections-1.png)
 
-/* tab - builder project */
+</Fragment>
+<Fragment slot="builder-project">
 
 For a Builder Project, open your project from Builder, navigate to the **Develop** tab and the **Data** sub-tab. From here you can open a resource in a Data GUI.
 
 ![project-guis](/docs-assets/build/projects-develop-data.png)
+
+</Fragment>
+</InterfaceTabsExtended>
 
 ## Base UI
 
@@ -49,7 +57,7 @@ You can also use Queries from the Deta Base query language in Base UI. This lets
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 80%; max-width: 400px;" src="/docs-assets/use/data-guis-5.png"/> </div>
 
-Read the complete documentation for Base Queries [here](/en/build/reference/base#queries).
+Read the complete documentation for Base Queries [here](/en/build/reference/deta-base/queries).
 
 ### Editing you data
 

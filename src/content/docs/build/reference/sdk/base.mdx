@@ -3,8 +3,12 @@ title: Base
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-/* Python */
+import LangTabsSelector from "@/components/Tabs/LangTabsSelector.astro";
+import LangTabs from "@/components/Tabs/LangTabs.astro";
 
+<LangTabsSelector />
+<LangTabs>
+<Fragment slot="py">
 ```py
 def Base(name: str, host: str | None = None):
 ```
@@ -212,7 +216,7 @@ def fetch(
 
 Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
 
-A query is composed of a single [query object](/docs/en/build/reference/base#queries) or a list of query objects.
+A query is composed of a single [query object](/docs/en/build/reference/deta-base/queries) or a list of query objects.
 In the case of a list, the indvidual queries are OR'ed.
 
 > ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
@@ -285,12 +289,11 @@ def trim():
 
 Removes an attribute from the item.
 
-[1]: /docs/en/build/reference/base#storing-numbers "Storing numbers"
-[2]: /docs/en/build/reference/expiring-items "Expiring items"
+[1]: /docs/en/build/reference/deta-base#storing-numbers "Storing numbers"
+[2]: /docs/en/build/reference/deta-base/expiring-items "Expiring items"
 
-
-/* JavaScript */
-
+</Fragment>
+<Fragment slot="js">
 ```js
 function Base(baseName: string, host?: string);
 ```
@@ -540,9 +543,8 @@ function trim();
 
 Removes an attribute from the item.
 
-/* Golang */
-
-
+</Fragment>
+<Fragment slot="go">
 ```go
 func New(d *Deta, baseName string) (*Base, error)
 ```
@@ -582,7 +584,7 @@ Returns the key of the item stored and an `error`. Possible error values:
 - `ErrUnauthorized`: unuathorized
 - `ErrInternalServerError`: internal server error
 
-> ℹ️ Numbers in Base have [some limits](/docs/en/build/reference/base#storing-numbers).
+> ℹ️ Numbers in Base have [some limits](/docs/en/build/reference/deta-base#storing-numbers).
 
 Example:
 
@@ -825,3 +827,5 @@ func (u *util) Trim()
 ```
 
 Removes an attribute from the item.
+</Fragment>
+</LangTabs>

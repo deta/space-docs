@@ -3,9 +3,15 @@ title: Examples
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import LangTabsSelector from "@/components/Tabs/LangTabsSelector.astro";
+import LangTabs from "@/components/Tabs/LangTabs.astro";
+
 On this page you will find some more complex examples of using the Deta SDK.
 
-/_ Python _/
+
+<LangTabsSelector />
+<LangTabs>
+<Fragment slot="py">
 
 ## Base
 
@@ -324,7 +330,8 @@ Example output
 }
 ```
 
-/_ JavaScript _/
+</Fragment>
+<Fragment slot="js">
 
 ## Base
 
@@ -631,7 +638,8 @@ Example output:
 }
 ```
 
-/_ Golang _/
+</Fragment>
+<Fragment slot="go">
 
 ## Base
 
@@ -1347,3 +1355,6 @@ func main() {
     // "b"
 }
 ```
+
+</ Fragment>
+</ LangTabs>

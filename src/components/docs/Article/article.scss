@@ -241,6 +241,11 @@ main p code {
     color: var(--theme-code-inline-text);
     font-size: 1rem;
 }
+
+main p a code {
+    color: var(--theme-text-accent);
+}
+
 html.theme-dark main p code {
     background: hsl(var(--color-base-blue), 5%);
 }

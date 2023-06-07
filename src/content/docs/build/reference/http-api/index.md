@@ -5,7 +5,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 The Deta HTTP API let's you to store and retrieve data from your Deta Base or Deta Drive in a [Collection](/docs/en/use/your-data/collections), directly over HTTP. 
 
-Deta provides HTTP APIs for [Base](./base) and [Drive](./drive).
+Deta provides HTTP APIs for [Base](/docs/en/build/reference/http-api/base) and [Drive](/docs/en/build/reference/http-api/drive).
 
 ## Authentication
 

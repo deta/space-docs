@@ -1,32 +1,11 @@
 ---
-title: Deta Base
+title: Queries
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Deta Base is a fully-managed, fast, scalable and secure NoSQL database with a focus on end-user simplicity. You can use Deta Base as part of a [Space App](/docs/en/build/space-apps), or on its own as part of a [Headless Collection](/docs/en/use/your-data/collections#headless-collections).
+Deta Base comes with its own query language for fetching data that match certain conditions. Queries are regular objects/dicts/maps with conventions for different operators for specifying the conditions. You can use queries in [Base UI](/docs/en/use/your-data/data-guis#base-ui),the [Base SDK](/docs/en/build/reference/sdk/base), or the [Base HTTP API](/docs/en/build/reference/http-api/base). 
 
-
-Outside of Space Apps, you can interact with Deta Base through a [Graphical User Interface](/docs/en/use/your-data/data-guis#base-ui), [SDK](/docs/en/build/reference/sdk/base), or [HTTP API](/docs/en/build/reference/http-api/base). Authentication to Base happens via [Data Keys](/docs/en/use/your-data/collections#data-keys).
-
-## Getting started
-
-- [Dealing with data in a Space App](/docs/en/build/fundamentals/data-storage)
-- [Collections in Space](/docs/en/use/your-data/collections)
-- [Base UI](/docs/en/use/your-data/data-guis#base-ui)
-- [Base SDK](/docs/en/build/reference/sdk/base)
-- [Base HTTP API](/docs/en/build/reference/http-api/base)
-
-## Technical Notes
-
-### Storing Numbers
-
-> ⚠️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
-
-Deta Base supports queries for fetching data that match certain conditions. Queries are regular objects/dicts/maps with conventions for different operators for specifying the conditions.
-
-### Queries
-
-Base comes with its own query language — BaseQL — for querying data through [Base UI](/docs/en/use/your-data/data-guis#base-ui),the [Base SDK](/docs/en/build/reference/sdk/base), or the [Base HTTP API](/docs/en/build/reference/http-api/base). BaseQL comes with a number of operators for querying data, and logical operators AND and OR. 
+Base Queries come with a number of operators for querying data, and logical operators AND and OR. 
 
 #### Operators
 

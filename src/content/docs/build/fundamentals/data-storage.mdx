@@ -4,6 +4,8 @@ layout: "@layouts/DocsPageLayout.astro"
 ---
 
 import LangTabsSimple from "@/components/Tabs/LangTabsSimple.astro";
+import InterfaceTabsExtended from "@/components/Tabs/InterfaceTabsExtended.astro";
+import Collapsible from "@cmp/docs/Collapsible/Collapsible.svelte";
 
 ![data-headline](/docs-assets/use/collections-headline.png)
 
@@ -66,7 +68,7 @@ books = deta.Base("books")
 
 Base can be accessed using the [Deta Base SDK](/docs/en/build/reference/sdk/base) or the [Base HTTP API](/docs/en/build/reference/http-api/base).
 
-Read more about Base [here](/docs/en/build/reference/base).
+Read more about Base [here](/docs/en/build/reference/deta-base).
 
 ### Deta Drive
 
@@ -117,46 +119,36 @@ Read more about Deta Drive [here](/docs/en/build/reference/drive).
 
 Authentication between any client reading or writing data to Base and Drive in a Collection happens via a **Data Key**. Data Keys can be generated for any Builder Project or any Collection — including Collections disconnected from any individual app or Project (”Headless Collections”).
 
-Space automatically manages keys for Space apps and for local development with `space dev`, so there is no need to manually generate them. But you can, if you want to interact with your data outside the context of a single Space app or are using a Headless Collection.
+Space automatically manages keys for Space apps and for local development with `space dev`, so there is no need to manually generate them. 
+But you can, if you want to interact with your data outside the context of a single Space app or are using a Headless Collection.
 
-/* tab / caret */
+<InterfaceTabsExtended>
+  <Fragment slot="builder-project">
+  From your Builder Project, navigate to the **Develop** tab and the **Data** sub-tab. Click **Manage Data Keys**, then **Create New Data Key** and finally enter a name for your Data Key. You will be shown your new Data Key.
 
-**Generating a Data Key for a Builder Project**
+  <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-1.png"/> </div>
+  </Fragment>
+  <Fragment slot="canvas">
+  From your Canvas, click your app’s context menu, click **Settings**, and then navigate to the **Keys** tab. Click **Create New Data Key** and finally enter a name for your Data Key. You will be shown your new Data Key. If your app is a Builder Instance, this menu is just another view for all the keys in your Builder Project.
+  <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-2.png"/> </div>
+  </Fragment>
+  <Fragment slot="collections">
 
-From your Builder Project, navigate to the **Develop** tab and the **Data** sub-tab. Click **Manage Data Keys***, then **Create New Data Key** and finally enter a name for your Data Key. You will be shown your new Data Key.
+  Open the Collections app from the Canvas and open the individual Collection you want to generate a Data Key for. Click **Collection Settings** in the top right corner, then click **Create New Data Key**, and finally enter a name for your Data Key.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-1.png"/> </div>
+  <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-3.png"/> </div>
 
+  You will be shown your new Data Key.
 
-/* tab / caret */
-
-**Generating a Data Key for an Installed App**
-
-From your Canvas, click your app’s context menu, click **Settings**, and then navigate to the **Keys** tab. Click **Create New Data Key** and finally enter a name for your Data Key. You will be shown your new Data Key. If your app is a Builder Instance, this menu is just another view for all the keys in your Builder Project.
-
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-2.png"/> </div>
-
-/* tab / caret */
-
-**Generating a Data Key for a Headless Collection**
-
-Open the Collections app from the Canvas and open the individual Collection you want to generate a Data Key for. Click **Collection Settings** in the top right corner, then click **Create New Data Key**, and finally enter a name for your Data Key.
-
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-3.png"/> </div>
-
-You will be shown your new Data Key.
-
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-4.png"/> </div>
-
+  <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/build/data-storage-4.png"/> </div>
+  </Fragment>
+</InterfaceTabsExtended>
 
 ## Developing with Base and Drive
 
 During development, you can share data between your local environment and your Builder Project in Space. You can use the Deta SDK or HTTP API to talk with Base and Drive in your  Project.
 
-/* tab / caret */
-
-**Using the SDK**
-
+<Collapsible title="Using the SDK" code client:load>
 ```jsx
 
 const { Deta } = require('deta'); // import Deta
@@ -170,10 +162,9 @@ const db = deta.Base('simple_db');
 // store objects
 await db.put({name: "alex", age: 77})
 ```
+</Collapsible>
 
-/* tab / caret */
-
-**Using the HTTP API**
+<Collapsible title="Using the HTTP API" code client:load>
 
 ```jsx
 const fetch = require('node-fetch');
@@ -201,9 +192,9 @@ fetch(url, { headers })
     }
   })
 ```
+</Collapsible>
 
-
-Space offers a way to automatically manage **Data Keys** for you with `space dev`, while you can also do it yourself manually.
+Space offers a way to automatically manage **Data Keys** for you with [`space dev`](/docs/en/build/fundamentals/development/local-development), while you can also do it yourself manually.
 
 ### Automatic key management
 

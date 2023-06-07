@@ -97,6 +97,8 @@
                     return "Space Apps"
                   case "YourData":
                     return "Your Data"
+                  case "DetaBase":
+                    return "Deta Base"
                   default:
                     return title
                 }
