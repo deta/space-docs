@@ -17,8 +17,8 @@
 
   export const toggleSideNav = () => {
     console.log("toggleSideNav")
-    sideNavOpen.update((e) => !e);
-   // sideNavOpen.set(!get(sideNavOpen));
+    //sideNavOpen.update((e) => !e);
+    sideNavOpen.set(!get(sideNavOpen));
     updateBodyClass();
   };
 </script>
@@ -64,7 +64,7 @@
     sideNavPeeking.set(false);
   }
   function onWindowResize() {
-    if (innerWidth > 768) wasDesktopWidth = true;
+    if (innerWidth > 1150) wasDesktopWidth = true;  // Auto hide on resize -> Keep TTY from getting cut of
     else if (wasDesktopWidth) {
       wasDesktopWidth = false;
       sideNavOpen.set(false);
@@ -75,8 +75,7 @@
   // HOOKS
   onMount(() => {
     updateBodyClass();
-    console.log("inner", innerWidth);
-    //if (innerWidth < 768) sideNavOpen.set(false); // TODO: FIX
+    if (innerWidth < 768) sideNavOpen.set(false); // TODO: FIX
   });
 </script>
 
