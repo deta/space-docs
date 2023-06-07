@@ -80,6 +80,7 @@
     if (document) {
         // Quick fix to close after link click
         document.addEventListener("click", (e) => {
+            if (innerWidth >= 768) return;
             if (!(e.target instanceof HTMLAnchorElement) && e.target.closest("a") === null) return;
             sideNavOpen.set(false);
             updateBodyClass();
