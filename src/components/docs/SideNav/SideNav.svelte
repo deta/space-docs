@@ -234,9 +234,9 @@
     left: 0;
     right: 0;
     bottom: 0;
+    display: none;
 
     nav {
-      display: none;
       position: relative;
       z-index: 1001;
       flex-direction: column;
@@ -259,7 +259,10 @@
 
   // MOBILE OPEN
   @media screen and (max-width: 767px) {
-    :global(body.sideNav-open aside) {
+    :global(body.sideNav-open) {
+      aside {
+        display: block;
+      }
       //background: rgba(0, 0, 0, 0.2);
       nav {
         display: block;
@@ -286,6 +289,7 @@
       width: auto;
       //min-width: calc(2 * var(--spacing-4) + 1.5rem);
 
+      display: block;
       background: transparent;
       //width: 35ch;
 
