@@ -2,7 +2,7 @@
   import AstroLogo from "@/components/core/AstroLogo.svelte";
   import IconButton from "@/components/core/Button/IconButton.svelte";
   import IconMenu2 from "@/components/core/Icon/IconMenu2.svelte";
-  import { toggleSideNav } from "../SideNav/SideNav.svelte";
+  import { sideNavOpen, toggleSideNav } from "../SideNav/SideNav.svelte";
   import ThemeToggle from "./ThemeToggle.svelte";
   import CodeLanguageSwitcher from "./CodeLanguageSwitcher.svelte";
   import MobileTableOfContents from "../Article/TableOfContents/MobileTableOfContents.svelte";
@@ -15,6 +15,7 @@
   export let headings: MarkdownHeading[];
   export let currentPage: string;
   import OpenCanvasButton from "./OpenCanvasButton.svelte";
+  import IconX from "@/components/core/Icon/IconX.svelte";
 </script>
 
 <header>
@@ -28,7 +29,11 @@
             </li>
             <li class="only-mobile" style="margin-right: -0.5rem;">
                 <IconButton on:click={toggleSideNav}>
-                    <IconMenu2 size={24} strokeWidth={2} />
+                    {#if $sideNavOpen}
+                        <IconX size={24} strokeWidth={2} />
+                    {:else}
+                        <IconMenu2 size={24} strokeWidth={2} />
+                    {/if}
                 </IconButton>
             </li>
         </ul>
@@ -37,7 +42,7 @@
     <div class="only-mobile">
         <Breadcrumbs currentPage={currentPage} />
     </div>
-    
+
     <div>
         <ul>
             <li class="only-desktop">
