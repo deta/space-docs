@@ -1,48 +1,47 @@
-<a href="/canvas">
-    <span>Open Canvas</span>
-</a>
+<script lang="ts">
+    import { onMount } from "svelte";
+    import { getMetadata } from "@/utils/metadata";
+
+    let isAuthenticated = false
+    let loading = true
+	
+	onMount(async () => {
+		const data = await getMetadata();
+		isAuthenticated = data.isAuthenticated;
+        loading = false
+	})
+</script>
+
+{#if loading}
+    <!-- Keep emtpy for now -->
+{:else if isAuthenticated}
+    <a href="/" aria-label="Button">
+        <div><div class="" style="width: 20px; height: 20px;"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="1.15273" y="1.15273" width="19.6945" height="19.6945" rx="5.93086" stroke-width="1.69453"></rect><rect x="4.25" y="4.16016" width="6" height="5.76" rx="2.88" fill="currentColor"></rect><rect x="11.75" y="11.3594" width="6" height="5.76" rx="2.88" fill="currentColor"></rect></svg></div></div>
+        Canvas
+    </a>
+{:else}
+    <a href="/login" class="text">
+        <span>Login to Space</span>
+    </a>
+{/if}
 
 <style lang="scss">
     a {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: none;
+    }
 
-        background: hsl(var(--color-gray-5));
-        color: #fff;
-        padding: var(--spacing-2) var(--spacing-3);
-        border-radius: var(--rounded-3);
-        border: 4px solid rgba(50, 48, 47, 0.7);
-        box-shadow: 0px 0px 0px 2px rgba(50, 48, 47, 0.25);
-
-
-        span {
-            font-weight: 500;
-            transition: all 0.05s ease-in-out, background 0.15s ease-in-out;
-        }
+    .text {
+        color: var(--theme-color);
     }
 
     a:hover {
-        background: hsl(var(--color-gray-20));
+        filter: brightness(1.3);
         cursor: pointer;
     }
     a:active {
-        background: hsl(var(--color-gray-30));
-        span {
-            //transform: scale(0.98);
-        }
-    }
-
-    :global(html.theme-dark) a {
-        background: hsl(var(--color-gray-20));
-        border-color: hsl(var(--color-gray-30));
-        color: #fff;
-
-        &:hover {
-            background: hsl(var(--color-gray-30));
-        }
-        &:active {
-            background: hsl(var(--color-gray-40));
-        }
+        transform: scale(0.95);
     }
 </style>

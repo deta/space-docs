@@ -3,6 +3,7 @@
   import IconChevronDown from "@/components/core/Icon/IconChevronDown.svelte";
   import IconChevronUp from "@/components/core/Icon/IconChevronUp.svelte";
   import IconListNumbers from "@/components/core/Icon/IconListNumbers.svelte";
+  import { clickOutside } from "@/utils/clickOutside";
   import type { MarkdownHeading } from "astro";
   import { onMount } from "svelte";
 
@@ -58,7 +59,7 @@
   });
 </script>
 
-<div class="toc">
+<div class="toc" class:hidden={headings.length < 1}>
   {#if collapsable}
     <IconButton on:click={() => (open = !open)}>
       {#if chevron}
@@ -73,7 +74,7 @@
     </IconButton>
   {/if}
   {#if open}
-    <nav class:popover={collapsable}>
+    <nav class:popover={collapsable} use:clickOutside={() => open = false}>
       <ul>
         {#if pageTitle}
           <li
@@ -100,6 +101,10 @@
 
     @media screen and (min-width: calc(768px + 28ch * 2)) {
       display: none; // todo?: Aria hidden
+    }
+
+    &.hidden {
+      visibility: hidden;
     }
   }
 
@@ -147,7 +152,6 @@
           a {
             background: var(--theme-accent);
             color: white;
-            font-weight: 600;
           }
         }
       }

@@ -29,7 +29,7 @@
 
 <section class="only-desktop track-me" class:stuck={stuck}>
   <div class="inner">
-    <Breadcrumbs currentPage={currentPage} />
+    <Breadcrumbs currentPage={currentPage} stuck={stuck} />
 
     <div class="toc">
       <MobileTableOfContents chevron pageTitle={frontmatter.title} {headings} collapsable={true} />
@@ -42,9 +42,12 @@
   section {
     position: sticky;
     top: -1px;
-    padding-top: calc(1.5rem - 6px);
     z-index: 100;
     margin-bottom: var(--spacing-12);
+
+    &.stuck {
+      padding-top: calc((var(--header-height) / 2) - 12px);
+    }
   }
 
   .inner {
@@ -77,7 +80,7 @@
       }
 
       .stuck .inner {
-        top: 1.5rem;
+        top: calc((var(--header-height) / 2) - 12px);
       }
     }
 </style>

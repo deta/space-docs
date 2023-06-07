@@ -41,7 +41,9 @@
   onMount(() => {
     if (document) {
       open = document?.location.pathname.includes(navItem.path) || false; //getContext("currentPage");
-      active = document?.location.pathname.endsWith(navItem.path) || false
+      let docPath = document?.location.pathname;
+      if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
+      active = docPath.endsWith(navItem.path) || false
     }
   });
 
@@ -82,7 +84,7 @@
         ><slot name="icon"><IconChevronDown size={24} strokeWidth={2} style="currentColor" /></slot
         ></span>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <span class="title" class:active={active} on:click={onClickTitle}>{(() => {
+      <span class="title nav-item-title" class:active={active} class:open={open} on:click={onClickTitle}>{(() => {
                 let title = navItem.title;
                 switch (title) {
                   case "QuickStarts":
@@ -118,6 +120,10 @@
 </details>
 
 <style lang="scss">
+  summary::-webkit-details-marker {
+      display: none;
+  }
+
   details {
     width: 100%;
 

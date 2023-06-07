@@ -3,7 +3,7 @@
   import { writable, get } from "svelte/store";
 
   //export const sideNavOpen = writable<boolean>(true);
-  export const sideNavOpen = storedWritable<boolean>("sideNavOpen", true);
+  export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
   export const sideNavPeeking = writable<boolean>(false);
 
   export function updateBodyClass() {
@@ -17,7 +17,8 @@
 
   export const toggleSideNav = () => {
     console.log("toggleSideNav")
-    sideNavOpen.update((e) => !e);
+    //sideNavOpen.update((e) => !e);
+    sideNavOpen.set(!get(sideNavOpen));
     updateBodyClass();
   };
 </script>
@@ -34,7 +35,7 @@
   import IconHammer from "@/components/core/Icon/IconHammer.svelte";
   import IconBolt from "@/components/core/Icon/IconBolt.svelte";
   import IconRocket from "@/components/core/Icon/IconRocket.svelte";
-  import { storedWritable } from "@/utils/storedWritable";
+  import { storedJsonWritable } from "@/utils/storedWritable";
   import CollapsibleGroup from "./Collapsible/CollapsibleGroup.svelte";
 
   // PROPS
@@ -63,7 +64,7 @@
     sideNavPeeking.set(false);
   }
   function onWindowResize() {
-    if (innerWidth > 768) wasDesktopWidth = true;
+    if (innerWidth > 1150) wasDesktopWidth = true;  // Auto hide on resize -> Keep TTY from getting cut of
     else if (wasDesktopWidth) {
       wasDesktopWidth = false;
       sideNavOpen.set(false);
@@ -74,6 +75,7 @@
   // HOOKS
   onMount(() => {
     updateBodyClass();
+    if (innerWidth < 768) sideNavOpen.set(false); // TODO: FIX
   });
 </script>
 
@@ -228,24 +230,26 @@
   aside {
     position: fixed;
     z-index: 101;
+    top: var(--spacing-18);
     left: 0;
     right: 0;
-    bottom: var(--header-height);
+    bottom: 0;
+    display: none;
 
     nav {
-      background: lime;
-      display: none;
       position: relative;
       z-index: 1001;
       flex-direction: column;
-      margin-top: var(--spacing-16);
-      height: calc(100% - var(--header-height) - var(--spacing-8));
+      //margin-top: var(--spacing-18);
+      //height: calc(100% - var(--header-height) - var(--spacing-12));
+      height: 100%;
       padding-block: var(--spacing-4);
       padding-inline: var(--spacing-6);
 
       background: var(--theme-sidenav);
       background: rgb(240, 238, 234);
-      border-width: 4px 4px 4px 0px;
+      border-width: 4px 4px 4px 4px;
+      margin-inline: var(--spacing-4);
       border-style: solid;
       border-color: rgba(240, 238, 234, 0.7);
       box-shadow: 0px 0px 0px 4px rgba(240, 238, 234, 0.3);
@@ -255,8 +259,11 @@
 
   // MOBILE OPEN
   @media screen and (max-width: 767px) {
-    :global(body.sideNav-open aside) {
-      background: rgba(0, 0, 0, 0.2);
+    :global(body.sideNav-open) {
+      aside {
+        display: block;
+      }
+      //background: rgba(0, 0, 0, 0.2);
       nav {
         display: block;
         display: flex;
@@ -264,7 +271,7 @@
     }
   }
   aside.open {
-    top: 0;
+    //top: 0;
   }
 
   @media screen and (min-width: 768px) {
@@ -282,6 +289,7 @@
       width: auto;
       //min-width: calc(2 * var(--spacing-4) + 1.5rem);
 
+      display: block;
       background: transparent;
       //width: 35ch;
 
@@ -292,6 +300,7 @@
         position: fixed;
         top: 0px;
         margin-top: 0;
+        margin-inline: 0;
         height: 100%;
         max-width: var(--sideNav-width);
         width: var(--sideNav-width);
@@ -365,5 +374,9 @@
             color: hsl(var(--color-gray-95));
         }
     }
+  }
+
+  .docs-logo {
+    color: var(--theme-color);
   }
 </style>

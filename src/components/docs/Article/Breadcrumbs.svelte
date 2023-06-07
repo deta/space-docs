@@ -27,7 +27,7 @@
   {#each items as item, i}
     <li>
       {#if i < items.length - 1}
-        <a href={item.url}>{item.name}</a>
+        <a href={item.url} id="breadcrumb-{i}">{item.name}</a>
       {:else}
         <a href="#content" class="final">{item.name}</a>
       {/if}
@@ -44,11 +44,19 @@
     /* TODO: FIX*/
     color: #000;
     text-decoration: none;
+    display: block;
   }
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+        opacity: 1;
+      }
 
     display: flex;
     align-items: center;
