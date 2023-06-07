@@ -2,7 +2,7 @@
 title: Space Apps 101
 layout: "@layouts/DocsPageLayout.astro"
 ---
-
+![intro-0](/docs-assets/build/app-anatomy.svg)
 A Space app is different from a normal web app. Instead of one central app that serves many users, each user on Space will get their own personal copy of an app, in their own personal cloud. This is a simple but powerful difference that removes much of the complexity in building and distributing apps on the internet. It also pushes the boundaries of what a web app is, and what it can do.
 
 As a developer building apps for Space, you get a lot out of the box:
