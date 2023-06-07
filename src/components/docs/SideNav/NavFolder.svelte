@@ -41,7 +41,9 @@
   onMount(() => {
     if (document) {
       open = document?.location.pathname.includes(navItem.path) || false; //getContext("currentPage");
-      active = document?.location.pathname.endsWith(navItem.path) || false
+      let docPath = document?.location.pathname;
+      if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
+      active = docPath.endsWith(navItem.path) || false
     }
   });
 
