@@ -78,7 +78,12 @@
     updateBodyClass();
     //if (innerWidth < 768 && JSON.parse(localStorage.getItem("sideNavOpen") || false)) sideNavOpen.set(false); // TODO: FIX
     if (document) {
-      console.log("doc");
+        // Quick fix to close after link click
+        document.addEventListener("click", (e) => {
+            if (!(e.target instanceof HTMLAnchorElement) && e.target.closest("a") === null) return;
+            sideNavOpen.set(false);
+            updateBodyClass();
+        });
       //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
       //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
       updateBodyClass();
