@@ -29,7 +29,7 @@
 
 <section class="only-desktop track-me" class:stuck={stuck}>
   <div class="inner">
-    <Breadcrumbs currentPage={currentPage} />
+    <Breadcrumbs currentPage={currentPage} stuck={stuck} />
 
     <div class="toc">
       <MobileTableOfContents chevron pageTitle={frontmatter.title} {headings} collapsable={true} />

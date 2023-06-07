@@ -59,7 +59,7 @@
   });
 </script>
 
-<div class="toc">
+<div class="toc" class:hidden={headings.length < 1}>
   {#if collapsable}
     <IconButton on:click={() => (open = !open)}>
       {#if chevron}
@@ -101,6 +101,10 @@
 
     @media screen and (min-width: calc(768px + 28ch * 2)) {
       display: none; // todo?: Aria hidden
+    }
+
+    &.hidden {
+      visibility: hidden;
     }
   }
 
