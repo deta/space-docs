@@ -1,1 +1,0 @@
-# Adding a Custom Domain with Namecheap

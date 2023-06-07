@@ -10,6 +10,5 @@ Pages in this section:
 - [Actions](/docs/en/build/fundamentals/the-space-runtime/actions)
 - [Authentication](/docs/en/build/fundamentals/the-space-runtime/authentication)
 - [Configuration](/docs/en/build/fundamentals/the-space-runtime/configuration)
-- [Custom Domains](/docs/en/build/fundamentals/the-space-runtime/custom-domains)
 - [Domains](/docs/en/build/fundamentals/the-space-runtime/domains)
 - [Micros](/docs/en/build/fundamentals/the-space-runtime/micros)
