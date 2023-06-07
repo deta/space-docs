@@ -5,7 +5,7 @@
     };
 </script>
 <script lang="ts">
-  import { storedWritable } from "@/utils/storedWritable";
+  import { storedJsonWritable } from "@/utils/storedWritable";
 
     export let tabs: Tab[] = [],
         tabsKey: string, // The key to store selection in localStorage

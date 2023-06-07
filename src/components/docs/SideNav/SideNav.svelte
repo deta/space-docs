@@ -3,7 +3,7 @@
   import { writable, get } from "svelte/store";
 
   //export const sideNavOpen = writable<boolean>(true);
-  export const sideNavOpen = storedWritable<boolean>("sideNavOpen", true);
+  export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
   export const sideNavPeeking = writable<boolean>(false);
 
   export function updateBodyClass() {
@@ -34,7 +34,7 @@
   import IconHammer from "@/components/core/Icon/IconHammer.svelte";
   import IconBolt from "@/components/core/Icon/IconBolt.svelte";
   import IconRocket from "@/components/core/Icon/IconRocket.svelte";
-  import { storedWritable } from "@/utils/storedWritable";
+  import { storedJsonWritable } from "@/utils/storedWritable";
   import CollapsibleGroup from "./Collapsible/CollapsibleGroup.svelte";
 
   // PROPS
