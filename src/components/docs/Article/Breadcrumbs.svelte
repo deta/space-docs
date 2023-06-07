@@ -50,6 +50,13 @@
     padding: 0;
     margin: 0;
 
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+        opacity: 1;
+      }
+
     display: flex;
     align-items: center;
     //gap: var(--spacing-1);

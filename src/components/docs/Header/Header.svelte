@@ -123,4 +123,8 @@
             }
         }
     }
+
+    .docs-logo {
+        color: var(--theme-color);
+    }
 </style>

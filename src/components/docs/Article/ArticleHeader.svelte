@@ -53,12 +53,6 @@
   .inner {
     display: flex;
     align-items: center;
-    opacity: 0.5;
-    transition: opacity 0.2s ease-in-out;
-
-    &:hover {
-        opacity: 1;
-      }
   }
 
   //@media screen and (max-width: 1280px) {

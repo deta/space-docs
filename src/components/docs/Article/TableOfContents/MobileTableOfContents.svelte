@@ -3,6 +3,7 @@
   import IconChevronDown from "@/components/core/Icon/IconChevronDown.svelte";
   import IconChevronUp from "@/components/core/Icon/IconChevronUp.svelte";
   import IconListNumbers from "@/components/core/Icon/IconListNumbers.svelte";
+  import { clickOutside } from "@/utils/clickOutside";
   import type { MarkdownHeading } from "astro";
   import { onMount } from "svelte";
 
@@ -73,7 +74,7 @@
     </IconButton>
   {/if}
   {#if open}
-    <nav class:popover={collapsable}>
+    <nav class:popover={collapsable} use:clickOutside={() => open = false}>
       <ul>
         {#if pageTitle}
           <li
@@ -147,7 +148,6 @@
           a {
             background: var(--theme-accent);
             color: white;
-            font-weight: 600;
           }
         }
       }
