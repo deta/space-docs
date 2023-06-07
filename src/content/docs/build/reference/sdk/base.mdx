@@ -6,14 +6,15 @@ layout: "@layouts/DocsPageLayout.astro"
 import LangTabsSelector from "@/components/Tabs/LangTabsSelector.astro";
 import LangTabs from "@/components/Tabs/LangTabs.astro";
 
-<LangTabsSelector />
+## Base Class
+
+The `Base` class provides methods to interact with a Deta Base.
+
 <LangTabs>
 <Fragment slot="py">
 ```py
 def Base(name: str, host: str | None = None):
 ```
-
-The `Base` class provides methods to interact with a Deta Base.
 
 | Parameter | Type            | Description           |
 | --------- | --------------- | --------------------- |
@@ -22,8 +23,46 @@ The `Base` class provides methods to interact with a Deta Base.
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
 
+</Fragment>
+<Fragment slot="js">
+```js
+function Base(baseName: string, host?: string);
+```
+
+| Parameter  | Type     | Description           |
+| ---------- | -------- | --------------------- |
+| `baseName` | `string` | The name of the Base. |
+| `host?`    | `string` | The host of the Base. |
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+</Fragment>
+<Fragment slot="go">
+```go
+func New(d *Deta, baseName string) (*Base, error)
+```
+
+| Parameter  | Type                    | Description                   |
+| ---------- | ----------------------- | ----------------------------- |
+| `d`        | [`*Deta`](./types#deta) | A pointer to a Deta instance. |
+| `baseName` | `string`                | The name of the Base.         |
+
+Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible error values:
+
+- `ErrEmptyDetaInstance`: the [`Deta`](./types#deta) pointer provided is empty
+- `ErrBadBaseName`: the name of the Base is invalid
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+</Fragment>
+</LangTabs>
+
 ## Put
 
+`put` is the fastest way to store an item in a Base.
+If an item already exists under the given key, it will be replaced.
+In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
+
+<LangTabs>
+<Fragment slot="py">
 ```py
 def put(
     data: dict | list | str | int | float | bool,
@@ -33,10 +72,6 @@ def put(
     expire_at: int | float | datetime | None = None,
 ) -> dict:
 ```
-
-`put` is the fastest way to store an item in a Base.
-If an item already exists under the given key, it will be replaced.
-In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
 
 | Parameter   | Type                                                              | Description                                                                       |
 | ----------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -56,7 +91,67 @@ Example:
 ```py
 base.put({"value": "Hello world!"}, "my-key")
 ```
+</Fragment>
+<Fragment slot="js">
 
+```js
+async function put(
+    data: DetaType,
+    key?: string,
+    options?: PutOptions,
+): Promise<PutResponse>;
+```
+
+| Parameter  | Type                               | Description                                                              |
+| ---------- | ---------------------------------- | ------------------------------------------------------------------------ |
+| `data`     | [`DetaType`](./types#detatype)     | The data to be stored.                                                   |
+| `key?`     | `string`                           | The key to store the data under. Will be auto generated if not provided. |
+| `options?` | [`PutOptions`](./types#putoptions) | Optional parameters.                                                     |
+
+Returns a promise which resolves to a [`PutResponse`](./types#putresponse) containing the item.
+If the operation did not complete successfully, throws an `Error`.
+
+> ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
+
+Example:
+
+```js
+await base.put({ value: "Hello world!" }, "my-key");
+```
+</Fragment>
+<Fragment slot="go">
+    
+```go
+func (b *Base) Put(item interface{}) (string, error)
+```
+
+| Parameter | Type          | Description                                                                                                                                                                                            |
+| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with JSON struct tags. The key of the item must have a JSON struct tag of `key`. |
+
+Returns the key of the item stored and an `error`. Possible error values:
+
+- `ErrBadItem` : bad item, item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unuathorized
+- `ErrInternalServerError`: internal server error
+
+> ℹ️ Numbers in Base have [some limits](/docs/en/build/reference/deta-base#storing-numbers).
+
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Put(item)
+```
+</Fragment>
+</LangTabs>
+
+<LangTabs>
+<Fragment slot="py">
 ## Get
 
 ```py
@@ -293,50 +388,8 @@ Removes an attribute from the item.
 [2]: /docs/en/build/reference/deta-base/expiring-items "Expiring items"
 
 </Fragment>
+
 <Fragment slot="js">
-```js
-function Base(baseName: string, host?: string);
-```
-
-The `Base` class provides methods to interact with a Deta Base.
-
-| Parameter  | Type     | Description           |
-| ---------- | -------- | --------------------- |
-| `baseName` | `string` | The name of the Base. |
-| `host?`    | `string` | The host of the Base. |
-
-> ℹ️ Deta Bases are automatically created for you when you start using them.
-
-## Put
-
-```js
-async function put(
-    data: DetaType,
-    key?: string,
-    options?: PutOptions,
-): Promise<PutResponse>;
-```
-
-`put` is the fastest way to store an item in a Base.
-If an item already exists under the given key, it will be replaced.
-In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
-
-| Parameter  | Type                               | Description                                                              |
-| ---------- | ---------------------------------- | ------------------------------------------------------------------------ |
-| `data`     | [`DetaType`](./types#detatype)     | The data to be stored.                                                   |
-| `key?`     | `string`                           | The key to store the data under. Will be auto generated if not provided. |
-| `options?` | [`PutOptions`](./types#putoptions) | Optional parameters.                                                     |
-
-Returns a promise which resolves to a [`PutResponse`](./types#putresponse) containing the item.
-If the operation did not complete successfully, throws an `Error`.
-
-> ℹ️ Numbers in Base have [some limits](/docs/en/reference/base/about#storing-numbers).
-
-Example:
-
-```js
-await base.put({ value: "Hello world!" }, "my-key");
-```
 
 ## Get
 
@@ -545,57 +598,6 @@ Removes an attribute from the item.
 
 </Fragment>
 <Fragment slot="go">
-```go
-func New(d *Deta, baseName string) (*Base, error)
-```
-
-The `Base` class provides methods to interact with a Deta Base.
-
-| Parameter  | Type                    | Description                   |
-| ---------- | ----------------------- | ----------------------------- |
-| `d`        | [`*Deta`](./types#deta) | A pointer to a Deta instance. |
-| `baseName` | `string`                | The name of the Base.         |
-
-Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible error values:
-
-- `ErrEmptyDetaInstance`: the [`Deta`](./types#deta) pointer provided is empty
-- `ErrBadBaseName`: the name of the Base is invalid
-
-> ℹ️ Deta Bases are automatically created for you when you start using them.
-
-## Put
-
-```go
-func (b *Base) Put(item interface{}) (string, error)
-```
-
-`Put` is the fastest way to store an item in a Base.
-If an item already exists under the given key, it will be replaced.
-In the case you do not provide a key, Base will automatically generate a 12-character string as a key.
-
-| Parameter | Type          | Description                                                                                                                                                                                            |
-| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `item`    | `interface{}` | The item to be stored, should be a `struct` or a `map`. If the item is a `struct` provide the field keys for the data with JSON struct tags. The key of the item must have a JSON struct tag of `key`. |
-
-Returns the key of the item stored and an `error`. Possible error values:
-
-- `ErrBadItem` : bad item, item is of unexpected type
-- `ErrBadRequest`: item caused a bad request response from the server
-- `ErrUnauthorized`: unuathorized
-- `ErrInternalServerError`: internal server error
-
-> ℹ️ Numbers in Base have [some limits](/docs/en/build/reference/deta-base#storing-numbers).
-
-Example:
-
-```go
-item := map[string]interface{}{
-    "key": "my-key",
-    "value": "Hello world!",
-}
-key, err := db.Put(item)
-```
-
 ## Get
 
 ```go

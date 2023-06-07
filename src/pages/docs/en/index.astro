@@ -64,16 +64,18 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
             <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:idle/>
             <Article frontmatter={frontmatter} headings={headings} client:load>
                 <p>
-                    Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque sit amet porttitor eget dolor morbi non arcu risus quis varius quam quisque id diam vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis.
+                    You’re on an exciting journey with a whole new personal computer on the internet: Deta Space. We’re glad to have you here.
                 </p>
+                <p>This manual shows you around Deta Space. Whether you want to discover and use great internet software in a whole new way, or build your next big dream, you can use this manual as a guide.</p>
+                <p>If you are a user, you don't need to know anything about Space to get going. If you're a developer, you'll feel right at home using your existing tools with your new computer.</p>
 
                 <!-- Cards -->
 
                 <CardList>
                     <TextCard color={"yellow"}>
-                        <svelte:fragment slot="title">Get started</svelte:fragment>
+                        <svelte:fragment slot="title">For Users</svelte:fragment>
                         <svelte:fragment slot="text">
-                            After starting out with Deta Space, there still is much to explore. Start your next app now!
+                            Familiarize yourself with your new computer, discover great software, and experience data ownership.
                         </svelte:fragment>
                         <svelte:fragment slot="footer">
                             <style>
@@ -91,16 +93,16 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                                     margin-left: 0.5rem;
                                 }
                             </style>
-                            <a href="/docs/en/learn" class="card-link">
+                            <a href="/docs/en/use" class="card-link">
                                 Learn more
                                 <span class="arrow" style="display: flex; align-items: center;"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                             </a>
                         </svelte:fragment>
                     </TextCard>
                     <TextCard color={"blue"}>
-                        <svelte:fragment slot="title">Develop</svelte:fragment>
+                        <svelte:fragment slot="title">For Developers</svelte:fragment>
                         <svelte:fragment slot="text">
-                            After starting out with Deta Space, there still is much to explore. Start your next app now!
+                            Build your first personal cloud application for yourself, using familiar tools. Then see it run everywhere.
                         </svelte:fragment>
                         <svelte:fragment slot="footer">
                             <style>
@@ -118,8 +120,8 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                                     margin-left: 0.5rem;
                                 }
                             </style>
-                            <a href="/docs/en/build" class="card-link">
-                                Learn more
+                            <a href="/docs/en/build/new-apps" class="card-link">
+                                Build your first app
                                 <span class="arrow" style="display: flex; align-items: center;"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                             </a>
                         </svelte:fragment>
@@ -130,45 +132,45 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                 <!-- Section links -->
                 <div class="section-links">
                     <div class="section-link">
-                        <a href="/docs/en/learn" style="color: hsl(var(--color-base-purple), 50%); color: black;">
+                        <a href="/docs/en/learn" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-purple), 50%); color: var(--theme-text)">
                             <span class="icon"><IconBook2 size={28} color="hsl(var(--color-base-purple), 50%)" /></span>
                             Learn
                             <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
                         </a>
                         <p>
-                            Learn the core concepts and terminology which helps you on your journey to develop the next great app.
+                            Learn about the core ideas behind Deta Space and the personal cloud.
                         </p>
                     </div>
                     <div class="section-link">
-                        <a href="/docs/en/build" style="color: hsl(var(--color-base-blue-dark), 50%); color: black;">
+                        <a href="/docs/en/build" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-blue-dark), 50%); color: var(--theme-text)">
                             <span class="icon"><IconHammer size={28} color="hsl(var(--color-base-blue-dark), 50%)" /></span>
                             Build
                             <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
                         </a>
                         <p>
-                            Learn the core concepts and terminology which helps you on your journey to develop the next great app.
+                           Everything you need to know to turn your next big dream into reality.
                         </p>
                     </div>
                 </div>
                 <div class="section-links">
                     <div class="section-link">
-                        <a href="/docs/en/use" style="color: hsl(var(--color-base-yellow), 50%); color: black;">
+                        <a href="/docs/en/use" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-yellow), 50%); color: var(--theme-text)">
                             <span class="icon"><IconBolt size={28} color="hsl(var(--color-base-yellow), 50%)" /></span>
                             Use
                             <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
                         </a>
                         <p>
-                            Learn the core concepts and terminology which helps you on your journey to develop the next great app.
+                            Everything you need to know to navigate Space, find and use applications, and manage your data.
                         </p>
                     </div>
                     <div class="section-link">
-                        <a href="/docs/en/publish" style="color: hsl(var(--color-base-green), 40%); color: black;">
+                        <a href="/docs/en/publish" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-green), 40%); color: var(--theme-text);">
                             <span class="icon"><IconRocket size={28} color="hsl(var(--color-base-green), 40%)" /></span>
                             Publish
                             <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
                         </a>
                         <p>
-                            Learn the core concepts and terminology which helps you on your journey to develop the next great app.
+                            Share whatever you create next with the world, and make sure it lands in happy users hands.
                         </p>
                     </div>
                 </div>
