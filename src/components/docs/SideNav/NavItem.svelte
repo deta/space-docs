@@ -38,6 +38,7 @@
             //border-radius: 7px;
             border-top: 0;
             border-bottom: 0;
+            color: var(--theme-color);
 
             &:hover {
                 //background: hsl(var(--color-gray-80));
