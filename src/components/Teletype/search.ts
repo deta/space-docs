@@ -65,7 +65,7 @@ const convertSearchToActions = (hits: Hits<Record<string, any>>): Action[] => {
 // }
 
 const convertRootSearchToActions = (hits: Hits<Record<string, any>>): Action[] => {
-  const matches = hits //.filter((hit) => !hit.hierarchy_lvl2);
+  const matches = hits.filter((hit) => hit.hierarchy_lvl0 === hit.hierarchy_lvl2);
   return convertSearchToActions(matches);
 };
 
