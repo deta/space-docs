@@ -3,9 +3,14 @@ title: Types
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
+import LangTabsSelector from "@/components/Tabs/LangTabsSelector.astro";
+import LangTabs from "@/components/Tabs/LangTabs.astro";
+
 ## Basic types
 
-/* JavaScript */
+<LangTabsSelector />
+<LangTabs>
+<Fragment slot="js">
 
 ### `BasicType`
 
@@ -298,10 +303,11 @@ interface ListResponse {
 | `paging.size` | `number`   | Number of files returned.                                                                           |
 | `paging.last` | `string`   | Last name seen in the paginated response. For the last page, `last` is not present in the response. |
 
-[1]: /docs/en/build/reference/expiring-items "Expiring items"
+[1]: /docs/en/build/reference/deta-base/expiring-items "Expiring items"
 
 
-/* Golang */
+</Fragment>
+<Fragment slot="go">
 
 ### `Deta`
 
@@ -419,3 +425,6 @@ type paging struct {
 ```
 
 Indicates the size and last name of the current page.
+
+</Fragment>
+</LangTabs>

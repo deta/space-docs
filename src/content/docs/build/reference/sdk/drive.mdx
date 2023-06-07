@@ -3,7 +3,12 @@ title: Drive
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-/* Python */
+import LangTabsSelector from "@/components/Tabs/LangTabsSelector.astro";
+import LangTabs from "@/components/Tabs/LangTabs.astro";
+
+<LangTabsSelector />
+<LangTabs>
+<Fragment slot="py">
 
 ```py
 def Drive(name: str, host: str | None = None):
@@ -22,15 +27,6 @@ The `Drive` class provides methods to interact with a Deta Drive.
 def put(
     name: str,
     data: str | bytes | io.TextIOBase | io.BufferedIOBase | io.RawIOBase,
-    *,
-    content_type: str | None = None,
-) -> str:
-```
-
-```py
-def put(
-    name: str,
-    *,
     path: str,
     content_type: str | None = None,
 ) -> str:
@@ -203,7 +199,8 @@ def closed() -> bool:
 
 Returns `True` if the stream has been closed.
 
-/* JavaScript */
+</Fragment>
+<Fragment slot="js">
 
 ```js
 function Drive(driveName: string, host?: string);
@@ -334,7 +331,8 @@ Example:
 const names = await drive.list().names;
 ```
 
-/* Golang */
+</Fragment>
+<Fragment slot="go">
 
 ```go
 func New(d *Deta, driveName string) (*Drive, error)
@@ -459,4 +457,5 @@ Example:
 ```go
 response, err := drv.List(1000, "", "")
 ```
-
+</Fragment>
+</LangTabs>

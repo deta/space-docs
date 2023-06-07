@@ -29,10 +29,10 @@
             "domains.md"
           ]
         },
-        "data-storage.md"
+        "data-storage.mdx"
       ]
     },
-    { "guides": ["public-site.md", "build-a-todo-app.md", "accessing-client-ip-address.md"] },
+    { "guides": ["public-site.md", "build-a-to-do-app.mdx", "accessing-client-ip-address.md"] },
     {
       "quick-starts": [
         "python.mdx",
@@ -51,11 +51,10 @@
         "cli.md",
         "spacefile.md",
         "runtime.md",
-        "base.md",
         "drive.md",
+        { "deta-base": ["expiring-items.mdx", "queries.md"] },
         { "sdk": ["base.mdx", "drive.mdx", "examples.mdx", "types.mdx"] },
-        { "http-api": ["about.md", "base.mdx", "drive.mdx"] },
-        "expiring-items.mdx"
+        { "http-api": ["base.mdx", "drive.mdx"] }
       ]
     }
   ],
@@ -70,7 +69,7 @@
       "logs.md",
       "settings.md"
     ]},
-    {  "your-data": ["collections.md", "guis.md"]}
+    {  "your-data": ["collections.md", "guis.mdx"]}
   ],
   "publish": [
     "releasing.md",

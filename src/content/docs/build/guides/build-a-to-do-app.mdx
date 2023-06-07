@@ -3,7 +3,7 @@ title: Build a To Do App
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-# Tutorial: Build a To Do App
+import Collapsible from "@cmp/docs/Collapsible/Collapsible.svelte";
 
 This guide will teach you how to build your first internet application on Deta Space. It assumes zero prior knowledge about Space itself, and is meant to teach through practice. If you want to read more in depth about the concepts behind Space, see [Intro to Space apps](/docs/en/build/intro).
 
@@ -77,7 +77,7 @@ The CLI will ask you for a Project name, we’ll call ours `todo-app`:
 ? What is your project's name? > todo-app
 ```
 
-The CLI will now create your Project and link your local directory to it. You may have noticed a `**Spacefile**` was created in the directory where we ran the `space new` command. Deta Space has its own runtime, the [Space Runtime](/docs/en/build/fundamentals/the-space-runtime/about), which is the “environment” where your app runs. And the [`**Spacefile**`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) is used to tell the Space Runtime how to run your app, but we’ll explore it more as we go.
+The CLI will now create your Project and link your local directory to it. You may have noticed a `Spacefile` was created in the directory where we ran the `space new` command. Deta Space has its own runtime, the [Space Runtime](/docs/en/build/fundamentals/the-space-runtime/about), which is the “environment” where your app runs. And the [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) is used to tell the Space Runtime how to run your app, but we’ll explore it more as we go.
 
 The runable component within the Space Runtime is a [Micro](/docs/en/build/fundamentals/the-space-runtime/micros), a serverless compute unit that can be configured to serve static files, run a server or handle other types of events. Micros can be written in almost any programming language or framework.  Our Quick Starters have more information.
 
@@ -102,8 +102,7 @@ mkdir frontend && cd frontend
 
 Then we can create a simple `index.html` file in the new directory. This will serve as the entry point for our app.
 
-- `index.html`
-
+<Collapsible title="index.html" code client:load>
     ```html
     <!DOCTYPE html>
     <html lang="en">
@@ -132,11 +131,11 @@ Then we can create a simple `index.html` file in the new directory. This will se
 
     </html>
     ```
-
+</Collapsible>
 
 In `index.html` you can see we are importing a JavaScript file called `main.js`. Let’s create this file as well.
 
-- `main.js`
+<Collapsible title="main.js" code client:load>
 
     ```jsx
     let todos = [];
@@ -231,14 +230,13 @@ In `index.html` you can see we are importing a JavaScript file called `main.js`.
 
     getTodos();
     ```
-
+</Collapsible>
 
 We don’t have to go through this file in detail, but what’s important to know is that it talks with our backend (yet to be created) using an `/api` endpoint to create and fetch to do items.
 
 For some simple styling we can optionally create a CSS file `style.css`.
 
-- `style.css`
-
+<Collapsible title="style.css" code client:load>
     ```css
     body {
       margin: 0;
@@ -346,7 +344,7 @@ For some simple styling we can optionally create a CSS file `style.css`.
       filter: invert(75%);
     }
     ```
-
+</Collapsible>
 
 ### Backend
 
@@ -364,7 +362,7 @@ npm init -y && npm install express deta
 
 For our simple API we’ll create a `index.mjs` file that will contain our API routes and start the server.
 
-- `index.mjs`
+<Collapsible title="index.mjs" code client:load>
 
     ```jsx
     import { Deta } from 'deta';
@@ -439,7 +437,7 @@ For our simple API we’ll create a `index.mjs` file that will contain our API r
         console.log(`backend running on port ${port}!`);
     });
     ```
-
+</Collapsible>
 
 There a few important things happening in this file, let’s go through each one:
 
@@ -473,8 +471,7 @@ You can see that we are instantiating the SDK with `Deta()` and then referencing
 
 If you examine the four handler functions in `index.mjs`, you’ll see how `GET`, `POST`, `PUT` and `DELETE` requests are translated into reading, creating, updating and deleting to dos from our `todos` database. We just use a few simple methods the Deta SDK offers on our `db` object.
 
-- `index.mjs`
-
+<Collapsible title="index.mjs" code client:load>
     ```jsx
     import { Deta } from 'deta';
     import Express from 'express';
@@ -548,9 +545,9 @@ If you examine the four handler functions in `index.mjs`, you’ll see how `GET`
         console.log(`backend running on port ${port}!`);
     });
     ```
+</Collapsible>    
 
-
-If you’re curious about what else Deta Base has to offer, you can read more [here](/docs/en/build/reference/base).
+If you’re curious about what else Deta Base has to offer, you can read more [here](/docs/en/build/reference/deta-base).
 
 One more point we’d like to mention. As we referenced earlier, the notion of multiple users is completely abstracted away in our code. With Deta Space's [authentication](/dosc/en/build/fundamentals/the-space-runtime/authentication), there is no auth code or logic dealing with multiple users managing their own to dos. Nonetheless, Space will still let us release our app to many users around the world, with this simple setup, which we’ll get to later.
 
@@ -676,6 +673,8 @@ To access your app, open a browser window and visit `http://localhost:4200/`. Yo
 
 Try adding to dos and marking existing todos as complete. Everything should work — even when you reload the page your to dos should remain the same.
 
+![tut-2](/docs-assets/build/todo-tutorial-2.png)
+
 Behind the scenes `space dev` setup a new Base for our to dos in our Builder Project. We can view the raw data in the Base with a UI in Builder. To open our Project there, we can just run `space open` and a new browser window should appear with the Builder interface open:
 
 ```bash
@@ -684,7 +683,7 @@ space open
 
 Navigate to the “Develop” page and then the “Data” tab to view your Base:
 
-TUT 1 IMAGE
+![tut-1](/docs-assets/build/todo-tutorial-1.png)
 
 You can use the Base UI to edit your data and the changes should show up in your local app after reloading the page.
 
@@ -743,7 +742,7 @@ The CLI will print a URL which you can use to access and use your Builder Instan
 > 💡 You will notice that your instance already contains the to dos that you created through the local app. This is because your Builder instance shares its data with your Builder Project (including local dev).
 
 
-## **Important Takeaway**
+## Important Takeaway
 
 One very important detail you’ll notice is that your instance is only accessible to you. It is protected behind Deta Auth: if you’re not logged in to your Deta account, or in incognito, you can’t access it. This is fundamental to how Space works — apps are for you, by default.
 
@@ -773,7 +772,7 @@ If you have extra time or have more motivation, here are some ideas on how to im
 3. Use Deta Drive to allow the user to upload files to a to do item
 4. Create publicly shareable to dos with public routes
 
-If you want to dive deeper into the concepts behind Space and all the features it has to offer, head over to our “Fundamentals”, “Use Cases”, or “Quick Starters”.
+If you want to dive deeper into the concepts behind Space and all the features it has to offer, head over to our [Fundamentals](/docs/en/build/fundamentals), [Guides](/docs/en/build/guides), or [Quick Starts](/docs/en/build/quick-starts).
 
 ### Publishing
 

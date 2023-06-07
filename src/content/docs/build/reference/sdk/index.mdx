@@ -51,14 +51,14 @@ The SDKs are available for the following languages:
 
 To start working with your Base, you need to import the Deta class and initialize it. 
 To authenticate with Space, you need to either use the [`space dev`](/docs/en/build/fundamentals/development/local-development) command or provide a [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) in an environment variable called `DETA_PROJECT_KEY`.
-See [here](/docs/en/build/fundamentals/data-storage) for detailed information.
+See [here](/docs/en/build/fundamentals/data-storage#data-keys) for detailed information.
 
 Once you're authenticated, you can instantiate a subclass called Base with a database name of your choosing or Drive with a drive name of your choosing.
 
 Deta Bases and Drives are created for you automatically when you start using them.
 
-/* code example - python */
-
+<LangTabs>
+    <Fragment slot="py">
 ```python
 from deta import Deta  # Import Deta
 
@@ -74,9 +74,9 @@ db = deta.Drive("my_store")
 # You can create as many as you want without additional charges.
 books = deta.Base("books")
 ```
+</Fragment>
 
-/* code example - node */
-
+<Fragment slot="js">
 ```javascript
 const { Deta } = require('deta'); // import Deta
 
@@ -92,6 +92,38 @@ const drive = deta.Drive('my_store');
 // You can create as many as you want.
 const books = deta.Base('books'); 
 ```
+</Fragment>
+<Fragment slot="go">
+```go
+import (
+  "fmt"
+
+  "github.com/deta/deta-go/deta"
+  "github.com/deta/deta-go/service/base"
+)
+
+func main() {
+
+  // initialize with project key
+  // returns ErrBadProjectKey if project key is invalid
+  // locally, set the project key in an env var called DETA_PROJECT_KEY
+  d, err := deta.New()
+  if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+  }
+
+  // initialize with base name
+  // returns ErrBadBaseName if base name is invalid
+  db, err := base.New(d, "base_name")
+  if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    return
+  }
+}
+```
+</Fragment>
+</LangTabs>
 
 
 > ⚠️ Your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) is confidential and meant to be used by you. Anyone who has your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) can access your database. Please, do not share it or commit it in your code.
