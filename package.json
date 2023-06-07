@@ -8,8 +8,10 @@
   "scripts": {
     "dev": "PUBLIC_TELETYPE_INSTALLED=false astro dev",
     "dev:tty": "PUBLIC_TELETYPE_INSTALLED=true astro dev",
+    "generate-indexes": "node scripts/generate-indexes.js",
     "start": "astro dev",
     "check": "astro check && tsc",
+    "prebuild": "npm run generate-indexes",
     "build": "astro build",
     "build:tty": "PUBLIC_TELETYPE_INSTALLED=true astro build",
     "preview": "astro preview",

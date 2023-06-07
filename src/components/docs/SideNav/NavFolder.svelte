@@ -82,7 +82,7 @@
         ><slot name="icon"><IconChevronDown size={24} strokeWidth={2} style="currentColor" /></slot
         ></span>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <span class="title" class:active={active} on:click={onClickTitle}>{(() => {
+      <span class="title nav-item-title" class:active={active} class:open={open} on:click={onClickTitle}>{(() => {
                 let title = navItem.title;
                 switch (title) {
                   case "QuickStarts":
@@ -119,7 +119,7 @@
   summary::-webkit-details-marker {
       display: none;
   }
-  
+
   details {
     width: 100%;
 

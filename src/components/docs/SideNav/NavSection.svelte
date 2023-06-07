@@ -57,7 +57,7 @@
         <slot name="icon" />
         <!--<IconRocket size={26} strokeWidth={2} style="currentColor" color="hsl(var(--color-base-green), 40%)" />-->
       </div>
-      <span class="title">{navItem.title}</span>
+      <span class="title" class:open={open}>{navItem.title}</span>
     </div>
     <span class="toggle-icon">
       <IconChevronLeft size={20} strokeWidth={2} />

@@ -22,7 +22,9 @@
     {#if (navItem.subItems && navItem.subItems.length > 0)}
         <NavFolder {navItem} {depth}/>
     {:else}
-        <a href={navItem.path} class="reset"><span>{navItem.title || navItem.path.split("/").slice(-1)}</span></a> <!-- TODO: Remove the slice stuff, just temporary till all titles are there -->
+        <a href={navItem.path} class="reset">
+            <span class="nav-item-title" class:active={active}>{navItem.title || navItem.path.split("/").slice(-1)}</span>
+        </a> <!-- TODO: Remove the slice stuff, just temporary till all titles are there -->
     {/if}
 </li>
 
