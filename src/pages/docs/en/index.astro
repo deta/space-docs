@@ -18,6 +18,7 @@ import IconHammer from '@/components/core/Icon/IconHammer.svelte';
 import IconBolt from '@/components/core/Icon/IconBolt.svelte';
 import IconRocket from '@/components/core/Icon/IconRocket.svelte';
 import IconArrowNarrowRight from '@/components/core/Icon/IconArrowNarrowRight.svelte';
+import TeletypeContainer from '@/components/Teletype/TeletypeContainer.astro';
 
 type Props = {
 	headings: MarkdownHeading[];
@@ -175,7 +176,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
             </Article>
             <!--<Footer />-->
         </main>
-		<!--<TeletypeContainer />-->
+		<TeletypeContainer />
 	</body>
 </html>
 
