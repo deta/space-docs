@@ -88,6 +88,7 @@
     article {
       max-width: 80ch;
       width: 100%;
+      padding-top: unset;
       //margin: 0 auto;
       //width: 100%;
       //max-width: calc(75ch - 10vw);
