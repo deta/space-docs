@@ -5,10 +5,10 @@
 
     import type { Action, } from "@deta/teletype/src/index"
     import Page from "@/components/Teletype/Icons/Page.svelte"
+    import { searchUrl } from "./search"
     
     export let actions: Action[]
 
-    const searchUrl = "https://deta.space/api/v0"
     const searchClient = new MeiliSearch({
         host: searchUrl,
     })

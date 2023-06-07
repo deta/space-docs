@@ -37,6 +37,7 @@
     grid-column: 1;
     grid-row: 1/2;
     margin-block: var(--spacing-6);
+    max-width: 100vw;
   }
 
   article {
