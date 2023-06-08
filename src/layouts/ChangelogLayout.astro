@@ -3,6 +3,8 @@ import type { MarkdownHeading } from 'astro';
 import type * as CONFIG from '../config';
 import { formatDate } from '@/utils/changelogs';
 
+import '../styles/old-index.css';
+
 import TeletypeContainer from '../components/Teletype/TeletypeContainer.astro';
 import HeadCommon from '../components/HeadCommon.astro';
 import HeadSEO from '../components/HeadSEO.astro';
@@ -97,7 +99,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
             .go-back .arrow {
                 transition: margin-right 0.15s ease;
             }
-        
+
             .go-back:hover .arrow {
                 margin-right: 0.2em;
             }
@@ -148,7 +150,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
                     display: flex;
                 }
 
-                
+
                 #grid-left {
                     display: flex;
                     padding-left: 2rem;
@@ -171,6 +173,26 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
                 display: block;
                 top: 2rem;
             }
+            header {
+                padding-top: 0 !important;
+            }
+            .logo h1 {
+                font-weight: 600;
+            }
+            h1 {
+                font-weight: 700;
+            }
+            h1 > a, h2 > a, h3>a, h4>a, h5>a {
+                color: inherit;
+                text-decoration: none;
+            }
+            h1 > a:hover, h2 > a:hover, h3>a:hover, h4>a:hover, h5>a:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+            .open-changelog p {
+                margin-top: 0;
+            }
         </style>
     </head>
 
@@ -179,13 +201,13 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
         <main class="layout">
             <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
                 <a class="go-back" href="/changelog">
-                    <span class="arrow">←</span> 
+                    <span class="arrow">←</span>
                     Go back
                 </a>
             </aside>
             <article id="grid-main" class="content">
                 <a class="go-back mobile" href="/changelog">
-                    <span class="arrow">←</span> 
+                    <span class="arrow">←</span>
                     Go back
                 </a>
                 <section class="main-section">

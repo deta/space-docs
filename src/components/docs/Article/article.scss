@@ -177,6 +177,10 @@ article blockquote {
         margin-top: 0.5rem;
     }
 }
+html.theme-dark article blockquote {
+    background: linear-gradient(-20deg, hsl(var(--color-base-blue), 5%), hsl(var(--color-base-blue-dark), 20%));
+    border: 2px solid hsl(var(--color-base-blue-dark), 30%);
+}
 
 /* FIX ME, Table styling */
 article table {

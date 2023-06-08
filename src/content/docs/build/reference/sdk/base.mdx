@@ -150,6 +150,8 @@ key, err := db.Put(item)
 </Fragment>
 </LangTabs>
 
+<LangTabs>
+<Fragment slot="py">
 ## Get
 
 Retrieves an item by its key.
@@ -357,7 +359,7 @@ await base.insert({ value: "Hello world!" }, "my-key");
     ```go
 func (b *Base) Insert(item interface{}) (string, error)
 ```
-
+  
 > ℹ️ `Insert` is roughly 2 times slower than [`Put`](#put).
 
 | Parameter | Type          | Description                                                              |
@@ -380,6 +382,7 @@ item := map[string]interface{}{
     "value": "Hello world!",
 }
 key, err := db.Insert(item)
+
 ```
 </Fragment>
 </LangTabs>

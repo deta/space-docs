@@ -2,7 +2,7 @@
   import AstroLogo from "@/components/core/AstroLogo.svelte";
   import { writable, get } from "svelte/store";
 
-  export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", false);
+  export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
   export const sideNavPeeking = writable<boolean>(false);
 
   export function updateBodyClass() {
@@ -78,7 +78,13 @@
     updateBodyClass();
     //if (innerWidth < 768 && JSON.parse(localStorage.getItem("sideNavOpen") || false)) sideNavOpen.set(false); // TODO: FIX
     if (document) {
-      console.log("doc");
+        // Quick fix to close after link click
+        document.addEventListener("click", (e) => {
+            if (innerWidth >= 768) return;
+            if (!(e.target instanceof HTMLAnchorElement) && e.target.closest("a") === null) return;
+            sideNavOpen.set(false);
+            updateBodyClass();
+        });
       //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
       //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
       updateBodyClass();
@@ -94,13 +100,15 @@
   on:mouseenter={onBeginPeek}
   on:mouseleave={onEndPeek} />
 <aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover}>
+    {#if ($sideNavOpen) || ($sideNavPeeking)}
   <nav
-    transition:fly={{
+  transition:fly={{
       duration: 400,
       easing: quintOut,
       x: innerWidth >= 768 ? -100 : 0,
       y: innerWidth < 768 ? 100 : 0
-    }}>
+    }}
+    >
     <header class="only-desktop">
       <a href="/docs" class="docs-logo">
         <AstroLogo size={28} />
@@ -167,6 +175,7 @@
       </ul>
     </div>
   </nav>
+  {/if}
 
   <div class="nav-toggle only-desktop">
     <IconButton on:click={toggleSideNav}>
@@ -320,7 +329,7 @@
   aside.open nav,
   aside.peeking nav {
     display: block;
-    animation: slideInToUp 200ms;
+    //animation: slideInToUp 200ms;
   }
 
   @media screen and (min-width: 768px) {
@@ -345,7 +354,7 @@
       &.open nav,
       &.peeking nav {
         display: flex;
-        animation: slideInToRight 200ms;
+        //animation: slideInToRight 200ms;
       }
       nav {
         //display: block;
