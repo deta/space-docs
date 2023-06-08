@@ -59,4 +59,14 @@
             }
         }
     }
+    :global(html.theme-dark) .card {
+        &.blue {
+            background: #202026;
+            border-color: #4c5162;
+        }
+        &.yellow {
+            background: #25221c;
+            border-color: #8f8165;
+        }
+    }
 </style>

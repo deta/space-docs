@@ -3,6 +3,9 @@ import type { MarkdownHeading } from 'astro';
 import * as CONFIG from '@/config';
 import manifest from "@/content/docs/_manifest.json";
 
+import '@/styles/new.css';
+import "@/styles/global.scss";
+
 import Header from '@/components/docs/Header/Header.svelte';
 import Article from '@/components/docs/Article/Article.svelte';
 import Footer from '@/components/docs/Footer/Footer.svelte';
@@ -135,7 +138,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                         <a href="/docs/en/learn" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-purple), 50%); color: var(--theme-text)">
                             <span class="icon"><IconBook2 size={28} color="hsl(var(--color-base-purple), 50%)" /></span>
                             Learn
-                            <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
+                            <span class="arrow"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                         </a>
                         <p>
                             Learn about the core ideas behind Deta Space and the personal cloud.
@@ -145,7 +148,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                         <a href="/docs/en/build" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-blue-dark), 50%); color: var(--theme-text)">
                             <span class="icon"><IconHammer size={28} color="hsl(var(--color-base-blue-dark), 50%)" /></span>
                             Build
-                            <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
+                            <span class="arrow"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                         </a>
                         <p>
                            Everything you need to know to turn your next big dream into reality.
@@ -157,7 +160,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                         <a href="/docs/en/use" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-yellow), 50%); color: var(--theme-text)">
                             <span class="icon"><IconBolt size={28} color="hsl(var(--color-base-yellow), 50%)" /></span>
                             Use
-                            <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
+                            <span class="arrow"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                         </a>
                         <p>
                             Everything you need to know to navigate Space, find and use applications, and manage your data.
@@ -167,7 +170,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
                         <a href="/docs/en/publish" style="padding-bottom: var(--spacing-2); color: hsl(var(--color-base-green), 40%); color: var(--theme-text);">
                             <span class="icon"><IconRocket size={28} color="hsl(var(--color-base-green), 40%)" /></span>
                             Publish
-                            <span class="arrow"><IconArrowNarrowRight size={18} color="black" /></span>
+                            <span class="arrow"><IconArrowNarrowRight size={18} color="currentColor" /></span>
                         </a>
                         <p>
                             Share whatever you create next with the world, and make sure it lands in happy users hands.
