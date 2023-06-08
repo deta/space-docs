@@ -150,15 +150,15 @@ key, err := db.Put(item)
 </Fragment>
 </LangTabs>
 
-<LangTabs>
-<Fragment slot="py">
 ## Get
 
+Retrieves an item by its key.
+
+<LangTabs>
+<Fragment slot="py">
 ```py
 def get(key: str) -> dict | None:
 ```
-
-Retrieves an item by its key.
 
 | Parameter | Type  | Description                      |
 | --------- | ----- | -------------------------------- |
@@ -173,14 +173,63 @@ Example:
 ```py
 item = base.get("my-key")
 ```
+</Fragment>
+<Fragment slot="js">
+
+```js
+async function get(key: string): Promise<GetResponse>;
+```
+
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| `key`     | `string` | The key of the item to retrieve. |
+
+Returns a promise which resolves to a [`GetResponse`](./types#getresponse).
+If the item is found, the response will contain the item.
+If not found, the response will be `null`.
+
+Example:
+
+```js
+const item = await base.get("my-key");
+```
+</Fragment>
+
+<Fragment slot="go">
+```go
+func (b *Base) Get(key string, dest interface{}) error
+```
+
+| Parameter | Type          | Description                                                 |
+| --------- | ------------- | ----------------------------------------------------------- |
+| `key`     | `string`      | The key of the item to retrieve.                            |
+| `dest`    | `interface{}` | The result will be stored into the value pointed by `dest`. |
+
+Returns an `error`. Possible error values:
+
+- `ErrNotFound`: no item with such key was found
+- `ErrBadDestination`: bad destination, result could not be stored onto `dest`
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+var item map[string]interface{}
+err := db.Get("my-key", &item)
+```
+</Fragment>
+</LangTabs>
 
 ## Delete
 
+Deletes an item by its key.
+
+<LangTabs>
+    <Fragment slot="py">
 ```py
 def delete(key: str):
 ```
-
-Deletes an item by its key.
 
 | Parameter | Type  | Description                    |
 | --------- | ----- | ------------------------------ |
@@ -194,8 +243,57 @@ Example:
 ```py
 base.delete("my-key")
 ```
+</Fragment>
+<Fragment slot ="js">
+    ```js
+async function delete(key: string): Promise<DeleteResponse>;
+```
+
+Deletes an item by its key.
+
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `key`     | `string` | The key of the item to delete. |
+
+Returns a promise which resolves to a [`DeleteResponse`](./types#deleteresponse).
+The response will always be `null`, even if the key does not exist.
+
+Example:
+
+```js
+await base.delete("my-key");
+```
+</Fragment>
+<Fragment slot ="go">
+    ```go
+func (b *Base) Delete(key string) error
+```
+
+Deletes an item by its key.
+
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `key`     | `string` | The key of the item to delete. |
+
+Returns an `error`. A `nil` error is returned if no item was found with the provided key. Possible error values:
+
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+err := db.Delete("my-key")
+```
+</Fragment>
+</LangTabs>
 
 ## Insert
+
+Inserts a single item, but is different from [`put`](#put) in that it will throw an error of the key already exists in the Base.
+
+<LangTabs>
+    <Fragment slot ="py">
 
 ```py
 def insert(
@@ -207,7 +305,6 @@ def insert(
 ) -> dict:
 ```
 
-Inserts a single item, but is different from [`put`](#put) in that it will throw an error of the key already exists in the Base.
 
 > ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
 
@@ -228,10 +325,72 @@ Example:
 ```py
 base.insert({"value": "Hello world!"}, "my-key")
 ```
+</Fragment>
+<Fragment slot="js">
+    ```js
+async function insert(
+    data: DetaType,
+    key?: string,
+    options?: InsertOptions,
+): Promise<InsertResponse>;
+```
+
+> ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
+
+| Parameter  | Type                                     | Description                                                              |
+| ---------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| `data`     | `DetaType`                               | The data to be stored.                                                   |
+| `key?`     | `string`                                 | The key to store the data under. Will be auto generated if not provided. |
+| `options?` | [`InsertOptions`](./types#insertoptions) | Optional parameters.                                                     |
+
+Returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
+If the operation did not complete successfully, or the key already exists, throws an `Error`.
+
+Example:
+
+```js
+await base.insert({ value: "Hello world!" }, "my-key");
+```
+
+</Fragment>
+<Fragment slot="go">
+    ```go
+func (b *Base) Insert(item interface{}) (string, error)
+```
+
+> ℹ️ `Insert` is roughly 2 times slower than [`Put`](#put).
+
+| Parameter | Type          | Description                                                              |
+| --------- | ------------- | ------------------------------------------------------------------------ |
+| `item`    | `interface{}` | The item to be stored, similar to the `item` parameter in [`Put`](#put). |
+
+Returns the key of the item inserted and an `error`. Possible error values:
+
+- `ErrConflict` : if item with provided key already exists
+- `ErrBadItem`: bad item, if item is of unexpected type
+- `ErrBadRequest`: item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+item := map[string]interface{}{
+    "key": "my-key",
+    "value": "Hello world!",
+}
+key, err := db.Insert(item)
+```
+</Fragment>
+</LangTabs>
 
 ## Put Many
 
-```py
+Puts up to 25 items at once with a single call.
+
+<LangTabs>
+    <Fragment slot="py">
+        ```py
 def put_many(
     items: list,
     *,
@@ -239,8 +398,6 @@ def put_many(
     expire_at: int | float | datetime | None = None,
 ) -> dict:
 ```
-
-Puts up to 25 items at once with a single call.
 
 | Parameter   | Type                                     | Description                                                           |
 | ----------- | ---------------------------------------- | --------------------------------------------------------------------- |
@@ -255,9 +412,67 @@ Example:
 ```py
 base.put_many(["First item", "Second item", "Third item"])
 ```
+    </Fragment>
+    <Fragment slot="js">
+```js
+async function putMany(
+    items: DetaType[],
+    options?: PutManyOptions,
+): Promise<PutManyResponse>;
+```
+
+| Parameter  | Type                                       | Description                     |
+| ---------- | ------------------------------------------ | ------------------------------- |
+| `items`    | [`DetaType[]`](./types#detatype)           | The list of items to be stored. |
+| `options?` | [`PutManyOptions`](./types#putmanyoptions) | Optional parameters.            |
+
+Returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
+If the operation did not complete successfully, or `items` contains more than 25 items, throws an `Error`.
+
+Example:
+
+```js
+await base.putMany(["First item", "Second item", "Third item"]);
+```
+    </Fragment>
+    <Fragment slot="go">
+```go
+func (b *Base) PutMany(items interface{}) ([]string, error)
+```
+
+| Parameter | Type          | Description                                                                                |
+| --------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `items`   | `interface{}` | A slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put). |
+
+Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
+
+- `ErrTooManyItems`: if there are more than 25 items
+- `ErrBadItem`: bad item/items, one or more item of unexpected type
+- `ErrBadRequest`: one or more item caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+item1 := map[string]interface{}{
+    "value": "First item",
+}
+item2 := map[string]interface{}{
+    "value": "Second item",
+}
+items := []map[string]interface{}{item1, item2}
+keys, err := db.PutMany(items)
+```
+    </Fragment>
+</LangTabs>
 
 ## Update
 
+Updates an existing item.
+
+<LangTabs>
+    <Fragment slot="py">
 ```py
 def update(
     updates: dict,
@@ -267,8 +482,6 @@ def update(
     expire_at: int | float | datetime | None = None
 )
 ```
-
-Updates an existing item.
 
 | Parameter   | Type                                     | Description                                                           |
 | ----------- | ---------------------------------------- | --------------------------------------------------------------------- |
@@ -288,6 +501,57 @@ base.update(
     "my-key",
 )
 ```
+    </Fragment>
+    <Fragment slot="js">
+```js
+async function update(
+    updates: ObjectType,
+    key: string,
+    options?: UpdateOptions,
+): Promise<UpdateResponse>;
+```
+
+| Parameter  | Type                                     | Description                                   |
+| ---------- | ---------------------------------------- | --------------------------------------------- |
+| `updates`  | [`ObjectType`](./types#objecttype)       | An object describing the updates on the item. |
+| `key`      | `string`                                 | The key of the item to be updated.            |
+| `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters.                          |
+
+Example:
+
+```js
+await base.update(
+    { value: "Hello updated world!" },
+    "my-key",
+);
+```
+    </Fragment>
+    <Fragment slot="go">
+```go
+func (b *Base) Update(key string, updates Updates) error
+```
+
+| Parameter | Type                         | Description                       |
+| --------- | ---------------------------- | --------------------------------- |
+| `key`     | `string`                     | The key of the item to update.    |
+| `updates` | [`Updates`](./types#updates) | The updates to apply to the item. |
+
+Returns an `error`. Possible error values:
+
+- `ErrBadRequest`: the update operation caused a bad request response from the server
+- `ErrUnauthorized`: unauthorized
+- `ErrInternalServerError`: internal server error
+
+Example:
+
+```go
+updates := base.Updates{
+    "value": "Hello updated world!",
+}
+err := db.Update("my-key", updates)
+```
+    </Fragment>
+</LangTabs>
 
 ### Update operations
 
@@ -296,6 +560,21 @@ The operation changes the values of the attributes provided in the dictionary if
 If not, it adds the attribute to the item with the corresponding value.
 
 Other operations are implemented through methods in the [`Util`](#util) class, accessible through the `util` attribute of a Base instance.
+
+<LangTabs>
+    <Fragment slot="py">
+    </Fragment>
+    <Fragment slot="js">
+    </Fragment>
+    <Fragment slot="go">
+    </Fragment>
+</LangTabs>
+
+<LangTabs>
+    <Fragment slot="py">
+
+
+
 
 ## Fetch
 
@@ -391,130 +670,6 @@ Removes an attribute from the item.
 
 <Fragment slot="js">
 
-## Get
-
-```js
-async function get(key: string): Promise<GetResponse>;
-```
-
-Retrieves an item by its key.
-
-| Parameter | Type     | Description                      |
-| --------- | -------- | -------------------------------- |
-| `key`     | `string` | The key of the item to retrieve. |
-
-Returns a promise which resolves to a [`GetResponse`](./types#getresponse).
-If the item is found, the response will contain the item.
-If not found, the response will be `null`.
-
-Example:
-
-```js
-const item = await base.get("my-key");
-```
-
-## Delete
-
-```js
-async function delete(key: string): Promise<DeleteResponse>;
-```
-
-Deletes an item by its key.
-
-| Parameter | Type     | Description                    |
-| --------- | -------- | ------------------------------ |
-| `key`     | `string` | The key of the item to delete. |
-
-Returns a promise which resolves to a [`DeleteResponse`](./types#deleteresponse).
-The response will always be `null`, even if the key does not exist.
-
-Example:
-
-```js
-await base.delete("my-key");
-```
-
-## Insert
-
-```js
-async function insert(
-    data: DetaType,
-    key?: string,
-    options?: InsertOptions,
-): Promise<InsertResponse>;
-```
-
-Inserts a single item, but is different from [`put`](#put) in that it will throw an error of the key already exists in the Base.
-
-> ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
-
-| Parameter  | Type                                     | Description                                                              |
-| ---------- | ---------------------------------------- | ------------------------------------------------------------------------ |
-| `data`     | `DetaType`                               | The data to be stored.                                                   |
-| `key?`     | `string`                                 | The key to store the data under. Will be auto generated if not provided. |
-| `options?` | [`InsertOptions`](./types#insertoptions) | Optional parameters.                                                     |
-
-Returns a promise which resolves to an [`InsertResponse`](./types#insertresponse) containing the item.
-If the operation did not complete successfully, or the key already exists, throws an `Error`.
-
-Example:
-
-```js
-await base.insert({ value: "Hello world!" }, "my-key");
-```
-
-## Put Many
-
-```js
-async function putMany(
-    items: DetaType[],
-    options?: PutManyOptions,
-): Promise<PutManyResponse>;
-```
-
-Puts up to 25 items at once with a single call.
-
-| Parameter  | Type                                       | Description                     |
-| ---------- | ------------------------------------------ | ------------------------------- |
-| `items`    | [`DetaType[]`](./types#detatype)           | The list of items to be stored. |
-| `options?` | [`PutManyOptions`](./types#putmanyoptions) | Optional parameters.            |
-
-Returns a promise which resolves to a [`PutManyResponse`](./types#putmanyresponse) containing the items.
-If the operation did not complete successfully, or `items` contains more than 25 items, throws an `Error`.
-
-Example:
-
-```js
-await base.putMany(["First item", "Second item", "Third item"]);
-```
-
-## Update
-
-```js
-async function update(
-    updates: ObjectType,
-    key: string,
-    options?: UpdateOptions,
-): Promise<UpdateResponse>;
-```
-
-Updates an existing item.
-
-| Parameter  | Type                                     | Description                                   |
-| ---------- | ---------------------------------------- | --------------------------------------------- |
-| `updates`  | [`ObjectType`](./types#objecttype)       | An object describing the updates on the item. |
-| `key`      | `string`                                 | The key of the item to be updated.            |
-| `options?` | [`UpdateOptions`](./types#updateoptions) | Optional parameters.                          |
-
-Example:
-
-```js
-await base.update(
-    { value: "Hello updated world!" },
-    "my-key",
-);
-```
-
 ### Update operations
 
 Setting values is practiced through normal key-value pairs.
@@ -598,148 +753,7 @@ Removes an attribute from the item.
 
 </Fragment>
 <Fragment slot="go">
-## Get
 
-```go
-func (b *Base) Get(key string, dest interface{}) error
-```
-
-Retrieves an item by its key.
-
-| Parameter | Type          | Description                                                 |
-| --------- | ------------- | ----------------------------------------------------------- |
-| `key`     | `string`      | The key of the item to retrieve.                            |
-| `dest`    | `interface{}` | The result will be stored into the value pointed by `dest`. |
-
-Returns an `error`. Possible error values:
-
-- `ErrNotFound`: no item with such key was found
-- `ErrBadDestination`: bad destination, result could not be stored onto `dest`
-- `ErrUnauthorized`: unauthorized
-- `ErrInternalServerError`: internal server error
-
-Example:
-
-```go
-var item map[string]interface{}
-err := db.Get("my-key", &item)
-```
-
-## Delete
-
-```go
-func (b *Base) Delete(key string) error
-```
-
-Deletes an item by its key.
-
-| Parameter | Type     | Description                    |
-| --------- | -------- | ------------------------------ |
-| `key`     | `string` | The key of the item to delete. |
-
-Returns an `error`. A `nil` error is returned if no item was found with the provided key. Possible error values:
-
-- `ErrUnauthorized`: unauthorized
-- `ErrInternalServerError`: internal server error
-
-Example:
-
-```go
-err := db.Delete("my-key")
-```
-
-## Insert
-
-```go
-func (b *Base) Insert(item interface{}) (string, error)
-```
-
-Inserts a single item, but is different from [`Put`](#put) in that it will throw an error of the key already exists in the Base.
-
-> ℹ️ `Insert` is roughly 2 times slower than [`Put`](#put).
-
-| Parameter | Type          | Description                                                              |
-| --------- | ------------- | ------------------------------------------------------------------------ |
-| `item`    | `interface{}` | The item to be stored, similar to the `item` parameter in [`Put`](#put). |
-
-Returns the key of the item inserted and an `error`. Possible error values:
-
-- `ErrConflict` : if item with provided key already exists
-- `ErrBadItem`: bad item, if item is of unexpected type
-- `ErrBadRequest`: item caused a bad request response from the server
-- `ErrUnauthorized`: unauthorized
-- `ErrInternalServerError`: internal server error
-
-Example:
-
-```go
-item := map[string]interface{}{
-    "key": "my-key",
-    "value": "Hello world!",
-}
-key, err := db.Insert(item)
-```
-
-## Put Many
-
-```go
-func (b *Base) PutMany(items interface{}) ([]string, error)
-```
-
-Puts up to 25 items at once with a single call.
-
-| Parameter | Type          | Description                                                                                |
-| --------- | ------------- | ------------------------------------------------------------------------------------------ |
-| `items`   | `interface{}` | A slice of items, each item in the slice similar to the `item` parameter in [`Put`](#put). |
-
-Returns the list of keys of the items stored and an `error`. In case of an error, none of the items are stored. Possible error values:
-
-- `ErrTooManyItems`: if there are more than 25 items
-- `ErrBadItem`: bad item/items, one or more item of unexpected type
-- `ErrBadRequest`: one or more item caused a bad request response from the server
-- `ErrUnauthorized`: unauthorized
-- `ErrInternalServerError`: internal server error
-
-Example:
-
-```go
-item1 := map[string]interface{}{
-    "value": "First item",
-}
-item2 := map[string]interface{}{
-    "value": "Second item",
-}
-items := []map[string]interface{}{item1, item2}
-keys, err := db.PutMany(items)
-```
-
-## Update
-
-```go
-func (b *Base) Update(key string, updates Updates) error
-```
-
-Updates an existing item.
-
-| Parameter | Type                         | Description                       |
-| --------- | ---------------------------- | --------------------------------- |
-| `key`     | `string`                     | The key of the item to update.    |
-| `updates` | [`Updates`](./types#updates) | The updates to apply to the item. |
-
-Returns an `error`. Possible error values:
-
-- `ErrBadRequest`: the update operation caused a bad request response from the server
-- `ErrUnauthorized`: unauthorized
-- `ErrInternalServerError`: internal server error
-
-Example:
-
-```go
-updates := base.Updates{
-    "value": "Hello updated world!",
-}
-err := db.Update("my-key", updates)
-```
 
 ### Update operations
 
