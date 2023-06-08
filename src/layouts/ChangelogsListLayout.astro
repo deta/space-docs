@@ -2,6 +2,8 @@
 import type { MarkdownHeading } from 'astro';
 import * as CONFIG from '../config';
 
+import '../styles/old-index.css';
+
 import TeletypeContainer from '../components/Teletype/TeletypeContainer.astro';
 import HeadCommon from '../components/HeadCommon.astro';
 import HeadSEO from '../components/HeadSEO.astro';
@@ -17,7 +19,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
     <head>
         <HeadCommon />
         <!-- TODO -->
-        <!-- <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} /> -->        
+        <!-- <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} /> -->
         <title>Space Changelogs</title>
         <style>
             :root {
