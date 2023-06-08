@@ -556,37 +556,111 @@ err := db.Update("my-key", updates)
 ### Update operations
 
 Setting values is practiced through normal key-value pairs.
-The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
+The operation changes the values of the attributes provided in the object / dictionary if the attribute already exists.
 If not, it adds the attribute to the item with the corresponding value.
 
-Other operations are implemented through methods in the [`Util`](#util) class, accessible through the `util` attribute of a Base instance.
+Other operations are implemented through methods in the [`Util`](#util) class / struct, accessible through the `util` attribute of a Base instance.
+
+## Util
+
+The `util` attribute of a Base instance is an instance of the `Util` class.
+It provides utility methods for use in [update operations](#update-operations).
+
+### Increment
+
+Increments the value of an attribute.
+The provided value can be any positive or negative integer.
+The attribute's value _must be a number_.
+The default value is `1`.
 
 <LangTabs>
     <Fragment slot="py">
+```py
+def increment(value: int | float = 1):
+```
     </Fragment>
     <Fragment slot="js">
+```js
+function increment(value?: number);
+```
     </Fragment>
     <Fragment slot="go">
+```go
+func (u *util) Increment(value interface{})
+```
     </Fragment>
 </LangTabs>
 
+### Append
+
+Appends to a list.
+The value can be a primitive type or a `array` / `list`.
+
 <LangTabs>
     <Fragment slot="py">
+```py
+def append(value: dict | list | str | int | float | bool):
+```
+    </Fragment>
+    <Fragment slot="js"> 
+```js
+function append(value: BasicType | ArrayType);
+```
+    </Fragment>
+    <Fragment slot="go">
+```go
+func (u *util) Append(value interface{})
+```
+    </Fragment>
+</LangTabs>
 
+### Prepend
 
+Prepends to a list.
+The value can be a primitive type or an `array` / `list`.
+
+<LangTabs>
+    <Fragment slot="py">
+```py
+def prepend(value: dict | list | str | int | float | bool):
+```
+    </Fragment>
+    <Fragment slot="js">
+```js
+function prepend(value: BasicType | ArrayType);
+```
+    </Fragment>
+    <Fragment slot="go">
+```go
+func (u *util) Prepend(value interface{})
+```
+    </Fragment>
+</LangTabs>
+
+### Trim
+
+Removes an attribute from the item.
+
+<LangTabs>
+    <Fragment slot="py">
+```py
+def trim():
+```
+    </Fragment>
+    <Fragment slot="js">
+```js
+function trim();
+```
+    </Fragment>
+    <Fragment slot="go">
+```go
+func (u *util) Trim()
+```
+    </Fragment>
+</LangTabs>
 
 
 ## Fetch
-
-```py
-def fetch(
-    self,
-    query: Mapping | Sequence[Mapping] | None = None,
-    *,
-    limit: int = 1000,
-    last: str | None = None,
-) -> FetchResponse:
-```
 
 Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
 
@@ -596,6 +670,18 @@ In the case of a list, the indvidual queries are OR'ed.
 > ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
 > Thus, in some cases you might get an empty list of items and a `last` key in the response.
 > To apply the query through all the items in your Base, you have to call `fetch` until `last` is empty.
+
+<LangTabs>
+    <Fragment slot="py">
+        ```py
+def fetch(
+    self,
+    query: Mapping | Sequence[Mapping] | None = None,
+    *,
+    limit: int = 1000,
+    last: str | None = None,
+) -> FetchResponse:
+```
 
 | Parameter | Type                             | Description                                                          |
 | --------- | -------------------------------- | -------------------------------------------------------------------- |
@@ -610,91 +696,14 @@ Example:
 ```py
 response = base.fetch({"value?contains": "world"})
 ```
-
-## FetchResponse
-
-The `FetchResponse` class describes the response of the [`fetch`](#fetch) method.
-
-| Attribute | Type            | Description                                                                                        |
-| --------- | --------------- | -------------------------------------------------------------------------------------------------- |
-| `count`   | `int`           | The number of items in the response.                                                               |
-| `last`    | `str` \| `None` | The last key seen in the fetch response. If `last` is not `None` further items are to be retreived |
-| `items`   | `list`          | The list of items retreived.                                                                       |
-
-## Util
-
-The `util` attribute of a Base instance is an instance of the `Util` class.
-It provides utility methods for use in [update operations](#update-operations).
-
-## Increment
-
-```py
-def increment(value: int | float = 1):
-```
-
-Increments the value of an attribute.
-The provided value can be any positive or negative integer.
-The attribute's value _must be a number_.
-The default value is `1`.
-
-## Append
-
-```py
-def append(value: dict | list | str | int | float | bool):
-```
-
-Appends to a list.
-The value can be a primitive type or a `list`.
-
-## Prepend
-
-```py
-def prepend(value: dict | list | str | int | float | bool):
-```
-
-Prepends to a list.
-The value can be a primitive type or a `list`.
-
-## Trim
-
-```py
-def trim():
-```
-
-Removes an attribute from the item.
-
-[1]: /docs/en/build/reference/deta-base#storing-numbers "Storing numbers"
-[2]: /docs/en/build/reference/deta-base/expiring-items "Expiring items"
-
-</Fragment>
-
-<Fragment slot="js">
-
-### Update operations
-
-Setting values is practiced through normal key-value pairs.
-The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
-If not, it adds the attribute to the item with the corresponding value.
-
-Other operations are implemented through methods in the [`BaseUtils`](#baseutils) class, accessible through the `util` attribute of a Base instance.
-
-## Fetch
-
+    </Fragment>
+    <Fragment slot="js">
 ```js
 async function fetch(
     query?: CompositeType,
     options?: FetchOptions,
 ): Promise<FetchResponse>;
 ```
-
-Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
-
-A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
-In the case of a list, the indvidual queries are OR'ed.
-
-> ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
-> Thus, in some cases you might get an empty list of items and a `last` key in the response.
-> To apply the query through all the items in your Base, you have to call `fetch` until `last` is empty.
 
 | Parameter  | Type                                     | Description                       |
 | ---------- | ---------------------------------------- | --------------------------------- |
@@ -708,75 +717,11 @@ Example:
 ```js
 const response = await base.fetch({ "value?contains": "world" });
 ```
-
-## BaseUtils
-
-The `util` attribute of a Base instance is an instance of the `BaseUtils` class.
-It provides utility methods for use in [update operations](#update-operations).
-
-## Increment
-
-```js
-function increment(value?: number);
-```
-
-Increments the value of an attribute.
-The provided value can be any positive or negative integer.
-The attribute's value _must be a number_.
-The default value is `1`.
-
-## Append
-
-```js
-function append(value: BasicType | ArrayType);
-```
-
-Appends to a list.
-The value can be a primitive type or an array.
-
-## Prepend
-
-```js
-function prepend(value: BasicType | ArrayType);
-```
-
-Prepends to a list.
-The value can be a primitive type or an array.
-
-## Trim
-
-```js
-function trim();
-```
-
-Removes an attribute from the item.
-
-</Fragment>
-<Fragment slot="go">
-
-
-### Update operations
-
-Setting values is practiced through normal key-value pairs.
-The operation changes the values of the attributes provided in the dictionary if the attribute already exists.
-If not, it adds the attribute to the item with the corresponding value.
-
-Other operations are implemented through methods accessible through the `Util` field of a Base instance.
-
-## Fetch
-
+    </Fragment>
+    <Fragment slot="go">
 ```go
 func (b *Base) Fetch(i *FetchInput) (string, error)
 ```
-
-Retrieves a list of items matching a query. It will retrieve everything if no query is provided, up to a limit of 1 MB or 1000 items.
-
-A query is composed of a single [query object](/docs/en/reference/base/queries) or a list of query objects.
-In the case of a list, the indvidual queries are OR'ed.
-
-> ℹ️ Up to 1 MB of data is retrieved _before_ filtering with the query.
-> Thus, in some cases you might get an empty list of items and a `last` key in the response.
-> To apply the query through all the items in your Base, you have to call `Fetch` until `last` is empty.
 
 | Parameter | Type                                | Description                                       |
 | --------- | ----------------------------------- | ------------------------------------------------- |
@@ -801,47 +746,20 @@ _, err := db.Fetch(&base.FetchInput{
     Dest: &results,
 })
 ```
-
-## Util
-
-The `Util` field of a Base instance is pointer to the `util` struct.
-It provides utility methods for use in [update operations](#update-operations).
-
-## Increment
-
-```go
-func (u *util) Increment(value interface{})
-```
-
-Increments the value of an attribute.
-The provided value can be any positive or negative integer.
-The attribute's value _must be a number_.
-The default value is `1`.
-
-## Append
-
-```go
-func (u *util) Append(value interface{})
-```
-
-Appends to a list.
-The value can be a primitive type or an array.
-
-## Prepend
-
-```go
-func (u *util) Prepend(value interface{})
-```
-
-Prepends to a list.
-The value can be a primitive type or an array.
-
-## Trim
-
-```go
-func (u *util) Trim()
-```
-
-Removes an attribute from the item.
-</Fragment>
+    </Fragment>
 </LangTabs>
+
+
+## FetchResponse
+
+The `FetchResponse` class describes the response of the [`fetch`](#fetch) method.
+
+| Attribute | Type            | Description                                                                                        |
+| --------- | --------------- | -------------------------------------------------------------------------------------------------- |
+| `count`   | `int`           | The number of items in the response.                                                               |
+| `last`    | `str` \| `None` | The last key seen in the fetch response. If `last` is not `None` further items are to be retreived |
+| `items`   | `list`          | The list of items retreived.    
+
+
+[1]: /docs/en/build/reference/deta-base#storing-numbers "Storing numbers"
+[2]: /docs/en/build/reference/deta-base/expiring-items "Expiring items"
