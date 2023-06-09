@@ -8,7 +8,8 @@ import LangTabs from "@/components/Tabs/LangTabs.astro";
 
 ## Base Class
 
-The `Base` class provides methods to interact with a Deta Base.
+The `Base` class provides methods to interact with a Deta Base. 
+If you have not yet [instantiated](/docs/en/build/reference/sdk#instantiating) the `Deta` Object, you must do so before you can use the `Base` Class.
 
 <LangTabs>
 <Fragment slot="py">
@@ -23,6 +24,15 @@ def Base(name: str, host: str | None = None):
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
 
+Example:
+```py
+from deta import Deta
+
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.Base("simple_db")
+```
 </Fragment>
 <Fragment slot="js">
 ```js
@@ -35,6 +45,16 @@ function Base(baseName: string, host?: string);
 | `host?`    | `string` | The host of the Base. |
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
+
+Example:
+```js
+const { Deta } = require('deta'); // import Deta
+
+const deta = Deta();
+
+// This how to connect to or create a database.
+const db = deta.Base('simple_db');
+```
 </Fragment>
 <Fragment slot="go">
 ```go
@@ -52,6 +72,33 @@ Returns a pointer to a [`Base`](./types#base) instance and an `error`. Possible 
 - `ErrBadBaseName`: the name of the Base is invalid
 
 > ℹ️ Deta Bases are automatically created for you when you start using them.
+
+Example:
+```go
+import (
+  "fmt"
+
+  "github.com/deta/deta-go/deta"
+  "github.com/deta/deta-go/service/base"
+)
+
+func main() {
+
+  d, err := deta.New()
+  if err != nil {
+    fmt.Println("failed to init new Deta instance:", err)
+    return
+  }
+
+  // initialize with base name
+  // returns ErrBadBaseName if base name is invalid
+  db, err := base.New(d, "base_name")
+  if err != nil {
+    fmt.Println("failed to init new Base instance:", err)
+    return
+  }
+}
+```
 </Fragment>
 </LangTabs>
 
