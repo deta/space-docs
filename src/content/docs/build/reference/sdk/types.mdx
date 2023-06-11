@@ -3,34 +3,29 @@ title: Types
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-import LangTabsSelector from "@/components/Tabs/LangTabsSelector.astro";
-import LangTabs from "@/components/Tabs/LangTabs.astro";
+## JavaScript
 
-## Basic types
+### Basic types
 
-<LangTabsSelector />
-<LangTabs>
-<Fragment slot="js">
-
-### `BasicType`
+#### `BasicType`
 
 ```js
 type BasicType = string | number | boolean;
 ```
 
-### `NullType`
+#### `NullType`
 
 ```js
 type NullType = null;
 ```
 
-### `UndefinedType`
+#### `UndefinedType`
 
 ```js
 type UndefinedType = undefined;
 ```
 
-### `ObjectType`
+#### `ObjectType`
 
 ```js
 type ObjectType = {
@@ -38,27 +33,27 @@ type ObjectType = {
 };
 ```
 
-### `ArrayType`
+#### `ArrayType`
 
 ```js
 type ArrayType = Array<ArrayType | ObjectType | BasicType | NullType | UndefinedType>;
 ```
 
-### `CompositeType`
+#### `CompositeType`
 
 ```js
 type CompositeType = ArrayType | ObjectType;
 ```
 
-### `DetaType`
+#### `DetaType`
 
 ```js
 type DetaType = ArrayType | ObjectType | BasicType;
 ```
 
-## Action types
+### Action types
 
-### `ActionTypes`
+#### `ActionTypes`
 
 ```js
 enum ActionTypes {
@@ -70,7 +65,7 @@ enum ActionTypes {
 }
 ```
 
-### `Action`
+#### `Action`
 
 ```js
 class Action {
@@ -80,9 +75,9 @@ class Action {
 }
 ```
 
-## Base types
+### Base types
 
-### `PutOptions`
+#### `PutOptions`
 
 ```js
 interface PutOptions {
@@ -96,7 +91,7 @@ interface PutOptions {
 | `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
 | `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
-### `InsertOptions`
+#### `InsertOptions`
 
 ```js
 interface InsertOptions {
@@ -110,7 +105,7 @@ interface InsertOptions {
 | `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
 | `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
-### `PutManyOptions`
+#### `PutManyOptions`
 
 ```js
 interface PutManyOptions {
@@ -124,7 +119,7 @@ interface PutManyOptions {
 | `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
 | `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
-### `UpdateOptions`
+#### `UpdateOptions`
 
 ```js
 interface UpdateOptions {
@@ -138,7 +133,7 @@ interface UpdateOptions {
 | `expireIn?` | `number`           | Item will expire in `expireIn` seconds after a successfull put operation, see also [expiring items][1]. |
 | `expireAt?` | `Date` \| `number` | Item will expire at `expireAt` date, see also [expiring items][1].                                      |
 
-### `FetchOptions`
+#### `FetchOptions`
 
 ```js
 interface FetchOptions {
@@ -152,31 +147,31 @@ interface FetchOptions {
 | `limit?` | `number` | Maximum number of items you want to retreive, minimum value `1`. |
 | `last?`  | `string` | Last key seen in a previous paginated response.                  |
 
-### `PutResponse`
+#### `PutResponse`
 
 ```js
 type PutResponse = ObjectType | NullType;
 ```
 
-### `GetResponse`
+#### `GetResponse`
 
 ```js
 type GetResponse = ObjectType | NullType;
 ```
 
-### `DeleteResponse`
+#### `DeleteResponse`
 
 ```js
 type DeleteResponse = NullType;
 ```
 
-### `InsertResponse`
+#### `InsertResponse`
 
 ```js
 type InsertResponse = ObjectType;
 ```
 
-### `PutManyResponse`
+#### `PutManyResponse`
 
 ```js
 interface PutManyResponse {
@@ -186,13 +181,13 @@ interface PutManyResponse {
 }
 ```
 
-### `UpdateResponse`
+#### `UpdateResponse`
 
 ```js
 type UpdateResponse = NullType;
 ```
 
-### `FetchResponse`
+#### `FetchResponse`
 
 ```js
 interface FetchResponse {
@@ -208,9 +203,9 @@ interface FetchResponse {
 | `count`  | `number`                      | Number of items in the response.                                                                      |
 | `last?`  | `string`                      | Last key seen in the fetch response. If `last` is not `undefined`, further items are to be retreived. |
 
-## Drive types
+### Drive types
 
-### `PutOptions`
+#### `PutOptions`
 
 ```js
 interface PutOptions {
@@ -226,7 +221,7 @@ interface PutOptions {
 | `path?`        | `string`                             | Path of the file to be uploaded to drive.                                                                                                                                  |
 | `contentType?` | `string`                             | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
 
-### `ListOptions`
+#### `ListOptions`
 
 ```js
 interface ListOptions {
@@ -244,7 +239,7 @@ interface ListOptions {
 | `limit?`     | `number`  | Maximum number of file names to be returned, defaults to `1000`. |
 | `last?`      | `string`  | Last name seen in a previous paginated response.                 |
 
-### `PutResponse`
+#### `PutResponse`
 
 ```js
 type PutResponse = string;
@@ -252,7 +247,7 @@ type PutResponse = string;
 
 The name of a file that was uploaded.
 
-### `GetResponse`
+#### `GetResponse`
 
 ```js
 type GetResponse = Blob | NullType;
@@ -260,7 +255,7 @@ type GetResponse = Blob | NullType;
 
 The content of a file if found, otherwise `null`.
 
-### `DeleteResponse`
+#### `DeleteResponse`
 
 ```js
 type DeleteResponse = string;
@@ -268,7 +263,7 @@ type DeleteResponse = string;
 
 The name of a file that was deleted.
 
-### `DeleteManyResponse`
+#### `DeleteManyResponse`
 
 ```js
 interface DeleteManyResponse {
@@ -284,7 +279,7 @@ interface DeleteManyResponse {
 | `deleted` | `string[]` | Names of files that were deleted.         |
 | `failed`  | `object`   | Names of files that failed to be deleted. |
 
-### `ListResponse`
+#### `ListResponse`
 
 ```js
 interface ListResponse {
@@ -305,11 +300,9 @@ interface ListResponse {
 
 [1]: /docs/en/build/reference/deta-base/expiring-items "Expiring items"
 
+## Golang
 
-</Fragment>
-<Fragment slot="go">
-
-### `Deta`
+#### `Deta`
 
 ```go
 type Deta struct {
@@ -317,15 +310,15 @@ type Deta struct {
 }
 ```
 
-### `ConfigOption`
+#### `ConfigOption`
 
 ```go
 type ConfigOption func(*Deta)
 ```
 
-## Base types
+### Base types
 
-### `Base`
+#### `Base`
 
 ```go
 type Base struct {
@@ -333,19 +326,19 @@ type Base struct {
 }
 ```
 
-### `Query`
+#### `Query`
 
 ```go
 type Query []map[string]interface{}
 ```
 
-### `Updates`
+#### `Updates`
 
 ```go
 type Updates map[string]interface{}
 ```
 
-### `FetchInput`
+#### `FetchInput`
 
 ```go
 type FetchInput struct {
@@ -363,15 +356,15 @@ type FetchInput struct {
 | `Limit`   | `int`             | The maximum number of items to fetch. A value of `0` or less applies no limit.                 |
 | `LastKey` | `string`          | The last key evaluated in a paginated response. Leave empty if not a subsequent fetch request. |
 
-## Drive types
+### Drive types
 
-### `Drive`
+#### `Drive`
 
 ```go
 type Drive struct {}
 ```
 
-### `PutInput`
+#### `PutInput`
 
 ```go
 type PutInput struct {
@@ -387,7 +380,7 @@ type PutInput struct {
 | `Body`        | `io.Reader` | File content to be uploaded.                                                                                                                                               |
 | `ContentType` | `string`    | Content type of the file. If not provided, Drive tries to figure out the content type from the `name`. Defaults to `application/octet-stream` if it can not be determined. |
 
-### `DeleteManyOutput`
+#### `DeleteManyOutput`
 
 ```go
 type DeleteManyOutput struct {
@@ -401,7 +394,7 @@ type DeleteManyOutput struct {
 | `Deleted` | `[]string`          | Names of the deleted files.                                           |
 | `Failed`  | `map[string]string` | Names of the files that failed to delete along with an error message. |
 
-### `ListOutput`
+#### `ListOutput`
 
 ```go
 type ListOutput struct {
@@ -415,7 +408,7 @@ type ListOutput struct {
 | `Paging` | [`*paging`](#paging) | A pointer to a [`paging`](#paging) struct, `nil` if there are no further pages. |
 | `Names`  | `[]string`           | Names of the files.                                                             |
 
-### `paging`
+#### `paging`
 
 ```go
 type paging struct {
@@ -425,6 +418,3 @@ type paging struct {
 ```
 
 Indicates the size and last name of the current page.
-
-</Fragment>
-</LangTabs>
