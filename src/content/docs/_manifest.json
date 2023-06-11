@@ -49,7 +49,7 @@
     {
       "reference": [
         "cli.md",
-        "spacefile.md",
+        "spacefiled.md",
         "runtime.md",
         "drive.md",
         { "deta-base": ["expiring-items.mdx", "queries.md"] },
