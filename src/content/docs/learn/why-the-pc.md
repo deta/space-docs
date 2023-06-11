@@ -1,5 +1,5 @@
 ---
-title: Why You Should Care
+title: Why the Personal Cloud?
 layout: "@layouts/DocsPageLayout.astro"
 ---
 

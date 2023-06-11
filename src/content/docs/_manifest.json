@@ -1,5 +1,5 @@
 {
-  "learn": ["pc-what.md", "pc-why.md"],
+  "learn": ["what-is-pc.md", "why-the-pc.md"],
   "build": [
     "test.mdx",
     "typo.md",
