@@ -1,5 +1,5 @@
 <div class="holder">
-	<img class="placeholder" src="/docs-assets/cloud-illustrations/transparent-background.png" alt="for position" />
+	<img class="placeholder" src="/docs_assets/cloud-illustrations/transparent-background.png" alt="for position" />
 	<div class="cloud-painted overlay"> </div>
 	<div class="deta-pink overlay"></div> 
     <div class="sparkles overlay"></div>
@@ -24,7 +24,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: url("/docs-assets/cloud-illustrations/cloud-cartoon.png");
+		background-image: url("/docs_assets/cloud-illustrations/cloud-cartoon.png");
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
@@ -46,8 +46,8 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		-webkit-mask-image: url("/docs-assets/cloud-illustrations/cloud-cartoon.png");
-		mask-image: url("/docs-assets/cloud-illustrations/cloud-cartoon.png");
+		-webkit-mask-image: url("/docs_assets/cloud-illustrations/cloud-cartoon.png");
+		mask-image: url("/docs_assets/cloud-illustrations/cloud-cartoon.png");
 		-webkit-mask-repeat: no-repeat;
 		-webkit-mask-size: cover;
 		-webkit-mask-position: center;
@@ -64,7 +64,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-image: url("/docs-assets/cloud-illustrations/sparkles.gif");
+		background-image: url("/docs_assets/cloud-illustrations/sparkles.gif");
 		mix-blend-mode: color-dodge;
 		background-repeat: no-repeat;
 		background-size: cover;

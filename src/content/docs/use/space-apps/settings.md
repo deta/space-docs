@@ -5,13 +5,13 @@ layout: "@layouts/DocsPageLayout.astro"
 
 A Space app’s Settings menu gives you access to a few helpful features and functionalities. To access these, open the app’s context menu from the Canvas and then click Settings.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs-assets/use/settings-1.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/settings-1.png"/></div>
 
 ## General Settings
 
 The first tab within an app’s settings will show you what version of an app you are using, while also providing an option to delete the app from your Space.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/use/settings-2.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-2.png"/></div>
 
 #### Version
 
@@ -27,7 +27,7 @@ You can also delete your app by checking the box and then clicking **Delete**. T
 
 The keys tab will let you create and manage any keys associated with your app, which can include [Data Keys](/docs/en/use/your-data/collections#data-keys) and [API Keys](/docs/en/use/space-apps/using-space-apps#api-keys).
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/use/settings-3.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-3.png"/></div>
 
 Data Keys allow you to programmatically interact with the data in your app’s Collection using the Deta SDKs or Collections HTTP APIs.
 
@@ -39,7 +39,7 @@ API Keys allow you to securely interact with your app’s own HTTP APIs using a 
 
 To create a key of either type, click the pink **Create key** button. You will be asked to give your key a name, and then you will be shown your key. You will only see it once, so make sure to store it somewhere safely.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/use/settings-4.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-4.png"/></div>
 
 > **If your key gets compromised, this can compromise your app and your data. Keep it safe.**
 
@@ -49,13 +49,13 @@ If you have created any keys, they will be displayed with their key name and a t
 
 If you want to delete a given key, click the trash icon and confirm on the following modal to delete your key. Deleting a key will invalidate it — if you are using a key elsewhere, it will fail.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/use/settings-5.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-5.png"/></div>
 
 ## Domains
 
 The domains tab is where you manage the domains for your Space app.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/use/settings-6.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-6.png"/></div>
 
 Read more about Domains [here](/docs/en/use/space-apps/domains).
 
@@ -65,7 +65,7 @@ Your app may have **Configuration Variables**, in which case the **Configuration
 
 To update a Configuration Variable, enter the value in the input box corresponding to a give variable. Unsaved changes will be marked in yellow. Clicking **Save Changes**, will update the Configuration Variables of your app and allow you to use the features that rely on these variables.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/use/settings-7.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-7.png"/></div>
 
 
 > 🗒️ Configuration Variables are often API Keys for an external service, for example an Open AI API Key. In this case, it’s a win-win: developers don’t have to pay for a user’s usage of the service, while the user can talk with a service and their own data directly.

@@ -115,14 +115,14 @@
 		left: 0;
 		width: 712px;
 		height: 304px;
-		background-image: url("/docs-assets/cloud-illustrations/cloud-cartoon.png");
+		background-image: url("/docs_assets/cloud-illustrations/cloud-cartoon.png");
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
 
 	}
 	.sparkles {
-		background-image: url("/docs-assets/cloud-illustrations/sparkles.gif");
+		background-image: url("/docs_assets/cloud-illustrations/sparkles.gif");
 		mix-blend-mode: color-dodge;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -131,7 +131,7 @@
 
 	}
 	.blocks {
-		background-image: url("/docs-assets/cloud-illustrations/build.gif");
+		background-image: url("/docs_assets/cloud-illustrations/build.gif");
 		mix-blend-mode: soft-light;
 		filter: contrast(1.2) brightness(1) saturate(0.5);
 		background-repeat: no-repeat;
@@ -141,7 +141,7 @@
 
 	}
 	.deta-learn {
-		background-image: url("/docs-assets/cloud-illustrations/anime/deta-learn.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/deta-learn.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -151,7 +151,7 @@
 
 	}
 	.deta-build {
-		background-image: url("/docs-assets/cloud-illustrations/anime/deta-build.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/deta-build.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -160,7 +160,7 @@
 		opacity: 1;
 	}
 	.deta-publish {
-		background-image: url("/docs-assets/cloud-illustrations/anime/deta-publish.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/deta-publish.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -169,7 +169,7 @@
 		opacity: 1;
 	}
 	.deta-use {
-		background-image: url("/docs-assets/cloud-illustrations/anime/deta-use.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/deta-use.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -178,7 +178,7 @@
 		opacity: 1;
 	}
 	.anime1 {
-		background-image: url("/docs-assets/cloud-illustrations/anime/1anime.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/1anime.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -187,7 +187,7 @@
 		opacity: 1;
 	}
 	.anime2 {
-		background-image: url("/docs-assets/cloud-illustrations/anime/2anime.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/2anime.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -196,7 +196,7 @@
 		opacity: 1;
 	}
 	.anime3 {
-		background-image: url("/docs-assets/cloud-illustrations/anime/3anime.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/3anime.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -205,7 +205,7 @@
 		opacity: 1;
 	}
 	.anime4 {
-		background-image: url("/docs-assets/cloud-illustrations/anime/4anime.gif");
+		background-image: url("/docs_assets/cloud-illustrations/anime/4anime.gif");
 		mix-blend-mode: screen;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -237,8 +237,8 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		-webkit-mask-image: url("/docs-assets/cloud-illustrations/cloud-cartoon.png");
-		mask-image: url("/docs-assets/cloud-illustrations/cloud-cartoon.png");
+		-webkit-mask-image: url("/docs_assets/cloud-illustrations/cloud-cartoon.png");
+		mask-image: url("/docs_assets/cloud-illustrations/cloud-cartoon.png");
 		-webkit-mask-repeat: no-repeat;
 		-webkit-mask-size: cover;
 		-webkit-mask-position: center;

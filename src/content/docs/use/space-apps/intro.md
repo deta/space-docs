@@ -3,7 +3,7 @@ title: Intro To Space Apps
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-![intro-1](/docs-assets/use/space-apps-headline.png)
+![intro-1](/docs_assets/use/space-apps-headline.png)
 
 Space apps are web applications. You likely already use many web applications — some examples are ChatGPT, Figma, and Google Docs. When you use these web applications, you interact with computers on the internet controlled by the companies that provide these apps.
 
@@ -11,7 +11,7 @@ Space apps are different. They still give you all the powers of the internet, bu
 
 ## That’s pretty abstract. What are they really?
 
-![components](/docs-assets/build/intro-components.png)
+![components](/docs_assets/build/intro-components.png)
 
 A Space app is a “package” of [runnable code](/docs/en/build/fundamentals/the-space-runtime/about) connected to a [reservoir of data](/docs/en/use/your-data/collections). The code runs and the data lives in your Space, isolated from all other users who may use the same Space app.
 
@@ -21,7 +21,7 @@ On Space, your data is yours, which enables greater versatility compared to trad
 
 ## What can Space apps do?
 
-![discovery](/docs-assets/use/discovery-headline.png)
+![discovery](/docs_assets/use/discovery-headline.png)
 
 There are already many Space applications that do all sorts of things. There’s a personal bookmark manager, [called WebCrate](https://deta.space/discovery/@maxs1/webcrate). There’s an alternative to ChatGPT that stores your conversations in your personal cloud, [called Golem](https://deta.space/discovery/@henrycunh/golem). And a solution where you can receive, store and manage events from around the web, [called PingBack](https://deta.space/discovery/@maximilianheidenreich/pingback). There’s a [box for all kinds of personal files](https://deta.space/discovery/@gyrooo/filebox). [A drawing application](https://deta.space/discovery/@deta/method-draw). [A personal CMS](https://deta.space/discovery/@sampoder/berowra-coy). These are just a few apps built by an active and growing developer community creating [new apps on Deta Discovery every day](https://deta.space/discovery).
 
@@ -29,7 +29,7 @@ Read more about Discovery, Deta’s public library of personal cloud software, [
 
 ## What else can they do?
 
-![discovery](/docs-assets/use/interop-headline.png)
+![discovery](/docs_assets/use/interop-headline.png)
 
 There is also something that Space apps have, that traditional web apps don’t. They reside in one location where they can easily interact, integrating in ways that would otherwise be difficult, or outright impossible.
 
@@ -37,7 +37,7 @@ There are Space apps that are already scratching the surface of these possibilit
 
 ## I’m a developer, how can I build on Space?
 
-![builder](/docs-assets/build/builder-headline.png)
+![builder](/docs_assets/build/builder-headline.png)
 
 On Space, developers are first class citizens. All apps are extendable and their data is programmable, even if their source code isn’t open. If you have an idea for something that doesn’t exist yet, you can build it.
 

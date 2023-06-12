@@ -3,7 +3,7 @@ title: App Icons
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-![icons-headline](/docs-assets/publish/icons-headline.png)
+![icons-headline](/docs_assets/publish/icons-headline.png)
 
 Every app on Space includes an icon, presented as a rectangle with a rounded corner in the top-left (7x the size of a typical corner radius). You can also specify your own icon file for any app, if you do not, a randomly generated gradient will be created.
 
@@ -40,11 +40,11 @@ To ensure optimal appearance, the icon should be designed as a full-bleed square
 
 We recommend keeping the logo in a safe zone to ensure it is always visible and not obscured by any system elements: the top-left corner radius, the app options menu in the bottom-right, or notifications in the top-right.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width:500px;" src="/docs-assets/publish/icons-1.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width:500px;" src="/docs_assets/publish/icons-1.png"/></div>
 
 This size of an icon is 512x512px. The safe zone where the logo should be is suggested at half the width and height of the icon — 196x196px.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 40%; max-width:300px;" src="/docs-assets/publish/icons-2.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 40%; max-width:300px;" src="/docs_assets/publish/icons-2.png"/></div>
 
 
 In order to unify the Discovery page, your app, and the icon, it is recommended to extract the dominant color from the app icon and apply it as the theme color in your app and its Discovery page.
@@ -63,4 +63,4 @@ You can set the theme of your [Discovery.md](/docs/en/publish/discovery-md) file
 
 We created an [Icon Tester](https://www.figma.com/community/file/1206563671424898764) for you to use in Figma. Use it to check if your icon is following the guidelines. Here’s a quick demo of how it works:
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/publish/icons-3.gif"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/publish/icons-3.gif"/></div>

@@ -5,11 +5,11 @@ layout: "@layouts/DocsPageLayout.astro"
 
 Once you’ve installed a Space app from Deta Discovery, you should see it on your Canvas. This is your own personal copy of the app.
 
-![using-apps-1](/docs-assets/use/using-apps-1.png)
+![using-apps-1](/docs_assets/use/using-apps-1.png)
 
 Clicking on the app will open it in a new tab.
 
-![using-apps-2](/docs-assets/use/using-apps-2.png)
+![using-apps-2](/docs_assets/use/using-apps-2.png)
 
 You can start using the copy of the app as you would any other app, following the instructions it provides.
 
@@ -26,21 +26,21 @@ But some apps have **routes** that are public (or the entire app is public). A r
 
 Apps themselves should indicate if a given view is public and shareable within the app.
 
-![using-apps-3](/docs-assets/use/using-apps-3.png)
+![using-apps-3](/docs_assets/use/using-apps-3.png)
 
 But if they don’t, and if you aren’t sure if something you are looking at is shareable, you can always open it in an incognito tab. If something is not meant to be shared, it will ask you to log in. This means it’s only for you.
 
-![using-apps-4](/docs-assets/use/using-apps-4.png)
+![using-apps-4](/docs_assets/use/using-apps-4.png)
 
 ## Updates
 
 Developers of Space apps may periodically create and release new features. When this happens, for apps you installed, you will get a notification that an update is available.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs-assets/use/using-apps-5.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/using-apps-5.png"/></div>
 
 Clicking the notification will show you an update menu for the app, including release notes the developer provides, which describe what’s new.
 
-![using-apps-6](/docs-assets/use/using-apps-6.png)
+![using-apps-6](/docs_assets/use/using-apps-6.png)
 
 To install the update, click the **Install App Update** button. As a user, updates are opt in — you’re free to stay with the current version of your app. In the future, you’ll be able to roll your app back to previous versions.
 

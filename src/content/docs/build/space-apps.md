@@ -2,7 +2,7 @@
 title: Space Apps 101
 layout: "@layouts/DocsPageLayout.astro"
 ---
-![intro-0](/docs-assets/build/app-anatomy.svg)
+![intro-0](/docs_assets/build/app-anatomy.svg)
 A Space app is different from a normal web app. Instead of one central app that serves many users, each user on Space will get their own personal copy of an app, in their own personal cloud. This is a simple but powerful difference that removes much of the complexity in building and distributing apps on the internet. It also pushes the boundaries of what a web app is, and what it can do.
 
 As a developer building apps for Space, you get a lot out of the box:
@@ -15,7 +15,7 @@ With these tools, you should find it easy to build all sorts of internet experie
 
 ## Authentication
 
-![intro-1](/docs-assets/use/space-apps-headline.png)
+![intro-1](/docs_assets/use/space-apps-headline.png)
 
 On Space, apps and their data are private by default. As a user, you’re the only person who can access your apps and the data they store to your Space. They’re not shared with the app developer or other users of the same app.
 
@@ -25,7 +25,7 @@ As a developer, authentication is meant to “just work”. You don’t have to 
 
 ## Space’s Building Blocks
 
-![intro-components](/docs-assets/build/intro-components.png)
+![intro-components](/docs_assets/build/intro-components.png)
 
 You can craft individual applications on Deta Space using different building blocks that work together. Below are the most important ones.
 
@@ -51,7 +51,7 @@ One final note: data doesn’t need to be connected to a specific app. You can a
 
 ## Free to Build
 
-![intro-ideas](/docs-assets/build/intro-ideas.png)
+![intro-ideas](/docs_assets/build/intro-ideas.png)
 
 As a developer of a traditional web app, paying for and managing cloud resources that power your app is the norm. With Deta Space and the personal cloud, things are different. Because resources live with users, you don’t have to manage or pay for any resources — beyond your own.
 
@@ -61,7 +61,7 @@ For a single Space app, you can use up to five Micros and an unlimited number of
 
 ## Developing Your App
 
-![builder-headline](/docs-assets/build/builder-headline.png)
+![builder-headline](/docs_assets/build/builder-headline.png)
 
 You can use a few tools that work together to create Space apps. You build, test, and publish apps from a [Project](/docs/en/build/fundamentals/development/projects), which are created through a system application called [Builder](/docs/en/build/fundamentals/development/builder). [The Space CLI](/docs/en/build/fundamentals/space-cli) connects your development environment to your Project, while also offering tools to emulate Space locally.
 
@@ -69,7 +69,7 @@ Your Project also has a [Builder Instance](/docs/en/build/fundamentals/developme
 
 ## Releasing Your App
 
-![releasing-headline](/docs-assets/publish/releasing-headline.png)
+![releasing-headline](/docs_assets/publish/releasing-headline.png)
 
 On Deta Space, apps you build are one step away from almost anyone in the world with an internet connection. You can reach them by **Publishing** your app from your Project to different audiences. A published app is available for others’ to use, in their own personal clouds, across five global edge locations that Space offers.
 

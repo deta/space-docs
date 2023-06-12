@@ -3,7 +3,7 @@ title: Collections
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-![collections-headline](/docs-assets/use/collections-headline.png)
+![collections-headline](/docs_assets/use/collections-headline.png)
 
 Deta Space offers persistent data storage through **Collections**. An individual Collection is a group of related data.
 
@@ -23,11 +23,11 @@ Collections created independent of any app are Headless Collections. These can b
 
 Headless Collections can be created and managed through the Collections App, which is accessible from your Canvas.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 250px;" src="/docs-assets/use/collections-app.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 250px;" src="/docs_assets/use/collections-app.png"/></div>
 
 To create a Headless Collection, open the Collections app from your Canvas and then click **+ New Collection**. Finally, give your Collection a name to create it.
 
-![collections-1](/docs-assets/use/collections-1.png)
+![collections-1](/docs_assets/use/collections-1.png)
 
 ## Deta Base
 
@@ -53,7 +53,7 @@ Read more about how to use Data Keys in the Developer Documentation with the [De
 
 To manage Data Keys for an app's Collection, open the app’s Settings from its context menu.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 250px;" src="/docs-assets/use/collections-2.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 250px;" src="/docs_assets/use/collections-2.png"/></div>
 
 Navigate to the **Keys** tab. If you have any Data Keys, they should be shown.
 
@@ -61,11 +61,11 @@ Navigate to the **Keys** tab. If you have any Data Keys, they should be shown.
 
 To create a Data Key for an app's Collection, click the **Create new data key** button and give your new key a name.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs-assets/use/collections-3.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs_assets/use/collections-3.png"/></div>
 
 Upon creation, the Data Key is displayed once, so store it somewhere safely.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs-assets/use/collections-4.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs_assets/use/collections-4.png"/></div>
 
 ##### Deletion
 
@@ -75,7 +75,7 @@ Click the trash icon next to the Data Key you want to delete. Upon confirming, t
 
 To manage Data Keys for a Headless Collection, open a Collection from the Collections App. Click **Collection Settings** in the top corner.
 
-![collections-5](/docs-assets/use/collections-5.png)
+![collections-5](/docs_assets/use/collections-5.png)
 
 If you have any Data Keys for your Collection, they should be shown.
 
@@ -83,11 +83,11 @@ If you have any Data Keys for your Collection, they should be shown.
 
 To create a Data Key, click the **Create new data key** button and give your new key a name.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs-assets/use/collections-6.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs_assets/use/collections-6.png"/></div>
 
 Upon creation, the Data Key is displayed once, so store it somewhere safely.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs-assets/use/collections-7.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 500px;" src="/docs_assets/use/collections-7.png"/></div>
 
 ##### Deletion
 

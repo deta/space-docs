@@ -12,7 +12,7 @@ Once you've added your domain to Cloudflare, follow these steps:
 2. Click **Add Custom Domain** (in the Domains tab for released apps) and enter your domain name (e.g. `app-name.example.com`)
 3. Go to the DNS settings in your [Cloudflare Dashboard](https://dash.cloudflare.com/) and add the required records. Make sure that **Cloudflare Proxy** is enabled when adding the A record.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs-assets/guides/accessing-client-ip-address/cloudflare-proxy.png"/> </div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%;max-width:500px;" src="/docs_assets/guides/accessing-client-ip-address/cloudflare-proxy.png"/> </div>
 
 > Make sure to change your SSL/TLS encryption mode to **Full** in the [Cloudflare Dashboard](https://dash.cloudflare.com/) before doing this to avoid any unexpected issues.
 

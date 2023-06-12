@@ -3,7 +3,7 @@ title: Builder
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-![builder-headline](/docs-assets/build/builder-headline.png)
+![builder-headline](/docs_assets/build/builder-headline.png)
 
 Builder is a System App that comes pre-installed in your Space. As a developer, you use it to create, develop, test, run, and publish your apps with Deta Space.
 
@@ -17,7 +17,7 @@ Once your app is running locally, you can “push” it to Space which will crea
 
 ## The Builder Instance
 
-![builder-instance](/docs-assets/build/builder-instance-headline.png)
+![builder-instance](/docs_assets/build/builder-instance-headline.png)
 
 After you push your app to Space, it will automatically install your Revision to your Project’s [Builder Instance](/docs/en/build/fundamentals/development/local-development). A Builder Instance is a fully functional copy of your app running in your own Space. This instance is accessible from your [Builder Project](/docs/en/build/fundamentals/development/local-development#from-builder) and also on your [Canvas](/docs/en/build/fundamentals/development/local-development#from-the-canvas), with the rest of your apps.
 
@@ -26,6 +26,6 @@ The Builder Instance is meant for you and is like any other Space app, feature-w
 
 ## Publishing Your App
 
-![releasing-headline](/docs-assets/publish/releasing-headline.png)
+![releasing-headline](/docs_assets/publish/releasing-headline.png)
 
 Once you have tested and refined your app, you can [Publish](/docs/en/publish/intro) a revision from Builder to the world, through a [Release](/docs/en/publish/releasing#releases). You can share a Release with just about anyone in the world who has an internet connection, to use in their own Space. Because of the personal cloud model, Deta Space can shorten the distance between “working cloud app” and “global cloud app” to a single command, or a few clicks.

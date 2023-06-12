@@ -34,6 +34,6 @@ Events are color coded:
 - yellow indicates in an in progress event
 - red indicates a failed event
 
-![pushing-1](/docs-assets/build/pushing-1.png)
+![pushing-1](/docs_assets/build/pushing-1.png)
 
 After you push to Space, you can test and use your app with your [Builder Instance](/docs/en/build/fundamentals/development/builder-instance).

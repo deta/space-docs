@@ -10,7 +10,7 @@ The `Discovery.md` file is a Markdown file that includes two sections:
 - [Frontmatter](#frontmatter): where you can specify metadata about your app
 - [Markdown Content](#markdown-content): where you explain what your app does and why it exists.
 
-![discovery-1](/docs-assets/publish/discovery-md-1.png)
+![discovery-1](/docs_assets/publish/discovery-md-1.png)
 
 # File Structure
 

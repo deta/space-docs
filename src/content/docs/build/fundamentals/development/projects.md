@@ -41,14 +41,14 @@ Additionally, the CLI should create a hidden `.space` directory locally — th
 
 ## Managing Projects in Builder
 
-![builder-headline](/docs-assets/build/builder-headline.png)
+![builder-headline](/docs_assets/build/builder-headline.png)
 
 
 Now that you’ve created or linked a project, you can view and manage it inside the Builder app, which can be found on your Canvas in Space.
 
 Builder will list all your projects, and you can click on any of them to enter their management view.
 
-![projects-builder](/docs-assets/build/projects-builder.png)
+![projects-builder](/docs_assets/build/projects-builder.png)
 
 ### Individal Projects
 
@@ -58,7 +58,7 @@ Each Project in Builder consists of 3 main pages: [Overview](#overview), [Develo
 
 Where you see important information about your Project, like its latest Release and recent events.
 
-![projects-overview](/docs-assets/build/projects-overview.png)
+![projects-overview](/docs_assets/build/projects-overview.png)
 
 #### Develop
 
@@ -66,22 +66,22 @@ Where you to manage your project’s development. The **Develop** tab has three 
 
 The **Overview** sub-tab is where you can access your [Builder Instance](/docs/en/build/fundamentals/development/local-development), and see it’s [Logs](/docs/en/build/fundamentals/debugging#runtime-logs).
 
-![projects-develop-overview](/docs-assets/build/projects-develop-overview.png)
+![projects-develop-overview](/docs_assets/build/projects-develop-overview.png)
 
 The **Data** sub-tab is where you access your Project’s data, which you can view, edit and manage via the [Data GUIs](/docs/en/use/your-data/guis), and [Data Keys](/docs/en/build/fundamentals/data-storage#data-keys).
 
-![projects-develop-data](/docs-assets/build/projects-develop-data.png)
+![projects-develop-data](/docs_assets/build/projects-develop-data.png)
 
 The  **Configuration** sub-tab is where you can manage your Builder Instance’s configuration — both [environment variables](/docs/en/build/fundamentals/the-space-runtime/configuration) and [Custom Domains](/docs/en/use/space-apps/domains#custom-domains).
 
-![projects-develop-config](/docs-assets/build/projects-develop-config.png)
+![projects-develop-config](/docs_assets/build/projects-develop-config.png)
 
 > You can define environment variables for your app using the [`Spacefile`](/docs/en/build/reference/spacefile#env).
 #### Publish
 
 The Publish tab is where you create and manage [Releases](/docs/en/publish/releasing#releases) of your app.
 
-![projects-release](/docs-assets/build/projects-release.png)
+![projects-release](/docs_assets/build/projects-release.png)
 
 ## Project Linking
 
@@ -95,4 +95,4 @@ space link
 
 `space link` prompts you to enter a *Project ID.* Entering it links the directory with your Project in Builder via the local `.space` sub-directory. You can get your **Project ID** by opening the Builder application, clicking your project, and then using the **Copy Project ID** action in [Teletype](/docs/en/use/interface#teletype).
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs-assets/build/projects-id.png"/> </div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/build/projects-id.png"/> </div>

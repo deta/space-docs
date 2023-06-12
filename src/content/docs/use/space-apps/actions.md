@@ -13,11 +13,11 @@ If a developer creates a Scheduled Action for an app, they can choose a default 
 
 As a user, you can change a Scheduled Action’s interval or disable a Scheduled Action entirely.  To manage the Scheduled Actions of an app, open the App’s Settings menu via the menu on that app’s Tile on Canvas.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs-assets/use/actions-1.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/actions-1.png"/></div>
 
 Then switch to the “Schedules” tab (it won’t be there if there are no Scheduled Actions for the app). In the “Schedules” tab you will see a list of the Scheduled Actions for that app. There will also be a toggle indicating if the Action is enabled, what interval it’s set to, and when it will run next.
 
-![actions-2](/docs-assets/use/actions-2.png)
+![actions-2](/docs_assets/use/actions-2.png)
 
 If an action is enabled, you’ll see a “Configure” button which can be used to change the
 interval.
@@ -26,10 +26,10 @@ interval.
 
 Click the “Configure” button on the Action you want modify. You will be shown options for intervals ranging from minutes to months.
 
-![actions-3](/docs-assets/use/actions-3.png)
+![actions-3](/docs_assets/use/actions-3.png)
 
 When you select and modify the interval, the UI will show you when the Action would run next.
 
-![actions-4](/docs-assets/use/actions-4.png)
+![actions-4](/docs_assets/use/actions-4.png)
 
 Once you are happy, click “Save Schedule” and wait for your Action to run next.

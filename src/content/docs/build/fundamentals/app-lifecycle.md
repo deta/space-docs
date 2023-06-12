@@ -48,7 +48,7 @@ When you publish an app from Space, you application can be used by just about an
 
 #### Development
 
-![local-headline](/docs-assets/build/local-development-headline.png)
+![local-headline](/docs_assets/build/local-development-headline.png)
 
 In the first stage of the Space App lifecycle, local development, the key concept is a [Project](/docs/en/build/buidling-your-app/projects), where you will manage development and publishing of an app. Projects live within the Space app [Builder](/docs/en/build/development/builder), which is available on your [Canvas](/docs/en/use/interface#canvas).
 
@@ -58,7 +58,7 @@ Lastly, you can assume you're the only user when developing; you won’t have to
 
 #### Revisions and the Builder Instance
 
-![builder-instance-headline](/docs-assets/build/builder-instance-headline.png)
+![builder-instance-headline](/docs_assets/build/builder-instance-headline.png)
 
 Once you're happy with your app in development, push your app to Deta Space using the CLI command `space push`. The [Space Build Pipeline](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) creates a Revision, which is a runnable package of your app compatible with the Space Runtime.
 
@@ -70,7 +70,7 @@ To share your app globally, simply publish it.
 
 ### Publishing
 
-![releasing-headline](/docs-assets/publish/releasing-headline.png)
+![releasing-headline](/docs_assets/publish/releasing-headline.png)
 
 If you’ve tested your app in your Builder Instance and want to share it with an external audience, you can [create a Release](/docs/en/use/publish/intro).
 

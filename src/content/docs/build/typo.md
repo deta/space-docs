@@ -16,7 +16,7 @@ A Space app is different from a normal web app. Instead of one central app that 
 Here we have another paragraph which just displays the current margins. It also is a placeholder and should be replaced at some point, or not?
 Maybe it will jsut stay like this the entire time.
 
-![intro-1](/docs-assets/use/space-apps-headline.png)
+![intro-1](/docs_assets/use/space-apps-headline.png)
 
 Here is an example of an unordered list:
 
@@ -29,9 +29,9 @@ Here is an example of an unordered list:
 
 With these tools, you should find it easy to build all sorts of internet experiences for yourself — from simple websites to full stack applications that tie into the latest advances in AI. Once you have, it’s even easier to publish your creation to almost anyone else in the world.
 
-![discovery](/docs-assets/use/discovery-headline.png)
+![discovery](/docs_assets/use/discovery-headline.png)
 
-![intro-1](/docs-assets/use/space-apps-headline.png)
+![intro-1](/docs_assets/use/space-apps-headline.png)
 
 There could also be an ordered list:
 

@@ -13,7 +13,7 @@ The actual `subdomain` your app will get is based on an alias given to the app b
 
 To view an app’s Built In Domain, click the menu (`...`) from the App’s Tile on your Canvas and open Settings. Then navigate to the Domains tab. You’ll see the Built In Domain at the top, labeled with “Built In Domain”.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs-assets/use/domains-1.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/domains-1.png"/></div>
 
 The Built In Domain given to every app will remain as an active address on the internet from the point you install an app until the point you delete it.
 
@@ -23,17 +23,17 @@ You can also assign a **Custom Domain** name you own to any app you’ve install
 
 To add a Custom Domain to an app you’ve installed, click the `...` from the App’s Tile on your Canvas to open the Settings menu. Then switch to the “Domains” tab and click “Add Domain”.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs-assets/use/domains-2.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/domains-2.png"/></div>
 
 Enter your domain name in the input field, for example [`deta.pizza`](http://deta.pizza). You will be shown two DNS records to add to your Domain via your DNS provider (most likely the registrar you bought your domain from). The DNS records allow you to link your domain to your Space app.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs-assets/use/domains-3.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/domains-3.png"/></div>
 
 The two DNS records include both an A record and a TXT record.  The A record links the domain you own to your Space app, while the TXT record is for Space to verify that it’s you setting up the domain. If you are not sure how to add these records to your domain, consult your DNS provider’s documentation or one of the guides linked below.
 
 We will periodically check if your domain has the records setup. Once we detect that it does, we will start serving your app from it.  It may take up to 24 hours for your domain to go live. Once it does, you will see a green “Domain Verified & Active” indicator under your Custom Domain in the Domains tab.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs-assets/use/domains-4.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/domains-4.png"/></div>
 
 Custom domains should work with every DNS provider, as well as with Cloudflare’s Caching or CDN features out of the box.
 

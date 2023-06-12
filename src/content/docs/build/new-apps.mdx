@@ -6,7 +6,7 @@ layout: "@layouts/DocsPageLayout.astro"
 import OSTabs from "@/components/Tabs/OSTabs.astro";
 import Collapsible from "@cmp/docs/Collapsible/Collapsible.svelte";
 
-![intro-ideas](/docs-assets/build/intro-ideas.png)
+![intro-ideas](/docs_assets/build/intro-ideas.png)
 
 ## Welcome
 
@@ -20,7 +20,7 @@ If you’re curious what all the fuss is about, read more about what the persona
 
 If you haven’t yet, the first thing you’ll need to do is sign up for a Deta Space account. You can do so [here](https://deta.space/signup?dev_mode=true). You should get a confirmation email. After you confirm, you can [log in to Space](https://deta.space/login).
 
-![new-app-1](/docs-assets/build/new-apps-1.png)
+![new-app-1](/docs_assets/build/new-apps-1.png)
 
 > 💡P.S. Make sure the **Developer Mode** toggle is enabled when you signup.
 >
@@ -29,7 +29,7 @@ If you haven’t yet, the first thing you’ll need to do is sign up for a Deta 
 
 After you log in, you should see a screen like this.
 
-![new-app-2](/docs-assets/build/new-apps-2.png)
+![new-app-2](/docs_assets/build/new-apps-2.png)
 
 This is your [Canvas](/docs/en/use/interface#canvas), which is a home for all your apps: what you create and 3rd party apps you install. The command bar at the bottom is called [Teletype](/docs/en/use/interface#teletype), which provides you with many context-specific actions to help you navigate Space (like Searching the Docs). If you ever aren’t sure what to do, you can open Teletype and see what’s there. The blue app is called [Builder](/docs/en/build/fundamentals/development/builder) and is your companion for building apps on Deta Space, along with the [Space CLI](/docs/en/build/fundamentals/space-cli).
 
@@ -71,11 +71,11 @@ Read more about [Installing the CLI](/docs/en/build/fundamentals/space-cli) and 
 
 A Space app is different from a normal web app. A normal web app on the "public cloud" is one centralized app that serves many users.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width: 500px;" src="/docs-assets/learn/public-cloud.svg"/> </div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width: 500px;" src="/docs_assets/learn/public-cloud.svg"/> </div>
 
 On Space, each user gets their own personal copy of an app, in their own personal cloud. Space apps and their data are private by default, meaning they belong to users, who have to be logged in to use them.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width: 500px;" src="/docs-assets/learn/personal-cloud.svg"/> </div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 70%; max-width: 500px;" src="/docs_assets/learn/personal-cloud.svg"/> </div>
 
 As a developer, you build assuming that you’re the only (already authenticated) user. You can use your favorite programming languages and frameworks, but you don’t have to think about [authentication](/docs/en/build/fundamentals/the-space-runtime/authentication) code or data separation. Of course you can still build public facing features or applications that don’t have auth, like [websites](/docs/en/build/guides/public-site).
 
@@ -97,7 +97,7 @@ Enter a name for your Project. The Space CLI should try to detect applications i
 
 Your Project should now appear when you open the Builder app, where you can test, run, manage and publish your apps with Space.
 
-![new-app-3](/docs-assets/build/new-apps-3.png).
+![new-app-3](/docs_assets/build/new-apps-3.png).
 
 ## The Space Runtime and Spacefile
 
@@ -246,7 +246,7 @@ fetch(url, { headers })
 
 All the data stored while building your app is viewable and editable via [Base UI](/docs/en/use/your-data/guis#base-ui) and [Drive UI](/docs/en/use/your-data/guis#drive-ui) in the **Develop Tab** of your Builder Project.
 
-![new-app-4](/docs-assets/build/new-apps-4.png)
+![new-app-4](/docs_assets/build/new-apps-4.png)
 
 
 Read more about data on Space [as a developer](/docs/en/build/fundamentals/data-storage) and [as a user](/docs/en/use/your-data/collections).
@@ -304,7 +304,7 @@ If your build completes successfully, a [revision](/docs/en/build/fundamentals/d
 
 ## Builder Instances
 
-![builder-instance](/docs-assets/build/builder-instance-headline.png)
+![builder-instance](/docs_assets/build/builder-instance-headline.png)
 
 [Builder Instances](/docs/en/build/fundamentals/development/local-development) are fully functional apps running in Space, tied to a [Project](/docs/en/build/fundamentals/development/projects). You can use them to test and debug your app on Space before releasing it to the world. Or you can use them as a flexible personal copy of an app you built for your own use. They offer all the features that normal Space apps offer, and are always based on a specific [Revision](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) of a [Project](/docs/en/build/fundamentals/development/projects).
 
@@ -314,13 +314,13 @@ When you push a Project’s code for the first time, a Builder Instance is autom
 
 As a real copy of your app running in Space, the Builder Instance is perfect for end to end tests in a real production environment. If something goes wrong at runtime, you can [inspect the logs](/docs/en/build/fundamentals/development/debugging#runtime-logs) to see what the issue may be. Logs are viewable from your Project in Builder, or from your app’s context menu on the Canvas, just like on any other app.
 
-![new-app-7](/docs-assets/build/new-apps-7.png)
+![new-app-7](/docs_assets/build/new-apps-7.png)
 
 [Read more about debugging](/docs/en/build/fundamentals/development/debugging) with Space.
 
 ### Using a Builder Instance
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs-assets/build/new-apps-6.png"/> </div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/build/new-apps-6.png"/> </div>
 
 
 You can [use your Builder Instance](/docs/en/build/fundamentals/development/local-development#using-a-builder-instance) as you would any other app.  Click on your Builder Instance, to open it in a new tab. If your app is an API, use the URL outside the browser.
@@ -333,7 +333,7 @@ You also have all the normal features of a Space App:
 
 ## Publishing Your App
 
-![releasing-headline](/docs-assets/publish/releasing-headline.png)
+![releasing-headline](/docs_assets/publish/releasing-headline.png)
 
 Once you’ve built something that runs in your Builder Instance, you’re one step away from publishing it to just about anyone in the world.
 

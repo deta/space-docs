@@ -27,7 +27,7 @@ For example, **Deta Space: your personal computer on the internet**.
 
 For the description, include a few points on what your app does and why it may be interesting. Make sure to include a link to the Discovery page, where others can install your app. Here's a good example of a Discord launch post:
 
-![growing-1](/docs-assets/publish/growing-your-app-1.png)
+![growing-1](/docs_assets/publish/growing-your-app-1.png)
 
 ### Community Calls
 
@@ -69,7 +69,7 @@ Here’s [Deta’s last Product Hunt launch](https://www.producthunt.com/product
 
 To present your app on GitHub effectively, make sure to create a well-structured `README.md` file with a clear title, brief description and instructions for using and contributing to your app. Screenshots and GIFs are also helpful. One tip: make sure to edit the **About** section of your repository, and include the `deta` and `deta-space` topics to maximize visibility (also include other technologies you use).
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/publish/growing-your-app-2.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/publish/growing-your-app-2.png"/></div>
 
 [See WebCrate](https://github.com/WebCrateApp/webcrate) for an example of a well presented and complete GitHub repository.
 

@@ -52,7 +52,7 @@ You can provide specific options when you release using the CLI (which [revision
 
 You can create a release for your Project using [Builder](/docs/en/build/fundamentals/development/projects#projects-in-builder). From your Builder Project, go to the **Publish** tab and click the **New Release** button.
 
-![releasing-1](/docs-assets/publish/releasing-1.png)
+![releasing-1](/docs_assets/publish/releasing-1.png)
 
 The page will give you a number of options. There is a toggle which controls whether the release should be a `listed` on Discovery, while there is a drop down for you to select the [revision](/docs/en/build/fundamentals/development/pushing#revisions) to use. There is also an input field that will let you create a version tag (a version tag is auto-generated if you leave it blank).
 
@@ -62,15 +62,15 @@ There are three tabs that offer more options to customize your **release**.
 
 You can enter release notes describing what's new, when you release your app. Basic markdown syntax is supported (images and html are not supported).
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/publish/releasing-3.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/publish/releasing-3.png"/></div>
 
 The release notes are shown to everyone who installed an earlier copy of the app before they update it. They are also be displayed in the **What’s New** section of your app’s Discovery page.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs-assets/publish/releasing-2.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/publish/releasing-2.png"/></div>
 
 ### App Info
 
-![releasing-4](/docs-assets/publish/releasing-4.png)
+![releasing-4](/docs_assets/publish/releasing-4.png)
 
 You can edit the meta data of your app which will be shown on your app’s Discovery page. There are a number of available fields (all optional): name, description, homepage, Git repo, and theme color.
 
@@ -88,7 +88,7 @@ These fields mostly map to fields in the [Frontmatter section of the Discovery.m
 
 ### Discovery Page
 
-![releasing-5](/docs-assets/publish/releasing-5.png)
+![releasing-5](/docs_assets/publish/releasing-5.png)
 
 This section lets you compose and preview the main content section of your Discovery page using a simplified Markdown (images, HTML and H1 tags are not supported). You can use it to describe what your app does in more detail, what makes it unique, and highlight its features and functionality. The ideal description is a concise, informative paragraph followed by a short list of main features.
 
@@ -100,6 +100,6 @@ Once you are ready, click “**Launch to Space**” and watch your app take off 
 
 A second core concept to publishing is **Updates**. If you add new features to your app after publishing it, you can publish a new release. Every user who installed the app will get a notification to update it to the latest release. Updates are opt-in by the user.
 
-<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 50%; max-width:300px;" src="/docs-assets/publish/intro-1.png"/></div>
+<div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 50%; max-width:300px;" src="/docs_assets/publish/intro-1.png"/></div>
 
 Currently, updates are only available for listed releases, but they are planned for unlisted releases.

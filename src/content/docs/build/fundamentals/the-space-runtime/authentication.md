@@ -3,7 +3,7 @@ title: Authentication
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-![intro-1](/docs-assets/use/space-apps-headline.png)
+![intro-1](/docs_assets/use/space-apps-headline.png)
 
 ## Private by Default
 
