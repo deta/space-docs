@@ -20,7 +20,7 @@
     .card {
         flex-basis: 33.3%;
         flex-grow: 1;
-        min-width: 25ch;
+        min-width: 280px;
         border-radius: var(--rounded-4);
         border: 2px solid hsl(var(--color-gray-60));
 
