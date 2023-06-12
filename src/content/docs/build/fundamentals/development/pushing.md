@@ -3,7 +3,7 @@ title: Pushing
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-If you have yet not setup or run your app locally checkout the [New App Guide](/docs/en/build/new-apps), [Working with Projects](/docs/en/build/fundamentals/development/projects), and [Local Development](/docs/en/build/fundamentals/development/local-development) pages.
+If you have not yet setup or run your app locally checkout the [New App Guide](/docs/en/build/new-apps), [Working with Projects](/docs/en/build/fundamentals/development/projects), and [Local Development](/docs/en/build/fundamentals/development/local-development) pages.
 
 Once you are satisfied with your app in your development environment, you can run it in on the internet by “pushing” it to Deta Space. Use the Space CLI command `space push` to do so:
 
