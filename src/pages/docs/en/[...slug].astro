@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths() {
     const docsEntries = await getCollection("docs");
     return docsEntries.map((entry) => ({
+
         params: {
             slug: entry.slug
             //slug: entry.slug.split("/").slice(1).join("/"), // Slice of first path element as it is the language
