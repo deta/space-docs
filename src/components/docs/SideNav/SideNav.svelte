@@ -410,6 +410,7 @@
   .nav-tree {
     flex: 1;
     overflow-y: auto;
+    height: 100%;
     padding-block: var(--spacing-4);
     margin-inline: -0.25rem;
 
