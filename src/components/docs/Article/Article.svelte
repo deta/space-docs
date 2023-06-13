@@ -86,7 +86,7 @@
       gap: var(--spacing-4);
     }
     article {
-      max-width: 80ch;
+      max-width: 70ch;
       width: 100%;
       padding-top: unset;
       //margin: 0 auto;
