@@ -65,7 +65,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => `/docs/en/${e.id.split("."
         <main>
             <Header currentPage={currentPage} client:idle/>
             <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:idle/>
-            <Article frontmatter={frontmatter} headings={headings} client:load>
+            <Article currentPage{currentPage} frontmatter={frontmatter} headings={headings} client:load>
                 <p>
                     You’re on an exciting journey with a whole new personal computer on the internet: Deta Space. We’re glad to have you here.
                 </p>

@@ -24,7 +24,9 @@
         <span>we should have a fix for js disabled</span>
       </div>
     </noscript>
+    {#if currentPage !== "/docs/en"}
     <ArticleHeader {currentPage} frontmatter={frontmatter} headings={headings} />
+    {/if}
     <h1><a href="#content">{frontmatter.title}</a></h1>
     <slot />
   </article>
