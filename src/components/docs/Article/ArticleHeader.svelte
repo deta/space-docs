@@ -15,7 +15,7 @@
   onMount(() => {
     const el = document.querySelector(".track-me")
     console.log(el)
-    const observer = new IntersectionObserver( 
+    const observer = new IntersectionObserver(
       ([e]) => {
         stuck = e.intersectionRatio < 1
       },
@@ -43,7 +43,7 @@
     position: sticky;
     top: -1px;
     z-index: 100;
-    margin-bottom: var(--spacing-12);
+    //margin-bottom: var(--spacing-4);
 
     &.stuck {
       padding-top: calc((var(--header-height) / 2) - 12px);
