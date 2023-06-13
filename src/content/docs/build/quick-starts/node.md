@@ -60,7 +60,7 @@ space new
 
 You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
 
-Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile). The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your project.
+Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile). The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your project.
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
@@ -76,7 +76,7 @@ micros:
 
 > ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](/docs/en/build/reference/spacefile) reference.
 
-The Spacefile can be further configured to depending on your project's specific requirements. So whether your project has a build step, or only a specific directory is required to be included in the final package of the Micro, you can configure these with the Spacefile and the build pipeline will handle them accordingly. [Read more here](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile#whats-the-spacefile).
+The Spacefile can be further configured to depending on your project's specific requirements. So whether your project has a build step, or only a specific directory is required to be included in the final package of the Micro, you can configure these with the Spacefile and the build pipeline will handle them accordingly. [Read more here](/docs/en/build/fundamentals/the-space-runtime#the-spacefile#whats-the-spacefile).
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0

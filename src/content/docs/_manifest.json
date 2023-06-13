@@ -1,8 +1,6 @@
 {
   "learn": ["what-is-pc.md", "why-the-pc.md"],
   "build": [
-    "test.mdx",
-    "typo.md",
     "new-apps.mdx",
     "space-apps.md",
     {
@@ -21,7 +19,6 @@
         },
         {
           "the-space-runtime": [
-            "about.md",
             "micros.md",
             "configuration.md",
             "authentication.md",
@@ -61,7 +58,6 @@
   "use": [
     "interface.md",
     { "space-apps": [
-      "intro.md",
       "discovery.md",
       "using-apps.md",
       "actions.md",

@@ -70,7 +70,7 @@ space new
 
 You will be prompted to enter a name for your project. The CLI will display a generated configuration for the app and prompt you to confirm. 
 
-Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile). The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your Builder project.
+Once confirmed, the project will be created along with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile). The `Spacefile` contains the configuration for your [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) and a `.space` directory that stores project information and links it to your Builder project.
 
 ```yaml
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
