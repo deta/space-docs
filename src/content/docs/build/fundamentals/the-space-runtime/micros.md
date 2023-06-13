@@ -5,7 +5,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 ## What's a Micro?
 
-As mentioned in the [Space Runtime page](/docs/en/build/fundamentals/the-space-runtime/about), a Micro is a lightweight serverless compute unit inside your app which can be exposed to the world over HTTP. You can combine up to 5 Micros in a single Space app. Individual Micros can run many kinds of things:
+As mentioned in the [Space Runtime page](/docs/en/build/fundamentals/the-space-runtime), a Micro is a lightweight serverless compute unit inside your app which can be exposed to the world over HTTP. You can combine up to 5 Micros in a single Space app. Individual Micros can run many kinds of things:
 
 - frontend sites built with frameworks like [React](https://react.dev/), [Vue](https://vuejs.org/), and [Svelte](https://svelte.dev/)
 - full-stack frameworks like [Next](https://nextjs.org/), [Nuxt](https://nuxtjs.org/), or [SvelteKit](https://kit.svelte.dev/)
