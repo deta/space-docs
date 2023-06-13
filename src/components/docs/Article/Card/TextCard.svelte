@@ -3,10 +3,10 @@
 </script>
 
 <div class="card {color}">
-    <header>
-        <span class="title"><slot name="title"/></span>
-    </header>
     <div>
+        <header>
+            <span class="title"><slot name="title"/></span>
+        </header>
         <p style="margin: 0;">
             <slot name="text"/>
         </p>
@@ -20,6 +20,9 @@
     .card {
         flex-basis: 33.3%;
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         min-width: 280px;
         border-radius: var(--rounded-4);
         border: 2px solid hsl(var(--color-gray-60));
