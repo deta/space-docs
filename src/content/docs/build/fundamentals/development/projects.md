@@ -18,7 +18,7 @@ You can create new a new Project using the [Space CLI](/docs/en/build/fundament
 space new
 ```
 
-Enter a name for your Project when prompted. The Space CLI should try to detect code in your local directory, written in any language or framework compatible with the [Space Runtime](/docs/en/build/fundamentals/the-space-runtime/about) via [Deta Micros](/docs/en/build/fundamentals/the-space-runtime/micros).
+Enter a name for your Project when prompted. The Space CLI should try to detect code in your local directory, written in any language or framework compatible with the [Space Runtime](/docs/en/build/fundamentals/the-space-runtime) via [Deta Micros](/docs/en/build/fundamentals/the-space-runtime/micros).
 
 > Deta Micros are lightweight serverless compute units inside your app which can be exposed to the world over HTTP.
 
@@ -31,7 +31,7 @@ L engine: python3.9
 ? Do you want to setup "fast-api-starter" with this configuration? (Y/n)
 ```
 
-Confirm the generated configuration, if it's correct for your application. The CLI should create a new Project in Builder and generate a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) in your local directory.
+Confirm the generated configuration, if it's correct for your application. The CLI should create a new Project in Builder and generate a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile) in your local directory.
 
 This `Spacefile` contains the configuration of your app, used by Deta Space to understand what your app looks like and how to run it. If the bootstrapped configuration failed, you can create your own configuration and [add individual Micros](/docs/en/build/fundamentals/the-space-runtime/micros#via-the-spacefile) using the `Spacefile`.
 

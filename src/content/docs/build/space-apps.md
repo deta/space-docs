@@ -57,7 +57,7 @@ As a developer of a traditional web app, paying for and managing cloud resources
 
 For a single Space app, you can use up to five Micros and an unlimited number of Bases and Drives. None of these resources require setup. Micros can be defined in your [Spacefile](/docs/en/build/reference/spacefile), while Bases and Drives can be created by your app during runtime.
 
-[Learn more about the Space Runtime](/docs/en/build/fundamentals/the-space-runtime/about).
+[Learn more about the Space Runtime](/docs/en/build/fundamentals/the-space-runtime).
 
 ## Developing Your App
 

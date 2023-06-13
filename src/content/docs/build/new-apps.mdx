@@ -101,8 +101,8 @@ Your Project should now appear when you open the Builder app, where you can test
 
 ## The Space Runtime and Spacefile
 
-Deta Space has its own runtime — [the Space Runtime](/docs/en/build/fundamentals/the-space-runtime/about) — that can run almost any type of web app. It supports most programming languages and frameworks. 
-The [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile) contains the configuration of your app and is used by Deta Space to understand what your app looks like and how to run it.
+Deta Space has its own runtime — [the Space Runtime](/docs/en/build/fundamentals/the-space-runtime) — that can run almost any type of web app. It supports most programming languages and frameworks. 
+The [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile) contains the configuration of your app and is used by Deta Space to understand what your app looks like and how to run it.
 
 Here’s an example `Spacefile` for a [To Do app](https://github.com/deta/todo-app) built with a static frontend and a Node.js backend:
 
@@ -138,7 +138,7 @@ Check out the [Spacefile reference](/docs/en/build/reference/spacefile) for all 
 
 A Space app runs on serverless compute units called [Micros](/docs/en/build/fundamentals/the-space-runtime/micros). A Space app can contain up to five Micros, which run most programming languages and frameworks.
 
-If [`space new`](/docs/en/build/new-apps#creating-a-project-with-builder) doesn’t boostrap your Micro when creating a project locally, you can add it by writing to the [`Spacefile`](/docs/en/build/fudnamentals/the-space-runtime/about#the-spacefile).
+If [`space new`](/docs/en/build/new-apps#creating-a-project-with-builder) doesn’t boostrap your Micro when creating a project locally, you can add it by writing to the [`Spacefile`](/docs/en/build/fudnamentals/the-space-runtime#the-spacefile).
 Create an individual Micro with the `micros` field in the `Spacefile`.
 
 ```yaml

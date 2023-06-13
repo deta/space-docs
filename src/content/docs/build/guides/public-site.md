@@ -7,7 +7,7 @@ Although Space is optimized for running single-user full-stack apps, you can als
 
 ## Making a Micro public
 
-Every app on Space can contain up to 5 [Micros](/docs/en/build/fundamentals/the-space-runtime/micros), which are private by default. You can make individual Micros public using the app's [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime/about#the-spacefile). Just set the `public` flag to `true` for each Micro you want to publicize.
+Every app on Space can contain up to 5 [Micros](/docs/en/build/fundamentals/the-space-runtime/micros), which are private by default. You can make individual Micros public using the app's [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile). Just set the `public` flag to `true` for each Micro you want to publicize.
 
 Example:
 
