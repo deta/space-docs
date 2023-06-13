@@ -298,6 +298,7 @@
       height: 100%;
       padding-block: var(--spacing-4);
       padding-inline: var(--spacing-6);
+      padding-right: var(--spacing-2); // Leave space for scrollbar
 
       background: var(--theme-sidenav);
       background: rgb(240, 238, 234);
@@ -412,6 +413,7 @@
     overflow-y: auto;
     height: 100%;
     padding-block: var(--spacing-4);
+    padding-right: var(--spacing-4);
     margin-inline: -0.25rem;
 
     ul {

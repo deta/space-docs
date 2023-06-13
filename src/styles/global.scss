@@ -9,6 +9,12 @@
   box-sizing: inherit;
 }
 
+html,body {
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
 body,
 h1,
 h2,
@@ -75,4 +81,8 @@ p {
 @media screen and (min-width: 768px) {
     .only-mobile { display: none; }
     .only-desktop { display: inherit; }
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
 }

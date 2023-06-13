@@ -164,6 +164,6 @@ body {
 }
 
 ::selection {
-	color: var(--theme-selection-color);
-	background-color: var(--theme-selection-bg);
+	background-color: hsl(var(--color-blue), 40%);
+    color: hsl(var(--color-gray-30));
 }
