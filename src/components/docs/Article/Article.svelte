@@ -44,7 +44,7 @@
     box-sizing: border-box;
     //max-width: 100vw;
     //width: 100%;
-    padding-inline: var(--spacing-6);
+    padding-inline: var(--spacing-8);
     padding-bottom: calc(var(--header-height) + var(--spacing-4));
     padding-top: var(--spacing-6);
   }
