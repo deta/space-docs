@@ -1,0 +1,74 @@
+---
+import IconButton from "@/components/core/Button/IconButton.svelte";
+import IconCopy from "@/components/core/Icon/IconCopy.svelte";
+console.log(Astro.props);
+//console.log("def", await Astro.slots.render("default"))
+
+type Props = {
+    title: string;
+    language: string;
+}
+const props = Astro.props as Props;
+---
+
+<div class="code">
+    <header>
+        <div>
+            <span class="title">index.js</span>
+        </div>
+        <div style="margin-right: -var(--spacing-4);">
+            <span class="lang"><small>JavaScript</small></span>
+            <IconButton>
+                <IconCopy size={18}/>
+            </IconButton>
+        </div>
+    </header>
+    <pre>
+        <slot/>
+    </pre>
+</div>
+
+<style lang="scss">
+    .code {
+        border-radius: var(--rounded-4);
+        border-width: 4px 4px 4px 4px;
+        border-style: solid;
+        border-color: rgba(240, 238, 234, 0.7);
+        box-shadow: 0px 0px 0px 4px rgba(240, 238, 234, 0.3);
+
+        overflow: hidden;
+
+        header {
+            padding-inline: var(--spacing-4);
+            padding-block: var(--spacing-2);
+            padding-right: var(--spacing-2);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: hsl(var(--color-gray-20));
+            color: white;
+
+            > div:last-child {
+                display: flex;
+                align-items: center;
+                gap: var(--spacing-4);
+            }
+
+            .title {
+                font-weight: 700;
+                font-size: 0.9em;
+            }
+        }
+
+        pre {
+            margin-block: 0;
+            background: black;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+    }
+
+    // Dark theme
+</style>

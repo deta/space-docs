@@ -9,12 +9,14 @@ import type { Action, TeletypeCore } from "@deta/teletype";
 import Page from "@/components/Teletype/Icons/Page.svelte";
 import DocSearch from "@/components/Teletype/Icons/DocSearch.svelte";
 
+export const searchUrl = window.location.hostname === 'localhost' ? import.meta.env.PUBLIC_SEARCH_BASE || "https://deta.space/api/v0" : `${window.location.origin}/api/v0`;
+
 const convertSearchToActions = (hits: Hits<Record<string, any>>): Action[] => {
   const actions: Action[] = [];
 
   hits.forEach((hit: any) => {
     const section = hit.hierarchy_lvl0 ? hit.hierarchy_lvl0 : "Space Docs";
-    const page = hit.hierarchy_lvl1 ? hit.hierarchy_lvl1 : "Documentation";
+    const page = hit.hierarchy_lvl2 ? hit.hierarchy_lvl2 : "Documentation";
     const heading = hit.hierarchy_lvl3 ? hit.hierarchy_lvl3 : hit.hierarchy_lvl2 ? hit.hierarchy_lvl2 : "";
 
     // Remove duplicate search results by searching for actions that are indistinguishable (have the same name and breadcrumb)
@@ -65,12 +67,11 @@ const convertSearchToActions = (hits: Hits<Record<string, any>>): Action[] => {
 // }
 
 const convertRootSearchToActions = (hits: Hits<Record<string, any>>): Action[] => {
-  const matches = hits.filter((hit) => !hit.hierarchy_lvl2);
+  const matches = hits.filter((hit) => hit.hierarchy_lvl0 === hit.hierarchy_lvl2);
   return convertSearchToActions(matches);
 };
 
 export const useSearchAction = () => {
-  const searchUrl = "https://deta.space/api/v0";
   const searchClient = new MeiliSearch({
     host: searchUrl,
   });

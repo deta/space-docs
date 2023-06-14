@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  //margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,body {
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  // Gets overriden inside article.scss
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --user-font-scale: 1rem - 16px;
+}
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-size: clamp(0.9rem, 0.75rem + 0.375vw + var(--user-font-scale), 1rem);
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* Fixes jump to anchor -> without, headings are below header */
+a[name]::before,
+[id]::before {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 5.5rem; /* offset height */
+  margin-top: -5.5rem; /* negated offset height */
+}
+
+p {
+  margin-top: 0;
+}
+
+* {
+  scrollbar-color: hsl(var(--color-gray-80)) transparent;
+  scrollbar-width: thin;
+}
+
+.only-desktop { display: none; }
+@media screen and (min-width: 768px) {
+    .only-mobile { display: none; }
+    .only-desktop { display: inherit; }
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}

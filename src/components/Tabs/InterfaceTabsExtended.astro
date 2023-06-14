@@ -1,0 +1,22 @@
+
+---
+import Tabs from "@/components/Tabs/Tabs";
+---
+
+<Tabs
+  client:visible
+  sharedStore="interface"
+  defaultPanel="builder-project"
+  tabs={[
+    { label: "From a Builder Project", value: "builder-project" },
+    { label: "From Canvas", value: "canvas" },
+    { label: "From Collections", value: "collections" },
+  ]}
+>
+  <Fragment slot="panel.builder-project"><slot name="builder-project" />
+  </Fragment>
+  <Fragment slot="panel.canvas"><slot name="canvas" />
+  </Fragment>
+  <Fragment slot="panel.collections"><slot name="collections" />
+  </Fragment>
+</Tabs>

@@ -1,0 +1,29 @@
+---
+import CodeBlock from "@/components/docs/Article/CodeBlock/CodeBlock.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const docsEntries = await getCollection("docs");
+    return docsEntries.map((entry) => ({
+
+        params: {
+            slug: entry.slug
+            //slug: entry.slug.split("/").slice(1).join("/"), // Slice of first path element as it is the language
+            //language: entry.slug.split("/")[0] // First path element is language due to our dir setup.
+        },
+        props: { entry, foo: "bar" }
+    }));
+}
+
+const { entry } = Astro.props;
+const { language } = Astro.params;
+const { Content } = await entry.render();
+---
+
+<Content />
+<!--<DocsLayout>
+</DocsLayout>-->
+<!--
+<MarkdownPostLayout frontmatter={entry.data}>
+    <Content />
+</MarkdownPostLayout>-->

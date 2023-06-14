@@ -1,14 +1,19 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
     "jsx": "preserve",
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "~/*": ["src/*"],
-      "@docs": ["src/layouts/MainLayout.astro"],
-      "@changelogs": ["src/layouts/ChangelogLayout.astro"],
+      "~/*": ["src/*"], // TODO: REMOVE
+      "@cmp/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@styles/*": ["src/styles*"],
+      "@docs": ["src/layouts/MainLayout.astro"], // TODO: REMOVE
+      "@changelogs": ["src/layouts/ChangelogLayout.astro"] // TODO: Remove
     }
   }
 }

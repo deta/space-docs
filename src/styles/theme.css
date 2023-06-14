@@ -1,7 +1,7 @@
 :root {
 	--font-fallback: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
 		Apple Color Emoji, Segoe UI Emoji;
-	--font-body: 'Articulat', system-ui, var(--font-fallback);
+	--font-body: Inter Var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", system-ui, var(--font-fallback);
 	--font-mono: 'Cartograph', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
 		'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
 		'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;
@@ -29,7 +29,7 @@
 	--color-base-yellow: 41, 100%;
 
 	/*
-   * Color palettes are made using --color-base 
+   * Color palettes are made using --color-base
    * variables, along with a lightness value to
    * define different variants.
    *
@@ -54,6 +54,45 @@
 	--color-purple: var(--color-base-purple), 54%;
 	--color-red: var(--color-base-red), 54%;
 	--color-yellow: var(--color-base-yellow), 59%;
+
+    /* Spacing is incremented in 0.25rem steps TODO: Generate?*/
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-7: 1.75rem;
+    --spacing-8: 2rem;
+    --spacing-9: 2.25rem;
+    --spacing-10: 2.5rem;
+    --spacing-11: 2.75rem;
+    --spacing-12: 3rem;
+    --spacing-13: 3.25rem;
+    --spacing-14: 3.5rem;
+    --spacing-15: 3.75rem;
+    --spacing-16: 4rem;
+    --spacing-17: 4.25rem;
+    --spacing-18: 4.5rem;
+    --spacing-19: 4.75rem;
+    --spacing-20: 5rem;
+
+    /* ROUNDEDNESS TODO: Generate? */
+    --rounded-1: 0.25rem;
+    --rounded-2: 0.5rem;
+    --rounded-3: 0.75rem;
+    --rounded-4: 1rem;
+    --rounded-5: 1.25rem;
+    --rounded-6: 1.5rem;
+    --rounded-7: 1.75rem;
+    --rounded-8: 2rem;
+
+    /* TMP fix sidebar -> move to dynamic */
+    --header-height: 72px;
+    --sidenav-heigt: calc(100vh - var(--header-height));
+    --table-of-contents-breakpoint: calc(70ch + 10ch); /* Point at which toc moves to aside*/
+
+    --sideNav-width: 28ch;
 }
 
 :root {
@@ -64,6 +103,8 @@
 	--theme-divider: hsla(var(--color-gray-90), 0.5);
 	--theme-text: hsla(var(--color-gray-10), 1);
 	--theme-text-light: hsla(var(--color-gray-40), 1);
+    --theme-sidenav: hsla(var(--color-gray-95), 1);
+    --theme-sidenav: rgb(247 245 243);
 
 
 	/* @@@: not used anywhere */
@@ -95,6 +136,7 @@ body {
 	--theme-divider: hsla(var(--color-gray-5), 0.5);
 	--theme-text: hsla(var(--color-gray-90), 1);
 	--theme-text-light: hsla(var(--color-gray-80), 1);
+    --theme-sidenav: hsla(var(--color-gray-10), 1);
 
 	/* @@@: not used anywhere */
 	--theme-text-lighter: hsla(var(--color-gray-40), 1);
@@ -122,6 +164,6 @@ body {
 }
 
 ::selection {
-	color: var(--theme-selection-color);
-	background-color: var(--theme-selection-bg);
+	background-color: hsl(var(--color-blue), 40%);
+    color: hsl(var(--color-gray-30));
 }
