@@ -6,16 +6,16 @@ layout: "@layouts/DocsPageLayout.astro"
 import LangTabs from "@/components/Tabs/LangTabs.astro"
 import PackageManagerTabs from "@/components/Tabs/PackageManagerTabs.astro";
 
-The Deta library is the easiest way to store and retrieve data from your [Deta Base](./base) and [Deta Drive](./drive) in a Collection. 
-Currently, we support JavaScript (Node + Browser), Python 3 and Go. 
+The Deta library is the easiest way to store and retrieve data from your [Deta Base](./base) and [Deta Drive](./drive) in a Collection.
+Currently, we support JavaScript (Node + Browser), Python 3 and Go.
 
 You'll first need to [install](#installing) and [instantiate](#instatiating) your SDK, before you can interact with Base or Drive.
 
 Once you have, if you're someone who learns by theory, see the reference documentation:
 - [Base SDK](/docs/en/build/reference/sdk/base)
-- [Drive SDK](docs/en/build/reference/sdk/drive)
+- [Drive SDK](/docs/en/build/reference/sdk/drive)
 
-If you're someone who learns by example, there are also extensive [code examples](docs/en/build/reference/sdk/examples).
+If you're someone who learns by example, there are also extensive [code examples](/docs/en/build/reference/sdk/examples).
 
 ## Installing
 
@@ -50,7 +50,7 @@ If you're someone who learns by example, there are also extensive [code examples
 
 ## Instantiating
 
-To start working with your Base or Drive, you need to import the Deta class and initialize it. 
+To start working with your Base or Drive, you need to import the Deta class and initialize it.
 To authenticate with Space, you need to either use the [`space dev`](/docs/en/build/fundamentals/development/local-development) command or provide a [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) in an environment variable called `DETA_PROJECT_KEY`.
 See [here](/docs/en/build/fundamentals/data-storage#data-keys) for detailed information.
 
@@ -82,16 +82,16 @@ books = deta.Base("books")
 const { Deta } = require('deta'); // import Deta
 
 // Initialize
-const deta = Deta(); 
+const deta = Deta();
 
 // This how to connect to or create a database.
-const db = deta.Base('simple_db'); 
+const db = deta.Base('simple_db');
 
 // This how to connect to or create a drive.
-const drive = deta.Drive('my_store'); 
+const drive = deta.Drive('my_store');
 
 // You can create as many as you want.
-const books = deta.Base('books'); 
+const books = deta.Base('books');
 ```
 </Fragment>
 <Fragment slot="go">
