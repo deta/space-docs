@@ -16,9 +16,9 @@ A personal cloud is distinct from traditional personal computers because it exis
 
 ### For users
 
-In the [traditional cloud model](/docs/en/learn/pc-what#public-cloud-application-model), the company who provides an application holds a lot of power. If the company decides it's not worth it to keep the app running and shuts down the infrastructure, happy users lose access. They also can't easily interact with, extend, or delete their own application data. Or add a custom domain, or more RAM to a sluggish service.
+In the [traditional cloud model](/docs/en/learn/what-is-pc#public-cloud-application-model), the company who provides an application holds a lot of power. If the company decides it's not worth it to keep the app running and shuts down the infrastructure, happy users lose access. They also can't easily interact with, extend, or delete their own application data. Or add a custom domain, or more RAM to a sluggish service.
 
-On the [personal cloud](/docs/en/learn/pc-what#personal-cloud-application-model), this all changes. Users can install and uninstall apps on a whim, with fine-grained control. They can inspect, modify, extend, and export all their data. Since everything is in one place, it can integrate directly. For users who are [also developers](/docs/en/build), the control is extremely powerful: everything is raw material to build and explore with.
+On the [personal cloud](/docs/en/learn/what-is-pc#personal-cloud-application-model), this all changes. Users can install and uninstall apps on a whim, with fine-grained control. They can inspect, modify, extend, and export all their data. Since everything is in one place, it can integrate directly. For users who are [also developers](/docs/en/build), the control is extremely powerful: everything is raw material to build and explore with.
 
 ### For developers
 
