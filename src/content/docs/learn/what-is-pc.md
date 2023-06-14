@@ -41,4 +41,4 @@ In a personal cloud, this dynamic changes. Not only do people get a personal cop
 
 This is akin to personal computer, where there is a user, a pool of data, and many applications that all work in concert to achieve the user's objectives.
 
-Read more about [why we think this matters](/docs/en/learn/pc-why).
+Read more about [why we think this matters](/docs/en/learn/why-the-pc).
