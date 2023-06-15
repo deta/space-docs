@@ -3,7 +3,7 @@ title: Discovery.md File
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-There are a few things you can do to prepare your app for publishing. The most important is create a `Discovery.md` file, which allows you to customize the presentation of your app on [Deta Discovery](/docs/en/use/space-apps/discovery), Space’s library of personal cloud software. You can think of the `Discovery.md` file as your app's `README` for Deta Space.
+There are a few things you can do to prepare your app for publishing. The most important is create a `Discovery.md` file, which allows you to customize the presentation of your app on [Deta Discovery](/docs/en/use/space-apps/discovery), Space's library of personal cloud software. You can think of the `Discovery.md` file as your app's `README` for Deta Space.
 
 The `Discovery.md` file is a Markdown file that includes two sections:
 
@@ -40,7 +40,7 @@ The first section between the two lines of 3 dashes (`---`) is the **Frontmatter
 
 ### `app_name`
 
-Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed e.g. the Canvas, Teletype and Discovery. If it is not provided, `app_name` will fallback to your project’s name. The name can has a maximum of 12 characters.
+Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed e.g. the Canvas, Teletype and Discovery. If it is not provided, `app_name` will fallback to your project's name. The name can has a maximum of 12 characters.
 
 Here's an example:
 
@@ -66,7 +66,7 @@ title: "Space: The Personal Cloud"
 
 Use the `tagline` to provide a short description of your app, with a maximum of `69` characters. This will be shown across Discovery on both the app's page, and in featured sections or search.
 
-Your app’s `tagline` is intended to summarize your app in a concise phrase. Avoid generic descriptions and instead highlight features or typical uses of your app.
+Your app's `tagline` is intended to summarize your app in a concise phrase. Avoid generic descriptions and instead highlight features or typical uses of your app.
 
 Here's an example:
 

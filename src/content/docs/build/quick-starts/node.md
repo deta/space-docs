@@ -21,7 +21,7 @@ mkdir nodejs-app
 cd nodejs-app
 ```
 
-Next, initialize a new Node.js app and generate a `package.json` file to manage the dependencies for your app. We’ll also install a web framework; for this guide, we’ll use [Express.js](https://expressjs.com), but feel free to use another framework of your choice if you prefer.
+Next, initialize a new Node.js app and generate a `package.json` file to manage the dependencies for your app. We'll also install a web framework; for this guide, we'll use [Express.js](https://expressjs.com), but feel free to use another framework of your choice if you prefer.
 
 ```bash
 npm init -y
@@ -72,7 +72,7 @@ micros:
     primary: true
 ```
 
-> ⚠️ For now, the Spacefile with the generated configuration only works when there an `index.js` file at the root directory of the micro’s source code else you will have to explicitly define what command should be executed to start your app with the `run` command.
+> ⚠️ For now, the Spacefile with the generated configuration only works when there an `index.js` file at the root directory of the micro's source code else you will have to explicitly define what command should be executed to start your app with the `run` command.
 
 > ⚠️ If the CLI fails to generate a configuration for your app, you can configure it manually. For more information, please refer to the [Spacefile](/docs/en/build/reference/spacefile) reference.
 
@@ -95,7 +95,7 @@ micros:
 
 ## Developing Locally
 
-You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app's development server using the `dev` command in the Spacefile.
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0

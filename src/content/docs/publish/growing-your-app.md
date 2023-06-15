@@ -5,7 +5,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 If you published your app on Deta Discovery, congratulations! This is an exciting step in your journey to bring your ideas to the world.
 
-You may be looking for other people to use it, give you feedback, and take it to the next level. Here’s a couple channels you can use to show others what you have built and get an initial set of users.
+You may be looking for other people to use it, give you feedback, and take it to the next level. Here's a couple channels you can use to show others what you have built and get an initial set of users.
 
 ## The Deta Team
 
@@ -31,7 +31,7 @@ For the description, include a few points on what your app does and why it may b
 
 ### Community Calls
 
-Deta also hosts community calls on a periodic basis. All community calls include a demo component, where the floor is open to community members who want to demo. This is a great opportunity to show what you’re building, promote your app, and get live feedback from the Deta Team and community.
+Deta also hosts community calls on a periodic basis. All community calls include a demo component, where the floor is open to community members who want to demo. This is a great opportunity to show what you're building, promote your app, and get live feedback from the Deta Team and community.
 
 Keep your eyes peeled for the next community call by [joining the Deta Discord](https://go.deta.dev/discord), and reading the Deta Space Newsletter. Then make sure to show up, ready to demo your app live!
 
@@ -48,7 +48,7 @@ The best way to get into the newsletter is to build something interesting!
 To present your app effectively on Product Hunt, you will need to do a few things:
 
 - **Title**: start with a captivating title that succinctly conveys your app's purpose.
-- **Tagline**: craft a tagline that intrigues potential users and highlights what’s unique about your app.
+- **Tagline**: craft a tagline that intrigues potential users and highlights what's unique about your app.
 - **Description**: write a concise and clear description, detailing the app's functionality, benefits, and target audience.
 - **Thumbnail Gallery**: prepare a visually appealing thumbnail and gallery, showcasing your app's interface and key features. The images should be high-resolution and well-designed to make a lasting impression.
 - **Link**: the call to action link can link to your Discovery page, but you can also link to your own marketing page (which should link to the Discovery page).
@@ -61,7 +61,7 @@ Here are a few examples of Space apps that executed Product Hunt launches well:
 - [Berowra](https://www.producthunt.com/products/berowra?utm_source=badge-featured&utm_medium=badge#berowra)
 - [WebCrate](https://www.producthunt.com/products/berowra?utm_source=badge-featured&utm_medium=badge#berowra)
 
-Here’s [Deta’s last Product Hunt launch](https://www.producthunt.com/products/deta#deta-cloud-1-0). If you are considering launching your app on Product Hunt, send the team a note at `team@deta.space` and we are happy to support you in creating an effective launch.
+Here's [Deta's last Product Hunt launch](https://www.producthunt.com/products/deta#deta-cloud-1-0). If you are considering launching your app on Product Hunt, send the team a note at `team@deta.space` and we are happy to support you in creating an effective launch.
 
 ## GitHub
 
@@ -77,9 +77,9 @@ To present your app on GitHub effectively, make sure to create a well-structured
 
 [Reddit](https://reddit.com) can be a great channel for sharing your app within specific communities, known as subreddits ("subs"). These subreddits cater to a wide range of interests, connecting like-minded individuals through shared topics. You can find subreddits dedicated to nearly every programming language and framework, as well as subs for weekend hobbyists and hackers, making it an ideal place to share your app with relevant audiences.
 
-When posting on Reddit, carefully identify relevant subs and make sure to follow their specific rules. Create titles and descriptions that reflect your app’s uniqueness. Focus on providing value rather than self-promotion or spam. If people engage with your post, interact respectfully and remain open-minded. Finally, remember to upvote and engage with other posts in the spirit of community and reciprocity.
+When posting on Reddit, carefully identify relevant subs and make sure to follow their specific rules. Create titles and descriptions that reflect your app's uniqueness. Focus on providing value rather than self-promotion or spam. If people engage with your post, interact respectfully and remain open-minded. Finally, remember to upvote and engage with other posts in the spirit of community and reciprocity.
 
-Here are two examples of WebCrate’s posts on reddit:
+Here are two examples of WebCrate's posts on reddit:
 
 - [On the sub-reddit r/sideproject](https://www.reddit.com/r/SideProject/comments/pb75e1/organize_your_web_with_webcrate_a_open_source/)
 - [On the sub-reddit r/vuejs](https://www.reddit.com/r/vuejs/comments/pbbfa6/webcrate_open_source_bookmarking_tool_built_with/)

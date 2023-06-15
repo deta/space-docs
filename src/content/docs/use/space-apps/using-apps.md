@@ -3,7 +3,7 @@ title: Using Space Apps
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Once you’ve installed a Space app from Deta Discovery, you should see it on your Canvas. This is your own personal copy of the app.
+Once you've installed a Space app from Deta Discovery, you should see it on your Canvas. This is your own personal copy of the app.
 
 ![using-apps-1](/docs_assets/use/using-apps-1.png)
 
@@ -22,13 +22,13 @@ A few notes:
 
 By default, apps on Space are private. This means you have to be logged in to access the app, or certain features it offers.
 
-But some apps have **routes** that are public (or the entire app is public). A route is a unique string of characters on your app’s domain, starting with the first `/`. For example, for the domain `https://parallel-futures-h78bhas.deta.app/start`, the route is `/start`.
+But some apps have **routes** that are public (or the entire app is public). A route is a unique string of characters on your app's domain, starting with the first `/`. For example, for the domain `https://parallel-futures-h78bhas.deta.app/start`, the route is `/start`.
 
 Apps themselves should indicate if a given view is public and shareable within the app.
 
 ![using-apps-3](/docs_assets/use/using-apps-3.png)
 
-But if they don’t, and if you aren’t sure if something you are looking at is shareable, you can always open it in an incognito tab. If something is not meant to be shared, it will ask you to log in. This means it’s only for you.
+But if they don't, and if you aren't sure if something you are looking at is shareable, you can always open it in an incognito tab. If something is not meant to be shared, it will ask you to log in. This means it's only for you.
 
 ![using-apps-4](/docs_assets/use/using-apps-4.png)
 
@@ -38,11 +38,11 @@ Developers of Space apps may periodically create and release new features. When 
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/using-apps-5.png"/></div>
 
-Clicking the notification will show you an update menu for the app, including release notes the developer provides, which describe what’s new.
+Clicking the notification will show you an update menu for the app, including release notes the developer provides, which describe what's new.
 
 ![using-apps-6](/docs_assets/use/using-apps-6.png)
 
-To install the update, click the **Install App Update** button. As a user, updates are opt in — you’re free to stay with the current version of your app. In the future, you’ll be able to roll your app back to previous versions.
+To install the update, click the **Install App Update** button. As a user, updates are opt in — you're free to stay with the current version of your app. In the future, you'll be able to roll your app back to previous versions.
 
 ## API Keys
 

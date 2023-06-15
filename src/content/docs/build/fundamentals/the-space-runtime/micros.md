@@ -55,7 +55,7 @@ Checkout the [Quick Starts](/docs/en/build/fundamentals/quick-starts) for instru
 
 ## Directory Structure
 
-A Micro can be thought of as its own independent service. As a result, Micros should be self-contained in their own directory inside your code base.  Let’s look at an example of a good structure.
+A Micro can be thought of as its own independent service. As a result, Micros should be self-contained in their own directory inside your code base.  Let's look at an example of a good structure.
 
 Here's the file & folder structure of an app with a Python backend and a Vue frontend:
 
@@ -93,7 +93,7 @@ micros:
 
 Since your app can contain up to five Micros, the Space Runtime needs to know what requests to route to which Micro (if you have multiple Micros).
 
-On Space, this is handled by having a single **Primary Micro** which receives all requests made to your app's root path `/`. The Primary Micro is defined by the `primary` field in your `Spacefile`. Each other Micro will be served on a specific path relative to your app's primary hostname, defined in the Micros’ `path` fields in your `Spacefile`:
+On Space, this is handled by having a single **Primary Micro** which receives all requests made to your app's root path `/`. The Primary Micro is defined by the `primary` field in your `Spacefile`. Each other Micro will be served on a specific path relative to your app's primary hostname, defined in the Micros' `path` fields in your `Spacefile`:
 
 ```
 v: 0
@@ -112,7 +112,7 @@ micros:
 
 In the above example, the `api` Micro will be available at `/api` (and all sub-paths of `/api`, e.g. `/api/sub`) while all other paths including the root `/` will be received by the primary Micro, in this case, the static Micro `client`. If the path is missing, the path will fall back to the `name` field.
 
-You can emulate Space’s routing in local development with the [`space dev` command](/docs/en/build/fundamentals/development/local-development#routing-emulation).
+You can emulate Space's routing in local development with the [`space dev` command](/docs/en/build/fundamentals/development/local-development#routing-emulation).
 
 ## Cross Micro Communication
 
@@ -133,7 +133,7 @@ Read more about Authentication on Space [here](/docs/en/build/fundamentals/the-s
 
 ### Server side
 
-If you are trying to call a backend Micro from another backend Micro, you’ll need to do two things in your code. First, you need to get your app's address to make the request (via an assigned hostname), and second, you need use an api key to authenticate your request.
+If you are trying to call a backend Micro from another backend Micro, you'll need to do two things in your code. First, you need to get your app's address to make the request (via an assigned hostname), and second, you need use an api key to authenticate your request.
 
 Both of these items are provided in the environment of every backend Micro:
 

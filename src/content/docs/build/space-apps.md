@@ -11,19 +11,19 @@ As a developer building apps for Space, you get a lot out of the box:
 - support for your favorite programming languages & frameworks
 - a suite of included services, from storing data to talking with AI models
 
-With these tools, you should find it easy to build all sorts of internet experiences for yourself — from simple websites to full stack applications that tie into the latest advances in AI. Once you have, it’s even easier to publish your creation to almost anyone else in the world.
+With these tools, you should find it easy to build all sorts of internet experiences for yourself — from simple websites to full stack applications that tie into the latest advances in AI. Once you have, it's even easier to publish your creation to almost anyone else in the world.
 
 ## Authentication
 
 ![intro-1](/docs_assets/use/space-apps-headline.png)
 
-On Space, apps and their data are private by default. As a user, you’re the only person who can access your apps and the data they store to your Space. They’re not shared with the app developer or other users of the same app.
+On Space, apps and their data are private by default. As a user, you're the only person who can access your apps and the data they store to your Space. They're not shared with the app developer or other users of the same app.
 
-As a developer, authentication is meant to “just work”. You don’t have to think much about writing auth code or separating data between users. You can build assuming that you’re the only (already authenticated) user and Deta Auth will layer extra features on top. Finally, although privacy is the default, you can easily build apps that have public facing features or data, like a website.
+As a developer, authentication is meant to “just work”. You don't have to think much about writing auth code or separating data between users. You can build assuming that you're the only (already authenticated) user and Deta Auth will layer extra features on top. Finally, although privacy is the default, you can easily build apps that have public facing features or data, like a website.
 
 [Learn more about Authentication on Space](/docs/en/build/fundamentals/the-space-runtime/authentication).
 
-## Space’s Building Blocks
+## Space's Building Blocks
 
 ![intro-components](/docs_assets/build/intro-components.png)
 
@@ -43,9 +43,9 @@ Take a look at our [Quick Starters](/docs/en/build/quick-starts) on instructions
 
 You may want your app to persist data, in addition to running code. Each app on Space is connected to a [Collection](/docs/en/build/fundamentals/data-storage#collections) of data. A Collection can host structured text in a database, called [Deta Base](/docs/en/build/fundamentals/data-storage#deta-base), and files in a store, called [Deta Drive](/docs/en/build/fundamentals/data-storage#deta-drive). The data in a Collection is shared between every Micro in your app.
 
-Base and Drive are designed to be both simple and powerful. Neither requires any setup — a database or file store comes into existence as soon as you write to one. To write to a Base or a Drive, use the SDKs we’ve built, or their HTTP APIs. As we mentioned, you don’t need to think about authentication or data separation as you build an app for others.
+Base and Drive are designed to be both simple and powerful. Neither requires any setup — a database or file store comes into existence as soon as you write to one. To write to a Base or a Drive, use the SDKs we've built, or their HTTP APIs. As we mentioned, you don't need to think about authentication or data separation as you build an app for others.
 
-One final note: data doesn’t need to be connected to a specific app. You can also create and use “headless” Collections, if you want to store and use data without Micros.
+One final note: data doesn't need to be connected to a specific app. You can also create and use “headless” Collections, if you want to store and use data without Micros.
 
 [Learn more about storing data](/docs/en/build/fundamentals/data-storage).
 
@@ -53,7 +53,7 @@ One final note: data doesn’t need to be connected to a specific app. You can a
 
 ![intro-ideas](/docs_assets/build/intro-ideas.png)
 
-As a developer of a traditional web app, paying for and managing cloud resources that power your app is the norm. With Deta Space and the personal cloud, things are different. Because resources live with users, you don’t have to manage or pay for any resources — beyond your own.
+As a developer of a traditional web app, paying for and managing cloud resources that power your app is the norm. With Deta Space and the personal cloud, things are different. Because resources live with users, you don't have to manage or pay for any resources — beyond your own.
 
 For a single Space app, you can use up to five Micros and an unlimited number of Bases and Drives. None of these resources require setup. Micros can be defined in your [Spacefile](/docs/en/build/reference/spacefile), while Bases and Drives can be created by your app during runtime.
 
@@ -71,6 +71,6 @@ Your Project also has a [Builder Instance](/docs/en/build/fundamentals/developme
 
 ![releasing-headline](/docs_assets/publish/releasing-headline.png)
 
-On Deta Space, apps you build are one step away from almost anyone in the world with an internet connection. You can reach them by **Publishing** your app from your Project to different audiences. A published app is available for others’ to use, in their own personal clouds, across five global edge locations that Space offers.
+On Deta Space, apps you build are one step away from almost anyone in the world with an internet connection. You can reach them by **Publishing** your app from your Project to different audiences. A published app is available for others' to use, in their own personal clouds, across five global edge locations that Space offers.
 
 [Learn more about releasing your app](/docs/en/publish).

@@ -5,11 +5,11 @@ layout: "@layouts/DocsPageLayout.astro"
 
 ![discovery](/docs_assets/use/discovery-headline.png)
 
-Deta Discovery Space’s library of software, that anyone can contribute to and use. You can find all sorts of applications on Deta Discovery to install and use in your own Space.
+Deta Discovery Space's library of software, that anyone can contribute to and use. You can find all sorts of applications on Deta Discovery to install and use in your own Space.
 
 ## Finding Apps on Discovery
 
-Deta Discovery’s homepage offers a three views to find apps.
+Deta Discovery's homepage offers a three views to find apps.
 
 - **Popular** displays the apps with the most unique installs since inception.
 - **Recent** displays the newest apps released on Space.
@@ -21,7 +21,7 @@ You can also search for apps using the search bar.
 
 ## App Discovery Pages
 
-If you find an app from the Discovery home page that you’re curious about, clicking it will bring you to an individual app’s Discovery page. You may also land on an app’s Discovery page from an external site, or if someone shared a Discovery link with you.
+If you find an app from the Discovery home page that you're curious about, clicking it will bring you to an individual app's Discovery page. You may also land on an app's Discovery page from an external site, or if someone shared a Discovery link with you.
 
 The Discovery Page looks like this.
 
@@ -31,9 +31,9 @@ The Discovery page includes a description written by the developer, describing w
 
 Meta data fields can include:
 
-- **Creator:** the Deta username of the app’s creator
+- **Creator:** the Deta username of the app's creator
 - **Website:** an external website for the app
-- **Git**: links to a git repository hosting the source code of the app, if it’s open source
+- **Git**: links to a git repository hosting the source code of the app, if it's open source
 - **Date**: the date the app was released
 - **Version**: the version of the app you are viewing (you can view Discovery pages for older versions of an individual app)
 - **Total Installs**: the number of unique installs for the app

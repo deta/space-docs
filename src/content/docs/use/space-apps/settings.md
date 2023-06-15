@@ -3,13 +3,13 @@ title: Settings
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-A Space app’s Settings menu gives you access to a few helpful features and functionalities. To access these, open the app’s context menu from the Canvas and then click Settings.
+A Space app's Settings menu gives you access to a few helpful features and functionalities. To access these, open the app's context menu from the Canvas and then click Settings.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/settings-1.png"/></div>
 
 ## General Settings
 
-The first tab within an app’s settings will show you what version of an app you are using, while also providing an option to delete the app from your Space.
+The first tab within an app's settings will show you what version of an app you are using, while also providing an option to delete the app from your Space.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-2.png"/></div>
 
@@ -19,7 +19,7 @@ Clicking **View Release** will take you to the Discovery page of the specific Re
 
 #### Deleting your App
 
-You can also delete your app by checking the box and then clicking **Delete**. This will remove the app from your Space and erase all associated data in the app’s Collection.
+You can also delete your app by checking the box and then clicking **Delete**. This will remove the app from your Space and erase all associated data in the app's Collection.
 
 *Make sure you are sure before proceeding with a deletion, as this action is irreversible.*
 
@@ -29,11 +29,11 @@ The keys tab will let you create and manage any keys associated with your app, w
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-3.png"/></div>
 
-Data Keys allow you to programmatically interact with the data in your app’s Collection using the Deta SDKs or Collections HTTP APIs.
+Data Keys allow you to programmatically interact with the data in your app's Collection using the Deta SDKs or Collections HTTP APIs.
 
-API Keys allow you to securely interact with your app’s own HTTP APIs using a different client than Deta Space itself: like another Space app, a rest client like Postman, or another server entirely.
+API Keys allow you to securely interact with your app's own HTTP APIs using a different client than Deta Space itself: like another Space app, a rest client like Postman, or another server entirely.
 
-> If the app’s developer has not enabled API Keys, the API Keys section will not show up.
+> If the app's developer has not enabled API Keys, the API Keys section will not show up.
 
 ### Creating Keys
 
@@ -68,4 +68,4 @@ To update a Configuration Variable, enter the value in the input box correspondi
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-7.png"/></div>
 
 
-> 🗒️ Configuration Variables are often API Keys for an external service, for example an Open AI API Key. In this case, it’s a win-win: developers don’t have to pay for a user’s usage of the service, while the user can talk with a service and their own data directly.
+> 🗒️ Configuration Variables are often API Keys for an external service, for example an Open AI API Key. In this case, it's a win-win: developers don't have to pay for a user's usage of the service, while the user can talk with a service and their own data directly.

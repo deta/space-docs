@@ -11,7 +11,7 @@ Once you are satisfied with your app in your development environment, you can ru
 space push
 ```
 
-The `space push` command validates that your `Spacefile` is correct, then packages and uploads all the necessary files to Space’s Build Pipeline.
+The `space push` command validates that your `Spacefile` is correct, then packages and uploads all the necessary files to Space's Build Pipeline.
 
 > You will receive a stream of logs to your local terminal during the whole process, to keep you informed and help debug any issues. You can use an optional flag if you would not like to receive the stream of logs: `space push --skip-logs`.
 
@@ -21,13 +21,13 @@ The Space Build Pipeline is an isolated cloud environment that takes your source
 
 ## Revisions
 
-Once the build pipeline completes, it will result in a **Revision** being created. A revision is an installable and runnable package of your app. Revisions are immutable, and you can have multiple revisions for a single project. After your new revision is created, it will be automatically installed to your project’s [Builder Instance](/docs/en/build/fundamentals/development/builder-instance). You can use revisions in the Builder Instance to test and use your app on Space. But revisions of your app can also be [published to the world](/docs/en/publish/intro).
+Once the build pipeline completes, it will result in a **Revision** being created. A revision is an installable and runnable package of your app. Revisions are immutable, and you can have multiple revisions for a single project. After your new revision is created, it will be automatically installed to your project's [Builder Instance](/docs/en/build/fundamentals/development/builder-instance). You can use revisions in the Builder Instance to test and use your app on Space. But revisions of your app can also be [published to the world](/docs/en/publish/intro).
 
 > You can use `space push --open` if you would like to push and directly open your Builder Instance in the browser after your new revision has been installed to it.
 
 ## Viewing Builder Events
 
-You can get an overview of events in the your app’s pipeline — Builds, Revisions, and Releases — from your Project’s “**Overview**” tab in Builder in the **Events** console. Clicking a specific event type will filter for that event.
+You can get an overview of events in the your app's pipeline — Builds, Revisions, and Releases — from your Project's “**Overview**” tab in Builder in the **Events** console. Clicking a specific event type will filter for that event.
 
 Events are color coded:
 - green indicates a successful event

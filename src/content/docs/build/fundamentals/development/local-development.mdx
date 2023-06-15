@@ -21,7 +21,7 @@ If you want to open the app in your browser automatically, use the `--open` flag
 
 In the background, `space dev` is doing three things:
 
-- **Micro Startup:** starts each of your app’s [Micros](/docs/en/build/fundamentals/the-space-runtime/micros) in a separate process, using a command you provide
+- **Micro Startup:** starts each of your app's [Micros](/docs/en/build/fundamentals/the-space-runtime/micros) in a separate process, using a command you provide
 - **Routing Emulation:** emulates how Space handles routing for your Micros, allowing you to use a single endpoint in local development
 - **Data Storage:** injects a [Data Key](https://deta.space/changelog/post-6) so you can use the [Deta SDK](/docs/en/build/fundamentals/data-storage) to store data in your [Builder Project](/docs/en/build/fundamentals/development/projects), without any setup or key management
 
@@ -29,7 +29,7 @@ In the background, `space dev` is doing three things:
 
 Before you can spin up your app locally with `space dev`, make sure you have your app setup with a [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile).
 
-The Space CLI will use development command(s) you provide in your `Spacefile` to start each of your app’s Micros locally, specified by `dev` parameter:
+The Space CLI will use development command(s) you provide in your `Spacefile` to start each of your app's Micros locally, specified by `dev` parameter:
 
 ```yaml
 v: 0
@@ -45,7 +45,7 @@ micros:
     dev: nodemon index.js # start the micro in development mode
 ```
 
-For static engines and fullstack frameworks like Next, Nuxt and SvelteKit, the CLI will choose the right command automatically. For everything else you’ll need to specify your own `dev` command.
+For static engines and fullstack frameworks like Next, Nuxt and SvelteKit, the CLI will choose the right command automatically. For everything else you'll need to specify your own `dev` command.
 
 The specified command needs to start a web server that listens on the port specified with the `PORT` environment variable. This way the CLI can properly forward requests to the correct Micro.
 
@@ -69,7 +69,7 @@ You can find instructions on how to setup the right `dev` command for each engin
 
 Deta Space offers persistent data storage in [Collections](/docs/en/build/fundamentals/data-storage#collections). Collections can be read from and written to using the [Deta SDK](/docs/en/build/reference/sdk) or [HTTP API](/docs/en/build/reference/http-api), and they use a Collection specific [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) for authentication. Every Space application gets its own Collection.
 
-In Deta Space, authentication between an app and its Collection happens automatically, with a user specific Data Key sitting in the app’s environment. `space dev` provides the same experience, automatically generating and injecting a Data Key. The data you save will be stored in your Builder Project in Space.
+In Deta Space, authentication between an app and its Collection happens automatically, with a user specific Data Key sitting in the app's environment. `space dev` provides the same experience, automatically generating and injecting a Data Key. The data you save will be stored in your Builder Project in Space.
 
 What this means is that you can use Bases and Drives, without managing any keys in your local environment. If you are using the SDK, just initialize the Deta Object.
 
@@ -88,7 +88,7 @@ const books = deta.Base('books');
 ```
 </Collapsible>
 
-If you’re using the HTTP API, pull the environment variable `DETA_PROJECT_KEY`.
+If you're using the HTTP API, pull the environment variable `DETA_PROJECT_KEY`.
 
 <Collapsible title="HTTP API Code Snippet" code client:load>
 ```jsx
@@ -146,7 +146,7 @@ This lets you build an entire app (with up to 5 separate Micros) on a single end
 
 You can also trigger [Scheduled Actions](/docs/en/build/fundamentals/the-space-runtime/actions) in your local development server by using the `space dev trigger` command. Make sure you have defined a [Scheduled Action in your Spacefile](/docs/en/build/fundamentals/the-space-runtime/actions#adding-a-scheduled-action) and [set up the right handler in your Micro](/docs/en/build/fundamentals/the-space-runtime/actions#action-handlers).
 
-Let’s assume we have the following `Spacefile` that runs a `cleanup` action on a schedule:
+Let's assume we have the following `Spacefile` that runs a `cleanup` action on a schedule:
 
 ```yaml
 v: 0
@@ -163,7 +163,7 @@ micros:
         default_interval: "0/15 * * * *"
 ```
 
-After starting your development server using either `space dev` or `space dev up`, you can trigger the action manually using the `space dev trigger` command. Just pass the Action’s `id` into the command.
+After starting your development server using either `space dev` or `space dev up`, you can trigger the action manually using the `space dev trigger` command. Just pass the Action's `id` into the command.
 
 ```bash
 # start app locally
@@ -234,4 +234,4 @@ You can set this Data Key into your local development environment as `DETA_PROJE
 DETA_PROJECT_KEY="MY_DATA_KEY"
 ```
 
-> ⚠️ It is generally a bad practice to embed your Data Key in your code, especially if you want to publish your app. All your App’s users will use your Collection, and data will no longer be separated, breaking the personal cloud model. If you want to create an Interop use case using Data Keys, read more here.
+> ⚠️ It is generally a bad practice to embed your Data Key in your code, especially if you want to publish your app. All your App's users will use your Collection, and data will no longer be separated, breaking the personal cloud model. If you want to create an Interop use case using Data Keys, read more here.
