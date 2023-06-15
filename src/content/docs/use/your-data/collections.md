@@ -7,7 +7,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 Deta Space offers persistent data storage through **Collections**. An individual Collection is a group of related data.
 
-Every app in your Space has its own Collection — [App Collections](#app-collections). You can also create and use Collections that aren’t associated directly with any app — [Headless Collections](#headless-collections). Collections can store structured text using [Deta Base](#deta-base) and files with [Deta Drive](#deta-drive).
+Every app in your Space has its own Collection — [App Collections](#app-collections). You can also create and use Collections that aren't associated directly with any app — [Headless Collections](#headless-collections). Collections can store structured text using [Deta Base](#deta-base) and files with [Deta Drive](#deta-drive).
 
 Like Space apps themselves, the data in Collections is yours — it comes with the benefits of end user ownership. Collections feature their own [graphical user interfaces](/docs/en/use/your-data/guis) to navigate and manage your data. You can read and write data to your Collections through these user interfaces, but you can also use the [Deta SDK](/docs/en/build/reference/sdk/about) & [HTTP APIs](/docs/en/build/reference/http-api/about) with [Data Keys](#data-keys).
 
@@ -31,27 +31,27 @@ To create a Headless Collection, open the Collections app from your Canvas and t
 
 ## Deta Base
 
-Deta Base a fully-managed, fast, and secure NoSQL database. Each Collection can contain as many Bases as it needs. Individual Bases are created when they are written to; storing any data in a Base will create one, if it doesn’t already exist.
+Deta Base a fully-managed, fast, and secure NoSQL database. Each Collection can contain as many Bases as it needs. Individual Bases are created when they are written to; storing any data in a Base will create one, if it doesn't already exist.
 
 Bases in a Collection can be viewed and managed through [Base UI](/docs/en/use/your-data/guis#base-ui). You can also read and write data to any Base in a Collection through the [Base SDK](/docs/en/build/reference/sdk/base) or [Base HTTP API](/docs/en/build/reference/http-api/base).
 
 ## Deta Drive
 
-Deta Drive is a fully-managed, secure and scalable file storage service. Each Collection can contain as many Drives as it needs. Individual Drives are created when they are written to; storing data in a Drive will create one, if it doesn’t exist yet.
+Deta Drive is a fully-managed, secure and scalable file storage service. Each Collection can contain as many Drives as it needs. Individual Drives are created when they are written to; storing data in a Drive will create one, if it doesn't exist yet.
 
 Drives in a Collection can be viewed and managed through [Drive UI](/docs/en/use/your-data/guis#drive-ui). You can also read and write data to any Base in a Collection through the [Drive SDK](/docs/en/build/reference/sdk/drive) or [Drive HTTP API](/docs/en/build/reference/http-api/drive).
 
 ## Data Keys
 
-Authorization to Collections happens via **Data Keys**. You can create Data Keys for any Collection. These keys are passed into the SDK or HTTP APIs to authorize reading or writing data. Be careful with your Data Keys — a compromised Data Key compromises a Collection’s data.
+Authorization to Collections happens via **Data Keys**. You can create Data Keys for any Collection. These keys are passed into the SDK or HTTP APIs to authorize reading or writing data. Be careful with your Data Keys — a compromised Data Key compromises a Collection's data.
 
 Read more about how to use Data Keys in the Developer Documentation with the [Deta SDK](/docs/en/build/reference/sdk/about) or [HTTP API](/docs/en/build/reference/http-api/about).
 
-> 🗒️ Autorization to Collections is automatically managed inside of Space apps and when using the graphical user interfaces for Collection data. You don’t need a Data Key.
+> 🗒️ Autorization to Collections is automatically managed inside of Space apps and when using the graphical user interfaces for Collection data. You don't need a Data Key.
 
 ### Data Keys for App Collections
 
-To manage Data Keys for an app's Collection, open the app’s Settings from its context menu.
+To manage Data Keys for an app's Collection, open the app's Settings from its context menu.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 250px;" src="/docs_assets/use/collections-2.png"/></div>
 

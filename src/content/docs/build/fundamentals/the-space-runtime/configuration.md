@@ -38,7 +38,7 @@ Micros also come pre-set with environment variables, accessible on the server si
 - `DETA_SPACE_APP`: will be set to `“true”`
 - `DETA_SPACE_APP_VERSION`: the app version
 - `DETA_SPACE_APP_HOSTNAME`: will be set to the **primary** hostname
-- `DETA_SPACE_APP_MICRO_NAME`: your Micro’s name
+- `DETA_SPACE_APP_MICRO_NAME`: your Micro's name
 - `DETA_SPACE_APP_MICRO_TYPE`: will be set to `"primary"` if primary otherwise `“normal”`
 - `PORT`: the port Space will route requests to on your Micro
 

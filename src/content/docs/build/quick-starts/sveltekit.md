@@ -63,7 +63,7 @@ export default config;
 
 ## Developing Locally
 
-You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your app’s development server using the `dev` command in the Spacefile.
+You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your app's development server using the `dev` command in the Spacefile.
 
 ```diff
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0

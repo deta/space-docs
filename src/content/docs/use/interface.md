@@ -3,7 +3,7 @@ title: The User Interface
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Your Space’s user interface uses two primary components that you’ll interact with the most: **Canvas** and **Teletype**.
+Your Space's user interface uses two primary components that you'll interact with the most: **Canvas** and **Teletype**.
 
 # Canvas
 
@@ -11,7 +11,7 @@ After you signup for Space and complete onboarding, you will see something like 
 
 ![ui-canvas](/docs_assets/use/ui-canvas.png)
 
-This is your **Canvas**. Canvas is like your desktop, but for your Space. The individual items that you see on your Canvas are **Tiles**. You’ll get a Tile on your Canvas for every app you install, and every project you are building (if you’re a developer).
+This is your **Canvas**. Canvas is like your desktop, but for your Space. The individual items that you see on your Canvas are **Tiles**. You'll get a Tile on your Canvas for every app you install, and every project you are building (if you're a developer).
 
 If you click on a Tile, it will open that app or project. You can also reorganize all the Tiles on your Canvas by dragging and dropping any Tile.
 
@@ -30,7 +30,7 @@ You also may have noticed the little bar at the bottom of your Canvas. This is *
 
 ![ui-teletype](/docs_assets/use/ui-teletype.png)
 
-Teletype will follow you around Space, helping you navigate and interact with individual apps and Space itself. You can navigate Teletype using your keyboard or your mouse. If you are somewhere in Space and aren’t sure what to do, opening Teletype is often a great first step.
+Teletype will follow you around Space, helping you navigate and interact with individual apps and Space itself. You can navigate Teletype using your keyboard or your mouse. If you are somewhere in Space and aren't sure what to do, opening Teletype is often a great first step.
 
 ## Teletype Actions
 

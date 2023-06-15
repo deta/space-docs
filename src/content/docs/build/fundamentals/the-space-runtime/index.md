@@ -31,7 +31,7 @@ A core part of the Space Runtime is a unique and fully managed approach to [Auth
 
 The Space Runtime uses a configuration file, called a `Spacefile`, to understand what Micros your app contains and how to run each one individually and in concert. The `Spacefile` must be named exactly `Spacefile` (capitalized and without an extension) and needs to be in the root directory of your project and uses a syntax similar to YAML. 
 
-> If you’re new to YAML and want to learn more, see [Learn YAML in Y minutes](https://learnxinyminutes.com/docs/yaml/). 
+> If you're new to YAML and want to learn more, see [Learn YAML in Y minutes](https://learnxinyminutes.com/docs/yaml/). 
 
 Here is an example `Spacefile` for an app with a Python Micro and a Go Micro:
 

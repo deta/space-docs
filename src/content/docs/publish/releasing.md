@@ -12,7 +12,7 @@ There are two ways to publish your app:
 
 ## Releases
 
-To publish an app to Discovery, you need to create a **release**. A release is a copy others can use to install a personal copy of your app, in their Space. When they do so, they’ll be provisioned their own isolated resources to run the app.
+To publish an app to Discovery, you need to create a **release**. A release is a copy others can use to install a personal copy of your app, in their Space. When they do so, they'll be provisioned their own isolated resources to run the app.
 
 Deta Space offers two types of releases:
 
@@ -21,7 +21,7 @@ Deta Space offers two types of releases:
 
 An **unlisted release**  is only accessible via a link Deta gives you when you release your app.  Anyone you share the link with will be able to install this Release, but this link is not publicly discoverable.
 
-A **listed release** is publicly discoverable from Deta Discovery’s homepage. Anyone who enters Discovery can find and install a listed application.
+A **listed release** is publicly discoverable from Deta Discovery's homepage. Anyone who enters Discovery can find and install a listed application.
 
 ## Releasing from the CLI
 
@@ -40,13 +40,13 @@ space release --listed
 ```
 
 
-> It is recommended you add a [`Discovery.md`](/docs/en/publish/discovery-md) file locally before releasing. If you haven’t added one, you will also be asked to specify an app name and description.
+> It is recommended you add a [`Discovery.md`](/docs/en/publish/discovery-md) file locally before releasing. If you haven't added one, you will also be asked to specify an app name and description.
 
 ### Release Notes and Options
 
-For subsequent releases you can use the `--notes` argument to specify release notes that explain changes, like new features or bug fixes, that come with the release. These are shown to users when they update their app, as well on your app’s Discovery page under the **What’s New** section.
+For subsequent releases you can use the `--notes` argument to specify release notes that explain changes, like new features or bug fixes, that come with the release. These are shown to users when they update their app, as well on your app's Discovery page under the **What's New** section.
 
-You can provide specific options when you release using the CLI (which [revision](/docs/en/build/fundamentals/development/pushing#revisions) to use, version tags, whether it’s listed or unlisted). Refer to the [CLI reference](/docs/en/build/reference/cli) for more info.
+You can provide specific options when you release using the CLI (which [revision](/docs/en/build/fundamentals/development/pushing#revisions) to use, version tags, whether it's listed or unlisted). Refer to the [CLI reference](/docs/en/build/reference/cli) for more info.
 
 ## Releasing from the Builder UI
 
@@ -64,7 +64,7 @@ You can enter release notes describing what's new, when you release your app. Ba
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/publish/releasing-3.png"/></div>
 
-The release notes are shown to everyone who installed an earlier copy of the app before they update it. They are also be displayed in the **What’s New** section of your app’s Discovery page.
+The release notes are shown to everyone who installed an earlier copy of the app before they update it. They are also be displayed in the **What's New** section of your app's Discovery page.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/publish/releasing-2.png"/></div>
 
@@ -72,7 +72,7 @@ The release notes are shown to everyone who installed an earlier copy of the app
 
 ![releasing-4](/docs_assets/publish/releasing-4.png)
 
-You can edit the meta data of your app which will be shown on your app’s Discovery page. There are a number of available fields (all optional): name, description, homepage, Git repo, and theme color.
+You can edit the meta data of your app which will be shown on your app's Discovery page. There are a number of available fields (all optional): name, description, homepage, Git repo, and theme color.
 
 These fields mostly map to fields in the [Frontmatter section of the Discovery.md](/docs/en/publish/discovery-md#frontmatter) file.
 

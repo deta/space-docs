@@ -31,7 +31,7 @@ source .venv/bin/activate
 
 > ℹ️ It is important to exclude the virtual environment directory from your source code during deployment (`space push`) in order to avoid conflicts and compatibility issues. The Space CLI automatically ignores the `venv` and `.venv` directories by default. However, if your virtual environment directory has a different name, you should add it to the `.spaceignore` file.
 
-We’ll also install a web framework and a web server. For this guide, we’ll use [FastAPI](https://fastapi.tiangolo.com/) with [Uvicorn](https://www.uvicorn.org/) and [Flask](https://flask.palletsprojects.com/) with [Gunicorn](https://gunicorn.org/), but feel free to use other frameworks and web servers of your choice if you prefer.
+We'll also install a web framework and a web server. For this guide, we'll use [FastAPI](https://fastapi.tiangolo.com/) with [Uvicorn](https://www.uvicorn.org/) and [Flask](https://flask.palletsprojects.com/) with [Gunicorn](https://gunicorn.org/), but feel free to use other frameworks and web servers of your choice if you prefer.
 
 In your text editor, create a new file called `requirements.txt`, and add the following dependencies into it:
 
@@ -147,7 +147,7 @@ micros:
 
 ## Developing Locally
 
-You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app’s development server using the `dev` command in the Spacefile.
+You can run your app on your local machine, in a way that [emulates Space](/docs/en/build/fundamentals/development/local-development) for development. To do so, you need to define a startup command for your  app's development server using the `dev` command in the Spacefile.
 
 <LangTabs>
   <Fragment slot="fastapi">

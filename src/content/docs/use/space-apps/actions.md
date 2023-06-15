@@ -11,15 +11,15 @@ If a developer creates a Scheduled Action for an app, they can choose a default 
 
 ### Managing Schedules
 
-As a user, you can change a Scheduled Action’s interval or disable a Scheduled Action entirely.  To manage the Scheduled Actions of an app, open the App’s Settings menu via the menu on that app’s Tile on Canvas.
+As a user, you can change a Scheduled Action's interval or disable a Scheduled Action entirely.  To manage the Scheduled Actions of an app, open the App's Settings menu via the menu on that app's Tile on Canvas.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/actions-1.png"/></div>
 
-Then switch to the “Schedules” tab (it won’t be there if there are no Scheduled Actions for the app). In the “Schedules” tab you will see a list of the Scheduled Actions for that app. There will also be a toggle indicating if the Action is enabled, what interval it’s set to, and when it will run next.
+Then switch to the “Schedules” tab (it won't be there if there are no Scheduled Actions for the app). In the “Schedules” tab you will see a list of the Scheduled Actions for that app. There will also be a toggle indicating if the Action is enabled, what interval it's set to, and when it will run next.
 
 ![actions-2](/docs_assets/use/actions-2.png)
 
-If an action is enabled, you’ll see a “Configure” button which can be used to change the
+If an action is enabled, you'll see a “Configure” button which can be used to change the
 interval.
 
 ### Modifying a Schedule

@@ -27,7 +27,7 @@ Here is an example of an unordered list:
     - and even a third
 - a suite of included services, from storing data to talking with AI models
 
-With these tools, you should find it easy to build all sorts of internet experiences for yourself — from simple websites to full stack applications that tie into the latest advances in AI. Once you have, it’s even easier to publish your creation to almost anyone else in the world.
+With these tools, you should find it easy to build all sorts of internet experiences for yourself — from simple websites to full stack applications that tie into the latest advances in AI. Once you have, it's even easier to publish your creation to almost anyone else in the world.
 
 ![discovery](/docs_assets/use/discovery-headline.png)
 

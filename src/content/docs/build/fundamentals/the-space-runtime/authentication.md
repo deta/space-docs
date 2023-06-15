@@ -13,13 +13,13 @@ If you are building an app that needs some or all parts to be public, like a web
 
 ### The User Perspective
 
-As a user, you’re the only person who can access your apps, which are all available on [unique, personal, urls](/docs/en/use/space-apps/domains). They all sit behind Deta Auth, meaning you need to be authenticated to use them. If you’re using them through a browser, that means logging in.
+As a user, you're the only person who can access your apps, which are all available on [unique, personal, urls](/docs/en/use/space-apps/domains). They all sit behind Deta Auth, meaning you need to be authenticated to use them. If you're using them through a browser, that means logging in.
 
-Your apps may also store data to your personal cloud. This data is also meant for you — it’s not accessible to the application developer, nor is it shared with other users of the same app.
+Your apps may also store data to your personal cloud. This data is also meant for you — it's not accessible to the application developer, nor is it shared with other users of the same app.
 
 ### The Developer Perspective
 
-As a developer, authentication should “just work”. You don’t have to think much about  different users or their data separation. Your (lack of) code will reflect this — you can build assuming that you’re the only (already authenticated) user. On top of this, you get numerous extras for free, like built in API keys, SSL and custom domains for your app.  Finally, although privacy is the default, you can easily build apps that have public facing features or data, like a website.
+As a developer, authentication should “just work”. You don't have to think much about  different users or their data separation. Your (lack of) code will reflect this — you can build assuming that you're the only (already authenticated) user. On top of this, you get numerous extras for free, like built in API keys, SSL and custom domains for your app.  Finally, although privacy is the default, you can easily build apps that have public facing features or data, like a website.
 
 ## Public Micros and Routes
 
@@ -27,7 +27,7 @@ If you want to turn off Deta Auth for parts of your app, making these parts publ
 
 ### Public Micros
 
-To make an entire Micro public, use the `public` keyword under the desired Micro in your app’s `Spacefile`:
+To make an entire Micro public, use the `public` keyword under the desired Micro in your app's `Spacefile`:
 
 ```yaml
 micros:
@@ -42,7 +42,7 @@ This will make every route that the given Micro serves public, in the above exam
 
 ### Public Routes
 
-You can also control turn off auth at an individual route level for any Micro with the `public_routes` keyword in your app’s `Spacefile`:
+You can also control turn off auth at an individual route level for any Micro with the `public_routes` keyword in your app's `Spacefile`:
 
 ```yaml
 micros:
@@ -78,7 +78,7 @@ Requests made to your Micro matching any of the routes defined in `public_routes
 
 ## API Keys
 
-You can also access to Micros programmatically or through non-browser clients (e.g. using other servers, shell scripts, or REST clients) with **API Keys**. To enable **API Keys** as a valid form of authorization for any Micro, use the `api_keys` preset for your Micro in your app’s `Spacefile`:
+You can also access to Micros programmatically or through non-browser clients (e.g. using other servers, shell scripts, or REST clients) with **API Keys**. To enable **API Keys** as a valid form of authorization for any Micro, use the `api_keys` preset for your Micro in your app's `Spacefile`:
 
 ```
 micros:
@@ -90,7 +90,7 @@ micros:
 
 ```
 
-If enabled, users of your app can generate **API Keys** in their app’s Settings and use them to authorize requests made to otherwise private routes of a Micro. Generated keys need to be provided in the HTTP header `X-Space-App-Key` and only work with Micros that have the preset `api_keys` enabled. Public routes have a higher preference than API keys, if there are public routes specified, these will always be public.
+If enabled, users of your app can generate **API Keys** in their app's Settings and use them to authorize requests made to otherwise private routes of a Micro. Generated keys need to be provided in the HTTP header `X-Space-App-Key` and only work with Micros that have the preset `api_keys` enabled. Public routes have a higher preference than API keys, if there are public routes specified, these will always be public.
 
 > Note: If you enable API keys you should show clearly in the app that API Keys can be used and ideally have clear documentation on which endpoints of your app work with API Key authorization.
 >
