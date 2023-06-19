@@ -1,5 +1,6 @@
 ---
 title: The Spacefile
+tocDepth: 5
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
