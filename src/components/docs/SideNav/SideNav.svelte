@@ -288,6 +288,7 @@
     right: 0;
     bottom: 0;
     display: none;
+    user-select: none;
 
     nav {
       position: relative;
