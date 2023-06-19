@@ -109,7 +109,7 @@
         display: none;
     }
   details {
-    --indent-width: 1.4rem;
+    --indent-width: 1.2rem;
 
     summary {
       width: 100%;
