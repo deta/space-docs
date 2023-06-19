@@ -122,7 +122,7 @@
           <NavSection
             depth={0}
             navItem={navTree.subItems[0]}
-            open={currentPage.includes("/learn")}
+            open={currentPage.includes("/learn") || currentPage === "/docs/en"}
             animated={false}>
             <svelte:fragment slot="icon">
               <IconBook2
