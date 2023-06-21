@@ -54,7 +54,7 @@
             </li>
 
             <li class="only-mobile">
-                <MobileTableOfContents pageTitle={frontmatter ? frontmatter.title : 'Title'} {headings} collapsable={true} />
+                <MobileTableOfContents pageTitle={frontmatter ? frontmatter.title : 'Title'} {headings} collapsable={true} maxDepth={frontmatter.tocDepth || 2}/>
             </li>
         </ul>
     </div>
