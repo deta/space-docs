@@ -424,11 +424,6 @@
       gap: var(--spacing-6);
     }
   }
-  @media screen and (min-width: 768px) {
-    .nav-tree {
-      margin-top: calc(var(--spacing-4) + 0.5rem);
-    }
-  }
 
   // DARK MODE
   :global(html.theme-dark) {
