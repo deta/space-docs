@@ -65,7 +65,8 @@
       "logs.md",
       "settings.md"
     ]},
-    {  "your-data": ["collections.md", "guis.mdx"]}
+    {  "your-data": ["collections.md", "guis.mdx"]},
+    "your-account.md"
   ],
   "publish": [
     "releasing.md",
