@@ -15,6 +15,7 @@ import Header from '@/components/docs/Header/Header.svelte';
 import SideNav from '@/components/docs/SideNav/SideNav.svelte';
 import Article from '@/components/docs/Article/Article.svelte';
 import TeletypeContainer from '@/components/Teletype/TeletypeContainer.astro';
+import NextPreviousButtons from '@/components/docs/Article/NextPreviousButtons.svelte';
 
 type Props = {
 	frontmatter: CONFIG.Frontmatter;
@@ -37,10 +38,40 @@ const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'S
 //console.log("NAVTREE: ", JSON.stringify(NAV_TREE, null, 2))
 
 //const ACTIVE_PAGE = (await getCollection("docs")).find(e => `/docs/en/${e.id.split(".")[0]}` === currentPage) || { title: "d"};
-const ACTIVE_PAGE = await getCollection("docs", (e => {
+const ACTIVE_PAGE = (await getCollection("docs", (e => {
     if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && e.id.split("/").slice(0, -1).join("/") === currentPage) return true;
     return `/docs/en/${e.id.split(".")[0]}` === currentPage; // TODO: Can move to e.slug? remove weird split
-}));
+})))[0];
+
+// Prev / Next page
+//console.log(manifest);
+
+/*function getNextPrev(currPath: string, tree: any[] | object, parent: any[] | object) {
+    console.log(currPath)
+    if (currPath.includes("/")) {
+        const els = currPath.split("/");
+
+        let next = tree[els[0]]; // For first nesting level, where sections are keys themselves
+        if (!next) {    // For nested folders, where they are wrapped in objects
+            for (const el of tree) {
+                if (Object.keys(el).includes(els[0])) {
+                    console.log("F", el)
+                    next = el;
+                }
+            }
+        }
+        return getNextPrev(els.slice(1).join("/"), next, tree);
+    }
+    else {
+        console.log("DEPTH: ", tree);
+
+
+    }
+}*/
+
+//console.log("actNext: ", getNextPrev(ACTIVE_PAGE.slug, manifest, null));
+
+
 ---
 
 <html dir={frontmatter.dir ?? 'ltr'} lang={frontmatter.lang ?? 'en-us'} class="initial">
@@ -58,6 +89,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => {
             <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:load/>
             <Article frontmatter={frontmatter} headings={headings} currentPage={currentPage} client:load>
                 <slot/>
+                <NextPreviousButtons />
             </Article>
             <!--<Footer />-->
         </main>
