@@ -43,4 +43,4 @@ Micros also come pre-set with environment variables, accessible on the server si
 8. For unknown reasons, Google and Firebase packages for Python do not install successfully on Micros.
 9. Currently, all requests received by Micros do not contain the client IP addresses. This makes most rate-limiting logic and other IP-dependant logic not work on Micros. But there is a workaround if you are using Cloudflare (link).
 10. Websockets and long-running processes do not work on Micros. (examples: socket.io or Discord bots won't work).
-11. Features like [Background Tasks](https://www.starlette.io/background/) and [Startup/Shutdown Events](https://www.starlette.io/events/) will currently not work as expected on Micros.
+11. Features like [Background Tasks](https://www.starlette.io/background/) and [Startup/Shutdown handlers](https://www.starlette.io/applications/#instantiating-the-application) (also known as [Lifespan handlers](https://www.starlette.io/lifespan/) will currently not work as expected on Micros.
