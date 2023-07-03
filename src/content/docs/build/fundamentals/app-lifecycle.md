@@ -3,7 +3,7 @@ title: App Life Cycle
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-As explained in the [Learn](/en/docs/learn) section of the documentation, apps built for a personal cloud are different from traditional web applications. As such, the steps you take to build, launch, and distribute them are different. This document will explain the **Life Cycle** of an app on Deta Space.
+As explained in the [Learn](/docs/en/learn) section of the documentation, apps built for a personal cloud are different from traditional web applications. As such, the steps you take to build, launch, and distribute them are different. This document will explain the **Life Cycle** of an app on Deta Space.
 
 ## Traditional Web Application Life Cycle
 

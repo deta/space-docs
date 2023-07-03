@@ -122,7 +122,7 @@
           <NavSection
             depth={0}
             navItem={navTree.subItems[0]}
-            open={currentPage.includes("/learn")}
+            open={currentPage.includes("/learn") || currentPage === "/docs/en"}
             animated={false}>
             <svelte:fragment slot="icon">
               <IconBook2
@@ -288,6 +288,7 @@
     right: 0;
     bottom: 0;
     display: none;
+    user-select: none;
 
     nav {
       position: relative;
@@ -421,11 +422,6 @@
       display: flex;
       flex-direction: column;
       gap: var(--spacing-6);
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .nav-tree {
-      margin-top: calc(var(--spacing-4) + 0.5rem);
     }
   }
 
