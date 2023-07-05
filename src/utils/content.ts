@@ -1,4 +1,4 @@
-import { docsSectionsOrder, manualSectionsOrder, migrationSectionsOrder } from "@/config";
+import { NAV_TREE, docsSectionsOrder, manualSectionsOrder, migrationSectionsOrder } from "@/config";
 import type { MarkdownInstance, MarkdownHeading } from "astro";
 import { getCollection } from "astro:content";
 import { pascalCase } from "scule";
@@ -236,16 +236,65 @@ export function stripFileExtension(str: string) {
 }
 
 export type NavigationItem = {
-  title: string;
+  name: string;
   path: string;
-  subItems: NavigationItem[];
+  prev: NavigationItem | null;
+  next: NavigationItem | null;
+  content: (string | NavigationItem)[];
 };
 
-export type ManifestSection = { [key: string]: Array<string | ManifestSection> };
+//export type ManifestSection = { [key: string]: Array<string | ManifestSection> };
 
 const pages = await getCollection("docs");
 const BASE_URL ="/docs/en"; // TODO!: REMOVE, only tmp
-export function parseManifestSection(
+
+function pathifyName(name: string) {
+    return name.toLowerCase().replaceAll(" ", "-");
+}
+
+type ManifestItem = {
+    name: string;
+    content: (string | ManifestItem)[];
+};
+export function parseManifestItem(
+    item: ManifestItem,
+    navItem: NavigationItem
+): NavigationItem {
+    if (!navItem) navItem = { name: "root", path: "", prev: null, next: null, content: [] };
+
+    for (let contentItem of item.content) {
+        if (typeof contentItem === "string") {
+          // Page -> Find page file
+          //console.log(pages.map(e => e.id));
+          const page = pages.find((e) => "/" + e.id === navItem.path + "/" + contentItem);
+          if (!page) throw new Error("Could not find page for manifest item @ " + navItem.path + "/" + contentItem);
+          navItem.content.push({
+            // TODO: Fix types
+            name: page.data.title || stripFileExtension(contentItem), //item,
+            path: navItem.path + "/" + stripFileExtension(contentItem),
+            prev: null,
+            next: null,
+            //page,
+            content: []
+          });
+        }
+        else {
+            const subItem = parseManifestItem(contentItem, {
+              // TODO: Fix type error
+              name: pascalCase(contentItem.name),
+              path: navItem.path + "/" + pathifyName(contentItem.name),
+              prev: null,
+              next: null,
+              content: []
+            });
+            navItem.content.push(subItem);
+        }
+    }
+
+    return navItem;
+}
+
+export function parseManifestSectionOLD(
   section: ManifestSection,
   navItem: NavigationItem
 ): NavigationItem {
@@ -283,4 +332,92 @@ export function parseManifestSection(
     }
   }
   return navItem;
+}
+
+/*export type ManifestItem = { name: string, content: (string | ManifestItem)[] };
+export type ParsedManifestItem = { name: string; path: string, content: (string | ManifestItem)[], prev?: ParsedManifestItem, next?: ParsedManifestItem };
+
+export function parseManifest(manifest: ManifestItem): ManifestItem {
+    let parsed: ParsedManifestItem = {
+        name: manifest.name,
+        path: "/",
+        content: [],
+        prev: undefined,
+        next: undefined
+    };
+    let active = manifest;
+
+    function parseSection(parent: ParsedManifestItem, section: ManifestItem): ParsedManifestItem {
+
+    }
+    p
+
+    return parsed;
+}*/
+
+interface PageStructure {
+  [key: string]: (string | PageStructure)[];
+}
+
+interface LookupMap {
+  [filename: string]: { prev: string | null; next: string | null };
+}
+
+export function generateLookupMap(structure: PageStructure, parentKey?: string): LookupMap {
+  const lookupMap: LookupMap = {};
+
+  function getLastPage(pages: (string | PageStructure)[]): string | null {
+    const lastPage = pages[pages.length - 1];
+    if (typeof lastPage === "string") {
+      return lastPage;
+    } else {
+      const keys = Object.keys(lastPage);
+      const lastKey = keys[keys.length - 1];
+      return getLastPage(lastPage[lastKey] as (string | PageStructure)[]);
+    }
+  }
+
+  function traverse(pages: (string | PageStructure)[], parentKey?: string) {
+    let prevPage: string | null = null;
+    let firstPage: string | null = null;
+
+    for (const page of pages) {
+      if (typeof page === "string") {
+        if (prevPage !== null) {
+          lookupMap[page] = { prev: prevPage, next: null };
+          if (lookupMap[prevPage]) lookupMap[prevPage].next = page;
+        }
+        prevPage = page;
+        if (firstPage === null) {
+          firstPage = page;
+        }
+      } else {
+        const keys = Object.keys(page);
+        const currentKey = keys[0];
+        const currentPages = page[currentKey] as (string | PageStructure)[];
+
+        if (prevPage !== null) {
+          lookupMap[currentKey] = { prev: prevPage, next: null };
+          if (lookupMap[prevPage]) lookupMap[prevPage].next = currentKey;
+        }
+
+        traverse(currentPages, currentKey);
+        prevPage = getLastPage(currentPages);
+        if (firstPage === null) {
+          firstPage = getLastPage(currentPages) || currentKey;
+        }
+      }
+    }
+
+    if (parentKey && prevPage !== null) {
+      if (lookupMap[parentKey]) lookupMap[parentKey].next = firstPage;
+    }
+  }
+
+  for (const key of Object.keys(structure)) {
+    const pages = structure[key];
+    traverse(pages, key);
+  }
+
+  return lookupMap;
 }
