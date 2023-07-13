@@ -11,6 +11,6 @@ Outside of Space Apps, you can interact with Deta Base through a [Graphical User
 
 - [Dealing with data in a Space App](/docs/en/build/fundamentals/data-storage)
 - [Collections in Space](/docs/en/use/your-data/collections)
-- [Drive UI](/docs/en/use/your-data/data-guis#drive-ui)
+- [Drive UI](/docs/en/use/your-data/guis#drive-ui)
 - [Drive SDK](/docs/en/build/reference/sdk/drive)
 - [Drive HTTP API](/docs/en/build/reference/http-api/drive)
