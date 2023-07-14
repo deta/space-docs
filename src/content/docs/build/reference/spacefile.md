@@ -311,7 +311,7 @@ micros:
       - "/api/*/docs" # wildcards can be placed anywhere
 ```
 
-More information on public routes can be found in [Authentication](/docs/en/build/fundamentals/authentication#public-routes).
+More information on public routes can be found in [Authentication](/docs/en/build/fundamentals/the-space-runtime/authentication#public-routes).
 
 #### `public`
 
