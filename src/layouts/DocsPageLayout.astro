@@ -32,45 +32,12 @@ const isMigration = currentPage.startsWith("/migration");
 const isDocs = currentPage.startsWith("/docs");
 
 const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'Space Docs';
-// TODO: Remov old stuff?
-//const NAV_TREE = parseManifestSection(manifest);
-//console.log("NAVTREE: ", JSON.stringify(NAV_TREE, null, 2))
 
 //const ACTIVE_PAGE = (await getCollection("docs")).find(e => `/docs/en/${e.id.split(".")[0]}` === currentPage) || { title: "d"};
 const ACTIVE_PAGE = (await getCollection("docs", (e => {
     if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && e.id.split("/").slice(0, -1).join("/") === currentPage) return true;
     return `/docs/en/${e.id.split(".")[0]}` === currentPage; // TODO: Can move to e.slug? remove weird split
 })))[0];
-
-// Prev / Next page
-//console.log(manifest);
-
-/*function getNextPrev(currPath: string, tree: any[] | object, parent: any[] | object) {
-    console.log(currPath)
-    if (currPath.includes("/")) {
-        const els = currPath.split("/");
-
-        let next = tree[els[0]]; // For first nesting level, where sections are keys themselves
-        if (!next) {    // For nested folders, where they are wrapped in objects
-            for (const el of tree) {
-                if (Object.keys(el).includes(els[0])) {
-                    console.log("F", el)
-                    next = el;
-                }
-            }
-        }
-        return getNextPrev(els.slice(1).join("/"), next, tree);
-    }
-    else {
-        console.log("DEPTH: ", tree);
-
-
-    }
-}*/
-
-//console.log("actNext: ", getNextPrev(ACTIVE_PAGE.slug, manifest, null));
-
-
 ---
 
 <html dir={frontmatter.dir ?? 'ltr'} lang={frontmatter.lang ?? 'en-us'} class="initial">
