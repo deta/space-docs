@@ -26,7 +26,7 @@ Using the cloud providers of today, web developers with an idea need to do a lot
 
 Using the personal cloud, things are entirely different. Individuals can [build](/docs/en/build) something for themselves, assuming they're the only user. They can stop there, if they want. Or they can [publish](/docs/en/publish) it to the world, and see it run everywhere. Anyone else with an internet connection can install the app, in another personal cloud. Throughout the entire process, the developer doesn't think about operating anything ✨ at all ✨.
 
-> Space is a personal story. Deta was started by developers, out of personal frusturation with the existing compuers on the internet. Read our motivation for building Space [here](https://deta.space/motivation/). 
+> Space is a personal story. Deta was started by developers, out of personal frusturation with the existing computers on the internet. Read our motivation for building Space [here](https://deta.space/motivation/). 
 
 
 
