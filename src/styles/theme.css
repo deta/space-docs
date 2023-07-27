@@ -92,7 +92,7 @@
     --sidenav-heigt: calc(100vh - var(--header-height));
     --table-of-contents-breakpoint: calc(70ch + 10ch); /* Point at which toc moves to aside*/
 
-    --sideNav-width: 28ch;
+    --sideNav-width: 26ch;
 }
 
 :root {
@@ -166,4 +166,7 @@ body {
 ::selection {
 	background-color: hsl(var(--color-blue), 40%);
     color: hsl(var(--color-gray-30));
+}
+html.theme-dark ::selection {
+    color: var(--theme-text-light);
 }

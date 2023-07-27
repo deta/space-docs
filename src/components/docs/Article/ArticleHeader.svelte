@@ -32,7 +32,7 @@
     <Breadcrumbs currentPage={currentPage} stuck={stuck} />
 
     <div class="toc">
-      <MobileTableOfContents chevron pageTitle={frontmatter.title} {headings} collapsable={true} />
+      <MobileTableOfContents chevron pageTitle={frontmatter.title} {headings} collapsable={true} maxDepth={frontmatter && frontmatter.tocDepth || 2}/>
     </div>
 
   </div>

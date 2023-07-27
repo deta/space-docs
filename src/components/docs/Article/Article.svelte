@@ -30,7 +30,7 @@
     <h1 style="margin-top: var(--spacing-10);"><a href="#content">{frontmatter.title}</a></h1>
     <slot />
   </article>
-    <DesktopTableOfContents pageTitle={frontmatter.title} {headings} />
+    <DesktopTableOfContents pageTitle={frontmatter.title} {headings} maxDepth={frontmatter && frontmatter.tocDepth || 2}/>
 </div>
 
 <style lang="scss">

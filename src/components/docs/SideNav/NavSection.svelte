@@ -33,7 +33,10 @@
     if (open) activeCollapsibleStore.set(collapsibleKey);
   }
   async function onClickTitle() {
-    if (`/docs/en${navItem.path}` === currentPage) return;
+    if (`/docs/en${navItem.path}` === currentPage) {
+        open = !open;
+        return;
+    };
     const c = await getCollection("docs", (e => {
         if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && `/docs/en/${e.id.split("/").slice(0, -1).join("/")}` === `/docs/en${navItem.path}`) return true;
     }))
@@ -106,7 +109,7 @@
         display: none;
     }
   details {
-    --indent-width: 1.4rem;
+    --indent-width: 1.2rem;
 
     summary {
       width: 100%;
