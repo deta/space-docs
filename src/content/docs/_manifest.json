@@ -98,7 +98,8 @@
         {
           "name": "Your Data",
           "content": ["collections.md", "guis.mdx"]
-        }
+        },
+        "your-account.md"
       ]
     },
     {
