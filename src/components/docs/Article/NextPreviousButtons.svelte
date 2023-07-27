@@ -1,24 +1,36 @@
-<script>
+<script lang="ts">
   import IconArrowLeft from "@/components/core/Icon/IconArrowLeft.svelte";
   import IconArrowRight from "@/components/core/Icon/IconArrowRight.svelte";
+  import { NAV_ORDER } from "@/config";
+
+  export let currentPage: String;
+
+  const currentPageI = NAV_ORDER.findIndex(e => `/docs/en${e.path}` === currentPage);
+  const nextPage = (currentPageI+1) >= NAV_ORDER.length ? null : NAV_ORDER[currentPageI + 1];
+  const prevPage = (currentPageI-1) <= 0 ? null : NAV_ORDER[currentPageI - 1];
+
 </script>
 
 <br />
 <section class="nav-btns">
-  <a href="#" class="nav-btn prev">
+    {#if prevPage}
+  <a href="/docs/en{prevPage.path}" class="nav-btn prev">
     <span class="icon"><IconArrowLeft color="inherit" /></span>
     <div>
       <span><small>Previous</small></span>
-      <p>The Space App Anatomy</p>
+      <p>{prevPage.name}</p>
     </div>
   </a>
-  <a href="#" class="nav-btn next">
+  {/if}
+  {#if nextPage}
+  <a href="/docs/en{nextPage.path}" class="nav-btn next">
     <div>
       <span><small>Next</small></span>
-      <p>Space CLI</p>
+      <p>{nextPage.name}</p>
     </div>
     <span class="icon"><IconArrowRight color="inherit" /></span>
   </a>
+  {/if}
 </section>
 
 <style lang="scss">
@@ -76,6 +88,14 @@
       span.icon {
         color: var(--theme-accent);
       }
+    }
+  }
+
+  :global(html.theme-dark) {
+    .nav-btn {
+        span {
+            color: hsl(var(--color-gray-70));
+        }
     }
   }
 </style>
