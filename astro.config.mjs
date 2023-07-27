@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import fs from "fs/promises";
+import astroExpressiveCode from 'astro-expressive-code'
 
 // TODO(@maxu): Remove these once we have them migrated!
 import react from "@astrojs/react";
@@ -18,7 +19,7 @@ const headingIcon = (node) => {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), svelte(), preact(), react()],
+  integrations: [astroExpressiveCode(), mdx(), svelte(), preact(), react()],
   site: "https://deta.space/",
   base: "/",
   markdown: {
