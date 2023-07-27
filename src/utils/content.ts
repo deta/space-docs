@@ -283,7 +283,7 @@ export function parseManifestSection(
       // Page -> Find page file
       const page = pages.find((e) => "/" + e.id === navItem!.path + "/" + it);
       if (!page)
-        throw new Error("Could not find page for manifest item @ " + navItem.path + "/" + section);
+        throw new Error("Could not find page for manifest item @ " + navItem.path + "/" + it);
       const newNavItem: TreeNavigationItem = {
         title: page.data.title || stripFileExtension(it), //item,
         path: navItem.path + "/" + stripFileExtension(it),
