@@ -144,6 +144,10 @@ strong {
 .expressive-code figure div.copy div.feedback::after {
     color: hsl(var(--color-base-green), 40%) !important;
 }
+.expressive-code figure figcaption.header span.title {
+    border: none !important;
+    background: none !important;
+}
 
 /* Supporting Content */
 
