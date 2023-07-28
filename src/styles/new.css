@@ -125,6 +125,26 @@ strong {
 	color: inherit;
 }
 
+/* Code blocks */
+.expressive-code {
+    border-radius: var(--rounded-3);
+    overflow: hidden;
+    margin-bottom: var(--spacing-7);
+}
+.expressive-code figure div.copy {
+    margin-right: var(--spacing-1);
+    margin-top: var(--spacing-1);
+}
+.expressive-code figure div.copy button {
+    border-radius: var(--rounded-2) !important;
+}
+.expressive-code figure div.copy div.feedback {
+    background: hsl(var(--color-base-green), 40%) !important;
+}
+.expressive-code figure div.copy div.feedback::after {
+    color: hsl(var(--color-base-green), 40%) !important;
+}
+
 /* Supporting Content */
 
 table {
