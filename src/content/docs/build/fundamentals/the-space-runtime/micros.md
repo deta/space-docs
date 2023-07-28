@@ -13,7 +13,7 @@ As mentioned in the [Space Runtime page](/docs/en/build/fundamentals/the-space-r
 
 Micros are defined in your project's [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile), which tells Deta Space what kinds of Micros live in your app and how to run them.
 
-## Adding a Micro 
+## Adding a Micro
 
 ### On Project Creation
 
@@ -47,7 +47,7 @@ micros:
 		dev: nodemon index.js
 ```
 
-The `name` field identifies your Micro inside your app and the `src` should point to the location of the Micro's source code relative to your project's root. 
+The `name` field identifies your Micro inside your app and the `src` should point to the location of the Micro's source code relative to your project's root.
 
 If your project contains more than one Micro, the `primary` field can be used to identify the [entry point of your application](/docs/en/build/fundamentals/the-space-runtime/micros#micro-routing) (which Micro will be executed when the root path of your app is invoked over HTTP).
 
@@ -60,7 +60,6 @@ A Micro can be thought of as its own independent service. As a result, Micros sh
 Here's the file & folder structure of an app with a Python backend and a Vue frontend:
 
 ```
-Spacefile
 backend/
     requirements.txt
     main.py
@@ -74,7 +73,7 @@ All files needed for the Vue frontend (including `package.json`) are inside the 
 
 Here is the matching `Spacefile`:
 
-```
+```yaml title="Spacefile"
 v: 0
 micros:
   - name: frontend
@@ -95,7 +94,7 @@ Since your app can contain up to five Micros, the Space Runtime needs to know wh
 
 On Space, this is handled by having a single **Primary Micro** which receives all requests made to your app's root path `/`. The Primary Micro is defined by the `primary` field in your `Spacefile`. Each other Micro will be served on a specific path relative to your app's primary hostname, defined in the Micros' `path` fields in your `Spacefile`:
 
-```
+```yaml title="Spacefile"
 v: 0
 micros:
   - name: client

@@ -7,7 +7,7 @@ If you have not yet setup or run your app locally checkout the [New App Guide](/
 
 Once you are satisfied with your app in your development environment, you can run it in on the internet by “pushing” it to Deta Space. Use the Space CLI command `space push` to do so:
 
-```
+```shell
 space push
 ```
 

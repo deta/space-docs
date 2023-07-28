@@ -14,7 +14,7 @@ When building apps for Space, the first thing you start with is a **Project**. A
 
 You can create new a new Project using the [Space CLI](/docs/en/build/fundamentals/space-cli). To create a new Builder Project with the Space CLI, open a new terminal, navigate into a new directory (or the directory of app you want to push to Space) and run the `space new`  command:
 
-```
+```shell
 space new
 ```
 
@@ -89,7 +89,7 @@ Your local development environment is connected to Builder via the hidden `.spa
 
 You can also connect any local directory to any existing Builder Project via this **Project ID** and the `space link` CLI command. To do so, navigate to the directory you want to link and enter the command:
 
-```
+```shell
 space link
 ```
 
