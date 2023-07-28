@@ -25,13 +25,22 @@ import { ViewTransitions } from 'astro:transitions';
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>
-	const root = document.documentElement;
-	const theme = localStorage.getItem('theme');
-	if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-		root.classList.add('theme-dark');
-	} else {
-		root.classList.remove('theme-dark');
-	}
+	function beforeLoad() {
+        const root = document.documentElement;
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            root.classList.add('theme-dark');
+        } else {
+            root.classList.remove('theme-dark');
+        }
+
+        // Scroll to top if no anchor in url
+        if (window && !window.location.hash) {
+            window.scrollTo(0, 0);
+        }
+    }
+    beforeLoad();
+    document.addEventListener('astro:beforeload', beforeLoad);
 </script>
 
 <script defer data-domain='deta.space' src='https://plausible.io/js/plausible.js'></script>
