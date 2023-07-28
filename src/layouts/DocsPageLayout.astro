@@ -52,7 +52,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => {
 		</title>
 	</head>
 
-	<body data-instant-intensity="15">
+	<body data-instant-intensity="5">
         <Header client:load frontmatter={frontmatter} headings={headings} currentPage={currentPage} />
         <main>
             <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:load/>
