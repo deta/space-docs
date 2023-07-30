@@ -80,11 +80,16 @@ app.post('/__space/v0/actions', (req, res) => {
 <br/>
 ```python
 # using FastAPI and Pydantic
-@app.post('/__space/v0/actions')
+class ActionEvent(BaseModel):
+    id: str
+    trigger: str
+
+class Action(BaseModel):
+    event: ActionEvent
+
+@app.post("/__space/v0/actions")
 def actions(action: Action):
-    data = action.dict()
-    event = data['event']
-    if event['id'] == 'cleanup':
+    if action.event.id == "cleanup":
         cleanup()
 ```
   </Fragment>
