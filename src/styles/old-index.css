@@ -59,6 +59,12 @@ h6 {
 	line-height: 1;
 }
 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: var(--theme-text) !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
 h1,
 h2 {
 	max-width: 40ch;
