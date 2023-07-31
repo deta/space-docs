@@ -49,8 +49,5 @@
     "scule": "^0.3.2",
     "svelte": "^3.59.1",
     "svelte-navigator": "^3.2.2"
-  },
-  "optionalDependencies": {
-    "@deta/teletype": "^0.0.1"
   }
 }
