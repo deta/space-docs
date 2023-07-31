@@ -5,9 +5,9 @@ layout: "@layouts/DocsPageLayout.astro"
 
 import LangTabsSimple from "@/components/Tabs/LangTabsSimple.astro";
 
-Another useful building block you can use in your Space apps are **Actions**. An Action allows an app to run certain tasks in response to different **Triggers**. Actions can do really anything you dream up in code, like sending automated emails or collecting and cleaning up data. 
+Another useful building block you can use in your Space apps are **Actions**. An Action allows an app to run certain tasks in response to different **Triggers**. Actions can do really anything you dream up in code, like sending automated emails or collecting and cleaning up data.
 
-Currently, Space supports **Scheduled Actions**, where a time-configurable schedule will trigger an Action. 
+Currently, Space supports **Scheduled Actions**, where a time-configurable schedule will trigger an Action.
 
 ## Scheduled Actions
 
@@ -19,7 +19,7 @@ You can read more about [Scheduled Actions as a Space user here](/docs/en/use/sp
 
 You can add a Scheduled Action to your app via the [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile). You do so at an individual [Micro](/docs/en/build/fundamentals/the-space-runtime/micros) level, designating which Micro is responsible for carrying out what action at which interval.
 
-```yaml
+```yaml title="Spacefile"
 micros:
   - name: backend
     src: backend
@@ -48,7 +48,7 @@ When the time arrives to trigger your Action, Deta Space will send a `POST` requ
 
 For example, the `Spacefile` from the prior section would result in sending the following request body to the `backend` Micro:
 
-```
+```json
 {
   "event": {
     "id": "cleanup",
