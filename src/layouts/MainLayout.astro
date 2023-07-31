@@ -2,6 +2,8 @@
 import type { MarkdownHeading } from 'astro';
 import * as CONFIG from '../config';
 
+import '../styles/old-index.css';
+
 import TeletypeContainer from '../components/Teletype/TeletypeContainer.astro';
 import HeadCommon from '../components/HeadCommon.astro';
 import HeadSEO from '../components/HeadSEO.astro';
@@ -127,6 +129,24 @@ const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'S
 				display: block;
 				top: 2rem;
 			}
+
+            /* QUICK FIXES UNTIL WE DO SOMETHING WITH IT */
+            article {
+                padding-inline: 2rem !important;
+                padding-right: 30rem !important;
+                padding-top: 2rem !important;
+            }
+            @media (min-width: 72em) {
+                .layout {
+                    padding-right:1.5rem !important;
+                }
+                .grid-main > * {
+                    width: inherit !important;
+                }
+                .grid-right {
+                    padding-left: 4rem !important;
+                }
+            }
 		</style>
 	</head>
 
@@ -136,7 +156,7 @@ const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'S
 			<aside id="grid-left" class="grid-sidebar" title="Site Navigation">
 				<LeftSidebar currentPage={currentPage} />
 			</aside>
-			<div id="grid-main">
+			<div id="grid-main" style="width: auto; padding-right:2rem;">
 				<PageContent frontmatter={frontmatter} headings={headings} githubEditUrl={githubEditUrl}>
 					<slot />
 				</PageContent>
