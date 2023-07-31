@@ -1,4 +1,4 @@
-import { docsSectionsOrder, manualSectionsOrder, migrationSectionsOrder } from "@/config";
+import { NAV_TREE, docsSectionsOrder, manualSectionsOrder, migrationSectionsOrder } from "@/config";
 import type { MarkdownInstance, MarkdownHeading } from "astro";
 import { getCollection } from "astro:content";
 import { pascalCase } from "scule";
@@ -230,57 +230,121 @@ export const parseSections = (pages: Page[]) => {
 export const generateActionId = (str: string) =>
   `${str?.toLowerCase()?.replace(/ /g, "_")}_${Date.now() + Math.random()}`;
 
-
 export function stripFileExtension(str: string) {
   return str.split(".").slice(0, -1).join(".");
 }
 
-export type NavigationItem = {
+
+/**
+ * Turns string into url slug.
+ * @param text
+ * @returns
+ */
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/ /g, "-");
+}
+
+/**
+ * Returns page name without .md / .mdx
+ * @param page
+ * @returns
+ */
+function getPageName(page: string): string {
+  return page.replace(/\.md$/, "").replace(/\.mdx$/, "");
+}
+
+interface ManifestItem {
+  name: string;
+  content: (string | ManifestItem)[];
+}
+
+export interface TreeNavigationItem {
   title: string;
   path: string;
-  subItems: NavigationItem[];
-};
-
-export type ManifestSection = { [key: string]: Array<string | ManifestSection> };
+  subItems: TreeNavigationItem[];
+}
 
 const pages = await getCollection("docs");
-const BASE_URL ="/docs/en"; // TODO!: REMOVE, only tmp
+
+/**
+ * Recursively parses a manfiest section, turning it into a navigation tree.
+ * @param section
+ * @param navItem
+ * @returns
+ */
 export function parseManifestSection(
-  section: ManifestSection,
-  navItem: NavigationItem
-): NavigationItem {
+  section: ManifestItem,
+  navItem: TreeNavigationItem | undefined
+): TreeNavigationItem {
   if (!navItem) navItem = { title: "root", path: "", subItems: [] };
 
-  if (Array.isArray(section)) {
-    section.forEach((item) => {
-      if (typeof item === "string") {
-        // Page -> Find page file
-        const page = pages.find((e) => "/" + e.id === navItem.path + "/" + item);
-        /*pages.forEach(e => {
-                    console.log("PID : ", e.id);
-                    console.log("PHREF: ", navItem.href + "/" + item);
-                })*/
-        if (!page) throw new Error("Could not find page for manifest item @ " + navItem.path + "/" + item);
-
-        navItem.subItems.push({
-          // TODO: Fix types
-          title: page.data.title, //item,
-          path: BASE_URL + navItem.path + "/" + stripFileExtension(item),
-          //page,
-          subItems: []
-        });
-      } else parseManifestSection(item, navItem);
-    });
-  } else {
-    for (let item of Object.keys(section)) {
+  for (let it of section.content) {
+    if (typeof it === "string") {
+      // Page -> Find page file
+      const page = pages.find((e) => "/" + e.id === navItem!.path + "/" + it);
+      if (!page)
+        throw new Error("Could not find page for manifest item @ " + navItem.path + "/" + it);
+      const newNavItem: TreeNavigationItem = {
+        title: page.data.title || stripFileExtension(it), //item,
+        path: navItem.path + "/" + stripFileExtension(it),
+        subItems: []
+      };
+      navItem.subItems.push(newNavItem);
+    } else {
       navItem.subItems.push(
-        parseManifestSection(section[item], { // TODO: Fix type error
-          title: pascalCase(item),
-          path: navItem.path + "/" + item,
+        parseManifestSection(it, {
+          title: it.name,
+          path: navItem.path + "/" + slugify(it.name),
           subItems: []
         })
       );
     }
   }
   return navItem;
+}
+
+interface OrderedNavigationItem {
+  name: string;
+  path: string;
+}
+
+/**
+ * Generates a list of OrderedNavigationItems, used for next / prev buttons.
+ * Items in this list are ordered and sections are included as well.
+ * @param manifest
+ * @param basePath
+ * @returns
+ */
+export function generateOrderedNavigationItems(
+  manifest: ManifestItem[],
+  basePath = ""
+): OrderedNavigationItem[] {
+  const navigationItems: OrderedNavigationItem[] = [];
+
+  for (const item of manifest) {
+    const sectionPath = `${basePath}/${slugify(item.name)}`;
+    navigationItems.push({ name: item.name, path: sectionPath.substring(6) });
+
+    if (Array.isArray(item.content)) {
+      for (const contentItem of item.content) {
+        if (typeof contentItem === "string") {
+          const pagePath = `${sectionPath}/${slugify(getPageName(contentItem))}`;
+
+          const page = pages.find((e) => "/" + e.slug === pagePath.substring(6));
+          if (!page)
+            throw new Error("Could not find page for manifest item @ " + pagePath.substring(6));
+
+          navigationItems.push({
+            name: page.data.title || getPageName(contentItem),
+            path: pagePath.substring(6)
+          });
+        } else if (typeof contentItem === "object") {
+          const subItems = generateOrderedNavigationItems([contentItem], sectionPath);
+          navigationItems.push(...subItems);
+        }
+      }
+    }
+  }
+
+  return navigationItems;
 }

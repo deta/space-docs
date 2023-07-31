@@ -44,6 +44,7 @@ export const GITHUB_EDIT_URL = `https://github.com/deta/space-docs/tree/main/src
 
 export const COMMUNITY_INVITE_URL = `https://go.deta.dev/discord`
 
-import { parseManifestSection } from "@/utils/content";
+import { parseManifestSection, generateOrderedNavigationItems } from "@/utils/content";
 import manifest from "@/content/docs/_manifest.json";
-export const NAV_TREE = parseManifestSection(manifest);
+export const NAV_TREE = parseManifestSection(manifest, undefined);
+export const NAV_ORDER = generateOrderedNavigationItems([manifest], '/');
