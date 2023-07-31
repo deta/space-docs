@@ -1,7 +1,6 @@
 ---
 import type { MarkdownHeading } from 'astro';
 import * as CONFIG from '../config';
-import manifest from "@/content/docs/_manifest.json";
 
 //import '../styles/index.css';
 import '../styles/new.css';
@@ -15,6 +14,7 @@ import Header from '@/components/docs/Header/Header.svelte';
 import SideNav from '@/components/docs/SideNav/SideNav.svelte';
 import Article from '@/components/docs/Article/Article.svelte';
 import TeletypeContainer from '@/components/Teletype/TeletypeContainer.astro';
+import NextPreviousButtons from '@/components/docs/Article/NextPreviousButtons.astro';
 
 type Props = {
 	frontmatter: CONFIG.Frontmatter;
@@ -32,15 +32,12 @@ const isMigration = currentPage.startsWith("/migration");
 const isDocs = currentPage.startsWith("/docs");
 
 const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'Space Docs';
-// TODO: Remov old stuff?
-//const NAV_TREE = parseManifestSection(manifest);
-//console.log("NAVTREE: ", JSON.stringify(NAV_TREE, null, 2))
 
 //const ACTIVE_PAGE = (await getCollection("docs")).find(e => `/docs/en/${e.id.split(".")[0]}` === currentPage) || { title: "d"};
-const ACTIVE_PAGE = await getCollection("docs", (e => {
+const ACTIVE_PAGE = (await getCollection("docs", (e => {
     if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && e.id.split("/").slice(0, -1).join("/") === currentPage) return true;
     return `/docs/en/${e.id.split(".")[0]}` === currentPage; // TODO: Can move to e.slug? remove weird split
-}));
+})))[0];
 ---
 
 <html dir={frontmatter.dir ?? 'ltr'} lang={frontmatter.lang ?? 'en-us'} class="initial">
@@ -58,6 +55,8 @@ const ACTIVE_PAGE = await getCollection("docs", (e => {
             <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:load/>
             <Article frontmatter={frontmatter} headings={headings} currentPage={currentPage} client:load>
                 <slot/>
+                <br>
+                <NextPreviousButtons currentPage={currentPage} />
             </Article>
             <!--<Footer />-->
         </main>
