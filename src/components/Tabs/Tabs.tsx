@@ -108,7 +108,7 @@ export default function Tabs({ sharedStore, defaultPanel, tabs, ...slots }: Prop
 							ref={(el) => (tabButtonRefs.current[tab.value] = el)}
 							onClick={() => updateCurr(tab.value, tabButtonRefs.current[tab.value])}
 							aria-selected={curr === tab.value}
-							tabIndex={curr === tab.value ? 0 : -1}
+							tabIndex={curr === tab.value ? -1 : 0}
 							role="tab"
 							type="button"
 							className={styles.tab}
