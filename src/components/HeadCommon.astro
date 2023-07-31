@@ -34,6 +34,15 @@ import { ViewTransitions } from 'astro:transitions';
             root.classList.remove('theme-dark');
         }
 
+        if (localStorage.getItem("sideNavOpen") !== null) {
+            const sideNavOpen = JSON.parse(localStorage.getItem("sideNavOpen"));
+            if (sideNavOpen) {
+                document.body.classList.add("sideNav-open");
+            } else {
+                document.body.classList.remove("sideNav-open");
+            }
+        }
+
         // Scroll to top if no anchor in url
         if (window && !window.location.hash) {
             window.scrollTo(0, 0);
