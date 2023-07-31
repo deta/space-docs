@@ -14,7 +14,7 @@ import Header from '@/components/docs/Header/Header.svelte';
 import SideNav from '@/components/docs/SideNav/SideNav.svelte';
 import Article from '@/components/docs/Article/Article.svelte';
 import TeletypeContainer from '@/components/Teletype/TeletypeContainer.astro';
-import NextPreviousButtons from '@/components/docs/Article/NextPreviousButtons.svelte';
+import NextPreviousButtons from '@/components/docs/Article/NextPreviousButtons.astro';
 
 type Props = {
 	frontmatter: CONFIG.Frontmatter;
@@ -55,6 +55,7 @@ const ACTIVE_PAGE = (await getCollection("docs", (e => {
             <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:load/>
             <Article frontmatter={frontmatter} headings={headings} currentPage={currentPage} client:load>
                 <slot/>
+                <br>
                 <NextPreviousButtons currentPage={currentPage} />
             </Article>
             <!--<Footer />-->
