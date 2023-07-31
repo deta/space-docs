@@ -11,13 +11,13 @@
     headings: MarkdownHeading[],
     currentPage: string;
 
-  let hidden = true;
+  /*let hidden = true;
   onMount(() => {
     setTimeout(() => (hidden = false), 1);
-  });
+  });*/
 </script>
 
-<div id="article-wrapper" style={hidden ? "opacity: 0%;" : ""}>
+<div id="article-wrapper"> <!--  style={hidden ? "opacity: 0%;" : ""} -->
   <article id="content">
     <noscript>
       <div>
