@@ -49,4 +49,4 @@ For many Space apps, you can use them just like other web applications, using yo
 
 On Space, developers are first class citizens. All apps are extendable and their data is programmable, even if their source code isn't open. If you have an idea for something that doesn't exist yet, you can build it.
 
-Read more about developing for Space in the [Builder Manual](/docs/en/build/intro).
+Read more about developing for Space in the [Builder Manual](/docs/en/build/fundamentals/development/builder).

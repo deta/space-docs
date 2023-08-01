@@ -82,6 +82,8 @@
 
         background: rgba(60,60,60,0.4);
         background: var(--theme-bg);
+        background: rgba(251, 249, 247, 85%);
+        backdrop-filter: blur(20px);
 
         ul {
             display: flex;
@@ -126,5 +128,13 @@
 
     .docs-logo {
         color: var(--theme-color);
+    }
+
+
+    :global(html.theme-dark) {
+        header {
+            background: rgba(28, 27, 27, 75%);
+            backdrop-filter: blur(20px);
+        }
     }
 </style>

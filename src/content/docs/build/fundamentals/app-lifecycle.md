@@ -3,7 +3,7 @@ title: App Life Cycle
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-As explained in the [Learn](/en/docs/learn) section of the documentation, apps built for a personal cloud are different from traditional web applications. As such, the steps you take to build, launch, and distribute them are different. This document will explain the **Life Cycle** of an app on Deta Space.
+As explained in the [Learn](/docs/en/learn) section of the documentation, apps built for a personal cloud are different from traditional web applications. As such, the steps you take to build, launch, and distribute them are different. This document will explain the **Life Cycle** of an app on Deta Space.
 
 ## Traditional Web Application Life Cycle
 
@@ -38,7 +38,7 @@ Once your application is live, there's more work you need to do to keep it opera
 
 ## Life Cycle of a Space App
 
-On Deta Space, the life cycle is different. There are two stages in building any releasing any Space App — Building and Publishing.
+On Deta Space, the life cycle is different. There are two stages in building and releasing any Space App — Building and Publishing.
 
 When you build for Space, you develop locally and test in a live instance of your app on Deta Space, called a Builder Instance. You can also use your Builder Instance if you don't want to share your app with the world.
 

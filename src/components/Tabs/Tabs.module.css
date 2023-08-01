@@ -17,8 +17,8 @@
 }
 
 .tab:focus {
-	outline: 2px solid var(--theme-accent);
-	outline-offset: -2px;
+    outline: none;
+    border-bottom-color: var(--theme-accent);
 }
 
 .tab:not(:focus-visible) {

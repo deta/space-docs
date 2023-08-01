@@ -13,7 +13,7 @@ After you setup your [Builder Project](/docs/en/build/fundamentals/development/p
 
 To start your app locally, run the `space dev` command in your local project:
 
-```
+```shell
 space dev
 ```
 
@@ -31,7 +31,7 @@ Before you can spin up your app locally with `space dev`, make sure you have you
 
 The Space CLI will use development command(s) you provide in your `Spacefile` to start each of your app's Micros locally, specified by `dev` parameter:
 
-```yaml
+```yaml title="Spacefile"
 v: 0
 micros:
   - name: client
@@ -148,7 +148,7 @@ You can also trigger [Scheduled Actions](/docs/en/build/fundamentals/the-space-r
 
 Let's assume we have the following `Spacefile` that runs a `cleanup` action on a schedule:
 
-```yaml
+```yaml title="Spacefile"
 v: 0
 micros:
   - name: backend
@@ -228,7 +228,7 @@ If you do not want to use `space dev` for whatever reason, but still need to tal
 
 You can set this Data Key into your local development environment as `DETA_PROJECT_KEY`, and the SDK will automatically pick the correct key up, both in development and in production, for you and any end users of your app.
 
-```
+```shell
 // .env.example
 
 DETA_PROJECT_KEY="MY_DATA_KEY"
