@@ -39,6 +39,11 @@ If you're someone who learns by example, there are also extensive [code examples
         pip install deta
         ```
     </Fragment>
+    <Fragment slot="pyAsync">
+        ```shell
+        pip install deta
+        ```
+    </Fragment>
     <Fragment slot="go">
         ```shell
         go get github.com/deta/deta-go
@@ -74,6 +79,23 @@ db = deta.Drive("my_store")
 
 # You can create as many as you want without additional charges.
 books = deta.Base("books")
+```
+</Fragment>
+<Fragment slot="pyAsync">
+```python
+from deta import Deta  # Import Deta
+
+# Initialize
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.AsyncBase("simple_db")
+
+# This how to connect to or create a drive. (not async)
+db = deta.Drive("my_store")
+
+# You can create as many as you want without additional charges.
+books = deta.AsyncBase("books")
 ```
 </Fragment>
 
