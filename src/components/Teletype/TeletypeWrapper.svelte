@@ -8,7 +8,7 @@ import { onMount } from 'svelte';
 
 const useTeletype = import.meta.env.PUBLIC_TELETYPE_INSTALLED === 'true'
 
-let Teletype: any
+let Teletype: any;
 onMount(async () => {
     if (useTeletype) {
         const importModule = await import('./Teletype.svelte')
@@ -18,5 +18,5 @@ onMount(async () => {
 </script>
 
 {#if Teletype}
-    <svelte:component this={Teletype}/>
+    <svelte:component this={Teletype} />
 {/if}
