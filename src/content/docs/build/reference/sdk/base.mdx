@@ -34,6 +34,30 @@ deta = Deta()
 db = deta.Base("simple_db")
 ```
 </Fragment>
+<Fragment slot="pyAsync">
+```py
+def AsyncBase(name: str):
+```
+
+| Parameter | Type            | Description           |
+| --------- | --------------- | --------------------- |
+| `name`    | `str`           | The name of the Base. |
+
+> ℹ️ Deta Bases are automatically created for you when you start using them.
+
+Example:
+```py
+from deta import Deta
+
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.AsyncBase("simple_db")
+
+# Don't forget to close the session when you're done
+await db.close()
+```
+</Fragment>
 <Fragment slot="js">
 ```js
 function Base(baseName: string, host?: string);
@@ -139,6 +163,36 @@ Example:
 base.put({"value": "Hello world!"}, "my-key")
 ```
 </Fragment>
+<Fragment slot="pyAsync">
+```py
+async def put(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+) -> dict:
+```
+
+| Parameter   | Type                                                              | Description                                                                       |
+| ----------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `data`      | `dict` \| `list` \| `str` \| [`int`][1] \| [`float`][1] \| `bool` | The data to be stored.                                                            |
+| `key`       | `str` \| `None`                                                   | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| `expire_in` | `int` \| `None`                                                   | Seconds after which the item will expire in, see [expiring items][2].             |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None`                          | Time at which the item will expire, see [expiring items][2].                      |
+
+Returns an awaitable `dict` with the item's data.
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+> ℹ️ Numbers in Base have [some limits][1].
+
+Example:
+
+```py
+await base.put({"value": "Hello world!"}, "my-key")
+```
+</Fragment>
 <Fragment slot="js">
 
 ```js
@@ -221,6 +275,25 @@ Example:
 item = base.get("my-key")
 ```
 </Fragment>
+<Fragment slot="pyAsync">
+```py
+async def get(key: str) -> dict | None:
+```
+
+| Parameter | Type  | Description                      |
+| --------- | ----- | -------------------------------- |
+| `key`     | `str` | The key of the item to retrieve. |
+
+If the item is found, returns an awaitable `dict` with the item's data.
+Otherwise, returns `None`.
+If `key` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+item = await base.get("my-key")
+```
+</Fragment>
 <Fragment slot="js">
 
 ```js
@@ -289,6 +362,24 @@ Example:
 
 ```py
 base.delete("my-key")
+```
+</Fragment>
+<Fragment slot="pyAsync">
+```py
+async def delete(key: str):
+```
+
+| Parameter | Type  | Description                    |
+| --------- | ----- | ------------------------------ |
+| `key`     | `str` | The key of the item to delete. |
+
+Always returns `None`, even if the key does not exist.
+If `key` is not a non-empty string, raises a `ValueError`.
+
+Example:
+
+```py
+await base.delete("my-key")
 ```
 </Fragment>
 <Fragment slot ="js">
@@ -373,6 +464,37 @@ Example:
 base.insert({"value": "Hello world!"}, "my-key")
 ```
 </Fragment>
+<Fragment slot="pyAsync">
+```py
+async def insert(
+    data: dict | list | str | int | float | bool,
+    key: str | None = None,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+) -> dict:
+```
+
+> ℹ️ `insert` is roughly 2 times slower than [`put`](#put).
+
+| Parameter   | Type                                                              | Description                                                                       |
+| ----------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `data`      | `dict` \| `list` \| `str` \| [`int`][1] \| [`float`][1] \| `bool` | The data to be stored.                                                            |
+| `key`       | `str` \| `None`                                                   | The key (aka ID) to store the data under. Will be auto generated if not provided. |
+| `expire_in` | `int` \| `None`                                                   | Seconds after which the item will expire in, see [expiring items][2].             |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None`                          | Time at which the item will expire, see [expiring items][2].                      |
+
+Returns an awaitable `dict` with the item's data.
+If `key` already exists, raises an `Exception`.
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+Example:
+
+```py
+await base.insert({"value": "Hello world!"}, "my-key")
+```
+</Fragment>
 <Fragment slot="js">
     ```js
 async function insert(
@@ -438,7 +560,7 @@ Puts up to 25 items at once with a single call.
 
 <LangTabs>
     <Fragment slot="py">
-        ```py
+```py
 def put_many(
     items: list,
     *,
@@ -459,6 +581,30 @@ Example:
 
 ```py
 base.put_many(["First item", "Second item", "Third item"])
+```
+    </Fragment>
+    <Fragment slot="pyAsync">
+```py
+async def put_many(
+    items: list,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None,
+) -> dict:
+```
+
+| Parameter   | Type                                     | Description                                                           |
+| ----------- | ---------------------------------------- | --------------------------------------------------------------------- |
+| `items`     | `list`                                   | The list of items to be stored.                                       |
+| `expire_in` | `int` \| `None`                          | Seconds after which the item will expire in, see [expiring items][2]. |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
+
+Returns an awaitable `dict` with `"processed"` and `"failed"` keys containing processed and failed items.
+
+Example:
+
+```py
+await base.put_many(["First item", "Second item", "Third item"])
 ```
     </Fragment>
     <Fragment slot="js">
@@ -550,6 +696,36 @@ base.update(
 )
 ```
     </Fragment>
+    <Fragment slot="pyAsync">
+```py
+async def update(
+    updates: dict,
+    key: str,
+    *,
+    expire_in: int | None = None,
+    expire_at: int | float | datetime | None = None
+)
+```
+
+| Parameter   | Type                                     | Description                                                           |
+| ----------- | ---------------------------------------- | --------------------------------------------------------------------- |
+| `updates`   | `dict`                                   | A dictionary describing the updates on the item.                      |
+| `key`       | `str`                                    | The key of the item to be updated.                                    |
+| `expire_in` | `int` \| `None`                          | Seconds after which the item will expire in, see [expiring items][2]. |
+| `expire_at` | `int` \| `float` \| `datetime` \| `None` | Time at which the item will expire, see [expiring items][2].          |
+
+If `key` is not a non-empty string, raises a `ValueError`.
+If the operation did not complete successfully, raises an `Exception`.
+
+Example:
+
+```py
+await base.update(
+    {"value": "Hello updated world!"},
+    "my-key",
+)
+```
+    </Fragment>
     <Fragment slot="js">
 ```js
 async function update(
@@ -627,6 +803,11 @@ The default value is `1`.
 def increment(value: int | float = 1):
 ```
     </Fragment>
+    <Fragment slot="pyAsync">
+```py
+def increment(value: int | float = 1):
+```
+    </Fragment>
     <Fragment slot="js">
 ```js
 function increment(value?: number);
@@ -646,6 +827,11 @@ The value can be a primitive type or a `array` / `list`.
 
 <LangTabs>
     <Fragment slot="py">
+```py
+def append(value: dict | list | str | int | float | bool):
+```
+    </Fragment>
+    <Fragment slot="pyAsync">
 ```py
 def append(value: dict | list | str | int | float | bool):
 ```
@@ -673,6 +859,11 @@ The value can be a primitive type or an `array` / `list`.
 def prepend(value: dict | list | str | int | float | bool):
 ```
     </Fragment>
+    <Fragment slot="pyAsync">
+```py
+def prepend(value: dict | list | str | int | float | bool):
+```
+    </Fragment>
     <Fragment slot="js">
 ```js
 function prepend(value: BasicType | ArrayType);
@@ -691,6 +882,11 @@ Removes an attribute from the item.
 
 <LangTabs>
     <Fragment slot="py">
+```py
+def trim():
+```
+    </Fragment>
+    <Fragment slot="pyAsync">
 ```py
 def trim():
 ```
@@ -721,7 +917,7 @@ In the case of a list, the indvidual queries are OR'ed.
 
 <LangTabs>
     <Fragment slot="py">
-        ```py
+```py
 def fetch(
     self,
     query: Mapping | Sequence[Mapping] | None = None,
@@ -743,6 +939,31 @@ Example:
 
 ```py
 response = base.fetch({"value?contains": "world"})
+```
+    </Fragment>
+    <Fragment slot="pyAsync">
+```py
+async def fetch(
+    self,
+    query: Mapping | Sequence[Mapping] | None = None,
+    *,
+    limit: int = 1000,
+    last: str | None = None,
+) -> FetchResponse:
+```
+
+| Parameter | Type                             | Description                                                          |
+| --------- | -------------------------------- | -------------------------------------------------------------------- |
+| `query`   | `Mapping` \| `Sequence[Mapping]` | The query to filter the items by.                                    |
+| `limit`   | `int`                            | The maximum number of items you want to retreive, minimum value `1`. |
+| `last`    | `str` \| `None`                  | The last key seen in a previous paginated response.                  |
+
+Returns an awaitable instance of [`FetchResponse`](#fetchresponse).
+
+Example:
+
+```py
+response = await base.fetch({"value?contains": "world"})
 ```
     </Fragment>
     <Fragment slot="js">
