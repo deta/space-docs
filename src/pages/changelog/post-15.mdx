@@ -1,0 +1,93 @@
+---
+title: "Improved Data and Resource Management"
+date: "16 Aug 2023"
+layout: "@changelogs"
+description: "You now have more control over your data and have the ability to delete any resource you create. You can also update environment variables from the CLI and have longer sessions."
+---
+
+import DetaHeart from '@/components/DetaHeart.astro'
+import Image from '@/components/Image.astro'
+
+## Longer Sessions
+
+A lot of you have been asking for longer sessions and we have listened. After logging in to Space, you will now be logged in for 30 days. This means you will be able to access your account and your apps without having to log in again for longer. You can still log out manually if you need to.
+
+## Manage your Data
+
+### Exporting Data
+
+Core to the idea of a personal cloud computer is the ability to have control over your data. This also includes being able to export your data from Space to use for what ever you want.
+
+<Image src="/changelog_assets/export-data.png" alt="Export Data" width="90%" background />
+
+You can now export your data from the "Data" view of your app instance. This will export all Bases and Drives that your app uses to a ZIP file that you can download.
+
+### Clear App Data
+
+Want to start fresh? You can now clear all the data in your app instance. This will delete all the Bases and Drives that your app uses. You can do this from the "Data" view of your app instance as well.
+
+<Image src="/changelog_assets/clear-app-data.png" alt="Clear App Data" width="90%" background />
+
+### Delete App, Keep Data
+
+Sometimes, you want the opposite of wiping the data, which is deleting the app, but keeping the data. Sounds wild, right? Dump the app, but cherish the data in a collection.
+
+<Image src="/changelog_assets/delete-app-keep-data.png" alt="Delete App" width="90%" background />
+
+## Managing your Project
+
+### Delete Releases
+
+Ever released something by accident or want to delete an old release? You can now do that from the "Publish" tab in your app's dashboard.
+
+<Image src="/changelog_assets/manage-release.png" alt="Manage Release" width="90%" background />
+
+If the release doesn't have any installations yet, you can delete it. If it does, you can unlist it from Discovery instead. This will remove it from the app's page and the Discovery homepage. Existing installations will still be able to use it.
+
+### Delete Project
+
+You are now able to delete your entire project. This will delete all the releases and installations of your app. If your app is listed on Discovery and has existing installations, you won't be able to delete it for now. We are working on a way to do this safely.
+
+<Image src="/changelog_assets/unlist-project.png" alt="Unlist Project" width="90%" background />
+
+### Unlist Project from Discovery
+
+If you want to hide your entire app from Discovery instead, you can do that from the same menu. This will remove the app and all releases from being listed publicly on Discovery. Existing installations will continue working.
+
+## Environment Variables and the CLI
+
+You can now use the `space builder env` command of the [Space CLI](https://deta.space/docs/en/build/reference/cli) to fetch or update the environment variables in your project's development instance.
+
+Fetching them:
+
+```bash
+space builder env --get .env
+```
+
+Update them:
+
+```bash
+space builder env --set .env
+```
+
+Note that this is completely decoupled from your local [Spacefile](/docs/en/reference/spacefile/), and you need to push a new development instance if you add or remove a custom environment variables.
+
+## Deleting Resources
+
+### Delete Collections
+
+In addition to all the other resources, you can now delete collections as well. This will delete all the data in the collection and remove it from your Space.
+
+<Image src="/changelog_assets/delete-collection.png" alt="Unlist Project" width="90%" background />
+
+You can do this from the "Settings" menu of your collection.
+
+### Delete Account
+
+And lastly, this one hurts a bit 💔, but hey, you're in control.
+
+<Image src="/changelog_assets/delete-account.png" alt="Unlist Project" width="90%" background />
+
+You can now delete your entire Space account with a simple button click as well. This will delete all your projects, apps, data, and everything else. You can do this from the "Settings" menu of your account.
+
+Thank you for all the valuable feedback — please continue to share your thoughts as we work to build and improve Space. <DetaHeart />
