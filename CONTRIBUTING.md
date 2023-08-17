@@ -66,3 +66,13 @@ headings](https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md)
 - Preview Markdown in a separate tab with `Ctrl + Shift + P` > Markdown: Open Preview.
 
 - Please, share other VS Code extensions by adding them to `.vscode/extensions.json`.
+
+# Firefox
+
+Markdown Preview in VS Code sometimes scrolls the (Markdown) source code up or down.
+
+For smooth preview, install [Markdown Viewer
+Webext](https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer-webext/) in Firefox. Also
+configure Firefox [on Linux/Mac
+OS](https://github.com/Cimbali/markdown-viewer#support-for-local-files-on-linux-and-macos) so it
+applies this extension to local Markdown files.
