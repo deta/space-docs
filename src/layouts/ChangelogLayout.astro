@@ -49,6 +49,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
                         1fr
                     );
                 overflow-x: hidden;
+                padding-inline: 1.25rem;
             }
 
             .grid-sidebar {
@@ -113,7 +114,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
             }
 
             #grid-main {
-                padding: var(--doc-padding) var(--gutter);
+                padding: var(--doc-padding) 0;
                 grid-column: 2;
                 display: flex;
                 flex-direction: column;
@@ -130,6 +131,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
                     overflow: initial;
                     grid-template-columns: 5rem minmax(0, var(--max-width)) 5rem;
                     gap: 1em;
+                    padding-inline: 0;
                 }
             }
 
