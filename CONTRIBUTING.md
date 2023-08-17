@@ -57,7 +57,8 @@ headings](https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md)
 - [Code Spell
   Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 
-- [Overtype](https://marketplace.visualstudio.com/items?itemName=drmerfy.overtype)
+- [Overtype](https://marketplace.visualstudio.com/items?itemName=drmerfy.overtype) is excellent when
+  editing tables, or any preformatted text.
 
 - [Markdown Preview Github
   Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
