@@ -24,7 +24,7 @@ If you use VS Code, suggest
   If you edit existing content a lot, do NOT have Rewrap set to automatic, but use Alt+Q to rewrap
   the current comment section (consecutive lines of comments that include the current line). Ctrl+A
   Alt+Q rewraps all comments (in the current file).
-  
+
 - [Markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
   for Markdown checks. But, suggest turning off
   
@@ -56,5 +56,12 @@ headings](https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md)
   
 - [Code Spell
   Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+
+- [Overtype](https://marketplace.visualstudio.com/items?itemName=drmerfy.overtype)
+
+- [Markdown Preview Github
+  Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
+
+- Preview Markdown in a separate tab with `Ctrl + Shift + P` > Markdown: Open Preview.
 
 - Please, share other VS Code extensions by adding them to `.vscode/extensions.json`.
