@@ -44,6 +44,7 @@
   let wasDesktopWidth = false;
 
   setContext("currentPage", currentPage);
+  console.log("currP", currentPage)
 
   let op = false;
   $: op = $sideNavOpen;
@@ -126,7 +127,7 @@
           <NavSection
             depth={0}
             navItem={navTree.subItems[0]}
-            open={currentPage.includes("/learn") || currentPage === "/docs/en"}
+            open={currentPage.includes("/learn") || currentPage === "/docs/en/" || currentPage === "/docs/en"}
             animated={false}>
             <svelte:fragment slot="icon">
               <IconBook2
