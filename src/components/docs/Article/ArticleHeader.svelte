@@ -14,7 +14,6 @@
 
   onMount(() => {
     const el = document.querySelector(".track-me")
-    console.log(el)
     const observer = new IntersectionObserver(
       ([e]) => {
         stuck = e.intersectionRatio < 1

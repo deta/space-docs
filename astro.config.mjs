@@ -28,6 +28,9 @@ export default defineConfig({
       [rehypeAutolinkHeadings, { behavior: "wrap", content: headingIcon }]
     ]
   },
+  experimental: {
+   viewTransitions: true
+  },
   vite: {
     build: {
       rollupOptions: {

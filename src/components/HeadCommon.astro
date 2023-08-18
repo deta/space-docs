@@ -2,12 +2,15 @@
 import '../styles/fonts.css';
 import '../styles/theme.css';
 
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
+
+<ViewTransitions />
 
 <link rel="icon" type="image/png" href="/other_assets/favicon.png" />
 <link rel="sitemap" href="/other_assets/sitemap.xml" />
@@ -22,13 +25,36 @@ import '../styles/theme.css';
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>
-	const root = document.documentElement;
-	const theme = localStorage.getItem('theme');
-	if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-		root.classList.add('theme-dark');
-	} else {
-		root.classList.remove('theme-dark');
-	}
+	function beforeLoad() {
+        const root = document.documentElement;
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            root.classList.add('theme-dark');
+        } else {
+            root.classList.remove('theme-dark');
+        }
+
+        if (localStorage.getItem("sideNavOpen") !== null && document) {
+            const sideNavOpen = JSON.parse(localStorage.getItem("sideNavOpen"));
+            document.addEventListener('DOMContentLoaded', function () {
+                if (sideNavOpen) {
+                    document.body.classList.add("sideNav-open");
+                } else {
+                    document.body.classList.remove("sideNav-open");
+                }
+            });
+        }
+
+        // Scroll to top if no anchor in url
+        if (window && !window.location.hash) {
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+        }
+    }
+    beforeLoad();
+    document.addEventListener('astro:beforeload', beforeLoad);
 </script>
 
 <script defer data-domain='deta.space' src='https://plausible.io/js/plausible.js'></script>

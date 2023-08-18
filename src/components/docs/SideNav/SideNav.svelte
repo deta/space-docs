@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
   import AstroLogo from "@/components/core/AstroLogo.svelte";
-  import { writable, get } from "svelte/store";
+  import { get } from "svelte/store";
 
   export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
-  export const sideNavPeeking = writable<boolean>(false);
+  export const sideNavPeeking = storedJsonWritable<boolean>("sideNavPeeking", false);
 
   export function updateBodyClass() {
     if (!document) return;
@@ -45,9 +45,6 @@
 
   setContext("currentPage", currentPage);
 
-  let op = false;
-  $: op = $sideNavOpen;
-
   // HANDLERS
   function onBeginPeek() {
     if ($sideNavOpen || innerWidth < 768) return;
@@ -88,6 +85,10 @@
       //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
       //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
       updateBodyClass();
+
+      document.addEventListener('astro:beforeload', () => {
+        currentPage = location.pathname;
+      });
     }
   });
 </script>
@@ -122,7 +123,7 @@
           <NavSection
             depth={0}
             navItem={navTree.subItems[0]}
-            open={currentPage.includes("/learn") || currentPage === "/docs/en"}
+            open={currentPage.includes("/learn") || currentPage === "/docs/en/" || currentPage === "/docs/en"}
             animated={false}>
             <svelte:fragment slot="icon">
               <IconBook2

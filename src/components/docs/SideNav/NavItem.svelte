@@ -8,13 +8,26 @@
                 depth = 1,
                 navItem: TreeNavigationItem;
 
-    onMount(() => {
-        if (document && (navItem.subItems?.length <= 0)) {
+    function handleActive() {
+        if (document) {
             let docPath = document?.location.pathname;
-            const navUrl = new URL(`/docs/en${navItem.path}`, document?.location.origin);
+            const navUrl = new URL(navItem.path, document?.location.origin);
             if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
             active = docPath === navUrl.pathname;
         }
+    }
+
+    onMount(() => {
+        handleActive();
+        document.addEventListener('astro:beforeload', () => {
+            handleActive();
+        });
+        /*if (document) {
+            let docPath = document?.location.pathname;
+            const navUrl = new URL(navItem.path, document?.location.origin);
+            if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
+            active = docPath === navUrl.pathname;
+        }*/
     })
 </script>
 
