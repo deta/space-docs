@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { NavigationItem } from "@/utils/content";
+  import type { TreeNavigationItem } from "@/utils/content";
   import NavFolder from "./NavFolder.svelte";
   import { getContext, onMount } from "svelte";
 
     // PROPS
     export let  active = false,
                 depth = 1,
-                navItem: NavigationItem;
+                navItem: TreeNavigationItem;
 
     function handleActive() {
         if (document) {
@@ -31,11 +31,11 @@
     })
 </script>
 
-<li class:folder={navItem.subItems} class:active style="--depth: {depth};"><!-- --depth: calc({depth} * var(--spacing-4)); -->
+<li class:folder={navItem.subItems.length >= 1} class:active style="--depth: {depth};"><!-- --depth: calc({depth} * var(--spacing-4)); -->
     {#if (navItem.subItems && navItem.subItems.length > 0)}
         <NavFolder {navItem} {depth}/>
     {:else}
-        <a href={navItem.path} class="reset">
+        <a href={`/docs/en${navItem.path}`} class="reset">
             <span class="nav-item-title" class:active={active}>{navItem.title || navItem.path.split("/").slice(-1)}</span>
         </a> <!-- TODO: Remove the slice stuff, just temporary till all titles are there -->
     {/if}
@@ -76,6 +76,14 @@
             border-color: var(--theme-accent);
             font-weight: 600;
         }
+        /*&.folder {
+            &.active a span {
+                color: var(--theme-color);
+                border-color: hsl(var(--color-gray-70));
+                font-weight: 400;
+                border-left: 2px solid hsl(var(--color-gray-90));
+            }
+        }*/
     }
 
     :global(html.theme-dark) {

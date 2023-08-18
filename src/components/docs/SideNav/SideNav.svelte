@@ -259,7 +259,7 @@
   // TODO make desktop only
   aside .nav-toggle {
     position: fixed;
-    z-index: 10000;
+    z-index: 100;
     bottom: var(--spacing-2);
     left: var(--spacing-2);
     color: hsl(var(--color-gray-50));
@@ -283,7 +283,7 @@
   // MOBILE
   aside {
     position: fixed;
-    z-index: 101;
+    z-index: 99;
     top: var(--spacing-18);
     left: 0;
     right: 0;
@@ -293,7 +293,7 @@
 
     nav {
       position: relative;
-      z-index: 1001;
+      z-index: 99;
       flex-direction: column;
       //margin-top: var(--spacing-18);
       //height: calc(100% - var(--header-height) - var(--spacing-12));
@@ -342,7 +342,7 @@
       position: relative;
       grid-column: 1;
       grid-row: 1 / -1;
-      z-index: 101;
+      z-index: 99;
       top: 0;
       right: unset;
       bottom: 0;

@@ -50,7 +50,7 @@ To build apps, you need the Space CLI on your local machine. Download it with on
   <Fragment slot="win">
   To install the Space CLI on Windows, open PowerShell and enter:
 
-  ```
+  ```shell
   iwr https://deta.space/assets/space-cli.ps1 -useb | iex
   ```
   </Fragment>
@@ -101,12 +101,12 @@ Your Project should now appear when you open the Builder app, where you can test
 
 ## The Space Runtime and Spacefile
 
-Deta Space has its own runtime — [the Space Runtime](/docs/en/build/fundamentals/the-space-runtime) — that can run almost any type of web app. It supports most programming languages and frameworks. 
+Deta Space has its own runtime — [the Space Runtime](/docs/en/build/fundamentals/the-space-runtime) — that can run almost any type of web app. It supports most programming languages and frameworks.
 The [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile) contains the configuration of your app and is used by Deta Space to understand what your app looks like and how to run it.
 
 Here's an example `Spacefile` for a [To Do app](https://github.com/deta/todo-app) built with a static frontend and a Node.js backend:
 
-```yaml
+```yaml title="Spacefile"
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:
@@ -141,7 +141,7 @@ A Space app runs on serverless compute units called [Micros](/docs/en/build/fund
 If [`space new`](/docs/en/build/new-apps#creating-a-project-with-builder) doesn't boostrap your Micro when creating a project locally, you can add it by writing to the [`Spacefile`](/docs/en/build/fudnamentals/the-space-runtime#the-spacefile).
 Create an individual Micro with the `micros` field in the `Spacefile`.
 
-```yaml
+```yaml title="Spacefile"
 v: 0
 micros:
   - name: frontend
@@ -169,7 +169,7 @@ Check out the [Spacefile reference](/docs/en/build/reference/spacefile) for all 
 
 If you're building something like a website and need parts of your app (or the whole thing) to be public facing, check out how to use the `public` or `public_routes` fields in the `Spacefile`.
 
-```yaml
+```yaml title="Spacefile"
 v: 0
 micros:
   - name: frontend
@@ -257,9 +257,7 @@ Read more about data on Space [as a developer](/docs/en/build/fundamentals/data-
 
 To use `space dev`, you will need to provide a `dev` parameter to every Micro in your `Spacefile`. The `dev` parameter is the command `space dev` uses to start a Micro's development server. Make sure the command starts your web server on the port specified with the `PORT` environment variable, with port `XXXX` as a fallback.
 
-`Spacefile`:
-
-```yaml
+```yaml title="Spacefile"
 # Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
 v: 0
 micros:

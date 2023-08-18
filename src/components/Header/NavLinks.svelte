@@ -37,10 +37,7 @@
 		{/if}
 		<a href="/changelog">Changelog</a>
 	{:else if isChangelog}
-		<a href="/manual/">Manual</a>
-		{#if isDevMode}
-			<a href="/docs/">Developer Docs</a>
-		{/if}
+		<a href="/docs/">Docs</a>
 	{/if}
 
     <a href="https://go.deta.dev/discord">Join Discord</a>

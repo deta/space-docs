@@ -20,7 +20,7 @@ The Space CLI is a command line interface you can use to build apps for Deta Spa
     <Fragment slot="win">
     To install the Space CLI on Windows, open PowerShell and enter:
 
-    ```
+    ```shell
     iwr https://deta.space/assets/space-cli.ps1 -useb | iex
     ```
     </Fragment>
@@ -35,19 +35,21 @@ The Space CLI is a command line interface you can use to build apps for Deta Spa
 
 This will download the binary which contains the CLI code. It will try to export the `space` command to your path, making the `space` command globally usable on your machine. If it does not succeed, follow the directions output by the install script to export `space` to your path.
 
+> ❗️ If you encounter `command not found: space` after a successful installation, please try to restart your terminal session.
+
+
 ## Authentication
 
 Once you have successfully installed the Space CLI, you'll need to log in to Deta Space.
-
 From a terminal type:
 
-```
+```shell
 space login
 ```
 
 This command will ask for an ‘access token’ to authenticate your CLI.
 
-```
+```shell
 ? Enter access token >
 ```
 
@@ -65,7 +67,7 @@ Copy the resulting token:
 
 You can paste this back into your CLI prompt. After you hit enter, you should be greeted by a success message.
 
-```
+```shell
 👍 Login Successful!
 ```
 

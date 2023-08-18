@@ -9,10 +9,12 @@ import Tabs from "@/components/Tabs/Tabs";
   tabs={[
     { label: "JavaScript", value: "js" },
     { label: "Python", value: "py" },
+    { label: "Python (async)", value: "pyAsync" },
     { label: "Go", value: "go" },
   ]}
 >
   <Fragment slot="panel.js"><slot name="js" /></Fragment>
   <Fragment slot="panel.py"><slot name="py" /></Fragment>
+  <Fragment slot="panel.pyAsync"><slot name="pyAsync" /></Fragment>
   <Fragment slot="panel.go"><slot name="go" /></Fragment>
 </Tabs>

@@ -11,11 +11,11 @@ Deta Space has its own runtime, the Space Runtime, that can run almost any type 
 - full-stack frameworks like [Next](https://nextjs.org/), [Nuxt](https://nuxtjs.org/), or [SvelteKit](https://kit.svelte.dev/)
 - backend apps built with Node.js, Python and even Go, Rust or something more custom
 
-An individual Space app can be built by combining these different technologies, for example, a SvelteKit app with a Go API or a Next.js app with a Python API — really any combination of up to 5 different languages and frameworks. 
+An individual Space app can be built by combining these different technologies, for example, a SvelteKit app with a Go API or a Next.js app with a Python API — really any combination of up to 5 different languages and frameworks.
 
 Learn more about building your first app in the [New Space App Guide](/docs/en/build/new-apps).
 
-### Micros 
+### Micros
 
 We call these individual parts of an app [Micros](/docs/en/build/fundamentals/the-space-runtime/micros). A Micro is a lightweight serverless compute service running inside your app that can be exposed to the world using HTTP.
 
@@ -29,13 +29,13 @@ A core part of the Space Runtime is a unique and fully managed approach to [Auth
 
 ## The `Spacefile`
 
-The Space Runtime uses a configuration file, called a `Spacefile`, to understand what Micros your app contains and how to run each one individually and in concert. The `Spacefile` must be named exactly `Spacefile` (capitalized and without an extension) and needs to be in the root directory of your project and uses a syntax similar to YAML. 
+The Space Runtime uses a configuration file, called a `Spacefile`, to understand what Micros your app contains and how to run each one individually and in concert. The `Spacefile` must be named exactly `Spacefile` (capitalized and without an extension) and needs to be in the root directory of your project and uses a syntax similar to YAML.
 
-> If you're new to YAML and want to learn more, see [Learn YAML in Y minutes](https://learnxinyminutes.com/docs/yaml/). 
+> If you're new to YAML and want to learn more, see [Learn YAML in Y minutes](https://learnxinyminutes.com/docs/yaml/).
 
 Here is an example `Spacefile` for an app with a Python Micro and a Go Micro:
 
-```yaml
+```yaml title="Spacefile"
 v: 0
 icon: ./icon.png
 app_name: "My App"
@@ -56,7 +56,7 @@ micros:
       - main
 ```
 
-The Space CLI will automatically generate a `Spacefile` for you when you [create a new project](/docs/en/build/fundamentals/development/projects#creating-a-project) using `space new`. If will try to auto detect your Micros and use the right configuration. 
+The Space CLI will automatically generate a `Spacefile` for you when you [create a new project](/docs/en/build/fundamentals/development/projects#creating-a-project) using `space new`. If will try to auto detect your Micros and use the right configuration.
 
 
 Take a look at our [Quick Starters](/docs/en/build/quick-starts/) for instructions about specific languages and the [`Spacefile` Reference](/docs/en/build/reference/spacefile) for a comprehensive list of available configuration options.
@@ -70,6 +70,7 @@ To exclude certain files and directories from being uploaded during `space push
 For example, using `space push` with the following `.spaceignore` file will ignore the `test` and `docs` paths:
 
 ```
+// .spaceignore
 test
 docs
 ```
@@ -86,24 +87,24 @@ List of files and directories that are ignored by default:
   # space
   .space
   .spaceignore
-  
+
   # version control
   .hg
   .git
   .gitmodules
   .gitignore
   .svn
-  
+
   # build
   build
   dist
-  
+
   # js frameworks
   .next
   .nuxt
   .svelte-kit
   .astro
-  
+
   # node
   node_modules
   .npmignore
@@ -114,45 +115,45 @@ List of files and directories that are ignored by default:
   yarn-error.log*
   lerna-debug.log*
   .pnpm-debug.log*
-  
+
   # python
   .venv
   venv
   virtualenv
   __pycache__
-  
+
   # rust
   target
-  
+
   # coverage
   *.lcov
   .nyc_output
   .coverage
   .coverage.*
-  
+
   # docker
   .dockerignore
-  
+
   # env
   .env.local
   .env.*.local
   .env
   .envrc
-  
+
   # ide
   .*.swp
   .vscode
   .history
-  
+
   # system
   .DS_Store
-  
+
   # other
   .lock-wscript
   config.gypi
   CVS
   ```
-    
+
 
 These patterns are always ignored, unless overwriten by a negate pattern in the `.spaceignore` file.
 
@@ -163,5 +164,7 @@ You can use an optional prefix `!` to negate a pattern; any matching file excl
 For a `.spaceignore` file with the following content, `space push` will not ignore the `node_modules` directory:
 
 ```
+// .spaceignore
+
 !node_modules/
 ```

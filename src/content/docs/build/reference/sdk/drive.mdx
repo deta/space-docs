@@ -26,6 +26,9 @@ The `Drive` class provides methods to interact with a Deta Drive.
 | `host`    | `str` \| `None` | The host of the Drive. |
 
 </Fragment>
+<Fragment slot="pyAsync">
+No async implementation yet.
+</Fragment>
 <Fragment slot="js">
 ```js
 function Drive(driveName: string, host?: string);
@@ -89,6 +92,9 @@ Example:
 drive.put("hello.txt", data="Hello world!")
 drive.put("example.txt", path="path/to/example.txt")
 ```
+</Fragment>
+<Fragment slot="pyAsync">
+No async implementation yet.
 </Fragment>
 <Fragment slot="js">
 ```js
@@ -166,6 +172,9 @@ response = drive.get("hello.txt")
 content = response.read()
 ```
 </Fragment>
+<Fragment slot="pyAsync">
+No async implementation yet.
+</Fragment>
 <Fragment slot="js">
 ```js
 async function get(name: string): Promise<GetResponse>;
@@ -228,6 +237,9 @@ Example:
 ```py
 drive.delete("hello.txt")
 ```
+    </Fragment>
+    <Fragment slot="pyAsync">
+No async implementation yet.
     </Fragment>
     <Fragment slot="js">
 ```js
@@ -293,6 +305,9 @@ Example:
 ```py
 drive.delete_many(["hello.txt", "example.txt"])
 ```
+    </Fragment>
+    <Fragment slot="pyAsync">
+No async implementation yet.
     </Fragment>
     <Fragment slot="js">
 ```js
@@ -367,6 +382,9 @@ Example:
 ```py
 response = drive.list()["names"]
 ```
+</Fragment>
+<Fragment slot="pyAsync">
+No async implementation yet.
 </Fragment>
 <Fragment slot="js">
 

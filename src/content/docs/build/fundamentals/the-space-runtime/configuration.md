@@ -28,7 +28,9 @@ micros:
 - `description`: human friendly description (optional)
 - `default`: default value for the variable (optional)
 
-The user of the app will be shown a [UI in the App's Settings](/docs/en/use/settings#configuration-variables) where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`.
+The user of the app will be shown a [UI in the App's Settings](/docs/en/use/settings#configuration-variables) where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`. For development instances of your projects, these environment variables can also be fetched and/or updated directly with [`space-cli`](/docs/en/build/reference/cli#space-builder-env).
+
+When developing locally using `space dev`, any custom environment variables that exist in the current shell environment will be passed through to the development environment, overwriting the `default` value.
 
 ### Pre-set Variables
 
