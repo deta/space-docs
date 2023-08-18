@@ -19,20 +19,40 @@ changelogs.sort((a, b) => {
 ---
 
 <ChangelogsListLayout>
-    {changelogs.map((changelog) => (
-        <div class="changelog-block">  
-            <a class="open-changelog" href={changelog.url}>
-                <h3 class="title">{changelog.frontmatter.title}</h3>
+    <div class="list">
+        {changelogs.map((changelog) => (
+            <div class="date-view">
                 <p class="date">{formatDate(changelog.frontmatter.date)}</p>
-                <div class="arrow">→</div>
-            </a>          
+                <div class="changelog-block">  
+                    <div class="open-changelog" href={changelog.url}>
+                        <h3 class="title">{changelog.frontmatter.title}</h3>
+                    </div>          
 
-            <p class="description">{changelog.frontmatter?.description || extractDescription(changelog)}</p>
-        </div>
-    ))}
+                    <p class="description">{changelog.frontmatter?.description || extractDescription(changelog)}</p>
+                </div>
+            </div>
+        ))}
+    </div>
 </ChangelogsListLayout>
 
 <style>
+    .list {
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .date-view {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .open-changelog {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
     .open-changelog, .open-changelog:hover, .open-changelog:focus, .open-changelog:visited {
         all: unset;
         cursor: pointer;
@@ -53,21 +73,31 @@ changelogs.sort((a, b) => {
 
     .changelog-block {
         position: relative;
-        display: block;
+        display: flex;
+        gap: 8rem;
+        justify-content: space-between;
+        align-items: start;
         color: var(--theme-text);
         text-decoration: none;
-        margin-top: 1.25rem;
-        margin-bottom: 2rem;
+    }
+
+    .description {
+        max-width: 256px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: left;
     }
 
     .title {
-        margin-bottom: 0;
+        max-width: 256px;
+        font-weight: 500;
+    	line-height: 2rem; /* 16px */
+        margin-bottom: 0px;
     }
     
     .date {
-        display: block;
-        margin-bottom: 0.5rem;
         color: var(--theme-text-accent);
+        margin-bottom: 0px;
     }
     
     .changelog-block:hover {
