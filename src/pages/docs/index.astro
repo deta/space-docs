@@ -1,4 +1,54 @@
+---
+import type * as CONFIG from '../../config';
+
+import '@/styles/new.css';
+import "@/styles/global.scss";
+import "@/components/docs/Article/article.scss";
+
+import HeadCommon from '@/components/HeadCommon.astro';
+import HeadSEO from '@/components/HeadSEO.astro';
+import Article from '@/components/docs/Article/Article.svelte';
+
+type Props = {
+	frontmatter: CONFIG.Frontmatter;
+};
+const { frontmatter } = {
+    frontmatter: {
+        title: "Space Docs",
+        layout: "",
+        description: "",
+        // TODO: Others
+    }
+} satisfies Props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+
+// {frontmatter.title ? `${frontmatter.title} - ${baseTitle}` : CONFIG.SITE.title}
+---
+
 <script is:inline>
   // Redirect your homepage to the first page of documentation.
-  window.location.pathname = `/docs/en`;
+  window.location.replace("/docs/en");
 </script>
+
+<html class="initial">
+	<head>
+		<HeadCommon />
+		<HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} />
+		<title>
+
+		</title>
+	</head>
+
+	<body>
+        <main style="text-align:center;">
+            <article style="padding-top: 4rem;">
+                <p>
+                    Redirecting to localized documentation. <br>
+                    If you don't automatically get redirected, <a href="/docs/en">click here</a>.
+                </p>
+            </article>
+        </main>
+        <script src="/other_assets/instant-page.js" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+	</body>
+</html>
