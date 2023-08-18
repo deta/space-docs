@@ -23,13 +23,13 @@ changelogs.sort((a, b) => {
         {changelogs.map((changelog) => (
             <div class="date-view">
                 <p class="date">{formatDate(changelog.frontmatter.date)}</p>
-                <div class="changelog-block">  
-                    <div class="open-changelog" href={changelog.url}>
+                <a class="changelog-block" href={changelog.url}>  
+                    <div class="open-changelog">
                         <h3 class="title">{changelog.frontmatter.title}</h3>
                     </div>          
 
                     <p class="description">{changelog.frontmatter?.description || extractDescription(changelog)}</p>
-                </div>
+                </a>
             </div>
         ))}
     </div>
@@ -79,6 +79,18 @@ changelogs.sort((a, b) => {
         align-items: start;
         color: var(--theme-text);
         text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .changelog-block {
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 1rem; 
+        }
+
+        .description {
+            max-width: 100% !important;
+        }
     }
 
     .description {
