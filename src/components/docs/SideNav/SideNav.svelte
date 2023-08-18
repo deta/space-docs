@@ -3,7 +3,7 @@
   import { writable, get } from "svelte/store";
 
   export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
-  export const sideNavPeeking = writable<boolean>(false);
+  export const sideNavPeeking = storedJsonWritable<boolean>("sideNavPeeking", false);
 
   export function updateBodyClass() {
     if (!document) return;
