@@ -88,6 +88,10 @@
       //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
       //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
       updateBodyClass();
+
+      document.addEventListener('astro:beforeload', () => {
+        setContext("currentPage", currentPage);
+      });
     }
   });
 </script>
@@ -99,7 +103,7 @@
   class:active={!$sideNavOpen}
   on:mouseenter={onBeginPeek}
   on:mouseleave={onEndPeek} />
-<aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover} transition:persist>
+<aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover}>
     {#if ($sideNavOpen) || ($sideNavPeeking)}
   <nav
   transition:fly={{

@@ -8,13 +8,25 @@
                 depth = 1,
                 navItem: NavigationItem;
 
-    onMount(() => {
+    function handleActive() {
         if (document) {
             let docPath = document?.location.pathname;
             const navUrl = new URL(navItem.path, document?.location.origin);
             if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
             active = docPath === navUrl.pathname;
         }
+    }
+
+    onMount(() => {
+        document.addEventListener('astro:beforeload', () => {
+            handleActive();
+        });
+        /*if (document) {
+            let docPath = document?.location.pathname;
+            const navUrl = new URL(navItem.path, document?.location.origin);
+            if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
+            active = docPath === navUrl.pathname;
+        }*/
     })
 </script>
 
