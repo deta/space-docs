@@ -55,7 +55,7 @@ const ACTIVE_PAGE = await getCollection("docs", (e => {
 	<body data-instant-intensity="5">
         <Header client:load frontmatter={frontmatter} headings={headings} currentPage={currentPage} />
         <main>
-            <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:load/>
+            <SideNav navTree={CONFIG.NAV_TREE} currentPage={currentPage} client:load transition:persist />
             <Article frontmatter={frontmatter} headings={headings} currentPage={currentPage} client:load>
                 <slot/>
             </Article>
