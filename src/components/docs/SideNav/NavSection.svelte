@@ -33,14 +33,19 @@
     if (open) activeCollapsibleStore.set(collapsibleKey);
   }
   async function onClickTitle() {
-    if (`/docs/en${navItem.path}` === currentPage) {
+    if (`/docs/en${navItem.path}/` === document.location.pathname
+        || `/docs/en${navItem.path}` === document.location.pathname) {
+            e.preventDefault();
+            open = !open;
+        }
+    /*if (`/docs/en${navItem.path}` === currentPage) {
         open = !open;
         return;
     };
     const c = await getCollection("docs", (e => {
         if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && `/docs/en/${e.id.split("/").slice(0, -1).join("/")}` === `/docs/en${navItem.path}`) return true;
     }))
-    if (c.length !== 0) document.location.replace(`/docs/en${navItem.path}`); //TODO: No replace?
+    if (c.length !== 0) document.location.replace(`/docs/en${navItem.path}`); //TODO: No replace?*/
     //if (open) setContext(`activeFolder_${depth}`, navItem.href);
     //if (open) $activeFolder = navItem.path; //activeFolder.set(navItem.href);
     /*const activeFolder = getContext<{depth: number, id: string}>("activeFolder");
@@ -75,7 +80,7 @@
         <slot name="icon" />
         <!--<IconRocket size={26} strokeWidth={2} style="currentColor" color="hsl(var(--color-base-green), 40%)" />-->
       </div>
-      <span class="title" class:open={open}>{navItem.title}</span>
+      <a href="/docs/en{navItem.path}" class="title" class:open={open}>{navItem.title}</a>
     </div>
     <span class="toggle-icon">
       <IconChevronLeft size={20} strokeWidth={2} />
