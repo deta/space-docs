@@ -32,7 +32,7 @@
   function onToggle() {
     if (open) activeCollapsibleStore.set(collapsibleKey);
   }
-  async function onClickTitle() {
+  async function onClickTitle(e: any) {
     if (`/docs/en${navItem.path}/` === document.location.pathname
         || `/docs/en${navItem.path}` === document.location.pathname) {
             e.preventDefault();
