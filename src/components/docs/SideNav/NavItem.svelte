@@ -18,6 +18,7 @@
     }
 
     onMount(() => {
+        handleActive();
         document.addEventListener('astro:beforeload', () => {
             handleActive();
         });

@@ -90,7 +90,7 @@
       updateBodyClass();
 
       document.addEventListener('astro:beforeload', () => {
-        setContext("currentPage", currentPage);
+        currentPage = location.pathname;
       });
     }
   });

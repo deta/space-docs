@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconChevronDown from "@/components/core/Icon/IconChevronDown.svelte";
   import type { NavigationItem } from "@/utils/content";
-    import { getCollection } from 'astro:content';
+  import { getCollection } from "astro:content";
   import NavItem from "./NavItem.svelte";
   import { getContext, onMount } from "svelte";
   import { setContext } from "svelte";
@@ -15,7 +15,7 @@
 
   let currentPage = getContext<string>("currentPage");
   let open = currentPage.includes(`${navItem.path}`);
-  let active = false
+  let active = false;
 
   const collapsibleKey = crypto.randomUUID();
   let activeCollapsibleStore = getContext<Writable<string>>("activeCollapsibleStore");
@@ -38,13 +38,21 @@
         if (getContext(`activeFolder_${depth}`) !== navItem.href) open = false;
     }*/
 
-  onMount(() => {
+  function handleNavigation() {
     if (document) {
       open = document?.location.pathname.includes(navItem.path) || false; //getContext("currentPage");
       let docPath = document?.location.pathname;
       if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
-      active = docPath.endsWith(navItem.path) || false
+      active = docPath.endsWith(navItem.path) || false;
     }
+  }
+
+  onMount(() => {
+      handleNavigation();
+    document.addEventListener("astro:beforeload", () => {
+        currentPage = document.location.pathname;
+      handleNavigation();
+    });
   });
 
   function onToggle() {
@@ -54,9 +62,13 @@
   }
   async function onClickTitle() {
     if (`/docs/en${navItem.path}` === currentPage) return;
-    const c = await getCollection("docs", (e => {
-        if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && `/docs/en/${e.id.split("/").slice(0, -1).join("/")}` === `/docs/en${navItem.path}`) return true;
-    }))
+    const c = await getCollection("docs", (e) => {
+      if (
+        (e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) &&
+        `/docs/en/${e.id.split("/").slice(0, -1).join("/")}` === `/docs/en${navItem.path}`
+      )
+        return true;
+    });
     if (c.length !== 0) document.location.replace(`/docs/en${navItem.path}`); //TODO: No replace?
     //if (open) setContext(`activeFolder_${depth}`, navItem.href);
     //if (open) $activeFolder = navItem.path; //activeFolder.set(navItem.href);
@@ -84,27 +96,28 @@
         ><slot name="icon"><IconChevronDown size={24} strokeWidth={2} style="currentColor" /></slot
         ></span>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <span class="title nav-item-title" class:active={active} class:open={open} on:click={onClickTitle}>{(() => {
-                let title = navItem.title;
-                switch (title) {
-                  case "QuickStarts":
-                    return "Quick Starts"
-                  case "TheSpaceRuntime":
-                    return "The Space Runtime"
-                  case "Sdk":
-                    return "SDK"
-                  case "HttpApi":
-                    return "HTTP API"
-                  case "SpaceApps":
-                    return "Space Apps"
-                  case "YourData":
-                    return "Your Data"
-                  case "DetaBase":
-                    return "Deta Base"
-                  default:
-                    return title
-                }
-            })()}</span>
+      <span class="title nav-item-title" class:active class:open on:click={onClickTitle}
+        >{(() => {
+          let title = navItem.title;
+          switch (title) {
+            case "QuickStarts":
+              return "Quick Starts";
+            case "TheSpaceRuntime":
+              return "The Space Runtime";
+            case "Sdk":
+              return "SDK";
+            case "HttpApi":
+              return "HTTP API";
+            case "SpaceApps":
+              return "Space Apps";
+            case "YourData":
+              return "Your Data";
+            case "DetaBase":
+              return "Deta Base";
+            default:
+              return title;
+          }
+        })()}</span>
       <!--<hr />-->
     </span>
   </summary>
@@ -121,7 +134,7 @@
 
 <style lang="scss">
   summary::-webkit-details-marker {
-      display: none;
+    display: none;
   }
 
   details {
@@ -242,16 +255,16 @@
 
   :global(html.theme-dark) details {
     summary {
-        color: hsl(var(--color-gray-95));
+      color: hsl(var(--color-gray-95));
     }
     &.nested > summary > span {
-        border-color: hsl(var(--color-gray-30));
+      border-color: hsl(var(--color-gray-30));
     }
     &.nested > summary:hover > span {
-        border-color: hsl(var(--color-gray-70));
+      border-color: hsl(var(--color-gray-70));
     }
     &.nested.firstSub > summary > span {
-        border-left: 2px solid transparent;
+      border-left: 2px solid transparent;
     }
   }
 </style>

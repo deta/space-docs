@@ -34,13 +34,15 @@ import { ViewTransitions } from 'astro:transitions';
             root.classList.remove('theme-dark');
         }
 
-        if (localStorage.getItem("sideNavOpen") !== null) {
+        if (localStorage.getItem("sideNavOpen") !== null && document) {
             const sideNavOpen = JSON.parse(localStorage.getItem("sideNavOpen"));
-            if (sideNavOpen) {
-                document.body.classList.add("sideNav-open");
-            } else {
-                document.body.classList.remove("sideNav-open");
-            }
+            document.addEventListener('DOMContentLoaded', function () {
+                if (sideNavOpen) {
+                    document.body.classList.add("sideNav-open");
+                } else {
+                    document.body.classList.remove("sideNav-open");
+                }
+            });
         }
 
         // Scroll to top if no anchor in url

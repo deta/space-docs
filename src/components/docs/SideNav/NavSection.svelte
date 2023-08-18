@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { NavigationItem } from "@/utils/content";
   import NavItem from "./NavItem.svelte";
-  import { getContext } from "svelte";
+  import { getContext, onMount } from "svelte";
   import type { Writable } from "svelte/store";
   import IconChevronLeft from "@/components/core/Icon/IconChevronLeft.svelte";
   import CollapsibleGroup from "./Collapsible/CollapsibleGroup.svelte";
@@ -50,6 +50,21 @@
             setContext("activeFolder", {depth, id: navItem.href});
         }*/
   }
+
+  function handleNavigation() {
+    if (document?.location.pathname.startsWith(`/docs/en${navItem.path}`)) {
+        open = true;
+        activeCollapsibleStore.set(collapsibleKey);
+        currentPage = document.location.pathname;
+        return;
+    };
+  }
+  onMount(() => {
+    handleNavigation();
+    document.addEventListener("astro:beforeload", () => {
+      handleNavigation();
+    });
+  });
 </script>
 
 <details bind:open on:toggle={onToggle}>
