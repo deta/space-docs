@@ -45,7 +45,10 @@ import { ViewTransitions } from 'astro:transitions';
 
         // Scroll to top if no anchor in url
         if (window && !window.location.hash) {
-            window.scrollTo(0, 0);
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
         }
     }
     beforeLoad();
