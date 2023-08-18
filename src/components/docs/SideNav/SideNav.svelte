@@ -99,7 +99,7 @@
   class:active={!$sideNavOpen}
   on:mouseenter={onBeginPeek}
   on:mouseleave={onEndPeek} />
-<aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover}>
+<aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover} transition:persist>
     {#if ($sideNavOpen) || ($sideNavPeeking)}
   <nav
   transition:fly={{
