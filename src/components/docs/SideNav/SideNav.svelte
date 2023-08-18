@@ -44,10 +44,6 @@
   let wasDesktopWidth = false;
 
   setContext("currentPage", currentPage);
-  console.log("currP", currentPage)
-
-  let op = false;
-  $: op = $sideNavOpen;
 
   // HANDLERS
   function onBeginPeek() {
