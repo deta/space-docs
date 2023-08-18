@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import AstroLogo from "@/components/core/AstroLogo.svelte";
-  import { writable, get } from "svelte/store";
+  import { get } from "svelte/store";
 
   export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
   export const sideNavPeeking = storedJsonWritable<boolean>("sideNavPeeking", false);
