@@ -22,7 +22,7 @@ changelogs.sort((a, b) => {
     {changelogs.map((changelog) => (
         <div class="changelog-block">  
             <a class="open-changelog" href={changelog.url}>
-                <h3 class="title">{changelog.frontmatter.title}</h3>
+                <h3 class="title" style="line-height: 1.25;">{changelog.frontmatter.title}</h3>
                 <p class="date">{formatDate(changelog.frontmatter.date)}</p>
                 <div class="arrow">→</div>
             </a>          
