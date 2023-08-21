@@ -3,7 +3,7 @@
   "content": [
     {
       "name": "Learn",
-      "content": ["what-is-pc.md", "why-the-pc.md"]
+      "content": ["what-is-pc.md", "why-the-pc.md", "faq.md"]
     },
     {
       "name": "Build",
