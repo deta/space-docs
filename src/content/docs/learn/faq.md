@@ -5,7 +5,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 ### Why is an `Unauthorized` error thrown when I try to access my app?
 
-By default all apps are private. You can make the entire app or parts of it public by adding the `public_routes` field to the Spacefile. Read more [in the docs](/docs/en/basics/micros#public-routes).
+By default all apps are private. You can make the entire app or parts of it public by adding the `public_routes` field to the Spacefile. Read more [in the docs](/docs/en/build/fundamentals/the-space-runtime/micros).
 
 ### Do Micros support websockets?
 
@@ -51,4 +51,4 @@ Drives currently have a global limit of 10 GB per account.
 
 ### My domain verification is pending, what should I do?
 
-Domains can take up to 24 hours to be verified. If it takes longer than that, make sure you have followed the steps mentioned [here](docs/en/basics/micros#custom-domains) correctly. If you still face issues, please contact us on [Discord](https://go.deta.dev/discord).
+Domains can take up to 24 hours to be verified. If it takes longer than that, make sure you have followed the steps mentioned [here](/docs/en/use/space-apps/domains) correctly. If you still face issues, please contact us on [Discord](https://go.deta.dev/discord).
