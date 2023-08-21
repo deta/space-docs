@@ -75,10 +75,10 @@
             {
               "name": "HTTP API",
               "content": ["base.mdx", "drive.mdx"]
-            },
-            "faq.md"
+            }
           ]
-        }
+        },
+        "faq.md"
       ]
     },
     {
