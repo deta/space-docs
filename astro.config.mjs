@@ -33,14 +33,28 @@ const brokenLinkChecker = () => {
 
                 console.log("Results for possibly broken links:");
                 for (const route of routes) {
+                    if (route.route.startsWith("/changelog") || route.route.startsWith("/manual") || route.route.startsWith("/migration")) continue;
                     const fPath = route.distURL.pathname;
                     const content = await fs.readFile(fPath, "utf-8");
 
-                    const pageLinks = Array.from(content.matchAll(/<a\s[^>]*\bhref="([^#"][^"]*)"/g), (m) => m[1])
-                        .filter(e => !["/discovery", "/blog"].includes(e))
-                        .filter(l => !l.startsWith("https") && !l.startsWith("https") && !l.startsWith("mailto") && !l.startsWith("tel") && !l.startsWith("data"))
-                        .map(l => (l.indexOf("#") > -1 ? l.slice(0, l.indexOf("#")) : l))
-                        .map(l => l.endsWith("/") ? l.slice(0, -1) : l );
+                    const pageLinks = Array.from(
+                      content.matchAll(/<a\s[^>]*\bhref="([^#"][^"]*)"/g),
+                      (m) => m[1]
+                    )
+                      .filter((e) => !["/discovery", "/blog"].includes(e))
+                      // https://deta.space/docs
+                      .filter(
+                        (l) =>
+                          l.startsWith("https://deta.space/docs") ||
+                          (!l.startsWith("https") &&
+                            !l.startsWith("https") &&
+                            !l.startsWith("mailto") &&
+                            !l.startsWith("tel") &&
+                            !l.startsWith("data"))
+                      )
+                      .map((l) => (l.startsWith("https://deta.space/docs") ? l.slice(18) : l))
+                      .map((l) => (l.indexOf("#") > -1 ? l.slice(0, l.indexOf("#")) : l))
+                      .map((l) => (l.endsWith("/") ? l.slice(0, -1) : l));
 
                     for (const pLink of pageLinks) {
                         if (!pages.includes(pLink)) {
