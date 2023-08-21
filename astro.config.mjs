@@ -17,9 +17,45 @@ const headingIcon = (node) => {
   return [e];
 };
 
+/**
+ * Small astro integration to scan all generated pages links &
+ * match them with known routes to find (possibly) broken links.
+ * @returns
+ */
+const brokenLinkChecker = () => {
+    return {
+        name: "broken-link-checker",
+        hooks: {
+            "astro:build:done": async ({ routes, pages }) => {
+                pages = pages.map(
+                    (e) => `/${e.pathname.endsWith("/") ? e.pathname.slice(0, -1) : e.pathname}`
+                );
+
+                console.log("Results for possibly broken links:");
+                for (const route of routes) {
+                    const fPath = route.distURL.pathname;
+                    const content = await fs.readFile(fPath, "utf-8");
+
+                    const pageLinks = Array.from(content.matchAll(/<a\s[^>]*\bhref="([^#"][^"]*)"/g), (m) => m[1])
+                        .filter(e => !["/discovery", "/blog"].includes(e))
+                        .filter(l => !l.startsWith("https") && !l.startsWith("https") && !l.startsWith("mailto") && !l.startsWith("tel") && !l.startsWith("data"))
+                        .map(l => (l.indexOf("#") > -1 ? l.slice(0, l.indexOf("#")) : l))
+                        .map(l => l.endsWith("/") ? l.slice(0, -1) : l );
+
+                    for (const pLink of pageLinks) {
+                        if (!pages.includes(pLink)) {
+                            console.log(`  - ${pLink} in ${fPath}`);
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [astroExpressiveCode(), mdx(), svelte(), preact(), react()],
+  integrations: [astroExpressiveCode(), mdx(), svelte(), preact(), react(), brokenLinkChecker()],
   site: "https://deta.space/",
   base: "/",
   markdown: {
