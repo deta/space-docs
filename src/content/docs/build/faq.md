@@ -1,5 +1,5 @@
 ---
-title: Frequently Asked Questions
+title: FAQ
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
