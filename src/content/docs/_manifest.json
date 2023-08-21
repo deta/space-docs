@@ -77,7 +77,8 @@
               "content": ["base.mdx", "drive.mdx"]
             }
           ]
-        }
+        },
+        "faq.md"
       ]
     },
     {
