@@ -3,7 +3,7 @@
   "content": [
     {
       "name": "Learn",
-      "content": ["what-is-pc.md", "why-the-pc.md", "faq.md"]
+      "content": ["what-is-pc.md", "why-the-pc.md"]
     },
     {
       "name": "Build",
@@ -75,7 +75,8 @@
             {
               "name": "HTTP API",
               "content": ["base.mdx", "drive.mdx"]
-            }
+            },
+            "faq.md"
           ]
         }
       ]
