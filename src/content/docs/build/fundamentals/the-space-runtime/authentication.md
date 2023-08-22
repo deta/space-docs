@@ -19,11 +19,15 @@ Your apps may also store data to your personal cloud. This data is also meant fo
 
 ### The Developer Perspective
 
-As a developer, authentication should “just work”. You don't have to think much about  different users or their data separation. Your (lack of) code will reflect this — you can build assuming that you're the only (already authenticated) user. On top of this, you get numerous extras for free, like built in API keys, SSL and custom domains for your app.  Finally, although privacy is the default, you can easily build apps that have public facing features or data, like a website.
+As a developer, authentication should “just work”. You don't have to think much about different users or their data separation. Your (lack of) code will reflect this — you can build assuming that you're the only (already authenticated) user. You'll be able to use the [Deta SDK](/docs/en/build/reference/sdk) to write to [Deta Base](/docs/en/build/fundamentals/data-storage#deta-base) and [Deta Drive](/docs/en/build/fundamentals/data-storage#deta-base) straight from the browser. 
+
+On top of this, you get numerous extras for free, like built in API keys, SSL and custom domains for your app.  Finally, although privacy is the default, you can easily build apps that have public facing features or data, like a website.
 
 ## Public Micros and Routes
 
 If you want to turn off Deta Auth for parts of your app, making these parts publicly available, you can either make [an entire Micro](/docs/en/build/fundamentals/the-space-runtime/micros) public, or specify which routes of your app should be public. This is how you would, for example, host a public website or a blog on Deta Space.
+
+> If you are using the [Deta SDK](/docs/en/build/reference/sdk) in the browser, managed authentication will not work on Public Micros and Routes.
 
 ### Public Micros
 

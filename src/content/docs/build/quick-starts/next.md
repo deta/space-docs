@@ -11,6 +11,8 @@ This quickstart assumes that you have:
 
 You can use your existing [Next.js](https://nextjs.org/) app or you can create one following the instructions [here](https://nextjs.org/docs/getting-started).
 
+> 💡 You can use the [Deta SDK](/docs/en/build/reference/sdk) in the browser to write straight to [Deta Base](/docs/en/build/fundamentals/data-storage#deta-base) and [Deta Drive](/docs/en/build/fundamentals/data-storage#deta-base) with managed authentication. This will not work on [Public Micros and Routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes).
+
 ## Create a Space Project
 
 [Space projects](/docs/en/build/fundamentals/development/projects) allow you to build, test, and use apps on Deta Space. They are also a (optional) launchpad for releasing them to the public. To create a Space project, run the following command in the Next.js project directory:
