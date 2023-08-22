@@ -26,9 +26,9 @@ const currentPage = Astro.url.pathname;
 // {frontmatter.title ? `${frontmatter.title} - ${baseTitle}` : CONFIG.SITE.title}
 ---
 
-<script is:inline>
+<script>
   // Redirect your homepage to the first page of documentation.
-  window.location.replace("/docs/en");
+    window.location.replace("/docs/en");
 </script>
 
 <html class="initial">
@@ -41,14 +41,14 @@ const currentPage = Astro.url.pathname;
 	</head>
 
 	<body>
-        <main style="text-align:center;">
+        <!--<main style="text-align:center;">
             <article style="padding-top: 4rem;">
                 <p>
                     Redirecting to localized documentation. <br>
                     If you don't automatically get redirected, <a href="/docs/en">click here</a>.
                 </p>
             </article>
-        </main>
+        </main>-->
         <script src="/other_assets/instant-page.js" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
 	</body>
 </html>
