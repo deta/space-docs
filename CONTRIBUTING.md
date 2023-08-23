@@ -40,9 +40,7 @@ headings](https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md)
   <!-- markdownlint-disable MD025 -->
   ```
   
-  Or by the following user settings.
-  
-- Configure in Ctrl+Shift+P > Preferences: Open User Settings (JSON):
+  Or configure in Ctrl+Shift+P > Preferences: Open User Settings (JSON):
   
   ```json
     "editor.rulers": [
@@ -64,6 +62,18 @@ headings](https://github.com/DavidAnson/markdownlint/blob/main/doc/md025.md)
   Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
 - Preview Markdown in a separate tab with `Ctrl + Shift + P` > Markdown: Open Preview.
+- Unless you're editing a small file, suggest to __disable__ both:
+  - Settings > Markdown > Preview > Scroll Editor With Preview, and 
+  - Settings > Markdown > Preview > Scroll Preview With Editor.
+  
+  Or configure in Ctrl+Shift+P > Preferences: Open User Settings (JSON):
+  
+  ```json
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown.preview.scrollEditorWithPreview": false
+  ```
+
+  And/or preview Markdown in Firefox (see below).
 
 - Please, share other VS Code extensions by adding them to `.vscode/extensions.json`.
 
