@@ -88,6 +88,7 @@
 
       document.addEventListener('astro:beforeload', () => {
         currentPage = location.pathname;
+        updateBodyClass();
       });
     }
   });

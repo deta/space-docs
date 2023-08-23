@@ -10,7 +10,7 @@
   export let frontmatter: z.infer<typeof docsSchema>;
   export let headings: MarkdownHeading[];
 
-  let stuck = false
+  let stuck = false;
 
   onMount(() => {
     const el = document.querySelector(".track-me")
@@ -28,7 +28,7 @@
 
 <section class="only-desktop track-me" class:stuck={stuck}>
   <div class="inner">
-    <Breadcrumbs currentPage={currentPage} stuck={stuck} />
+    <Breadcrumbs currentPage={currentPage} />
 
     <div class="toc">
       <MobileTableOfContents chevron pageTitle={frontmatter.title} {headings} collapsable={true} maxDepth={frontmatter && frontmatter.tocDepth || 2}/>
@@ -63,7 +63,7 @@
       gap: 0rem;
     }
 
-    :global(.sideNav-open) .stuck .inner {
+    :global(body.sideNav-open) .stuck .inner {
       position: sticky;
       top: -1px;
       left: unset;
