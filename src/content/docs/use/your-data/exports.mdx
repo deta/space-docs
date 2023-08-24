@@ -1,5 +1,5 @@
 ---
-title: Data Exports
+title: Exports
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
@@ -26,33 +26,39 @@ For a Headless Collection, open the Collections app from the Canvas. Choose a Co
 
 ![exports](/docs_assets/use/export-data.png)
 
-Click the "Export" button to create an export of your app's data. This will trigger an export process which will run. 
+Click the "Export" button to create a complet export of your app's data. This will trigger an export process which will run. 
 
-The status of the export is indicated by the colored dot on the left side. You can click the "Refresh" button to see the latest status. 
-A successful status (green) indicates that your export was completed successfully and can be downloaded.
+The status of the export is indicated by the colored dot on the left side, you can get details by hovering over the status indicator. 
+Click the "Refresh" button to see the latest status. 
+A green status indicator means your export was completed successfully and can be downloaded.
 
 #### Downloading an Export
 
-You can download an any completed data export by clicking the download button.
+You can download any completed data export by clicking the download button.
 This will download a `.zip` archive to your local machine, containing all of the data associated with the export.
 
-The format of the data in an export will include a `bases`  folder with a `json` file for every Deta Base, 
-and a `drives` folder with a sub-folder for each of your Collection's Deta Drives.
+![exports-download](/docs_assets/use/export-download.png)
+
+The format of the data in an export will include a `bases`  folder with a `json` file for every [Deta Base](/docs/en/use/your-data/collections#deta-drive) in your app, 
+and a `drives` folder with a sub-folder for each of your app's [Drives](/docs/en/use/your-data/collections#deta-drive).
 
 ```json
 / bases
-		my_first_base.json
-		my_second_base.json
+		my-base.json
+		my-second-base.json
 
 / drives
-		/ my_first_drive
-        my_first_image.png
+		/ my-drive
+        my-image.png
         ...
 
-		/ my_second_drive
-        my_twentieth_image.png
+		/ my-second-drive
+        my-twentieth-image.png
 ```
 
 ##### Deleting an Export
 
-To delete an Export, click the trash icon next to the export. This action is irreversible.
+To delete an Export, click the trash icon next to the export. 
+
+![exports-delete](/docs_assets/use/export-delete.png)
+This action is irreversible.
