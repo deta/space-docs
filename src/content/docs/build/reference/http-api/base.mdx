@@ -9,7 +9,7 @@ import RequestTabs from "@/components/Tabs/RequestTabs.astro";
 
 > You can get your **Data Key** and your **Project ID** of your Project in [Builder](/docs/en/build/fundamentals/development/builder). You need these to talk with the Deta API.
 
-> ℹ️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string. 
+> ℹ️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string.
 
 ### Root URL
 This URL is the base for all your HTTP requests:
@@ -69,7 +69,7 @@ Stores multiple items in a single request. This request overwrites an item if th
     {
         "processed": {
             "items": [
-                // items which were stored 
+                // items which were stored
             ]
         },
         "failed": {
@@ -90,13 +90,13 @@ Stores multiple items in a single request. This request overwrites an item if th
     {
         "errors" : [
            // error messages
-        ] 
+        ]
     }
     ```
 
 
 
-    Bad requests occur in the following cases: 
+    Bad requests occur in the following cases:
     - if an item has a non-string key
     - if the number of items in the requests exceeds 25
     - if total request size exceeds 16 MB
@@ -183,7 +183,7 @@ Delete a stored item.
 
 **`POST /items`**
 
-Creates a new item only if no item with the same `key` exists. 
+Creates a new item only if no item with the same `key` exists.
 
 <RequestTabs>
 
@@ -215,13 +215,13 @@ Creates a new item only if no item with the same `key` exists.
     }
     ```
 
-    ##### Client errors  
+    ##### Client errors
 
     ##### `409 Conflict` (if key already exists)
 
     ```json
     {
-      "errors": ["Key already exists"] 
+      "errors": ["Key already exists"]
     }
     ```
 
@@ -235,7 +235,7 @@ Creates a new item only if no item with the same `key` exists.
     }
     ```
 
-    Bad requests occur in the following cases: 
+    Bad requests occur in the following cases:
     - if the item has a non-string key
     - if size of the item exceeds 400KB
   </Fragment>
@@ -248,7 +248,7 @@ Creates a new item only if no item with the same `key` exists.
 
 **`PATCH /items/{key}`**
 
-Updates an item only if an item with `key` exists. 
+Updates an item only if an item with `key` exists.
 
 > If the *key* contains url unsafe or reserved characters, make sure to url-encode the *key*. Otherwise, it will lead to unexpected behavior.
 
@@ -274,7 +274,7 @@ Updates an item only if an item with `key` exists.
       "profile": {
         "age": 32,
         "active": false,
-        "hometown": "pittsburgh" 
+        "hometown": "pittsburgh"
       },
       "on_mobile": true,
       "likes": ["anime"],
@@ -288,9 +288,9 @@ Updates an item only if an item with `key` exists.
     {
        "set" : {
          // change ages to 33
-         "profile.age": 33, 
+         "profile.age": 33,
          // change active to true
-         "profile.active": true, 
+         "profile.active": true,
          // add a new attribute `profile.email`
          "profile.email": "jimmy@deta.sh"
        },
@@ -301,7 +301,7 @@ Updates an item only if an item with `key` exists.
        },
 
        "append": {
-         // append to 'likes' 
+         // append to 'likes'
          "likes": ["ramen"]
        },
 
@@ -336,17 +336,17 @@ Updates an item only if an item with `key` exists.
        "set": {
          // identical to the request
        },
-       "delete": ["field1", ..] // identical to the request 
+       "delete": ["field1", ..] // identical to the request
     }
     ```
 
-    ##### Client errors  
+    ##### Client errors
 
     ##### `404 Not Found` (if key does not exist)
 
     ```json
     {
-      "errors": ["Key not found"] 
+      "errors": ["Key not found"]
     }
     ```
 
@@ -360,9 +360,9 @@ Updates an item only if an item with `key` exists.
     }
     ```
 
-    Bad requests occur in the following cases: 
-    - if you're updating or deleting the `key`  
-    - if `set` and `delete` have conflicting attributes 
+    Bad requests occur in the following cases:
+    - if you're updating or deleting the `key`
+    - if `set` and `delete` have conflicting attributes
     - if you're setting a hierarchical attribute but an upper level attribute does not exist, for eg. `{"set": {"user.age": 22}}` but `user` is not an attribute of the item.
   </Fragment>
 
@@ -374,14 +374,14 @@ Updates an item only if an item with `key` exists.
 
 **`POST /query`**
 
-List items that match a [query](/docs/en/reference/base/queries).
+List items that match a [query](/docs/en/build/reference/deta-base/queries).
 
 <RequestTabs>
 
   <Fragment slot="request">
 | JSON Payload    | Required | Type     | Description                                    |
 |-----------------|----------|----------|------------------------------------------------|
-| `query`         | No       | `list`   | list of a [query](/docs/en/reference/base/queries)|
+| `query`         | No       | `list`   | list of a [query](/docs/en/build/reference/deta-base/queries)|
 | `limit`         | No       | `int`    | no of items to return. min value 1 if used     |
 | `last`          | No       | `string` | last key seen in a previous paginated response |
 
@@ -408,7 +408,7 @@ List items that match a [query](/docs/en/reference/base/queries).
     For paginated responses, `last` will return the last key seen in the response. You must use this `key` in the following request to continue retreival of items. If the response does not have the `last` key, then no further items are to be retreived.
 
     > Upto 1 MB of data is retrieved before filtering with the query. Thus, in some cases you might get an empty list of items but still the `last` key evaluated in the response.
-    > 
+    >
     > To apply the query through all the items in your base, you have to call fetch until `last` is empty.
 
     ##### `200 OK`
@@ -429,7 +429,7 @@ List items that match a [query](/docs/en/reference/base/queries).
     }
     ```
 
-    ##### Client Errors 
+    ##### Client Errors
 
     ##### `400 Bad Request`
 
