@@ -1,0 +1,64 @@
+---
+title: Exports
+layout: "@layouts/DocsPageLayout.astro"
+---
+
+import InterfaceTabsUser from "@/components/Tabs/InterfaceTabsUser.astro";
+
+On Space, you can back-up and eject the data stored in every app you install, or any [Collection](/docs/en/use/your-data/collections) you create.
+
+This is done via **Data Exports**. 
+
+## Creating an Export
+
+<InterfaceTabsUser>
+  <Fragment slot="canvas">
+
+For an App on the Canvas, open the Exports menu by clicking an app's context menu from the Canvas and selcting **App Data**. Then select the "Exports" tab.
+
+</Fragment>
+<Fragment slot="collection">
+
+For a Headless Collection, open the Collections app from the Canvas. Choose a Collection and open the "Collection Settings", then navigate to the "General" tab.
+
+</Fragment>
+</InterfaceTabsUser>
+
+![exports](/docs_assets/use/export-data.png)
+
+Click the "Export" button to create a complet export of your app's data. This will trigger an export process which will run. 
+
+The status of the export is indicated by the colored dot on the left side, you can get details by hovering over the status indicator. 
+Click the "Refresh" button to see the latest status. 
+A green status indicator means your export was completed successfully and can be downloaded.
+
+#### Downloading an Export
+
+You can download any completed data export by clicking the download button.
+This will download a `.zip` archive to your local machine, containing all of the data associated with the export.
+
+![exports-download](/docs_assets/use/export-download.png)
+
+The format of the data in an export will include a `bases`  folder with a `json` file for every [Deta Base](/docs/en/use/your-data/collections#deta-drive) in your app, 
+and a `drives` folder with a sub-folder for each of your app's [Drives](/docs/en/use/your-data/collections#deta-drive).
+
+```json
+/ bases
+		my-base.json
+		my-second-base.json
+
+/ drives
+		/ my-drive
+        my-image.png
+        ...
+
+		/ my-second-drive
+        my-twentieth-image.png
+```
+
+##### Deleting an Export
+
+To delete an Export, click the trash icon next to the export. 
+
+![exports-delete](/docs_assets/use/export-delete.png)
+This action is irreversible.
