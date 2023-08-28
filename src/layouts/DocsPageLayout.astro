@@ -27,11 +27,9 @@ const currentPage = Astro.url.pathname;
 const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
 const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
 
-const isManual = currentPage.startsWith("/manual");
-const isMigration = currentPage.startsWith("/migration");
 const isDocs = currentPage.startsWith("/docs");
 
-const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'Space Docs';
+const baseTitle = 'Space Docs';
 
 //const ACTIVE_PAGE = (await getCollection("docs")).find(e => `/docs/en/${e.id.split(".")[0]}` === currentPage) || { title: "d"};
 const ACTIVE_PAGE = (await getCollection("docs", (e => {

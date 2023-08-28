@@ -1,4 +1,4 @@
-import { NAV_TREE, docsSectionsOrder, manualSectionsOrder, migrationSectionsOrder } from "@/config";
+import { docsSectionsOrder } from "@/config";
 import type { MarkdownInstance, MarkdownHeading } from "astro";
 import { getCollection } from "astro:content";
 import { pascalCase } from "scule";
@@ -103,9 +103,6 @@ export const parsePages = (files: AstroPage[]) => {
 export const parseSections = (pages: Page[]) => {
   let result: SectionItem[] = [];
 
-  const isMigration = pages[0].path.startsWith("/migration");
-  const isManual = pages[1].path.startsWith("/manual");
-
   pages.forEach((page) => {
     const keywords = new Set<string>();
 
@@ -194,19 +191,9 @@ export const parseSections = (pages: Page[]) => {
   });
 
   // Sort sections
-  if (isMigration) {
-    result = result.sort((a: any, b: any) => {
-      return migrationSectionsOrder.indexOf(a.title) - migrationSectionsOrder.indexOf(b.title);
-    });
-  } else if (isManual) {
-    result = result.sort((a: any, b: any) => {
-      return manualSectionsOrder.indexOf(a.title) - manualSectionsOrder.indexOf(b.title);
-    });
-  } else {
-    result = result.sort((a: any, b: any) => {
-      return docsSectionsOrder.indexOf(a.title) - docsSectionsOrder.indexOf(b.title);
-    });
-  }
+  result = result.sort((a: any, b: any) => {
+    return docsSectionsOrder.indexOf(a.title) - docsSectionsOrder.indexOf(b.title);
+  });
 
   // Sort pages by position
   result.forEach((section) => {

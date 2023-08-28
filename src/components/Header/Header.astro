@@ -17,19 +17,13 @@ type Props = {
 const { currentPage } = Astro.props as Props;
 const lang = getLanguageFromURL(currentPage);
 
-const isManual = currentPage.startsWith("/manual");
-const isMigration = currentPage.startsWith("/migration");
 const isDocs = currentPage.startsWith("/docs");
 const isChangelog = currentPage.startsWith("/changelog");
 
 let title = 'Space Docs';
-if (isManual) title = 'Space Manual';
-if (isMigration) title = 'Migration Hub';
 if (isChangelog) title = 'Space Changelog';
 
 let titleLink = '/docs/';
-if (isManual) titleLink = '/manual/';
-if (isMigration) titleLink = '/migration/';
 if (isChangelog) titleLink = '/changelog/';
 ---
 
@@ -46,11 +40,11 @@ if (isChangelog) titleLink = '/changelog/';
 				<h1>{title}</h1>
 			</a>
 		</div>
-		
+
 
 		{KNOWN_LANGUAGE_CODES.length > 1 && <LanguageSelect lang={lang} client:idle />}
-		
-		<NavLinks client:only="svelte" isMigration={isMigration} isManual={isManual} isDocs={isDocs} isChangelog={isChangelog} />
+
+		<NavLinks client:only="svelte" isDocs={isDocs} isChangelog={isChangelog} />
 
 		<div class="theme-toggle">
 			<ThemeToggle client:visible />
