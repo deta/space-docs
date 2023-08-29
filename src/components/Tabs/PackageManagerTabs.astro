@@ -9,8 +9,10 @@ import Tabs from "@/components/Tabs/Tabs";
   tabs={[
     { label: "NPM", value: "npm" },
     { label: "Yarn", value: "yarn" },
+    { label: "Browser", value: "browser"},
   ]}
 >
   <Fragment slot="panel.npm"><slot name="npm" /></Fragment>
   <Fragment slot="panel.yarn"><slot name="yarn" /></Fragment>
+  <Fragment slot="panel.browser"><slot name="browser" /></Fragment>
 </Tabs>
