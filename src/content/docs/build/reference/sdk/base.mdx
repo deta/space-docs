@@ -924,6 +924,7 @@ def fetch(
     *,
     limit: int = 1000,
     last: str | None = None,
+    desc: bool = False,
 ) -> FetchResponse:
 ```
 
@@ -932,6 +933,7 @@ def fetch(
 | `query`   | `Mapping` \| `Sequence[Mapping]` | The query to filter the items by.                                    |
 | `limit`   | `int`                            | The maximum number of items you want to retreive, minimum value `1`. |
 | `last`    | `str` \| `None`                  | The last key seen in a previous paginated response.                  |
+| `desc`    | `bool`                           | Sort items in descending order by their keys, default `False`.       |
 
 Returns an instance of [`FetchResponse`](#fetchresponse).
 
@@ -949,6 +951,7 @@ async def fetch(
     *,
     limit: int = 1000,
     last: str | None = None,
+    desc: bool = False,
 ) -> FetchResponse:
 ```
 
@@ -957,6 +960,7 @@ async def fetch(
 | `query`   | `Mapping` \| `Sequence[Mapping]` | The query to filter the items by.                                    |
 | `limit`   | `int`                            | The maximum number of items you want to retreive, minimum value `1`. |
 | `last`    | `str` \| `None`                  | The last key seen in a previous paginated response.                  |
+| `desc`    | `bool`                           | Sort items in descending order by their keys, default `False`.       |
 
 Returns an awaitable instance of [`FetchResponse`](#fetchresponse).
 
@@ -996,8 +1000,9 @@ func (b *Base) Fetch(i *FetchInput) (string, error)
 | --------- | ----------------------------------- | ------------------------------------------------- |
 | `i`       | [`*FetchInput`](./types#fetchinput) | A pointer to a [`FetchInput`](./types#fetchinput) |
 
-Returns an `error`. Possible error values:
+Returns the last `key` in a paginated response and an `error`.
 
+Possible error values:
 - `ErrBadDestination`: bad destination, results could not be stored onto `dest`
 - `ErrBadRequest`: the fetch request caused a bad request response from the server
 - `ErrUnauthorized`: unauthorized
