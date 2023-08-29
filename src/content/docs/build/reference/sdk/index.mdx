@@ -39,6 +39,11 @@ If you're someone who learns by example, there are also extensive [code examples
         pip install deta
         ```
     </Fragment>
+    <Fragment slot="pyAsync">
+        ```shell
+        pip install deta
+        ```
+    </Fragment>
     <Fragment slot="go">
         ```shell
         go get github.com/deta/deta-go
@@ -51,8 +56,8 @@ If you're someone who learns by example, there are also extensive [code examples
 ## Instantiating
 
 To start working with your Base or Drive, you need to import the Deta class and initialize it.
-To authenticate with Space, you need to either use the [`space dev`](/docs/en/build/fundamentals/development/local-development) command or provide a [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) in an environment variable called `DETA_PROJECT_KEY`.
-See [here](/docs/en/build/fundamentals/data-storage#data-keys) for detailed information.
+
+The SDK needs to be [authenticated](#authentication) with Space to talk with a Base or Drive. 
 
 Once you're authenticated, you can instantiate a subclass called Base with a database name of your choosing or Drive with a drive name of your choosing.
 
@@ -76,6 +81,23 @@ db = deta.Drive("my_store")
 books = deta.Base("books")
 ```
 </Fragment>
+<Fragment slot="pyAsync">
+```python
+from deta import Deta  # Import Deta
+
+# Initialize
+deta = Deta()
+
+# This how to connect to or create a database.
+db = deta.AsyncBase("simple_db")
+
+# This how to connect to or create a drive. (not async)
+db = deta.Drive("my_store")
+
+# You can create as many as you want without additional charges.
+books = deta.AsyncBase("books")
+```
+</Fragment>
 
 <Fragment slot="js">
 ```javascript
@@ -92,7 +114,10 @@ const drive = deta.Drive('my_store');
 
 // You can create as many as you want.
 const books = deta.Base('books');
+ 
 ```
+
+If you are using the JavaScript SDK in a Space app in the browser, the SDK will not authenticate on [public micros or public routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes).
 </Fragment>
 <Fragment slot="go">
 ```go
@@ -126,5 +151,12 @@ func main() {
 </Fragment>
 </LangTabs>
 
+## Authentication
 
-> ⚠️ Your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) is confidential and meant to be used by you. Anyone who has your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) can access your database. Please, do not share it or commit it in your code.
+Authentication is managed for you when developing locally with the `space dev` command, 
+when using the SDK inside a [Micro](/docs/en/build/fundamentals/the-space-runtime/micros), 
+or when using the SDK in a Space app running in the browser (the SDK will not authenticate on [public micros or public routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes)).
+
+Alternatively, you can authenticate with the Deta SDK by providing a [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) in an environment variable called `DETA_PROJECT_KEY`.
+
+> ⚠️ Your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) is confidential and meant to be used by you. Anyone who has your [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) can access your database. Please, do not share it, commit it in your code, or use it in the Browser.

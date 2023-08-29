@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
   import AstroLogo from "@/components/core/AstroLogo.svelte";
-  import { writable, get } from "svelte/store";
+  import { get } from "svelte/store";
 
   export const sideNavOpen = storedJsonWritable<boolean>("sideNavOpen", true);
-  export const sideNavPeeking = writable<boolean>(false);
+  export const sideNavPeeking = storedJsonWritable<boolean>("sideNavPeeking", false);
 
   export function updateBodyClass() {
     if (!document) return;
@@ -45,9 +45,6 @@
 
   setContext("currentPage", currentPage);
 
-  let op = false;
-  $: op = $sideNavOpen;
-
   // HANDLERS
   function onBeginPeek() {
     if ($sideNavOpen || innerWidth < 768) return;
@@ -88,6 +85,11 @@
       //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
       //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
       updateBodyClass();
+
+      document.addEventListener('astro:beforeload', () => {
+        currentPage = location.pathname;
+        updateBodyClass();
+      });
     }
   });
 </script>
@@ -122,7 +124,7 @@
           <NavSection
             depth={0}
             navItem={navTree.subItems[0]}
-            open={currentPage.includes("/learn") || currentPage === "/docs/en"}
+            open={currentPage.includes("/learn") || currentPage === "/docs/en/" || currentPage === "/docs/en"}
             animated={false}>
             <svelte:fragment slot="icon">
               <IconBook2
@@ -258,7 +260,7 @@
   // TODO make desktop only
   aside .nav-toggle {
     position: fixed;
-    z-index: 10000;
+    z-index: 100;
     bottom: var(--spacing-2);
     left: var(--spacing-2);
     color: hsl(var(--color-gray-50));
@@ -282,7 +284,7 @@
   // MOBILE
   aside {
     position: fixed;
-    z-index: 101;
+    z-index: 99;
     top: var(--spacing-18);
     left: 0;
     right: 0;
@@ -292,7 +294,7 @@
 
     nav {
       position: relative;
-      z-index: 1001;
+      z-index: 99;
       flex-direction: column;
       //margin-top: var(--spacing-18);
       //height: calc(100% - var(--header-height) - var(--spacing-12));
@@ -341,7 +343,7 @@
       position: relative;
       grid-column: 1;
       grid-row: 1 / -1;
-      z-index: 101;
+      z-index: 99;
       top: 0;
       right: unset;
       bottom: 0;

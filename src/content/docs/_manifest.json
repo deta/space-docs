@@ -77,7 +77,8 @@
               "content": ["base.mdx", "drive.mdx"]
             }
           ]
-        }
+        },
+        "faq.md"
       ]
     },
     {
@@ -97,7 +98,7 @@
         },
         {
           "name": "Your Data",
-          "content": ["collections.md", "guis.mdx"]
+          "content": ["collections.md", "guis.mdx", "exports.mdx"]
         },
         "your-account.md"
       ]

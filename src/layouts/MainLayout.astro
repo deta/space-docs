@@ -24,11 +24,9 @@ const currentPage = Astro.url.pathname;
 const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
 const githubEditUrl = `${CONFIG.GITHUB_EDIT_URL}/${currentFile}`;
 
-const isManual = currentPage.startsWith("/manual");
-const isMigration = currentPage.startsWith("/migration");
 const isDocs = currentPage.startsWith("/docs");
 
-const baseTitle = isManual ? 'Space Manual' : isMigration ? 'Migration Hub' : 'Space Docs';
+const baseTitle = 'Space Docs';
 
 ---
 

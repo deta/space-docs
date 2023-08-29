@@ -10,27 +10,17 @@ type Props = {
 const { currentPage } = Astro.props as Props;
 const normalizedCurrentPage = removeTrailingSlash(currentPage);
 
-const isManual = normalizedCurrentPage.startsWith("/manual");
-const isMigration = normalizedCurrentPage.startsWith("/migration");
 const isDocs = normalizedCurrentPage.startsWith("/docs");
-const postsKey = isManual ? "manual" : isMigration ? "migration" : "docs";
+const postsKey = "docs";
 
 const posts = await cacheOnFirstRun(`${postsKey}-posts`, async () => {
   let postsMd: MarkdownInstance<Record<string, any>>[] = []
-  if (isManual) {
-    postsMd = await Astro.glob("../../pages/manual/**/*.md");
-  } else if (isMigration) {
-    postsMd = await Astro.glob("../../pages/migration/**/*.md");
-  } else if (isDocs) {
+  if (isDocs) {
     postsMd = await Astro.glob("../../pages/docs/**/*.md");
   }
 
   let postsMdx: MDXInstance<Record<string, any>>[] = []
-  if (isManual) {
-    postsMdx = await Astro.glob("../../pages/manual/**/*.mdx");
-  } else if (isMigration) {
-    postsMdx = await Astro.glob("../../pages/migration/**/*.mdx");
-  } else if (isDocs) {
+   if (isDocs) {
     postsMdx = await Astro.glob("../../pages/docs/**/*.mdx");
   }
 

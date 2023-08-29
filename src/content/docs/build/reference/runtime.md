@@ -40,7 +40,6 @@ Micros also come pre-set with environment variables, accessible on the server si
 5. Micros only support read-only SQLite, which you could deploy with your code.
 6. The total upload size of your source code and assets for a single Micro is limited to 250 MB.
 7. Dependencies (pip, npm, etc) also can't exceed a combined size of 250MB.
-8. For unknown reasons, Google and Firebase packages for Python do not install successfully on Micros.
+8. For unknown reasons, Google and Firebase packages for Python might not install successfully on Micros.
 9. Currently, all requests received by Micros do not contain the client IP addresses. This makes most rate-limiting logic and other IP-dependant logic not work on Micros. But there is a workaround if you are using Cloudflare (link).
 10. Websockets and long-running processes do not work on Micros. (examples: socket.io or Discord bots won't work).
-11. Features like [Background Tasks](https://www.starlette.io/background/) and [Startup/Shutdown Events](https://www.starlette.io/events/) will currently not work as expected on Micros.

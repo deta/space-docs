@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { NavigationItem } from "@/utils/content";
   import NavItem from "./NavItem.svelte";
-  import { getContext } from "svelte";
+  import { getContext, onMount } from "svelte";
   import type { Writable } from "svelte/store";
   import IconChevronLeft from "@/components/core/Icon/IconChevronLeft.svelte";
   import CollapsibleGroup from "./Collapsible/CollapsibleGroup.svelte";
@@ -32,15 +32,20 @@
   function onToggle() {
     if (open) activeCollapsibleStore.set(collapsibleKey);
   }
-  async function onClickTitle() {
-    if (`/docs/en${navItem.path}` === currentPage) {
+  async function onClickTitle(e: any) {
+    if (`/docs/en${navItem.path}/` === document.location.pathname
+        || `/docs/en${navItem.path}` === document.location.pathname) {
+            e.preventDefault();
+            open = !open;
+        }
+    /*if (`/docs/en${navItem.path}` === currentPage) {
         open = !open;
         return;
     };
     const c = await getCollection("docs", (e => {
         if ((e.id.endsWith("index.md") || e.id.endsWith("index.mdx")) && `/docs/en/${e.id.split("/").slice(0, -1).join("/")}` === `/docs/en${navItem.path}`) return true;
     }))
-    if (c.length !== 0) document.location.replace(`/docs/en${navItem.path}`); //TODO: No replace?
+    if (c.length !== 0) document.location.replace(`/docs/en${navItem.path}`); //TODO: No replace?*/
     //if (open) setContext(`activeFolder_${depth}`, navItem.href);
     //if (open) $activeFolder = navItem.path; //activeFolder.set(navItem.href);
     /*const activeFolder = getContext<{depth: number, id: string}>("activeFolder");
@@ -50,6 +55,21 @@
             setContext("activeFolder", {depth, id: navItem.href});
         }*/
   }
+
+  function handleNavigation() {
+    if (document?.location.pathname.startsWith(`/docs/en${navItem.path}`)) {
+        open = true;
+        activeCollapsibleStore.set(collapsibleKey);
+        currentPage = document.location.pathname;
+        return;
+    };
+  }
+  onMount(() => {
+    handleNavigation();
+    document.addEventListener("astro:beforeload", () => {
+      handleNavigation();
+    });
+  });
 </script>
 
 <details bind:open on:toggle={onToggle}>
@@ -60,7 +80,7 @@
         <slot name="icon" />
         <!--<IconRocket size={26} strokeWidth={2} style="currentColor" color="hsl(var(--color-base-green), 40%)" />-->
       </div>
-      <span class="title" class:open={open}>{navItem.title}</span>
+      <a href="/docs/en{navItem.path}" class="title" class:open={open}>{navItem.title}</a>
     </div>
     <span class="toggle-icon">
       <IconChevronLeft size={20} strokeWidth={2} />

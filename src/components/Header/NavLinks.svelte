@@ -2,14 +2,12 @@
   import { getMetadata } from '@/utils/metadata';
   	import { onMount } from "svelte";
 
-	export let isManual = false;
-	export let isMigration = false;
 	export let isDocs = false;
 	export let isChangelog = false;
 
 	let isDevMode = false
 	let isAuthenticated = false
-	
+
 	onMount(async () => {
 		const data = await getMetadata();
 		isDevMode = data.isDevMode;
@@ -25,22 +23,9 @@
 	{/if}
 
 	{#if isDocs}
-		<a href="/manual/">Manual</a>
-		<a href="/changelog">Changelog</a>
-	{:else if isMigration}
-		<a href="/docs/">Space Docs</a>
-		<a href="/manual/">Space Manual</a>
-		<a href="/changelog">Changelog</a>
-	{:else if isManual}
-		{#if isDevMode}
-			<a href="/docs/">Developer Docs</a>
-		{/if}
 		<a href="/changelog">Changelog</a>
 	{:else if isChangelog}
-		<a href="/manual/">Manual</a>
-		{#if isDevMode}
-			<a href="/docs/">Developer Docs</a>
-		{/if}
+		<a href="/docs/">Docs</a>
 	{/if}
 
     <a href="https://go.deta.dev/discord">Join Discord</a>

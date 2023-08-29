@@ -30,7 +30,7 @@
     isDevMode = data.isDevMode;
     isAuthenticated = data.isAuthenticated;
 
-    allowDocsSearching = window.location.pathname.startsWith('/docs') || window.location.pathname.startsWith('/migration')
+    allowDocsSearching = window.location.pathname.startsWith('/docs')
 
     createActions();
     initialized = true;
@@ -43,24 +43,8 @@
     // Reset actions
     actions = [];
 
-    const isMigration = window.location.pathname.startsWith("/migration")
-    const isManual = window.location.pathname.startsWith("/manual")
     const isDocs = window.location.pathname.startsWith("/docs")
     const isChangelog = window.location.pathname.startsWith("/changelog")
-
-    // Go to Manual
-    if (!isManual) {
-      actions.push({
-        id: "manual",
-        name: "Go to Manual",
-        icon: ArrowRight,
-        section: "Navigate",
-        actionText: "Navigate",
-        handler() {
-          window.location.href = "/manual";
-        },
-      });
-    }
 
     // Go to Dosc
     if (!isDocs && isDevMode) {
@@ -75,19 +59,6 @@
         },
       });
     }
-
-    // if (!isMigration && isDevMode) {
-    //   actions.push({
-    //     id: "migration",
-    //     name: "Go to Migration Hub",
-    //     icon: ArrowRight,
-    //     section: "Navigate",
-    //     actionText: "Navigate",
-    //     handler() {
-    //       window.location.href = "/migration";
-    //     },
-    //   });
-    // }
 
     // Go to Changelog
     if (!isChangelog) {

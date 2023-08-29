@@ -47,7 +47,7 @@
     //max-width: 100vw;
     //width: 100%;
     padding-inline: var(--spacing-8);
-    padding-bottom: calc(var(--header-height) + var(--spacing-4));
+    padding-bottom: calc(var(--header-height) + var(--spacing-8));
     padding-top: var(--spacing-6);
   }
 

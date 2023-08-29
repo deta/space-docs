@@ -163,3 +163,27 @@ Optional args:
 ```bash
 space validate
 ```
+
+## `space builder env`
+
+You can use `space builder env` to fetch or update the environment variables in your project's development instance. Note that this is completely decoupled from your local [Spacefile](/docs/en/reference/spacefile/), and you need to push a new development instance if you add or remove a custom environment variable.
+
+Args:
+
+- `-d, --dir string` src of project (default "./")
+- `-g, --get string` file name to write the env variables
+- `-h, --help` help for env
+- `-i, --id project_id` project_id of project
+- `-m, --micro string` micro name to operate on
+- `-s, --set string` file name to read env variables from (default ".env")
+
+Usage examples:
+
+```
+# fetch env variables from the micro named `backend` and write to a file
+$ space builder env --get .env.backend --micro backend
+# update env variables in micro `backend` with the env file `.env.backend`
+$ space builder env --set .env.backend --micro backend
+```
+
+If your project contains only a single micro, there's no requirement to explicitly specify the `--micro` flag. `space-cli` will automatically default to it.

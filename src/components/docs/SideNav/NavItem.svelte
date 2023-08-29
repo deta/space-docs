@@ -8,17 +8,30 @@
                 depth = 1,
                 navItem: TreeNavigationItem;
 
-    onMount(() => {
-        if (document && (navItem.subItems?.length <= 0)) {
+    function handleActive() {
+        if (document) {
             let docPath = document?.location.pathname;
-            const navUrl = new URL(`/docs/en${navItem.path}`, document?.location.origin);
+            /*const navUrl = new URL(navItem.path, document?.location.origin);
+            if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);*/
+            active = docPath === `/docs/en${navItem.path}`;
+        }
+    }
+
+    onMount(() => {
+        handleActive();
+        document.addEventListener('astro:beforeload', () => {
+            handleActive();
+        });
+        /*if (document) {
+            let docPath = document?.location.pathname;
+            const navUrl = new URL(navItem.path, document?.location.origin);
             if (docPath.endsWith("/")) docPath = docPath.slice(0, -1);
             active = docPath === navUrl.pathname;
-        }
+        }*/
     })
 </script>
 
-<li class:folder={navItem.subItems.length >= 1} class:active style="--depth: {depth};"><!-- --depth: calc({depth} * var(--spacing-4)); -->
+<li class:folder={navItem.subItems.length >= 1} class:active={!(navItem.subItems.length >= 1) && active} style="--depth: {depth};"><!-- --depth: calc({depth} * var(--spacing-4)); -->
     {#if (navItem.subItems && navItem.subItems.length > 0)}
         <NavFolder {navItem} {depth}/>
     {:else}

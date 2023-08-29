@@ -4,7 +4,6 @@
 
   let activeStore = writable<string>("");
   setContext("activeCollapsibleStore", activeStore);
-  setContext("foo", "bar");
 </script>
 
 <slot/>

@@ -43,6 +43,39 @@ expire_at = datetime.fromisoformat("2023-01-01T00:00:00")
 db.put({"name": "max", "age": 28}, "max28", expire_at=expire_at)
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+```py
+from deta import Deta
+
+deta = Deta("Data Key") #instantiate with a Data Key, or env DETA_PROJECT_KEY
+
+db = deta.AsyncBase("simple_db")
+
+# Store objects.
+# A key will be automatically generated.
+await db.put({"name": "alex", "age": 77})
+# We will use "one" as a key.
+await db.put({"name": "alex", "age": 77}, "one")
+# The key could also be included in the object itself.
+await db.put({"name": "alex", "age": 77, "key": "one"})
+
+# Simple types.
+await db.put("hello, worlds")
+await db.put(7)
+# "success" is the value and "smart_work" is the key.
+await db.put("success", "smart_work")
+await db.put(["a", "b", "c"], "my_abc")
+
+# Expire in 300 seconds.
+await db.put({"name": "alex", "age": 23}, "alex23", expire_in=300)
+# Expire at date.
+expire_at = datetime.fromisoformat("2023-01-01T00:00:00")
+await db.put({"name": "max", "age": 28}, "max28", expire_at=expire_at)
+
+# Close db session
+await db.close()
+```
+  </Fragment>
   <Fragment slot="js">
 ```js
 const Deta = require('deta');
@@ -172,6 +205,22 @@ If the record is found, will return an object, else `None`:
 }
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+```py
+item = await db.get("one") # retrieving item with key "one"
+
+# Close db session
+await db.close()
+```
+
+If the record is found, will return an object, else `None`:
+
+```py
+{
+  "name": "alex", "age": 77, "key": "one"
+}
+```
+  </Fragment>
   <Fragment slot="js">
 ```js
 const item = await db.get('one'); // retrieving item with key "one"
@@ -253,6 +302,34 @@ db.insert({"message": "will be deleted"}, "temp_greeting", expire_in=300)
 # Expire at date.
 expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
 db.insert({"message": "will_be_deleted"}, "temp_greeting2", expire_at=expire_at)
+```
+  </Fragment>
+  <Fragment slot="pyAsync">
+```py
+from deta import Deta
+
+deta = Deta("Data Key") #instantiate with a Data Key, or env DETA_PROJECT_KEY
+
+db = deta.AsyncBase("simple_db")
+
+# Will succeed, a key will be auto-generated.
+await db.insert("hello, world")
+
+# Will succeed.
+await db.insert({"message": "hello, world"}, "greeting1")
+
+# Will raise an error as key "greeting1" already exists.
+await db.insert({"message": "hello, there"}, "greeting1")
+
+# Expire in 300 seconds.
+await db.insert({"message": "will be deleted"}, "temp_greeting", expire_in=300)
+
+# Expire at date.
+expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
+await db.insert({"message": "will_be_deleted"}, "temp_greeting2", expire_at=expire_at)
+
+# Close db session
+await db.close()
 ```
   </Fragment>
   <Fragment slot="js">
@@ -351,6 +428,55 @@ db.put_many(
     [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
     expire_at=expire_at,
 )
+```
+
+Output example:
+
+```json
+{
+  "processed": {
+    "items": [
+      {
+        "hometown": "Copernicus City",
+        "key": "one",
+        "name": "Beverly"
+      },
+      {
+        "key": "5feqybn7lb05",
+        "value": ["Namaskāra", "hello", "marhabaan", "yeoboseyo"]
+      },
+      {
+        "key": "jyesxxlrezo0",
+        "value": "dude"
+      }
+    ]
+  }
+}
+```
+  </Fragment>
+  <Fragment slot="pyAsync">
+```py
+await db.put_many([
+    {"name": "Beverly", "hometown": "Copernicus City", "key": "one"},  # Key provided.
+    ["Namaskāra", "marhabaan", "hello", "yeoboseyo"],  # Key auto-generated.
+    "dude",  # Key auto-generated.
+])
+
+# Put many to expire in 300 seconds.
+await db.put_many(
+    [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
+    expire_in=300,
+)
+
+# Put many with expiry date.
+expire_at = datetime.datetime.fromisoformat("2023-01-01T00:00:00")
+await db.put_many(
+    [{"key": "tmp-1", "value": "test-1"}, {"key": "tmp-2", "value": "test-2"}],
+    expire_at=expire_at,
+)
+
+# Close db session
+await db.close()
 ```
 
 Output example:
@@ -523,6 +649,24 @@ updates = {
 db.update(updates, "user-a")
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+```py
+updates = {
+    "profile.age": 33,  # Set "profile.age" to 33.
+    "profile.active": True,  # Set "profile.active" to true.
+    "profile.email": "jimmy@deta.sh",  # Create a new attribute "profile.email".
+    "profile.hometown": users.util.trim(),  # Remove "profile.hometown".
+    "on_mobile": users.util.trim(),  # Remove "on_mobile".
+    "purchases": users.util.increment(2),  # Increment by 2.
+    "likes": users.util.append("ramen"),  # Append "ramen" to "likes".
+}
+
+await db.update(updates, "user-a")
+
+# Close db session
+await db.close()
+```
+  </Fragment>
   <Fragment slot="js">
 ```js
 const updates = {
@@ -642,6 +786,49 @@ Then the following fetch calls:
 ```py
 first_result = db.fetch({"age?lt": 30})
 second_result = db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
+```
+
+will return following data:
+
+`first_result.items`:
+
+```json
+[
+  {
+    "key": "key-1",
+    "name": "Wesley",
+    "age": 27,
+    "hometown": "San Francisco"
+  }
+]
+```
+
+`second_result.items`:
+
+```json
+[
+  {
+    "key": "key-2",
+    "name": "Beverly",
+    "age": 51,
+    "hometown": "Copernicus City"
+  },
+  {
+    "key": "key-3",
+    "name": "Kevin Garnett",
+    "age": 43,
+    "hometown": "Greenville"
+  }
+]
+```
+  </Fragment>
+  <Fragment slot="pyAsync">
+```py
+first_result = await db.fetch({"age?lt": 30})
+second_result = await db.fetch([{"age?gt": 50}, {"hometown": "Greenville"}])
+
+# Close db session
+await db.close()
 ```
 
 will return following data:
@@ -803,6 +990,20 @@ while res.last:
     all_items += res.items
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+```py
+res = await db.fetch()
+all_items = res.items
+
+# Continue fetching until "res.last" is None.
+while res.last:
+    res = await db.fetch(last=res.last)
+    all_items += res.items
+
+# Close db session
+await db.close()
+```
+  </Fragment>
   <Fragment slot="js">
 ```js
 let res = await db.fetch();
@@ -931,6 +1132,9 @@ drive.put("hello.txt", {path: "./my/file/path/file.txt"});
 drive.put("hello.txt", {path: "./my/file/path/file.txt", contentType: "text/plain"});
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+Async not supported yet.
+  </Fragment>
   <Fragment slot="go">
 ```go
 import (
@@ -991,6 +1195,9 @@ with open("large_file.txt", "wb+") as f:
     large_file.close()
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+Async not supported yet.
+  </Fragment>
   <Fragment slot="js">
 ```js
 const buf = await drive.get("hello.txt");
@@ -1048,6 +1255,9 @@ func main() {
 deleted_file = drive.delete("hello.txt")
 ```
   </Fragment>
+  <Fragment slot="pyAsync">
+Async not supported yet.
+  </Fragment>
   <Fragment slot="js">
 ```js
 const deletedFile = await drive.delete("hello.txt");
@@ -1094,6 +1304,9 @@ func main() {
 ```py
 result = drive.delete_many(["file1.txt", "file2.txt", "file3.txt"])
 ```
+  </Fragment>
+  <Fragment slot="pyAsync">
+Async not supported yet.
   </Fragment>
   <Fragment slot="js">
 ```js
@@ -1172,6 +1385,9 @@ res_with_prefix = drive.list(prefix="/blog")
 res_with_limit = drive.list(limit=100)
 res_with_prefix_limit = drive.list(prefix="/blog", limit=100)
 ```
+  </Fragment>
+  <Fragment slot="pyAsync">
+Async not supported yet.
   </Fragment>
   <Fragment slot="js">
 ```js

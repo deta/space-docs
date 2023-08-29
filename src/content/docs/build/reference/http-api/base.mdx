@@ -384,6 +384,7 @@ List items that match a [query](/docs/en/reference/base/queries).
 | `query`         | No       | `list`   | list of a [query](/docs/en/reference/base/queries)|
 | `limit`         | No       | `int`    | no of items to return. min value 1 if used     |
 | `last`          | No       | `string` | last key seen in a previous paginated response |
+| `sort`          | No       | `string` | sort order based on item keys, `asc` or `desc`, default 'asc'|
 
 
     ##### Example
@@ -442,7 +443,7 @@ List items that match a [query](/docs/en/reference/base/queries).
     ```
 
     Bad requests occur in the following cases:
-    - if a query is made on the `key`
+    - if an unsupported query is made on the `key`
     - if a query is not of the right format
     - if `limit` is provided in the request and is less than 1
   </Fragment>

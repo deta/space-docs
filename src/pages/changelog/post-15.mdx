@@ -1,0 +1,112 @@
+---
+title: "Delete, Export & More"
+date: "16 Aug 2023"
+layout: "@changelogs"
+description: "Delete and export your data & more. Quality of life improvements."
+---
+
+import DetaHeart from '@/components/DetaHeart.astro'
+import Image from '@/components/Image.astro'
+
+Your personal cloud computer is one of the few places on the web where you have authority over your apps and data.
+Whereas most web services want to pull you in, on Deta Space you can now pull out, either bit by bit, or all at once.
+You can now delete just about anything in your Space: your apps, projects you’re building, apps you’ve released, all your data, even your account. 
+But don’t worry, you can export your data too — it’s yours to keep and carry.
+
+We've also got longer sessions and the ability to interact with the Builder Instance's environment from the CLI.
+
+## Manage your Data
+
+### Exporting Data
+
+You can now backup and take your data outside of Space, to use for whatever you want.
+
+<Image src="/changelog_assets/export-data.png" alt="Export Data" width="90%" background />
+
+Export your data from the "App Data" view of your app instance, or from the "General" tab of any Collection's "Settings". 
+This will export all Bases and Drives that to a ZIP file that you can download.
+
+### Wipe App Data
+
+Want to start fresh with an app you're using? You can now wipe all the data in your app instance from the "App Data" view of your app instance. 
+This will delete all the data from your app. 
+
+<Image src="/changelog_assets/clear-app-data.png" alt="Clear App Data" width="90%" background />
+
+### Delete App, Keep Data
+
+Sometimes, you want the opposite of wiping the data, which is deleting the app, but keeping the data. Sounds wild, right? From your app's "Settings" menu you can now export your data to a Collection whenever you delete an app.
+
+<Image src="/changelog_assets/delete-app-keep-data.png" alt="Delete App" width="90%" background />
+
+## Managing your Project
+
+### Delete Releases
+
+Ever released something by accident or want to delete an old release? You can now do that from the "Publish" tab in your project's dashboard in Builder.
+
+<Image src="/changelog_assets/manage-release.png" alt="Manage Release" width="90%" background />
+
+If the release doesn't have any installations yet, you can delete it. If it has installations, you can unlist it from Discovery instead. This will remove the app's Discovery page and the app from the Discovery homepage. Existing users who installed the app will still be able to use their copy.
+
+### Delete Project
+
+You can now also delete an entire project in Builder. This will delete all the releases of your app. If your app is listed on Discovery and others have installed it, you won't be able to delete it for now. We are working on a way to do this safely.
+
+<Image src="/changelog_assets/unlist-project.png" alt="Unlist Project" width="90%" background />
+
+### Unlist a Project from Discovery
+
+In addition to individual releases, you can unlist an entire app from a project's Settings menu in Builder. This will remove the app and all releases from being listed publicly. Existing users who have installed your app will continue to be able to use it.
+
+## Deleting Resources
+
+### Delete Collections
+
+In addition to all the other resources, you can now delete Collections as well. This will delete all the data in a Collection and remove it from your Space.
+
+<Image src="/changelog_assets/delete-collection.png" alt="Unlist Project" width="90%" background />
+
+You can do this from the "Settings" menu of your Collection.
+
+### Delete Account
+
+And lastly, this one hurts a bit 💔, but hey, you're in control.
+
+<Image src="/changelog_assets/delete-account.png" alt="Unlist Project" width="90%" background />
+
+You can now delete your entire Space account with a simple button click as well. This will delete all your projects, apps, data, and everything else. You can do this from the "Settings" menu of your account.
+
+## Quality of Life Improvements
+
+We've also got two quality of life improvements in longer sessions and interacting with environment variables in local dev.
+
+### Longer Sessions
+
+One of the biggest complaints with Deta was short sessions, requiring you to constantly log in. We extended the sessions, so after logging in to Space, you will stay logged in for 30 days. You can still log out manually if you need to.
+
+### Environment Variables and the CLI
+
+You can now use the `space builder env` command of the [Space CLI](https://deta.space/docs/en/build/reference/cli) to fetch or update the environment variables in your project's Builder instance.
+
+Fetching them:
+
+```bash
+space builder env --get .env
+
+# writes Builder Instance environment to local .env file
+```
+
+Update them:
+
+```bash
+space builder env --set .env
+
+# writes local .env file to Builder Instance environment
+```
+
+Note that this command is completely decoupled from your local [`Spacefile`](/docs/en/build/reference/spacefile/). 
+
+When you add or remove variables to your space environment via the `Spacefile`, you need to use `space push` before `space builder env` will update the new variable.
+
+Thank you for all the valuable feedback — please continue to share your thoughts as we work to build and improve Space.

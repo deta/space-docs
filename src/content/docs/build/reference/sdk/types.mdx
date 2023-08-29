@@ -139,6 +139,7 @@ interface UpdateOptions {
 interface FetchOptions {
   limit?: number;
   last?: string;
+  desc?: boolean;
 }
 ```
 
@@ -146,6 +147,7 @@ interface FetchOptions {
 | -------- | -------- | ---------------------------------------------------------------- |
 | `limit?` | `number` | Maximum number of items you want to retreive, minimum value `1`. |
 | `last?`  | `string` | Last key seen in a previous paginated response.                  |
+| `desc?`  | `bool`   | Sort items in descending order by their keys, default `false`.   |
 
 #### `PutResponse`
 
@@ -346,6 +348,7 @@ type FetchInput struct {
     Dest interface{}
     Limit int
     LastKey string
+    Desc bool
 }
 ```
 
@@ -355,6 +358,7 @@ type FetchInput struct {
 | `Dest`    | `interface{}`     | The destination to store the results.                                                          |
 | `Limit`   | `int`             | The maximum number of items to fetch. A value of `0` or less applies no limit.                 |
 | `LastKey` | `string`          | The last key evaluated in a paginated response. Leave empty if not a subsequent fetch request. |
+| `Desc`    | `bool`            | Sort items in descending order by their keys, default `false`.                                 |
 
 ### Drive types
 
