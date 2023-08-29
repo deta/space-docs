@@ -25,6 +25,17 @@ import { ViewTransitions } from 'astro:transitions';
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script is:inline>
+  function copyCode(el) {
+    const t = el.target;
+    const code = t.dataset.code;
+    navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+      if (result.state === "granted" || result.state === "prompt") {
+        navigator.clipboard.writeText(code);
+      }
+    });
+
+  }
+
 	function beforeLoad() {
         const root = document.documentElement;
         const theme = localStorage.getItem('theme');
@@ -55,6 +66,14 @@ import { ViewTransitions } from 'astro:transitions';
     }
     beforeLoad();
     document.addEventListener('astro:beforeload', beforeLoad);
+
+    function load() {
+      // Add listeners to all code blocks
+      document.querySelectorAll(".expressive-code .copy > button").forEach((button) => {
+        button.addEventListener("click", copyCode);
+      });
+    }
+    document.addEventListener('astro:load', load);
 </script>
 
 <script defer data-domain='deta.space' src='https://plausible.io/js/plausible.js'></script>
