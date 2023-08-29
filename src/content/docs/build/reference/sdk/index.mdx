@@ -4,6 +4,7 @@ layout: "@layouts/DocsPageLayout.astro"
 ---
 
 import LangTabs from "@/components/Tabs/LangTabs.astro"
+import RuntimeTabs from "@/components/Tabs/RuntimeTabs.astro"
 import PackageManagerTabs from "@/components/Tabs/PackageManagerTabs.astro";
 
 The Deta library is the easiest way to store and retrieve data from your [Deta Base](./base) and [Deta Drive](./drive) in a Collection.
@@ -30,6 +31,13 @@ If you're someone who learns by example, there are also extensive [code examples
             <Fragment slot="yarn">
                 ```shell
                 yarn add deta
+                ```
+            </Fragment>
+            <Fragment slot="browser">
+                ```html
+                <script type="module">
+                    import { Deta } from 'https://cdn.deta.space/js/deta@latest/deta.mjs';
+                </script>
                 ```
             </Fragment>
         </PackageManagerTabs>
@@ -63,7 +71,7 @@ Once you're authenticated, you can instantiate a subclass called Base with a dat
 
 Deta Bases and Drives are created for you automatically when you start using them.
 
-<LangTabs>
+<RuntimeTabs>
     <Fragment slot="py">
 ```python
 from deta import Deta  # Import Deta
@@ -99,7 +107,7 @@ books = deta.AsyncBase("books")
 ```
 </Fragment>
 
-<Fragment slot="js">
+<Fragment slot="node">
 ```javascript
 const { Deta } = require('deta'); // import Deta
 
@@ -117,8 +125,29 @@ const books = deta.Base('books');
  
 ```
 
-If you are using the JavaScript SDK in a Space app in the browser, the SDK will not authenticate on [public micros or public routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes).
 </Fragment>
+<Fragment slot="browser">
+```html
+<script type="module">
+    // import
+    import { Base, Drive } from 'https://cdn.deta.space/js/deta@latest/deta.mjs'
+
+    // Connect to or create a Base
+    const db = Base('my_base');
+
+    // Connect to or create a Drive
+    const drive = Drive('my_drive');
+
+    // You can connect to or create as many as you want
+    const books = Base('books');
+</script>
+```
+
+> ⚠️ Do not use the browser version of the SDK with your secret key hard coded. You are exposing your key. The browser SDK is strictly meant for use in Space Apps' private routes.
+
+</Fragment>
+
+
 <Fragment slot="go">
 ```go
 import (
@@ -149,7 +178,7 @@ func main() {
 }
 ```
 </Fragment>
-</LangTabs>
+</RuntimeTabs>
 
 ## Authentication
 
