@@ -23,7 +23,7 @@
 	{/if}
 
 	{#if isDocs}
-		<a href="/changelog">Changelog</a>
+		<a href="/blog">Blog</a>
 	{:else if isChangelog}
 		<a href="/docs/">Docs</a>
 	{/if}

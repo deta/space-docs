@@ -10,6 +10,7 @@ import preact from "@astrojs/preact";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import {generateIndexPages} from './src/generate-indexes'
+import tailwind from '@astrojs/tailwind'
 
 const headingIcon = (node) => {
   let e = new HTMLSpanElement();
@@ -19,7 +20,7 @@ const headingIcon = (node) => {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [astroExpressiveCode(), mdx(), svelte(), preact(), react()],
+  integrations: [astroExpressiveCode(), mdx(), svelte(), preact(), react(), tailwind()],
   site: "https://deta.space/",
   base: "/",
   markdown: {

@@ -10,7 +10,7 @@ import ThemeToggle from './ThemeToggle.svelte';
 // import Search from './Search';
 
 type Props = {
-	layout: 'changelogs' | 'documentation';
+	layout: 'blogs' | 'documentation';
 	currentPage: string;
 };
 
@@ -21,10 +21,10 @@ const isDocs = currentPage.startsWith("/docs");
 const isChangelog = currentPage.startsWith("/changelog");
 
 let title = 'Space Docs';
-if (isChangelog) title = 'Space Changelog';
+if (isChangelog) title = 'Space Blog';
 
 let titleLink = '/docs/';
-if (isChangelog) titleLink = '/changelog/';
+if (isChangelog) titleLink = '/blog/';
 ---
 
 <header>
@@ -44,7 +44,7 @@ if (isChangelog) titleLink = '/changelog/';
 
 		{KNOWN_LANGUAGE_CODES.length > 1 && <LanguageSelect lang={lang} client:idle />}
 
-		<NavLinks client:only="svelte" isDocs={isDocs} isChangelog={isChangelog} />
+		<!-- <NavLinks client:only="svelte" isDocs={isDocs} isChangelog={isChangelog} /> -->
 
 		<div class="theme-toggle">
 			<ThemeToggle client:visible />

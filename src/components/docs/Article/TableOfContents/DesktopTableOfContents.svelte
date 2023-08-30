@@ -4,7 +4,8 @@
 
   export let pageTitle: string | undefined,
     headings: MarkdownHeading[],
-    maxDepth: number = 2;
+    maxDepth: number = 2,
+    blur = true;
 
   {
     // Exclude headings too deep & normalize depth !!  needs to bet at the top of script
@@ -90,6 +91,7 @@
         {#each headings as heading, i}
           <li
             class:active={activeHeadingSlug === heading.slug}
+            class:reset={!blur}
             style="--offset: calc({heading.depth - 1} * var(--spacing-3));">
             <a on:click={() => onLinkClick(heading.slug)} href="#{heading.slug}">{heading.text}</a>
           </li>
@@ -170,7 +172,9 @@
     li {
       border-left: 2px hsl(var(--color-gray-95)) solid;
       padding-left: var(--spacing-4);
-      filter: blur(1px);
+      &:not(.reset) {
+        filter: blur(1px);
+      }
       will-change: filter, border-color, color;
       transition: filter 0.2s ease-in-out;
 
@@ -179,7 +183,7 @@
         border-color: hsl(var(--color-gray-70));
         //border-color: var(--theme-accent);
         font-weight: 600;
-        
+
         a {
           opacity: 0.5;
         }

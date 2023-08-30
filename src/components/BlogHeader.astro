@@ -1,0 +1,23 @@
+---
+import AstroLogo from "./Header/AstroLogo.astro";
+import SkipToContent from "./Header/SkipToContent.astro";
+import ThemeToggle from "./Header/ThemeToggle.svelte";
+import HeaderLinks from "./HeaderLinks.svelte";
+---
+
+<header class="!flex z-50 !w-full !pt-6  px-4 max-w-full">
+  <SkipToContent />
+  <nav
+    class="w-full mx-auto max-w-2xl flex flex-row items-center justify-between"
+    title="Top Navigation">
+    <a href={"/blog"} class="flex items-center !no-underline">
+      <AstroLogo size={28} />
+      <p class="text-xl font-semibold text-seashell-1000 dark:text-seashell-50">Deta Space Blog</p>
+    </a>
+
+    <div class="flex flex-row items-center space-x-4 gap-4">
+      <HeaderLinks />
+      <ThemeToggle client:visible />
+    </div>
+  </nav>
+</header>
