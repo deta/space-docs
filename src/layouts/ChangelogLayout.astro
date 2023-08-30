@@ -12,7 +12,7 @@ import Header from '../components/Header/Header.astro';
 import RightSidebar from '../components/RightSidebar/RightSidebar.astro';
 import Footer from '../components/Footer/Footer.astro';
 
-type Props = { frontmatter: CONFIG.FrontmatterChangelog; headings: MarkdownHeading[]; };
+type Props = { frontmatter: CONFIG.FrontmatterBlog; headings: MarkdownHeading[]; };
 const { headings, frontmatter } = Astro.props as Props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);

@@ -13,7 +13,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles*"],
       "@docs": ["src/layouts/MainLayout.astro"], // TODO: REMOVE
-      "@changelogs": ["src/layouts/ChangelogLayout.astro"] // TODO: Remove
+      "@blogs": ["src/layouts/ChangelogLayout.astro"] // TODO: Remove
     }
   }
 }
