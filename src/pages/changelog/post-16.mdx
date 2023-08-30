@@ -27,13 +27,14 @@ npm install deta@latest
 
 Alternatively, import it in your app from Space's CDN:
 
-```javascript
+```js
 const deta = await import("https://cdn.deta.space/js/deta@2.0.0/deta.mjs");
 ```
 
 In either case, your app can start reading and writing data in the browser:
 
-```JavaScript
+
+```js
 const base = deta.Base('my-base');
 const drive = deta.Drive('my-drive');
 
@@ -83,10 +84,25 @@ If you check the key column in any [Base UI](https://deta.space/docs/en/use/your
 
 We now have support asynchronous interactions with Deta Base in the Python SDK. See the "Python (async)" tab [in the docs for more](https://deta.space/docs/en/build/reference/sdk).
 
+```py
+from deta import Deta
+
+deta = Deta() #instantiate with a Data Key, or env DETA_PROJECT_KEY
+
+db = deta.AsyncBase("my_db")
+
+await db.put({"name": "alex", "age": 77, "key": "one"})
+
+await db.put({"name": "alex", "age": 23}, "alex23", expire_in=300)
+
+# close db session
+await db.close()
+```
+
 
 ### Even More
-- [Removed `detalib` from the JS SDK, which was causing a lot of errors](https://github.com/deta/deta-javascript/pull/63/files)
-- [Pushed an error message fix in JS SDK](https://github.com/deta/deta-javascript/pull/64/files)
-- [Fixed wrong exit code in the CLI](https://github.com/deta/space-cli/pull/147/files)
-- [Fixed build failures when a top level directory conflicts with .spaceignore](https://github.com/deta/space-cli/pull/148)
-- [Fixed  a bug where you couldn't serve `./` on Micros with a `static` engine](https://github.com/deta/space-cli/pull/149)
+- Removed `detalib` from the JS SDK, which was causing a lot of errors: [more](https://github.com/deta/deta-javascript/pull/63/files)
+- Pushed an error message fix in JS SDK: [more](https://github.com/deta/deta-javascript/pull/64/files)
+- Fixed wrong exit code in the CLI: [more](https://github.com/deta/space-cli/pull/147/files)
+- Fixed build failures when a top level directory conflicts with .spaceignore: [more](https://github.com/deta/space-cli/pull/148)
+- Fixed  a bug where you couldn't serve `./` on Micros with a `static` engine: [more](https://github.com/deta/space-cli/pull/149)
