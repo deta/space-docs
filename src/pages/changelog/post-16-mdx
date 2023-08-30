@@ -34,8 +34,8 @@ const deta = await import("https://cdn.deta.space/js/deta@latest/deta.mjs");
 In either case, your app can start reading and writing data in the browser:
 
 ```JavaScript
-const base = deta.Base('random-base');
-const drive = deta.Drive('random-drive');
+const base = deta.Base('my-base');
+const drive = deta.Drive('my-drive');
 
 await base.putMany(['a', 'b', 'c', 'd']);
 await drive.put('a', {data: 'data'});
@@ -50,7 +50,7 @@ console.log(await drive.list());
 If your app is running on Deta Space it will just work. No need for keys or a backend. Just low latency personal applications. Check out [this repo](https://github.com/deta/todo-app) for an example app that uses the new SDK on the client.
 
 Maxu, author of [PingBack](https://deta.space/discovery/@maximilianheidenreich/pingback) and Deta Team member, had this to say after getting his hands on an early release:
-> *"This client SDK is killer, I don't have to bootstrap API routes anymore. Sooooo buttery. Smokin' fast!"* 
+> *"Not needing to manually set up API routes is an instant 10x increase. Some people choose React Server Components to avoid that. I prefer avoiding the server (and Next.js)entirely with the Deta Browser SDK."* 
 
 A few notes:
 - The Browser SDK supports all the same methods and features as the existing SDK
