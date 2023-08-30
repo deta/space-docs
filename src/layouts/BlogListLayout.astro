@@ -24,16 +24,17 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
   </head>
 
 
-  <body>
+  <body class="h-full min-h-screen relative w-full block">
     <!-- <Header layout="changelogs" currentPage={currentPage} /> -->
-    <main class="h-full min-h-screen relative w-full px-4 py-16 md:py-24 bg-seashell-50 dark:bg-seashell-900 md:max-w-3xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
+    <main class="px-4 py-16 md:py-24 bg-seashell-50 dark:bg-seashell-900 md:max-w-4xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
       <p>
         A rundown of the latest releases, enhancements, design updates, and important bug fixes in
         your personal cloud.
       </p>
       <slot />
     </main>
-    <!-- <Footer path={currentFile} /> -->
+
+    <Footer path={currentFile} />
 
     <TeletypeContainer />
     <script
