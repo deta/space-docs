@@ -16,6 +16,7 @@ import Header from "../components/Header/Header.astro";
 import RightSidebar from "../components/RightSidebar/RightSidebar.astro";
 import Footer from "../components/Footer/Footer.astro";
 import BlogHeader from "@/components/BlogHeader.astro";
+import DesktopTableOfContents from "@/components/docs/Article/TableOfContents/DesktopTableOfContents.svelte";
 
 type Props = { frontmatter: CONFIG.FrontmatterBlog; headings: MarkdownHeading[] };
 const { headings, frontmatter } = Astro.props as Props;
@@ -206,7 +207,8 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
         </section>
       </article>
       <aside id="grid-right" class="grid-sidebar as-right" title="Table of Contents">
-        <RightSidebar headings={headings} githubEditUrl={""} />
+        <!-- <RightSidebar headings={headings} githubEditUrl={""} /> -->
+        <DesktopTableOfContents headings={headings}/>
       </aside>
     </main>
     <Footer path={currentFile} />
