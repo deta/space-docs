@@ -50,7 +50,7 @@ console.log(await drive.list());
 If your app is running on Deta Space it will just work. No need for keys or a backend. Just low latency personal applications. Check out [this repo](https://github.com/deta/todo-app) for an example app that uses the new SDK on the client.
 
 Maxu, author of [PingBack](https://deta.space/discovery/@maximilianheidenreich/pingback) and Deta Team member, had this to say after getting his hands on an early release:
-> *"Not needing to manually set up API routes is an instant 10x increase. Some people choose React Server Components to avoid that. I prefer avoiding the server (and Next.js)entirely with the Deta Browser SDK."* 
+> *"Some ppl. try to avoid writing API routes and use React & Next.JS server components. I avoid both with the Browser SDK. Instant 10x."* 
 
 A few notes:
 - The Browser SDK supports all the same methods and features as the existing SDK
