@@ -10,7 +10,7 @@ type Props = {
 const { headings, githubEditUrl } = Astro.props as Props;
 ---
 
-<nav class="sidebar-nav" aria-labelledby="grid-right">
+<nav class="sidebar-nav text-seashell-500 dark:text-seashell-600" aria-labelledby="grid-right">
 	<div class="sidebar-nav-inner">
 		{headings.length > 0 && <TableOfContents headings={headings} />}
 	</div>

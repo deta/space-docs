@@ -26,8 +26,26 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
     <title>Space Blog</title>
   </head>
 
-  <body class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000">
-      <BlogHeader />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-y: overlay;
+      overflow-x: hidden;
+      display: grid;
+
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+  </style>
+
+  <body
+    class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000"
+    style="background-image: url(/blog_assets/clouds-bg.png);">
+    <BlogHeader />
 
     <main class="px-4 py-16 md:py-24 md:max-w-4xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
       <p class="text-seashell-500">

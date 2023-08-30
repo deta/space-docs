@@ -70,10 +70,10 @@ const cutDescription = (description: string) => {
     {
       blogs.map((blog, id) => (
         <a
-          class="!no-underline w-full px-16 py-12 hover:bg-seashell-200/50 hover:dark:bg-seashell-900 transition rounded-lg"
+          class="!no-underline w-full px-16 py-12 hover:bg-seashell-200/50 hover:dark:bg-seashell-900/50 transition rounded-lg"
           href={blog.url}>
           {blog.frontmatter.topic === "changelog" && (
-            <p class="text-seashell-300 dark:text-seashell-600">Changelog</p>
+            <p class="dark:text-seashell-300 text-seashell-600">Changelog</p>
           )}
           <span class="flex space-x-2 font-mono">
             <p class="text-deta-default">{formatDate(blog.frontmatter.date)}</p>
