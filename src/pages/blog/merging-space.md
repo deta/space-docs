@@ -6,7 +6,7 @@ description: "We have merged old and new Space into one."
 ---
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/230125-newspace.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/230125-newspace.webp" style="margin: auto;"/>
 </div>
 <br />
 
@@ -37,7 +37,7 @@ Under the old system, a Space app was available under `alias.username.deta.app`.
 You can see both the old and new domains for any Space app by clicking the `...` and then `Settings` from an app's card on your Space's Canvas:
 
 <div style="display: flex; justify-content: center;"/>
-<img src="/blog_assets/230125-old-domains.webp" style="max-width: 600px; margin: auto;"/>
+<img src="/blog_assets/230125-old-domains.webp" style="margin: auto;"/>
 </div>
 <br />
 

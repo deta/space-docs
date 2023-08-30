@@ -6,7 +6,7 @@ description: "We will be upgrading and merging Deta Cloud into Deta Space on Feb
 ---
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/03/01-moving-to-space.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/03/01-moving-to-space.webp" style="margin: auto;"/>
 </div>
 
 Following [our motivation](https://deta.space/motivation/) for building [Deta Space](https://deta.space/) last week, we’d like to follow up with what this means for [Deta Cloud](https://deta.sh/).
@@ -49,14 +49,14 @@ It also includes a modifiable “custom” runtime engine, which the community h
 The second most common request from our community is for a modernized User Interface. Here’s how the Deta Cloud UI looks:
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/03/02-cloud-ui.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/03/02-cloud-ui.webp" style="margin: auto;"/>
 </div>
 <br />
 
 And here’s Space:
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/03/03-space-ui.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/03/03-space-ui.webp" style="margin: auto;"/>
 </div>
 <br />
 
@@ -87,7 +87,7 @@ The landing pages on [deta.sh](http://Deta.sh) and [web.deta.sh](http://web.Deta
 We are creating a product for data on Space called Deta Collections. A Collection is similar to a Cloud Project with Bases and Drives, but without Micros. We’ll provide a tool where you’ll be able to automatically move a Deta Cloud Project to a “Collection” (but your Micros will remain in the old UI). Here’s how Collections looks:
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/03/04-collections.png" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/03/04-collections.png" style="margin: auto;"/>
 </div>
 <br />
 
