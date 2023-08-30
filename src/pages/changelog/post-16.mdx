@@ -84,6 +84,21 @@ If you check the key column in any [Base UI](https://deta.space/docs/en/use/your
 
 We now have support asynchronous interactions with Deta Base in the Python SDK. See the "Python (async)" tab [in the docs for more](https://deta.space/docs/en/build/reference/sdk).
 
+```py
+from deta import Deta
+
+deta = Deta() #instantiate with a Data Key, or env DETA_PROJECT_KEY
+
+db = deta.AsyncBase("my_db")
+
+await db.put({"name": "alex", "age": 77, "key": "one"})
+
+await db.put({"name": "alex", "age": 23}, "alex23", expire_in=300)
+
+# close db session
+await db.close()
+```
+
 
 ### Even More
 - [Removed `detalib` from the JS SDK, which was causing a lot of errors](https://github.com/deta/deta-javascript/pull/63/files)
