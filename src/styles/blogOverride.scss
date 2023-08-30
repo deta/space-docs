@@ -1,0 +1,31 @@
+article section {
+  margin-top: 0;
+}
+
+article section h1 {
+  margin-top: 0;
+}
+
+.as-left {
+  padding-top: 0.8ch;
+  display: none;
+}
+@media (max-width: 1152px) {
+  main {
+    max-width: unset !important;
+  }
+  article {
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1152px) {
+  .as-left {
+    display: block !important;
+  }
+}
+
+article {
+  max-width: 70ch;
+  width: 100%;
+}
