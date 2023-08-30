@@ -16,13 +16,31 @@ changelogs.sort((a, b) => {
     return bDate.getTime() - aDate.getTime(); 
 });
 
+// arabic to roman numerals
+const romanize = (num: string) => {
+    if (!+num)
+        return false;
+    var digits = String(+num).split(""),
+        key = ["","c","cc","ccc","cd","d","dc","dcc","dccc","cm",
+               "","x","xx","xxx","xl","l","lx","lxx","lxxx","xc",
+               "","i","ii","iii","iv","v","vi","vii","viii","ix"],
+        roman = "",
+        i = 3;
+    while (i--)
+        roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+    return Array(+digits.join("") + 1).join("m") + roman;
+}
+
 ---
 
 <ChangelogsListLayout>
     <div class="list">
-        {changelogs.map((changelog) => (
+        {changelogs.map((changelog, id) => (
             <div class="date-view">
-                <p class="date">{formatDate(changelog.frontmatter.date)}</p>
+                <span class="detail-view">
+                    <p class="date">{formatDate(changelog.frontmatter.date)}</p>
+                    <p class="version">{romanize(changelogs.length - id - 1)}</p>    
+                </span>
                 <a class="changelog-block" href={changelog.url}>  
                     <div class="open-changelog">
                         <h3 class="title">{changelog.frontmatter.title}</h3>
@@ -41,6 +59,17 @@ changelogs.sort((a, b) => {
         justify-content: start;
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .version {
+        margin-bottom: 0px;
+    }
+
+    .detail-view {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        margin-bottom: 0px;
     }
 
     .date-view {
