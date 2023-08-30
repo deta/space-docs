@@ -23,9 +23,9 @@
 	{/if}
 
 	{#if isDocs}
-		<a href="/changelog">Chansssgelog</a>
+		<a href="/blog">Blog</a>
 	{:else if isChangelog}
-		<a href="/docs/">Docdds</a>
+		<a href="/docs/">Docs</a>
 	{/if}
 
     <a href="https://go.deta.dev/discord">Join Discord</a>

@@ -2,13 +2,16 @@
 import type { MarkdownHeading } from "astro";
 import * as CONFIG from "../config";
 
-
 import TeletypeContainer from "../components/Teletype/TeletypeContainer.astro";
 import HeadCommon from "../components/HeadCommon.astro";
 import HeadSEO from "../components/HeadSEO.astro";
-import Header from "../components/Header/Header.astro";
 import Footer from "../components/Footer/Footer.astro";
 import "../styles/tailwind.css";
+import SkipToContent from "@/components/Header/SkipToContent.astro";
+import AstroLogo from "@/components/Header/AstroLogo.astro";
+import ThemeToggle from "@/components/Header/ThemeToggle.svelte";
+import HeaderLinks from "@/components/HeaderLinks.svelte";
+import BlogHeader from "@/components/BlogHeader.astro";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
@@ -20,14 +23,14 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
     <HeadCommon />
     <!-- TODO -->
     <!-- <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} /> -->
-    <title>Space Changelogs</title>
+    <title>Space Blog</title>
   </head>
 
+  <body class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000">
+      <BlogHeader />
 
-  <body class="h-full min-h-screen relative w-full block">
-    <!-- <Header layout="changelogs" currentPage={currentPage} /> -->
-    <main class="px-4 py-16 md:py-24 bg-seashell-50 dark:bg-seashell-900 md:max-w-4xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
-      <p>
+    <main class="px-4 py-16 md:py-24 md:max-w-4xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
+      <p class="text-seashell-500">
         A rundown of the latest releases, enhancements, design updates, and important bug fixes in
         your personal cloud.
       </p>

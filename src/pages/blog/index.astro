@@ -66,14 +66,14 @@ const cutDescription = (description: string) => {
 ---
 
 <BlogListLayout>
-  <div class="mt-24 flex flex-col space-y-4 -mx-16">
+  <div class="mt-12 sm:mt-16 md:mt-24 flex flex-col space-y-4 -mx-16">
     {
       blogs.map((blog, id) => (
         <a
-          class="!no-underline w-full px-16 py-12 hover:bg-seashell-200/50 hover:dark:bg-seashell-800 transition rounded-lg"
+          class="!no-underline w-full px-16 py-12 hover:bg-seashell-200/50 hover:dark:bg-seashell-900 transition rounded-lg"
           href={blog.url}>
           {blog.frontmatter.topic === "changelog" && (
-            <p class="text-seashell-300 dark:text-seashell-700">Changelog</p>
+            <p class="text-seashell-300 dark:text-seashell-600">Changelog</p>
           )}
           <span class="flex space-x-2 font-mono">
             <p class="text-deta-default">{formatDate(blog.frontmatter.date)}</p>
@@ -82,12 +82,12 @@ const cutDescription = (description: string) => {
             </p>
           </span>
 
-          <div class="grid grid-cols-4 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
             <p class="text-seashell-900 col-span-2 dark:text-seashell-50 font-semibold font-serif text-xl">
               {blog.frontmatter.title}
             </p>
 
-            <p class="col-span-2">
+            <p class="col-span-2 text-seashell-500 dark:text-seashell-400">
               {cutDescription(blog.frontmatter?.description || extractDescription(blog as any))}
             </p>
           </div>

@@ -16,9 +16,9 @@
     localStorage.setItem('theme', theme)
 
     if (theme === 'dark') {
-      document.documentElement.classList.add('theme-dark')
+      document.documentElement.classList.add('dark')
     } else {
-      document.documentElement.classList.remove('theme-dark')
+      document.documentElement.classList.remove('dark')
     }
   }
 </script>
