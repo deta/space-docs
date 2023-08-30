@@ -12,6 +12,7 @@ import Header from "../components/Header/Header.astro";
 import RightSidebar from "../components/RightSidebar/RightSidebar.astro";
 import Footer from "../components/Footer/Footer.astro";
 import BlogHeader from "@/components/BlogHeader.astro";
+import ThemeProvider from "@/components/ThemeProvider.svelte";
 
 type Props = { frontmatter: CONFIG.FrontmatterBlog; headings: MarkdownHeading[] };
 const { headings, frontmatter } = Astro.props as Props;
@@ -169,18 +170,20 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
     </style>
   </head>
 
-  <body
+    <body
     class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000 text-seashell-600 dark:text-seashell-200">
+    <ThemeProvider client:only>
+
     <BlogHeader />
     <main class="px-4 py-16 md:py-24 md:px-16 lg:px-24 max-w-5xl layout">
       <aside title="Site Navigation" class="hidden md:block">
-        <a class="hidden md:block text-seashell-500 dark:text-seashell-500" href="/blog">
+        <a class="hidden lg:block text-seashell-500 dark:text-seashell-500" href="/blog">
           <span class="arrow">←</span>
           Go back
         </a>
       </aside>
       <article id="" class="w-fit flex flex-col !items-start md:!max-w-3xl">
-        <a class="go-back mobile" href="/blog">
+        <a class="go-back mobile block lg:hidden" href="/blog">
           <span class="arrow">←</span>
           Go back
         </a>
@@ -210,5 +213,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
       src="/other_assets/instant-page.js"
       type="module"
       integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+    </ThemeProvider>
+
   </body>
 </html>

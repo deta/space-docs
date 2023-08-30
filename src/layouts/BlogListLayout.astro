@@ -12,6 +12,7 @@ import AstroLogo from "@/components/Header/AstroLogo.astro";
 import ThemeToggle from "@/components/Header/ThemeToggle.svelte";
 import HeaderLinks from "@/components/HeaderLinks.svelte";
 import BlogHeader from "@/components/BlogHeader.astro";
+import ThemeProvider from "@/components/ThemeProvider.svelte";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
@@ -42,25 +43,31 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
     }
   </style>
 
-  <body
-    class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000"
-    style="background-image: url(/blog_assets/clouds-bg.png);">
-    <BlogHeader />
+    <body
+      class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000"
+      style="background-image: url(/blog_assets/clouds-bg.png);">
+      <ThemeProvider client:only>
 
-    <main class="px-4 py-16 md:py-24 md:max-w-4xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
-      <p class="text-seashell-500">
-        A rundown of the latest releases, enhancements, design updates, and important bug fixes in
-        your personal cloud.
-      </p>
-      <slot />
-    </main>
+      <BlogHeader />
 
-    <Footer path={currentFile} />
+      <main class="px-4 py-16 md:py-24 md:max-w-4xl md:px-16 lg:px-24 md:rounded-xl md:mx-auto">
+        <p class="text-seashell-500">
+          A rundown of the latest releases, enhancements, design updates, and important bug fixes in
+          your personal cloud.
+        </p>
+        <slot />
+      </main>
 
-    <TeletypeContainer />
-    <script
-      src="/other_assets/instant-page.js"
-      type="module"
-      integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-  </body>
+      <Footer path={currentFile} />
+
+      <TeletypeContainer />
+      <script
+        src="/other_assets/instant-page.js"
+        type="module"
+        integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"
+      ></script>
+    </ThemeProvider>
+
+    </body>
+
 </html>

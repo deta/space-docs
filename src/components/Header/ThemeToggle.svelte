@@ -1,11 +1,11 @@
 <script lang="ts" context="module">
-  export type Theme = 'dark' | 'light'
+  export type Theme = "dark" | "light";
 
   /**
    * Get prefered theme
    */
   export function getSystemTheme(): Theme {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
   /**
@@ -13,38 +13,38 @@
    * @param theme
    */
   export function changeTheme(theme: Theme) {
-    localStorage.setItem('theme', theme)
+    localStorage.setItem("theme", theme);
 
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
+    if (theme === "dark") {
+      document.documentElement.classList.add("theme-dark");
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove("theme-dark");
     }
   }
 </script>
 
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import Sun from '@/components/Teletype/Icons/Sun.svelte'
-  import Moon from '@/components/Teletype/Icons/Moon.svelte'
+  import { onMount } from "svelte";
+  import Sun from "@/components/Teletype/Icons/Sun.svelte";
+  import Moon from "@/components/Teletype/Icons/Moon.svelte";
 
-  let theme: Theme
+  let theme: Theme;
 
   /**
    * Initialize theme
    */
   onMount(() => {
-    const currentTheme = localStorage.getItem('theme')
-    const darkThemePrefered = getSystemTheme() === 'dark'
-    const isDark = currentTheme === 'dark' || (!currentTheme && darkThemePrefered)
-    setTheme(isDark ? 'dark' : 'light')
-  })
+    const currentTheme = localStorage.getItem("theme");
+    const darkThemePrefered = getSystemTheme() === "dark";
+    const isDark = currentTheme === "dark" || (!currentTheme && darkThemePrefered);
+    setTheme(isDark ? "dark" : "light");
+  });
 
   /**
    * Toggle current theme
    */
   function toggleTheme() {
-    setTheme(theme === 'light' ? 'dark' : 'light')
+    setTheme(theme === "light" ? "dark" : "light");
   }
 
   /**
@@ -52,15 +52,15 @@
    * @param newTheme Theme to set
    */
   function setTheme(newTheme: Theme) {
-    theme = newTheme
-    changeTheme(newTheme)
+    theme = newTheme;
+    changeTheme(newTheme);
   }
 </script>
 
 <button class="themeToggle" on:click={toggleTheme}>
-  {#if theme === 'dark'}
+  {#if theme === "dark"}
     <Moon />
-  {:else if theme === 'light'}
+  {:else if theme === "light"}
     <Sun />
   {/if}
 </button>
