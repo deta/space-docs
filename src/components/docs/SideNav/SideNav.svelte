@@ -242,7 +242,7 @@
   #peek-trigger {
     background: transparent;
     position: fixed;
-    z-index: 100;
+    z-index: 95;
     top: var(--header-height);
     height: calc(100% - calc(2 * var(--header-height)));
     left: 0;
