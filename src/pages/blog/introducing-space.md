@@ -6,7 +6,7 @@ description: ""
 ---
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/04/whats-next.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/04/whats-next.webp" style="margin: auto;"/>
 </div>
 <br />
 
@@ -23,7 +23,7 @@ Deta Space is a new personal computer that lives in the cloud — a ‘personal 
 ## Build it for yourself
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/04/build-yourself.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/04/build-yourself.webp" style="margin: auto;"/>
 </div>
 
 As a developer, Space gives you your own environment to build, just like in Deta Cloud. Your Space is for you: to build, deploy, and use your ideas. But it packs a lot of new power.
@@ -33,7 +33,8 @@ As a developer, Space gives you your own environment to build, just like in Deta
 We’ve brought some of the same friendly infrastructure to Space like [Deta Base](https://deta.space/docs/en/reference/base/about) and [Deta Drive](https://deta.space/docs/en/reference/drive/about). But now they’re a part of [Deta Collections](https://deta.space/manual/features/collections), a home for your data.
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/04/collections.png" style="max-width: 736px; margin: auto;"/>
+
+<img src="/blog_assets/04/collections.png" style="margin: auto;"/>
 </div>
 
 As a part of the merge, we’ve created a tool to [easily migrate your Bases and Drives from Deta Cloud to Collections](https://deta.space/migration/guides/import-a-project) in Space.
@@ -42,7 +43,7 @@ As a part of the merge, we’ve created a tool to [easily migrate your Bases and
 ### Deta Micros: completely recharged
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/04/builder.png" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/04/builder.png" style="margin: auto;"/>
 </div>
 
 We’ve also upgraded the core experience around Deta Micros. We’ve completely refreshed them to support many more runtimes and frameworks. This includes frontend libraries like [React and Svelte](https://deta.space/docs/en/quickstart-guides/static), alongside their full-stack complements [Next.js](https://deta.space/docs/en/quickstart-guides/next) and [Nuxt](https://deta.space/docs/en/quickstart-guides/nuxt). Space also supports new backend languages like [Go](https://deta.space/docs/en/quickstart-guides/go), with [Rust](https://deta.space/docs/en/quickstart-guides/rust) coming soon. The community has also created templates for running a number of other languages like Deno, Crystal, Nim and Dart using our  “custom” runtime feature.
@@ -57,7 +58,7 @@ As part of the upgrade, we’ve also completely redesigned and re-engineered our
 But we’re most excited about two core new interaction components in the frontend, **Canvas,** and **Teletype**.
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/04/canvas.png" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/04/canvas.png" style="margin: auto;"/>
 </div>
 
 **Canvas** is your personal cloud’s homepage, where you can rearrange all your apps and projects. Soon you’ll be able to pin just about anything to Canvas – like a Collection, Base, or Drive – to personalize your experience even further.
@@ -67,7 +68,7 @@ But we’re most excited about two core new interaction components in the fronte
 ## See it run anywhere
 
 <div style="display: flex; justify-content: center;">
-<img src="/blog_assets/04/run-it.webp" style="max-width: 736px; margin: auto;"/>
+<img src="/blog_assets/04/run-it.webp" style="margin: auto;"/>
 </div>
 
 Once you have an app that you’re happy with in your Space, you can click a button or send a command. From this point, Deta can run it anywhere, around the world, for anyone with an internet connection, in their own Space. Your app will keep running forever (as long as Space exists), with no work from you needed.
