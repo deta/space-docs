@@ -1,0 +1,26 @@
+name: pull-request
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js v16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: v16.x
+
+      - name: Install Dependencies
+        run: yarn install --ignore-optional
+
+      - name: Build Astro App
+        run: yarn build
