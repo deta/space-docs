@@ -22,7 +22,7 @@ Read on to discover how you can start living backend-worry free in v2.
 
 ## Deta JavaScript SDK, v2
 
-To get started using Deta Base or Drive in the browser install the latest Deta SDK from npm (or yarn):
+To get started using Deta Base or Drive in the browser install the latest [Deta SDK](https://deta.space/docs/en/build/reference/sdk) from npm (or yarn):
 
 ```bash
 npm install deta@latest
@@ -64,7 +64,6 @@ Checkout this tutorial from Deta CEO, Mustafa, using the Browser SDK to build a 
 A few notes:
 - The Browser SDK supports all the same methods and features as the existing SDK
 - The Browser SDK will not work on [public Micros or Public Routes](https://deta.space/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes)
-- The Browser SDK
 
 ## More Fun Things
 
@@ -114,4 +113,5 @@ await db.close()
 - Pushed an error message fix in JS SDK: [more](https://github.com/deta/deta-javascript/pull/64/files)
 - Fixed wrong exit code in the CLI: [more](https://github.com/deta/space-cli/pull/147/files)
 - Fixed build failures when a top level directory conflicts with .spaceignore: [more](https://github.com/deta/space-cli/pull/148)
-- Fixed  a bug where you couldn't serve `./` on Micros with a `static` engine: [more](https://github.com/deta/space-cli/pull/149)
+- Added a default Serve field to the Spacefile generated for static micros: [more](https://github.com/deta/space-cli/pull/149)
+- Fixed a bug where the build pipeline fails to zip static micros
