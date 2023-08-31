@@ -1,0 +1,98 @@
+---
+import DateFns from "date-fns";
+import BlogListLayout from "../../layouts/BlogListLayout.astro";
+import { extractDescription, formatDate, dateFormat } from "@/utils/changelogs";
+
+// Collect changelogs
+const markdown = await Astro.glob("./**/*.md");
+const markdownX = await Astro.glob("./**/*.mdx");
+
+const blogs = [...markdown, ...markdownX];
+
+// Sort by date
+blogs.sort((a, b) => {
+  const aDate = DateFns.parse(a.frontmatter.date, dateFormat, new Date());
+  const bDate = DateFns.parse(b.frontmatter.date, dateFormat, new Date());
+  return bDate.getTime() - aDate.getTime();
+});
+
+const romanize = (num: string) => {
+  if (!+num) return false;
+  var digits = String(+num).split(""),
+    key = [
+      "",
+      "c",
+      "cc",
+      "ccc",
+      "cd",
+      "d",
+      "dc",
+      "dcc",
+      "dccc",
+      "cm",
+      "",
+      "x",
+      "xx",
+      "xxx",
+      "xl",
+      "l",
+      "lx",
+      "lxx",
+      "lxxx",
+      "xc",
+      "",
+      "i",
+      "ii",
+      "iii",
+      "iv",
+      "v",
+      "vi",
+      "vii",
+      "viii",
+      "ix"
+    ],
+    roman = "",
+    i = 3;
+  while (i--) if (digits.length > 0) roman = (key[+digits.pop() + i * 10] || "") + roman;
+  return Array(+digits.join("") + 1).join("m") + roman;
+};
+
+const cutDescription = (description: string) => {
+  if (description.length > 175) {
+    return description.slice(0, 175) + "...";
+  }
+  return description;
+};
+---
+
+<BlogListLayout>
+  <div class="mt-12 sm:mt-16 md:mt-24 flex flex-col space-y-4 -mx-16">
+    {
+      blogs.map((blog, id) => (
+        <a
+          class="!no-underline w-full px-16 py-12 hover:bg-seashell-200/50 hover:dark:bg-seashell-900/50 transition rounded-lg"
+          href={blog.url}>
+          {blog.frontmatter.topic === "changelog" && (
+            <p class="dark:text-seashell-300 text-seashell-600">Changelog</p>
+          )}
+          <span class="flex space-x-2 font-mono">
+            <p class="text-deta-default">{formatDate(blog.frontmatter.date)}</p>
+            <p class="text-seashell-300 dark:text-seashell-700">
+              {romanize((blogs.length - id - 1).toString())}
+            </p>
+          </span>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
+            <p class="text-seashell-900 col-span-2 dark:text-seashell-50 font-semibold font-serif text-xl">
+              {blog.frontmatter.title}
+            </p>
+
+            <p class="col-span-2 text-seashell-500 dark:text-seashell-400">
+              {cutDescription(blog.frontmatter?.description || extractDescription(blog as any))}
+            </p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</BlogListLayout>

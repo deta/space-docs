@@ -1,0 +1,117 @@
+---
+title: "Browser SDK & more"
+date: "30 Aug 2023"
+layout: "@blogs"
+description: "Great improvements for base fans & server haters alike."
+topic: "changelog"
+---
+
+import Image from '@/components/Image.astro'
+
+For developers, much of the power of the [personal cloud](https://deta.space/docs/en/learn/what-is-pc) is the [auth model](https://deta.space/docs/en/build/fundamentals/the-space-runtime/authentication).
+
+In Space you can build a personal app for yourself, and you can see it run for just about anyone in the world with an internet connection. No need to consider sign-in, sign-up, users, or data separation. The power of auth on the personal cloud is… not thinking about auth. Because it just works.
+
+From today—you can think even less. With version 2 of the Deta JavaScript SDK you can now use [Deta Base](https://deta.space/docs/en/build/fundamentals/data-storage#deta-base) or 
+[Deta Drive](https://deta.space/docs/en/build/fundamentals/data-storage#deta-drive) straight from your browser. So, for many apps, you can stop worrying about backends entirely.
+
+Previously, when building a personal app, you needed to create an entire backend, writing APIs that routed user requests in the browser and back to the data in Base or Drive. That meant a whole lot of drudgery and clients having to go through a backend [Micro](https://deta.space/docs/en/build/fundamentals/the-space-runtime/micros) to store and retrieve data. It also added latency to user actions as they waited on a backend Micro to respond (cough cough, cold starts). For many apps, that’s in the past now.
+
+Read on to discover how you can start living backend-worry free in v2.
+
+
+## Deta JavaScript SDK, v2
+
+To get started using Deta Base or Drive in the browser install the latest Deta SDK from npm (or yarn):
+
+```bash
+npm install deta@latest
+```
+
+Or import it into your app from Space’s CDN:
+
+```js
+const deta = await import("https://cdn.deta.space/js/deta@2.0.0/deta.mjs");
+```
+
+Now your app can start reading and writing data in the browser:
+
+```js
+const base = deta.Base('my-base');
+const drive = deta.Drive('my-drive');
+
+await base.putMany(['a', 'b', 'c', 'd']);
+await drive.put('a', {data: 'data'});
+await drive.put('b', {data: 'data'});
+await drive.put('c', {data: 'data'});
+await drive.put('d', {data: 'data'});
+
+console.log(await base.fetch());
+console.log(await drive.list());
+```
+
+If your app is running on Deta Space it will just work. No need for keys or a backend, Just low-latency personal applications. Check out [this repo](https://github.com/deta/todo-app) for an example app that uses the new SDK on the client.
+
+Deta Team member and author of [PingBack](https://deta.space/discovery/@maximilianheidenreich/pingback), Maxu, had this to say after getting his hands on an early release:
+> *"Some ppl. try to avoid writing API routes and use React & Next.JS server components. I avoid both with the Browser SDK. Instant 10x."*
+
+Checkout this tutorial from Deta CEO, Mustafa, using the Browser SDK to build a full app in a stingle HTML file:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/t1AuNWsLqa8?si=jYeeCp5hivguD8aE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<br/>
+<br/>
+A few notes:
+- The Browser SDK supports all the same methods and features as the existing SDK
+- The Browser SDK will not work on [public Micros or Public Routes](https://deta.space/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes)
+- The Browser SDK
+
+## More Fun Things
+
+### Base Sort Order
+
+After persistent requests and hacky hacks, we’re pleased to share that you can now sort your Base items by ascending or descending key order. Simply pass a desc value to any Fetch call ([docs](https://deta.space/docs/en/build/reference/sdk/types#fetchoptions)).
+
+With Python:
+```py
+db = deta.Base("random-base")
+
+db.fetch(desc=True)
+```
+
+With JavaScript:
+```js
+const db= deta.Base('random-base');
+
+db.fetch({desc: true})
+```
+*This works in the browser with the new SDK ;)*
+
+If you check the key column in any [Base UI](https://deta.space/docs/en/use/your-data/guis#base-ui) view, you'll also notice a toggle that gives you the same ability.
+
+### Python SDK: Async Base
+
+We now have support asynchronous interactions with Deta Base in the Python SDK. See the "Python (async)" tab [in the docs for more](https://deta.space/docs/en/build/reference/sdk).
+
+```py
+from deta import Deta
+
+deta = Deta() #instantiate with a Data Key, or env DETA_PROJECT_KEY
+
+db = deta.AsyncBase("my_db")
+
+await db.put({"name": "alex", "age": 77, "key": "one"})
+
+await db.put({"name": "alex", "age": 23}, "alex23", expire_in=300)
+
+# close db session
+await db.close()
+```
+
+
+### Even More Fixes
+- Removed `detalib` from the JS SDK, which was causing a lot of errors: [more](https://github.com/deta/deta-javascript/pull/63/files)
+- Pushed an error message fix in JS SDK: [more](https://github.com/deta/deta-javascript/pull/64/files)
+- Fixed wrong exit code in the CLI: [more](https://github.com/deta/space-cli/pull/147/files)
+- Fixed build failures when a top level directory conflicts with .spaceignore: [more](https://github.com/deta/space-cli/pull/148)
+- Fixed  a bug where you couldn't serve `./` on Micros with a `static` engine: [more](https://github.com/deta/space-cli/pull/149)

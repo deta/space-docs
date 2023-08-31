@@ -15,11 +15,12 @@ export const OPEN_GRAPH = {
 }
 
 // This is the type of the frontmatter you put in the changelogs markdown files.
-export type FrontmatterChangelog = {
+export type FrontmatterBlog = {
   title: string
   date: string
-  layout: '@changelogs'
+  layout: '@blogs'
   description?: string
+  topic?: string
 }
 
 // This is the type of the frontmatter you put in the docs markdown files.

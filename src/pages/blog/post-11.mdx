@@ -1,0 +1,86 @@
+---
+title: "Local Development for Space"
+date: "23 Mar 2023"
+layout: "@blogs"
+description: "Emulate Space locally with the CLI & More."
+topic: "changelog"
+---
+
+Since the introduction of Deta Space, developers have been asking for a better experience when building locally for Space. Whether it is managing keys or coordinating between two separate [Micros](https://deta.space/docs/en/basics/micros#whats-a-micro), local development requires unnecessary work.
+
+We are happy to announce that the newest Space CLI can now do a lot of the heavy lifting, with a single command: `space dev`.
+
+## `space dev`: run your Space app locally
+
+If you've got a Space project you want to run locally, just run the following command, from the root of your project:
+
+```
+space dev
+```
+
+Et voila! Your app is now running locally and you can access it at `http://localhost:4200` (the Space CLI will tell you this).
+You can also add the `--open` flag to open the app in your browser automatically.
+
+Behind the scenes, the Space CLI is:
+
+- Generating and injecting a [Data Key](https://deta.space/changelog/post-6) to allow your app to write data to your project
+- Running each of your Micros in a separate process (using a new `dev` command from your Spacefile)
+- Exposing all of your Micros through a single entrypoint (following the routing in your Spacefile)
+
+For more information on how setup and use the command, make sure to check out the [docs](/docs/en/basics/local).
+
+## Triggering Scheduled Actions from the CLI
+
+If your Spacefile contains a [Scheduled Action](https://deta.space/docs/en/basics/micros#scheduled-actions), you can also now trigger it locally for testing.
+
+For example, if you have the following Spacefile:
+
+```yaml
+micros:
+  - name: backend
+    src: backend
+    engine: nodejs16
+    run: "node index.js"
+    dev: "nodemon index.js"
+    actions:
+      - id: "cleanup"
+        name: "Clean Up"
+        description: "Cleans up unused data"
+        trigger: "schedule"
+        default_interval: "0/15 * * * *"
+```
+
+After starting the app locally with `space dev`, you can now trigger the `cleanup` action by running the following command:
+
+```bash
+space dev trigger cleanup
+```
+
+Behind the scenes, the Space CLI will:
+    - Send the action event to your Micro locally
+    - Print the returned response to your console (if any)
+
+## Running local scripts against your project's Bases & Drives
+
+The `space exec` commands allows you to give a local command or script access to your project's Deta Base and Drive data. It does so by creating and injecting a [Data Key](https://deta.space/changelog/post-6) as `DETA_PROJECT_KEY` into your local environment.
+
+```
+space exec --project <project-id> -- node init-database.js
+```
+
+Some use cases include:
+
+- testing Base & Drive locally
+- pre-filling your projects Bases & Drives with data
+- programmatically interacting with Base & Drive
+- … anything else you can think of!
+
+## Upgrading to the new CLI
+
+To use all the new commands, make sure to upgrade to the latest version of the Space CLI, with the following command:
+
+```
+space version upgrade
+```
+
+That's all for now. Thank you for all the feedback — please continue to share! 

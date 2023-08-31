@@ -1,0 +1,222 @@
+---
+import type { MarkdownHeading } from "astro";
+import type * as CONFIG from "../config";
+import { formatDate } from "@/utils/changelogs";
+
+// import "../styles/old-index.css";
+// import "@/styles/global.scss";
+import '../styles/new.css';
+import "../components/docs/Article/article.scss";
+import '../styles/blogOverride.scss';
+
+import TeletypeContainer from "../components/Teletype/TeletypeContainer.astro";
+import HeadCommon from "../components/HeadCommon.astro";
+import HeadSEO from "../components/HeadSEO.astro";
+import Header from "../components/Header/Header.astro";
+import RightSidebar from "../components/RightSidebar/RightSidebar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import BlogHeader from "@/components/BlogHeader.astro";
+import DesktopTableOfContents from "@/components/docs/Article/TableOfContents/DesktopTableOfContents.svelte";
+
+type Props = { frontmatter: CONFIG.FrontmatterBlog; headings: MarkdownHeading[] };
+const { headings, frontmatter } = Astro.props as Props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
+---
+
+<html dir="ltr" lang="en-us" class="initial">
+  <head>
+    <HeadCommon />
+    <!-- TODO -->
+    <!-- <HeadSEO frontmatter={frontmatter} canonicalUrl={canonicalURL} /> -->
+    <title>
+      {
+        frontmatter.title
+          ? `${frontmatter.title} - ${formatDate(frontmatter.date)} - Space Blog`
+          : "Space Blog"
+      }
+    </title>
+    <style>
+      .layout {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, var(--max-width)) minmax(
+            var(--gutter),
+            1fr
+          );
+        overflow-x: hidden;
+      }
+
+      .grid-sidebar {
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        padding: 0;
+      }
+
+      .content > section {
+        margin-bottom: 4rem;
+      }
+
+      .go-back {
+        all: unset;
+        width: 100%;
+        white-space: nowrap;
+        height: min-content;
+        cursor: pointer;
+        opacity: 0.5;
+        font-size: 1rem;
+        line-height: 2.5rem;
+        text-align: right;
+        text-decoration: none !important;
+        transition: opacity 0.15s ease;
+      }
+
+      .go-back.mobile {
+        display: block;
+        text-align: left;
+        margin-bottom: 1em;
+      }
+
+      .go-back:hover {
+        opacity: 1;
+      }
+
+      .go-back .arrow {
+        transition: margin-right 0.15s ease;
+      }
+
+      .go-back:hover .arrow {
+        margin-right: 0.2em;
+      }
+
+      #grid-right {
+        display: none;
+      }
+
+      @media (min-width: 1152px) {
+        .layout {
+          overflow: initial;
+          grid-template-columns: 5rem minmax(0, var(--max-width)) 5rem;
+          gap: 1em;
+          padding-inline: 0;
+        }
+      }
+
+      @media (min-width: 72em) {
+        .go-back.mobile {
+          display: none;
+        }
+
+        .layout {
+          grid-template-columns: 10rem minmax(0, var(--max-width)) 18rem;
+          padding-left: 0;
+          padding-right: 0;
+          margin: 0 auto;
+        }
+
+        #grid-right {
+          grid-column: 3;
+          display: flex;
+        }
+
+        #grid-left {
+          display: flex;
+          padding-left: 2rem;
+          position: sticky;
+          grid-column: 1;
+        }
+      }
+    </style>
+    <style is:global>
+      .layout > * {
+        height: 100%;
+      }
+
+      .mobile-sidebar-toggle {
+        overflow: hidden;
+      }
+
+      .mobile-sidebar-toggle #grid-left {
+        display: block;
+        top: 2rem;
+      }
+      header {
+        padding-top: 0 !important;
+      }
+      .logo h1 {
+        font-weight: 600;
+      }
+      h1 {
+        font-weight: 500;
+        font-size: 2rem;
+      }
+      h1 > a,
+      h2 > a,
+      h3 > a,
+      h4 > a,
+      h5 > a {
+        color: inherit;
+        text-decoration: none;
+      }
+      h1 > a:hover,
+      h2 > a:hover,
+      h3 > a:hover,
+      h4 > a:hover,
+      h5 > a:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+      .open-changelog p {
+        margin-top: 0;
+      }
+    </style>
+
+  </head>
+
+  <body
+    class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000 ">
+    <BlogHeader />
+    <main class="px-4 py-16 md:py-24 md:px-16 lg:px-24 max-w-5xl layout">
+      <aside class="as-left" title="Site Navigation">
+        <a class="text-seashell-500 dark:text-seashell-500" href="/blog">
+          <span class="arrow">←</span>
+          Go back
+        </a>
+      </aside>
+      <article class=""> <!-- flex flex-col !items-start -->
+        <a class="go-back mobile" href="/blog">
+          <span class="arrow">←</span>
+          Go back
+        </a>
+        <section class="max-w-fit">
+          <h1 class="text-seashell-1000 dark:text-seashell-50">{frontmatter.title}</h1>
+          <div class="flex flex-row items-center gap-4 font-mono">
+            <p class="text-deta-default">{formatDate(frontmatter?.date)}</p>
+            {
+              frontmatter.topic === "changelog" && (
+                <p class="dark:text-seashell-300 text-seashell-600">Changelog</p>
+              )
+            }
+          </div>
+         <div class="mt-4">
+            <slot />
+         </div>
+        </section>
+      </article>
+      <aside id="grid-right" class="grid-sidebar as-right" title="Table of Contents">
+        <!-- <RightSidebar headings={headings} githubEditUrl={""} /> -->
+        <DesktopTableOfContents headings={headings} blur={false}/>
+      </aside>
+    </main>
+    <Footer path={currentFile} />
+
+    <TeletypeContainer />
+    <script
+      src="/other_assets/instant-page.js"
+      type="module"
+      integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+  </body>
+</html>
