@@ -8,21 +8,25 @@ topic: "changelog"
 
 import Image from '@/components/Image.astro'
 
+<Image src="/blog_assets/browser-sdk.webp" alt="Browser SDK" width="90%" background />
+
+<br />
+
 For developers, much of the power of the [personal cloud](https://deta.space/docs/en/learn/what-is-pc) is the [auth model](https://deta.space/docs/en/build/fundamentals/the-space-runtime/authentication).
 
 In Space you can build a personal app for yourself, and you can see it run for just about anyone in the world with an internet connection. No need to consider sign-in, sign-up, users, or data separation. The power of auth on the personal cloud is… not thinking about auth. Because it just works.
 
-From today—you can think even less. With version 2 of the Deta JavaScript SDK you can now use [Deta Base](https://deta.space/docs/en/build/fundamentals/data-storage#deta-base) or 
-[Deta Drive](https://deta.space/docs/en/build/fundamentals/data-storage#deta-drive) straight from your browser. So, for many apps, you can stop worrying about backends entirely.
+However, when building a personal app, you need to create an entire backend, writing APIs that routed user requests in the browser and back to the data in [Deta Base](https://deta.space/docs/en/build/fundamentals/data-storage#deta-base) or [Deta Drive](https://deta.space/docs/en/build/fundamentals/data-storage#deta-drive). That means a whole lot of drudgery and clients having to go through a backend [Micro](https://deta.space/docs/en/build/fundamentals/the-space-runtime/micros) to store and retrieve data. It also adds latency to user actions as they waited on a backend Micro to respond (cough cough, cold starts). 
 
-Previously, when building a personal app, you needed to create an entire backend, writing APIs that routed user requests in the browser and back to the data in Base or Drive. That meant a whole lot of drudgery and clients having to go through a backend [Micro](https://deta.space/docs/en/build/fundamentals/the-space-runtime/micros) to store and retrieve data. It also added latency to user actions as they waited on a backend Micro to respond (cough cough, cold starts). For many apps, that’s in the past now.
+From today, not only can you forget about auth, but you can forget about entire backends. With the new Deta Browser SDK you can now use Base or 
+Drive straight from your browser. 
 
-Read on to discover how you can start living backend-worry free in v2.
+Read on to discover how you can start living backend free with the Deta Browser SDK.
 
 
-## Deta JavaScript SDK, v2
+## Deta Browser SDK
 
-To get started using Deta Base or Drive in the browser install the latest [Deta SDK](https://deta.space/docs/en/build/reference/sdk) from npm (or yarn):
+To get started using Deta Base or Drive in the browser install the latest [Deta JavaScript SDK](https://deta.space/docs/en/build/reference/sdk) from npm (or yarn):
 
 ```bash
 npm install deta@latest
@@ -34,7 +38,7 @@ Or import it into your app from Space’s CDN:
 const deta = await import("https://cdn.deta.space/js/deta@2.0.0/deta.mjs");
 ```
 
-Now your app can start reading and writing data in the browser:
+The SDK will auto-detect if it is running in Space and on the browser, where you can start reading and writing data:
 
 ```js
 const base = deta.Base('my-base');
@@ -50,7 +54,7 @@ console.log(await base.fetch());
 console.log(await drive.list());
 ```
 
-If your app is running on Deta Space it will just work. No need for keys or a backend, Just low-latency personal applications. Check out [this repo](https://github.com/deta/todo-app) for an example app that uses the new SDK on the client.
+On Space, it will just work. No need for keys or a backend, just low-latency personal applications. Check out [this repo](https://github.com/deta/todo-app) for an example app that uses the new SDK on the client.
 
 Deta Team member and author of [PingBack](https://deta.space/discovery/@maximilianheidenreich/pingback), Maxu, had this to say after getting his hands on an early release:
 > *"Some ppl. try to avoid writing API routes and use React & Next.JS server components. I avoid both with the Browser SDK. Instant 10x."*
@@ -64,6 +68,7 @@ Checkout this tutorial from Deta CEO, Mustafa, using the Browser SDK to build a 
 A few notes:
 - The Browser SDK supports all the same methods and features as the existing SDK
 - The Browser SDK will not work on [public Micros or Public Routes](https://deta.space/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes)
+- The SDK will continue to work on a backend (it auto-detects if it is in a browser)
 
 ## More Fun Things
 
