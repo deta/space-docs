@@ -33,6 +33,7 @@ As a developer, Space gives you your own environment to build, just like in Deta
 We’ve brought some of the same friendly infrastructure to Space like [Deta Base](https://deta.space/docs/en/reference/base/about) and [Deta Drive](https://deta.space/docs/en/reference/drive/about). But now they’re a part of [Deta Collections](https://deta.space/manual/features/collections), a home for your data.
 
 <div style="display: flex; justify-content: center;">
+
 <img src="/blog_assets/04/collections.png" style="margin: auto;"/>
 </div>
 

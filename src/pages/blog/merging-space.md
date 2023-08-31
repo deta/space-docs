@@ -50,4 +50,3 @@ In the meantime, developers from the Deta community have already been building a
 We have lots of exciting and innovative ideas for Space that we'll be working on once the big merge is done, so stay tuned!
 
 Thank you for your support and we look forward to your feedback. If you have any questions or comments about the merge, please reach out to us at [team@deta.space](mailto:team@deta.space) or on [Discord](https://go.deta.dev/discord).
-
