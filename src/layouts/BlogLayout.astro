@@ -178,7 +178,7 @@ const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
 
   <body
     class="h-full min-h-screen relative w-full block bg-seashell-50 dark:bg-seashell-1000 ">
-    <BlogHeader />
+    <BlogHeader client:load/>
     <main class="px-4 py-16 md:py-24 md:px-16 lg:px-24 max-w-5xl layout">
       <aside class="as-left" title="Site Navigation">
         <a class="text-seashell-500 dark:text-seashell-500" href="/blog">
