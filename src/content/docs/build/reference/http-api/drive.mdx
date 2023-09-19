@@ -143,7 +143,7 @@ Uploads a chunked part.
 
 `POST /uploads/{upload_id}/parts?name={name}&part={part}`
 
-> Each chunk must be at least 5 Mb and at most 10 Mb. The final chunk can be less than 5 Mb.
+> Each chunk must be at least 5MiB (5 * 1024 * 1024 bytes) and at most 10MiB (10 * 1024 * 1024 bytes). The final chunk can be less than 5MiB.
 
 <RequestTabs>
 
