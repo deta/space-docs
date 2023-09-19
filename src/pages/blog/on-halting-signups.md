@@ -3,15 +3,16 @@ title: "On halting new Space signups"
 date: "19 Sep 2023"
 layout: "@blogs"
 description: "We are shutting down signups (temporarily)."
+topic: "changelog"
 ---
 
 Well folks, a wall of text coming your way – and don't stress, it's all good news, just a bit of change to navigate.
 
-**The short version**
+## The short version
 
 In short, we’re halting signup from 19.09 (today at 16:00 UTC+2) until 10.10, which marks a big release day for Space. We’re going to release new features & designs for Space & Discovery. And no, we will not remove any feature or cause any backward incompatibility.
 
-**The long version**
+## The long version
 
 First off, let's address the Deta Space usage. It seems that most people aren't here to install apps. In reality, the majority are eager beavers looking to deploy APIs and websites. So don't sweat about your apps not getting new installs because of closed signups. We're not there yet.
 
