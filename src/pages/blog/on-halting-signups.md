@@ -3,7 +3,6 @@ title: "On halting new Space signups"
 date: "19 Sep 2023"
 layout: "@blogs"
 description: "We are shutting down signups (temporarily)."
-topic: "changelog"
 ---
 
 Well folks, a wall of text coming your way – and don't stress, it's all good news, just a bit of change to navigate.
