@@ -9,7 +9,7 @@ Deta Space offers persistent data storage through **Collections**. An individual
 
 Every app in your Space has its own Collection — [App Collections](#app-collections). You can also create and use Collections that aren't associated directly with any app — [Headless Collections](#headless-collections). Collections can store structured text using [Deta Base](#deta-base) and files with [Deta Drive](#deta-drive).
 
-Like Space apps themselves, the data in Collections is yours — it comes with the benefits of end user ownership. Collections feature their own [graphical user interfaces](/docs/en/use/your-data/guis) to navigate and manage your data. You can read and write data to your Collections through these user interfaces, but you can also use the [Deta SDK](/docs/en/build/reference/sdk/about) & [HTTP APIs](/docs/en/build/reference/http-api/about) with [Data Keys](#data-keys).
+Like Space apps themselves, the data in Collections is yours — it comes with the benefits of end user ownership. Collections feature their own [graphical user interfaces](/docs/en/use/your-data/guis) to navigate and manage your data. You can read and write data to your Collections through these user interfaces, but you can also use the [Deta SDK](/docs/en/build/reference/sdk) & [HTTP APIs](/docs/en/build/reference/http-api) with [Data Keys](#data-keys).
 
 ## App Collections
 
@@ -45,7 +45,7 @@ Drives in a Collection can be viewed and managed through [Drive UI](/docs/en/use
 
 Authorization to Collections happens via **Data Keys**. You can create Data Keys for any Collection. These keys are passed into the SDK or HTTP APIs to authorize reading or writing data. Be careful with your Data Keys — a compromised Data Key compromises a Collection's data.
 
-Read more about how to use Data Keys in the Developer Documentation with the [Deta SDK](/docs/en/build/reference/sdk/about) or [HTTP API](/docs/en/build/reference/http-api/about).
+Read more about how to use Data Keys in the Developer Documentation with the [Deta SDK](/docs/en/build/reference/sdk) or [HTTP API](/docs/en/build/reference/http-api).
 
 > 🗒️ Autorization to Collections is automatically managed inside of Space apps and when using the graphical user interfaces for Collection data. You don't need a Data Key.
 

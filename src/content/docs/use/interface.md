@@ -22,7 +22,7 @@ Space itself also provides a few **System Tiles**, which include:
 - [Discovery](/docs/en/use/space-apps/discovery): Where you find and install Space apps
 - [Docs](/docs/en/): A link to the docs, to read about Space
 - [Collections](/docs/en/use/your-data/collections): Where you manage your data
-- [Builder](/docs/en/build/fundemantals/development/builder): Where you build Space applications (available for developers)
+- [Builder](/docs/en/build/fundamentals/development/builder): Where you build Space applications (available for developers)
 
 # Teletype
 

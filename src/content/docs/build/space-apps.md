@@ -9,7 +9,7 @@ As a developer building apps for Space, you get a lot out of the box:
 
 - a simple authentication model that “just works”
 - support for your favorite programming languages & frameworks
-- a suite of included services, from storing data to talking with AI models
+- a suite of included services, from storing data to exposing interfaces to other apps
 
 With these tools, you should find it easy to build all sorts of internet experiences for yourself — from simple websites to full stack applications that tie into the latest advances in AI. Once you have, it's even easier to publish your creation to almost anyone else in the world.
 

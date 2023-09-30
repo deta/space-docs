@@ -52,7 +52,7 @@ app_name: "Deta Space"
 
 ### `title`
 
-Use `title` to give your app a friendly and descriptive name on Discovery. This is different from the app name used once the app is installed. You can change that using the [`app_name`](docs/en/build/reference/spacefile#app_name) option in the `Spacefile`. The `title` will only be used on Discovery.
+Use `title` to give your app a friendly and descriptive name on Discovery. This is different from the app name used once the app is installed. You can change that using the [`app_name`](/docs/en/build/reference/spacefile#app_name) option in the `Spacefile`. The `title` will only be used on Discovery.
 
 Choose a simple and memorable title and try to stand out. Avoid names that use generic terms or are too similar to existing app names.
 
