@@ -51,7 +51,7 @@ The `name` field identifies your Micro inside your app and the `src` should poin
 
 If your project contains more than one Micro, the `primary` field can be used to identify the [entry point of your application](/docs/en/build/fundamentals/the-space-runtime/micros#micro-routing) (which Micro will be executed when the root path of your app is invoked over HTTP).
 
-Checkout the [Quick Starts](/docs/en/build/fundamentals/quick-starts) for instructions on adding specific Micros to your app.
+Checkout the [Quick Starts](/docs/en/build/quick-starts) for instructions on adding specific Micros to your app.
 
 ## Directory Structure
 
@@ -126,9 +126,9 @@ If you are trying to call a backend Micro from another Micro in the browser, you
 fetch('/api')
 ```
 
-Auth should “just work” on Space in this context. By default, a user is [already authenticated](/docs/en/build/fundamentals/the-space-runtime-authentication#the-developer-perspective) with Deta Space when logged in via the browser.  One note is that this does not work for in unauthenticated contexts, like Micros that have been made [publicly accessible](/docs/en/build/fundamentals/the-space-runtime-authentication#public-micros-and-routes).
+Auth should “just work” on Space in this context. By default, a user is [already authenticated](/docs/en/build/fundamentals/the-space-runtime/authentication#the-developer-perspective) with Deta Space when logged in via the browser.  One note is that this does not work for in unauthenticated contexts, like Micros that have been made [publicly accessible](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes).
 
-Read more about Authentication on Space [here](/docs/en/build/fundamentals/the-space-runtime-authentication).
+Read more about Authentication on Space [here](/docs/en/build/fundamentals/the-space-runtime/authentication).
 
 ### Server side
 

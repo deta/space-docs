@@ -374,14 +374,14 @@ Updates an item only if an item with `key` exists.
 
 **`POST /query`**
 
-List items that match a [query](/docs/en/reference/base/queries).
+List items that match a [query](/docs/en/build/reference/deta-base/queries).
 
 <RequestTabs>
 
   <Fragment slot="request">
 | JSON Payload    | Required | Type     | Description                                    |
 |-----------------|----------|----------|------------------------------------------------|
-| `query`         | No       | `list`   | list of a [query](/docs/en/reference/base/queries)|
+| `query`         | No       | `list`   | list of a [query](/docs/en/build/reference/deta-base/queries)|
 | `limit`         | No       | `int`    | no of items to return. min value 1 if used     |
 | `last`          | No       | `string` | last key seen in a previous paginated response |
 | `sort`          | No       | `string` | sort order based on item keys, `asc` or `desc`, default 'asc'|
