@@ -3,7 +3,7 @@ title: Queries
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Deta Base comes with its own query language for fetching data that match certain conditions. Queries are regular objects/dicts/maps with conventions for different operators for specifying the conditions. You can use queries in [Base UI](/docs/en/use/your-data/data-guis#base-ui),the [Base SDK](/docs/en/build/reference/sdk/base), or the [Base HTTP API](/docs/en/build/reference/http-api/base). 
+Deta Base comes with its own query language for fetching data that match certain conditions. Queries are regular objects/dicts/maps with conventions for different operators for specifying the conditions. You can use queries in [Base UI](/docs/en/use/your-data/guis#base-ui),the [Base SDK](/docs/en/build/reference/sdk/base), or the [Base HTTP API](/docs/en/build/reference/http-api/base). 
 
 Base Queries come with a number of operators for querying data, and logical operators AND and OR. 
 

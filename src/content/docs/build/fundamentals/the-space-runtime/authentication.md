@@ -9,7 +9,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 On Space, apps are private by default. This experience is powered by the personal cloud model.  Traditional internet applications have multiple users sharing cloud resources — like a  a server and a database — with authentication code mediating the two. On the personal cloud, each user gets their own independent instance of an app — including servers, databases and filestores. Read more about the personal cloud here.
 
-If you are building an app that needs some or all parts to be public, like a website, you can use [Public Routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes) to make specific routes or entire Micros public. If you need to access a protected app outside of the browser you can use [API Keys](/docs/en/build/fundamentals/the-space-runtime/authentication#api-keys) for authorization. If you want to let others use your entire app, you can [publish it](/docs/en/publish/intro).
+If you are building an app that needs some or all parts to be public, like a website, you can use [Public Routes](/docs/en/build/fundamentals/the-space-runtime/authentication#public-micros-and-routes) to make specific routes or entire Micros public. If you need to access a protected app outside of the browser you can use [API Keys](/docs/en/build/fundamentals/the-space-runtime/authentication#api-keys) for authorization. If you want to let others use your entire app, you can [publish it](/docs/en/publish).
 
 ### The User Perspective
 

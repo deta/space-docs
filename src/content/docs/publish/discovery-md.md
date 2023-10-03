@@ -36,7 +36,9 @@ Space comes with fully managed servers, security and data, supercharging your cr
 
 The first section between the two lines of 3 dashes (`---`) is the **Frontmatter** section which contains meta data about your app.
 
-**There are no required fields in the Frontmatter section, every supported parameter is optional**. We recommend that your app has at least a title and a short Markdown description explaining what it does. Here are all the options supported in the Frontmatter by `Discovery.md`:
+> If you are publishing your app to Deta Discovery as a `listed` release, the `app_name` and `tagline` fields are required (along with a Markdown description). Every other field is optional.
+
+Here are all the options supported in the Frontmatter by `Discovery.md`:
 
 ### `app_name`
 
@@ -50,7 +52,7 @@ app_name: "Deta Space"
 
 ### `title`
 
-Use `title` to give your app a friendly and descriptive name on Discovery. This is different from the app name used once the app is installed. You can change that using the [`app_name`](docs/en/build/reference/spacefile#app_name) option in the `Spacefile`. The `title` will only be used on Discovery.
+Use `title` to give your app a friendly and descriptive name on Discovery. This is different from the app name used once the app is installed. You can change that using the [`app_name`](/docs/en/build/reference/spacefile#app_name) option in the `Spacefile`. The `title` will only be used on Discovery.
 
 Choose a simple and memorable title and try to stand out. Avoid names that use generic terms or are too similar to existing app names.
 
@@ -74,6 +76,27 @@ Here's an example:
 tagline: "Your own personal computer in the cloud: private, secure & always online."
 ```
 
+### `media`
+
+Use the `media` field to provide screenshots and videos that show off your app. For screenshots, provide a path relative to the root of your app (& `Discovery.md` file). For videos, you can provide a YouTube or Loom link.
+
+Here's an example:
+
+```
+media:
+    - "screenshots/galaxy.png"
+    - "screenshots/spectrum.webp"
+    - "https://www.youtube.com/watch?v=i5wsXLmWhCM"
+```
+
+Media requirements:
+- There is a limit of 5 media, with 1 video per app
+- Screenshots must be a minimum of `1280 x 800` pixels with an aspect ratio of 16:10
+- Screenshots must be a `JPEG`, `PNG`, or `WEBP` file type
+- A maximum of 3 MB per screenshot is enforced
+
+Media will be displayed on the Discovery page in the order they are given in the Frontmatter.
+
 ### `theme_color`
 
 Use `theme_color` to style the color of your app's Discovery page. `theme_color` supports hex color values.
@@ -96,6 +119,26 @@ Use `homepage` to link to a URL related to your app. This could be your app's ma
 
 ```
 homepage: "<https://deta.space>"
+```
+
+### `open_code`
+
+Use `open_code` if you want the source code you push to Deta to be downloadable as a `zip` archive from your app's Discovery page. This allows users to review the source code of your app, increasing trust. 
+
+Here's an example:
+```
+open_code: true
+```
+
+If you do not want your source code shared, do not use this field.
+
+### `ported_from`
+
+Use `ported_from` if you your app is based on someone else's open source work that you modified to make compatible with Space. You can recognize the original source by linking to the Git repository.
+
+Here's an example:
+```
+ported_from: "https://github.com/methodofaction/Method-Draw"
 ```
 
 ## Markdown Content

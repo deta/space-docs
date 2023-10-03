@@ -45,10 +45,6 @@ We recommend using the following libraries for hosting bots on Space:
 
 Bases do not have a limit on the number of rows they can store, but each row is limited to 400 KB in size. Numbers are limited to 16 digits for both integers and floating-points. Although our platform offers unlimited storage, it is primarily designed to cater to small to medium-sized projects.
 
-### What are the limits of Deta Drive?
-
-Drives currently have a global limit of 10 GB per account.
-
 ### My domain verification is pending, what should I do?
 
 Domains can take up to 24 hours to be verified. If it takes longer than that, make sure you have followed the steps mentioned [here](/docs/en/use/space-apps/domains) correctly. If you still face issues, please contact us on [Discord](https://go.deta.dev/discord).

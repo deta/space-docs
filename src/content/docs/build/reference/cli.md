@@ -97,7 +97,7 @@ space push
 
 If you don't want to follow the logs of the build and update, pass the `--skip-logs` argument which will exit the process as soon as the build is started instead of waiting for it to finish.
 
-Tip: you can use the [`.spaceignore` file](/docs/en/basics/revisions#ignoring-files-and-directories) to exclude certain files and directories from being uploaded during push.
+Tip: you can use the [`.spaceignore` file](/docs/en/build/fundamentals/the-space-runtime#ignoring-files-and-directories) to exclude certain files and directories from being uploaded during push.
 
 ## `space release`
 
@@ -154,7 +154,7 @@ space open
 
 ## `space validate`
 
-You can use `space validate` to validate your [Spacefile](/docs/en/reference/spacefile/) and check for errors.
+You can use `space validate` to validate your [Spacefile](/docs/en/build/reference/spacefile) and check for errors.
 
 Optional args:
 
@@ -166,7 +166,7 @@ space validate
 
 ## `space builder env`
 
-You can use `space builder env` to fetch or update the environment variables in your project's development instance. Note that this is completely decoupled from your local [Spacefile](/docs/en/reference/spacefile/), and you need to push a new development instance if you add or remove a custom environment variable.
+You can use `space builder env` to fetch or update the environment variables in your project's development instance. Note that this is completely decoupled from your local [Spacefile](/docs/en/build/reference/spacefile), and you need to push a new development instance if you add or remove a custom environment variable.
 
 Args:
 
