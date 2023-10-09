@@ -74,11 +74,11 @@
       });
     }
 
-    // Go to Canvas
+    // Go to Horizon
     if (isAuthenticated) {
       actions.push({
         id: "canvas",
-        name: "Go to Canvas",
+        name: "Go to Horizon",
         icon: ArrowRight,
         section: "Navigate",
         actionText: "Navigate",

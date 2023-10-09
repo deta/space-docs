@@ -7,7 +7,7 @@ layout: "@layouts/DocsPageLayout.astro"
 
 Every app on Space includes an icon, presented as a rectangle with a rounded corner in the top-left (7x the size of a typical corner radius). You can also specify your own icon file for any app, if you do not, a randomly generated gradient will be created.
 
-We recommend creating your own icon: it is a crucial aspect of any Space App. As the first visual element users encounter when browsing the Discovery Page, it can make or break a user's decision to install the app. It also makes your app identifiable as users navigate their apps in the Canvas and through Teletype.
+We recommend creating your own icon: it is a crucial aspect of any Space App. As the first visual element users encounter when browsing the Discovery Page, it can make or break a user's decision to install the app. It also makes your app identifiable as users navigate their apps in the Horizon and through Teletype.
 
 ## Icon Specifications
 

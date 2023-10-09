@@ -20,22 +20,22 @@ Builder Instances offer all the features that normal Space apps offer, and are a
 
 ## Updating a Builder Instance
 
-Once you have pushed your local project to Builder using [`space push`](/docs/en/build/fundamentals/development/pushing), Builder will automatically take the newly created Revision and install it in your Builder Instance. The Builder instance is automatically added to your Canvas and can be used like any other app.
+Once you have pushed your local project to Builder using [`space push`](/docs/en/build/fundamentals/development/pushing), Builder will automatically take the newly created Revision and install it in your Builder Instance. The Builder instance is automatically added to your Horizon and can be used like any other app.
 
 ## Accessing a Builder Instance
 
-### From the Canvas
+### From the Horizon
 
-Your Builder Instance will automatically be added to your Canvas. Builder Instances are marked by a purple `DEV` indicator, and offer the all the Context Menu options of a normal Space app. They offer two additional options:
+Your Builder Instance will automatically be added to your Horizon. Builder Instances are marked by a purple `DEV` indicator, and offer the all the Context Menu options of a normal Space app. They offer two additional options:
 
 - **Open In Builder:** opens your Project within Builder
-- **Unpin Instance**: removes your Builder Instance from the Canvas (you can repin it from Builder)
+- **Unpin Instance**: removes your Builder Instance from the Horizon (you can repin it from Builder)
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/build/builder-instance-1.png"/> </div>
 
 ### From Builder
 
-You can also view your Builder instance via your Builder Project under the ”Develop” tab. Clicking the **Open Builder Instance** will open the instance. There is also an option to pin and unpin your Builder Instance to your Canvas.
+You can also view your Builder instance via your Builder Project under the ”Develop” tab. Clicking the **Open Builder Instance** will open the instance. There is also an option to pin and unpin your Builder Instance to your Horizon.
 
 ![builder-instance-2](/docs_assets/build/builder-instance-2.png)
 
@@ -47,7 +47,7 @@ The primary use case for the Builder Instance is to test your app before publish
 
 #### Logs
 
-If your app runs into a runtime error while handling a request, the error logs will be returned in the request’s response. These are accessible from your Builder Project and via the app on Canvas. All runtime logs, including the error logs, are stored for 14 days. 
+If your app runs into a runtime error while handling a request, the error logs will be returned in the request’s response. These are accessible from your Builder Project and via the app on Horizon. All runtime logs, including the error logs, are stored for 14 days. 
 
 <InterfaceTabs
 >
@@ -59,7 +59,7 @@ In your Builder Project, your logs can be viewed in the **Develop** tab of you
   </Fragment>
   <Fragment slot="canvas">
     <br/>
- The Logs can also be accessed from your App’s context menu on the Canvas under **“View Logs”**.
+ The Logs can also be accessed from your App’s context menu on the Horizon under **“View Logs”**.
 
 ![builder-instance-4](/docs_assets/build/builder-instance-4.png)
   </Fragment>
@@ -78,7 +78,7 @@ If you instead want to have a safer environment to run your app without sudden c
 ## Storing Data
 
 The Builder Instance shares its data with your whole Builder Project, which you can [develop against](/docs/en/build/fundamentals/data-storage#developing-with-base-and-drive). If you are [developing your app locally](/docs/en/build/fundamentals/development/local-development) using `space dev`, the data will be shared between your local environment and your Builder Instance. 
-You can [view and update this data](/docs/en/use/your-data/guis) as you use your app from your Builder Project or the app’s context menu on the Canvas (**"View Data"**).
+You can [view and update this data](/docs/en/use/your-data/guis) as you use your app from your Builder Project or the app’s context menu on the Horizon (**"View Data"**).
 
 <InterfaceTabs
 >
@@ -97,7 +97,7 @@ You can [view and update this data](/docs/en/use/your-data/guis) as you use yo
 
 Your Builder Instance has access to preset and custom environment variables. You can create environment variables for your app via the [`Spacefile`](/docs/en/build/reference/spacefile#env).
 
-You can update your Builder Instance’s environment variables from your Builder Project or from the App's context menu on the Canvas (**"Settings"**).
+You can update your Builder Instance’s environment variables from your Builder Project or from the App's context menu on the Horizon (**"Settings"**).
 
 <InterfaceTabs
 >
@@ -113,7 +113,7 @@ You can update your Builder Instance’s environment variables from your Builder
 
 ## Domains
 
-Builder Instances have the same [Domain features as any Space App](/docs/en/use/space-apps/domains). You can access your Built-In Space Domain by opening the app, or from the Instance’s context menu on the Canvas (**"Settings"**).
+Builder Instances have the same [Domain features as any Space App](/docs/en/use/space-apps/domains). You can access your Built-In Space Domain by opening the app, or from the Instance’s context menu on the Horizon (**"Settings"**).
 
 <InterfaceTabs
 >
@@ -125,7 +125,7 @@ Builder Instances have the same [Domain features as any Space App](/docs/en/use/
 </Fragment>
   <Fragment slot="canvas">
 <br/>
-You can add a custom domain through the Instance’s context menu on the Canvas, using the "Domains" tab.
+You can add a custom domain through the Instance’s context menu on the Horizon, using the "Domains" tab.
 
 ![builder-instance-10](/docs_assets/build/builder-instance-10.png)
   </Fragment>
@@ -134,7 +134,7 @@ You can add a custom domain through the Instance’s context menu on the Canvas,
 
 ## Scheduled Actions
 
-Your Builder Instance also runs Scheduled Actions, which you can configure via the `Spacefile`. You can modify and disable Scheduled Actions, just like with any other app, via your Builder Project or through the Instance’s context menu on the Canvas (**"Settings"**).
+Your Builder Instance also runs Scheduled Actions, which you can configure via the `Spacefile`. You can modify and disable Scheduled Actions, just like with any other app, via your Builder Project or through the Instance’s context menu on the Horizon (**"Settings"**).
 
 <InterfaceTabs
 >

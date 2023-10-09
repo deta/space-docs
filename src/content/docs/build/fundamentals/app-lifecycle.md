@@ -50,7 +50,7 @@ When you publish an app from Space, you application can be used by just about an
 
 ![local-headline](/docs_assets/build/local-development-headline.png)
 
-In the first stage of the Space App lifecycle, local development, the key concept is a [Project](/docs/en/build/fundamentals/development/projects), where you will manage development and publishing of an app. Projects live within the Space app [Builder](/docs/en/build/fundamentals/development/builder), which is available on your [Canvas](/docs/en/use/interface#canvas).
+In the first stage of the Space App lifecycle, local development, the key concept is a [Project](/docs/en/build/fundamentals/development/projects), where you will manage development and publishing of an app. Projects live within the Space app [Builder](/docs/en/build/fundamentals/development/builder), which is available on your [Horizon](/docs/en/use/interface#horizon).
 
 Space works with your preferred development environment, supporting [common languages and frameworks](/docs/en/build/quick-starts). The [Space CLI](/docs/en/build/fundamentals/space-cli) manages Project specifics locally, like secure connections to [Space's data storage services: Deta Base and Deta Drive](/docs/en/build/fundamentals/data-storage).
 

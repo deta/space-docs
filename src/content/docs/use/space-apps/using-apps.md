@@ -3,7 +3,7 @@ title: Using Space Apps
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Once you've installed a Space app from Deta Discovery, you should see it on your Canvas. This is your own personal copy of the app.
+Once you've installed a Space app from Deta Discovery, you should see it on your Horizon. This is your own personal copy of the app.
 
 ![using-apps-1](/docs_assets/use/using-apps-1.png)
 

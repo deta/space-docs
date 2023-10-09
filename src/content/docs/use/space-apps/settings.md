@@ -3,7 +3,7 @@ title: Settings
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-A Space app's Settings menu gives you access to a few helpful features and functionalities. To access these, open the app's context menu from the Canvas and then click Settings.
+A Space app's Settings menu gives you access to a few helpful features and functionalities. To access these, open the app's context menu from the Horizon and then click Settings.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/settings-1.png"/></div>
 
