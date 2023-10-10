@@ -74,7 +74,7 @@ One of the core problems with software on the internet is interoperability — a
 <image style="width: calc(50% - 10px); border-radius: 5px; margin-left: 10px;" src="/blog_assets/interop-2.png">
 </div>
 
-If you are developer interested in building for Space, sign up for [the alpha of **SpaceKit 2.0**](https://formate-1-j0779127.deta.app/f/spacekit-2), Deta’s developer kit for building personal, interoperable, and intelligent web apps. 
+If you are developer interested in building for Space, sign up for [the alpha of **SpaceKit 2.0**](https://formate-1-j0779127.deta.app/f/spacekit-2), Deta’s developer kit for building personal, interoperable, and intelligent web apps (out in the coming months). 
 
 ### Try SpaceOS Today
 
