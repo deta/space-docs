@@ -1,13 +1,11 @@
 ---
 title: "Introducing Space OS"
-date: "10 October 2023"
+date: "10 Oct 2023"
 layout: "@blogs"
-description: "A New Operating System for the Web"
+description: "A new operating system for the web"
 ---
 
-Hi there, this is Max, co-founder of Deta. The entire team is glad you’re here with us.
-
-Today is one of the most exciting moments in Deta’s journey, to date.  Today we are unveiling the Alpha of **Space OS** — a new operating system for the web. It’s designed to make computing on the internet more personal, powerful, and fun. To contextualize why this is so exciting, I’d like to jump back to Deta’s origins.
+Today is one of the most exciting moments in Deta’s journey, to date.  We are unveiling the Alpha of **Space OS** — a new operating system for the web. It’s designed to make computing on the internet more personal, powerful, and fun. To contextualize why this is so exciting, I’d like to jump back to Deta’s origins.
 
 ## A Short History of Deta
 
@@ -21,13 +19,10 @@ Space OS is a new operating system for the internet, built on Deta Space. It con
 
 ### Horizon
 
-**Horizon** is a completely new and personal web interface that’s core part of Space OS. Here’s a few Horizons:
+**Horizon** is a completely new and personal web interface that’s core part of Space OS. Here’s an example of a Horizon:
 
 ![horizon-1](/blog_assets/horizon-1.png)
 
-![horizon-2](/blog_assets/horizon-2.png)
-
-![horizon-3](/blog_assets/horizon-2.png)
 
 You can personalize a Horizon with visuals, notes, links, and videos. You can add personal apps from Deta Discovery to your Horizon, while you can also create lightweight apps called Cards straight on your Horizon. Cards can be coded by hand, or described to the AI assistant, **Teletype**, for instant creation (great for users who can’t code). In future iterations of Horizon, you will be able to customize your Horizon’s look and feel. And since Horizon runs on your personal computer on the internet, you’ll also be able to natively share and collaborate with almost anyone in the world through your Horizons. We think you’ll love it.
 
@@ -37,17 +32,17 @@ Recent advances in artificial intelligence have captured the imaginations of man
 
 As a first feature, we are letting people create web applications (called Cards) using natural language, usable straight from Horizon — no knowledge of coding needed. Here’s a short demo of this in action:
 
+<div style="display: flex; align-items: center; justify-content: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iVda_V-DpQ8?si=ZNOuYN7YJGeDTa-T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<br />
 
 In the future, Space OS will incorporate many more AI features.
 
 ### Interoperability & SpaceKit — coming soon
 
 One of the core problems with software on the internet is interoperability — almost nothing works together by default, and the solutions all feel like duct tape. With Space, we are building everything with native interoperability in mind. We are looking forwards to sharing our interfaces for interoperability with you in the coming months.
-
-![interop-1](/blog_assets/interop-1.png)
-
-![interop-2](/blog_assets/interop-2.png)
 
 ![interop-3](/blog_assets/interop-3.png)
 
@@ -59,8 +54,8 @@ You can check out the Alpha of SpaceOS [here](https://deta.space/signup). If you
 
 ## Fundraise and Thank You
 
-What we are doing is neither easy nor cheap. So we feel very fortunate to announce a $3.6 Seed fundraise to further build Space OS. Led by Crane Venture Partners, the round was joined by System.One, Tomahawk.VC, Tiny.VC, AngelInvest Ventures, Acequia Capital, NPHard (as angels), and founders and early employees from companies like NGINX and Notion (& more). 
+What we are doing is neither easy nor cheap. So we feel very fortunate to announce we raised $3.6 Million in Seed funding to further build Space OS. Led by Crane Venture Partners, the round was joined by System.One, Tomahawk.VC, Tiny.VC, AngelInvest Ventures, Acequia Capital, NPHard (as angels), and founders and early employees from companies like NGINX and Notion (& more). 
 
 We also would like to shout out the amazing Deta community for your continuous support and words of encouragement. It takes a village, and we feel we have a tremendous infrastructure around us to build a computer that inspires us. We hope you like it.
 
-Thank you, from the entire Deta Team. :deta-heart:
+Thank you, from the entire Deta Team.
