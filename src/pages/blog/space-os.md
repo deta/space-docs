@@ -5,12 +5,15 @@ layout: "@blogs"
 description: "A new operating system for the internet"
 ---
 
-Today is one of the most exciting moments in Deta’s journey, to date.  We are unveiling the Alpha of **Space OS** — a new operating system for the internet. 
+
 
 <div style="display: flex; align-items: center; justify-content: center;">
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=qVRy6mK8lD0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qVRy6mK8lD0?si=fAAVvZj9EwWMfcQf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
+<br />
+
+Today is one of the most exciting moments in Deta’s journey, to date.  We are unveiling the Alpha of **Space OS** — a new operating system for the internet. 
 
 Space OS is designed to make computing on the internet more personal, powerful, and fun. To contextualize why this is so exciting, let's jump back to Deta’s origins.
 
