@@ -5,7 +5,9 @@ layout: "@blogs"
 description: "A new operating system for the web"
 ---
 
-Today is one of the most exciting moments in Deta’s journey, to date.  We are unveiling the Alpha of **Space OS** — a new operating system for the web. It’s designed to make computing on the internet more personal, powerful, and fun. To contextualize why this is so exciting, I’d like to jump back to Deta’s origins.
+Today is one of the most exciting moments in Deta’s journey, to date.  We are unveiling the Alpha of **Space OS** — a new operating system for the web. 
+
+Space OS is designed to make computing on the internet more personal, powerful, and fun. To contextualize why this is so exciting, let's jump jump back to Deta’s origins.
 
 ## A Short History of Deta
 
