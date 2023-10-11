@@ -25,19 +25,19 @@ Deta’s first crack at this problem was Deta Cloud, a cloud platform that tried
 
 ![deta-cloud](/blog_assets/deta-cloud-welcome.png)
 
-Next came Deta Space, which lets users install apps devs that build in their own personal cloud computer, where they control their apps and data. 
+Next came Deta Space, which lets users install apps, that developers build, in their own personal cloud computer where they control their apps and data. 
 
 ![deta-space](/blog_assets/space-canvas.png)
 
 These two components were stepping stones to our big dream — the initial version of which we are happy to launch today. We’re very excited to share it with you.
 
-### Space OS: a new operating system for the internet
+### Space OS: A New Operating System for the Internet
 
-Space OS is a new operating system for the web, built on Deta Space. It contains the Horizon and Teletype user interfaces, which support creating, discovering and using personal content and applications. And Space OS is designed with AI and interoperability as cornerstones.
+Space OS is a new operating system for the web, built on Deta Space. It contains the Horizon and Teletype user interfaces, which support creating, discovering and using personal content and applications. Space OS is designed with AI and interoperability as cornerstones.
 
 #### Horizon
 
-**Horizon** is a completely new and personal web interface that’s core part of Space OS. Here’s an example of a few Horizons:
+**Horizon** is a completely new and personal web interface that’s a core part of Space OS. Here’s an example of a few Horizons:
 
 ![horizon-1](/blog_assets/horizon-1.png)
 
@@ -47,7 +47,7 @@ Space OS is a new operating system for the web, built on Deta Space. It contains
 </div>
 
 
-You can personalize a Horizon with visuals, notes, links, and videos. You can add personal apps from Deta Discovery to your Horizon, while you can also create lightweight apps called Cards straight on your Horizon. Cards can be coded by hand, or described to the AI assistant, **Teletype**, for instant creation (great for users who can’t code). In future iterations of Horizon, you will be able to customize your Horizon’s look and feel. And since Horizon runs on your personal computer on the internet, you’ll also be able to natively share and collaborate with almost anyone in the world through your Horizons. We think you’ll love it.
+You can personalize your Horizon with visuals, notes, links, and videos. You can add personal apps from Deta Discovery to your Horizon, while you can also create lightweight apps called Cards straight on your Horizon. Cards can be coded by hand, or described to the AI assistant, **Teletype**, for instant creation (great for users who can’t code). In future iterations of Horizon, you will be able to customize your Horizon’s look and feel. Since Horizon runs on your personal computer on the internet, you’ll also be able to natively share and collaborate with almost anyone in the world through your Horizons. We think you’ll love it.
 
 #### Artificial Intelligence
 
@@ -65,7 +65,7 @@ In the future, Space OS will incorporate many more abilities, powered by AI.
 
 #### Coming Soon: Immersive Interoperability & SpaceKit 2 
 
-One of the core problems with software on the internet is interoperability — almost nothing works together by default, and the solutions all feel like duct tape. With Space, we are building everything with native interoperability in mind. You can already access and export all of the data for apps you install from [Deta Discovery](https://deta.space/discovery) - graphically or programmatically. But we are looking forwards to sharing our new interfaces for more immersive interoperability with you in the coming months.
+One of the core problems with software on the internet is interoperability — almost nothing works together by default, and the solutions all feel like duct tape. With Space OS, we are building everything with native interoperability in mind. You can already access and export all of the data for apps you install from [Deta Discovery](https://deta.space/discovery) - with a UI or programmatically. We are looking forward to sharing our new interfaces for more immersive interoperability with you in the coming months.
 
 ![interop-3](/blog_assets/interop-3.png)
 
@@ -74,15 +74,15 @@ One of the core problems with software on the internet is interoperability — a
 <image style="width: calc(50% - 10px); border-radius: 5px; margin-left: 10px;" src="/blog_assets/interop-2.png">
 </div>
 
-If you are developer interested in building for Space, sign up for [the alpha of **SpaceKit 2.0**](https://formate-1-j0779127.deta.app/f/spacekit-2), Deta’s developer kit for building personal, interoperable, and intelligent web apps (out in the coming months). 
+If you are a developer interested in building for Space, sign up for [the alpha of **SpaceKit 2.0**](https://formate-1-j0779127.deta.app/f/spacekit-2), Deta’s developer kit for building personal, interoperable, and intelligent web apps (out in the coming months). 
 
 ### Try SpaceOS Today
 
-You can check out the Alpha of SpaceOS [here](https://deta.space/signup). If you are an existing Deta user, you can pin all of your existing apps and projects to your new Horizon, while your old Canvas is still accessible [here](https://old.deta.space).
+You can check out the Alpha of Space OS [here](https://deta.space/signup). If you are an existing Deta user, you can pin all of your existing apps and projects to your new Horizon, while your old Canvas is still accessible [here](https://old.deta.space).
 
 ### Fundraise & Thanks
 
-What we are doing is neither easy nor cheap. So we feel very fortunate to announce we raised $3.6 Million in Seed funding to further build Space OS. Led by Crane Venture Partners, the round was joined by System.One, Tomahawk.VC, Tiny.VC, AngelInvest Ventures, Acequia Capital, NPHard (as angels), and founders and early employees from companies like NGINX and Notion (& more). 
+What we are doing is neither easy nor cheap. We feel very fortunate to announce we raised $3.6 Million in Seed funding to further build Space OS. Led by Crane Venture Partners, the round was joined by System.One, Tomahawk.VC, Tiny.VC, AngelInvest Ventures, Acequia Capital, NPHard (as angels), and founders and early employees from companies like NGINX and Notion (& more). 
 
 We also would like to shout out the amazing Deta community for your continuous support and words of encouragement. It takes a village, and we feel we have a tremendous infrastructure around us to build a computer that inspires us. We hope you like it.
 
