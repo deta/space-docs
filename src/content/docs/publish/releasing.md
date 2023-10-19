@@ -72,7 +72,7 @@ The release notes are shown to everyone who installed an earlier copy of the app
 
 ![releasing-4](/docs_assets/publish/releasing-4.png)
 
-You can edit the meta data of your app which will be shown on your app's Discovery page. There are a number of available fields (all optional): name, description, homepage, Git repo, and theme color.
+You can edit the meta data of your app which will be shown on your app's Discovery page. For `listed` releases on Deta Discovery, *App Name* and *App Description* are mandatory. There are a number of optional fields: *Homepage*, *Git repository*, *Theme Color*, *Open Code*, and *Ported From*.
 
 These fields mostly map to fields in the [Frontmatter section of the Discovery.md](/docs/en/publish/discovery-md#frontmatter) file.
 
@@ -83,7 +83,10 @@ These fields mostly map to fields in the [Frontmatter section of the Discovery.m
 | Homepage | homepage |
 | Git Repository | git |
 | Theme Color | theme |
+| Open Code | open_code |
+| Ported From | ported_from |
 
+In addition to the above options, you can upload screenshots and videos to show off your app on its Discovery page. You must currently use release via the Deta CLI and a [`Discovery.md`](/docs/en/publish/discovery-md#media) file to use this feature.
 
 
 ### Discovery Page

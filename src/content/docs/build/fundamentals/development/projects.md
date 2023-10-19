@@ -64,7 +64,7 @@ Where you see important information about your Project, like its latest Release 
 
 Where you to manage your project's development. The **Develop** tab has three sub-tabs: **Overview**, **Data**, and **Configuration**.
 
-The **Overview** sub-tab is where you can access your [Builder Instance](/docs/en/build/fundamentals/development/local-development), and see it's [Logs](/docs/en/build/fundamentals/debugging#runtime-logs).
+The **Overview** sub-tab is where you can access your [Builder Instance](/docs/en/build/fundamentals/development/local-development), and see it's [Logs](/docs/en/build/fundamentals/development/debugging#runtime-logs).
 
 ![projects-develop-overview](/docs_assets/build/projects-develop-overview.png)
 

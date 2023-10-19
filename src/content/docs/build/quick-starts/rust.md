@@ -8,7 +8,7 @@ Space supports Rust Micros using using `engine: custom` in your Spacefile. You c
 A repository with a working example can be found [here](https://github.com/abdelhai/rusti)
 
 ## Create a Space project
-Make sure you have the [Space CLI installed and set up](/docs/en/build/fundamentals/space-cli). Then, in the root directory of your Rust project, run the following to create a Space project and an empty [`Spacefile`](/docs/en/reference/spacefile):
+Make sure you have the [Space CLI installed and set up](/docs/en/build/fundamentals/space-cli). Then, in the root directory of your Rust project, run the following to create a Space project and an empty [`Spacefile`](/docs/en/build/reference/spacefile):
 
 ```sh
 space new

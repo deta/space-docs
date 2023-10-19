@@ -5,11 +5,11 @@ layout: "@layouts/DocsPageLayout.astro"
 
 ## Environment Variables
 
-**Environment Variables** allow apps to access custom configuration at the individual app level. They are available in all non static [Micros](/docs/en/build/fundmenatals/the-space-runtime/micros) during runtime. You can create custom environment variables for your app that can be modified by the end user of the app, while Micros also come with pre-set Space system variables.
+**Environment Variables** allow apps to access custom configuration at the individual app level. They are available in all non static [Micros](/docs/en/build/fundamentals/the-space-runtime/micros) during runtime. You can create custom environment variables for your app that can be modified by the end user of the app, while Micros also come with pre-set Space system variables.
 
 ### Custom Variables
 
-Use the `env` preset in the `Spacefile` if you need to set custom environment variables for your Micros. This can be used to let users of your app specify things like external secrets, [API Keys](/docs/en/build/guides/extending-apps#api-keys), or [Data Keys](/docs/en/build/guides/extending-apps#data-keys) of different app instances.
+Use the `env` preset in the `Spacefile` if you need to set custom environment variables for your Micros. This can be used to let users of your app specify things like external secrets, [API Keys](/docs/en/use/space-apps/using-apps#api-keys), or [Data Keys](/docs/en/use/your-data/collections#data-keys) of different app instances.
 
 ```yaml
 micros:
@@ -28,7 +28,7 @@ micros:
 - `description`: human friendly description (optional)
 - `default`: default value for the variable (optional)
 
-The user of the app will be shown a [UI in the App's Settings](/docs/en/use/settings#configuration-variables) where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`. For development instances of your projects, these environment variables can also be fetched and/or updated directly with [`space-cli`](/docs/en/build/reference/cli#space-builder-env).
+The user of the app will be shown a [UI in the App's Settings](/docs/en/use/space-apps/settings#configuration-variables) where they can set the values for the specified environment variables. They will be exposed to the Micro's environment under the specified `name`. For development instances of your projects, these environment variables can also be fetched and/or updated directly with [`space-cli`](/docs/en/build/reference/cli#space-builder-env).
 
 When developing locally using `space dev`, any custom environment variables that exist in the current shell environment will be passed through to the development environment, overwriting the `default` value.
 

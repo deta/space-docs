@@ -28,4 +28,4 @@ The Builder Instance is meant for you and is like any other Space app, feature-w
 
 ![releasing-headline](/docs_assets/publish/releasing-headline.png)
 
-Once you have tested and refined your app, you can [Publish](/docs/en/publish/intro) a revision from Builder to the world, through a [Release](/docs/en/publish/releasing#releases). You can share a Release with just about anyone in the world who has an internet connection, to use in their own Space. Because of the personal cloud model, Deta Space can shorten the distance between “working cloud app” and “global cloud app” to a single command, or a few clicks.
+Once you have tested and refined your app, you can [Publish](/docs/en/publish) a revision from Builder to the world, through a [Release](/docs/en/publish/releasing#releases). You can share a Release with just about anyone in the world who has an internet connection, to use in their own Space. Because of the personal cloud model, Deta Space can shorten the distance between “working cloud app” and “global cloud app” to a single command, or a few clicks.

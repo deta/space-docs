@@ -139,7 +139,7 @@ Check out the [Spacefile reference](/docs/en/build/reference/spacefile) for all 
 
 A Space app runs on serverless compute units called [Micros](/docs/en/build/fundamentals/the-space-runtime/micros). A Space app can contain up to five Micros, which run most programming languages and frameworks.
 
-If [`space new`](/docs/en/build/new-apps#creating-a-project-with-builder) doesn't bootstrap your Micro when creating a project locally, you can add it by writing to the [`Spacefile`](/docs/en/build/fudnamentals/the-space-runtime#the-spacefile).
+If [`space new`](/docs/en/build/new-apps#creating-a-project-with-builder) doesn't bootstrap your Micro when creating a project locally, you can add it by writing to the [`Spacefile`](/docs/en/build/fundamentals/the-space-runtime#the-spacefile).
 Create an individual Micro with the `micros` field in the `Spacefile`.
 
 ```yaml title="Spacefile"
@@ -158,7 +158,7 @@ Here's what the required fields in the `Spacefile` do:
 
 There are many optional fields that you can use, depending on what your app does. With the `Spacefile` you can make Micros do many things, among them:
 
-- provide Space's [build pipeline](/docs/en/build/funamentals/development/pushing#the-space-build-pipeline) with build commands for your Micro via `build`
+- provide Space's [build pipeline](/docs/en/build/fundamentals/development/pushing#the-space-build-pipeline) with build commands for your Micro via `build`
 - provide the Space CLI with a command to spin up your Micro locally via `dev`
 - indicate on what relative path to serve any given Micro via `path`
 - make individual routes public via `public_routes`
@@ -190,7 +190,7 @@ Collections offer two persistent storage services:
 - [Deta Base](/docs/en/build/fundamentals/data-storage#deta-base): a simple and powerful NoSQL database.
 - [Deta Drive](/docs/en/build/fundamentals/data-storage#deta-drive): simple file storage.
 
-To get started writing data or files to Base or Drive, you can use the [Deta SDKs](/docs/en/build/reference/sdk) or [Deta HTTP APIs](/docs/en/build/reference/http-apis). Authentication is fully managed by Space if you use the SDKs and the [`space dev` command for local development](/docs/en/build/fundamentals/development/local-development).
+To get started writing data or files to Base or Drive, you can use the [Deta SDKs](/docs/en/build/reference/sdk) or [Deta HTTP APIs](/docs/en/build/reference/http-api). Authentication is fully managed by Space if you use the SDKs and the [`space dev` command for local development](/docs/en/build/fundamentals/development/local-development).
 
 <Collapsible title="Base SDK Code Snippet" client:load>
 ```jsx
@@ -346,7 +346,7 @@ space release
 
 If you use the additional CLI flag `--listed`, your app will be publicly discoverable and installable via **Deta Discovery**.
 
-[Read more about publishing on Space](/docs/en/publish/intro).
+[Read more about publishing on Space](/docs/en/publish).
 
 ## Help, I'm Stuck
 

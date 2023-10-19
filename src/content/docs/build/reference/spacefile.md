@@ -273,7 +273,7 @@ micros:
           default: "deta is cool"
 ```
 
-More information on the `env` preset can be found in the [Micro Basics](/docs/en/basics/micros#custom-variables).
+More information on the `env` preset can be found in the [The Space Runtime Configuration](/docs/en/build/fundamentals/the-space-runtime/configuration#environment-variables).
 
 ##### `api_keys`
 

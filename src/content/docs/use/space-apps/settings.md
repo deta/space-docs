@@ -25,7 +25,7 @@ You can also delete your app by checking the box and then clicking **Delete**. T
 
 ## Keys
 
-The keys tab will let you create and manage any keys associated with your app, which can include [Data Keys](/docs/en/use/your-data/collections#data-keys) and [API Keys](/docs/en/use/space-apps/using-space-apps#api-keys).
+The keys tab will let you create and manage any keys associated with your app, which can include [Data Keys](/docs/en/use/your-data/collections#data-keys) and [API Keys](/docs/en/use/space-apps/using-apps#api-keys).
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:600px;" src="/docs_assets/use/settings-3.png"/></div>
 
