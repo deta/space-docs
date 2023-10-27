@@ -48,7 +48,7 @@ Developers around the world have already built hundreds of personal web apps for
 
 When we launched Space OS and Horizon, the only way to access your personal apps on Space was to open your browser, log in to Space, enter Horizon and open the app (or visit an app’s url directly, if you remember it). This is restrictive, requiring you to leave the context you’re in, and to go through a new one. We believe the powers of Space and Space apps should meet you closer to where you already are, wherever that may be. Internally, the team calls this “Space Everywhere”. 
 
-Today, we are taking the first step in direction “Space Everywhere” by automatically creating installable PWAs out of all of your Space apps (if they serve html). This means you can install almost any application from Space on your desktop, tablet, or phone (if they support PWAs).
+Today, we are taking the first step in direction “Space Everywhere” by automatically creating installable PWAs out of all of your Space apps (if they serve html, and are using Deta Auth / protected routes). This means you can install almost any application from Space on your desktop, tablet, or phone (if they support PWAs).
  
 <div style="display:flex;flex-direction:column;width:100%;align-items:center;background:;padding-top:;padding-bottom:;border-radius:">
     <img src="/blog_assets/pwas-launcher.png" alt="Base UI Screenshot" style="max-width: 40%; border-radius: 10px;">
