@@ -84,7 +84,7 @@ This introduction of PWAs also includes basic, read-only, offline support. If yo
 
 Within the [Space Runtime](https://deta.space/docs/en/build/fundamentals/the-space-runtime) of each application on Space, we now include a “client runtime” for every application that uses html. If a Space application doesn’t already ship a manifest file, we add one, enabling it to be installed as a PWA. This manifest file includes a custom generated icon for the app, its name, description and some other information. Additionally, if the app doesn’t ship with a “service worker”, we add one to allow offline support. We’ve open sourced these aspects of the runtime; you can see what’s going on [here](https://github.com/deta/client-runtime/). 
 
-Developers can currently opt-out of auto PWA-fication of Space apps via the `auto-pwa` field in the Spacefile.
+Developers can currently opt-out of auto PWA-fication of Space apps via the [`auto_pwa`](/docs/en/build/reference/spacefile#auto_pwa) field in the Spacefile.
 
 ## Towards making personal apps more powerful
 
