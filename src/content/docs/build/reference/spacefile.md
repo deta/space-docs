@@ -62,16 +62,6 @@ The image needs to be a PNG or WebP file of 512x512 pixels.
 icon: src/static/icon.png
 ```
 
-### `auto_pwa`
-
-*Optional*
-
-Use `auto_pwa` to turn off auto PWA-fication of Space apps. It is `true` by default. If `auto_pwa` is set to `false`, the Space Runtime will not serve the [`client-runtime`](https://github.com/deta/client-runtime) with the default Manifest file and service worker.
-
-```yaml
-auto_pwa: false
-```
-
 ### `micros`
 
 **Required**
@@ -443,3 +433,14 @@ Cron expressions allow you more flexibility and precision when scheduling a task
 
 
 More information on scheduled actions and how to use them in your app can be found [here](/docs/en/build/fundamentals/the-space-runtime/actions).
+
+
+### `auto_pwa`
+
+*Optional*
+
+Use `auto_pwa` to turn off auto PWA-fication of Space apps. It is `true` by default. If `auto_pwa` is set to `false`, the Space Runtime will not serve the [`client-runtime`](https://github.com/deta/client-runtime) with the default Manifest file and service worker.
+
+```yaml
+auto_pwa: false
+```
