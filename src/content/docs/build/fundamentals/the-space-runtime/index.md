@@ -56,7 +56,7 @@ micros:
       - main
 ```
 
-The Space CLI will automatically generate a `Spacefile` for you when you [create a new project](/docs/en/build/fundamentals/development/projects#creating-a-project) using `space new`. If will try to auto detect your Micros and use the right configuration.
+The Space CLI will automatically generate a `Spacefile` for you when you [create a new project](/docs/en/build/fundamentals/development/projects#creating-a-project) using `space new`. It will try to auto detect your Micros and use the right configuration.
 
 
 Take a look at our [Quick Starters](/docs/en/build/quick-starts/) for instructions about specific languages and the [`Spacefile` Reference](/docs/en/build/reference/spacefile) for a comprehensive list of available configuration options.
