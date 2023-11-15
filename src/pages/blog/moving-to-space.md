@@ -60,7 +60,7 @@ And here’s Space:
 </div>
 <br />
 
-With our move to Space, we are bringing a complete frontend rewrite in Svelte, with a new design system and a brand new [Base UI](https://deta.space/docs/en/reference/base/base_ui). Beyond the new look, we are bringing core UX components — *Canvas* and *Teletype* — that move Space away from a simple dashboard and make it a more friendly, interactive, and personal experience. We've got big plans for them - stay tuned.
+With our move to Space, we are bringing a complete frontend rewrite in Svelte, with a new design system and a brand new [Base UI](https://deta.space/docs/en/reference/base/base_ui). Beyond the new look, we are bringing core UX components — *Horizon* and *Teletype* — that move Space away from a simple dashboard and make it a more friendly, interactive, and personal experience. We've got big plans for them - stay tuned.
 
 
 ### A Whole Lot More

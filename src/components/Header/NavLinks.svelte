@@ -17,7 +17,7 @@
 
 <div class="links">
 	{#if isAuthenticated}
-		<a href="/">Open Canvas</a>
+		<a href="/">Open Horizon</a>
 	{:else}
 		<a href="/login">Login to Space</a>
 	{/if}

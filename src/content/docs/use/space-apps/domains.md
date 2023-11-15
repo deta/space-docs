@@ -11,7 +11,7 @@ As soon as you install an app, Space will assign it a unique **Built In Domain**
 
 The actual `subdomain` your app will get is based on an alias given to the app by its developer, plus a random suffix: `<alias>-<suffix>`. For instance, if the alias of the app you install is `parallel-futures`, your copy may be assigned something like: `parallel-futures-h78bhas.deta.app`.
 
-To view an app's Built In Domain, click the menu (`...`) from the App's Tile on your Canvas and open Settings. Then navigate to the Domains tab. You'll see the Built In Domain at the top, labeled with “Built In Domain”.
+To view an app's Built In Domain, click the menu (`...`) from the App's Tile on your Horizon and open Settings. Then navigate to the Domains tab. You'll see the Built In Domain at the top, labeled with “Built In Domain”.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/domains-1.png"/></div>
 
@@ -21,7 +21,7 @@ The Built In Domain given to every app will remain as an active address on the i
 
 You can also assign a **Custom Domain** name you own to any app you've installed. For example, if you own `deta.pizza` you can use it to address one of your apps. Custom Domains will work alongside the Default Domain assigned to your app; an app will have two valid addresses). If you don't have your own domain, you can buy one from a domain name registrar such as [Cloudflare](https://www.cloudflare.com/products/registrar/), [Porkbun](https://porkbun.com/), or [Namecheap](https://www.namecheap.com/).
 
-To add a Custom Domain to an app you've installed, click the `...` from the App's Tile on your Canvas to open the Settings menu. Then switch to the “Domains” tab and click “Add Domain”.
+To add a Custom Domain to an app you've installed, click the `...` from the App's Tile on your Horizon to open the Settings menu. Then switch to the “Domains” tab and click “Add Domain”.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/domains-2.png"/></div>
 

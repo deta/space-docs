@@ -3,17 +3,17 @@ title: The User Interface
 layout: "@layouts/DocsPageLayout.astro"
 ---
 
-Your Space's user interface uses two primary components that you'll interact with the most: **Canvas** and **Teletype**.
+Your Space's user interface uses two primary components that you'll interact with the most: **Horizon** and **Teletype**.
 
-# Canvas
+# Horizon
 
 After you signup for Space and complete onboarding, you will see something like this:
 
 ![ui-canvas](/docs_assets/use/ui-canvas.png)
 
-This is your **Canvas**. Canvas is like your desktop, but for your Space. The individual items that you see on your Canvas are **Tiles**. You'll get a Tile on your Canvas for every app you install, and every project you are building (if you're a developer).
+This is your **Horizon**. Horizon is like your desktop, but for your Space. The individual items that you see on your Horizon are **Tiles**. You'll get a Tile on your Horizon for every app you install, and every project you are building (if you're a developer).
 
-If you click on a Tile, it will open that app or project. You can also reorganize all the Tiles on your Canvas by dragging and dropping any Tile.
+If you click on a Tile, it will open that app or project. You can also reorganize all the Tiles on your Horizon by dragging and dropping any Tile.
 
 ![ui-1](/docs_assets/use/ui-1.png)
 
@@ -26,7 +26,7 @@ Space itself also provides a few **System Tiles**, which include:
 
 # Teletype
 
-You also may have noticed the little bar at the bottom of your Canvas. This is **Teletype**.
+You also may have noticed the little bar at the bottom of your Horizon. This is **Teletype**.
 
 ![ui-teletype](/docs_assets/use/ui-teletype.png)
 

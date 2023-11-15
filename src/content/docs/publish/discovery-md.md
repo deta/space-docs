@@ -42,7 +42,7 @@ Here are all the options supported in the Frontmatter by `Discovery.md`:
 
 ### `app_name`
 
-Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed e.g. the Canvas, Teletype and Discovery. If it is not provided, `app_name` will fallback to your project's name. The name can has a maximum of 12 characters.
+Use `app_name` to specify a name for your app. This name will be used wherever your app is displayed e.g. the Horizon, Teletype and Discovery. If it is not provided, `app_name` will fallback to your project's name. The name can has a maximum of 12 characters.
 
 Here's an example:
 

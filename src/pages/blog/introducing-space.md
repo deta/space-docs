@@ -51,17 +51,17 @@ We’ve also upgraded the core experience around Deta Micros. We’ve completely
 For Deta Cloud users looking to move to Space, we’ve created a [guide for migrating Micros from Deta Cloud to Deta Space](https://deta.space/migration/guides/migrate-a-micro).
 
 
-### Say hello to Canvas and Teletype
+### Say hello to Horizon and Teletype
 
 As part of the upgrade, we’ve also completely redesigned and re-engineered our user interface from scratch. This includes a complete frontend rewrite in Svelte and a brand new [Base UI](https://deta.space/docs/en/reference/base/base_ui).
 
-But we’re most excited about two core new interaction components in the frontend, **Canvas,** and **Teletype**.
+But we’re most excited about two core new interaction components in the frontend, **Horizon,** and **Teletype**.
 
 <div style="display: flex; justify-content: center;">
 <img src="/blog_assets/04/canvas.png" style="margin: auto;"/>
 </div>
 
-**Canvas** is your personal cloud’s homepage, where you can rearrange all your apps and projects. Soon you’ll be able to pin just about anything to Canvas – like a Collection, Base, or Drive – to personalize your experience even further.
+**Horizon** is your personal cloud’s homepage, where you can rearrange all your apps and projects. Soon you’ll be able to pin just about anything to Horizon – like a Collection, Base, or Drive – to personalize your experience even further.
 
 **Teletype** is like a start menu for Deta Space. Teletype follows you around Space at the bottom of the screen, offering a changing set of helpful actions, depending on where you are. Navigate straight to a page, open an app, or search the docs using Teletype. We plan to offer even more functionality to Teletype in the coming months, like direct app integrations – stay tuned.
 
@@ -78,7 +78,7 @@ Dozens of people have already done this with their creations on the personal clo
 
 ## Explore what’s next
 
-Lastly, we’d like to touch on what’s next. With the personal cloud, you’re given unprecedented power as a developer. This is because almost everything on Deta Space is programmable. Every app, every Base, and every Drive. Soon you’ll even be able to interact with our own UI components - Canvas and Teletype - using code. So as we build out Space, and as developers release an expanding universe of apps, you’re free to create in ways no one else imagined. Integrate everything to extend your own apps. Or use it all as input to explore what’s next.
+Lastly, we’d like to touch on what’s next. With the personal cloud, you’re given unprecedented power as a developer. This is because almost everything on Deta Space is programmable. Every app, every Base, and every Drive. Soon you’ll even be able to interact with our own UI components - Horizon and Teletype - using code. So as we build out Space, and as developers release an expanding universe of apps, you’re free to create in ways no one else imagined. Integrate everything to extend your own apps. Or use it all as input to explore what’s next.
 
 [Explore Space today ✨](https://deta.space/)
 

@@ -44,7 +44,7 @@ Additionally, the CLI should create a hidden `.space` directory locally — th
 ![builder-headline](/docs_assets/build/builder-headline.png)
 
 
-Now that you've created or linked a project, you can view and manage it inside the Builder app, which can be found on your Canvas in Space.
+Now that you've created or linked a project, you can view and manage it inside the Builder app, which can be found on your Horizon in Space.
 
 Builder will list all your projects, and you can click on any of them to enter their management view.
 

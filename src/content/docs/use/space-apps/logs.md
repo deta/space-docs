@@ -10,7 +10,7 @@ Your application may log things to the Space system, like unexpected errors you 
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/logs-1.png"/></div>
 
-Open your app's context menu from the Canvas and click **View Logs** to open the Logs. If there are any logs, you will see them displayed in the **Runtime Logs** section. Individual logs are expandable by clicking on the `>` on the left side.
+Open your app's context menu from the Horizon and click **View Logs** to open the Logs. If there are any logs, you will see them displayed in the **Runtime Logs** section. Individual logs are expandable by clicking on the `>` on the left side.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:500px;" src="/docs_assets/use/logs-2.png"/></div>
 

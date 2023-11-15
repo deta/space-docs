@@ -11,7 +11,7 @@ If a developer creates a Scheduled Action for an app, they can choose a default 
 
 ### Managing Schedules
 
-As a user, you can change a Scheduled Action's interval or disable a Scheduled Action entirely.  To manage the Scheduled Actions of an app, open the App's Settings menu via the menu on that app's Tile on Canvas.
+As a user, you can change a Scheduled Action's interval or disable a Scheduled Action entirely.  To manage the Scheduled Actions of an app, open the App's Settings menu via the menu on that app's Tile on Horizon.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/actions-1.png"/></div>
 

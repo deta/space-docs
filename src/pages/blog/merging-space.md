@@ -34,7 +34,7 @@ Under the old system, a Space app was available under `alias.username.deta.app`.
 
 **The old domains for every app will continue working exactly the same until February 13th, 2023. After that, we will no longer support old domains. If you are using the old domain in a another client (e.g. browser extension), please update to the new domain before this date, to avoid any issues.**
 
-You can see both the old and new domains for any Space app by clicking the `...` and then `Settings` from an app's card on your Space's Canvas:
+You can see both the old and new domains for any Space app by clicking the `...` and then `Settings` from an app's card on your Space's Horizon:
 
 <div style="display: flex; justify-content: center;"/>
 <img src="/blog_assets/230125-old-domains.webp" style="margin: auto;"/>

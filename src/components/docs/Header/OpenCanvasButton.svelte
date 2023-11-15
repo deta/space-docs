@@ -17,7 +17,7 @@
 {:else if isAuthenticated}
     <a href="/" aria-label="Button" data-no-instant>
         <div><div class="" style="width: 20px; height: 20px;"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="1.15273" y="1.15273" width="19.6945" height="19.6945" rx="5.93086" stroke-width="1.69453"></rect><rect x="4.25" y="4.16016" width="6" height="5.76" rx="2.88" fill="currentColor"></rect><rect x="11.75" y="11.3594" width="6" height="5.76" rx="2.88" fill="currentColor"></rect></svg></div></div>
-        Canvas
+        Horizon
     </a>
 {:else}
     <a href="/login" class="text" data-no-instant>

@@ -52,7 +52,7 @@ v: 0
 
 *Optional*
 
-Use `icon` to specify a path to an image file to use as your app's icon. The icon will be used wherever your app is displayed (e.g. the Canvas).
+Use `icon` to specify a path to an image file to use as your app's icon. The icon will be used wherever your app is displayed (e.g. the Horizon).
 
 The path should be relative to your `Spacefile` and needs to point to a file inside your project's directory.
 

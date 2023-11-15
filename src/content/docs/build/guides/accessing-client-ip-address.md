@@ -8,7 +8,7 @@ You might want to collect some information about the clients accessing your app,
 Fortunately, there is a workaround that you can use to access the client's IP address. This is by using the [`CF-Connecting-IP` header](https://developers.cloudflare.com/fundamentals/get-started/reference/http-request-headers/#cf-connecting-ip), which is available when using [Cloudflare](https://www.cloudflare.com/) as the DNS provider for your [custom domain](/docs/en/use/space-apps/domains#custom-domains), with Cloudflare Proxy enabled. Cloudflare is a content delivery network (CDN) that acts as an intermediary between your website and your visitors, improving the speed and security of your site.
 
 Once you've added your domain to Cloudflare, follow these steps:
-1. [Log-in](https://deta.space/login) to Space, click on the three dots (...) at the bottom right of your app's icon on the Canvas and select **Settings** to open your app's settings. 
+1. [Log-in](https://deta.space/login) to Space, click on the three dots (...) at the bottom right of your app's icon on the Horizon and select **Settings** to open your app's settings. 
 2. Click **Add Custom Domain** (in the Domains tab for released apps) and enter your domain name (e.g. `app-name.example.com`)
 3. Go to the DNS settings in your [Cloudflare Dashboard](https://dash.cloudflare.com/) and add the required records. Make sure that **Cloudflare Proxy** is enabled when adding the A record.
 

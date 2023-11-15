@@ -21,11 +21,11 @@ Collections created independent of any app are Headless Collections. These can b
 
 ### The Collections App
 
-Headless Collections can be created and managed through the Collections App, which is accessible from your Canvas.
+Headless Collections can be created and managed through the Collections App, which is accessible from your Horizon.
 
 <div style="display:flex; justify-content: center;"><img style="border-radius: 5px; width: 90%; max-width: 250px;" src="/docs_assets/use/collections-app.png"/></div>
 
-To create a Headless Collection, open the Collections app from your Canvas and then click **+ New Collection**. Finally, give your Collection a name to create it.
+To create a Headless Collection, open the Collections app from your Horizon and then click **+ New Collection**. Finally, give your Collection a name to create it.
 
 ![collections-1](/docs_assets/use/collections-1.png)
 

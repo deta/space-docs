@@ -40,9 +40,9 @@ Meta data fields can include:
 
 ## Installing Apps from Discovery
 
-If you are interested in trying an app you find on Discovery, click the pink **Install on Space** button. This will kick off the process of installing the given app to your own personal cloud. A pink progress bar will gradually fill the button until the installation completes. Once the installation is finished, the button will be replaced by a **View on Canvas** button with a green check mark in the top corner.
+If you are interested in trying an app you find on Discovery, click the pink **Install on Space** button. This will kick off the process of installing the given app to your own personal cloud. A pink progress bar will gradually fill the button until the installation completes. Once the installation is finished, the button will be replaced by a **View on Horizon** button with a green check mark in the top corner.
 
 <div style="display:flex; align-items: center; max-width: 35%;"><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/discovery-3.png"/><img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/discovery-4.png"/> <img style="border-radius: 5px; width: 90%; max-width:300px;" src="/docs_assets/use/discovery-5.png"/> </div>
 
 
-In the background, Space is pulling a copy of the app from Discovery and provisioning the compute and data resources to run the app out of your Space. Once it is complete, you will be able to find the app on your Canvas. Your app comes with its own, unique domain. It also comes pre-wired to its own unique Collection for storing associated data.
+In the background, Space is pulling a copy of the app from Discovery and provisioning the compute and data resources to run the app out of your Space. Once it is complete, you will be able to find the app on your Horizon. Your app comes with its own, unique domain. It also comes pre-wired to its own unique Collection for storing associated data.

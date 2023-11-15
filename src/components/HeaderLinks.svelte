@@ -17,7 +17,7 @@
 
 <div class="links">
   {#if isAuthenticated}
-    <a href="/" class="!no-underline text-seashell-800 dark:text-seashell-200 hover:opacity-50 transition">Open Canvas</a>
+    <a href="/" class="!no-underline text-seashell-800 dark:text-seashell-200 hover:opacity-50 transition">Open Horizon</a>
   {:else}
     <a href="/login" class="!no-underline text-seashell-800 dark:text-seashell-200 hover:opacity-50 transition">Login to Space</a>
   {/if}
