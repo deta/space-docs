@@ -46,7 +46,7 @@ This will make every route that the given Micro serves public, in the above exam
 
 ### Public Routes
 
-You can also control turn off auth at an individual route level for any Micro with the `public_routes` keyword in your app's `Spacefile`:
+You can also turn off auth at an individual route level for any Micro with the `public_routes` keyword in your app's `Spacefile`:
 
 ```yaml
 micros:
