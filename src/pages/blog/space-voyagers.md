@@ -1,6 +1,6 @@
 ---
 title: "Space Voyagers"
-date: "17 Nov 2023"
+date: "20 Nov 2023"
 layout: "@blogs"
 description: "An insiders program"
 ---
