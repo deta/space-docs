@@ -16,9 +16,7 @@ So we’re creating a dedicated community - ***Space Voyagers*** - to bring some
 ### About Space Voyagers:
 
 - Receive access to Deta’s newest features before they are launched
-- Get a direct line to the Deta team to share all your hopes and dreams
-- a dedicated Discord channel
-- a Space Voyagers indicator on your Galactic Island
+- a dedicated Discord channel and a direct line to the Deta Team
 - bi-weekly Voyagers community calls where we'll unveil in-progress features and you can share how you're using Space and what you're creating
 
 You'll also get a limited edition Deta T-Shirt once the program ends.
