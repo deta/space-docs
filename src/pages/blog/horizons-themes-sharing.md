@@ -1,6 +1,6 @@
 ---
 title: "Multiple Horizons, Themes & Sharing"
-date: "22 Nov 2023"
+date: "23 Nov 2023"
 layout: "@blogs"
 description: "Create multiple Horizons, theme and share them"
 ---
@@ -12,7 +12,6 @@ description: "Create multiple Horizons, theme and share them"
 </div>
 
 <br/>
-
 
 
 One of the comparisons we got with Space OS is to virtual desktop providers like Shadow or Microsoft Cloud PC. This is fine, but the comparison only touches the surface. These systems start from an existing operating system designed for traditional PCs (e.g. Windows) and then run them remotely in the cloud. What they don’t do is re-think what an operating system can be, once you put it in the cloud, with worldwide accessibility. 
@@ -58,9 +57,9 @@ Currently anyone can create up to three Horizons for free.
 
 To celebrate this release in Space OS, we are hosting a Horizonathon. You can create and publish a Horizon until November 26, EOD (CET) for the chance to win shirts, stickers, and more Horizons in your own Space.
 
-More details are here:  [https://team.deta.page/dueling-horizons]
+More details are here:  [https://team.deta.page/dueling-horizons](https://team.deta.page/dueling-horizons)
 
-Thank you, from the Deta Team.
+Thank you, from the Deta Team, past and present.
 
 <div style="display: flex; justify-content: center;">
 <image style="max-width: 60%;" src="/blog_assets/space-os-signatures.svg">
