@@ -1,5 +1,5 @@
 ---
-title: "Multiple Horizons, Themes & Sharing"
+title: "Sharing, Themes & Multiple Horizons"
 date: "23 Nov 2023"
 layout: "@blogs"
 description: "Create multiple Horizons, theme and share them"
