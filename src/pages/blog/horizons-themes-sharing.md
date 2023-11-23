@@ -54,9 +54,11 @@ Currently anyone can create up to three Horizons for free.
 
 ### Dueling Horizons Contest
 
+![multi-horizons](/blog_assets/duel.webp)
+
 To celebrate this release in Space OS, we are hosting a Horizonathon. You can create and publish a Horizon until November 26, EOD (CET) for the chance to win shirts, stickers, and more Horizons in your own Space.
 
-More details are here:
+More details are here:  [https://team.deta.page/dueling-horizons]
 
 Thank you, from the Deta Team.
 
