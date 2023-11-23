@@ -9,15 +9,53 @@ Your Space's user interface uses two primary components that you'll interact wit
 
 After you signup for Space and complete onboarding, you will see something like this:
 
-![ui-canvas](/docs_assets/use/ui-canvas.png)
+![ui-canvas](/docs_assets/use/ui-horizon.webp)
 
-This is your **Horizon**. Horizon is like your desktop, but for your Space. The individual items that you see on your Horizon are **Tiles**. You'll get a Tile on your Horizon for every app you install, and every project you are building (if you're a developer).
+This is a **Horizon**. A Horizon is like your desktop, but for your Space. The individual items that you see on a Horizon are **Cards**. You can create Cards that do a number of things.
+
+To create a Card, simply draw a rectangle on your Horizon and select a Card type from the Card creation menu.
+
+![ui-1](/docs_assets/use/ui-card-creation.webp)
+
+## Cards
+
+There are a variety of Card types you can place on a Horizon.
+
+### Text
+
+Text Cards let you tax quick notes on a Horizon. You can use simple Markdown formatting to create a rich text.
+
+### Embeds
+
+Embed cards let you embed external content from the internet straight to a Horizon. Try pasting a YouTube video or Google sheets link.
+
+### Custom
+
+Custom Cards let you code your own Card using HTML, CSS, and JavaScript. You can use the Deta Browser SDK with Deta Base and Deta Drive to store data from a Custom Card.
+
+The data is accessible from the Collections app under the `horizon://home` Collection.
+
+You can also use the *Create an App with AI* option to create a Custom Card using natural language.
+
+### Installed Apps
+
+You can pin personal apps installed from Deta Discovery straight to your Horizon.
+
+### Builder Projects & Instances
+
+If you have developer mode enabled, you can also pin personal apps you are building to the Horizon.
+
+### Link
+
+You can embed links on a Horizon with the Link Card.
 
 If you click on a Tile, it will open that app or project. You can also reorganize all the Tiles on your Horizon by dragging and dropping any Tile.
 
 ![ui-1](/docs_assets/use/ui-1.png)
 
-Space itself also provides a few **System Tiles**, which include:
+### System
+
+Space itself also provides a few **System Cards**, which include:
 
 - [Discovery](/docs/en/use/space-apps/discovery): Where you find and install Space apps
 - [Docs](/docs/en/): A link to the docs, to read about Space
