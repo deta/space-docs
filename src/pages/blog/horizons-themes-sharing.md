@@ -30,8 +30,6 @@ Space OS’s first step towards social computing is to enable **publishing a Hor
 
 Shared Horizons show a major departure from the ideas of “cloud pcs”. Your computer is no longer just an inward facing device, but can also be a personal device to access, connect with, broadcast to, and receive from, the outside world. In Space OS’s future, not only will someone be able to visit your computer, but they’ll be able to interact with it. Publishing Horizons is our first step in building a social and collaborative experience in Space OS, where ultimately you’re in control, but you’re also plugged in to a world of people, machines, and the information they have.
 
-Read about how to publish a Horizon in the [docs](https://deta.space/docs/en/use/sharing).
-
 ### Themes & Multiple Horizons
 
 #### Custom Themes
