@@ -17,6 +17,8 @@ To create a Card, simply draw a rectangle on your Horizon and select a Card type
 
 ![ui-1](/docs_assets/use/ui-card-creation.webp)
 
+You can move cards around by dragging them, and you can resize them by grabbing any card's right bottom corner.
+
 ## Cards
 
 There are a variety of Card types you can place on a Horizon.
@@ -29,6 +31,10 @@ Text Cards let you tax quick notes on a Horizon. You can use simple Markdown for
 
 Embed cards let you embed external content from the internet straight to a Horizon. Try pasting a YouTube video or Google sheets link.
 
+### Installed Apps
+
+You can pin personal apps installed from Deta Discovery straight to your Horizon.
+
 ### Custom
 
 Custom Cards let you code your own Card using HTML, CSS, and JavaScript. You can use the Deta Browser SDK with Deta Base and Deta Drive to store data from a Custom Card.
@@ -37,9 +43,9 @@ The data is accessible from the Collections app under the `horizon://home` Colle
 
 You can also use the *Create an App with AI* option to create a Custom Card using natural language.
 
-### Installed Apps
+### Theme
 
-You can pin personal apps installed from Deta Discovery straight to your Horizon.
+Theme Cards let you customize the look and feel of your Horizon. You can use *Easy* mode to use color pickers and sliders to adjust the theme, while *Custom CSS* will give you the full control of CSS.
 
 ### Builder Projects & Instances
 
@@ -51,7 +57,6 @@ You can embed links on a Horizon with the Link Card.
 
 If you click on a Tile, it will open that app or project. You can also reorganize all the Tiles on your Horizon by dragging and dropping any Tile.
 
-![ui-1](/docs_assets/use/ui-1.png)
 
 ### System
 
@@ -61,6 +66,12 @@ Space itself also provides a few **System Cards**, which include:
 - [Docs](/docs/en/): A link to the docs, to read about Space
 - [Collections](/docs/en/use/your-data/collections): Where you manage your data
 - [Builder](/docs/en/build/fundamentals/development/builder): Where you build Space applications (available for developers)
+
+## Multiple Horizons
+
+A Horizon may be great for working on a larger idea, with a vareity of media related to that idea. But a single Horizon can quickly get crowded.
+
+You can create Multiple Horizons, using the **+** button in the Horizon switcher
 
 # Teletype
 
