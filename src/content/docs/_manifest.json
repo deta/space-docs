@@ -85,6 +85,7 @@
       "name": "Use",
       "content": [
         "interface.md",
+        "sharing.md",
         {
           "name": "Space Apps",
           "content": [
