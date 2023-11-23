@@ -1,6 +1,6 @@
 ---
 title: "Multiple Horizons, Themes & Sharing"
-date: "22 Nov 2023"
+date: "23 Nov 2023"
 layout: "@blogs"
 description: "Create multiple Horizons, theme and share them"
 ---
@@ -12,7 +12,6 @@ description: "Create multiple Horizons, theme and share them"
 </div>
 
 <br/>
-
 
 
 One of the comparisons we got with Space OS is to virtual desktop providers like Shadow or Microsoft Cloud PC. This is fine, but the comparison only touches the surface. These systems start from an existing operating system designed for traditional PCs (e.g. Windows) and then run them remotely in the cloud. What they don’t do is re-think what an operating system can be, once you put it in the cloud, with worldwide accessibility. 
@@ -30,6 +29,8 @@ Our computers, though personal, should also be social. This isn’t a new idea, 
 Space OS’s first step towards social computing is to enable **publishing a Horizon**, which lets you share its link by clicking the share button, so others can visit and interact directly with your computer. You can give your Horizon a custom path, or also set an individual Horizon as your personal cloud’s homepage on your personal Deta sub-domain at `username.deta.page`. Adding your own custom domain to any Horizon is coming soon.
 
 Shared Horizons show a major departure from the ideas of “cloud pcs”. Your computer is no longer just an inward facing device, but can also be a personal device to access, connect with, broadcast to, and receive from, the outside world. In Space OS’s future, not only will someone be able to visit your computer, but they’ll be able to interact with it. Publishing Horizons is our first step in building a social and collaborative experience in Space OS, where ultimately you’re in control, but you’re also plugged in to a world of people, machines, and the information they have.
+
+Read about how to publish a Horizon in the [docs](https://deta.space/docs/en/use/sharing).
 
 ### Themes & Multiple Horizons
 
@@ -58,9 +59,9 @@ Currently anyone can create up to three Horizons for free.
 
 To celebrate this release in Space OS, we are hosting a Horizonathon. You can create and publish a Horizon until November 26, EOD (CET) for the chance to win shirts, stickers, and more Horizons in your own Space.
 
-More details are here:  [https://team.deta.page/dueling-horizons]
+More details are here:  [https://team.deta.page/dueling-horizons](https://team.deta.page/dueling-horizons)
 
-Thank you, from the Deta Team.
+Thank you, from the Deta Team, past and present.
 
 <div style="display: flex; justify-content: center;">
 <image style="max-width: 60%;" src="/blog_assets/space-os-signatures.svg">
