@@ -7,21 +7,21 @@ import RequestTabs from "@/components/Tabs/RequestTabs.astro";
 
 ## General & Auth
 
-> You can get your **Data Key** and your **Project ID** of your Project in [Builder](/docs/en/build/fundamentals/development/builder). You need these to talk with the Deta API.
+> Get a [**Data Key**](/docs/en/use/your-data/collections#data-keys) . If it's a Builder project, get it from [Builder](/docs/en/build/fundamentals/development/builder). Your Collection ID is the first chars of the Data Key, before the `_`. You need these to talk with the Deta API.
 
 > ℹ️ Base currently supports **maximum 16 digit numbers** (integers and floating points), please store larger numbers as a string. 
 
 ### Root URL
 This URL is the base for all your HTTP requests:
 
-**`https://database.deta.sh/v1/{project_id}/{base_name}`**
+**`https://database.deta.sh/v1/{collection_id}/{base_name}`**
 
 > The `base_name` is the name given to your database. If you already have a **Base**, then you can go ahead and provide it's name here. Additionally, you could provide any name here when doing any `PUT` or `POST` request and our backend will automatically create a new base for you if it does not exist. There is no limit on how many "Bases" you can create.
 
 ### Auth
 A [Data Key](/docs/en/build/fundamentals/data-storage#data-keys) _must_ to be provided in the request **headers** as a value for the `X-API-Key` key for authentication. This is how we authorize your requests.
 
-Example `'X-API-Key: a0abcyxz_aSecretValue'`.
+Example `'X-API-Key: a0abcyxzxsr_aSecretValue'`.
 
 > Data Keys were called Project Keys in earlier versions of Deta.
 
