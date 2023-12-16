@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": false,
+    "editor.rulers": [
+        100
+    ],
+    "markdownlint.config": {
+        "MD013": false,
+        "MD025": false
+    }
+}

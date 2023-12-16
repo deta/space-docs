@@ -20,3 +20,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Do allow versioning of .vscode/ directory itself, if we want to version some example files or
+# extensions.json.
+.vscode/settings.json
