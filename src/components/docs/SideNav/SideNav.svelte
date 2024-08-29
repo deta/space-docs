@@ -34,6 +34,7 @@
   import IconRocket from "@/components/core/Icon/IconRocket.svelte";
   import { storedJsonWritable } from "@/utils/storedWritable";
   import CollapsibleGroup from "./Collapsible/CollapsibleGroup.svelte";
+  import IconDownload from "@/components/core/Icon/IconDownload.svelte";
 
   // PROPS
   export let navTree: NavigationItem, currentPage: string;
@@ -75,18 +76,18 @@
     updateBodyClass();
     //if (innerWidth < 768 && JSON.parse(localStorage.getItem("sideNavOpen") || false)) sideNavOpen.set(false); // TODO: FIX
     if (document) {
-        // Quick fix to close after link click
-        document.addEventListener("click", (e) => {
-            if (innerWidth >= 768) return;
-            if (!(e.target instanceof HTMLAnchorElement) && e.target.closest("a") === null) return;
-            sideNavOpen.set(false);
-            updateBodyClass();
-        });
+      // Quick fix to close after link click
+      document.addEventListener("click", (e) => {
+        if (innerWidth >= 768) return;
+        if (!(e.target instanceof HTMLAnchorElement) && e.target.closest("a") === null) return;
+        sideNavOpen.set(false);
+        updateBodyClass();
+      });
       //if (innerWidth > 768 && !localStorage.getItem("sideNavOpen")) sideNavOpen.set(true); // TODO: FIX
       //if (innerWidth < 768 && !JSON.parse(localStorage.getItem("sideNavOpen") || "false")) sideNavOpen.set(false); // TODO: FIX
       updateBodyClass();
 
-      document.addEventListener('astro:beforeload', () => {
+      document.addEventListener("astro:beforeload", () => {
         currentPage = location.pathname;
         updateBodyClass();
       });
@@ -102,81 +103,95 @@
   on:mouseenter={onBeginPeek}
   on:mouseleave={onEndPeek} />
 <aside class:open={$sideNavOpen} class:peeking={$sideNavPeeking} on:mouseleave={onEndNavHover}>
-    {#if ($sideNavOpen) || ($sideNavPeeking)}
-  <nav
-  transition:fly={{
-      duration: 400,
-      easing: quintOut,
-      x: innerWidth >= 768 ? -100 : 0,
-      y: innerWidth < 768 ? 100 : 0
-    }}
-    >
-    <header class="only-desktop">
-      <a href="/docs" class="docs-logo">
-        <AstroLogo size={28} />
-        <span>Space Docs</span>
-      </a>
-    </header>
+  {#if $sideNavOpen || $sideNavPeeking}
+    <nav
+      transition:fly={{
+        duration: 400,
+        easing: quintOut,
+        x: innerWidth >= 768 ? -100 : 0,
+        y: innerWidth < 768 ? 100 : 0
+      }}>
+      <header class="only-desktop">
+        <a href="/docs" class="docs-logo">
+          <AstroLogo size={28} />
+          <span>Space Docs</span>
+        </a>
+      </header>
 
-    <div class="nav-tree">
-      <ul>
-        <CollapsibleGroup>
-          <NavSection
-            depth={0}
-            navItem={navTree.subItems[0]}
-            open={currentPage.includes("/learn") || currentPage === "/docs/en/" || currentPage === "/docs/en"}
-            animated={false}>
-            <svelte:fragment slot="icon">
-              <IconBook2
-                size={24}
-                strokeWidth={2}
-                style="currentColor"
-                color="hsl(var(--color-base-purple), 50%)" />
-            </svelte:fragment>
-          </NavSection>
-          <NavSection
-            depth={0}
-            navItem={navTree.subItems[1]}
-            open={currentPage.includes("/build")}
-            animated={false}>
-            <svelte:fragment slot="icon">
-              <IconHammer
-                size={24}
-                strokeWidth={2}
-                style="currentColor"
-                color="hsl(var(--color-base-blue-dark), 50%)" />
-            </svelte:fragment>
-          </NavSection>
-          <NavSection
-            depth={0}
-            navItem={navTree.subItems[2]}
-            open={currentPage.includes("/use")}
-            animated={false}>
-            <svelte:fragment slot="icon">
-              <IconBolt
-                size={24}
-                strokeWidth={2}
-                style="currentColor"
-                color="hsl(var(--color-base-yellow), 50%)" />
-            </svelte:fragment>
-          </NavSection>
-          <NavSection
-            depth={0}
-            navItem={navTree.subItems[3]}
-            open={currentPage.includes("/publish")}
-            animated={false}>
-            <svelte:fragment slot="icon">
-              <IconRocket
-                size={24}
-                strokeWidth={2}
-                style="currentColor"
-                color="hsl(var(--color-base-green), 40%)" />
-            </svelte:fragment>
-          </NavSection>
-        </CollapsibleGroup>
-      </ul>
-    </div>
-  </nav>
+      <div class="nav-tree">
+        <ul>
+          <CollapsibleGroup>
+            <NavSection
+              depth={0}
+              navItem={navTree.subItems[0]}
+              open={currentPage.includes("/learn") ||
+                currentPage === "/docs/en/" ||
+                currentPage === "/docs/en"}
+              animated={false}>
+              <svelte:fragment slot="icon">
+                <IconBook2
+                  size={24}
+                  strokeWidth={2}
+                  style="currentColor"
+                  color="hsl(var(--color-base-purple), 50%)" />
+              </svelte:fragment>
+            </NavSection>
+            <NavSection
+              depth={0}
+              navItem={navTree.subItems[1]}
+              open={currentPage.includes("/build")}
+              animated={false}>
+              <svelte:fragment slot="icon">
+                <IconHammer
+                  size={24}
+                  strokeWidth={2}
+                  style="currentColor"
+                  color="hsl(var(--color-base-blue-dark), 50%)" />
+              </svelte:fragment>
+            </NavSection>
+            <NavSection
+              depth={0}
+              navItem={navTree.subItems[2]}
+              open={currentPage.includes("/use")}
+              animated={false}>
+              <svelte:fragment slot="icon">
+                <IconBolt
+                  size={24}
+                  strokeWidth={2}
+                  style="currentColor"
+                  color="hsl(var(--color-base-yellow), 50%)" />
+              </svelte:fragment>
+            </NavSection>
+            <NavSection
+              depth={0}
+              navItem={navTree.subItems[3]}
+              open={currentPage.includes("/publish")}
+              animated={false}>
+              <svelte:fragment slot="icon">
+                <IconRocket
+                  size={24}
+                  strokeWidth={2}
+                  style="currentColor"
+                  color="hsl(var(--color-base-green), 40%)" />
+              </svelte:fragment>
+            </NavSection>
+            <NavSection
+              depth={0}
+              navItem={navTree.subItems[4]}
+              open={currentPage.includes("/exports")}
+              animated={false}>
+              <svelte:fragment slot="icon">
+                <IconDownload
+                  size={24}
+                  strokeWidth={2}
+                  style="currentColor"
+                  color="hsl(var(--color-base-white), 40%)" />
+              </svelte:fragment>
+            </NavSection>
+          </CollapsibleGroup>
+        </ul>
+      </div>
+    </nav>
   {/if}
 
   <div class="nav-toggle only-desktop">
