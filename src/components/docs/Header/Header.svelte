@@ -9,7 +9,6 @@
   import type { docsSchema } from "@/content/config";
   import type { z } from "astro/zod";
   import type { MarkdownHeading } from "astro";
-  import Breadcrumbs from "../Article/Breadcrumbs.svelte";
 
   export let frontmatter: z.infer<typeof docsSchema>;
   export let headings: MarkdownHeading[];
@@ -39,8 +38,8 @@
         </ul>
     </div>
 
-    <div class="only-mobile">
-        <Breadcrumbs currentPage={currentPage} />
+    <div class="announcement">
+       <p> <a href="/sunset" target="_blank">Space is unfortunately shutting down, read more here. </a> </p> 
     </div>
 
     <div>
@@ -109,6 +108,13 @@
 
         > div:last-child {
             // foo
+        }
+    }
+
+    .announcement {
+        font-size: 1.2rem;
+        p {
+          color: #93388e;
         }
     }
 

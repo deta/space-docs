@@ -1,9 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Breadcrumbs from "./Breadcrumbs.svelte";
   import MobileTableOfContents from "./TableOfContents/MobileTableOfContents.svelte";
   import type { docsSchema } from "@/content/config";
-  import type { z } from "astro/zod"
+  import type { z } from "astro/zod";
   import type { MarkdownHeading } from "astro";
 
   export let currentPage: string;
@@ -13,27 +12,28 @@
   let stuck = false;
 
   onMount(() => {
-    const el = document.querySelector(".track-me")
+    const el = document.querySelector(".track-me");
     const observer = new IntersectionObserver(
       ([e]) => {
-        stuck = e.intersectionRatio < 1
+        stuck = e.intersectionRatio < 1;
       },
       { threshold: [1] }
     );
 
     observer.observe(el!);
-  })
-
+  });
 </script>
 
-<section class="only-desktop track-me" class:stuck={stuck}>
+<section class="only-desktop track-me" class:stuck>
   <div class="inner">
-    <Breadcrumbs currentPage={currentPage} />
-
     <div class="toc">
-      <MobileTableOfContents chevron pageTitle={frontmatter.title} {headings} collapsable={true} maxDepth={frontmatter && frontmatter.tocDepth || 2}/>
+      <MobileTableOfContents
+        chevron
+        pageTitle={frontmatter.title}
+        {headings}
+        collapsable={true}
+        maxDepth={(frontmatter && frontmatter.tocDepth) || 2} />
     </div>
-
   </div>
 </section>
 
@@ -55,31 +55,31 @@
   }
 
   //@media screen and (max-width: 1280px) {
-    .stuck .inner {
-      position: fixed;
-      top: calc(1.5rem - 6px);
-      left: calc(150px + 2rem);
-      justify-content: unset;
-      gap: 0rem;
-    }
+  .stuck .inner {
+    position: fixed;
+    top: calc(1.5rem - 6px);
+    left: calc(150px + 2rem);
+    justify-content: unset;
+    gap: 0rem;
+  }
 
-    :global(body.sideNav-open) .stuck .inner {
-      position: sticky;
-      top: -1px;
-      left: unset;
-    }
+  :global(body.sideNav-open) .stuck .inner {
+    position: sticky;
+    top: -1px;
+    left: unset;
+  }
 
+  .toc {
+    display: block;
+  }
+
+  @media screen and (min-width: calc(768px + 21ch * 2)) {
     .toc {
-      display: block;
+      display: none;
     }
 
-    @media screen and (min-width: calc(768px + 21ch * 2)) {
-      .toc {
-        display: none;
-      }
-
-      .stuck .inner {
-        top: calc((var(--header-height) / 2) - 12px);
-      }
+    .stuck .inner {
+      top: calc((var(--header-height) / 2) - 12px);
     }
+  }
 </style>
