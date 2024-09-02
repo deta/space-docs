@@ -39,7 +39,7 @@
     </div>
 
     <div class="announcement">
-       <p> <a href="/blog">Space is unfortunately shutting down, read more here. </a> </p> 
+       <p> <a href="/sunset" target="_blank">Space is unfortunately shutting down, read more here. </a> </p> 
     </div>
 
     <div>
