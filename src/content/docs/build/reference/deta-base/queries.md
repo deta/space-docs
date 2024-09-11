@@ -173,6 +173,7 @@ You need to consider the following when querying on keys:
 - The keys must be strings hence the operation values **must** also be strings. 
 - The [contains](#contains) and [not-contains](#not-contains) operators **are not supported**.
 - The [`AND`](#and) and [`OR`](#or) operations for different query values **are not supported**.
+- The max number of OR operations or query objects in a list is 25.
     
 For e.g. **the following queries are invalid**:
 
